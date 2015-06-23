@@ -126,6 +126,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
         _loadEleves: function(courseId, limitFrom, limitNumber, successCallback, errorCallback) {
             var data = {
                 "courseid" : courseId,
+                "userid" : MM.site.get('userid'),
                 "options[0][name]" : "limitfrom",
                 "options[0][value]": limitFrom,
                 "options[1][name]" : "limitnumber",
@@ -133,7 +134,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             };
 
             MM.moodleWSCall(
-                'moodle_user_get_users_by_courseid',
+                'local_mobile_get_users_by_courseid_departmentid',
                 data,
                 function(users) {
                     successCallback(users);
