@@ -142,11 +142,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var offline = offlines[0].toJSON();
                         var file = offline.contents[0];
                         MM.log('offline:'+MM.config.current_site.id + "-" + courseId + ',' +file.filepath);
-                        if (file.filepath != "undefined" && file.filepath!="/") {
-                            $.each(users, function(index, user) {
+                        $.each(users, function(index, user) {
                                 users[index].offline = file.filepath;
-                            });
-                        }
+                        });
+                        
                     }
                     
                     var onlines = MM.db.where("contents", {name:'online',courseid:courseId});
