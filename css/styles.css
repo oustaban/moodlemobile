@@ -182,13 +182,15 @@ button {
   background: -webkit-linear-gradient(top, #fefefe, #e7e7e7);
   border-radius: 4pt;
   border: 1pt solid #CCC;
-  border-bottom: #B3B3B3;
   height: 30pt;
   width: 40%;
   color: #666;
 }
 .phone button {
   width: 60%;
+}
+.media button {
+  width:auto;
 }
 /* =1.7 - Lists
 --------------------------------------------------------*/
@@ -1389,7 +1391,7 @@ hr {
 /* - Participants list on the center panel
 -------------------------------------------------------------------------- */
 .users-index-list li {
-  height: 44px;
+  height: auto;
   overflow: hidden;
 }
 .users-index-list .nav-item > a {

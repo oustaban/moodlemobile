@@ -134,7 +134,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                         }
                         sectionName = sections.name;
                         $.each(sections.modules, function(index2, content){
-
+                            MM.log("ContentID: " + content.id);
                             content.contentid = content.id;
                             content.courseid = courseId;
                             content.id = MM.config.current_site.id + "-" + content.contentid;
@@ -235,7 +235,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     c.description = content.description;
                                     updateContentInDB = true;
                                 }
-
+                                
+                                c.courseid = courseId;
+                                
                                 if (updateContentInDB) {
                                     MM.db.insert("contents", c);
                                 }
@@ -252,7 +254,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 content.webOnly = false;
                             }
                             sections.modules[index2].webOnly = content.webOnly;
-
+                            
+                            content.courseid = courseId;
+                            
                             MM.db.insert("contents", content);
 
                             // Sync content files.
@@ -399,6 +403,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
             var content = MM.db.get("contents", MM.config.current_site.id + "-" + contentId);
             content = content.toJSON();
+            content.courseid = courseId;
 
             var downCssId = "#download-" + contentId;
             var linkCssId = "#link-" + contentId;
@@ -685,6 +690,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
         downloadAll: function(courseId, sectionId, contentId, successCallback, errorCallback) {
             var content = MM.db.get("contents", MM.config.current_site.id + "-" + contentId);
             content = content.toJSON();
+            content.courseid = courseId;
 
             if (!content.contents) {
                 if (typeof errorCallback == "function") {

@@ -137,6 +137,29 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 'local_mobile_get_users_by_courseid_departmentid',
                 data,
                 function(users) {
+                    var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
+                    if (offlines && offlines != "") {
+                        var offline = offlines[0].toJSON();
+                        var file = offline.contents[0];
+                        MM.log('offline:'+MM.config.current_site.id + "-" + courseId + ',' +file.filepath);
+                        if (file.filepath != "undefined" && file.filepath!="/") {
+                            $.each(users, function(index, user) {
+                                users[index].offline = file.filepath;
+                            });
+                        }
+                    }
+                    
+                    var onlines = MM.db.where("contents", {name:'online',courseid:courseId});
+                    MM.log('onlines:'+onlines);
+                    if (onlines && onlines != "") {
+                        var online = onlines[0].toJSON();
+                        MM.log('online:'+MM.config.current_site.id + "-" + courseId + ',' +online.url);
+                        $.each(users, function(index, user) {
+                                users[index].online = online.url;
+                        });
+                    }
+                    //var offline = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
+                    //offline = offline.toJSON();
                     successCallback(users);
                 },
                 {
@@ -155,7 +178,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
         showEleve: function(courseId, userId, popUp) {
             popUp = popUp || false;
-
+            MM.log('showEleve'+userId);
             var menuEl = 'a[href="#eleve/' + courseId + '/' + userId + '"]';
             $(menuEl, '#panel-center').addClass('loading-row-black');
 
