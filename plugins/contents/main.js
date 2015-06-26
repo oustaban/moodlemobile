@@ -438,7 +438,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             content.contents[index].localpath = path.file;
                             var downloadTime = MM.util.timestamp();
                             content.contents[index].downloadtime = downloadTime;
-			    content.coureid = courseId;
+                            content.courseid = courseId;
                             // Raise conditions may happen here. The callback functions handle that.
                             MM.db.insert("contents", content);
                             if ($(downCssId)) {
