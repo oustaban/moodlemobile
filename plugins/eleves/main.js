@@ -209,7 +209,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
+                    //var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
+                    var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
+                    
                     MM.log('offlines:'+offlines+','+courseId);
                     if (offlines && offlines != "") {
                         
