@@ -206,18 +206,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         newUser.country = countries[newUser.country];
                     }
                     
-                    var path = {
-                        directory: MM.config.current_site.id + "/" + courseId + "/" + newUser.id,
-                        file:      MM.config.current_site.id + "/" + courseId + "/" + newUser.id + "/resultat"
-                    };
                     
-                    var pathCourse = {
-                        directory: MM.config.current_site.id + "/" + courseId + "/" + newUser.id,
-                        file:      MM.config.current_site.id + "/" + courseId + "/" + newUser.id + "/resultat"
-                    };
                     
                     var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
-                    
+                    MM.log('offlines':offlines);
                     if (offlines && offlines != "") {
                         
                         var offline = offlines[0].toJSON();
