@@ -300,6 +300,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         if (content.modname != "folder" && typeof(MM.plugins.contents.templates.mimetypes[extension]) != "undefined") {
                                             sections.modules[index2].mainExtension = MM.plugins.contents.templates.mimetypes[extension]["icon"];
                                             content.mainExtension = sections.modules[index2].mainExtension;
+					    content.courseid = courseId;
                                             MM.db.insert("contents", content);
                                         }
                                     }
@@ -437,6 +438,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             content.contents[index].localpath = path.file;
                             var downloadTime = MM.util.timestamp();
                             content.contents[index].downloadtime = downloadTime;
+			    content.coureid = courseId;
                             // Raise conditions may happen here. The callback functions handle that.
                             MM.db.insert("contents", content);
                             if ($(downCssId)) {

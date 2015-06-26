@@ -211,9 +211,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     var test1 = MM.db.where("contents", {"name":"offline", "courseid" : courseId});
                     var test2 = MM.db.where('contents', {'name':'offline'});
+                    var test3 = MM.db.where('contents', {'courseid':courseId});
+                    var test4 = MM.db.where("contents", {"courseid" : courseId,"name":"offline"});
                     var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
                     
-                    MM.log('offlines:'+offlines+','+courseId+','+test1+','+test2);
+                    MM.log('offlines:'+offlines+','+courseId+','+test1+','+test2+','+test3);
                     if (offlines && offlines != "") {
                         
                         //var offline = offlines[0].toJSON();
