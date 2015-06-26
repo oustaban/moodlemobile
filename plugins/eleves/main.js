@@ -176,13 +176,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 "userlist[0][userid]": userId,
                 "userlist[0][courseid]": courseId
             };
-            $(".ressource-downloaded").on(MM.clickType, function(e) {
-                e.preventDefault();
-                var path = $(this).data("path");
-                //path = MM.fs.getRoot() + "/" + path;
-                MM.log('click start:'+path);
-                MM.plugins.resource._showResource(path);
-            });
+            
 
             MM.moodleWSCall(
                 'moodle_user_get_course_participants_by_id',
@@ -306,6 +300,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.panels.show('right', html, {title: pageTitle});
                     }
                     
+                    $("#showCourse").on(MM.clickType, function(e) {
+                        e.preventDefault();
+                        var path = $(this).attr("path");
+                        //path = MM.fs.getRoot() + "/" + path;
+                        MM.log('click start:'+path);
+                        MM.plugins.resource._showResource(path);
+                    });
                     
                 },
                 {
