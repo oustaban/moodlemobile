@@ -225,35 +225,35 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         MM.log('offline Course:'+pathCourse.file+','+pathCourse.directory+','+contentid[1]);
                         
-                        MM.fs.init(function() {
-                            MM.fs.fileExists(pathCourse.file,
-                                function(pathCourse) {
-                                    
-                                    newUser.offline = MM.fs.getRoot() + '/' + pathCourse.localpath;
-                                    
-                                    var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
-                                                
-                                    MM.log('offline Result:'+pathResult.file+','+pathResult.directory+','+path);
-                                    
-                                    
-                                    MM.fs.fileExists(pathResult.file,
-                                        function(pathResult) {
-                                            newUser.debug = 4;
-                                            //On récupére le json et on vérifie que l'état est terminé ou pas
-                                        },
-                                        function() {
-                                           newUser.debug = 3;
-                                        }
-                                    );
+                        
+                        MM.fs.fileExists(pathCourse.file,
+                            function(pathCourse) {
                                 
-                                },
-                                function() {
-                                   newUser.offline = "no_offline_content";
-                                   newUser.debug = 2;
-                                   MM.log('offline Result: Not exist');
-                                }
-                            );
-                        });
+                                newUser.offline = MM.fs.getRoot() + '/' + pathCourse.localpath;
+                                
+                                var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
+                                            
+                                MM.log('offline Result:'+pathResult.file+','+pathResult.directory+','+path);
+                                
+                                
+                                MM.fs.fileExists(pathResult.file,
+                                    function(pathResult) {
+                                        newUser.debug = 4;
+                                        //On récupére le json et on vérifie que l'état est terminé ou pas
+                                    },
+                                    function() {
+                                       newUser.debug = 3;
+                                    }
+                                );
+                            
+                            },
+                            function() {
+                               newUser.offline = "no_offline_content";
+                               newUser.debug = 2;
+                               MM.log('offline Result: Not exist');
+                            }
+                        );
+                    
                         
                     } else {
                         newUser.offline = "no_offline_content";
