@@ -215,7 +215,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log('offlines:'+offlines+','+courseId);
                     if (offlines && offlines != "") {
                         
-                        var offline = offlines[0].toJSON();
+                        //var offline = offlines[0].toJSON();
+                        var offline = offlines.toJSON();
                         var file = offline.contents[0];
                         contentid = offline.url.split("?id=");
                         
