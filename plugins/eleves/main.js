@@ -209,15 +209,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    var offlines = MM.db.where('contents', {name:'offline', courseid:courseId});
-                    //var test2 = MM.db.where('contents', {'name':'offline'});
-                    //var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
+                    var test1 = MM.db.where('contents', {name:'offline', courseid:courseId});
+                    var test2 = MM.db.where('contents', {'name':'offline'});
+                    var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
                     
-                    MM.log('offlines:'+offlines+','+courseId);
+                    MM.log('offlines:'+offlines+','+courseId+','+test1+','+test2);
                     if (offlines && offlines != "") {
                         
                         //var offline = offlines[0].toJSON();
-                        var offline = offlines[0].toJSON();
+                        var offline = offlines.toJSON();
                         var file = offline.contents[0];
                         contentid = offline.url.split("?id=");
                         
@@ -229,12 +229,26 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.fs.fileExists(pathCourse.file,
                             function(pathCourse) {
                                 
-                                //newUser.offline = MM.fs.getRoot() + '/' + pathCourse.localpath;
-                                
+                                newUser.offline = MM.fs.getRoot() + '/' + pathCourse.localpath;
+                                newUser.debug = 3;
                                 var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
                                             
                                 MM.log('offline Result:'+pathResult.file+','+pathResult.directory+','+path);
                                 
+                                MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
+                                var tpl = {
+                                    "user": newUser,
+                                    "plugins": userPlugins,
+                                    "courseid": courseId,
+                                    "popUp": popUp
+                                };
+            
+                                var html = MM.tpl.render(MM.plugins.eleves.templates.eleve.html, tpl);
+                                newUser.id = MM.config.current_site.id + "-" + newUser.id;
+                                MM.db.insert("users", newUser);
+            
+                                $(menuEl, '#panel-center').removeClass('loading-row-black');
+                                MM.panels.show('right', html, {title: pageTitle});
                                 
                             
                             },
@@ -242,6 +256,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                newUser.offline = "no_offline_content";
                                newUser.debug = 2;
                                MM.log('offline Result: Not exist');
+                               
+                               MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
+                                var tpl = {
+                                    "user": newUser,
+                                    "plugins": userPlugins,
+                                    "courseid": courseId,
+                                    "popUp": popUp
+                                };
+            
+                                var html = MM.tpl.render(MM.plugins.eleves.templates.eleve.html, tpl);
+                                newUser.id = MM.config.current_site.id + "-" + newUser.id;
+                                MM.db.insert("users", newUser);
+            
+                                $(menuEl, '#panel-center').removeClass('loading-row-black');
+                                MM.panels.show('right', html, {title: pageTitle});
                             }
                         );
                     
@@ -249,27 +278,24 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     } else {
                         newUser.offline = "no_offline_content";
                         newUser.debug = 1;
+                        
+                        MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
+                        var tpl = {
+                            "user": newUser,
+                            "plugins": userPlugins,
+                            "courseid": courseId,
+                            "popUp": popUp
+                        };
+    
+                        var html = MM.tpl.render(MM.plugins.eleves.templates.eleve.html, tpl);
+                        newUser.id = MM.config.current_site.id + "-" + newUser.id;
+                        MM.db.insert("users", newUser);
+    
+                        $(menuEl, '#panel-center').removeClass('loading-row-black');
+                        MM.panels.show('right', html, {title: pageTitle});
                     }
                     
-                    MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
                     
-                     
-                    
-                    
-                    
-                    var tpl = {
-                        "user": newUser,
-                        "plugins": userPlugins,
-                        "courseid": courseId,
-                        "popUp": popUp
-                    };
-
-                    var html = MM.tpl.render(MM.plugins.eleves.templates.eleve.html, tpl);
-                    newUser.id = MM.config.current_site.id + "-" + newUser.id;
-                    MM.db.insert("users", newUser);
-
-                    $(menuEl, '#panel-center').removeClass('loading-row-black');
-                    MM.panels.show('right', html, {title: pageTitle});
                 },
                 {
                     logging: {
