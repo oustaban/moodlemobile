@@ -176,11 +176,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 "userlist[0][userid]": userId,
                 "userlist[0][courseid]": courseId
             };
-            $(".resource-downloaded").on(MM.clickType, function(e) {
+            $(".ressource-downloaded").on(MM.clickType, function(e) {
                 e.preventDefault();
                 var path = $(this).data("path");
                 //path = MM.fs.getRoot() + "/" + path;
-
+                MM.log('click start:'+path);
                 MM.plugins.resource._showResource(path);
             });
 
