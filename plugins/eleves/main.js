@@ -311,7 +311,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.panels.show('right', html, {title: pageTitle});
                     }
                     
-                    plugin.contentsPageRendered();
+                    MM.plugins.eleves.contentsPageRendered();
                     
                 },
                 {
