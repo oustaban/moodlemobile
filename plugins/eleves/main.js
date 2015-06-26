@@ -209,7 +209,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    //var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
+                    //var offlines = MM.db.where('contents', {'name':'offline','courseid':courseId});
                     var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
                     
                     MM.log('offlines:'+offlines+','+courseId);
@@ -234,17 +234,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                     MM.log('offline Result:'+pathResult.file+','+pathResult.directory);
                                     
-                                    MM.fs.init(function() {
-                                        MM.fs.fileExists(pathResult.file,
-                                            function(path2) {
-                                                newUser.debug = 4;
-                                                //On récupére le json et on vérifie que l'état est terminé ou pas
-                                            },
-                                            function() {
-                                               newUser.debug = 3;
-                                            }
-                                        );
-                                    });
+                                    
+                                    MM.fs.fileExists(pathResult.file,
+                                        function(path2) {
+                                            newUser.debug = 4;
+                                            //On récupére le json et on vérifie que l'état est terminé ou pas
+                                        },
+                                        function() {
+                                           newUser.debug = 3;
+                                        }
+                                    );
+                                
                                 },
                                 function() {
                                    newUser.offline = "no_offline_content";
