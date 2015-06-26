@@ -236,7 +236,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     updateContentInDB = true;
                                 }
                                 
-                                c.courseid = courseId;
+                                //c.courseid = courseId;
                                 
                                 if (updateContentInDB) {
                                     MM.db.insert("contents", c);
@@ -255,7 +255,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             }
                             sections.modules[index2].webOnly = content.webOnly;
                             
-                            content.courseid = courseId;
+                            //content.courseid = courseId;
                             
                             MM.db.insert("contents", content);
 
@@ -300,7 +300,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         if (content.modname != "folder" && typeof(MM.plugins.contents.templates.mimetypes[extension]) != "undefined") {
                                             sections.modules[index2].mainExtension = MM.plugins.contents.templates.mimetypes[extension]["icon"];
                                             content.mainExtension = sections.modules[index2].mainExtension;
-					    content.courseid = courseId;
+                                            //content.courseid = courseId;
                                             MM.db.insert("contents", content);
                                         }
                                     }
@@ -404,7 +404,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
             var content = MM.db.get("contents", MM.config.current_site.id + "-" + contentId);
             content = content.toJSON();
-            content.courseid = courseId;
+            //content.courseid = courseId;
 
             var downCssId = "#download-" + contentId;
             var linkCssId = "#link-" + contentId;
@@ -438,7 +438,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             content.contents[index].localpath = path.file;
                             var downloadTime = MM.util.timestamp();
                             content.contents[index].downloadtime = downloadTime;
-                            content.courseid = courseId;
+                            //content.courseid = courseId;
                             // Raise conditions may happen here. The callback functions handle that.
                             MM.db.insert("contents", content);
                             if ($(downCssId)) {
@@ -692,7 +692,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
         downloadAll: function(courseId, sectionId, contentId, successCallback, errorCallback) {
             var content = MM.db.get("contents", MM.config.current_site.id + "-" + contentId);
             content = content.toJSON();
-            content.courseid = courseId;
+            //content.courseid = courseId;
 
             if (!content.contents) {
                 if (typeof errorCallback == "function") {
