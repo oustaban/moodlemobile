@@ -29,7 +29,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
         ],
 
         limitNumber: 100,
-
+        
+        contentsPageRendered: function() {
+                    MM.log('Eleve contentsPageRendered');
+                    $("#showCourse").on(MM.clickType, function(e) {
+                        e.preventDefault();
+                        var path = $(this).attr("path");
+                        //path = MM.fs.getRoot() + "/" + path;
+                        MM.log('click start:'+path);
+                        MM.plugins.resource._showResource(path);
+                    });
+        },
+        
         showEleves: function(courseId) {
             MM.panels.showLoading('center');
 
@@ -300,7 +311,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.panels.show('right', html, {title: pageTitle});
                     }
                     
-                    
+                    plugin.contentsPageRendered();
                     
                 },
                 {
@@ -328,16 +339,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             return false;
         },
         
-        contentsPageRendered: function() {
-
-                    $("#showCourse").on(MM.clickType, function(e) {
-                        e.preventDefault();
-                        var path = $(this).attr("path");
-                        //path = MM.fs.getRoot() + "/" + path;
-                        MM.log('click start:'+path);
-                        MM.plugins.resource._showResource(path);
-                    });
-        },
+        
 
 
         templates: {
