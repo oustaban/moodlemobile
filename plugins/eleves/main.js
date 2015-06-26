@@ -215,7 +215,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var test4 = MM.db.where("contents", {"courseid" : courseId,"name":"offline"});
                     var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
                     
-                    MM.log('offlines:'+offlines+','+courseId+','+test1+','+test2+','+test3);
+                    MM.log('offlines:'+offlines+'::'+courseId+'::'+test1+'::'+test2+'::'+test3+'::'+test4);
                     if (offlines && offlines != "") {
                         
                         //var offline = offlines[0].toJSON();
@@ -233,6 +233,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 newUser.offline = MM.fs.getRoot() + '/' + pathCourse.file;
                                 newUser.debug = 3;
+                                newUser.contentid = contentid[1];
                                 //var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
                                             
                                 //MM.log('offline Result:'+pathResult.file+','+pathResult.directory+','+path);
