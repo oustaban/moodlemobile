@@ -300,13 +300,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.panels.show('right', html, {title: pageTitle});
                     }
                     
-                    $("#showCourse").on(MM.clickType, function(e) {
-                        e.preventDefault();
-                        var path = $(this).attr("path");
-                        //path = MM.fs.getRoot() + "/" + path;
-                        MM.log('click start:'+path);
-                        MM.plugins.resource._showResource(path);
-                    });
+                    
                     
                 },
                 {
@@ -333,6 +327,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             }
             return false;
         },
+        
+        contentsPageRendered: function() {
+
+                    $("#showCourse").on(MM.clickType, function(e) {
+                        e.preventDefault();
+                        var path = $(this).attr("path");
+                        //path = MM.fs.getRoot() + "/" + path;
+                        MM.log('click start:'+path);
+                        MM.plugins.resource._showResource(path);
+                    });
+        },
+
 
         templates: {
             "eleve": {
