@@ -241,22 +241,25 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.fs.init(function() {
                                         MM.fs.fileExists(pathResult.file,
                                             function(path2) {
+                                                newUser.debug = 4;
                                                 //On récupére le json et on vérifie que l'état est terminé ou pas
                                             },
                                             function() {
-                                               
+                                               newUser.debug = 3;
                                             }
                                         );
                                     });
                                 },
                                 function() {
-                                   newUser.offline = "no_offline_content"; 
+                                   newUser.offline = "no_offline_content";
+                                   newUser.debug = 2;
                                 }
                             );
                         });
                         
                     } else {
                         newUser.offline = "no_offline_content";
+                        newUser.debug = 1;
                     }
                     
                     MM.log('offline:'+newUser.offline);
