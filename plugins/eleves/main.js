@@ -209,10 +209,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    //var offlines = MM.db.where('contents', {'name':'offline','courseid':courseId});
+                    var test1 = MM.db.where('contents', {name:'offline', courseid:courseId});
+                    var test2 = MM.db.where('contents', {'name':'offline'});
                     var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
                     
-                    MM.log('offlines:'+offlines+','+courseId);
+                    MM.log('offlines:'+offlines+','+courseId+','+test1+','+test2);
                     if (offlines && offlines != "") {
                         
                         //var offline = offlines[0].toJSON();
@@ -226,7 +227,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         MM.fs.init(function() {
                             MM.fs.fileExists(pathCourse.file,
-                                function(path) {
+                                function(pathCourse) {
                                     
                                     newUser.offline = MM.fs.getRoot() + '/' + pathCourse.localpath;
                                     
@@ -236,7 +237,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                     
                                     MM.fs.fileExists(pathResult.file,
-                                        function(path2) {
+                                        function(pathResult) {
                                             newUser.debug = 4;
                                             //On récupére le json et on vérifie que l'état est terminé ou pas
                                         },
