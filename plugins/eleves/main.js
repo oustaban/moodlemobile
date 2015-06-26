@@ -209,7 +209,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
-                    MM.log('offlines':offlines);
+                    MM.log('offlines:'+offlines);
                     if (offlines && offlines != "") {
                         
                         var offline = offlines[0].toJSON();
