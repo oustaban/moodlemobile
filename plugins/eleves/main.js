@@ -231,9 +231,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 newUser.offline = MM.fs.getRoot() + '/' + pathCourse.localpath;
                                 newUser.debug = 3;
-                                var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
+                                //var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
                                             
-                                MM.log('offline Result:'+pathResult.file+','+pathResult.directory+','+path);
+                                //MM.log('offline Result:'+pathResult.file+','+pathResult.directory+','+path);
                                 
                                 MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
                                 var tpl = {
