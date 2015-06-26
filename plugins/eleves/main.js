@@ -137,16 +137,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 'local_mobile_get_users_by_courseid_departmentid',
                 data,
                 function(users) {
-                    var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
-                    if (offlines && offlines != "") {
-                        var offline = offlines[0].toJSON();
-                        var file = offline.contents[0];
-                        MM.log('offline:'+MM.config.current_site.id + "-" + courseId + ',' +file.filepath);
-                        $.each(users, function(index, user) {
-                                users[index].offline = file.filepath;
-                        });
-                        
-                    }
+                    
                     
                     var onlines = MM.db.where("contents", {name:'online',courseid:courseId});
                     MM.log('onlines:'+onlines);
@@ -214,7 +205,66 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     if (newUser.country && typeof countries[newUser.country] != "undefined") {
                         newUser.country = countries[newUser.country];
                     }
-
+                    
+                    var path = {
+                        directory: MM.config.current_site.id + "/" + courseId + "/" + newUser.id,
+                        file:      MM.config.current_site.id + "/" + courseId + "/" + newUser.id + "/resultat"
+                    };
+                    
+                    var pathCourse = {
+                        directory: MM.config.current_site.id + "/" + courseId + "/" + newUser.id,
+                        file:      MM.config.current_site.id + "/" + courseId + "/" + newUser.id + "/resultat"
+                    };
+                    
+                    var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
+                    
+                    if (offlines && offlines != "") {
+                        
+                        var offline = offlines[0].toJSON();
+                        var file = offline.contents[0];
+                        contentid = offline.url.split("?id=");
+                        
+                        var pathCourse = MM.plugins.contents.getLocalPaths(courseId, contentid[1], file);
+                        
+                        MM.log('offline Course:'+pathCourse.file+','+pathCourse.directory+','+contentid[1]);
+                        
+                        MM.fs.init(function() {
+                            MM.fs.fileExists(pathCourse.file,
+                                function(path) {
+                                    
+                                    newUser.offline = MM.fs.getRoot() + '/' + path;
+                                    
+                                    var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
+                                                
+                                    MM.log('offline Result:'+pathResult.file+','+pathResult.directory);
+                                    
+                                    MM.fs.init(function() {
+                                        MM.fs.fileExists(pathResult.file,
+                                            function(path2) {
+                                                //On récupére le json et on vérifie que l'état est terminé ou pas
+                                            },
+                                            function() {
+                                               
+                                            }
+                                        );
+                                    });
+                                },
+                                function() {
+                                   newUser.offline = "no_offline_content"; 
+                                }
+                            );
+                        });
+                        
+                    } else {
+                        newUser.offline = "no_offline_content";
+                    }
+                    
+                    MM.log('offline:'+newUser.offline);
+                    
+                     
+                    
+                    
+                    
                     var tpl = {
                         "user": newUser,
                         "plugins": userPlugins,

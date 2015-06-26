@@ -6,26 +6,11 @@
                 <img src="<%= user.profileimageurlsmall %>" alt="img">
             </div>
             <div class="bd">
-              <p><%= user.fullname %>::<%= user.offline %>::<%= user.online %></p>
+              <p><%= user.fullname %></p>
             </div>
         </a>
     </div>
-    <div style="float:left;width:100%">
-        <% if (user.offline) { %>
-        <a href="#eleve/<%= courseId %>/<%= user.id %>" class="media touch-row">
-            <button>Démarrer Le Cours Offline</button>
-        </a>
-        <a href="#eleve/<%= courseId %>/<%= user.id %>" class="media touch-row">
-            <button>Arréter Le Cours Offline</button>
-        </a>
-        <a href="#eleve/<%= courseId %>/<%= user.id %>" class="media touch-row">
-            <button>Signature du participant</button>
-        </a>
-        <% } %>
-        <a href="<%= user.online %>" target="_blank" class="media touch-row">
-            <button>Démarrer Le Cours Online</button>
-        </a>
-        
+    
     </div>
     
 </li>
