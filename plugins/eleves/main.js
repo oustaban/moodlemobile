@@ -196,6 +196,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var newUser = users.shift();
 
                     var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
+                    MM.log('offlines Course:'+course+','+courseId);
                     var pageTitle = "";
                     if (course) {
                         pageTitle = MM.lang.s("eleve");
@@ -209,7 +210,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     var offlines = MM.db.where("contents", {name:'offline',courseid:courseId});
-                    MM.log('offlines:'+offlines);
+                    MM.log('offlines:'+offlines+','+courseId);
                     if (offlines && offlines != "") {
                         
                         var offline = offlines[0].toJSON();
