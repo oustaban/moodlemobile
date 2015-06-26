@@ -209,7 +209,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    var test1 = MM.db.where('contents', {name:'offline', courseid:courseId});
+                    var test1 = MM.db.where('contents', {'name':'offline', 'courseid':courseId});
                     var test2 = MM.db.where('contents', {'name':'offline'});
                     var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
                     
@@ -229,7 +229,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.fs.fileExists(pathCourse.file,
                             function(pathCourse) {
                                 
-                                newUser.offline = MM.fs.getRoot() + '/' + pathCourse.localpath;
+                                newUser.offline = MM.fs.getRoot() + '/' + pathCourse.file;
                                 newUser.debug = 3;
                                 //var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
                                             
