@@ -228,11 +228,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.fs.fileExists(pathCourse.file,
                                 function(path) {
                                     
-                                    newUser.offline = MM.fs.getRoot() + '/' + path;
+                                    newUser.offline = MM.fs.getRoot() + '/' + pathCourse.localpath;
                                     
                                     var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
                                                 
-                                    MM.log('offline Result:'+pathResult.file+','+pathResult.directory);
+                                    MM.log('offline Result:'+pathResult.file+','+pathResult.directory+','+path);
                                     
                                     
                                     MM.fs.fileExists(pathResult.file,
@@ -258,7 +258,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         newUser.debug = 1;
                     }
                     
-                    MM.log('offline:'+newUser.offline);
+                    MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
                     
                      
                     
