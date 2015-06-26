@@ -266,6 +266,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $(menuEl, '#panel-center').removeClass('loading-row-black');
                                 MM.panels.show('right', html, {title: pageTitle});
                                 
+                                MM.plugins.eleves.contentsPageRendered();
+                                
                             
                             },
                             function(path) {
@@ -311,7 +313,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.panels.show('right', html, {title: pageTitle});
                     }
                     
-                    MM.plugins.eleves.contentsPageRendered();
+                    
                     
                 },
                 {
