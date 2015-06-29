@@ -92,7 +92,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 
                 var resultFile = {
                     directory: MM.config.current_site.id + "/" + courseId + "/result",
-                    file: MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json"
+                    file: MM.fs.getRoot() +"/" + MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json"
                 };
                 
                 MM.fs.findFileAndReadContents(resultFile.file,
@@ -100,7 +100,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log('Result OK :'+result);
                   },
                   function(result) {
-                    MM.log('Result NOK :'+result);
+                    MM.log('Result NOK :'+result+','+file);
                   }
                 );
                 MM.widgets.dialogClose();
