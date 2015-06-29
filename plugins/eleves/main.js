@@ -90,17 +90,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     "notes[0][format]": 1
                 };
                 
-                var resultFile = {
-                    directory: MM.config.current_site.id + "/" + courseId + "/result",
-                    file: MM.fs.getRoot() +"/" + MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json"
-                };
+                var resultFile = MM.fs.getRoot() +"/" + MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
                 
-                MM.fs.findFileAndReadContents(resultFile.file,
+                MM.fs.findFileAndReadContents(resultFile,
                   function (result) {
                     MM.log('Result OK :'+result);
                   },
                   function(result) {
-                    MM.log('Result NOK :'+result+','+file);
+                    MM.log('Result NOK :'+result+','+resultFile);
                   }
                 );
                 MM.widgets.dialogClose();
