@@ -45,11 +45,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             function(fileEntry) {
                                 var d = new Date();
                                 var content = {starttime:d.getTime()};
+                                var json = content.toJSON;
                                 MM.log('Create Result :'+d.getTime());
-                                MM.fs.writeInFile(fileEntry, content, 
+                                MM.fs.writeInFile(fileEntry, json, 
                                     function(fileUrl) {
                                         MM.log('Write Result :'+fileUrl);
+                                    },
+                                    function(fileUrl) {
+                                        MM.log('Write Result NOK:'+json);
                                     }
+                                    
                                 );
                             },   
                                 
