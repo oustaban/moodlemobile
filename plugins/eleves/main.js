@@ -46,7 +46,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 var d = new Date();
                                 var content = {starttime:d.getTime()};
                                 var json = content.toJSON;
-                                MM.log('Create Result :'+d.getTime());
+                                MM.log('Create Result :'+d.getTime()+','+fileEntry+','+json);
                                 MM.fs.writeInFile(fileEntry, json, 
                                     function(fileUrl) {
                                         MM.log('Write Result :'+fileUrl);
