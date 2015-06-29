@@ -90,7 +90,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     "notes[0][format]": 1
                 };
                 
-                var resultFile =  courseId + "/result/" + userId + ".json";
+                var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
                 
                 MM.fs.findFileAndReadContents(resultFile,
                   function (result) {
