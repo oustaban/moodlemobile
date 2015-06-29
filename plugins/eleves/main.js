@@ -96,7 +96,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                   function (result) {
                     MM.log('Result OK :'+result);
                     var d = new Date();
-                    var content = result.substr(0, -1) + ',"endtime":"'.d.getTime()+'","note":"'+$("#addnote").val()+'"}';
+                    var content = result.substr(0, -1) + ',"endtime":"'+d.getTime()+'","note":"'+$("#addnote").val()+'"}';
                     MM.log('Create Result :'+content);
                     var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
                     
