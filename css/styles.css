@@ -1916,3 +1916,7 @@ div.jqi button.jqidefaultbutton {
 #app-dialog.full-screen-dialog .modalFooter {
   border-top: 0px;
 }
+
+#stopCourse {
+  display:none;
+}
