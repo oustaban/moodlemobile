@@ -90,7 +90,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     "notes[0][format]": 1
                 };
                 
-                var resultFile = MM.fs.getRoot() +"/" + courseId + "/result/" + userId + ".json";
+                var resultFile =  courseId + "/result/" + userId + ".json";
                 
                 MM.fs.findFileAndReadContents(resultFile,
                   function (result) {
