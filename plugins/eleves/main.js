@@ -35,8 +35,30 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     $("#showCourse").on(MM.clickType, function(e) {
                         e.preventDefault();
                         var path = $(this).attr("path");
-                        //path = MM.fs.getRoot() + "/" + path;
-                        MM.log('click start:'+path);
+                        var course = $(this).attr("course");
+                        var user = $(this).attr("user");
+                        var fileResult = course+"/result/"+user+".json";
+                        MM.log('click start:'+path+','+fileResult);
+                        
+                        //create local result file
+                        MM.fs.createFile(fileResult,
+                            function(fileEntry) {
+                                var d = new Date();
+                                var content = {starttime:d.getTime()};
+                                MM.log('Create Result :'+d.getTime());
+                                MM.fs.writeInFile(fileEntry, content, 
+                                    function(fileUrl) {
+                                        MM.log('Write Result :'+fileUrl);
+                                    }
+                                );
+                            },   
+                                
+                            function(fileEntry) {
+                               MM.log('Create Result : NOK');
+                            }
+                        );
+                    
+                        //launch offline course
                         MM.plugins.resource._showResource(path);
                     });
         },
@@ -225,14 +247,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var test1 = MM.db.where("contents", {"name":"offline", "courseid" : courseId});
                     var test2 = MM.db.where('contents', {'name':'offline'});
                     var test3 = MM.db.where('contents', {'courseid':courseId});
-                    var test4 = MM.db.where("contents", {"courseid" : courseId,"name":"offline"});
-                    var offlines = MM.db.get("contents", MM.config.current_site.id + "-96");
+                    var offlines = MM.db.where("contents", {"courseid" : courseId,"name":"offline"});
+                    var test4 = MM.db.get("contents", MM.config.current_site.id + "-96");
                     
                     MM.log('offlines:'+offlines+'::'+courseId+'::'+test1+'::'+test2+'::'+test3+'::'+test4);
                     if (offlines && offlines != "") {
                         
-                        //var offline = offlines[0].toJSON();
-                        var offline = offlines.toJSON();
+                        var offline = offlines[0].toJSON();
+                        //var offline = offlines.toJSON();
                         var file = offline.contents[0];
                         contentid = offline.url.split("?id=");
                         

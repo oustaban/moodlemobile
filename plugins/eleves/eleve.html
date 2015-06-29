@@ -65,18 +65,14 @@
             <div><p>Ce cours n'a pas été téléchargé pour une utilisation Offline </p></div>
             <% } else { %>
             <div>
-                <button id="showCourse" path="<%= user.offline %>">Démarrer Le Cours Offline</button>
+                <button id="showCourse" course="<%= courseid %>" user="<%= user.id %>" path="<%= user.offline %>">Démarrer Le Cours Offline</button>
             </div>
             <div>
             <a href="<%= user.offline %>" id="link-<%= user.contentid %>">
                 <button>Arréter Le Cours Offline</button>
             </a>
             </div>
-            <div>
-            <a href="<%= user.offline %>" id="link-<%= user.contentid %>">
-                <button>Signature du participant</button>
-            </a>
-            </div>
+            
             <% } %>
            
         </div>
