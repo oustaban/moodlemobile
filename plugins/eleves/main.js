@@ -46,7 +46,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             function(fileEntry) {
                                 var d = new Date();
                                 var content = '{"starttime":"'+d.getTime()+'"}';
-                                MM.log('Create Result :'+fileEntry.file+','+content);
+                                MM.log('Create Result :'+content);
                                 MM.fs.writeInFile(fileEntry, content, 
                                     function(fileUrl) {
                                         MM.log('Write Result :'+fileUrl);
@@ -95,17 +95,42 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 MM.fs.findFileAndReadContents(resultFile,
                   function (result) {
                     MM.log('Result OK :'+result);
+                    var d = new Date();
+                    var content = result.substr(0, -1) + ',"endtime":"'.d.getTime()+'","note":"'+$("#addnote").val()+'"}';
+                    MM.log('Create Result :'+content);
+                    var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
+                    
+                    //create local result file
+                    MM.fs.createFile(fileResult,
+                        function(fileEntry) {
+                             MM.fs.writeInFile(fileEntry, content, 
+                                function(fileUrl) {
+                                    MM.log('Write Result OK:'+fileUrl);
+                                },
+                                function(fileUrl) {
+                                    MM.log('Write Result NOK:'+content);
+                                }
+                                
+                            );
+                        },   
+                            
+                        function(fileEntry) {
+                           MM.log('Create Result : NOK');
+                        }
+                    );
                   },
                   function(result) {
                     MM.log('Result NOK :'+result+','+resultFile);
                   }
                 );
+                
                 MM.widgets.dialogClose();
                 MM.popMessage(MM.lang.s("noteadded"));
                 
             };
+            
             options.buttons[MM.lang.s("cancel")] = function() {
-                MM.Router.navigate("participant/" + courseId + "/" + userId);
+                MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 MM.widgets.dialogClose();
             };
 
