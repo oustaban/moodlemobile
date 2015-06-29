@@ -88,8 +88,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     "notes[0][courseid]": courseId,
                     "notes[0][text]": $("#addnotetext").val(),
                     "notes[0][format]": 1
-                }
-
+                };
+                
+                var resultFile = {
+                    directory: MM.config.current_site.id + "/" + courseId + "/result",
+                    file: MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json"
+                };
+                
+                MM.fs.findFileAndReadContents(resultFile.file,
+                  function (result) {
+                    MM.log('Result OK :'+result);
+                  },
+                  function(result) {
+                    MM.log('Result NOK :'+result);
+                  }
+                );
                 MM.widgets.dialogClose();
                 MM.popMessage(MM.lang.s("noteadded"));
                 
@@ -107,7 +120,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             }
 
             var html = '\
-            <textarea id="addnotetext" rows="'+rows+'" cols="'+cols+'"></textarea>\
+            <input type="text" id="addnote" >\
             ';
 
             MM.widgets.dialog(html, options);
