@@ -38,7 +38,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var path = $(this).attr("path");
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
-                        var fileResult = course+"/result/"+user+".json";
+                        var fileResult = MM.config.current_site.id+"/"+course+"/result/"+user+".json";
                         MM.log('click start:'+path+','+fileResult);
                         
                         //create local result file
@@ -46,7 +46,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             function(fileEntry) {
                                 var d = new Date();
                                 var content = '{"starttime":"'+d.getTime()+'"}';
-                                MM.log('Create Result :'+d.getTime()+','+fileEntry.file+','+content);
+                                MM.log('Create Result :'+fileEntry.file+','+content);
                                 MM.fs.writeInFile(fileEntry, content, 
                                     function(fileUrl) {
                                         MM.log('Write Result :'+fileUrl);
