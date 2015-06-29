@@ -96,7 +96,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                   function (result) {
                     MM.log('Result OK :'+result);
                     var d = new Date();
-                    var content = result.substr(0, -1) + ',"endtime":"'+d.getTime()+'","note":"'+$("#addnote").val()+'"}';
+                    var lenghto = result.length - 1;
+                    var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+$("#addnote").val()+'"}';
                     MM.log('Create Result :'+content);
                     var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
                     
@@ -142,7 +143,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             }
 
             var html = '\
-            <input type="text" id="addnote" >\
+            <input type="text" id="addnote" name="addnote" value=""> %\
             ';
 
             MM.widgets.dialog(html, options);
