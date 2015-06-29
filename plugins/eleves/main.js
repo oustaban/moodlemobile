@@ -45,8 +45,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             function(fileEntry) {
                                 var d = new Date();
                                 var content = '{"starttime":"'+d.getTime()+'"}';
-                                MM.log('Create Result :'+d.getTime()+','+fileEntry.file+','+json);
-                                MM.fs.writeInFile(fileEntry, json, 
+                                MM.log('Create Result :'+d.getTime()+','+fileEntry.file+','+content);
+                                MM.fs.writeInFile(fileEntry, content, 
                                     function(fileUrl) {
                                         MM.log('Write Result :'+fileUrl);
                                     },
