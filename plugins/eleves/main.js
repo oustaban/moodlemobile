@@ -179,14 +179,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
                     MM.plugins.eleves.nextLimitFrom = MM.plugins.eleves.limitNumber;
                     $.each(users, function( index, value ) {
-                        var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + ".json";
+                        var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value.id + ".json";
                         MM.fs.findFileAndReadContents(resultFile,
                             function (result) {
                                 MM.log('Load Result : OK' + result);
                                 $("#synchroR").show();
                             },
                             function (result) {
-                                
+                                MM.log('Load Result : NOK' + result);
                             }
                         );
                     });
