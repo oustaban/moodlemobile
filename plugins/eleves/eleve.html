@@ -67,13 +67,15 @@
             <div>
                 <button id="showCourse" course="<%= courseid %>" user="<%= user.id %>" path="<%= user.offline %>">Démarrer Le Cours Offline</button>
             </div>
-            <div>
-                <a href="#eleve/<%= courseid %>/<%= user.id %>/stop"><button id="stopCourse" course="<%= courseid %>" user="<%= user.id %>">Arréter Le Cours Offline</button></a>
-            </div>
+            
             
             
             
             <% } %>
+            
+            <div>
+                <a href="#eleve/<%= courseid %>/<%= user.id %>/stop"><button id="stopCourse" course="<%= courseid %>" user="<%= user.id %>">Arréter Le Cours Offline</button></a>
+            </div>
         </div>
          <% } %>
     </div>

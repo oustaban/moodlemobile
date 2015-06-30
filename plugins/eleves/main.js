@@ -86,10 +86,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     "notes[0][userid]" : userId,
                     "notes[0][publishstate]": 'personal',
                     "notes[0][courseid]": courseId,
-                    "notes[0][text]": $("#addnotetext").val(),
+                    "notes[0][text]": $("#addnotescore").val(),
                     "notes[0][format]": 1
                 };
                 
+                var score = $("#addnotescore").val();
                 var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
                 
                 MM.fs.findFileAndReadContents(resultFile,
@@ -97,7 +98,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log('Result OK :'+result);
                     var d = new Date();
                     var lenghto = result.length - 1;
-                    var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+$("input[name='addnotescore']" ).val()+'"}';
+                    var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+score+'"}';
                     MM.log('Create Result :'+content);
                     var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
                     
@@ -127,6 +128,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 
                 MM.widgets.dialogClose();
                 MM.popMessage(MM.lang.s("noteadded"));
+                MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 
             };
             
@@ -135,12 +137,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 MM.widgets.dialogClose();
             };
 
-            var rows = 5;
-            var cols = 5;
-            if (MM.deviceType == "tablet") {
-                rows = 15;
-                cols = 50;
-            }
+            
 
             var html = '\
             <input type="text" id="addnotescore" name="addnotescore" value=""> %\
