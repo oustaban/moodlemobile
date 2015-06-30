@@ -97,7 +97,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log('Result OK :'+result);
                     var d = new Date();
                     var lenghto = result.length - 1;
-                    var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+$("#addnotescore").val()+'"}';
+                    var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+$("input[name='addnotescore']" ).val()+'"}';
                     MM.log('Create Result :'+content);
                     var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
                     
