@@ -14,3 +14,6 @@
         <button id="participants-showmore"><%= MM.lang.s("showmore") %></button>
     </div>
     <% } %>
+    <div class="centered">
+        <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>">Synchroniser les Résultats</button>
+    </div>

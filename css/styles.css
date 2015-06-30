@@ -183,7 +183,7 @@ button {
   border-radius: 4pt;
   border: 1pt solid #CCC;
   height: 30pt;
-  width: 40%;
+  width: auto;
   color: #666;
 }
 .phone button {
@@ -1918,5 +1918,5 @@ div.jqi button.jqidefaultbutton {
 }
 
 #stopCourse {
-  #display:none;
+  display:none;
 }

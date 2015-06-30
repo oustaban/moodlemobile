@@ -69,10 +69,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     });
                     
                     
+                    
+                    
         },
         
         stopCourse: function(courseId, userId) {
-            var addNote = MM.lang.s("addnote");
+            //var addNote = MM.lang.s("addnote");
+            var addNote = "Ajouter";
 
             var options = {
                 title: addNote,
@@ -101,6 +104,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+score+'"}';
                     MM.log('Create Result :'+content);
                     var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
+                    var message = "";
                     
                     //create local result file
                     MM.fs.createFile(fileResult,
@@ -108,9 +112,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                              MM.fs.writeInFile(fileEntry, content, 
                                 function(fileUrl) {
                                     MM.log('Write Result OK:'+fileUrl);
+                                    $('#stopCourse').show();
+                                    message = "Note Enregistrée.";
+                                    
                                 },
                                 function(fileUrl) {
                                     MM.log('Write Result NOK:'+content);
+                                    message = "Problème lors de l'écriture.Veuillez Réessayer.";
                                 }
                                 
                             );
@@ -118,16 +126,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                         function(fileEntry) {
                            MM.log('Create Result : NOK');
+                           message = "Problème lors de l'écriture.Veuillez Réessayer.";
                         }
                     );
                   },
                   function(result) {
                     MM.log('Result NOK :'+result+','+resultFile);
+                    message = "Problème lors de l'écriture.Veuillez Réessayer.";
                   }
                 );
                 
                 MM.widgets.dialogClose();
-                MM.popMessage(MM.lang.s("noteadded"));
+                MM.popMessage(message);
                 MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 
             };
@@ -222,11 +232,35 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if (users.length < MM.plugins.eleves.limitNumber) {
                                     that.css("display", "none");
                                 }
+                                
+                    
                             },
                             function() {
                                 that.removeClass("loading-row-black");
                             }
                         );
+                    });
+                    
+                    //Synchro Button
+                    $("#synchroR").on(MM.clickType, function(e) {
+                        var lenghto = $(this).attr('users').length - 1;
+                        var userList = $(this).attr('users').substr(0, lenghto);
+                        var users = userList.split(",");
+                        MM.log("Synchro Start");
+                        $.each(users, function( index, value ) {
+                            var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + ".json";
+                            MM.log( index + ": " + value + ":" + resultFile);
+                            MM.fs.findFileAndReadContents(resultFile,
+                                function (result) {
+                                    MM.log('Load Result : OK' + result);
+                                    message = "Synchronisation de "+resultFile+" réussie. Veuillez réessayer.";
+                                },
+                                function (result) {
+                                    MM.log('Load Result : NOK');
+                                    message = "Problème lors de la récupération des résultats de . Veuillez réessayer";
+                                }
+                            );
+                        });
                     });
 
                 }, function(m) {
