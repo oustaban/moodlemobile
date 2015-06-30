@@ -95,6 +95,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 
                 var score = $("#addnotescore").val();
                 var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
+                var message = "";
                 
                 MM.fs.findFileAndReadContents(resultFile,
                   function (result) {
@@ -104,7 +105,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+score+'"}';
                     MM.log('Create Result :'+content);
                     var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
-                    var message = "";
+                    
                     
                     //create local result file
                     MM.fs.createFile(fileResult,
@@ -112,7 +113,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                              MM.fs.writeInFile(fileEntry, content, 
                                 function(fileUrl) {
                                     MM.log('Write Result OK:'+fileUrl);
-                                    $('#stopCourse').show();
+                                    $('#stopCourse').hide();
+                                    $("#synchroR").show();
                                     message = "Note Enregistrée.";
                                     
                                 },
@@ -176,7 +178,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     }
 
                     MM.plugins.eleves.nextLimitFrom = MM.plugins.eleves.limitNumber;
-
+                    $.each(users, function( index, value ) {
+                        var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + ".json";
+                        MM.fs.findFileAndReadContents(resultFile,
+                            function (result) {
+                                MM.log('Load Result : OK' + result);
+                                $("#synchroR").show();
+                            },
+                            function (result) {
+                                
+                            }
+                        );
+                    });
                     var tpl = {
                         users: users,
                         deviceType: MM.deviceType,
