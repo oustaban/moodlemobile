@@ -265,29 +265,28 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log( index + ": " + value + ":" + resultFile);
                             MM.fs.findFileAndReadContents(resultFile,
                                 function (result) {
-                                    MM.log('Load Result : OK' + result.userid+','+result.note+','+courseId);
+                                    var obj = JSON.parse(result);
+                                    MM.log('Load Result : OK' + obj.userid+','+obj.note+','+courseId);
                                     message = "Synchronisation de "+resultFile+" réussie. Veuillez réessayer.";
                                     var data = {
-                                        "userid" : result.userid,
+                                        "userid" : obj.userid,
                                         "courseid": courseId,
-                                        "starttime": result.starttime,
-                                        "endtime": result.endtime,
-                                        "note": result.note
+                                        "starttime": obj.starttime,
+                                        "endtime": obj.endtime,
+                                        "note": obj.note
                                     }
                     
                                     MM.widgets.dialogClose();
                                     MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                         function(status){
-                                            MM.popMessage(MM.lang.s("noteadded"));
+                                            MM.popMessage('Note et Résultat de '+obj.userid+'Effectuée');
                                         },
                                         {
-                                            sync: true,
-                                            syncData: {
-                                                name: addNote,
-                                                description: $("#addnotetext").val().substr(0, 30)
-                                            },
                                             getFromCache: false,
                                             saveToCache: false
+                                        },
+                                        function(e) {
+                                            MM.log("Error updating report/completion " + e);
                                         }
                                     );
                                 },
