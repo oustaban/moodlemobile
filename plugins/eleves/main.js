@@ -262,6 +262,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var lenghton = $(this).attr('names').length - 1;
                         var namesList = $(this).attr('names').substr(0, lenghton);
                         var names = namesList.split(",");
+                        var message = "";
                         MM.log("Synchro Start");
                         $.each(users, function( index, value ) {
                             var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + ".json";
@@ -270,7 +271,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 function (result) {
                                     var obj = JSON.parse(result);
                                     MM.log('Load Result : OK' + value+','+obj.note+','+courseId);
-                                    message = "Synchronisation de "+resultFile+" réussie. Veuillez réessayer.";
                                     var data = {
                                         "userid" : value,
                                         "courseid": courseId,
@@ -282,7 +282,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.widgets.dialogClose();
                                     MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                         function(status){
-                                            MM.popMessage('Synchronisation des notes et temps de '+names[index]+' Effectuée.');
+                                            message += 'Synchronisation des notes et temps de '+names[index]+' Effectuée.\n';
+                                            MM.fs.removeFile (resultFile,
+                                                 function (result) {
+                                                    MM.log('Le fichier '+resultFile+' a bien été effacé'); 
+                                                 },
+                                                 function (result) {
+                                                    MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
+                                                 }
+                                                 
+                                            );
                                         },
                                         {
                                             getFromCache: false,
@@ -290,15 +299,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         },
                                         function(e) {
                                             MM.log("Error updating report/completion " + e);
+                                            message = "Erreur de synchronisation, veuillez réessayer."
                                         }
                                     );
                                 },
                                 function (result) {
                                     MM.log('Load Result : NOK');
-                                    message = "Problème lors de la récupération des résultats de . Veuillez réessayer";
+                                    message = "Erreur de synchronisation, Veuillez réessayer";
                                 }
                             );
                         });
+                        MM.widgets.dialogClose();
+                        MM.popMessage(message);
+                        
                     });
 
                 }, function(m) {
