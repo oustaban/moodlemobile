@@ -95,7 +95,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 
                 var score = $("#addnotescore").val();
                 var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
-                var message = "";
+                var message = "Note Enregistrée.";
                 
                 MM.fs.findFileAndReadContents(resultFile,
                   function (result) {
@@ -139,7 +139,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 );
                 
                 MM.widgets.dialogClose();
-                MM.popMessage(message + "test");
+                MM.popMessage(message);
                 MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 
             };
@@ -259,7 +259,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var lenghto = $(this).attr('users').length - 1;
                         var userList = $(this).attr('users').substr(0, lenghto);
                         var users = userList.split(",");
-                        var namesList = $(this).attr('names').substr(0, lenghto);
+                        var lenghton = $(this).attr('names').length - 1;
+                        var namesList = $(this).attr('names').substr(0, lenghton);
                         var names = namesList.split(",");
                         MM.log("Synchro Start");
                         $.each(users, function( index, value ) {
