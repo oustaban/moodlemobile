@@ -78,7 +78,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             var addNote = "Ajouter";
 
             var options = {
-                title: 'Arrêter le cours Offline',
+                title: 'Ajouter une note',
                 width: "90%",
                 buttons: {}
             };
@@ -139,7 +139,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 );
                 
                 MM.widgets.dialogClose();
-                MM.popMessage(message);
+                MM.popMessage(message + "test");
                 MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 
             };
@@ -259,6 +259,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var lenghto = $(this).attr('users').length - 1;
                         var userList = $(this).attr('users').substr(0, lenghto);
                         var users = userList.split(",");
+                        var namesList = $(this).attr('names').substr(0, lenghto);
+                        var names = namesList.split(",");
                         MM.log("Synchro Start");
                         $.each(users, function( index, value ) {
                             var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + ".json";
@@ -266,7 +268,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.fs.findFileAndReadContents(resultFile,
                                 function (result) {
                                     var obj = JSON.parse(result);
-                                    MM.log('Load Result : OK' + obj.userid+','+obj.note+','+courseId);
+                                    MM.log('Load Result : OK' + value+','+obj.note+','+courseId);
                                     message = "Synchronisation de "+resultFile+" réussie. Veuillez réessayer.";
                                     var data = {
                                         "userid" : value,
@@ -279,7 +281,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.widgets.dialogClose();
                                     MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                         function(status){
-                                            MM.popMessage('Note et Résultat de '+obj.userid+'Effectuée');
+                                            MM.popMessage('Synchronisation des notes et temps de '+names[index]+' Effectuée.');
                                         },
                                         {
                                             getFromCache: false,
