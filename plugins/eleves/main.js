@@ -78,7 +78,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             var addNote = "Ajouter";
 
             var options = {
-                title: addNote,
+                title: 'Arrêter le cours Offline',
                 width: "90%",
                 buttons: {}
             };
@@ -269,7 +269,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.log('Load Result : OK' + obj.userid+','+obj.note+','+courseId);
                                     message = "Synchronisation de "+resultFile+" réussie. Veuillez réessayer.";
                                     var data = {
-                                        "userid" : obj.userid,
+                                        "userid" : value,
                                         "courseid": courseId,
                                         "starttime": obj.starttime,
                                         "endtime": obj.endtime,
