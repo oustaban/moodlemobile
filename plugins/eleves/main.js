@@ -265,8 +265,31 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log( index + ": " + value + ":" + resultFile);
                             MM.fs.findFileAndReadContents(resultFile,
                                 function (result) {
-                                    MM.log('Load Result : OK' + result);
+                                    MM.log('Load Result : OK' + result.userid+','+result.note+','+courseId);
                                     message = "Synchronisation de "+resultFile+" réussie. Veuillez réessayer.";
+                                    var data = {
+                                        "userid" : result.userid,
+                                        "courseid": courseId,
+                                        "starttime": result.starttime,
+                                        "endtime": result.endtime,
+                                        "note": result.note
+                                    }
+                    
+                                    MM.widgets.dialogClose();
+                                    MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
+                                        function(status){
+                                            MM.popMessage(MM.lang.s("noteadded"));
+                                        },
+                                        {
+                                            sync: true,
+                                            syncData: {
+                                                name: addNote,
+                                                description: $("#addnotetext").val().substr(0, 30)
+                                            },
+                                            getFromCache: false,
+                                            saveToCache: false
+                                        }
+                                    );
                                 },
                                 function (result) {
                                     MM.log('Load Result : NOK');
