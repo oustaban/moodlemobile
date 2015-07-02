@@ -256,10 +256,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     //Synchro Button
                     $("#synchroR").on(MM.clickType, function(e) {
-                        MM.panels.showLoading('center');
-                        if (MM.deviceType == "tablet") {
-                            MM.panels.showLoading('right');
-                        }
+                        
             
                         var lenghto = $(this).attr('users').length - 1;
                         var userList = $(this).attr('users').substr(0, lenghto);
