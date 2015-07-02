@@ -287,6 +287,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' a bien été effacé');
                                                     $("#synchroR").hide();
+                                                    MM.popMessage(message);
                                                  },
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
@@ -314,7 +315,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             );
                         });
                         MM.widgets.dialogClose();
-                        MM.popMessage(message);
+                        
                         
                     });
 
