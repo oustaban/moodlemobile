@@ -139,7 +139,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 );
                 
                 MM.widgets.dialogClose();
-                MM.popMessage(message, {title:'Ajouter une note'});
+                MM.popMessage(message, {title:'Ajouter une note',, autoclose: 5000, resizable: false});
                 MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 
             };
@@ -287,7 +287,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' a bien été effacé');
                                                     $("#synchroR").hide();
-                                                    MM.popMessage(message, {title:'Synchronisation des résultats et notes',autoclose: 8000,});
+                                                    MM.popMessage(message, {title:'Synchronisation des résultats et notes', autoclose: 7000, resizable: false});
                                                  },
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
@@ -303,7 +303,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         function(e) {
                                             MM.log("Error updating report/completion " + e);
                                             message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
-                                            popErrorMessage(e);
+                                            MM.popErrorMessage(e);
                                             $("#synchroR").show();
                                         }
                                     );
