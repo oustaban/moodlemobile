@@ -139,7 +139,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 );
                 
                 MM.widgets.dialogClose();
-                MM.popMessage(message);
+                MM.popMessage(message, {title:'Ajouter une note'});
                 MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 
             };
@@ -287,7 +287,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' a bien été effacé');
                                                     $("#synchroR").hide();
-                                                    MM.popMessage(message {title:'Synchronisation des résultats et notes');
+                                                    MM.popMessage(message, {title:'Synchronisation des résultats et notes',autoclose: 8000,});
                                                  },
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
