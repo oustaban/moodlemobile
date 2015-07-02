@@ -285,10 +285,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             message += 'Synchronisation des notes et temps de '+names[index]+' Effectuée.\n';
                                             MM.fs.removeFile (resultFile,
                                                  function (result) {
-                                                    MM.log('Le fichier '+resultFile+' a bien été effacé'); 
+                                                    MM.log('Le fichier '+resultFile+' a bien été effacé');
+                                                    $("#synchroR").hide();
                                                  },
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
+                                                    $("#synchroR").show();
                                                  }
                                                  
                                             );
@@ -299,13 +301,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         },
                                         function(e) {
                                             MM.log("Error updating report/completion " + e);
-                                            message = "Erreur de synchronisation, veuillez réessayer."
+                                            message = "Erreur de synchronisation, veuillez réessayer.";
+                                            $("#synchroR").show();
                                         }
                                     );
                                 },
                                 function (result) {
                                     MM.log('Load Result : NOK');
                                     message = "Erreur de synchronisation, Veuillez réessayer";
+                                    $("#synchroR").show();
                                 }
                             );
                         });
