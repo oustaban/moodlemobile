@@ -287,7 +287,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' a bien été effacé');
                                                     $("#synchroR").hide();
-                                                    MM.popMessage(message);
+                                                    MM.popMessage(message {title:'Synchronisation des résultats et notes');
                                                  },
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
@@ -303,6 +303,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         function(e) {
                                             MM.log("Error updating report/completion " + e);
                                             message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
+                                            popErrorMessage(e);
                                             $("#synchroR").show();
                                         }
                                     );
