@@ -282,7 +282,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.widgets.dialogClose();
                                     MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                         function(status){
-                                            message += 'Synchronisation des notes et temps de '+names[index]+' Effectuée.<br>';
+                                            message += 'Synchronisation des notes et temps de '+names[index]+' Effectuée.<br><br>';
                                             MM.fs.removeFile (resultFile,
                                                  function (result) {
                                                     MM.log('Le fichier '+resultFile+' a bien été effacé');
@@ -302,7 +302,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         },
                                         function(e) {
                                             MM.log("Error updating report/completion " + e);
-                                            message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.";
+                                            message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
                                             $("#synchroR").show();
                                         }
                                     );
