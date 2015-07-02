@@ -139,7 +139,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 );
                 
                 MM.widgets.dialogClose();
-                MM.popMessage(message, {title:'Ajouter une note',, autoclose: 5000, resizable: false});
+                MM.popMessage(message, {title:'Ajouter une note', autoclose: 5000, resizable: false});
                 MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 
             };
