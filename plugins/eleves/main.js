@@ -69,42 +69,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     });
                     
                     
-                    $("#showCourseL").on(MM.clickType, function(e) {
-                        e.preventDefault();
-                        var path = $(this).attr("path");
-                        var course = $(this).attr("course");
-                        var users = $(this).attr("users");
-                        var module = $(this).attr("module");
-                        MM.log('showCourseL:'+path+','+course+','+users+','+module);
-                        
-                        //create local result file
-                        /*
-                        MM.fs.createFile(fileResult,
-                            function(fileEntry) {
-                                var d = new Date();
-                                var content = '{"starttime":"'+d.getTime()+'"}';
-                                MM.log('Create Result :'+content);
-                                MM.fs.writeInFile(fileEntry, content, 
-                                    function(fileUrl) {
-                                        MM.log('Write Result :'+fileUrl);
-                                        $('#stopCourse').show();
-                                    },
-                                    function(fileUrl) {
-                                        MM.log('Write Result NOK:'+content);
-                                    }
-                                    
-                                );
-                            },   
-                                
-                            function(fileEntry) {
-                               MM.log('Create Result : NOK');
-                            }
-                        );
                     
-                        //launch offline course
-                        MM.plugins.resource._showResource(path);
-                        */
-                    });
                     
                     
                     
@@ -444,6 +409,43 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            MM.log("Selected Course NOK");
                         }
                         
+                    });
+                    
+                    $("#showCourseL").on(MM.clickType, function(e) {
+                        e.preventDefault();
+                        var path = $(this).attr("path");
+                        var course = $(this).attr("course");
+                        var users = $(this).attr("users");
+                        var module = $(this).attr("module");
+                        MM.log('showCourseL:'+path+','+course+','+users+','+module);
+                        
+                        //create local result file
+                        /*
+                        MM.fs.createFile(fileResult,
+                            function(fileEntry) {
+                                var d = new Date();
+                                var content = '{"starttime":"'+d.getTime()+'"}';
+                                MM.log('Create Result :'+content);
+                                MM.fs.writeInFile(fileEntry, content, 
+                                    function(fileUrl) {
+                                        MM.log('Write Result :'+fileUrl);
+                                        $('#stopCourse').show();
+                                    },
+                                    function(fileUrl) {
+                                        MM.log('Write Result NOK:'+content);
+                                    }
+                                    
+                                );
+                            },   
+                                
+                            function(fileEntry) {
+                               MM.log('Create Result : NOK');
+                            }
+                        );
+                    
+                        //launch offline course
+                        MM.plugins.resource._showResource(path);
+                        */
                     });
 
                 }, function(m) {
