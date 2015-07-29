@@ -19,6 +19,9 @@
             <option value="">Sélectionner un cours</option>
         </select>
     </div>
+    <div>
+        <button id="showCourseL">Démarrer Le Cours Offline</button>
+    </div>
     <div class="centered">
         <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>">Synchroniser les Résultats</button>
     </div>

@@ -195,12 +195,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     var localCourses = MM.db.where('contents', {'courseid':courseId});
                     MM.log('LocalCourses:'+localCourses+','+localCourses.length);
-                    var downloadedCourses = [];
                     if (!localCourses) {
                         //code
                         $('#offlineC').hide();
                         MM.log('LocalCourses:NOK');
                     } else {
+                        $('#offlineC').html('<option value="">Sélectionner un cours</option>')
                         $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
                             if (localCourse.contents) {
@@ -213,13 +213,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                         var localPathOffline = MM.fs.getRoot() + '/' + localPathCourse.file;
                                         MM.log('offline LocalCourse:'+localPathOffline+' exist');
-                                        var obj = {
-                                            file: localPathOffline,
-                                            name: localCourse.name
-                                        };
-                                        downloadedCourses.push(obj);
-                                        MM.log('offline LocalCourse: '+downloadedCourses[0].name);
                                         
+                                        $('#offlineC').append($('<option>', { 
+                                            value: localPathOffline,
+                                            text : localCourse.name 
+                                        }));
+                                        $('#offlineC').show();
                                         
                                     
                                     },
@@ -230,18 +229,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                         });
                         
-                        MM.log('offline downloadedCourses:'+downloadedCourses+','+downloadedCourses.length);
                         
-                        if (downloadedCourses.length > 0) {
-                            $.each(downloadedCourses, function( i, item ) {
-                                MM.log('offline downloadedCourses: '+item.file+','+item.name);
-                                $('#offlineC').append($('<option>', { 
-                                    value: item.file,
-                                    text : item.name 
-                                }));
-                            });
-                            $('#offlineC').show();
-                        }
                     }
                     
                     var tpl = {
@@ -386,11 +374,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             selected.push($(this).val());
                         });
                                              
-                        if (selected.length > 0) {
+                        if (selected.length > 0 && $('#offlineC').is(':visible')) {
                             MM.log("Check Button:"+selected.length);   
-                            $("#offlineC").show();
+                            $("#showCourseL").show();
                         } else {
-                            $("#offlineC").show();
+                            $("#showCourseL").hide();
                         }
                         
                     });
