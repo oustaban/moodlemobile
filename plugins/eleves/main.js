@@ -374,7 +374,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             selected.push($(this).val());
                         });
                                              
-                        if (selected.length > 0 && $('#offlineC').is(':visible')) {
+                        if (selected.length > 0 && $('#offlineC').is(':visible') && $("#offlineC option:selected").val()!="") {
                             MM.log("Check Button:"+selected.length);   
                             $("#showCourseL").show();
                         } else {
