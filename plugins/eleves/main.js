@@ -208,8 +208,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 var localContentId = localCourse.url.split("?id=");
                                 var localPathCourse = MM.plugins.contents.getLocalPaths(courseId, localContentId[1], localFile);
                                 
-                                MM.log('offline LocalCourse:'+localPathCourse.file+','+localPathCourse.directory+','+localContentId[1]);
-                                
                                 MM.fs.fileExists(localPathCourse.file,
                                     function(path) {
                                         
@@ -229,6 +227,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 );
                             }
                         });
+                        
+                        MM.log('offline downloadedCourses:'+downloadedCourses+','+downloadedCourses.length);
                         
                         if (downloadedCourses.length > 0) {
                             $.each(downloadedCourses, function( i, item ) {
