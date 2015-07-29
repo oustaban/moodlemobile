@@ -3,7 +3,8 @@
     <div style="float:left;width:100%">
         <a href="#eleve/<%= courseId %>/<%= user.id %>" class="media touch-row">
             <div class="img">
-                <img src="<%= user.profileimageurlsmall %>" alt="img">
+                <!--<img src="<%= user.profileimageurlsmall %>" alt="img">-->
+                <input type="checkbox" name="participants[]" value="<%= user.id %>">
             </div>
             <div class="bd">
               <p><%= user.fullname %></p>
