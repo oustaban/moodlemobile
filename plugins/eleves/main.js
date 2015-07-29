@@ -423,8 +423,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     //Select Course
                     MM.log("Selected Course");
-                    $('#offlineC').on(MM.clickType, function(e) {
+                    $('#offlineC').on("change", function(e) {
+                        
                         var selectedCourse = $( "#offlineC option:selected" ).val();
+                        MM.log("Change Selected Course:"+selectedCourse+','+selected.length);
                         if (selectedCourse != "" && selected.length > 0) {
                            MM.log("Selected Course:"+selectedCourse);
                            var option = selectedCourse.url.split(",");
@@ -440,6 +442,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            $("#showCourseL").show();
                         } else {
                            $("#showCourseL").hide();
+                           MM.log("Selected Course NOK");
                         }
                         
                     });
