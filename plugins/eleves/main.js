@@ -429,7 +429,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log("Change Selected Course:"+selectedCourse+','+selected.length);
                         if (selectedCourse != "" && selected.length > 0) {
                            MM.log("Selected Course:"+selectedCourse);
-                           var option = selectedCourse.url.split(",");
+                           var option = selectedCourse.split(",");
                            $("#showCourseL").attr("path",option[0]);
                            $("#showCourseL").attr("module",option[1]);
                            var usersSelected = "";
