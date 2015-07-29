@@ -437,7 +437,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 usersSelected += valueSelected+",";
                            });
                            var lenghtSelected = usersSelected.length - 1;
-                           var content = result.substr(0, lenghto) 
                            $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                            $("#showCourseL").show();
                         } else {
