@@ -211,13 +211,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.fileExists(localPathCourse.file,
                                     function(path) {
                                         
-                                        MM.log('offline LocalCourse:'+localPathCourse.file+' exist');
                                         var localPathOffline = MM.fs.getRoot() + '/' + localPathCourse.file;
+                                        MM.log('offline LocalCourse:'+localPathOffline+' exist');
                                         var obj = {
                                             file: localPathOffline,
                                             name: localCourse.name
                                         };
                                         downloadedCourses.push(obj);
+                                        MM.log('offline LocalCourse: '+downloadedCourses[0].name);
+                                        
                                         
                                     
                                     },
@@ -380,10 +382,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     $('input:checkbox').on(MM.clickType, function(e) {
                         selected = [];
                         $('input:checked').each(function() {
+                            MM.log("Check Button Checked:" + $(this).val());
                             selected.push($(this).val());
                         });
-                        
+                                             
                         if (selected.length > 0) {
+                            MM.log("Check Button:"+selected.length);   
                             $("#offlineC").show();
                         } else {
                             $("#offlineC").show();
