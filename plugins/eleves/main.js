@@ -379,6 +379,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                              
                         if (selected.length > 0 && $('#offlineC').is(':visible') && $("#offlineC option:selected").val()!="") {
                             MM.log("Check Button:"+selected.length);   
+                            
+                            var usersSelected = "";
+                            $.each(selected, function(indexSelected, valueSelected) {
+                                usersSelected += valueSelected+",";
+                            });
+                            var lenghtSelected = usersSelected.length - 1;
+                            $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                             $("#showCourseL").show();
                         } else {
                             $("#showCourseL").hide();
@@ -397,11 +404,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            var option = selectedCourse.split(",");
                            $("#showCourseL").attr("path",option[0]);
                            $("#showCourseL").attr("module",option[1]);
-                           var usersSelected = "";
+                           usersSelected = "";
                            $.each(selected, function(indexSelected, valueSelected) {
                                 usersSelected += valueSelected+",";
                            });
-                           var lenghtSelected = usersSelected.length - 1;
+                           lenghtSelected = usersSelected.length - 1;
                            $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                            $("#showCourseL").show();
                         } else {
