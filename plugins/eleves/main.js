@@ -69,6 +69,44 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     });
                     
                     
+                    $("#showCourseL").on(MM.clickType, function(e) {
+                        e.preventDefault();
+                        var path = $(this).attr("path");
+                        var course = $(this).attr("course");
+                        var users = $(this).attr("users");
+                        var module = $(this).attr("module");
+                        MM.log('showCourseL:'+path+','+course+','+users+','+module);
+                        
+                        //create local result file
+                        /*
+                        MM.fs.createFile(fileResult,
+                            function(fileEntry) {
+                                var d = new Date();
+                                var content = '{"starttime":"'+d.getTime()+'"}';
+                                MM.log('Create Result :'+content);
+                                MM.fs.writeInFile(fileEntry, content, 
+                                    function(fileUrl) {
+                                        MM.log('Write Result :'+fileUrl);
+                                        $('#stopCourse').show();
+                                    },
+                                    function(fileUrl) {
+                                        MM.log('Write Result NOK:'+content);
+                                    }
+                                    
+                                );
+                            },   
+                                
+                            function(fileEntry) {
+                               MM.log('Create Result : NOK');
+                            }
+                        );
+                    
+                        //launch offline course
+                        MM.plugins.resource._showResource(path);
+                        */
+                    });
+                    
+                    
                     
                     
         },
@@ -215,7 +253,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         MM.log('offline LocalCourse:'+localPathOffline+' exist');
                                         
                                         $('#offlineC').append($('<option>', { 
-                                            value: localPathOffline,
+                                            value: localPathOffline + ',' + localContentId[1],
                                             text : localCourse.name 
                                         }));
                                         $('#offlineC').show();
@@ -379,6 +417,29 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $("#showCourseL").show();
                         } else {
                             $("#showCourseL").hide();
+                        }
+                        
+                    });
+                    
+                    //Select Course
+                    MM.log("Selected Course");
+                    $('#offlineC').on(MM.clickType, function(e) {
+                        var selectedCourse = $( "#offlineC option:selected" ).val();
+                        if (selectedCourse != "" && selected.length > 0) {
+                           MM.log("Selected Course:"+selectedCourse);
+                           var option = selectedCourse.url.split(",");
+                           $("#showCourseL").attr("path",option[0]);
+                           $("#showCourseL").attr("module",option[1]);
+                           var usersSelected = "";
+                           $.each(selected, function(indexSelected, valueSelected) {
+                                usersSelected += valueSelected+",";
+                           });
+                           var lenghtSelected = usersSelected.length - 1;
+                           var content = result.substr(0, lenghto) 
+                           $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                           $("#showCourseL").show();
+                        } else {
+                           $("#showCourseL").hide();
                         }
                         
                     });
