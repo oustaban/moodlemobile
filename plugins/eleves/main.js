@@ -178,6 +178,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     }
 
                     MM.plugins.eleves.nextLimitFrom = MM.plugins.eleves.limitNumber;
+                    /*
                     $.each(users, function( index, value ) {
                         var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value.id + ".json";
                         MM.fs.findFileAndReadContents(resultFile,
@@ -190,6 +191,57 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                         );
                     });
+                    */
+                    
+                    var localCourses = MM.db.where('contents', {'courseid':courseId});
+                    MM.log('LocalCourses:'+localCourses+','+localCourses.length);
+                    var downloadedCourses = [];
+                    if (!localCourses) {
+                        //code
+                        $('#offlineC').hide();
+                        MM.log('LocalCourses:NOK');
+                    } else {
+                        $.each(localCourses, function( index, value ) {
+                            var localCourse = value.toJSON();
+                            if (localCourse.contents) {
+                                var localFile = localCourse.contents[0];
+                                var localContentId = localCourse.url.split("?id=");
+                                var localPathCourse = MM.plugins.contents.getLocalPaths(courseId, localContentId[1], localFile);
+                                
+                                MM.log('offline LocalCourse:'+localPathCourse.file+','+localPathCourse.directory+','+localContentId[1]);
+                                
+                                MM.fs.fileExists(localPathCourse.file,
+                                    function(path) {
+                                        
+                                        MM.log('offline LocalCourse:'+localPathCourse.file+' exist');
+                                        var localPathOffline = MM.fs.getRoot() + '/' + localPathCourse.file;
+                                        var obj = {
+                                            file: localPathOffline,
+                                            name: localCourse.name
+                                        };
+                                        downloadedCourses.push(obj);
+                                        
+                                    
+                                    },
+                                    function(path) {
+                                       MM.log('offline LocalCourse:'+localPathCourse.file+' Not exist');
+                                    }
+                                );
+                            }
+                        });
+                        
+                        if (downloadedCourses.length > 0) {
+                            $.each(downloadedCourses, function( i, item ) {
+                                MM.log('offline downloadedCourses: '+item.file+','+item.name);
+                                $('#offlineC').append($('<option>', { 
+                                    value: item.file,
+                                    text : item.name 
+                                }));
+                            });
+                            $('#offlineC').show();
+                        }
+                    }
+                    
                     var tpl = {
                         users: users,
                         deviceType: MM.deviceType,
@@ -319,6 +371,23 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                         MM.widgets.dialogClose();
                         
+                        
+                    });
+                    
+                    //Check Button
+                    MM.log("Check Button");
+                    var selected = [];
+                    $('input:checkbox').on(MM.clickType, function(e) {
+                        selected = [];
+                        $('input:checked').each(function() {
+                            selected.push($(this).val());
+                        });
+                        
+                        if (selected.length > 0) {
+                            $("#offlineC").show();
+                        } else {
+                            $("#offlineC").show();
+                        }
                         
                     });
 

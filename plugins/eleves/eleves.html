@@ -15,5 +15,10 @@
     </div>
     <% } %>
     <div class="centered">
+        <select name="offlineC" id="offlineC">
+            <option value="">Sélectionner un cours</option>
+        </select>
+    </div>
+    <div class="centered">
         <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>">Synchroniser les Résultats</button>
     </div>

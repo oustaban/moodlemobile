@@ -324,6 +324,13 @@ hr {
   display: block;
   margin-right: 8px;
 }
+.media .img input {
+  display: block;
+  margin-right: 12px;
+  margin-left:12px;
+  width:20px;
+  height:40px;
+}
 .media .bd {
   display: block;
   overflow: hidden;
@@ -1926,5 +1933,8 @@ div.jqi button.jqidefaultbutton {
   display:none;
 }
 #synchroR {
+  display:none;
+}
+#offlineC {
   display:none;
 }
