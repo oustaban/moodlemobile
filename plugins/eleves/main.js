@@ -238,6 +238,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     $.each(users, function( index, value ) {
                         $.each(modulesL, function( indexM, valueM ) {
                             var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valueM + ".json";
+                            MM.log('json files :'+resultFile);
                             MM.fs.findFileAndReadContents(resultFile,
                                 function (result) {
                                     MM.log('Load Result : OK' + result);
@@ -333,7 +334,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
                                         var obj = JSON.parse(result);
-                                        MM.log('Synchro Load Result : OK ' + obj.starttime+','+obj.note+','+courseId);
+                                        MM.log('Synchro Load Result : OK ' + obj.starttime+','+obj.note+','+courseId+','+value+','+valueL);
                                         var data = {
                                             "userid" : value,
                                             "moduleid":valueL,
