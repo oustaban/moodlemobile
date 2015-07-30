@@ -386,6 +386,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             });
                             var lenghtSelected = usersSelected.length - 1;
                             $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                            $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                             $("#showCourseL").show();
                         } else {
                             $("#showCourseL").hide();
@@ -404,13 +405,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            var option = selectedCourse.split(",");
                            $("#showCourseL").attr("path",option[0]);
                            $("#showCourseL").attr("module",option[1]);
+                           $("#stopCourseL").attr("path",option[0]);
+                           $("#stopCourseL").attr("module",option[1]);
                            usersSelected = "";
                            $.each(selected, function(indexSelected, valueSelected) {
                                 usersSelected += valueSelected+",";
                            });
                            lenghtSelected = usersSelected.length - 1;
                            $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                           $("#showCourseL").show();
+                           $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                           $("#showCourseL").show();                                                              
                         } else {
                            $("#showCourseL").hide();
                            MM.log("Selected Course NOK");
@@ -426,6 +430,44 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var module = $(this).attr("module");
                         MM.log('showCourseL:'+path+','+course+','+users+','+module);
                         
+                        var usersL = users.split(",");
+                        var fileResult = MM.config.current_site.id+"/"+course+"/result/"+user+".json";
+                        
+                        $.each(usersL, function(indexL, userL) {
+                                var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+userL+"/"+module+".json";
+                                MM.fs.createFile(fileResultL,
+                                    function(fileEntry) {
+                                        var d = new Date();
+                                        var content = '{"starttime":"'+d.getTime()+'"}';
+                                        MM.log('Create Result :'+content);
+                                        MM.fs.writeInFile(fileEntry, content, 
+                                            function(fileUrl) {
+                                                MM.log('Write Result :'+fileUrl);
+                                                $('#stopCourseL').show();
+                                                if (indexL == (usersL.length - 1)) {
+                                                    MM.plugins.resource._showResource(path);
+                                                }
+                                                
+                                                
+                                            },
+                                            function(fileUrl) {
+                                                MM.log('Write Result NOK:'+content);
+                                                if (indexL == (usersL.length - 1)) {
+                                                    MM.plugins.resource._showResource(path);
+                                                }
+                                            }
+                                            
+                                        );
+                                    },   
+                                        
+                                    function(fileEntry) {
+                                       MM.log('Create Result : NOK');
+                                       if (indexL == (usersL.length - 1)) {
+                                                MM.plugins.resource._showResource(path);
+                                        }
+                                    }
+                                );
+                        });
                         //create local result file
                         /*
                         MM.fs.createFile(fileResult,

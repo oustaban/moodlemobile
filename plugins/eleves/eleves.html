@@ -23,5 +23,8 @@
         <button id="showCourseL" course="<%= courseId %>" users="" path="" module="">Démarrer Le Cours Offline</button>
     </div>
     <div class="centered">
+        <a href="#eleve/<%= courseid %>/<%= user.id %>/stop"><button id="stopCourseL" course="<%= courseId %>" users="" path="" module="">Arréter Le Cours Offline</button></a>
+    </div>
+    <div class="centered">
         <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>">Synchroniser les Résultats</button>
     </div>
