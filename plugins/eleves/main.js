@@ -327,55 +327,58 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var message = "";
                         MM.log("Synchro Start");
                         $.each(users, function( index, value ) {
-                            var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + ".json";
-                            MM.log( index + ": " + value + ":" + resultFile);
-                            MM.fs.findFileAndReadContents(resultFile,
-                                function (result) {
-                                    var obj = JSON.parse(result);
-                                    MM.log('Load Result : OK' + value+','+obj.note+','+courseId);
-                                    var data = {
-                                        "userid" : value,
-                                        "courseid": courseId,
-                                        "starttime": obj.starttime,
-                                        "endtime": obj.endtime,
-                                        "note": obj.note
-                                    }
-                    
-                                    MM.widgets.dialogClose();
-                                    MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
-                                        function(status){
-                                            message += 'Synchronisation des notes et temps de '+names[index]+' Effectuée.<br><br>';
-                                            MM.fs.removeFile (resultFile,
-                                                 function (result) {
-                                                    MM.log('Le fichier '+resultFile+' a bien été effacé');
-                                                    $("#synchroR").hide();
-                                                    MM.popMessage(message, {title:'Synchronisation des résultats et notes', autoclose: 7000, resizable: false});
-                                                 },
-                                                 function (result) {
-                                                    MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
-                                                    $("#synchroR").show();
-                                                 }
-                                                 
-                                            );
-                                        },
-                                        {
-                                            getFromCache: false,
-                                            saveToCache: false
-                                        },
-                                        function(e) {
-                                            MM.log("Error updating report/completion " + e);
-                                            message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
-                                            MM.popErrorMessage(e);
-                                            $("#synchroR").show();
+                            $.each(modulesL, function( indexL, valueL ) {
+                                var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valuesL + ".json";
+                                MM.log( "Synchro File:" + resultFile);
+                                MM.fs.findFileAndReadContents(resultFile,
+                                    function (result) {
+                                        var obj = JSON.parse(result);
+                                        MM.log('Synchro Load Result : OK ' + obj.starttime+','+obj.note+','+courseId);
+                                        var data = {
+                                            "userid" : value,
+                                            "moduleid":valueL,
+                                            "courseid": courseId,
+                                            "starttime": obj.starttime,
+                                            "endtime": obj.endtime,
+                                            "note": obj.note
                                         }
-                                    );
-                                },
-                                function (result) {
-                                    MM.log('Load Result : NOK');
-                                    //message = "Erreur de synchronisation, Veuillez réessayer";
-                                    $("#synchroR").show();
-                                }
-                            );
+                        
+                                        MM.widgets.dialogClose();
+                                        MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
+                                            function(status){
+                                                message += 'Synchronisation des notes et temps de '+names[index]+' Effectuée.<br><br>';
+                                                MM.fs.removeFile (resultFile,
+                                                     function (result) {
+                                                        MM.log('Le fichier '+resultFile+' a bien été effacé');
+                                                        $("#synchroR").hide();
+                                                        MM.popMessage(message, {title:'Synchronisation des résultats et notes', autoclose: 7000, resizable: false});
+                                                     },
+                                                     function (result) {
+                                                        MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
+                                                        $("#synchroR").show();
+                                                     }
+                                                     
+                                                );
+                                            },
+                                            {
+                                                getFromCache: false,
+                                                saveToCache: false
+                                            },
+                                            function(e) {
+                                                MM.log("Error updating report/completion " + e);
+                                                message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
+                                                MM.popErrorMessage(e);
+                                                $("#synchroR").show();
+                                            }
+                                        );
+                                    },
+                                    function (result) {
+                                        MM.log('Load Result : NOK');
+                                        //message = "Erreur de synchronisation, Veuillez réessayer";
+                                        $("#synchroR").show();
+                                    }
+                                );
+                            });
                         });
                         MM.widgets.dialogClose();
                         
@@ -600,7 +603,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
                         
                         options.buttons[MM.lang.s("cancel")] = function() {
-                            MM.Router.navigate("eleve/" + courseId + "/" + userId);
+                            MM.Router.navigate("eleve/" + courseId);
                             MM.widgets.dialogClose();
                         };
             
