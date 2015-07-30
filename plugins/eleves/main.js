@@ -414,14 +414,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     $('#offlineC').on("change", function(e) {
                         
                         var selectedCourse = $( "#offlineC option:selected" ).val();
+                        var option = selectedCourse.split(",");
+                        $("#showCourseL").attr("path",option[0]);
+                        $("#showCourseL").attr("module",option[1]);
+                        $("#stopCourseL").attr("path",option[0]);
+                        $("#stopCourseL").attr("module",option[1]);
                         MM.log("Change Selected Course:"+selectedCourse+','+selected.length);
+                        
                         if (selectedCourse != "" && selected.length > 0) {
                            MM.log("Selected Course:"+selectedCourse);
-                           var option = selectedCourse.split(",");
-                           $("#showCourseL").attr("path",option[0]);
-                           $("#showCourseL").attr("module",option[1]);
-                           $("#stopCourseL").attr("path",option[0]);
-                           $("#stopCourseL").attr("module",option[1]);
+                           
                            usersSelected = "";
                            $.each(selected, function(indexSelected, valueSelected) {
                                 usersSelected += valueSelected+",";
@@ -533,7 +535,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             
                         var usersS = users.split(",");
                         $.each(usersS, function( indexS, valueS ) {
-                            var userP = MM.db.where('users', {'userid':valueS});
+                            var userP = MM.db.where("users", {"userid":valueS});
+                            MM.log('stopCourseL each:'+valueS+','+userP);
                             var userG = userP[0].toJSON();
                             html += '<label>'+userG.fullname+':</label><input type="text" id="addnotescore'+indexS+'" user="'+userG.userid+'" name="addnotescore'+indexS+'" value=""> % <br>';
                         });
