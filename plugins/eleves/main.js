@@ -537,7 +537,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $.each(usersS, function( indexS, valueS ) {
                             var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                             MM.log('stopCourseL each:'+valueS+','+userP);
-                            var userG = userP[0].toJSON();
+                            var userG = userP.toJSON();
                             html += '<label>'+userG.fullname+':</label><input type="text" id="addnotescore'+indexS+'" user="'+userG.userid+'" name="addnotescore'+indexS+'" value=""> % <br>';
                         });
                             
