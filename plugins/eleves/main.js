@@ -198,6 +198,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     var localCourses = MM.db.where('contents', {'courseid':courseId});
                     MM.log('LocalCourses:'+localCourses+','+localCourses.length);
+                    var modulesL = [];
                     if (!localCourses) {
                         //code
                         $('#offlineC').hide();
@@ -210,6 +211,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 var localFile = localCourse.contents[0];
                                 var localContentId = localCourse.url.split("?id=");
                                 var localPathCourse = MM.plugins.contents.getLocalPaths(courseId, localContentId[1], localFile);
+                                modulesL.push(localContentId[1]);
                                 
                                 MM.fs.fileExists(localPathCourse.file,
                                     function(path) {
@@ -231,9 +233,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 );
                             }
                         });
-                        
-                        
                     }
+                    
+                    $.each(users, function( index, value ) {
+                        $.each(modulesL, function( indexM, valueM ) {
+                            var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valueM + ".json";
+                            MM.fs.findFileAndReadContents(resultFile,
+                                function (result) {
+                                    MM.log('Load Result : OK' + result);
+                                    $("#synchroR").show();
+                                },
+                                function (result) {
+                                    MM.log('Load Result : NOK' + result);
+                                }
+                            );
+                        });
+                    });
                     
                     var tpl = {
                         users: users,
@@ -431,7 +446,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log('showCourseL:'+path+','+course+','+users+','+module);
                         
                         var usersL = users.split(",");
-                        var fileResult = MM.config.current_site.id+"/"+course+"/result/"+user+".json";
                         
                         $.each(usersL, function(indexL, userL) {
                                 var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+userL+"/"+module+".json";
