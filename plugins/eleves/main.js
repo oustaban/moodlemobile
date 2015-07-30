@@ -535,7 +535,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             
                         var usersS = users.split(",");
                         $.each(usersS, function( indexS, valueS ) {
-                            var userP = MM.db.where("users", {"userid":valueS});
+                            var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                             MM.log('stopCourseL each:'+valueS+','+userP);
                             var userG = userP[0].toJSON();
                             html += '<label>'+userG.fullname+':</label><input type="text" id="addnotescore'+indexS+'" user="'+userG.userid+'" name="addnotescore'+indexS+'" value=""> % <br>';
