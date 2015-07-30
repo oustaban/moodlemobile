@@ -328,7 +328,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log("Synchro Start");
                         $.each(users, function( index, value ) {
                             $.each(modulesL, function( indexL, valueL ) {
-                                var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valuesL + ".json";
+                                var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valueL + ".json";
                                 MM.log( "Synchro File:" + resultFile);
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
