@@ -318,7 +318,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     //Synchro Button
                     $("#synchroR").on(MM.clickType, function(e) {
                         
-            
                         var lenghto = $(this).attr('users').length - 1;
                         var userList = $(this).attr('users').substr(0, lenghto);
                         var users = userList.split(",");
@@ -326,7 +325,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var namesList = $(this).attr('names').substr(0, lenghton);
                         var names = namesList.split(",");
                         var message = "";
+                        
                         MM.log("Synchro Start");
+                        
                         $.each(users, function( index, value ) {
                             $.each(modulesL, function( indexL, valueL ) {
                                 var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valueL + ".json";
@@ -345,6 +346,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         }
                         
                                         MM.widgets.dialogClose();
+                                        
                                         MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                             function(status){
                                                 message += 'Synchronisation des notes et temps de '+names[index]+' Effectuée.<br><br>';
