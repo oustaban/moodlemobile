@@ -63,7 +63,6 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 if (MM.deviceType == "tablet" && contents.length > 0) {
                     // First section.
                     var firstSection = 0;
-
                     // Special case, frontpage. Avoid the rest of sections
                     if (courseId == 1) {
                         firstSection = -1;
@@ -71,6 +70,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     } else {
                         $("#panel-center li:eq(1)").addClass("selected-row");
                     }
+                    MM.log("Tablette open course content section: " + courseId + ','+ firstSection);
+                    
                     MM.plugins.contents.viewCourseContentsSection(courseId, firstSection);
                 }
             }, null, function(m) {
