@@ -60,6 +60,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 pageTitle = course.get("shortname");
 
                 MM.panels.show("center", html, {title: pageTitle});
+                /*
                 if (MM.deviceType == "tablet" && contents.length > 0) {
                     // First section.
                     var firstSection = 0;
@@ -74,6 +75,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     
                     MM.plugins.contents.viewCourseContentsSection(courseId, firstSection);
                 }
+                */
             }, null, function(m) {
                 // Error callback.
                 // Removing loading icon.
