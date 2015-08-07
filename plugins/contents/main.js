@@ -86,6 +86,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
         viewCourseContentsSection: function(courseId, sectionId) {
 
+            MM.log("viewCourseContentsSection: " + courseId + ','+ sectionId);
             if (MM.deviceType == "tablet") {
                 MM.panels.showLoading('right');
             }
