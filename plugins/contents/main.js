@@ -60,10 +60,10 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 pageTitle = course.get("shortname");
 
                 MM.panels.show("center", html, {title: pageTitle});
-                
                 if (MM.deviceType == "tablet" && contents.length > 0) {
                     // First section.
                     var firstSection = 0;
+
                     // Special case, frontpage. Avoid the rest of sections
                     if (courseId == 1) {
                         firstSection = -1;
@@ -71,12 +71,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     } else {
                         $("#panel-center li:eq(1)").addClass("selected-row");
                     }
-                    firstSection = -1;
-                    MM.log("Tablette open course content section: " + courseId + ','+ firstSection);
-                    
                     MM.plugins.contents.viewCourseContentsSection(courseId, firstSection);
                 }
-                
             }, null, function(m) {
                 // Error callback.
                 // Removing loading icon.
@@ -90,7 +86,6 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
         viewCourseContentsSection: function(courseId, sectionId) {
 
-            MM.log("viewCourseContentsSection: " + courseId + ','+ sectionId);
             if (MM.deviceType == "tablet") {
                 MM.panels.showLoading('right');
             }
