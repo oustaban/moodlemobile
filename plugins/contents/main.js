@@ -296,8 +296,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                        };
 
                                     // Disabled auto sync temporaly
-                                    MM.log("Sync: Adding content: " + el.syncData.name + ": " + el.url);
-                                    MM.db.insert("sync", el);
+                                    //MM.log("Sync: Adding content: " + el.syncData.name + ": " + el.url);
+                                    //MM.db.insert("sync", el);
 
                                     if (file.filename) {
                                         MM.log("file.filename:"+file.filename); 
