@@ -268,13 +268,16 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 $.each(content.contents, function (index3, file) {
 
                                     if (typeof file.fileurl == "undefined" || !file.fileurl) {
+                                        MM.log("file.fileurl undefined"); 
                                         return true;
                                     }
 
                                     if (file.fileurl.indexOf(MM.config.current_site.siteurl) == -1) {
+                                        MM.log("file.fileurl undefined 2"); 
                                         return true;
                                     }
 
+                                    MM.log("file.fileurl:"+file.fileurl); 
                                     var paths = MM.plugins.contents.getLocalPaths(courseId, content.contentid, file);
 
                                     var el = {
@@ -297,6 +300,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     //MM.db.insert("sync", el);
 
                                     if (file.filename) {
+                                        MM.log("file.filename:"+file.filename); 
                                         var extension = file.filename.substr(file.filename.lastIndexOf(".") + 1);
 
                                         // Exception for folder type, we use the resource icon.
