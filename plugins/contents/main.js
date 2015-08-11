@@ -308,6 +308,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             sections.modules[index2].mainExtension = MM.plugins.contents.templates.mimetypes[extension]["icon"];
                                             content.mainExtension = sections.modules[index2].mainExtension;
                                             //content.courseid = courseId;
+                                            MM.log("insert content");
                                             MM.db.insert("contents", content);
                                         }
                                     }
