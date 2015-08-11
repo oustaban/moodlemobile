@@ -309,7 +309,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             content.mainExtension = sections.modules[index2].mainExtension;
                                             //content.courseid = courseId;
                                             MM.log("insert content");
-                                            MM.db.insert("contents", content);
+                                            //MM.db.insert("contents", content);
                                         }
                                     }
                                 });
