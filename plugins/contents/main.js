@@ -702,7 +702,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             var content = MM.db.get("contents", MM.config.current_site.id + "-" + contentId);
             content = content.toJSON();
             //content.courseid = courseId;
-            MM.log("downloadAll:"+courseId+","+sectionId+","+contentId+","+content.id+","+content.contents);
+            //MM.log("downloadAll:"+courseId+","+sectionId+","+contentId+","+content.id+","+content.contents);
             if (!content.contents) {
                 if (typeof errorCallback == "function") {
                     errorCallback();
