@@ -162,6 +162,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                             // This content is currently in the database.
                             if (contentsStored.indexOf(content.id) > -1) {
+                                MM.log("Content is on database"); 
                                 var c = MM.db.get("contents", content.id);
                                 c = c.toJSON();
                                 sections.modules[index2].mainExtension = c.mainExtension;
@@ -256,12 +257,14 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             sections.modules[index2].webOnly = content.webOnly;
                             
                             //content.courseid = courseId;
-                            
+                            MM.log("Content insert in database"); 
                             MM.db.insert("contents", content);
+                            MM.log("Content insert in database 2"); 
 
                             // Sync content files.
 
                             if (typeof(content.contents) != "undefined") {
+                                MM.log("Content undefined"); 
                                 $.each(content.contents, function (index3, file) {
 
                                     if (typeof file.fileurl == "undefined" || !file.fileurl) {
@@ -307,7 +310,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 });
                             }
                         });
-
+                        MM.log("finalContents.push"); 
+                                
                         finalContents.push(sections);
 
                     });
