@@ -139,12 +139,15 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             content.courseid = courseId;
                             content.id = MM.config.current_site.id + "-" + content.contentid;
                             
-                            delete sections.modules[index2].timecreated;
-                            delete sections.modules[index2].timemodified;
-                            delete sections.modules[index2].sortorder;
-                            delete sections.modules[index2].author;
-                            delete sections.modules[index2].userid;
-                            delete sections.modules[index2].license;
+                            $.each(content.contents, function (index12, contenu) {
+                                delete content.contents[index12].timecreated;
+                                delete content.contents[index12].timemodified;
+                                delete content.contents[index12].sortorder;
+                                delete content.contents[index12].author;
+                                delete content.contents[index12].userid;
+                                delete content.contents[index12].license;
+                            });
+                            
                             
 
                             if(!firstContent) {
