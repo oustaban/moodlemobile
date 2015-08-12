@@ -257,16 +257,15 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             sections.modules[index2].webOnly = content.webOnly;
                             
                             //content.courseid = courseId;
-                            MM.log("Content insert in database"); 
                             MM.db.insert("contents", content);
-                            MM.log("Content insert in database 2"); 
+                            
 
                             // Sync content files.
 
                             if (typeof(content.contents) != "undefined") {
-                                MM.log("Content undefined"); 
                                 $.each(content.contents, function (index3, file) {
 
+                                    /*
                                     if (typeof file.fileurl == "undefined" || !file.fileurl) {
                                         MM.log("file.fileurl undefined"); 
                                         return true;
@@ -294,13 +293,13 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         siteid: MM.config.current_site.id,
                                         type: "content"
                                        };
-
+                                    */
                                     // Disabled auto sync temporaly
                                     //MM.log("Sync: Adding content: " + el.syncData.name + ": " + el.url);
                                     //MM.db.insert("sync", el);
 
                                     if (file.filename) {
-                                        MM.log("file.filename:"+file.filename); 
+                                        //MM.log("file.filename:"+file.filename); 
                                         var extension = file.filename.substr(file.filename.lastIndexOf(".") + 1);
 
                                         // Exception for folder type, we use the resource icon.
@@ -309,7 +308,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             content.mainExtension = sections.modules[index2].mainExtension;
                                             //content.courseid = courseId;
                                             MM.log("insert content");
-                                            //MM.db.insert("contents", content);
+                                            MM.db.insert("contents", content);
                                         }
                                     }
                                 });
