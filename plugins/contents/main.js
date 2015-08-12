@@ -201,8 +201,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                                 // Check if our stored information has changed remotely.
                                 var updateContentInDB = false;
-                                var contentElements = ['filename', 'fileurl' , 'filesize',
-                                    'timecreated', 'timemodified', 'author', 'license'];
+                                var contentElements = ['filename', 'fileurl' , 'filesize'];
 
                                 for (var indexEl in c.contents) {
                                     _.each(contentElements, function(el) {
@@ -261,7 +260,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             
 
                             // Sync content files.
-
+                            
                             if (typeof(content.contents) != "undefined") {
                                 $.each(content.contents, function (index3, file) {
 
@@ -277,7 +276,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     }
 
                                     //MM.log("file.fileurl:"+file.fileurl); 
-                                    /*
+                                    
                                     var paths = MM.plugins.contents.getLocalPaths(courseId, content.contentid, file);
 
                                     var el = {
@@ -294,7 +293,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         siteid: MM.config.current_site.id,
                                         type: "content"
                                        };
-                                    */
+                                    
                                     // Disabled auto sync temporaly
                                     //MM.log("Sync: Adding content: " + el.syncData.name + ": " + el.url);
                                     //MM.db.insert("sync", el);
@@ -583,7 +582,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             if (! skipFiles) {
                 var file = content.contents[index];
 
-                var fileParams = ["author", "license", "timecreated", "timemodified", "filesize", "downloadtime"];
+                var fileParams = ["filesize", "downloadtime"];
                 if (MM.debugging) {
                     fileParams.push("localpath");
                 }
