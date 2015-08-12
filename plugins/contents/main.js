@@ -138,6 +138,14 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             content.contentid = content.id;
                             content.courseid = courseId;
                             content.id = MM.config.current_site.id + "-" + content.contentid;
+                            
+                            delete sections.modules[index2].timecreated;
+                            delete sections.modules[index2].timemodified;
+                            delete sections.modules[index2].sortorder;
+                            delete sections.modules[index2].author;
+                            delete sections.modules[index2].userid;
+                            delete sections.modules[index2].license;
+                            
 
                             if(!firstContent) {
                                 firstContent = content.contentid;
@@ -238,10 +246,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 }
                                 
                                 //c.courseid = courseId;
-                                delete c.timecreated;
-                                delete c.timecreated;
-                                delete c.author;
-                                delete c.license;
+                                
                                 if (updateContentInDB) {
                                     MM.db.insert("contents", c);
                                 }
