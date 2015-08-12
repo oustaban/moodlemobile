@@ -265,18 +265,19 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             if (typeof(content.contents) != "undefined") {
                                 $.each(content.contents, function (index3, file) {
 
-                                    /*
+                                    
                                     if (typeof file.fileurl == "undefined" || !file.fileurl) {
-                                        MM.log("file.fileurl undefined"); 
+                                        //MM.log("file.fileurl undefined"); 
                                         return true;
                                     }
 
                                     if (file.fileurl.indexOf(MM.config.current_site.siteurl) == -1) {
-                                        MM.log("file.fileurl undefined 2"); 
+                                        //MM.log("file.fileurl undefined 2"); 
                                         return true;
                                     }
 
-                                    MM.log("file.fileurl:"+file.fileurl); 
+                                    //MM.log("file.fileurl:"+file.fileurl); 
+                                    /*
                                     var paths = MM.plugins.contents.getLocalPaths(courseId, content.contentid, file);
 
                                     var el = {
