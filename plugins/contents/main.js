@@ -201,7 +201,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                                 // Check if our stored information has changed remotely.
                                 var updateContentInDB = false;
-                                var contentElements = ['filename', 'fileurl' , 'filesize'];
+                                var contentElements = ['filename', 'fileurl' , 'filesize',
+                                    'timecreated', 'timemodified', 'author', 'license'];
 
                                 for (var indexEl in c.contents) {
                                     _.each(contentElements, function(el) {
@@ -237,7 +238,10 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 }
                                 
                                 //c.courseid = courseId;
-                                
+                                delete c.timecreated;
+                                delete c.timecreated;
+                                delete c.author;
+                                delete c.license;
                                 if (updateContentInDB) {
                                     MM.db.insert("contents", c);
                                 }
