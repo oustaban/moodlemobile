@@ -493,11 +493,12 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         if ($(downCssId)) {
                                             $(downCssId).remove();
                                             $(linkCssId).attr("href", "#");
-                                            $(linkCssId).attr("id", "resource-"+contentId);
                                             $(linkCssId).attr("class", "resource-downloaded");
                                             $(linkCssId).attr("data-path", path.file);
                                             $(linkCssId).attr("data-course", courseId);
                                             $(linkCssId).attr("data-content", contentId);
+                                            $(linkCssId).attr("id", "resource-"+contentId);
+                                            
                                             //$(linkCssId).attr("href", fullpath);
                                             //$(linkCssId).attr("rel", "external");
                                             // Android, open in new browser
