@@ -461,16 +461,17 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             
                             var exts = path.file.split(".");
                             var dirs = path.file.split("/");
-                            MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]);
+                            var paths = fullpath.split("/");
+                            var dest = "";
+                            for (var i=0;i<(paths.length-1);i++)
+                            {
+                                dest += paths[i];
+                            }
+                            MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]+','+dest);
                             if (exts[exts.length-1]=="zip") {
                                 
-                                var unzipper = new JSUnzip(fullpath);
-                                MM.log("Dezip:"+unzipper);
-                                
-                                
-                                if (unzipper.isZipFile())
-                                {
-                                    MM.log("unzip");
+                                    zip.unzip(fullpath, dest, function( MM.log("unzip");) { });
+                                   
                                     /*
                                     unzipper.readEntries();
                                     
@@ -489,8 +490,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         path.file += dirs[j];
                                     }
                                     path.file += "story.html";
-                                }
-                                MM.log("Dezip:"+path.file)
+                                
+                                    MM.log("Dezip:"+path.file)
                             }
                             content.contents[index].localpath = path.file;
                             var downloadTime = MM.util.timestamp();
