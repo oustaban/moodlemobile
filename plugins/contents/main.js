@@ -492,12 +492,18 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         MM.db.insert("contents", content);
                                         if ($(downCssId)) {
                                             $(downCssId).remove();
-                                            $(linkCssId).attr("href", fullpath);
-                                            $(linkCssId).attr("rel", "external");
+                                            $(linkCssId).attr("href", "#");
+                                            $(linkCssId).attr("id", "resource-"+contentId);
+                                            $(linkCssId).attr("class", "resource-downloaded");
+                                            $(linkCssId).attr("data-path", path.file);
+                                            $(linkCssId).attr("data-course", courseId);
+                                            $(linkCssId).attr("data-content", contentId);
+                                            //$(linkCssId).attr("href", fullpath);
+                                            //$(linkCssId).attr("rel", "external");
                                             // Android, open in new browser
                                             MM.handleFiles(linkCssId);
                                             if (open) {
-                                                MM._openFile(fullpath);
+                                                //MM._openFile(fullpath);
                                             }
                                         }
                                         if (typeof successCallback == "function") {
