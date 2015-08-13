@@ -467,7 +467,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             {
                                 dest += paths[i]+"/";
                             }
-                            MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]+','+dest);
+                            MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]+','+dest+','+downCssId+','+linkCssId);
                             
                             if (exts[exts.length-1]=="zip") {
                                 
@@ -492,18 +492,22 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         MM.db.insert("contents", content);
                                         if ($(downCssId)) {
                                             $(downCssId).remove();
+                                            /*
                                             $(linkCssId).attr("href", "#");
                                             $(linkCssId).attr("class", "resource-downloaded");
                                             $(linkCssId).attr("data-path", path.file);
                                             $(linkCssId).attr("data-course", courseId);
                                             $(linkCssId).attr("data-content", contentId);
-                                            $(linkCssId).removeAttr("rel");
+                                            $(linkCssId).attr("data-section", sectionId);
+                                            $(linkCssId).attr("rel", "external");
                                             $(linkCssId).attr("id", "resource-"+contentId);
                                             linkCssId = "#resource-" + contentId;
-                                            
-                                            //$(linkCssId).attr("href", fullpath);
-                                            //$(linkCssId).attr("rel", "external");
+                                            */
+                                            $(linkCssId).attr("href", fullpath);
+                                            $(linkCssId).attr("rel", "external");
                                             // Android, open in new browser
+                                            MM.log("handleFiles1:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
+                                    
                                             MM.handleFiles(linkCssId);
                                             if (open) {
                                                 //MM._openFile(fullpath);
@@ -529,7 +533,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     $(linkCssId).attr("href", fullpath);
                                     $(linkCssId).attr("rel", "external");
                                     // Android, open in new browser
-                                    MM.log("handleFiles:"+linkCssId);
+                                    MM.log("handleFiles2:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
                                     MM.handleFiles(linkCssId);
                                     if (open) {
                                         MM._openFile(fullpath);
