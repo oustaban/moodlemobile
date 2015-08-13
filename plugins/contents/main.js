@@ -461,16 +461,31 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             
                             var exts = path.file.split(".");
                             var dirs = path.file.split("/");
-                            MM.log("Dezip:"+exts[exts.length-1]+','+dirs[dirs.length-1]);
+                            MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]);
                             if (exts[exts.length-1]=="zip") {
-                                //var result = JSInflate.inflate(path.file);
-                                //MM.log("Dezip:"+result);
-                                path.file="";
-                                for (var j=0;j<(dirs.length-1);j++)
+                                var unzipper = new JSUnzip(blob);
+                                if (unzipper.isZipFile())
                                 {
-                                    path.file += dirs[j];
+                                    
+                                    /*
+                                    unzipper.readEntries();
+                                    
+                                    for (var i = 0; i < unzipper.entries.length; i++) {
+                                        var entry = unzipper.entries[i];
+                                        if (entry.compressionMethod === 0) {
+                                          var uncompressed = entry.data; 
+                                        } else if (entry.compressionMethod === 8) {
+                                          var uncompressed = JSInflate.inflate(entry.data);
+                                        }
+                                    }
+                                    */
+                                    path.file="";
+                                    for (var j=0;j<(dirs.length-1);j++)
+                                    {
+                                        path.file += dirs[j];
+                                    }
+                                    path.file += "story.html";
                                 }
-                                path.file += "story.html";
                                 MM.log("Dezip:"+path.file)
                             }
                             content.contents[index].localpath = path.file;
