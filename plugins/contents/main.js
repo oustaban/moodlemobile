@@ -465,6 +465,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         zip.unzip(fullpath, dest, function() {
                                             MM.log("Unzip ok");
                                             
+                                            var old_file = path.file;
                                             path.file="";
                                             for (var j=0;j<(dirs.length-1);j++)
                                             {
@@ -474,6 +475,15 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             fullpath = dest + "story.html";
                                         
                                             MM.log("Dezip:"+path.file+","+fullpath);
+                                            
+                                            MM.fs.removeFile(old_file,
+                                                function(chemin) {
+                                                    MM.log("Dezip:"+old_file+" OK");
+                                                },
+                                                function(path) {
+                                                  MM.log("Dezip:"+old_file+" NOL");
+                                                }
+                                            );
                                         
                                             content.contents[index].localpath = path.file;
                                             content.contents[index].filename = "story.html";
