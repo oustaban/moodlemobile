@@ -87,6 +87,7 @@
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.cordova-plugin-zip" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
     <gap:plugin name="org.chromium.zip" version="2.1.0" />	
 
