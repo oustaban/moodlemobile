@@ -520,6 +520,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     $(linkCssId).attr("href", fullpath);
                                     $(linkCssId).attr("rel", "external");
                                     // Android, open in new browser
+                                    MM.log("handleFiles:"+linkCssId);
                                     MM.handleFiles(linkCssId);
                                     if (open) {
                                         MM._openFile(fullpath);
