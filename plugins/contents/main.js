@@ -458,6 +458,20 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     MM.moodleDownloadFile(downloadURL, path.file,
                         function(fullpath) {
                             MM.log("Content: Download of content finished " + fullpath + " URL: " + downloadURL + " Index: " +index + "Local path: " + path.file);
+                            
+                            var exts = path.file.split(".");
+                            var dirs = path.file.split("/");
+                            if (exts[exts.length-1]=="zip") {
+                                var result = JSInflate.inflate(path.file);
+                                MM.log("Dezip:"+result);
+                                path.file="";
+                                for (var j=0;j<(dirs.length-1);j++)
+                                {
+                                    path.file += dirs[j];
+                                }
+                                path.file += "story.html";
+                                MM.log("Dezip:"+path.file)
+                            }
                             content.contents[index].localpath = path.file;
                             var downloadTime = MM.util.timestamp();
                             content.contents[index].downloadtime = downloadTime;
