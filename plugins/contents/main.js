@@ -480,8 +480,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             path.file += dirs[j] + "/";
                                         }
                                         path.file += "story.html";
+                                        fullpath = dest + "story.html";
                                     
-                                        MM.log("Dezip:"+path.file)
+                                        MM.log("Dezip:"+path.file+","+fullpath);
                                     
                                         content.contents[index].localpath = path.file;
                                         var downloadTime = MM.util.timestamp();
