@@ -465,52 +465,68 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             var dest = "";
                             for (var i=0;i<(paths.length-1);i++)
                             {
-                                dest += paths[i];
+                                dest += paths[i]+"/";
                             }
                             MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]+','+dest);
+                            
                             if (exts[exts.length-1]=="zip") {
                                 
-                                    zip.unzip(fullpath, dest, function() { MM.log("unzip");});
-                                   
-                                    /*
-                                    unzipper.readEntries();
-                                    
-                                    for (var i = 0; i < unzipper.entries.length; i++) {
-                                        var entry = unzipper.entries[i];
-                                        if (entry.compressionMethod === 0) {
-                                          var uncompressed = entry.data; 
-                                        } else if (entry.compressionMethod === 8) {
-                                          var uncompressed = JSInflate.inflate(entry.data);
+                                        zip.unzip(fullpath, dest, function() {
+                                        MM.log("Unzip ok");
+                                        
+                                        path.file="";
+                                        for (var j=0;j<(dirs.length-1);j++)
+                                        {
+                                            path.file += dirs[j] + "/";
                                         }
+                                        path.file += "story.html";
+                                    
+                                        MM.log("Dezip:"+path.file)
+                                    
+                                        content.contents[index].localpath = path.file;
+                                        var downloadTime = MM.util.timestamp();
+                                        content.contents[index].downloadtime = downloadTime;
+                                        //content.courseid = courseId;
+                                        // Raise conditions may happen here. The callback functions handle that.
+                                        MM.db.insert("contents", content);
+                                        if ($(downCssId)) {
+                                            $(downCssId).remove();
+                                            $(linkCssId).attr("href", fullpath);
+                                            $(linkCssId).attr("rel", "external");
+                                            // Android, open in new browser
+                                            MM.handleFiles(linkCssId);
+                                            if (open) {
+                                                MM._openFile(fullpath);
+                                            }
+                                        }
+                                        if (typeof successCallback == "function") {
+                                            successCallback(index, fullpath, path.file, downloadTime);
+                                        }
+                                    
+                                    });
+                                   
+                                    
+                                    
+                            } else {
+                                content.contents[index].localpath = path.file;
+                                var downloadTime = MM.util.timestamp();
+                                content.contents[index].downloadtime = downloadTime;
+                                //content.courseid = courseId;
+                                // Raise conditions may happen here. The callback functions handle that.
+                                MM.db.insert("contents", content);
+                                if ($(downCssId)) {
+                                    $(downCssId).remove();
+                                    $(linkCssId).attr("href", fullpath);
+                                    $(linkCssId).attr("rel", "external");
+                                    // Android, open in new browser
+                                    MM.handleFiles(linkCssId);
+                                    if (open) {
+                                        MM._openFile(fullpath);
                                     }
-                                    */
-                                    path.file="";
-                                    for (var j=0;j<(dirs.length-1);j++)
-                                    {
-                                        path.file += dirs[j];
-                                    }
-                                    path.file += "story.html";
-                                
-                                    MM.log("Dezip:"+path.file)
-                            }
-                            content.contents[index].localpath = path.file;
-                            var downloadTime = MM.util.timestamp();
-                            content.contents[index].downloadtime = downloadTime;
-                            //content.courseid = courseId;
-                            // Raise conditions may happen here. The callback functions handle that.
-                            MM.db.insert("contents", content);
-                            if ($(downCssId)) {
-                                $(downCssId).remove();
-                                $(linkCssId).attr("href", fullpath);
-                                $(linkCssId).attr("rel", "external");
-                                // Android, open in new browser
-                                MM.handleFiles(linkCssId);
-                                if (open) {
-                                    MM._openFile(fullpath);
                                 }
-                            }
-                            if (typeof successCallback == "function") {
-                                successCallback(index, fullpath, path.file, downloadTime);
+                                if (typeof successCallback == "function") {
+                                    successCallback(index, fullpath, path.file, downloadTime);
+                                }
                             }
                         },
                         function(fullpath) {
