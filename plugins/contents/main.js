@@ -470,7 +470,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]+','+dest);
                             if (exts[exts.length-1]=="zip") {
                                 
-                                    zip.unzip(fullpath, dest, function( MM.log("unzip");) { });
+                                    zip.unzip(fullpath, dest, function() { MM.log("unzip");});
                                    
                                     /*
                                     unzipper.readEntries();
