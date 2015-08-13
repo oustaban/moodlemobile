@@ -476,7 +476,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             MM.log("Dezip:"+path.file+","+fullpath);
                                         
                                             content.contents[index].localpath = path.file;
-                                            content.contents[index].filname = "story.html";
+                                            content.contents[index].filename = "story.html";
                                             var downloadTime = MM.util.timestamp();
                                             content.contents[index].downloadtime = downloadTime;
                                             //content.courseid = courseId;
