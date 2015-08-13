@@ -463,7 +463,11 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             var dirs = path.file.split("/");
                             MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]);
                             if (exts[exts.length-1]=="zip") {
+                                
                                 var unzipper = new JSUnzip(fullpath);
+                                MM.log("Dezip:"+unzipper);
+                                
+                                
                                 if (unzipper.isZipFile())
                                 {
                                     MM.log("unzip");
