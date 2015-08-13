@@ -461,9 +461,10 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             
                             var exts = path.file.split(".");
                             var dirs = path.file.split("/");
+                            MM.log("Dezip:"+exts[exts.length-1]+','+dirs[dirs.length-1]);
                             if (exts[exts.length-1]=="zip") {
-                                var result = JSInflate.inflate(path.file);
-                                MM.log("Dezip:"+result);
+                                //var result = JSInflate.inflate(path.file);
+                                //MM.log("Dezip:"+result);
                                 path.file="";
                                 for (var j=0;j<(dirs.length-1);j++)
                                 {
