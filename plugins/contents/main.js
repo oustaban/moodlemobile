@@ -492,7 +492,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         MM.db.insert("contents", content);
                                         if ($(downCssId)) {
                                             $(downCssId).remove();
-                                            /*
+                                            
                                             $(linkCssId).attr("href", "#");
                                             $(linkCssId).attr("class", "resource-downloaded");
                                             $(linkCssId).attr("data-path", path.file);
@@ -502,9 +502,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             $(linkCssId).attr("rel", "external");
                                             $(linkCssId).attr("id", "resource-"+contentId);
                                             linkCssId = "#resource-" + contentId;
-                                            */
-                                            $(linkCssId).attr("href", fullpath);
-                                            $(linkCssId).attr("rel", "external");
+                                            
+                                            //$(linkCssId).attr("href", fullpath);
+                                            //$(linkCssId).attr("rel", "external");
                                             // Android, open in new browser
                                             MM.log("handleFiles1:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
                                     
