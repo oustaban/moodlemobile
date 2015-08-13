@@ -472,52 +472,69 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             if (exts[exts.length-1]=="zip") {
                                 
                                         zip.unzip(fullpath, dest, function() {
-                                        MM.log("Unzip ok");
-                                        
-                                        path.file="";
-                                        for (var j=0;j<(dirs.length-1);j++)
-                                        {
-                                            path.file += dirs[j] + "/";
-                                        }
-                                        path.file += "story.html";
-                                        fullpath = dest + "story.html";
-                                    
-                                        MM.log("Dezip:"+path.file+","+fullpath);
-                                    
-                                        content.contents[index].localpath = path.file;
-                                        var downloadTime = MM.util.timestamp();
-                                        content.contents[index].downloadtime = downloadTime;
-                                        //content.courseid = courseId;
-                                        // Raise conditions may happen here. The callback functions handle that.
-                                        MM.db.insert("contents", content);
-                                        if ($(downCssId)) {
-                                            $(downCssId).remove();
+                                            MM.log("Unzip ok");
                                             
-                                            $(linkCssId).attr("href", "#");
-                                            $(linkCssId).attr("class", "resource-downloaded");
-                                            $(linkCssId).attr("data-path", path.file);
-                                            $(linkCssId).attr("data-course", courseId);
-                                            $(linkCssId).attr("data-content", contentId);
-                                            $(linkCssId).attr("data-section", sectionId);
-                                            $(linkCssId).attr("rel", "external");
-                                            $(linkCssId).attr("id", "resource-"+contentId);
-                                            linkCssId = "#resource-" + contentId;
-                                            
-                                            //$(linkCssId).attr("href", fullpath);
-                                            //$(linkCssId).attr("rel", "external");
-                                            // Android, open in new browser
-                                            MM.log("handleFiles1:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
-                                    
-                                            MM.handleFiles(linkCssId);
-                                            if (open) {
-                                                //MM._openFile(fullpath);
+                                            path.file="";
+                                            for (var j=0;j<(dirs.length-1);j++)
+                                            {
+                                                path.file += dirs[j] + "/";
                                             }
+                                            path.file += "story.html";
+                                            fullpath = dest + "story.html";
+                                        
+                                            MM.log("Dezip:"+path.file+","+fullpath);
+                                        
+                                            content.contents[index].localpath = path.file;
+                                            var downloadTime = MM.util.timestamp();
+                                            content.contents[index].downloadtime = downloadTime;
+                                            //content.courseid = courseId;
+                                            // Raise conditions may happen here. The callback functions handle that.
+                                            MM.db.insert("contents", content);
+                                            
+                                            MM.fs.fileExists(path.file,
+                                                function(chemin) {
+            
+                                                    MM.log("Dezip:"+path.file+" existe");
+            
+            
+                                                },
+                                                function(path) {
+                                                  MM.log("Dezip:"+path.file+" existe pas");
+                                                }
+                                            );
+
+                                            if ($(downCssId)) {
+                                                $(downCssId).remove();
+                                                
+                                                $(linkCssId).attr("href", "#");
+                                                $(linkCssId).attr("class", "resource-downloaded");
+                                                $(linkCssId).attr("data-path", path.file);
+                                                $(linkCssId).attr("data-course", courseId);
+                                                $(linkCssId).attr("data-content", contentId);
+                                                $(linkCssId).attr("data-section", sectionId);
+                                                $(linkCssId).attr("rel", "external");
+                                                $(linkCssId).attr("id", "resource-"+contentId);
+                                                linkCssId = "#resource-" + contentId;
+                                                
+                                                //$(linkCssId).attr("href", fullpath);
+                                                //$(linkCssId).attr("rel", "external");
+                                                // Android, open in new browser
+                                                MM.log("handleFiles1:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
+                                        
+                                                MM.handleFiles(linkCssId);
+                                                if (open) {
+                                                    //MM._openFile(fullpath);
+                                                }
+                                            }
+                                            if (typeof successCallback == "function") {
+                                                successCallback(index, fullpath, path.file, downloadTime);
+                                            }
+                                        
+                                        },
+                                        function(progressEvent) {
+                                            MM.log("Download:"+Math.round((progressEvent.loaded / progressEvent.total) * 100));
                                         }
-                                        if (typeof successCallback == "function") {
-                                            successCallback(index, fullpath, path.file, downloadTime);
-                                        }
-                                    
-                                    });
+                                        );
                                    
                                     
                                     
