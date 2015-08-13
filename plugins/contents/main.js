@@ -159,16 +159,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     content.contents[0].fileurl) {
 
                                 sections.modules[index2].fileurl = content.contents[0].fileurl;
-                                $.each(content.contents, function (index12, contenu) {
-                                    delete content.contents[index12].timecreated;
-                                    delete content.contents[index12].timemodified;
-                                    delete content.contents[index12].sortorder;
-                                    delete content.contents[index12].author;
-                                    delete content.contents[index12].userid;
-                                    delete content.contents[index12].license;
-                                    
-                                    
-                                });
+                               
                             }
 
                             // The file/s was/were downloaded.
@@ -509,6 +500,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 $(linkCssId).attr("href", "#");
                                                 $(linkCssId).attr("class", "resource-downloaded");
                                                 $(linkCssId).attr("data-path", path.file);
+                                                $(linkCssId).attr("data-link", path.file);
                                                 $(linkCssId).attr("data-course", courseId);
                                                 $(linkCssId).attr("data-content", contentId);
                                                 $(linkCssId).attr("data-section", sectionId);
