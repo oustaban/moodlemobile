@@ -513,10 +513,15 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 // Android, open in new browser
                                                 MM.log("handleFiles1:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
                                         
-                                                MM.handleFiles(linkCssId);
-                                                if (open) {
+                                                //var indexFile = path;
+                                                //var indexFileURL = MM.fs.getRoot() + "/" + path;
+                        
+                                                MM.plugins.resource._showResource(fullpath);
+
+                                                //MM.handleFiles(linkCssId);
+                                                //if (open) {
                                                     //MM._openFile(fullpath);
-                                                }
+                                                //}
                                             }
                                             if (typeof successCallback == "function") {
                                                 successCallback(index, fullpath, path.file, downloadTime);
