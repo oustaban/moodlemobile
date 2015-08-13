@@ -497,7 +497,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             $(linkCssId).attr("data-path", path.file);
                                             $(linkCssId).attr("data-course", courseId);
                                             $(linkCssId).attr("data-content", contentId);
+                                            $(linkCssId).removeAttr("rel");
                                             $(linkCssId).attr("id", "resource-"+contentId);
+                                            linkCssId = "#resource-" + contentId;
                                             
                                             //$(linkCssId).attr("href", fullpath);
                                             //$(linkCssId).attr("rel", "external");
