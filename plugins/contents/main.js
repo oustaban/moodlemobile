@@ -512,7 +512,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 $(linkCssId).attr("data-course", courseId);
                                                 $(linkCssId).attr("data-content", contentId);
                                                 $(linkCssId).attr("data-section", sectionId);
-                                                $(linkCssId).attr("rel", "external");
+                                                $(linkCssId).removeAttr("rel");
                                                 $(linkCssId).attr("id", "resource-"+contentId);
                                                 linkCssId = "#resource-" + contentId;
                                                 
