@@ -444,7 +444,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             selected.push($(this).val());
                         });
                                              
-                        if (selected.length > 0 && $('#offlineC').is(':visible') && $("#offlineC option:selected").val()!="") {
+                        if (selected.length > 0) {
                             MM.log("Check Button:"+selected.length);   
                             
                             var usersSelected = "";
