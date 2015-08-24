@@ -445,6 +445,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var lenghtSelected = usersSelected.length - 1;
                             $("#showSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
                             $("#stopSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                            $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                            $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                             $("#showSessionL").show();
                         } else {
                             $("#showSessionL").hide();
@@ -462,9 +464,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $("#showCourseL").attr("module",option[1]);
                         $("#stopCourseL").attr("path",option[0]);
                         $("#stopCourseL").attr("module",option[1]);
-                        MM.log("Change Selected Course:"+selectedCourse+','+selected.length);
+                        MM.log("Change Selected Course:"+selectedCourse);
                         
-                        if (selectedCourse != "" && selected.length > 0) {
+                        if (selectedCourse != "") {
                            MM.log("Selected Course:"+selectedCourse);
                            
                            usersSelected = "";
@@ -472,8 +474,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 usersSelected += valueSelected+",";
                            });
                            lenghtSelected = usersSelected.length - 1;
-                           $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                           $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                            $("#showCourseL").show();                                                              
                         } else {
                            $("#showCourseL").hide();
@@ -515,7 +515,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function(fileUrl) {
                                         MM.log('Write Session :'+fileUrl);
                                         $('#stopSessionL').show();
-                                        $('#showSessionL').show();
+                                        $('#showSessionL').hide();
                                         $('#offlineC').show();
                                     },
                                     function(fileUrl) {
