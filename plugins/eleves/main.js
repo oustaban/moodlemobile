@@ -474,9 +474,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 usersSelected += valueSelected+",";
                            });
                            lenghtSelected = usersSelected.length - 1;
-                           $("#showCourseL").show();                                                              
+                           $("#showCourseL").show();
+                           $("#stopCourseL").hide(); 
                         } else {
                            $("#showCourseL").hide();
+                           $("#stopCourseL").hide(); 
                            MM.log("Selected Course NOK");
                         }
                         
