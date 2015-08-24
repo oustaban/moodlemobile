@@ -181,105 +181,61 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     }
 
                     MM.plugins.eleves.nextLimitFrom = MM.plugins.eleves.limitNumber;
-                    /*
-                    $.each(users, function( index, value ) {
-                        var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value.id + ".json";
-                        MM.fs.findFileAndReadContents(resultFile,
-                            function (result) {
-                                MM.log('Load Result : OK' + result);
-                                $("#synchroR").show();
-                            },
-                            function (result) {
-                                MM.log('Load Result : NOK' + result);
-                            }
-                        );
-                    });
-                    */
                     
-                    var localCourses = MM.db.where('contents', {'courseid':courseId});
-                    MM.log('LocalCourses:'+localCourses+','+localCourses.length);
-                    var modulesL = [];
-                    if (!localCourses || localCourses == "") {
-                        //code
-                       
-                        $('#showSessionL').hide();
-                        $('#offlineC').hide();
-                        $('#showCourseL').hide();
-                        $('#stopCourseL').hide();
-                        $('#stopSessionL').hide();      
-                        $('#synchroR').hide();
+                    var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
+                    MM.log('json session :'+sessionFile);
+                    MM.fs.findFileAndReadContents(sessionFile,
+                        function (result) {
+                            MM.log('Load Session : OK' + result);
+                            $('#showSessionL').hide();
+                            $('#offlineC').show();
+                            $('#showCourseL').show();
+                            $('#stopCourseL').hide();
+                            $('#stopSessionL').show();      
+                            $('#synchroR').show();
+                        },
+                        function (result) {
+                            MM.log('Load Session : NOK' + result);
+                            $('#showSessionL').show();
+                            $('#offlineC').hide();
+                            $('#showCourseL').hide();
+                            $('#stopCourseL').hide();
+                            $('#stopSessionL').hide();      
+                            $('#synchroR').hide();
+                        }
+                    );
+                    
+                    $('#offlineC').html('<option value="">Sélectionner un cours</option>')
                         
-                        MM.log('LocalCourses:NOK');
-                    } else {
-                        var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
-                        MM.log('json session :'+sessionFile);
-                        MM.fs.findFileAndReadContents(sessionFile,
-                            function (result) {
-                                MM.log('Load Session : OK' + result);
-                                var obj = JSON.parse(result);
-                                if (obj.endtime) {
-                                    $('#showSessionL').show();
-                                    $('#offlineC').hide();
-                                    $('#showCourseL').hide();
-                                    $('#stopCourseL').hide();
-                                    $('#stopSessionL').hide();      
-                                    $('#synchroR').show();
-                                } else {
-                                    $('#showSessionL').hide();
-                                    $('#offlineC').show();
-                                    if ($('#offlineC').val() != "") {
-                                        $('#showCourseL').show();
-                                        $('#stopCourseL').hide();
-                                    } else {
-                                        $('#showCourseL').hide();
-                                        $('#stopCourseL').hide();
-                                    }
-                                    $('#stopSessionL').show();      
-                                    $('#synchroR').hide();
-                                }
-                               
-                            },
-                            function (result) {
-                                MM.log('Load Session : NOK' + result);
-                                $('#showSessionL').show();
-                                $('#offlineC').hide();
-                               
-                                $('#stopSessionL').hide();      
-                                $('#synchroR').hide();
-                            }
-                        );
-                        
-                        $('#offlineC').html('<option value="">Sélectionner un cours</option>')
-                        
-                        $.each(localCourses, function( index, value ) {
-                            var localCourse = value.toJSON();
-                            if (localCourse.contents) {
-                                var localFile = localCourse.contents[0];
-                                var localContentId = localCourse.url.split("?id=");
-                                var localPathCourse = MM.plugins.contents.getLocalPaths(courseId, localContentId[1], localFile);
-                                modulesL.push(localContentId[1]);
-                                
-                                MM.fs.fileExists(localPathCourse.file,
-                                    function(path) {
-                                        
-                                        var localPathOffline = MM.fs.getRoot() + '/' + localPathCourse.file;
-                                        MM.log('offline LocalCourse:'+localPathOffline+' exist');
-                                        
-                                        $('#offlineC').append($('<option>', { 
-                                            value: localPathOffline + ',' + localContentId[1],
-                                            text : localCourse.name 
-                                        }));
-                                        //$('#offlineC').show();
-                                        
+                    $.each(localCourses, function( index, value ) {
+                        var localCourse = value.toJSON();
+                        if (localCourse.contents) {
+                            var localFile = localCourse.contents[0];
+                            var localContentId = localCourse.url.split("?id=");
+                            var localPathCourse = MM.plugins.contents.getLocalPaths(courseId, localContentId[1], localFile);
+                            modulesL.push(localContentId[1]);
+                            
+                            MM.fs.fileExists(localPathCourse.file,
+                                function(path) {
                                     
-                                    },
-                                    function(path) {
-                                       MM.log('offline LocalCourse:'+localPathCourse.file+' Not exist');
-                                    }
-                                );
-                            }
-                        });
-                    }
+                                    var localPathOffline = MM.fs.getRoot() + '/' + localPathCourse.file;
+                                    MM.log('offline LocalCourse:'+localPathOffline+' exist');
+                                    
+                                    $('#offlineC').append($('<option>', { 
+                                        value: localPathOffline + ',' + localContentId[1],
+                                        text : localCourse.name 
+                                    }));
+                                    //$('#offlineC').show();
+                                    
+                                
+                                },
+                                function(path) {
+                                   MM.log('offline LocalCourse:'+localPathCourse.file+' Not exist');
+                                }
+                            );
+                        }
+                    });
+                    
                     
                     $.each(users, function( index, value ) {
                         $.each(modulesL, function( indexM, valueM ) {
@@ -505,7 +461,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var usersL = users.split(",");
                         */
                         
-                        $('input:checked').each(function() {
+                        $('input:checkbox').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
                             $(this).attr("disabled", true);
                         });
