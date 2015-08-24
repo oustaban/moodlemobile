@@ -213,6 +213,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     if ($(this).val() == user) {
                                         $(this).prop("checked", true );
                                     }
+                                    $(this).attr("disabled", true );
                                 });
                             });
                             
@@ -500,16 +501,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $(this).attr("disabled", true);
                         });
                         
+                        var users = $(this).attr('users');
+                        
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
                         MM.fs.createFile(fileResultL,
                             function(fileEntry) {
                                 var d = new Date();
-                                var content = '{"starttime":"'+d.getTime()+'"}';
+                                var content = '{"starttime":"'+d.getTime()+'","users":"'+users+'"}';
                                 MM.log('Create Session start :'+content);
                                 MM.fs.writeInFile(fileEntry, content, 
                                     function(fileUrl) {
                                         MM.log('Write Session :'+fileUrl);
                                         $('#stopSessionL').show();
+                                        $('#showSessionL').show();
                                         $('#offlineC').show();
                                     },
                                     function(fileUrl) {
