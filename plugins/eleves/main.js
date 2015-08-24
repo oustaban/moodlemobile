@@ -496,6 +496,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var usersL = users.split(",");
                         */
                         
+                        var course = $(this).attr("course");
+                        
                         $('input:checkbox').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
                             $(this).attr("disabled", true);
@@ -518,9 +520,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     },
                                     function(fileUrl) {
                                         MM.log('Write Session NOK:'+content);
-                                        if (indexL == (usersL.length - 1)) {
-                                            MM.plugins.resource._showResource(path);
-                                        }
                                     }
                                     
                                 );
