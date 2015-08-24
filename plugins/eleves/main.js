@@ -243,8 +243,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.log('Load Session : NOK' + result);
                                 $('#showSessionL').show();
                                 $('#offlineC').hide();
-                                $('#showCourseL').hide();
-                                $('#stopCourseL').hide();
+                               
                                 $('#stopSessionL').hide();      
                                 $('#synchroR').hide();
                             }
@@ -453,11 +452,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 usersSelected += valueSelected+",";
                             });
                             var lenghtSelected = usersSelected.length - 1;
-                            $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                            $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                            $("#showCourseL").show();
+                            $("#showSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                            $("#stopSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                            $("#showSessionL").show();
                         } else {
-                            $("#showCourseL").hide();
+                            $("#showSessionL").hide();
                         }
                         
                     });
@@ -505,6 +504,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var usersL = users.split(",");
                         */
+                        
+                        $('input:checked').each(function() {
+                            MM.log("Check Button Checked:" + $(this).val());
+                            $(this).attr("disabled", true);
+                        });
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
                         MM.fs.createFile(fileResultL,
