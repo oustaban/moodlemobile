@@ -619,43 +619,37 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + module + ".json";
                                 
-                        MM.fs.findFileAndReadContents(resultFile,
-                            function (result) {
-                              MM.log('Result OK :'+result);
-                              var d = new Date();
-                              var lenghto = result.length - 1;
-                              var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'"}';
-                              MM.log('Create Result :'+content);
-                              var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+module+".json";
-                              
-                              
-                              //create local result file
-                              MM.fs.createFile(fileResult,
-                                  function(fileEntry) {
-                                       MM.fs.writeInFile(fileEntry, content, 
-                                          function(fileUrl) {
-                                              MM.log('Write Result OK:'+fileUrl);
-                                              $('#stopCourseL').hide();
-                                              $("#showCourseL").show();                                  
-                                          },
-                                          function(fileUrl) {
-                                              MM.log('Write Result NOK:'+content);
-                                          }
-                                          
-                                      );
-                                  },   
-                                      
-                                  function(fileEntry) {
-                                     MM.log('Create Result : NOK');
-                                     
-                                  }
-                              );
-                            },
-                            function(result) {
-                              MM.log('Result NOK :'+result+','+resultFile);
-                    
+                        
+                        var d = new Date();
+                        var lenghto = result.length - 1;
+                        var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'"}';
+                        MM.log('Create Result :'+content);
+                        var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+module+".json";
+                        
+                        
+                        //create local result file
+                        MM.fs.createFile(fileResult,
+                            function(fileEntry) {
+                                 MM.fs.writeInFile(fileEntry, content, 
+                                    function(fileUrl) {
+                                        MM.log('Write Result OK:'+fileUrl);
+                                        $('#stopCourseL').hide();
+                                        $("#showCourseL").show();                                  
+                                    },
+                                    function(fileUrl) {
+                                        MM.log('Write Result NOK:'+content);
+                                    }
+                                    
+                                );
+                            },   
+                                
+                            function(fileEntry) {
+                               MM.log('Create Result : NOK');
+                               
                             }
                         );
+                            
+                            
                     
                     });
 
