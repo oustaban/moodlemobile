@@ -206,7 +206,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                                 // Check if our stored information has changed remotely.
                                 var updateContentInDB = false;
-                                var contentElements = ['filename', 'fileurl' , 'filesize',
+                                //var contentElements = ['filename', 'fileurl' , 'filesize',
+                                //    'timecreated', 'timemodified', 'author', 'license'];
+                                var contentElements = ['filesize',
                                     'timecreated', 'timemodified', 'author', 'license'];
 
                                 for (var indexEl in c.contents) {
