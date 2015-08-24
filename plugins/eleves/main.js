@@ -551,8 +551,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var usersL = users.split(",");
                         
-                        $.each(usersL, function(indexL, userL) {
-                                var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+userL+"/"+module+".json";
+                        
+                                var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+module+".json";
                                 MM.fs.createFile(fileResultL,
                                     function(fileEntry) {
                                         var d = new Date();
@@ -563,17 +563,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.log('Write Result :'+fileUrl);
                                                 $('#stopCourseL').show();
                                                 $('#showCourseL').hide();
-                                                if (indexL == (usersL.length - 1)) {
-                                                    MM.plugins.resource._showResource(path);
-                                                }
+                                                MM.plugins.resource._showResource(path);
+                                    
                                                 
                                                 
                                             },
                                             function(fileUrl) {
                                                 MM.log('Write Result NOK:'+content);
-                                                if (indexL == (usersL.length - 1)) {
-                                                    MM.plugins.resource._showResource(path);
-                                                }
+                                                //MM.plugins.resource._showResource(path);
+                                            
                                             }
                                             
                                         );
@@ -581,12 +579,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                     function(fileEntry) {
                                        MM.log('Create Result : NOK');
-                                       if (indexL == (usersL.length - 1)) {
-                                                MM.plugins.resource._showResource(path);
-                                        }
+                                       //MM.plugins.resource._showResource(path);
                                     }
                                 );
-                        });
+                    
                     });
                     
                     
