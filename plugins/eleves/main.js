@@ -217,12 +217,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 });
                             });
                             
+                            
                             $('#showSessionL').hide();
                             $('#offlineC').show();
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
                             $('#stopSessionL').show();      
                             $('#synchroR').hide();
+                            $('#showSessionL').attr('users',users);
+                            $('#showCourseL').attr('users',users);
+                            $('#stopCourseL').attr('users',users);
+                            $('#stopSessionL').attr('users',users);
                         },
                         function (result) {
                             MM.log('Load Session : NOK' + result);
