@@ -199,7 +199,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var localCourses = MM.db.where('contents', {'courseid':courseId});
                     MM.log('LocalCourses:'+localCourses+','+localCourses.length);
                     var modulesL = [];
-                    if (!localCourses) {
+                    if (!localCourses || localCourses == "") {
                         //code
                        
                         $('#showSessionL').hide();
