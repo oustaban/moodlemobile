@@ -219,10 +219,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             $('#showSessionL').hide();
                             $('#offlineC').show();
-                            $('#showCourseL').show();
+                            $('#showCourseL').hide();
                             $('#stopCourseL').hide();
                             $('#stopSessionL').show();      
-                            $('#synchroR').show();
+                            $('#synchroR').hide();
                         },
                         function (result) {
                             MM.log('Load Session : NOK' + result);

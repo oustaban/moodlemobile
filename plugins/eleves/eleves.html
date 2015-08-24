@@ -29,8 +29,8 @@
         <button id="stopCourseL" course="<%= courseId %>" users="" module="">Arréter Le Cours Offline</button></a>
     </div>
     <div class="centered">
-        <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>">Synchroniser les Résultats</button>
+        <button id="stopSessionL" course="<%= courseId %>" users="" path="" module="">Fin de session</button>
     </div>
     <div class="centered">
-        <button id="stopSessionL" course="<%= courseId %>" users="" path="" module="">Fin de session</button>
+        <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>">Synchroniser les Résultats</button>
     </div>
