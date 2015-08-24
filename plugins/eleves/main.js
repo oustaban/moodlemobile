@@ -562,6 +562,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             function(fileUrl) {
                                                 MM.log('Write Result :'+fileUrl);
                                                 $('#stopCourseL').show();
+                                                $('#showCourseL').hide();
                                                 if (indexL == (usersL.length - 1)) {
                                                     MM.plugins.resource._showResource(path);
                                                 }
@@ -616,71 +617,45 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                             
                         
-                        options.buttons[addNote] = function() {
-                            
-                            var message = "Note Enregistrée.";
-                            
-                            $.each(usersS, function( indexS, valueS ) {
-                                var score = $("#addnotescore"+indexS).val();
-                                var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + valueS + "/" + module + ".json";
+                        var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + module + ".json";
                                 
-                                MM.fs.findFileAndReadContents(resultFile,
-                                function (result) {
-                                  MM.log('Result OK :'+result);
-                                  var d = new Date();
-                                  var lenghto = result.length - 1;
-                                  var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+score+'"}';
-                                  MM.log('Create Result :'+content);
-                                  var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+valueS+"/"+module+".json";
-                                  
-                                  
-                                  //create local result file
-                                  MM.fs.createFile(fileResult,
-                                      function(fileEntry) {
-                                           MM.fs.writeInFile(fileEntry, content, 
-                                              function(fileUrl) {
-                                                  MM.log('Write Result OK:'+fileUrl);
-                                                  $('#stopCourseL').hide();
-                                                  $("#synchroR").show();
-                                                  message = "Note Enregistrée.";
-                                                  
-                                              },
-                                              function(fileUrl) {
-                                                  MM.log('Write Result NOK:'+content);
-                                                  message = "Problème lors de l'écriture.Veuillez Réessayer.";
-                                              }
-                                              
-                                          );
-                                      },   
+                        MM.fs.findFileAndReadContents(resultFile,
+                            function (result) {
+                              MM.log('Result OK :'+result);
+                              var d = new Date();
+                              var lenghto = result.length - 1;
+                              var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'"}';
+                              MM.log('Create Result :'+content);
+                              var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+module+".json";
+                              
+                              
+                              //create local result file
+                              MM.fs.createFile(fileResult,
+                                  function(fileEntry) {
+                                       MM.fs.writeInFile(fileEntry, content, 
+                                          function(fileUrl) {
+                                              MM.log('Write Result OK:'+fileUrl);
+                                              $('#stopCourseL').hide();
+                                              $("#showCourseL").show();                                  
+                                          },
+                                          function(fileUrl) {
+                                              MM.log('Write Result NOK:'+content);
+                                          }
                                           
-                                      function(fileEntry) {
-                                         MM.log('Create Result : NOK');
-                                         message = "Problème lors de l'écriture.Veuillez Réessayer.";
-                                      }
-                                  );
-                                },
-                                function(result) {
-                                  MM.log('Result NOK :'+result+','+resultFile);
-                                  message = "Problème lors de l'écriture.Veuillez Réessayer.";
-                                }
+                                      );
+                                  },   
+                                      
+                                  function(fileEntry) {
+                                     MM.log('Create Result : NOK');
+                                     
+                                  }
                               );
-                            });
-                            
-                            
-                            MM.widgets.dialogClose();
-                            MM.popMessage(message, {title:'Ajouter une note', autoclose: 5000, resizable: false});
-                            MM.Router.navigate("eleve/" + courseId);
-                            
-                        };
-                        
-                        options.buttons[MM.lang.s("cancel")] = function() {
-                            MM.Router.navigate("eleve/" + courseId);
-                            MM.widgets.dialogClose();
-                        };
-            
-                        
-            
-                        MM.widgets.dialog(html, options);
+                            },
+                            function(result) {
+                              MM.log('Result NOK :'+result+','+resultFile);
+                    
+                            }
+                        );
                     
                     });
 
