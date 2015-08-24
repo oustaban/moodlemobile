@@ -1944,3 +1944,9 @@ div.jqi button.jqidefaultbutton {
 #stopCourseL {
   display:none;
 }
+#showSessionL {
+  display:none;
+}
+#stopSessionL {
+  display:none;
+}
