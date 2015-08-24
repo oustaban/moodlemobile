@@ -270,7 +270,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             value: localPathOffline + ',' + localContentId[1],
                                             text : localCourse.name 
                                         }));
-                                        $('#offlineC').show();
+                                        //$('#offlineC').show();
                                         
                                     
                                     },
@@ -496,6 +496,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     //Start Course Offline
                     $("#showSessionL").on(MM.clickType, function(e) {
                         e.preventDefault();
+                        /*
                         var path = $(this).attr("path");
                         var course = $(this).attr("course");
                         var users = $(this).attr("users");
@@ -503,7 +504,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log('showSessionL:'+path+','+course+','+users+','+module);
                         
                         var usersL = users.split(",");
-                        
+                        */
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
                         MM.fs.createFile(fileResultL,
