@@ -205,6 +205,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.fs.findFileAndReadContents(sessionFile,
                         function (result) {
                             MM.log('Load Session : OK' + result);
+                            var obj = JSON.parse(result);
+                            var users = obj.users.split(",");
+                            
+                            $.each(users, function(index, user) {
+                                $('input:checkbox').each(function() {
+                                    if ($(this).val() == user) {
+                                        $(this).prop("checked", true );
+                                    }
+                                });
+                            });
+                            
                             $('#showSessionL').hide();
                             $('#offlineC').show();
                             $('#showCourseL').show();
@@ -214,7 +225,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         },
                         function (result) {
                             MM.log('Load Session : NOK' + result);
-                            $('#showSessionL').show();
+                            $('input:checked').each(function() {
+                                $('#showSessionL').show();
+                            });
+                            
                             $('#offlineC').hide();
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
