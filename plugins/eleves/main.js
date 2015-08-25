@@ -589,11 +589,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.findFileAndReadContents(fileResultL,
                                     function(path) {
                                         var obj = JSON.parse(path);
-                                        MM.log('Session Module Existe : '+fileResultL+ ' : '+obj.starttime);
+                                        MM.log('Session Module Existe : '+fileResultL+ ' : '+obj.starttime + ' : ' + indexCourse2 + ' : ' + indexCourse);
                                         modules = modules + localName + '<br/>';
                                         modulesId = modulesId + localContentId[1]+',';
                                         moduleStart = moduleStart + obj.starttime+',';
                                         moduleEnd = moduleEnd + obj.endtime+',';
+                                        MM.log('Session Module Existe : ' + modules + ' : ' + modulesId + ' : ' + moduleStart);
                                         if (indexCourse2 == indexCourse) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
@@ -601,6 +602,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'">Signature</button></td></tr>';
                                             });
                                         }
+                                        indexCourse2++;
                                     },
                                     function(path) {
                                         MM.log('Session Module Existe Pas : '+fileResultL);
@@ -611,10 +613,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'">Signature</button></td></tr>';
                                             });
                                         }
+                                        indexCourse2++;
                                     }
                                     
                                 );
-                                indexCourse2++;
+                                
                             }                              
                                                               
                         });
