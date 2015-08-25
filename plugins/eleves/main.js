@@ -540,6 +540,102 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                     });
                     
+                    
+                    
+                    //Stop Course Offline
+                    $("#stopSessionL").on(MM.clickType, function(e) {
+                        
+                        e.preventDefault();
+                        var course = $(this).attr("course");
+                        var users = $(this).attr("users");
+                        var module = $(this).attr("module");
+                        MM.log('stopCourseL:'+course+','+users+','+module);
+                        
+                        var addNote = "Ajouter";
+
+                        var options = {
+                            title: 'Ajouter une note',
+                            width: "90%",
+                            buttons: {}
+                        };
+            
+                        options.buttons[addNote] = function() {
+            
+                            var data = {
+                                "notes[0][userid]" : userId,
+                                "notes[0][publishstate]": 'personal',
+                                "notes[0][courseid]": courseId,
+                                "notes[0][text]": $("#addnotescore").val(),
+                                "notes[0][format]": 1
+                            };
+                            
+                            var score = $("#addnotescore").val();
+                            var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
+                            var message = "Note Enregistrée.";
+                                
+                            MM.fs.findFileAndReadContents(resultFile,
+                              function (result) {
+                                MM.log('Result OK :'+result);
+                                var d = new Date();
+                                var lenghto = result.length - 1;
+                                var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+score+'"}';
+                                MM.log('Create Result :'+content);
+                                var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
+                                
+                                
+                                //create local result file
+                                MM.fs.createFile(fileResult,
+                                    function(fileEntry) {
+                                         MM.fs.writeInFile(fileEntry, content, 
+                                            function(fileUrl) {
+                                                MM.log('Write Result OK:'+fileUrl);
+                                                $('#stopCourse').hide();
+                                                $("#synchroR").show();
+                                                message = "Note Enregistrée.";
+                                                
+                                            },
+                                            function(fileUrl) {
+                                                MM.log('Write Result NOK:'+content);
+                                                message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                            }
+                                            
+                                        );
+                                    },   
+                                        
+                                    function(fileEntry) {
+                                       MM.log('Create Result : NOK');
+                                       message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                    }
+                                );
+                              },
+                              function(result) {
+                                MM.log('Result NOK :'+result+','+resultFile);
+                                message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                              }
+                            );
+                            
+                            MM.widgets.dialogClose();
+                            MM.popMessage(message, {title:'Ajouter une note', autoclose: 5000, resizable: false});
+                            MM.Router.navigate("eleve/" + courseId + "/" + userId);
+                            
+                        };
+                        
+                        options.buttons[MM.lang.s("cancel")] = function() {
+                            MM.Router.navigate("eleve/" + courseId + "/" + userId);
+                            MM.widgets.dialogClose();
+                        };
+            
+                        
+            
+                        var html = '\
+                        <input type="text" id="addnotescore" name="addnotescore" value=""> %\
+                        ';
+            
+                        MM.widgets.dialog(html, options);
+                    
+                    });
+                    
+                    
                     //Start Course Offline
                     $("#showCourseL").on(MM.clickType, function(e) {
                         e.preventDefault();
