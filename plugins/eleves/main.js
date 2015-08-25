@@ -711,6 +711,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     var localCourse = value.toJSON();
                                                     if (localCourse.contents) {
                                                         var localFile = localCourse.contents[0];
+                                                        var localContentId = localCourse.url.split("?id=");
                                                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
                                                         MM.fs.findFileAndReadContents(fileResultL,
                                                             function(path) {
@@ -796,7 +797,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $('#stopCourseL').show();
                                                 $('#showCourseL').hide();
                                                 $('#stopSessionL').hide();
-                                                $('#offcourseC').attr('disabled', true);
+                                                $('#offlineC').hide();
                                                 MM.plugins.resource._showResource(path);
                                     
                                                 
@@ -868,7 +869,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                               $('#stopCourseL').hide();
                                               $("#showCourseL").show();
                                               $('#stopSessionL').show();
-                                              $('#offcourseC').attr('disabled', false);
+                                              $('#offlineC').show();
                                           },
                                           function(fileUrl) {
                                               MM.log('Write Result NOK:'+content);
