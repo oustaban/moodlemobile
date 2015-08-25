@@ -576,7 +576,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                             MM.fs.findFileAndReadContents(resultFile,
                               function (result) {
-                                MM.log('Session Load OK :'+result);
+                                
                                 var d = new Date();
                                 var lenghto = result.length - 1;
                                 var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'",';
@@ -584,27 +584,28 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 var moduleStart = "";
                                 var moduleEnd = "";
                                 var modules = "";
+                                MM.log('Session Load OK :'+localCourses.length);
                                 $.each(localCourses, function( index, value ) {
                                     var localCourse = value.toJSON();
                                     if (localCourse.contents) {
                                         var localFile = localCourse.contents[0];
                                         var localContentId = localCourse.url.split("?id=");
                                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
-                                        MM.log('Session Module:'+fileResultL);
+                                        MM.log('Session Module : '+index+ ' : '+fileResultL);
                                         MM.fs.findFileAndReadContents(fileResultL,
                                             function(path) {
                                                 var obj = JSON.parse(path);
-                                                MM.log('Session Module Existe');
-                                                modules += localContentId[1]+',';
-                                                moduleStart += obj.starttime+',';
-                                                moduleEnd += obj.endtime+',';
+                                                MM.log('Session Module Existe : '+index+' : '+fileResultL);
+                                                modules = modules + localContentId[1]+',';
+                                                moduleStart = moduleStart + obj.starttime+',';
+                                                moduleEnd = moduleEnd + obj.endtime+',';
                                                 
                                                 if (index == localCourses.length - 1) {
                                                     var lenghtc = modules.length - 1;
                                                     var lenghtd = moduleStart.length - 1;
                                                     var lenghte = moduleEnd.length - 1;
                                                     
-                                                    content += '"modules":"'+modules.substr(0, lenghtc) +'","modulesStart":"'+moduleStart.substr(0, lenghtd)+'","modulesEnd":"'+moduleEnd.substr(0, lenghte)+'"}';
+                                                    content = content + '"modules":"'+modules.substr(0, lenghtc) +'","modulesStart":"'+moduleStart.substr(0, lenghtd)+'","modulesEnd":"'+moduleEnd.substr(0, lenghte)+'"}';
                                                     MM.log('Create Session :'+content);
                                                     var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
                                                     
@@ -650,13 +651,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             
                                             },
                                             function(path) {
-                                               MM.log('Session Module Existe pas');
+                                               MM.log('Session Module Existe pas : '+index+' : '+fileResultL);
                                                if (index == localCourses.length - 1) {
                                                     var lenghtc = modules.length - 1;
                                                     var lenghtd = moduleStart.length - 1;
                                                     var lenghte = moduleEnd.length - 1;
                                                     
-                                                    content += '"modules":"'+modules.substr(0, lenghtc) +'","modulesStart":"'+moduleStart.substr(0, lenghtd)+'","modulesEnd":"'+moduleEnd.substr(0, lenghte)+'"}';
+                                                    content = content + '"modules":"'+modules.substr(0, lenghtc) +'","modulesStart":"'+moduleStart.substr(0, lenghtd)+'","modulesEnd":"'+moduleEnd.substr(0, lenghte)+'"}';
                                                     MM.log('Create Session :'+content);
                                                     var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
                                                     
