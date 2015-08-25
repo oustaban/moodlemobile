@@ -572,23 +572,47 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var data = {
                                 "notes[0][userid]" : userId,
                                 "notes[0][publishstate]": 'personal',
-                                "notes[0][courseid]": courseId,
+                                "notes[0][courseid]": course,
                                 "notes[0][text]": $("#addnotescore").val(),
                                 "notes[0][format]": 1
                             };
                             
                             var score = $("#addnotescore").val();
-                            var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
+                            var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                             var message = "Session Enregistrée.";
                                 
                             MM.fs.findFileAndReadContents(resultFile,
                               function (result) {
-                                MM.log('Result OK :'+result);
+                                MM.log('Session Load OK :'+result);
                                 var d = new Date();
                                 var lenghto = result.length - 1;
-                                var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+score+'"}';
-                                MM.log('Create Result :'+content);
-                                var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
+                                var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","modules":"';
+                                var localCourses = MM.db.where('contents', {'courseid':course});
+                               
+                                $.each(localCourses, function( index, value ) {
+                                    var localCourse = value.toJSON();
+                                    if (localCourse.contents) {
+                                        var localFile = localCourse.contents[0];
+                                        var localContentId = localCourse.url.split("?id=");
+                                        var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
+                                        MM.log('Session Module:'+fileResultL);
+                                        MM.fs.fileExists(fileResultL,
+                                            function(path) {
+                                                MM.log('Session Module Existe');
+                                                content += localContentId[1]+',';
+                                                
+                                            
+                                            },
+                                            function(path) {
+                                               MM.log('Session Module Existe pas');
+                                            }
+                                        );
+                                    }
+                                });
+                                var lenghtc = content.length - 1;
+                                content = content.substr(0, lenghtc) +'"}';
+                                MM.log('Create Session :'+content);
+                                var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
                                 
                                 
                                 //create local result file
@@ -596,14 +620,25 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function(fileEntry) {
                                          MM.fs.writeInFile(fileEntry, content, 
                                             function(fileUrl) {
-                                                MM.log('Write Result OK:'+fileUrl);
-                                                $('#stopCourse').hide();
+                                                
+                                                MM.log('Write Session OK:'+fileUrl);
+                                                
+                                                $('#startSessionL').show();
+                                                $('#offlineC').hide();
+                                                $('#startCourseL').hide();
+                                                $('#stopCourseL').hide();
+                                                $('#stopSessionL').hide();
                                                 $("#synchroR").show();
-                                                message = "Note Enregistrée.";
+                                                
+                                                $('input:checkbox').each(function() {
+                                                    $(this).attr("disabled", false );
+                                                });
+                                                
+                                                message = "Session Enregistrée.";
                                                 
                                             },
                                             function(fileUrl) {
-                                                MM.log('Write Result NOK:'+content);
+                                                MM.log('Write Session NOK:'+content);
                                                 message = "Problème lors de l'écriture.Veuillez Réessayer.";
                                             }
                                             
@@ -611,25 +646,25 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     },   
                                         
                                     function(fileEntry) {
-                                       MM.log('Create Result : NOK');
+                                       MM.log('Create Session : NOK');
                                        message = "Problème lors de l'écriture.Veuillez Réessayer.";
                                     }
                                 );
                               },
                               function(result) {
-                                MM.log('Result NOK :'+result+','+resultFile);
+                                MM.log('Session NOK :'+result+','+resultFile);
                                 message = "Problème lors de l'écriture.Veuillez Réessayer.";
                               }
                             );
                             
                             MM.widgets.dialogClose();
-                            MM.popMessage(message, {title:'Ajouter une note', autoclose: 5000, resizable: false});
-                            MM.Router.navigate("eleve/" + courseId + "/" + userId);
+                            MM.popMessage(message, {title:'Récapitulatif de la session', autoclose: 5000, resizable: false});
+                            MM.Router.navigate("eleves/" + course);
                             
                         };
                         
                         options.buttons[MM.lang.s("cancel")] = function() {
-                            MM.Router.navigate("eleve/" + courseId + "/" + userId);
+                            MM.Router.navigate("eleves/" + course );
                             MM.widgets.dialogClose();
                         };
             
