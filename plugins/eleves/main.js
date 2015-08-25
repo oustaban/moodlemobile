@@ -706,6 +706,28 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         MM.log('session.json not deleted:'+oldFile);
                                                      }
                                                 );
+                                                
+                                                $.each(localCourses, function( index, value ) {
+                                                var localCourse = value.toJSON();
+                                                if (localCourse.contents) {
+                                                    var localFile = localCourse.contents[0];
+                                                    var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
+                                                    MM.fs.findFileAndReadContents(fileResultL,
+                                                        function(path) {
+                                                            MM.fs.removeFile (fileResultL,
+                                                                function (result) {
+                                                                   MM.log(fileResultL + ' deleted');
+                                                                },
+                                                                function (result) {
+                                                                   MM.log(fileResultL + ' not deleted');
+                                                                }
+                                                           );
+                                                        },
+                                                        function(path) {
+                                                            
+                                                        }
+                                                    );
+                                                }
                                                      
                                                 
                                             },
@@ -772,6 +794,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.log('Write Result :'+fileUrl);
                                                 $('#stopCourseL').show();
                                                 $('#showCourseL').hide();
+                                                $('#stopSessionL').hide();
+                                                $('#offcourseC').attr('disabled', true);
                                                 MM.plugins.resource._showResource(path);
                                     
                                                 
@@ -841,7 +865,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                           function(fileUrl) {
                                               MM.log('Write Result OK:'+fileUrl);
                                               $('#stopCourseL').hide();
-                                              $("#showCourseL").show();                                  
+                                              $("#showCourseL").show();
+                                              $('#stopSessionL').show();
+                                              $('#offcourseC').attr('disabled', false);
                                           },
                                           function(fileUrl) {
                                               MM.log('Write Result NOK:'+content);
