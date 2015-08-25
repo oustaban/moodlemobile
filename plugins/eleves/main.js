@@ -570,6 +570,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var indexCourse = 0;
                         var indexCourse2 = 1;
                         var usersS = users.split(",");
+                        var d = new Date();
                         
                         $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
@@ -589,7 +590,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.findFileAndReadContents(fileResultL,
                                     function(path) {
                                         var obj = JSON.parse(path);
-                                        MM.log('Session Module Existe : '+fileResultL+ ' : '+obj.starttime + ' : ' + indexCourse2 + ' : ' + indexCourse);
+                                        MM.log('Session Module Existe : '+fileResultL+ ' : '+obj.starttime + ' : '+obj.endtime + ' : ' + indexCourse2 + ' : ' + indexCourse);
                                         modules = modules + localName + '<br/>';
                                         modulesId = modulesId + localContentId[1]+',';
                                         moduleStart = moduleStart + obj.starttime+',';
@@ -599,7 +600,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
-                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'">Signature</button></td></tr>';
+                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" time="'+d.getTime()+'">Signature</button></td></tr>';
                                             });
                                             html += '</table>';
                                             MM.log('Session Module Go:'+html);
@@ -643,7 +644,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.fs.findFileAndReadContents(resultFile,
                               function (result) {
                                 
-                                var d = new Date();
+                                
                                 var lenghto = result.length - 1;
                                 var lenghta = modulesId.length - 1;
                                 var lenghtb = moduleStart.length - 1;
@@ -652,7 +653,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 MM.log('Session Load OK : '+resultFile + ' : ' + content);
                                 
-                                var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
+                                var fileResult = MM.config.current_site.id+"/"+course+"/result/session_"+d.getTime()+".json";
                                 
                                 //create local result file
                                 MM.fs.createFile(fileResult,
@@ -663,9 +664,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.log('Write Session OK:'+fileUrl);
                                                 MM.log('Write Session content:'+content);
                                                 
-                                                $('#startSessionL').show();
+                                                $('#showSessionL').show();
                                                 $('#offlineC').hide();
-                                                $('#startCourseL').hide();
+                                                $('#showCourseL').hide();
                                                 $('#stopCourseL').hide();
                                                 $('#stopSessionL').hide();
                                                 $("#synchroR").show();
@@ -675,6 +676,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 });
                                                 
                                                 message = "Session Enregistrée.";
+                                                var oldFile = MM.config.current_site.id+"/"+course+"/result/session.json";
+                                                MM.fs.removeFile (oldFile,
+                                                     function (result) {
+                                                        MM.log('session.json deleted:'+oldFile);
+                                                     },
+                                                     function (result) {
+                                                        MM.log('session.json not deleted:'+oldFile);
+                                                     }
+                                                );
+                                                     
                                                 
                                             },
                                             function(fileUrl) {
