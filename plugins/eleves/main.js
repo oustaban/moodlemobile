@@ -579,9 +579,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.log('Session Load OK :'+result);
                                 var d = new Date();
                                 var lenghto = result.length - 1;
-                                var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","modules":"';
+                                var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'",';
                                 var localCourses = MM.db.where('contents', {'courseid':course});
-                               
+                                var moduleStart = "";
+                                var moduleEnd = "";
+                                var modules = "";
                                 $.each(localCourses, function( index, value ) {
                                     var localCourse = value.toJSON();
                                     if (localCourse.contents) {
@@ -589,10 +591,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         var localContentId = localCourse.url.split("?id=");
                                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
                                         MM.log('Session Module:'+fileResultL);
-                                        MM.fs.fileExists(fileResultL,
+                                        MM.fs.findFileAndReadContents(fileResultL,
                                             function(path) {
+                                                var obj = JSON.parse(path);
                                                 MM.log('Session Module Existe');
-                                                content += localContentId[1]+',';
+                                                modules += localContentId[1]+',';
+                                                moduleStart += obj.starttime+',';
+                                                moduleEnd += obj.endtime+','
                                                 
                                             
                                             },
@@ -602,8 +607,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         );
                                     }
                                 });
-                                var lenghtc = content.length - 1;
-                                content = content.substr(0, lenghtc) +'"}';
+                                var lenghtc = modules.length - 1;
+                                var lenghtd = moduleStart.length - 1;
+                                var lenghte = moduleEnd.length - 1;
+                                
+                                content += '"modules":"'+modules.substr(0, lenghtc) +'","modulesStart":"'+moduleStart.substr(0, lenghtd)+'","modulesEnd":"'+moduleEnd.substr(0, lenghte)+'"}';
                                 MM.log('Create Session :'+content);
                                 var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
                                 
@@ -615,6 +623,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             function(fileUrl) {
                                                 
                                                 MM.log('Write Session OK:'+fileUrl);
+                                                MM.log('Write Session content:'+content);
                                                 
                                                 $('#startSessionL').show();
                                                 $('#offlineC').hide();
