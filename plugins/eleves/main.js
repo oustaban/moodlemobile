@@ -597,61 +597,112 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.log('Session Module Existe');
                                                 modules += localContentId[1]+',';
                                                 moduleStart += obj.starttime+',';
-                                                moduleEnd += obj.endtime+','
+                                                moduleEnd += obj.endtime+',';
+                                                
+                                                if (index == localCourses.length - 1) {
+                                                    var lenghtc = modules.length - 1;
+                                                    var lenghtd = moduleStart.length - 1;
+                                                    var lenghte = moduleEnd.length - 1;
+                                                    
+                                                    content += '"modules":"'+modules.substr(0, lenghtc) +'","modulesStart":"'+moduleStart.substr(0, lenghtd)+'","modulesEnd":"'+moduleEnd.substr(0, lenghte)+'"}';
+                                                    MM.log('Create Session :'+content);
+                                                    var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
+                                                    
+                                                    
+                                                    //create local result file
+                                                    MM.fs.createFile(fileResult,
+                                                        function(fileEntry) {
+                                                             MM.fs.writeInFile(fileEntry, content, 
+                                                                function(fileUrl) {
+                                                                    
+                                                                    MM.log('Write Session OK:'+fileUrl);
+                                                                    MM.log('Write Session content:'+content);
+                                                                    
+                                                                    $('#startSessionL').show();
+                                                                    $('#offlineC').hide();
+                                                                    $('#startCourseL').hide();
+                                                                    $('#stopCourseL').hide();
+                                                                    $('#stopSessionL').hide();
+                                                                    $("#synchroR").show();
+                                                                    
+                                                                    $('input:checkbox').each(function() {
+                                                                        $(this).attr("disabled", false );
+                                                                    });
+                                                                    
+                                                                    message = "Session Enregistrée.";
+                                                                    
+                                                                },
+                                                                function(fileUrl) {
+                                                                    MM.log('Write Session NOK:'+content);
+                                                                    message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                                                }
+                                                                
+                                                            );
+                                                        },   
+                                                            
+                                                        function(fileEntry) {
+                                                           MM.log('Create Session : NOK');
+                                                           message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                                        }
+                                                    );
+                                                }
                                                 
                                             
                                             },
                                             function(path) {
                                                MM.log('Session Module Existe pas');
+                                               if (index == localCourses.length - 1) {
+                                                    var lenghtc = modules.length - 1;
+                                                    var lenghtd = moduleStart.length - 1;
+                                                    var lenghte = moduleEnd.length - 1;
+                                                    
+                                                    content += '"modules":"'+modules.substr(0, lenghtc) +'","modulesStart":"'+moduleStart.substr(0, lenghtd)+'","modulesEnd":"'+moduleEnd.substr(0, lenghte)+'"}';
+                                                    MM.log('Create Session :'+content);
+                                                    var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
+                                                    
+                                                    
+                                                    //create local result file
+                                                    MM.fs.createFile(fileResult,
+                                                        function(fileEntry) {
+                                                             MM.fs.writeInFile(fileEntry, content, 
+                                                                function(fileUrl) {
+                                                                    
+                                                                    MM.log('Write Session OK:'+fileUrl);
+                                                                    MM.log('Write Session content:'+content);
+                                                                    
+                                                                    $('#startSessionL').show();
+                                                                    $('#offlineC').hide();
+                                                                    $('#startCourseL').hide();
+                                                                    $('#stopCourseL').hide();
+                                                                    $('#stopSessionL').hide();
+                                                                    $("#synchroR").show();
+                                                                    
+                                                                    $('input:checkbox').each(function() {
+                                                                        $(this).attr("disabled", false );
+                                                                    });
+                                                                    
+                                                                    message = "Session Enregistrée.";
+                                                                    
+                                                                },
+                                                                function(fileUrl) {
+                                                                    MM.log('Write Session NOK:'+content);
+                                                                    message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                                                }
+                                                                
+                                                            );
+                                                        },   
+                                                            
+                                                        function(fileEntry) {
+                                                           MM.log('Create Session : NOK');
+                                                           message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                                        }
+                                                    );
+                                                }
                                             }
                                         );
                                     }
                                 });
-                                var lenghtc = modules.length - 1;
-                                var lenghtd = moduleStart.length - 1;
-                                var lenghte = moduleEnd.length - 1;
                                 
-                                content += '"modules":"'+modules.substr(0, lenghtc) +'","modulesStart":"'+moduleStart.substr(0, lenghtd)+'","modulesEnd":"'+moduleEnd.substr(0, lenghte)+'"}';
-                                MM.log('Create Session :'+content);
-                                var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
-                                
-                                
-                                //create local result file
-                                MM.fs.createFile(fileResult,
-                                    function(fileEntry) {
-                                         MM.fs.writeInFile(fileEntry, content, 
-                                            function(fileUrl) {
-                                                
-                                                MM.log('Write Session OK:'+fileUrl);
-                                                MM.log('Write Session content:'+content);
-                                                
-                                                $('#startSessionL').show();
-                                                $('#offlineC').hide();
-                                                $('#startCourseL').hide();
-                                                $('#stopCourseL').hide();
-                                                $('#stopSessionL').hide();
-                                                $("#synchroR").show();
-                                                
-                                                $('input:checkbox').each(function() {
-                                                    $(this).attr("disabled", false );
-                                                });
-                                                
-                                                message = "Session Enregistrée.";
-                                                
-                                            },
-                                            function(fileUrl) {
-                                                MM.log('Write Session NOK:'+content);
-                                                message = "Problème lors de l'écriture.Veuillez Réessayer.";
-                                            }
-                                            
-                                        );
-                                    },   
-                                        
-                                    function(fileEntry) {
-                                       MM.log('Create Session : NOK');
-                                       message = "Problème lors de l'écriture.Veuillez Réessayer.";
-                                    }
-                                );
                               },
                               function(result) {
                                 MM.log('Session NOK :'+result+','+resultFile);
