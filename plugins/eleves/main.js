@@ -569,15 +569,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         options.buttons[addNote] = function() {
             
-                            var data = {
-                                "notes[0][userid]" : userId,
-                                "notes[0][publishstate]": 'personal',
-                                "notes[0][courseid]": course,
-                                "notes[0][text]": $("#addnotescore").val(),
-                                "notes[0][format]": 1
-                            };
                             
-                            var score = $("#addnotescore").val();
+                            
                             var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                             var message = "Session Enregistrée.";
                                 
