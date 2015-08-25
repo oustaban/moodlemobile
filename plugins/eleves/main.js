@@ -565,8 +565,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var localCourses = MM.db.where('contents', {'courseid':course});
                         var moduleStart = "";
                         var moduleEnd = "";
+                        var modulesId = "";
                         var modules = "";
-                        var indexCourse = 1;
+                        var indexCourse = 0;
+                        var indexCourse2 = 1;
+                        var usersS = users.split(",");
+                        
+                        $.each(localCourses, function( index, value ) {
+                            var localCourse = value.toJSON();
+                            if (localCourse.contents) {
+                                indexCourse++;
+                            }
+                        });
                         
                         $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
@@ -584,25 +594,34 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         modulesId = modulesId + localContentId[1]+',';
                                         moduleStart = moduleStart + obj.starttime+',';
                                         moduleEnd = moduleEnd + obj.endtime+',';
+                                        if (indexCourse2 == indexCourse) {
+                                            $.each(usersS, function( indexS, valueS ) {
+                                                var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
+                                                var userG = userP.toJSON();
+                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'">Signature</button></td></tr>';
+                                            });
+                                        }
                                     },
                                     function(path) {
-                                         MM.log('Session Module Existe Pas : '+fileResultL);   
+                                        MM.log('Session Module Existe Pas : '+fileResultL);
+                                        if (indexCourse2 == indexCourse) {
+                                            $.each(usersS, function( indexS, valueS ) {
+                                                var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
+                                                var userG = userP.toJSON();
+                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'">Signature</button></td></tr>';
+                                            });
+                                        }
                                     }
                                     
                                 );
-                            
+                                indexCourse2++;
                             }                              
                                                               
                         });
                         
-                        var usersS = users.split(",");
                         
-                        $.each(usersS, function( indexS, valueS ) {
-                            var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
-                            MM.log('stopSessionL each:'+valueS+','+userP);
-                            var userG = userP.toJSON();
-                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'">Signature</button></td></tr>';
-                        });
+                        
+                        
                         
                         options.buttons[addNote] = function() {
             
