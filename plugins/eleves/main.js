@@ -549,16 +549,24 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var course = $(this).attr("course");
                         var users = $(this).attr("users");
                         var module = $(this).attr("module");
-                        MM.log('stopCourseL:'+course+','+users+','+module);
+                        MM.log('stopSessionL:'+course+','+users+','+module);
                         
                         var addNote = "Ajouter";
 
                         var options = {
-                            title: 'Ajouter une note',
-                            width: "90%",
+                            title: 'Récapitulatif de la session',
+                            width: "100%",
                             buttons: {}
                         };
             
+                        var usersS = users.split(",");
+                        $.each(usersS, function( indexS, valueS ) {
+                            var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
+                            MM.log('stopSessionL each:'+valueS+','+userP);
+                            var userG = userP.toJSON();
+                            html += '<label>'+userG.fullname+':</label><input type="text" id="addnotescore'+indexS+'" user="'+userG.userid+'" name="addnotescore'+indexS+'" value=""> % <br>';
+                        });
+                        
                         options.buttons[addNote] = function() {
             
                             var data = {
@@ -571,7 +579,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             var score = $("#addnotescore").val();
                             var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
-                            var message = "Note Enregistrée.";
+                            var message = "Session Enregistrée.";
                                 
                             MM.fs.findFileAndReadContents(resultFile,
                               function (result) {
@@ -693,8 +701,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var addNote = "Ajouter";
 
                         var options = {
-                            title: 'Ajouter une note',
-                            width: "90%",
+                            title: 'Récapitulatif de la session',
+                            width: "100%",
                             buttons: {}
                         };
             
