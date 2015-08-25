@@ -552,7 +552,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log('stopSessionL:'+course+','+users+','+module);
                         
                         var addNote = "Ajouter";
-                        var html = '<table width="100%"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
+                        var html = '<table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
 
                         var options = {
                             title: 'Récapitulatif de la session',
@@ -645,9 +645,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 var d = new Date();
                                 var lenghto = result.length - 1;
-                                var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'",';
+                                var lenghta = modulesId.length - 1;
+                                var lenghtb = moduleStart.length - 1;
+                                var lenghtc = moduleEnd.length - 1;
+                                var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
                                 
-                                MM.log('Session Load OK : '+resultFile);
+                                MM.log('Session Load OK : '+resultFile + ' : ' + content);
                                 
                                 var fileResult = MM.config.current_site.id+"/"+course+"/result/session.json";
                                 
