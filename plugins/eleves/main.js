@@ -708,26 +708,27 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 );
                                                 
                                                 $.each(localCourses, function( index, value ) {
-                                                var localCourse = value.toJSON();
-                                                if (localCourse.contents) {
-                                                    var localFile = localCourse.contents[0];
-                                                    var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
-                                                    MM.fs.findFileAndReadContents(fileResultL,
-                                                        function(path) {
-                                                            MM.fs.removeFile (fileResultL,
-                                                                function (result) {
-                                                                   MM.log(fileResultL + ' deleted');
-                                                                },
-                                                                function (result) {
-                                                                   MM.log(fileResultL + ' not deleted');
-                                                                }
-                                                           );
-                                                        },
-                                                        function(path) {
-                                                            
-                                                        }
-                                                    );
-                                                }
+                                                    var localCourse = value.toJSON();
+                                                    if (localCourse.contents) {
+                                                        var localFile = localCourse.contents[0];
+                                                        var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
+                                                        MM.fs.findFileAndReadContents(fileResultL,
+                                                            function(path) {
+                                                                MM.fs.removeFile (fileResultL,
+                                                                    function (result) {
+                                                                       MM.log(fileResultL + ' deleted');
+                                                                    },
+                                                                    function (result) {
+                                                                       MM.log(fileResultL + ' not deleted');
+                                                                    }
+                                                               );
+                                                            },
+                                                            function(path) {
+                                                                
+                                                            }
+                                                        );
+                                                    }
+                                                });
                                                      
                                                 
                                             },
