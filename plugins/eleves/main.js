@@ -277,6 +277,27 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                     }
                     
+                    var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
+                    MM.fs.getDirectoryContents(directoryResult,
+                        function(entries) {
+
+                            if(entries.length > 0) {
+                                
+                                $.each(entries, function(index, entry) {
+                                    MM.log('Session Stockée:'+entry.name);
+                                    var name = entry.name.split("session_");
+                                    if (name[1]) {
+                                        $("#synchroR").show();
+                                    }
+                                });
+                            }
+                            
+                        },
+                        function() {
+                            //
+                        }
+                    );
+                    
                     $.each(users, function( index, value ) {
                         $.each(modulesL, function( indexM, valueM ) {
                             var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valueM + ".json";
