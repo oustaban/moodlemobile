@@ -584,6 +584,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 var moduleStart = "";
                                 var moduleEnd = "";
                                 var modules = "";
+                                var indexCourse = 1;
                                 MM.log('Session Load OK :'+localCourses.length);
                                 $.each(localCourses, function( index, value ) {
                                     var localCourse = value.toJSON();
@@ -591,16 +592,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         var localFile = localCourse.contents[0];
                                         var localContentId = localCourse.url.split("?id=");
                                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
-                                        MM.log('Session Module : '+index+ ' : '+fileResultL);
+                                        MM.log('Session Module : '+indexCourse+ ' : '+fileResultL);
                                         MM.fs.findFileAndReadContents(fileResultL,
                                             function(path) {
                                                 var obj = JSON.parse(path);
-                                                MM.log('Session Module Existe : '+index+' : '+fileResultL);
+                                                MM.log('Session Module Existe : '+indexCourse+' : '+fileResultL+ ' : '+obj.starttime);
                                                 modules = modules + localContentId[1]+',';
                                                 moduleStart = moduleStart + obj.starttime+',';
                                                 moduleEnd = moduleEnd + obj.endtime+',';
                                                 
-                                                if (index == localCourses.length - 1) {
+                                                if (indexCourse == localCourses.length) {
                                                     var lenghtc = modules.length - 1;
                                                     var lenghtd = moduleStart.length - 1;
                                                     var lenghte = moduleEnd.length - 1;
@@ -651,8 +652,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             
                                             },
                                             function(path) {
-                                               MM.log('Session Module Existe pas : '+index+' : '+fileResultL);
-                                               if (index == localCourses.length - 1) {
+                                               MM.log('Session Module Existe pas : '+indexCourse+' : '+fileResultL);
+                                               if (indexCourse == localCourses.length ) {
                                                     var lenghtc = modules.length - 1;
                                                     var lenghtd = moduleStart.length - 1;
                                                     var lenghte = moduleEnd.length - 1;
@@ -701,6 +702,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 }
                                             }
                                         );
+                                        indexCourse++;
                                     }
                                 });
                                 
