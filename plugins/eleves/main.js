@@ -654,7 +654,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<table width="100%" border="0"><tr><td><div id="canvasContainer" width="100%" style="background-color:#cccccc"><canvas  id="signature" name="signature"height="200px" /></div></td></tr></table>';
+                                                var html = '<table width="100%" border="0"><tr><td><div id="canvasContainer" width="90%" style="background-color:#cccccc"><canvas id="signature" name="signature"height="200px" /></div></td></tr></table>';
                         
                                                 var options = {
                                                     title: 'Signature de la session pour '+userG.fullname,
