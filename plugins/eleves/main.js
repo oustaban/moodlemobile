@@ -531,6 +531,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $(this).attr("disabled", true);
                         });
                         
+                        $('#offlineC select').val("");
+                        
                         var users = $(this).attr('users');
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
