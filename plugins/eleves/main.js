@@ -701,6 +701,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#stopCourseL').hide();
                                                     $('#stopSessionL').hide();
                                                     $("#synchroR").show();
+                                                    $("#stopSessionL").attr('time','');
                                                     
                                                     $('input:checkbox').each(function() {
                                                         $(this).attr("disabled", false );
@@ -765,7 +766,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                   }
                                 );
                                 
-                                $(this).attr('time','');
+                                
                                 MM.widgets.dialogClose();
                                 MM.popMessage(message, {title:'Récapitulatif de la session', autoclose: 5000, resizable: false});
                                 MM.Router.navigate("eleves/" + course);
@@ -846,7 +847,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     ); 
                                 });
                                 
-                                $(this).attr('time','');
+                                $('#showSessionL').show();
+                                $('#offlineC').hide();
+                                $('#showCourseL').hide();
+                                $('#stopCourseL').hide();
+                                $('#stopSessionL').hide();
+                                $("#stopSessionL").attr('time','');
+                                
+                                $('input:checkbox').each(function() {
+                                    $(this).attr("disabled", false );
+                                });
+                                                    
+                                $("#stopSessionL").attr('time','');
                                 MM.widgets.dialogClose();
                                 MM.popMessage(message, {title:'Récapitulatif de la session', autoclose: 5000, resizable: false});
                                 MM.Router.navigate("eleves/" + course);
