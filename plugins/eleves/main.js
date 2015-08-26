@@ -638,6 +638,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             html += '</table>';
                                             MM.log('Session Module Go:'+html);
                                             MM.widgets.dialog(html, options);
+                                            
                                             $("#signature").on(MM.clickType, function(e) {
                         
                                                 MM.widgets.dialogClose();
@@ -652,7 +653,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<table width="100%" border="0"><tr><td><canvas id="signature" height="200px" /></td></tr></table>';
+                                                var html = '<table width="100%" border="0"><tr><td><canvas id="signature" name="signature"height="200px" /></td></tr></table>';
                         
                                                 var options = {
                                                     title: 'Signature de la session',
@@ -668,7 +669,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                 MM.widgets.dialog(html, options);
                                                 
-                                                var sigCapture = new SignatureCapture( "signature" );
+                                                
+                                                $(document).ready(function(e) {     
+                                                    var sigCapture = new SignatureCapture( "signature" );
+                                                });
                                                 
                                             });
                                         }
