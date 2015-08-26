@@ -633,11 +633,44 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
-                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" time="'+timeSession+'">Signature</button></td></tr>';
+                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'">Signature</button></td></tr>';
                                             });
                                             html += '</table>';
                                             MM.log('Session Module Go:'+html);
                                             MM.widgets.dialog(html, options);
+                                            $("#signature").on(MM.clickType, function(e) {
+                        
+                                                MM.widgets.dialogClose();
+                                                
+                                                var timeSession = $(this).attr("time");
+                                                var course = $(this).attr("course");
+                                                var userid = $(this).attr("userid");
+                                                
+                                                MM.log('Signature : ' + timeSession + ',' + course + ',' + userid);
+                                                
+                                                var userP = MM.db.get('users', MM.config.current_site.id + "-" + userid);
+                                                var userG = userP.toJSON();
+                                                
+                                                var addNote = "Valider";
+                                                var html = '<table width="100%" border="0"><tr><td><canvas id="signature" height="200px" /></td></tr></table>';
+                        
+                                                var options = {
+                                                    title: 'Signature de la session',
+                                                    width: "100%",
+                                                    buttons: {}
+                                                };
+                                                
+                                                options.buttons[MM.lang.s("cancel")] = function() {
+                                                    MM.Router.navigate("eleves/" + course );
+                                                    MM.widgets.dialogClose();
+                                                    $('#stopSessionL'.click());
+                                                };
+                                                
+                                                MM.widgets.dialog(html, options);
+                                                
+                                                var sigCapture = new SignatureCapture( "signature" );
+                                                
+                                            });
                                         }
                                         indexCourse2++;
                                     },
@@ -874,6 +907,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                     
                     });
+                    
+                    
+                    
+                    //Start Signature
+                    
+                    
+                    
                     
                     
                     //Start Course Offline
