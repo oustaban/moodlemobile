@@ -245,7 +245,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     if (localCourses) {
                         
                         
-                        $('#offlineC').html('<option value="0">Sélectionner un cours</option>')
+                        $('#offlineC').html('<option value="null">Sélectionner un cours</option>')
                         
                         $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
@@ -492,7 +492,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $("#stopCourseL").attr("module",option[1]);
                         MM.log("Change Selected Course:"+selectedCourse);
                         
-                        if (selectedCourse != 0) {
+                        if (selectedCourse != "null") {
                            MM.log("Selected Course:"+selectedCourse);
                            
                            usersSelected = "";
@@ -531,7 +531,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $(this).attr("disabled", true);
                         });
                         
-                        $('#offlineC select').val("0");
+                        $('#offlineC select').val("null");
                         
                         var users = $(this).attr('users');
                         
