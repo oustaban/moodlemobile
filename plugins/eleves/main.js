@@ -646,6 +646,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var timeSession = $(this).attr("time");
                                                 var course = $(this).attr("course");
                                                 var userid = $(this).attr("userid");
+                                                var sigCapture = null;
                                                 
                                                 MM.log('Signature : ' + timeSession + ',' + course + ',' + userid);
                                                 
@@ -653,10 +654,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<table width="100%" border="0"><tr><td><canvas id="signature" name="signature"height="200px" /></td></tr></table>';
+                                                var html = '<table width="100%" border="0"><tr><td><div id="canvasContainer" width="100%" style="background-color:#cccccc"><canvas  id="signature" name="signature"height="200px" /></div></td></tr></table>';
                         
                                                 var options = {
-                                                    title: 'Signature de la session',
+                                                    title: 'Signature de la session pour '+userG.fullname,
                                                     width: "100%",
                                                     buttons: {}
                                                 };
@@ -664,7 +665,39 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 options.buttons[MM.lang.s("cancel")] = function() {
                                                     MM.Router.navigate("eleves/" + course );
                                                     MM.widgets.dialogClose();
-                                                    $('#stopSessionL'.click());
+                                                    $('#stopSessionL').click();
+                                                };
+                                                
+                                                
+                                                
+                                                options.buttons["Effacer"] = function() {
+                                                    sigCapture.clear();
+                                                };
+                                                
+                                                options.buttons["Valider"] = function() {
+                                                    var sig = sigCapture.toString();
+                                                    var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".jpg";
+                                    
+                                                    //create local result file
+                                                    MM.fs.createFile(fileSignature,
+                                                        function(fileEntry) {
+                                                            MM.fs.writeInFile(fileEntry, sig, 
+                                                                function(fileUrl) {
+                                                                    MM.log(' Write Signature OK : ' + fileUrl);
+                                                                },
+                                                                function(fileUrl) {
+                                                                    MM.log(' Write Signature NOK : ' + fileUrl);
+                                                                }
+                                                            );
+                                                        },
+                                                        function(fileEntry) {
+                                                            MM.log(' Write Signature NOK : ' + fileSignature);
+                                                        }
+                                                    );
+                                                                
+                                                    MM.Router.navigate("eleves/" + course );
+                                                    MM.widgets.dialogClose();
+                                                    $('#stopSessionL').click();
                                                 };
                                                 
                                                 MM.widgets.dialog(html, options);
