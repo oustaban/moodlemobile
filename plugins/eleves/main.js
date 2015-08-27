@@ -637,10 +637,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
                                                 var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".json";
-                                
+                                                
                                                 MM.fs.fileExists(fileSignature,
                                                     function(path) {
-                                                        MM.log('Image Signature:'+fileSignature);
+                                                        MM.log('Image Signature OK:'+fileSignature);
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+MM.fs.getRoot() + '/' + fileSignature;+'" width="50" height="40"></td></tr>';
                                                         if (indexS == usersS.length - 1) {
                                                             html += '</table>';
@@ -650,6 +650,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         
                                                     },
                                                     function(path) {
+                                                        MM.log('Image Signature NOK:'+fileSignature);
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
                                                         if (indexS == usersS.length - 1) {
                                                             html += '</table>';
