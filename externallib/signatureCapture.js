@@ -249,7 +249,7 @@ function signaturePopin( elem ) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="signature" name="signature" height="200px" /></div>';
+                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div>';
                         
                                                 var options = {
                                                     title: 'Signature de la session pour '+userG.fullname,
@@ -266,12 +266,12 @@ function signaturePopin( elem ) {
                                                 
                                                 
                                                 options.buttons["Effacer"] = function() {
-                                                    sigCapture = new SignatureCapture( "signature" );
+                                                    //sigCapture = new SignatureCapture( "canvassignature" );
                                                     sigCapture.clear();
                                                 };
                                                 
                                                 options.buttons["Valider"] = function() {
-                                                    sigCapture = new SignatureCapture( "signature" );
+                                                    //sigCapture = new SignatureCapture( "canvassignature" );
                                                     var sig = sigCapture.toString();
 													var sigDec = Base64.decode(sig);
 													var sigData = "data:image/png;base64,"+sig;
@@ -321,7 +321,7 @@ function signaturePopin( elem ) {
                                                 
                                                 
                                                 $(document).ready(function(e) {     
-                                                    var sigCapture = new SignatureCapture( "signature" );
+                                                    var sigCapture = new SignatureCapture( "canvassignature" );
                                                 });
                                                 
 }
