@@ -279,8 +279,8 @@ function signaturePopin( elem ) {
 													//var index = sig.indexOf( "," )+1;
 													//sig = sig.substring( index );
 													
-                                                    var sigDec = Base64.decode(sig);
-													var sigData = "data:image/png;base64,"+sig;
+                                                    //var sigDec = Base64.decode(sig);
+													//var sigData = "data:image/png;base64,"+sig;
                                                     var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".png";
 													
 													
@@ -289,7 +289,7 @@ function signaturePopin( elem ) {
                                                         function(fileEntry) {
                                                             MM.fs.writeInFile(fileEntry, sig, 
                                                                 function(fileUrl) {
-                                                                    MM.log(' Write Signature OK : ' + fileUrl+':'+sigDec);
+                                                                    MM.log(' Write Signature OK : ' + fileUrl);
 																	MM.Router.navigate("eleves/" + course );
 																	MM.widgets.dialogClose();
 																	$('#stopSessionL').click();
