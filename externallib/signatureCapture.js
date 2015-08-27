@@ -276,8 +276,8 @@ function signaturePopin( elem ) {
                                                 options.buttons["Valider"] = function() {
                                                     //var sigCapture2 = new SignatureCapture( "canvassignature" );
 													var sig = $('#canvassignature').get(0).toDataURL("image/png");
-													var index = sig.indexOf( "," )+1;
-													sig = sig.substring( index );
+													//var index = sig.indexOf( "," )+1;
+													//sig = sig.substring( index );
 													
                                                     var sigDec = Base64.decode(sig);
 													var sigData = "data:image/png;base64,"+sig;
@@ -287,7 +287,7 @@ function signaturePopin( elem ) {
                                                     //create local result file
                                                     MM.fs.createFile(fileSignature,
                                                         function(fileEntry) {
-                                                            MM.fs.writeInFile(fileEntry, sigDec, 
+                                                            MM.fs.writeInFile(fileEntry, sig, 
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature OK : ' + fileUrl+':'+sigDec);
 																	MM.Router.navigate("eleves/" + course );
