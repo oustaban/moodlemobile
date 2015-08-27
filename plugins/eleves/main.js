@@ -633,6 +633,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         moduleEnd = moduleEnd + obj.endtime+',';
                                         MM.log('Session Module Existe : ' + modules + ' : ' + modulesId + ' : ' + moduleStart);
                                         if (indexCourse2 == indexCourse) {
+                                            var indexUser = 1;
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
@@ -644,20 +645,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"></td></tr>';
-                                                        if (indexS == usersS.length - 1) {
+                                                        if (indexUser == usersS.length) {
                                                             html += '</table>';
                                                             MM.log('Session Module Go:'+html);
                                                             MM.widgets.dialog(html, options);
                                                         }
+                                                        indexUser++;
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
-                                                        if (indexS == usersS.length - 1) {
+                                                        if (indexUser == usersS.length) {
                                                             html += '</table>';
                                                             MM.log('Session Module Go:'+html);
                                                             MM.widgets.dialog(html, options);
                                                         }
+                                                        indexUser++;
                                                     }
                                                 );
                                                 
