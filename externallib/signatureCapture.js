@@ -269,12 +269,12 @@ function signaturePopin( elem ) {
                                                 
                                                 
                                                 options.buttons["Effacer"] = function() {
-                                                    //sigCapture = new SignatureCapture( "canvassignature" );
+                                                    var sigCapture = new SignatureCapture( "canvassignature" );
                                                     sigCapture.clear();
                                                 };
                                                 
                                                 options.buttons["Valider"] = function() {
-                                                    //sigCapture = new SignatureCapture( "canvassignature" );
+                                                    var sigCapture = new SignatureCapture( "canvassignature" );
                                                     var sig = sigCapture.toString();
 													var sigDec = Base64.decode(sig);
 													var sigData = "data:image/png;base64,"+sig;
