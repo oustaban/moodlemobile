@@ -633,7 +633,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
-                                                var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".json";
+                                                var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".json";
                                 
                                                 MM.fs.fileExists(fileSignature,
                                                     function(path) {
