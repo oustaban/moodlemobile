@@ -638,11 +638,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userG = userP.toJSON();
                                                 var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".png";
                                                 
-                                                
+                                                var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+userG.userid + "_" + timeSession + ".png";
+                                    
                                                 MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'" /></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ MM.fs.getRoot() + '/' + fileSignature +'"></td></tr>';
                                                         if (indexS == usersS.length - 1) {
                                                             html += '</table>';
                                                             MM.log('Session Module Go:'+html);
