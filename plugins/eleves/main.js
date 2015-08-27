@@ -633,7 +633,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
-                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'">Signature</button></td></tr>';
+                                                var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".json";
+                                
+                                                MM.fs.fileExists(fileSignature,
+                                                    function(path) {
+                                                        MM.log('Image Signature:'+fileSignature);
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+MM.fs.getRoot() + '/' + fileSignature;+'" width="50" height="40"></td></tr>';
+                                                    },
+                                                    function(path) {
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'">Signature</button></td></tr>';
+                                                    }
+                                                );
+                                                    
+                                                
                                             });
                                             html += '</table>';
                                             MM.log('Session Module Go:'+html);
@@ -655,7 +667,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<table width="100%" border="1"><tr><td><div id="canvasContainer" width="90%" style="background-color:#cccccc"><canvas id="signature" name="signature"height="200px" /></div></td></tr></table>';
+                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="signature" name="signature" height="200px" /></div>';
                         
                                                 var options = {
                                                     title: 'Signature de la session pour '+userG.fullname,
