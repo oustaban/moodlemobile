@@ -636,7 +636,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
-                                                var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".jpg";
+                                                var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".png";
                                                 
                                                 MM.fs.fileExists(fileSignature,
                                                     function(path) {
@@ -857,7 +857,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $.each(usersS, function( indexS, valueS ) {
                                     var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                     var userG = userP.toJSON();
-                                    var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+userG.userid + "_" + timeSession + ".jpg";
+                                    var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+userG.userid + "_" + timeSession + ".png";
                                     
                                     MM.fs.findFileAndReadContents(signatureFile,
                                         function(path) {

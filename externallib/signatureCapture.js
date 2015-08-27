@@ -139,7 +139,7 @@ function signaturePopin( elem ) {
                                                 options.buttons["Valider"] = function() {
                                                     sigCapture = new SignatureCapture( "signature" );
                                                     var sig = sigCapture.toString();
-                                                    var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".jpg";
+                                                    var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".png";
                                     
                                                     //create local result file
                                                     MM.fs.createFile(fileSignature,
