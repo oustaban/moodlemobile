@@ -168,7 +168,7 @@ var Base64 = {
 
         }
 
-        //output = Base64._utf8_decode(output);
+        output = Base64._utf8_decode(output);
 
         return output;
 
