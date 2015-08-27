@@ -322,7 +322,7 @@ function signaturePopin( elem ) {
                                                 
                                                 
                                                 $(document).ready(function(e) {     
-                                                    //var sigCapture = new SignatureCapture( "canvassignature" );
+                                                    var sigCapture = new SignatureCapture( "canvassignature" );
                                                 });
                                                 
 }
