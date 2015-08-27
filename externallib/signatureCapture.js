@@ -241,8 +241,8 @@ function signaturePopin( elem ) {
                                                 var timeSession = $(elem).attr("time");
                                                 var course = $(elem).attr("course");
                                                 var userid = $(elem).attr("userid");
-                                                //var sigCapture = null;
-												var sigCapture = new SignatureCapture( "canvassignature" );
+                                                var sigCapture = null;
+												//var sigCapture = new SignatureCapture( "canvassignature" );
                                                 
                                                 MM.log('Signature : ' + timeSession + ',' + course + ',' + userid);
                                                 
@@ -250,7 +250,7 @@ function signaturePopin( elem ) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div>';
+                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div><script>var sigCapture = new SignatureCapture( "canvassignature" );</script>';
                         
                                                 var options = {
                                                     title: 'Signature de la session pour '+userG.fullname,
