@@ -147,20 +147,27 @@ function signaturePopin( elem ) {
                                                             MM.fs.writeInFile(fileEntry, sig, 
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature OK : ' + fileUrl);
+																	MM.Router.navigate("eleves/" + course );
+																	MM.widgets.dialogClose();
+																	$('#stopSessionL').click();
                                                                 },
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature NOK : ' + fileUrl);
+																	MM.Router.navigate("eleves/" + course );
+																	MM.widgets.dialogClose();
+																	$('#stopSessionL').click();
                                                                 }
                                                             );
                                                         },
                                                         function(fileEntry) {
                                                             MM.log(' Write Signature NOK : ' + fileSignature);
+															MM.Router.navigate("eleves/" + course );
+															MM.widgets.dialogClose();
+															$('#stopSessionL').click();
                                                         }
                                                     );
                                                                 
-                                                    MM.Router.navigate("eleves/" + course );
-                                                    MM.widgets.dialogClose();
-                                                    $('#stopSessionL').click();
+                                                    
                                                 };
                                                 
                                                 MM.widgets.dialog(html, options);
