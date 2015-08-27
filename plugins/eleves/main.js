@@ -639,17 +639,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     function(path) {
                                                         MM.log('Image Signature:'+fileSignature);
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+MM.fs.getRoot() + '/' + fileSignature;+'" width="50" height="40"></td></tr>';
+                                                        html += '</table>';
+                                                        MM.log('Session Module Go:'+html);
+                                                        MM.widgets.dialog(html, options);
                                                     },
                                                     function(path) {
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'">Signature</button></td></tr>';
+                                                        html += '</table>';
+                                                        MM.log('Session Module Go:'+html);
+                                                        MM.widgets.dialog(html, options);
                                                     }
                                                 );
                                                     
                                                 
                                             });
-                                            html += '</table>';
-                                            MM.log('Session Module Go:'+html);
-                                            MM.widgets.dialog(html, options);
+                                            
                                             
                                             $("#signature").bind( MM.clickType, function() {
                                             //$("#signature").on(MM.clickType, function(e) {
