@@ -269,8 +269,8 @@ function signaturePopin( elem ) {
                                                 
                                                 
                                                 options.buttons["Effacer"] = function() {
-                                                    var sigCapture = new SignatureCapture( "canvassignature" );
-                                                    sigCapture.clear();
+                                                    var sig2 = $('#canvassignature').get(0).toDataURL("image/png");
+                                                    sig2.clear();
                                                 };
                                                 
                                                 options.buttons["Valider"] = function() {
@@ -283,23 +283,13 @@ function signaturePopin( elem ) {
 													var sigData = "data:image/png;base64,"+sig;
                                                     var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".png";
 													
-													var data = { "signature":sig };
-												   
-												    var url = "http://195.154.116.73/zykos/signature.php";
-												    $.ajax({
-													  type: 'POST',
-													  url: url,
-													  data:data,
-													  success: function (data, textStatus, jqXHR) {
-														MM.log('upload success')
-													  }
-												    });
+													
                                                     //create local result file
                                                     MM.fs.createFile(fileSignature,
                                                         function(fileEntry) {
-                                                            MM.fs.writeInFile(fileEntry, sig, 
+                                                            MM.fs.writeInFile(fileEntry, sigDec, 
                                                                 function(fileUrl) {
-                                                                    MM.log(' Write Signature OK : ' + fileUrl+':'+sig);
+                                                                    MM.log(' Write Signature OK : ' + fileUrl+':'+sigDec);
 																	MM.Router.navigate("eleves/" + course );
 																	MM.widgets.dialogClose();
 																	$('#stopSessionL').click();
