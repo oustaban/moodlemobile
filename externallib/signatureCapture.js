@@ -274,14 +274,15 @@ function signaturePopin( elem ) {
                                                     sigCapture = new SignatureCapture( "signature" );
                                                     var sig = sigCapture.toString();
 													var sigDec = Base64.decode(sig);
+													var sigData = "data:image/png;base64,"+sig;
                                                     var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".png";
                                     
                                                     //create local result file
                                                     MM.fs.createFile(fileSignature,
                                                         function(fileEntry) {
-                                                            MM.fs.writeInFile(fileEntry, sigDec, 
+                                                            MM.fs.writeInFile(fileEntry, sigData, 
                                                                 function(fileUrl) {
-                                                                    MM.log(' Write Signature OK : ' + fileUrl+':'+sig+':'+sigDec);
+                                                                    MM.log(' Write Signature OK : ' + fileUrl+':'+sigData);
 																	MM.Router.navigate("eleves/" + course );
 																	MM.widgets.dialogClose();
 																	$('#stopSessionL').click();

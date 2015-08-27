@@ -638,16 +638,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userG = userP.toJSON();
                                                 var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".png";
                                                 
-                                                MM.fs.fileExists(fileSignature,
+                                                
+                                                MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ MM.fs.getRoot() + '/' + fileSignature +'" width="50" height="40"></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'" width="50" height="40"></td></tr>';
                                                         if (indexS == usersS.length - 1) {
                                                             html += '</table>';
                                                             MM.log('Session Module Go:'+html);
                                                             MM.widgets.dialog(html, options);
                                                         }
-                                                        
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
@@ -657,6 +657,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             MM.log('Session Module Go:'+html);
                                                             MM.widgets.dialog(html, options);
                                                         }
+                                                    }
+                                                );
+                                                
+                                                MM.fs.fileExists(fileSignature,
+                                                    function(path) {
+                                                        
+                                                        
+                                                    },
+                                                    function(path) {
+                                                        
                                                     }
                                                 );
                                                     
