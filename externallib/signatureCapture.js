@@ -146,7 +146,7 @@ function signaturePopin( elem ) {
                                                         function(fileEntry) {
                                                             MM.fs.writeInFile(fileEntry, sig, 
                                                                 function(fileUrl) {
-                                                                    MM.log(' Write Signature OK : ' + fileUrl);
+                                                                    MM.log(' Write Signature OK : ' + fileUrl+':'+sig);
 																	MM.Router.navigate("eleves/" + course );
 																	MM.widgets.dialogClose();
 																	$('#stopSessionL').click();
