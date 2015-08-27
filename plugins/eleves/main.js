@@ -636,12 +636,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
-                                                var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".json";
+                                                var fileSignature = MM.fs.getRoot() + '/' + MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".json";
                                                 
                                                 MM.fs.fileExists(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+MM.fs.getRoot() + '/' + fileSignature;+'" width="50" height="40"></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ fileSignature +'" width="50" height="40"></td></tr>';
                                                         if (indexS == usersS.length - 1) {
                                                             html += '</table>';
                                                             MM.log('Session Module Go:'+html);
