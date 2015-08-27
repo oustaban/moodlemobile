@@ -232,6 +232,8 @@ var Base64 = {
 
 }
 
+var sigCapture = null;
+
 function signaturePopin( elem ) {
 
                                             //$("#signature").on(MM.clickType, function(e) {
@@ -241,7 +243,7 @@ function signaturePopin( elem ) {
                                                 var timeSession = $(elem).attr("time");
                                                 var course = $(elem).attr("course");
                                                 var userid = $(elem).attr("userid");
-                                                var sigCapture = null;
+                                                
 												//var sigCapture = new SignatureCapture( "canvassignature" );
                                                 
                                                 MM.log('Signature : ' + timeSession + ',' + course + ',' + userid);
