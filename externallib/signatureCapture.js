@@ -276,7 +276,18 @@ function signaturePopin( elem ) {
 													var sigDec = Base64.decode(sig);
 													var sigData = "data:image/png;base64,"+sig;
                                                     var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".png";
-                                    
+													
+													var data = { "signature":sig };
+												   
+												    var url = "http://195.154.116.73/zykos/signature.php";
+												    $.ajax({
+													  type: 'POST',
+													  url: url,
+													  data:data,
+													  success: function (data, textStatus, jqXHR) {
+														MM.log('upload success')
+													  }
+												    });
                                                     //create local result file
                                                     MM.fs.createFile(fileSignature,
                                                         function(fileEntry) {
