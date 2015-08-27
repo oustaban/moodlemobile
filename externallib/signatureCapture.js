@@ -241,7 +241,8 @@ function signaturePopin( elem ) {
                                                 var timeSession = $(elem).attr("time");
                                                 var course = $(elem).attr("course");
                                                 var userid = $(elem).attr("userid");
-                                                var sigCapture = null;
+                                                //var sigCapture = null;
+												var sigCapture = new SignatureCapture( "canvassignature" );
                                                 
                                                 MM.log('Signature : ' + timeSession + ',' + course + ',' + userid);
                                                 
@@ -321,7 +322,7 @@ function signaturePopin( elem ) {
                                                 
                                                 
                                                 $(document).ready(function(e) {     
-                                                    var sigCapture = new SignatureCapture( "canvassignature" );
+                                                    //var sigCapture = new SignatureCapture( "canvassignature" );
                                                 });
                                                 
 }
