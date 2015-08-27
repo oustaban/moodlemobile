@@ -280,9 +280,9 @@ function signaturePopin( elem ) {
                                                     //create local result file
                                                     MM.fs.createFile(fileSignature,
                                                         function(fileEntry) {
-                                                            MM.fs.writeInFile(fileEntry, sigDec, 
+                                                            MM.fs.writeInFile(fileEntry, sig, 
                                                                 function(fileUrl) {
-                                                                    MM.log(' Write Signature OK : ' + fileUrl+':'+sigDec);
+                                                                    MM.log(' Write Signature OK : ' + fileUrl+':'+sig);
 																	MM.Router.navigate("eleves/" + course );
 																	MM.widgets.dialogClose();
 																	$('#stopSessionL').click();
