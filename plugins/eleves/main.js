@@ -76,6 +76,80 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
         },
         
+        
+        signaturePopin: function(elem) {
+                                            //$("#signature").on(MM.clickType, function(e) {
+                        
+                                                MM.widgets.dialogClose();
+                                                
+                                                var timeSession = $(elem).attr("time");
+                                                var course = $(elem).attr("course");
+                                                var userid = $(elem).attr("userid");
+                                                var sigCapture = null;
+                                                
+                                                MM.log('Signature : ' + timeSession + ',' + course + ',' + userid);
+                                                
+                                                var userP = MM.db.get('users', MM.config.current_site.id + "-" + userid);
+                                                var userG = userP.toJSON();
+                                                
+                                                var addNote = "Valider";
+                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="signature" name="signature" height="200px" /></div>';
+                        
+                                                var options = {
+                                                    title: 'Signature de la session pour '+userG.fullname,
+                                                    width: "90%",
+                                                    buttons: {}
+                                                };
+                                                
+                                                options.buttons[MM.lang.s("cancel")] = function() {
+                                                    MM.Router.navigate("eleves/" + course );
+                                                    MM.widgets.dialogClose();
+                                                    $('#stopSessionL').click();
+                                                };
+                                                
+                                                
+                                                
+                                                options.buttons["Effacer"] = function() {
+                                                    sigCapture = new SignatureCapture( "signature" );
+                                                    sigCapture.clear();
+                                                };
+                                                
+                                                options.buttons["Valider"] = function() {
+                                                    sigCapture = new SignatureCapture( "signature" );
+                                                    var sig = sigCapture.toString();
+                                                    var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".jpg";
+                                    
+                                                    //create local result file
+                                                    MM.fs.createFile(fileSignature,
+                                                        function(fileEntry) {
+                                                            MM.fs.writeInFile(fileEntry, sig, 
+                                                                function(fileUrl) {
+                                                                    MM.log(' Write Signature OK : ' + fileUrl);
+                                                                },
+                                                                function(fileUrl) {
+                                                                    MM.log(' Write Signature NOK : ' + fileUrl);
+                                                                }
+                                                            );
+                                                        },
+                                                        function(fileEntry) {
+                                                            MM.log(' Write Signature NOK : ' + fileSignature);
+                                                        }
+                                                    );
+                                                                
+                                                    MM.Router.navigate("eleves/" + course );
+                                                    MM.widgets.dialogClose();
+                                                    $('#stopSessionL').click();
+                                                };
+                                                
+                                                MM.widgets.dialog(html, options);
+                                                
+                                                
+                                                $(document).ready(function(e) {     
+                                                    var sigCapture = new SignatureCapture( "signature" );
+                                                });
+                                                
+        },
+        
         stopCourse: function(courseId, userId) {
             //var addNote = MM.lang.s("addnote");
             var addNote = "Ajouter";
@@ -647,7 +721,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         
                                                     },
                                                     function(path) {
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'">Signature</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
                                                         if (indexS == usersS.length - 1) {
                                                             html += '</table>';
                                                             MM.log('Session Module Go:'+html);
@@ -660,78 +734,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             });
                                             
                                             
-                                            $("#signature").bind( MM.clickType, function() {
-                                            //$("#signature").on(MM.clickType, function(e) {
-                        
-                                                MM.widgets.dialogClose();
-                                                
-                                                var timeSession = $(this).attr("time");
-                                                var course = $(this).attr("course");
-                                                var userid = $(this).attr("userid");
-                                                var sigCapture = null;
-                                                
-                                                MM.log('Signature : ' + timeSession + ',' + course + ',' + userid);
-                                                
-                                                var userP = MM.db.get('users', MM.config.current_site.id + "-" + userid);
-                                                var userG = userP.toJSON();
-                                                
-                                                var addNote = "Valider";
-                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="signature" name="signature" height="200px" /></div>';
-                        
-                                                var options = {
-                                                    title: 'Signature de la session pour '+userG.fullname,
-                                                    width: "90%",
-                                                    buttons: {}
-                                                };
-                                                
-                                                options.buttons[MM.lang.s("cancel")] = function() {
-                                                    MM.Router.navigate("eleves/" + course );
-                                                    MM.widgets.dialogClose();
-                                                    $('#stopSessionL').click();
-                                                };
-                                                
-                                                
-                                                
-                                                options.buttons["Effacer"] = function() {
-                                                    sigCapture = new SignatureCapture( "signature" );
-                                                    sigCapture.clear();
-                                                };
-                                                
-                                                options.buttons["Valider"] = function() {
-                                                    sigCapture = new SignatureCapture( "signature" );
-                                                    var sig = sigCapture.toString();
-                                                    var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".jpg";
-                                    
-                                                    //create local result file
-                                                    MM.fs.createFile(fileSignature,
-                                                        function(fileEntry) {
-                                                            MM.fs.writeInFile(fileEntry, sig, 
-                                                                function(fileUrl) {
-                                                                    MM.log(' Write Signature OK : ' + fileUrl);
-                                                                },
-                                                                function(fileUrl) {
-                                                                    MM.log(' Write Signature NOK : ' + fileUrl);
-                                                                }
-                                                            );
-                                                        },
-                                                        function(fileEntry) {
-                                                            MM.log(' Write Signature NOK : ' + fileSignature);
-                                                        }
-                                                    );
-                                                                
-                                                    MM.Router.navigate("eleves/" + course );
-                                                    MM.widgets.dialogClose();
-                                                    $('#stopSessionL').click();
-                                                };
-                                                
-                                                MM.widgets.dialog(html, options);
-                                                
-                                                
-                                                $(document).ready(function(e) {     
-                                                    var sigCapture = new SignatureCapture( "signature" );
-                                                });
-                                                
-                                            });
+                                            
                                         }
                                         indexCourse2++;
                                     },
@@ -741,7 +744,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
-                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'">Signature</button></td></tr>';
+                                                html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
                                             });
                                             html += '</table>';
                                             MM.log('Session Module Go:'+html);
