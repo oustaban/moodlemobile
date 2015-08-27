@@ -579,7 +579,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
                         var options = {
                             title: 'Récapitulatif de la session',
-                            width: "100%",
+                            width: "90%",
                             buttons: {}
                         };
                         
@@ -639,7 +639,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             MM.log('Session Module Go:'+html);
                                             MM.widgets.dialog(html, options);
                                             
-                                            $("#signature").on(MM.clickType, function(e) {
+                                            $("#signature").bind( MM.clickType, function() {
+                                            //$("#signature").on(MM.clickType, function(e) {
                         
                                                 MM.widgets.dialogClose();
                                                 
@@ -654,11 +655,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<table width="100%" border="0"><tr><td><div id="canvasContainer" width="90%" style="background-color:#cccccc"><canvas id="signature" name="signature"height="200px" /></div></td></tr></table>';
+                                                var html = '<table width="100%" border="1"><tr><td><div id="canvasContainer" width="90%" style="background-color:#cccccc"><canvas id="signature" name="signature"height="200px" /></div></td></tr></table>';
                         
                                                 var options = {
                                                     title: 'Signature de la session pour '+userG.fullname,
-                                                    width: "100%",
+                                                    width: "90%",
                                                     buttons: {}
                                                 };
                                                 
@@ -671,10 +672,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                 
                                                 options.buttons["Effacer"] = function() {
+                                                    sigCapture = new SignatureCapture( "signature" );
                                                     sigCapture.clear();
                                                 };
                                                 
                                                 options.buttons["Valider"] = function() {
+                                                    sigCapture = new SignatureCapture( "signature" );
                                                     var sig = sigCapture.toString();
                                                     var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".jpg";
                                     
