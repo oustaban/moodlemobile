@@ -274,8 +274,8 @@ function signaturePopin( elem ) {
                                                 };
                                                 
                                                 options.buttons["Valider"] = function() {
-                                                    var sigCapture = new SignatureCapture( "canvassignature" );
-                                                    var sig = sigCapture.toString();
+                                                    var sigCapture2 = new SignatureCapture( "canvassignature" );
+                                                    var sig = sigCapture2.toString();
 													var sigDec = Base64.decode(sig);
 													var sigData = "data:image/png;base64,"+sig;
                                                     var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_"+timeSession+".png";
