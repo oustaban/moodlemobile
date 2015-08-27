@@ -250,7 +250,7 @@ function signaturePopin( elem ) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div><script>var sigCapture = new SignatureCapture( "canvassignature" );</script>';
+                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div><script>$(document).ready(function(e) { var sigCapture = new SignatureCapture( "canvassignature" ); });</script>';
                         
                                                 var options = {
                                                     title: 'Signature de la session pour '+userG.fullname,
