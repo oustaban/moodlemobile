@@ -283,7 +283,7 @@ function signaturePopin( elem ) {
 												    $.ajax({
 													  type: 'POST',
 													  url: url,
-													  data:data,
+													  data:sig,
 													  success: function (data, textStatus, jqXHR) {
 														MM.log('upload success')
 													  }
