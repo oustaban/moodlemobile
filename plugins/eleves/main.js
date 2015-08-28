@@ -495,11 +495,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 usersSelected += valueSelected+",";
                             });
                             var lenghtSelected = usersSelected.length - 1;
-                            $("#showSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                            $("#stopSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                            $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                            $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                            $("#showSessionL").show();
+                            if ($('#offlineC option').length>1) { 
+                                $("#showSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                                $("#stopSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                                $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                                $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
+                                $("#showSessionL").show();
+                            }
                         } else {
                             $("#showSessionL").hide();
                         }
