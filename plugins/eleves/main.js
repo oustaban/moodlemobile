@@ -266,6 +266,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#showCourseL').attr('users',users);
                             $('#stopCourseL').attr('users',users);
                             $('#stopSessionL').attr('users',users);
+                            $('#stopSessionL').attr('starttime',obj.starttime);
+                            
+                            
                         },
                         function (result) {
                             MM.log('Load Session : NOK' + result);
@@ -582,7 +585,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.writeInFile(fileEntry, content, 
                                     function(fileUrl) {
                                         MM.log('Write Session :'+fileUrl);
-                                        $('#stopSessionL').attr('startime',d.getTime());
+                                        $('#stopSessionL').attr('starttime',d.getTime());
                                         $('#stopSessionL').hide();
                                         $('#showSessionL').hide();
                                         $('#offlineC').show();
@@ -630,11 +633,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             timeSession = d.getTime();
                         } else {
                             timeSession = $(this).attr('time');
-                        }  
+                        }
+                        timeSession = $(this).attr('starttime');
+                        
                         var endtime = new Date(parseInt(timeSession));
                         var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinutes();
-                        var startime = new Date(parseInt($(this).attr('startime')));
-                        MM.log('startime:'+$(this).attr('startime'));
+                        var startime = new Date(parseInt($(this).attr('starttime')));
+                        MM.log('starttime:'+$(this).attr('starttime'));
                         var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
                         
                         var addNote = "Valider";
