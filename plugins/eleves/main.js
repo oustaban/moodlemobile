@@ -682,9 +682,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $.each(usersS, function( indexS, valueS ) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
-                                                var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userG.userid+"_"+timeSession+".png";
+                                                var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+valueS+"_"+timeSession+".png";
                                                 
-                                                var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+userG.userid + "_" + timeSession + ".png";
+                                                var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+valueS + "_" + timeSession + ".png";
                                     
                                                 MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
