@@ -407,7 +407,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     var modulesEnd = obj.modulesEnd.split(",");
                                                     var indexU=1
                                                     $.each(users, function( index, value ) {
-                                                        $.each(modulesId, function( indexM, valueM ) {  
+                                                        var userP = MM.db.get('users', MM.config.current_site.id + "-" + value);
+                                                        var userG = userP.toJSON();
+                                                        $.each(modulesId, function( indexM, valueM ) {
+                                                            var contentM = MM.db.get("contents", MM.config.current_site.id + "-" + valueM);
+                                                            var moduleN = contentM.toJSON();
+                                                            
                                                             var data = {
                                                                 "userid" : value,
                                                                 "moduleid":valueM,
@@ -419,9 +424,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             
                                                             MM.widgets.dialogClose();
                                                             
+                                                            
                                                             MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                                                 function(status){
-                                                                    message = 'Synchronisation résultats Effectuée.<br><br>';
+                                                                    var sessionTime = new Date(parseInt(obj.starttime));
+                                                                    var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
+                        
+                                                                    message = 'Synchronisation de la session du '+sessionDate+' de l\'utilisateur '+userG.fullName+' pour le module '+moduleN.name+' Effectuée.<br><br>';
                                                                     if (indexU == (users.length * modulesId.length)) {
                                                                         
                                                                         MM.fs.removeFile (resultFile,
