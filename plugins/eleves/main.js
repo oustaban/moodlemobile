@@ -597,9 +597,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         } else {
                             timeSession = $(this).attr('time');
                         }  
-                        var endtime = new Date(timeSession);
+                        var endtime = new Date(parseInt(timeSession));
                         var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinutes();
-                        var startime = new Date($(this).attr('startime'));
+                        var startime = new Date(parseInt($(this).attr('startime')));
+                        MM.log('startime:'+$(this).attr('startime'));
                         var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" "+startime.getHours()+":"+startime.getMinutes();
                         
                         var addNote = "Valider";
