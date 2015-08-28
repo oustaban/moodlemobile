@@ -534,7 +534,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $(this).attr("disabled", true);
                         });
                         
-                        $('#offlineC').val("0");
+                        
+                        $('#offlineC option[value="0"]').prop('selected', true);
                         
                         var users = $(this).attr('users');
                         
