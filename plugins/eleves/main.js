@@ -699,7 +699,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+userG.userid+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table>';
                                                             MM.log('Session Module Go:'+html);
