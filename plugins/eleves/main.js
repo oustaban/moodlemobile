@@ -578,16 +578,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var module = $(this).attr("module");
                         MM.log('stopSessionL:'+course+','+users+','+module);
                         
-                        var addNote = "Valider";
-                        var html = '<table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
-
-                        var options = {
-                            title: 'Récapitulatif de la session',
-                            width: "90%",
-                            buttons: {}
-                        };
-                        
-                        
+                        var sessionFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                        MM.fs.findFileAndReadContents(resultFile,
+                            function (result) {
+                                var obj = JSON.parse(result);
+                                var startime = new Date(obj.starttime);
+                                var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" "+startime.getHours()+":"+startime.getMinute();
+                            },
+                            function (result) {
+                            
+                            }
+                        );
                         
                         var localCourses = MM.db.where('contents', {'courseid':course});
                         var moduleStart = "";
@@ -604,7 +605,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             timeSession = d.getTime();
                         } else {
                             timeSession = $(this).attr('time');
-                        }
+                        }  
+                        var endtime = new Date(timeSession);
+                        var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinute();
+                        var addNote = "Valider";
+                        var html = '<table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
+
+                        var options = {
+                            title: 'Récapitulatif de la session du '+startDate+' au '+endDate,
+                            width: "90%",
+                            buttons: {}
+                        };
+                        
+                        
+                        
+                        
                         
                         
                         
@@ -812,7 +827,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 
                                 MM.widgets.dialogClose();
-                                MM.popMessage(message, {title:'Récapitulatif de la session', autoclose: 5000, resizable: false});
+                                MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate+' au '+endDate, autoclose: 5000, resizable: false});
                                 MM.Router.navigate("eleves/" + course);
                                 
                             });
@@ -904,7 +919,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     
                                 $("#stopSessionL").attr('time','');
                                 MM.widgets.dialogClose();
-                                MM.popMessage(message, {title:'Récapitulatif de la session', autoclose: 5000, resizable: false});
+                                MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate+' au '+endDate, autoclose: 5000, resizable: false});
                                 MM.Router.navigate("eleves/" + course);
                                 
                                 
