@@ -433,7 +433,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                     var sessionTime = new Date(parseInt(obj.starttime));
                                                                     var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
                         
-                                                                    message = 'Synchronisation de la session du '+sessionDate+' de l\'utilisateur '+userG.fullName+' pour le module '+moduleN.name+' Effectuée.<br><br>';
+                                                                    message += 'Synchronisation de la session du '+sessionDate+' de l\'utilisateur '+userG.fullname+' pour le module '+moduleN.name+' Effectuée.<br><br>';
                                                                     if (indexU == (users.length * modulesId.length)) {
                                                                         
                                                                         MM.fs.removeFile (sessionFile,
