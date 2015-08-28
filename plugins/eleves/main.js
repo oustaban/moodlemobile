@@ -203,48 +203,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log('LocalCourses:'+localCourses+','+localCourses.length);
                     var modulesL = [];
                     
-                    var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
-                    MM.log('json session :'+sessionFile);
-                    MM.fs.findFileAndReadContents(sessionFile,
-                        function (result) {
-                            MM.log('Load Session : OK' + result);
-                            var obj = JSON.parse(result);
-                            var users = obj.users.split(",");
-                            
-                            $.each(users, function(index, user) {
-                                $('input:checkbox').each(function() {
-                                    if ($(this).val() == user) {
-                                        $(this).prop("checked", true );
-                                    }
-                                    $(this).attr("disabled", true );
-                                });
-                            });
-                            
-                            
-                            $('#showSessionL').hide();
-                            $('#offlineC').show();
-                            $('#showCourseL').hide();
-                            $('#stopCourseL').hide();
-                            $('#stopSessionL').show();      
-                            //$('#synchroR').hide();
-                            $('#showSessionL').attr('users',users);
-                            $('#showCourseL').attr('users',users);
-                            $('#stopCourseL').attr('users',users);
-                            $('#stopSessionL').attr('users',users);
-                        },
-                        function (result) {
-                            MM.log('Load Session : NOK' + result);
-                            $('input:checked').each(function() {
-                                $('#showSessionL').show();
-                            });
-                            
-                            $('#offlineC').hide();
-                            $('#showCourseL').hide();
-                            $('#stopCourseL').hide();
-                            $('#stopSessionL').hide();      
-                            //$('#synchroR').hide();
-                        }
-                    );
                     if (localCourses) {
                         
                         
@@ -280,6 +238,53 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                     }
                     
+                    var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
+                    MM.log('json session :'+sessionFile);
+                    MM.fs.findFileAndReadContents(sessionFile,
+                        function (result) {
+                            MM.log('Load Session : OK' + result);
+                            var obj = JSON.parse(result);
+                            var users = obj.users.split(",");
+                            
+                            $.each(users, function(index, user) {
+                                $('input:checkbox').each(function() {
+                                    if ($(this).val() == user) {
+                                        $(this).prop("checked", true );
+                                    }
+                                    $(this).attr("disabled", true );
+                                });
+                            });
+                            
+                            
+                            $('#showSessionL').hide();
+                            $('#offlineC').show();
+                            $('#showCourseL').hide();
+                            $('#stopCourseL').hide();
+                            $('#stopSessionL').show();      
+                            //$('#synchroR').hide();
+                            $('#showSessionL').attr('users',users);
+                            $('#showCourseL').attr('users',users);
+                            $('#stopCourseL').attr('users',users);
+                            $('#stopSessionL').attr('users',users);
+                        },
+                        function (result) {
+                            MM.log('Load Session : NOK' + result);
+                            if ($('#offlineC option').length>1) {    
+                                $('input:checked').each(function() {
+                                    $('#showSessionL').show();
+                                });
+                            }
+                            
+                            $('#offlineC').hide();
+                            $('#showCourseL').hide();
+                            $('#stopCourseL').hide();
+                            $('#stopSessionL').hide();      
+                            //$('#synchroR').hide();
+                        }
+                    );
+                    
+                    
+                    
                     var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
                     MM.fs.getDirectoryContents(directoryResult,
                         function(entries) {
@@ -301,21 +306,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                     );
                     
-                    $.each(users, function( index, value ) {
-                        $.each(modulesL, function( indexM, valueM ) {
-                            var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valueM + ".json";
-                            MM.log('json files :'+resultFile);
-                            MM.fs.findFileAndReadContents(resultFile,
-                                function (result) {
-                                    MM.log('Load Result : OK' + result);
-                                    $("#synchroR").show();
-                                },
-                                function (result) {
-                                    MM.log('Load Result : NOK' + result);
-                                }
-                            );
-                        });
-                    });
+                    
                     
                     var tpl = {
                         users: users,
@@ -390,65 +381,97 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var lenghton = $(this).attr('names').length - 1;
                         var namesList = $(this).attr('names').substr(0, lenghton);
                         var names = namesList.split(",");
+                        var course = $(this).attr('course');
                         var message = "";
+                        
                         
                         MM.log("Synchro Start");
                         
-                        $.each(users, function( index, value ) {
-                            $.each(modulesL, function( indexL, valueL ) {
-                                var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + value + "/" + valueL + ".json";
-                                MM.log( "Synchro File:" + resultFile);
-                                MM.fs.findFileAndReadContents(resultFile,
-                                    function (result) {
-                                        var obj = JSON.parse(result);
-                                        MM.log('Synchro Load Result : OK ' + obj.starttime+','+obj.note+','+courseId+','+value+','+valueL);
-                                        var data = {
-                                            "userid" : value,
-                                            "moduleid":valueL,
-                                            "courseid": courseId,
-                                            "starttime": obj.starttime,
-                                            "endtime": obj.endtime,
-                                            "note": obj.note
+                        var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
+                        MM.fs.getDirectoryContents(directoryResult,
+                            function(entries) {
+    
+                                if(entries.length > 0) {
+                                    
+                                    $.each(entries, function(index, entry) {
+                                        var name = entry.name.split("session_");
+                                        if (name[1]) {
+                                            var sessionFile =  MM.config.current_site.id + "/" + course + "/result/" + entry.name;
+                                            MM.fs.findFileAndReadContents(sessionFile,
+                                                function(result) {
+                                                    MM.log( "Session File OK:" + sessionFile);
+                                                    var obj = JSON.parse(result);
+                                                    var users = obj.users.split(",");
+                                                    var modulesId = obj.modulesId.split(",");
+                                                    var modulesStart = obj.modulesStart.split(",");
+                                                    var modulesEnd = obj.modulesEnd.split(",");
+                                                    var indexU=1
+                                                    $.each(users, function( index, value ) {
+                                                        $.each(modulesId, function( indexM, valueM ) {  
+                                                            var data = {
+                                                                "userid" : value,
+                                                                "moduleid":valueM,
+                                                                "courseid": course,
+                                                                "starttime": modulesStart[indexM],
+                                                                "endtime": modulesEnd[indexM],
+                                                                "note": 10
+                                                            }
+                                            
+                                                            MM.widgets.dialogClose();
+                                                            
+                                                            MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
+                                                                function(status){
+                                                                    message = 'Synchronisation résultats Effectuée.<br><br>';
+                                                                    if (indexU == (users.length * modulesId.length)) {
+                                                                        
+                                                                        MM.fs.removeFile (resultFile,
+                                                                             function (result) {
+                                                                                MM.log('Le fichier '+sessionFile+' a bien été effacé');
+                                                                                $("#synchroR").hide();
+                                                                                MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
+                                                                             },
+                                                                             function (result) {
+                                                                                MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
+                                                                                $("#synchroR").show();
+                                                                             }
+                                                                             
+                                                                        );
+                                                                    }
+                                                                    indexU++;
+                                                                },
+                                                                {
+                                                                    getFromCache: false,
+                                                                    saveToCache: false
+                                                                },
+                                                                function(e) {
+                                                                    MM.log("Error updating report/completion " + e);
+                                                                    message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
+                                                                    MM.popErrorMessage(e);
+                                                                    $("#synchroR").show();
+                                                                }
+                                                            );
+                                                                
+                                                        });  
+                                                    
+                                                    });
+                                                    
+                                                },
+                                                function(result) {
+                                                    MM.log( "Session File NOK :" + sessionFile);
+                                                }
+                                            );
+                                                
                                         }
+                                    });
+                                }
+                                
+                            },
+                            function() {
+                                //
+                            }
+                        );
                         
-                                        MM.widgets.dialogClose();
-                                        
-                                        MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
-                                            function(status){
-                                                message += 'Synchronisation des notes et temps de '+names[index]+' Effectuée.<br><br>';
-                                                MM.fs.removeFile (resultFile,
-                                                     function (result) {
-                                                        MM.log('Le fichier '+resultFile+' a bien été effacé');
-                                                        $("#synchroR").hide();
-                                                        MM.popMessage(message, {title:'Synchronisation des résultats et notes', autoclose: 7000, resizable: false});
-                                                     },
-                                                     function (result) {
-                                                        MM.log('Le fichier '+resultFile+' n a pas pu étre effacé');
-                                                        $("#synchroR").show();
-                                                     }
-                                                     
-                                                );
-                                            },
-                                            {
-                                                getFromCache: false,
-                                                saveToCache: false
-                                            },
-                                            function(e) {
-                                                MM.log("Error updating report/completion " + e);
-                                                message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
-                                                MM.popErrorMessage(e);
-                                                $("#synchroR").show();
-                                            }
-                                        );
-                                    },
-                                    function (result) {
-                                        MM.log('Load Result : NOK');
-                                        //message = "Erreur de synchronisation, Veuillez réessayer";
-                                        $("#synchroR").show();
-                                    }
-                                );
-                            });
-                        });
+                        
                         MM.widgets.dialogClose();
                         
                         
@@ -601,13 +624,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinutes();
                         var startime = new Date(parseInt($(this).attr('startime')));
                         MM.log('startime:'+$(this).attr('startime'));
-                        var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" "+startime.getHours()+":"+startime.getMinutes();
+                        var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
                         
                         var addNote = "Valider";
                         var html = '<table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
 
                         var options = {
-                            title: 'Récapitulatif de la session du '+startDate+' au '+endDate,
+                            title: 'Récapitulatif de la session du '+startDate,
                             width: "90%",
                             buttons: {}
                         };
@@ -823,7 +846,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 
                                 MM.widgets.dialogClose();
-                                MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate+' au '+endDate, autoclose: 5000, resizable: false});
+                                MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate, autoclose: 5000, resizable: false});
                                 MM.Router.navigate("eleves/" + course);
                                 
                             });
@@ -916,7 +939,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     
                                 $("#stopSessionL").attr('time','');
                                 MM.widgets.dialogClose();
-                                MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate+' au '+endDate, autoclose: 5000, resizable: false});
+                                MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate, autoclose: 5000, resizable: false});
                                 MM.Router.navigate("eleves/" + course);
                                 
                                 
