@@ -548,6 +548,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.writeInFile(fileEntry, content, 
                                     function(fileUrl) {
                                         MM.log('Write Session :'+fileUrl);
+                                        $('#stopSessionL').attr('startime',d.getTime());
                                         $('#stopSessionL').show();
                                         $('#showSessionL').hide();
                                         $('#offlineC').show();
@@ -578,17 +579,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var module = $(this).attr("module");
                         MM.log('stopSessionL:'+course+','+users+','+module);
                         
-                        var sessionFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
-                        MM.fs.findFileAndReadContents(sessionFile,
-                            function (result) {
-                                var obj = JSON.parse(result);
-                                var startime = new Date(obj.starttime);
-                                var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" "+startime.getHours()+":"+startime.getMinute();
-                            },
-                            function (result) {
-                            
-                            }
-                        );
+                        
                         
                         var localCourses = MM.db.where('contents', {'courseid':course});
                         var moduleStart = "";
@@ -607,7 +598,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             timeSession = $(this).attr('time');
                         }  
                         var endtime = new Date(timeSession);
-                        var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinute();
+                        var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinutes();
+                        var startime = $(this).attr('startime');
+                        var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" "+startime.getHours()+":"+startime.getMinutes();
+                        
                         var addNote = "Valider";
                         var html = '<table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
 
@@ -761,6 +755,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#stopSessionL').hide();
                                                     $("#synchroR").show();
                                                     $("#stopSessionL").attr('time','');
+                                                    $("#stopSessionL").attr('startime','');
                                                     
                                                     $('input:checkbox').each(function() {
                                                         $(this).attr("disabled", false );
@@ -912,6 +907,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $('#stopCourseL').hide();
                                 $('#stopSessionL').hide();
                                 $("#stopSessionL").attr('time','');
+                                $("#stopSessionL").attr('startime','');
                                 
                                 $('input:checkbox').each(function() {
                                     $(this).attr("disabled", false );
