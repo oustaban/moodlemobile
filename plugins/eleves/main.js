@@ -549,7 +549,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function(fileUrl) {
                                         MM.log('Write Session :'+fileUrl);
                                         $('#stopSessionL').attr('startime',d.getTime());
-                                        $('#stopSessionL').show();
+                                        $('#stopSessionL').hide();
                                         $('#showSessionL').hide();
                                         $('#offlineC').show();
                                     },
