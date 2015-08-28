@@ -579,7 +579,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log('stopSessionL:'+course+','+users+','+module);
                         
                         var sessionFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
-                        MM.fs.findFileAndReadContents(resultFile,
+                        MM.fs.findFileAndReadContents(sessionFile,
                             function (result) {
                                 var obj = JSON.parse(result);
                                 var startime = new Date(obj.starttime);
