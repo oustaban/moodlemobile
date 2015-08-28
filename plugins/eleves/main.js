@@ -433,7 +433,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                     message = 'Synchronisation de la session du '+sessionDate+' de l\'utilisateur '+userG.fullName+' pour le module '+moduleN.name+' Effectuée.<br><br>';
                                                                     if (indexU == (users.length * modulesId.length)) {
                                                                         
-                                                                        MM.fs.removeFile (resultFile,
+                                                                        MM.fs.removeFile (sessionFile,
                                                                              function (result) {
                                                                                 MM.log('Le fichier '+sessionFile+' a bien été effacé');
                                                                                 $("#synchroR").hide();
