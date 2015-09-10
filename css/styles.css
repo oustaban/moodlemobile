@@ -1613,9 +1613,8 @@ hr {
   
 }
 #sessionContent {
-  max-height:300px;
-  height:200px;
-  overflow-y:scroll;
+  overflow: auto;
+  max-height: 50vh;
 }
 #app-dialog .modalContent textarea {
   color: #666666;
