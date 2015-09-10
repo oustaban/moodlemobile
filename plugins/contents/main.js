@@ -798,7 +798,12 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
         getLocalPaths2: function(courseId, modId, file) {
 
             //var filename = file.fileurl;
-            var filename = file.url;
+            if (file.url) {
+                var filename = file.url;
+            } else {
+                var filename = file.fileurl;
+            }
+            
             var paramsPart = filename.lastIndexOf("?");
             if (paramsPart) {
                 filename = filename.substring(0, paramsPart);
