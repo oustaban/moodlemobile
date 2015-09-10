@@ -213,7 +213,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             if (localCourse.contents) {
                                 var localFile = localCourse.contents[0];
                                 var localContentId = localCourse.url.split("?id=");
-                                var localPathCourse = MM.plugins.contents.getLocalPaths(courseId, localContentId[1], localFile);
+                                var localPathCourse = MM.plugins.contents.getLocalPaths2(courseId, localContentId[1], localFile);
                                 modulesL.push(localContentId[1]);
                                 
                                 MM.fs.fileExists(localPathCourse.file,
