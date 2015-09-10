@@ -489,7 +489,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         
                                             content.contents[index].localpath = path.file;
                                             content.contents[index].filename = "story.html";
-                                            content.contents[index].fileurl = "/story.html?forcedownload=1";
+                                            //content.contents[index].fileurl = "/story.html?forcedownload=1";
                                             var downloadTime = MM.util.timestamp();
                                             content.contents[index].downloadtime = downloadTime;
                                             //content.courseid = courseId;
