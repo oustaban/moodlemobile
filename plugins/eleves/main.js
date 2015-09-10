@@ -643,7 +643,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
                         
                         var addNote = "Valider";
-                        var html = '<table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
+                        var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
 
                         var options = {
                             title: 'Récapitulatif de la session du '+startDate,
@@ -696,7 +696,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         MM.log('Image Signature OK:'+fileSignature);
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"></td></tr>';
                                                         if (indexUser == usersS.length) {
-                                                            html += '</table>';
+                                                            html += '</table></div>';
                                                             MM.log('Session Module Go:'+html);
                                                             MM.widgets.dialog(html, options);
                                                         }
@@ -706,7 +706,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
                                                         if (indexUser == usersS.length) {
-                                                            html += '</table>';
+                                                            html += '</table></div>';
                                                             MM.log('Session Module Go:'+html);
                                                             MM.widgets.dialog(html, options);
                                                         }
@@ -740,7 +740,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userG = userP.toJSON();
                                                 html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
                                             });
-                                            html += '</table>';
+                                            html += '</table></div>';
                                             MM.log('Session Module Go:'+html);
                                             
                                             MM.widgets.dialog(html, options);

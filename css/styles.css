@@ -1610,6 +1610,9 @@ hr {
 #app-dialog .modalContent {
   padding: 20px;
   text-align: center;
+  
+}
+#sessionContent {
   max-height:300px;
   height:200px;
   overflow-y:scroll;
