@@ -269,8 +269,9 @@ function signaturePopin( elem ) {
                                                 
                                                 
                                                 options.buttons["Effacer"] = function() {
-                                                    var sig2 = $('#canvassignature').get(0).toDataURL("image/png");
-                                                    sig2.clear();
+                                                    //var sig2 = $('#canvassignature').get(0).toDataURL("image/png");
+                                                    //sig2.clear();
+													sigCapture.clear();
                                                 };
                                                 
                                                 options.buttons["Valider"] = function() {
