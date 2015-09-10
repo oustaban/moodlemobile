@@ -491,6 +491,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             content.contents[index].filename = "story.html";
                                             //content.contents[index].fileurl = "/story.html?forcedownload=1";
                                             content.contents[index].url = "/story.html?forcedownload=1";
+                                            
                                             var downloadTime = MM.util.timestamp();
                                             content.contents[index].downloadtime = downloadTime;
                                             //content.courseid = courseId;
@@ -766,6 +767,35 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
         },
 
         getLocalPaths: function(courseId, modId, file) {
+
+            var filename = file.fileurl;
+            //var filename = file.url;
+            var paramsPart = filename.lastIndexOf("?");
+            if (paramsPart) {
+                filename = filename.substring(0, paramsPart);
+            }
+            filename = filename.substr(filename.lastIndexOf("/") + 1);
+
+            filename = MM.fs.normalizeFileName(filename);
+
+            // We store in the sdcard the contents in site/course/modname/id/contentIndex/filename
+            var path = MM.config.current_site.id + "/" + courseId + "/" + modId;
+
+            // Check if the file is in a Moodle virtual directory.
+            if (file.filepath) {
+                path += file.filepath;
+                newfile = path + filename;
+            } else {
+                newfile = path + "/" + filename;
+            }
+
+            return {
+                directory: path,
+                file: newfile
+            };
+        },
+        
+        getLocalPaths2: function(courseId, modId, file) {
 
             //var filename = file.fileurl;
             var filename = file.url;

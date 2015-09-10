@@ -1207,7 +1207,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var file = offline.contents[0];
                         contentid = offline.url.split("?id=");
                         
-                        var pathCourse = MM.plugins.contents.getLocalPaths(courseId, contentid[1], file);
+                        var pathCourse = MM.plugins.contents.getLocalPaths2(courseId, contentid[1], file);
                         
                         MM.log('offline Course:'+pathCourse.file+','+pathCourse.directory+','+contentid[1]);
                         
