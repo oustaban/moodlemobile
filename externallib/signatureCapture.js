@@ -252,7 +252,7 @@ function signaturePopin( elem ) {
                                                 var userG = userP.toJSON();
                                                 
                                                 var addNote = "Valider";
-                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div><script>$(document).ready(function(e) { var sigCapture = new SignatureCapture( "canvassignature" ); $(".modal-button-2").on(MM.clickType, function(e) { sigCapture.clear(); }); });</script>';
+                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div><script>$(document).ready(function(e) { var sigCapture = new SignatureCapture( "canvassignature" ); });</script>';
                         
                                                 var options = {
                                                     title: 'Signature de la session pour '+userG.fullname,
@@ -270,7 +270,8 @@ function signaturePopin( elem ) {
                                                 
                                                 options.buttons["Effacer"] = function() {
                                                     //var sig2 = $('#canvassignature').get(0).toDataURL("image/png");
-                                                    //sig2.clear();
+													var sig2 = new SignatureCapture( "canvassignature" );
+                                                    sig2.clear();
 													//sigCapture.clear();
                                                 };
                                                 
