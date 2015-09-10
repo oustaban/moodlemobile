@@ -1611,7 +1611,7 @@ hr {
   padding: 20px;
   text-align: center;
   max-height:300px;
-  height:270px;
+  height:200px;
   overflow-y:scroll;
 }
 #app-dialog .modalContent textarea {
