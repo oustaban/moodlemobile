@@ -517,13 +517,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                             
                                 MM.fs.findFileAndReadContents(resultFile,
-                                function (result) {
-                                    $("#showSessionL").hide();
-                                },
-                                function (result) {
-                                    $("#showSessionL").show();
-                                }
-                            );
+                                    function (result) {
+                                        $("#showSessionL").hide();
+                                    },
+                                    function (result) {
+                                        $("#showSessionL").show();
+                                    }
+                                );
                             }
                         } else {
                             var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
