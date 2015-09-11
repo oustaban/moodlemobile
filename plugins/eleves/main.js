@@ -519,6 +519,29 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
                                         $("#showSessionL").hide();
+                                        var obj = JSON.parse(result);
+                                        var starttime = obj.startime;
+                                        MM.fs.createFile(fileResultL,
+                                            function(fileEntry) {
+                                                var obj = JSON.parse(path);
+                                                var content = '{"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'"}';
+                                                MM.log('Create Session start :'+content);
+                                                MM.fs.writeInFile(fileEntry, content, 
+                                                    function(fileUrl) {
+                                                        MM.log('Write Session :'+fileUrl);
+                                                    },
+                                                    function(fileUrl) {
+                                                        MM.log('Write Session NOK:'+content);
+                                                    }
+                                                    
+                                                );
+                                            },   
+                                                
+                                            function(fileEntry) {
+                                               MM.log('Create Session : NOK');
+                                               
+                                            }
+                                        );
                                     },
                                     function (result) {
                                         $("#showSessionL").show();
@@ -529,7 +552,27 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                             MM.fs.findFileAndReadContents(resultFile,
                                 function (result) {
-                                    //Rien
+                                        MM.fs.createFile(fileResultL,
+                                            function(fileEntry) {
+                                                var obj = JSON.parse(path);
+                                                var content = '{"starttime":"'+starttime+'","users":""}';
+                                                MM.log('Create Session start :'+content);
+                                                MM.fs.writeInFile(fileEntry, content, 
+                                                    function(fileUrl) {
+                                                        MM.log('Write Session :'+fileUrl);
+                                                    },
+                                                    function(fileUrl) {
+                                                        MM.log('Write Session NOK:'+content);
+                                                    }
+                                                    
+                                                );
+                                            },   
+                                                
+                                            function(fileEntry) {
+                                               MM.log('Create Session : NOK');
+                                               
+                                            }
+                                        );
                                 },
                                 function (result) {
                                     $("#showSessionL").hide();
