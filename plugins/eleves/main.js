@@ -521,7 +521,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $("#showSessionL").hide();
                                         var obj = JSON.parse(result);
                                         var starttime = obj.startime;
-                                        MM.fs.createFile(fileResultL,
+                                        MM.fs.createFile(resultFile,
                                             function(fileEntry) {
                                                 var obj = JSON.parse(path);
                                                 var content = '{"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'"}';
@@ -552,7 +552,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                             MM.fs.findFileAndReadContents(resultFile,
                                 function (result) {
-                                        MM.fs.createFile(fileResultL,
+                                        MM.fs.createFile(resultFile,
                                             function(fileEntry) {
                                                 var obj = JSON.parse(path);
                                                 var content = '{"starttime":"'+starttime+'","users":""}';
