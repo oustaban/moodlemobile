@@ -251,7 +251,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     if ($(this).val() == user) {
                                         $(this).prop("checked", true );
                                     }
-                                    $(this).attr("disabled", true );
+                                    //$(this).attr("disabled", true );
                                 });
                             });
                             
@@ -568,7 +568,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         $('input:checkbox').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
-                            $(this).attr("disabled", true);
+                            //$(this).attr("disabled", true);
                         });
                         
                         $('#offlineC > option').removeAttr("selected");
@@ -767,15 +767,20 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                 MM.fs.findFileAndReadContents(resultFile,
                                   function (result) {
-                                    
-                                    
+                                    MM.log('Load Session : OK' + result);
+                                    var obj = JSON.parse(result);
+                                    var users = obj.users;
+                                    var starttime = obj.starttime;
+                                    var realusers = $('#stopSessionL').attr('users');
+                        
+                        
                                     var lenghto = result.length - 1;
                                     var lenghta = modulesId.length - 1;
                                     var lenghtb = moduleStart.length - 1;
                                     var lenghtc = moduleEnd.length - 1;
-                                    var content = result.substr(0, lenghto) + ',"endtime":"'+timeSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
+                                    var content = '{"starttime":"'+startime+'","users":"'+realusers+'","endtime":"'+timeSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
                                     
-                                    MM.log('Session Load OK : '+resultFile + ' : ' + content);
+                                    MM.log('Session Load OK : '+resultFile + ' : ' + content + ' : ' + timeSession);
                                     
                                     var fileResult = MM.config.current_site.id+"/"+course+"/result/session_"+timeSession+".json";
                                     
