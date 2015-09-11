@@ -512,10 +512,31 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $("#stopSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
-                                $("#showSessionL").show();
+                                //$("#showSessionL").show();
+                                
+                                var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                            
+                                MM.fs.findFileAndReadContents(resultFile,
+                                function (result) {
+                                    $("#showSessionL").hide();
+                                },
+                                function (result) {
+                                    $("#showSessionL").show();
+                                }
+                            );
                             }
                         } else {
-                            $("#showSessionL").hide();
+                            var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                            MM.fs.findFileAndReadContents(resultFile,
+                                function (result) {
+                                    //Rien
+                                },
+                                function (result) {
+                                    $("#showSessionL").hide();
+                                }
+                            );
+                                
+                            
                         }
                         
                     });
