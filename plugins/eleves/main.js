@@ -514,7 +514,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 //$("#showSessionL").show();
                                 
-                                var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                                var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                             
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
@@ -526,7 +526,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 );
                             }
                         } else {
-                            var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                            var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                             MM.fs.findFileAndReadContents(resultFile,
                                 function (result) {
                                     //Rien
