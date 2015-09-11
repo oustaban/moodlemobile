@@ -435,14 +435,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             var file = content.contents[index];
             var downloadURL = file.fileurl + "&token=" + MM.config.current_token;
 
-            $(".resource-downloaded").on(MM.clickType, function(e) {
-                e.preventDefault();
-                var path = $(this).data("path");
-                path = MM.fs.getRoot() + "/" + path;
-                MM.log('resource-downloaded clicked:'+path);
-
-                MM.plugins.resource._showResource(path);
-            });
+            
             
             // Now, we need to download the file.
             // First we load the file system (is not loaded yet).
@@ -551,6 +544,15 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             if (typeof successCallback == "function") {
                                                 successCallback(index, fullpath, path.file, downloadTime);
                                             }
+                                            
+                                            $(".resource-downloaded").on(MM.clickType, function(e) {
+                                                e.preventDefault();
+                                                var path = $(this).data("path");
+                                                path = MM.fs.getRoot() + "/" + path;
+                                                MM.log('resource-downloaded clicked:'+path);
+                                
+                                                MM.plugins.resource._showResource(path);
+                                            });
                                         
                                         },
                                         function(progressEvent) {
