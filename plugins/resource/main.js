@@ -67,6 +67,7 @@ define(templates, function (viewSingleTpl, viewMultipleTpl, dialogTpl) {
                 e.preventDefault();
                 var path = $(this).data("path");
                 path = MM.fs.getRoot() + "/" + path;
+                MM.log('resource-downloaded clicked:'+path);
 
                 MM.plugins.resource._showResource(path);
             });
