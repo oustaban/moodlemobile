@@ -86,7 +86,7 @@ body {
   display: block;
 }
 .tablet #panel-right {
-  left: 33%;
+  left: 100%;
   width: 67%;
   padding: 0px;
   display: block;
