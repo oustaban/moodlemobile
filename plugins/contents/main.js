@@ -32,12 +32,12 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
         viewCourseContents: function(courseId) {
 
-            //MM.panels.showLoading('center');
-	    MM.panels.hide("center", "");	
+        MM.panels.showLoading('center');
+	    
             if (MM.deviceType == "tablet") {
                 MM.panels.showLoading('right');
             }
-	    /* 
+	    
 	    // Adding loading icon.
             $('a[href="#course/contents/' +courseId+ '"]').addClass('loading-row');
 
@@ -82,7 +82,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     MM.popErrorMessage(m);
                 }
             });
-		*/
+		
         },
 
 
