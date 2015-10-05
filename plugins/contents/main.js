@@ -33,7 +33,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
         viewCourseContents: function(courseId) {
 
             //MM.panels.showLoading('center');
-
+	    MM.panels.hide("center","");
+	
             if (MM.deviceType == "tablet") {
                 MM.panels.showLoading('right');
             }
