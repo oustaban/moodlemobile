@@ -67,27 +67,4 @@ body {
   height: 100%;
   overflow: auto;
 }
-/* - Tablet minimum width 768px
--------------------------------------------------------------------------- */
-.tablet #add-site,
-.tablet #manage-accounts,
-.tablet .full-screen-dialog .modalContent {
-  width: 70%;
-}
-.tablet .header-wrapper {
-  left: 0%;
-}
-.tablet #panel-left {
-  width: 30%;
-}
-.tablet #panel-center {
-  left: 0%;
-  width: 33%;
-  display: block;
-}
-.tablet #panel-right {
-  left: 100%;
-  width: 67%;
-  padding: 0px;
-  display: block;
-}
+
