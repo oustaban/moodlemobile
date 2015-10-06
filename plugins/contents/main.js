@@ -600,7 +600,10 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 errorCallback();
                             }
                          },
-                         background
+                         background,
+                         function (percent) {
+                            MM.log(percent);
+                         }
                     );
                 });
             });
