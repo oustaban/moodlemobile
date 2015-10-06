@@ -326,7 +326,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         pageTitle = course.get("shortname");;
                     }
 
-                    MM.panels.show('center', html, {title: pageTitle});
+                    MM.panels.show('right', html, {title: pageTitle});
 
                     // Load the first user
                     if (MM.deviceType == "tablet" && users.length > 0) {
