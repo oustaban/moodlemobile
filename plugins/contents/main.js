@@ -603,7 +603,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                          background,
                          function (percent) {
                             MM.log(percent);
-                            $('#percent').html(parseInt(percent*100)+'%')
+                            $('span#percent').html(parseInt(percent*100)+'%')
                          }
                     );
                 });
