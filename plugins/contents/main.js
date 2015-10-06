@@ -472,7 +472,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             
                             if (exts[exts.length-1]=="zip") {
                                 
-                                        zip.unzip(fullpath, dest, function() {
+                                            zip.unzip(fullpath, dest, function() {
                                             MM.log("Unzip ok");
                                             
                                             var old_file = path.file;
@@ -603,6 +603,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                          background,
                          function (percent) {
                             MM.log(percent);
+                            $('#percent').html(parseInt(percent*100)%)
                          }
                     );
                 });
