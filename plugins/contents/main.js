@@ -541,7 +541,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 //var indexFile = path;
                                                 //var indexFileURL = MM.fs.getRoot() + "/" + path;
                         
-                                                MM.plugins.resource._showResource(fullpath);
+                                                //MM.plugins.resource._showResource(fullpath);
 
                                                 //MM.handleFiles(linkCssId);
                                                 //if (open) {
