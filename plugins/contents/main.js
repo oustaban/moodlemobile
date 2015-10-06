@@ -430,6 +430,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
             var downCssId = "#download-" + contentId;
             var linkCssId = "#link-" + contentId;
+            var percentCssId = "#percent-" + contentId;
 
             if (typeof(index) != "undefined") {
                 downCssId = "#download-" + contentId + "-" + index;
@@ -603,7 +604,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                          background,
                          function (percent) {
                             MM.log(percent);
-                            $('span#percent').html(parseInt(percent*100)+'%')
+                            $(percentCssId).html(parseInt(percent*100)+'%')
                          }
                     );
                 });
