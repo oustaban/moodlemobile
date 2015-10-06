@@ -30,8 +30,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             ["course/contents/:courseid/section/:sectionId/download/:contentid/:index", "course_contents_download_folder", "downloadContent"]
         ],
 
+        
         viewCourseContents: function(courseId) {
-
+        
         MM.panels.showLoading('center');
 	    
             if (MM.deviceType == "tablet") {
@@ -59,7 +60,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 var html = MM.tpl.render(MM.plugins.contents.templates.sections.html, tpl);
 
                 pageTitle = course.get("shortname");
-
+                
                 MM.panels.show("center", html, {title: pageTitle});
                 if (MM.deviceType == "tablet" && contents.length > 0) {
                     // First section.
@@ -91,7 +92,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             if (MM.deviceType == "tablet") {
                 MM.panels.showLoading('right');
             }
-
+            
+            
             var sectionName = "";
 
             // This is used in the logging WS call.
@@ -330,6 +332,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                     });
 
+                    
+                    
                     var tpl = {
                         sections: finalContents,
                         sectionId: sectionId,
@@ -344,7 +348,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                     var html = MM.tpl.render(MM.plugins.contents.templates.contents.html, tpl);
                     MM.panels.show('right', html, {title: pageTitle});
-
+                    
                     // Show info content modal window.
                     $(".content-info", "#panel-right").on(MM.quickClick, function(e) {
                         MM.plugins.contents.infoContent(

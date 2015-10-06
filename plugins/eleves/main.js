@@ -331,7 +331,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     // Load the first user
                     if (MM.deviceType == "tablet" && users.length > 0) {
                         $("#panel-center li:eq(0)").addClass("selected-row");
-                        MM.plugins.eleves.showEleve(courseId, users.shift().id);
+                        //MM.plugins.eleves.showEleve(courseId, users.shift().id);
                         $("#panel-center li:eq(0)").addClass("selected-row");
                     }
 
