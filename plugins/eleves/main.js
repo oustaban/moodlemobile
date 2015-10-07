@@ -434,7 +434,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             var participants_id = status.participants_id.split(",");
                                                             
                                                             
-                                                            $.each(participants_users, function( indexP, valueP ) {
+                                                            $.each(participants_users, function( indexU, valueU ) {
                                                                 
                                                                 var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
                                                                 MM.log('Participants:'+valueU+','+signatureFile);
