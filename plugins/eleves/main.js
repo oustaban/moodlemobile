@@ -440,7 +440,32 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 MM.log('Participants:'+valueU+','+signatureFile);
                                                                 MM.fs.fileExists(signatureFile,
                                                                         function(path) {
-                                                                            MM.log('Signature Existe');
+                                                                            MM.log('Signature '+path+' Existe');
+                                                                            var options = {};
+                                                                            options.fileKey="file";
+                                                                            options.fileName = participants_id[indexU]+'.png';
+                                                                            options.mimeType="image/png";
+                                                                            
+                                                                            MM.moodleUploadFile(path, options,
+                                                                                                function(){
+                                                                                                    MM.log('Upload réussi');
+                                                                                                    MM.fs.removeFile (path,
+                                                                                                        function (result) {
+                                                                                                           MM.log('Le fichier '+path+' a bien été effacé');
+                                                                                                        },
+                                                                                                        function (result) {
+                                                                                                           MM.log('Le fichier '+path+' n a pas pu étre effacé');
+                                                                                                           
+                                                                                                           
+                                                                                                        }
+                                                                                                        
+                                                                                                   );
+                                                                                                },
+                                                                                                function(){
+                                                                                                    MM.log('Upload pas réussi');
+                                                                                                }
+                                                                            );
+
                                                                             
                                                                         },
                                                                         function(path) {
