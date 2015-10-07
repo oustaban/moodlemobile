@@ -438,6 +438,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 
                                                                 var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
                                                                 MM.log('Participants:'+valueU+','+signatureFile);
+                                                                MM.fs.fileExists(signatureFile,
+                                                                        function(path) {
+                                                                            MM.log('Signature Existe');
+                                                                            
+                                                                        },
+                                                                        function(path) {
+                                                                            MM.log('Signature Existe pas');
+                                                                        }
+                                                                   );
                                                                 
                                                             });
                                                             
@@ -452,15 +461,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 function (result) {
                                                                    MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
                                                                    $("#synchroR").show();
-                                                                   MM.fs.fileExists(fileSignature,
-                                                                        function(path) {
-                                                                            MM.log('Signature Existe');
-                                                                            
-                                                                        },
-                                                                        function(path) {
-                                                                            MM.log('Signature Existe pas');
-                                                                        }
-                                                                   );
+                                                                   
                                                                 }
                                                                 
                                                            );
