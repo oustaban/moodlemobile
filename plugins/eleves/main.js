@@ -406,68 +406,64 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 function(result) {
                                                     MM.log( "Session File OK:" + sessionFile);
                                                     var obj = JSON.parse(result);
-                                                    var users = obj.users.split(",");
                                                     var modulesId = obj.modulesId.split(",");
-                                                    var modulesStart = obj.modulesStart.split(",");
-                                                    var modulesEnd = obj.modulesEnd.split(",");
-                                                    var indexU=1
-                                                    $.each(users, function( index, value ) {
-                                                        var userP = MM.db.get('users', MM.config.current_site.id + "-" + value);
-                                                        var userG = userP.toJSON();
-                                                        $.each(modulesId, function( indexM, valueM ) {
-                                                            var contentM = MM.db.get("contents", MM.config.current_site.id + "-" + valueM);
-                                                            var moduleN = contentM.toJSON();
-                                                            
-                                                            var data = {
-                                                                "userid" : value,
-                                                                "moduleid":valueM,
-                                                                "courseid": course,
-                                                                "starttime": modulesStart[indexM],
-                                                                "endtime": modulesEnd[indexM],
-                                                                "note": 10
-                                                            }
-                                            
-                                                            MM.widgets.dialogClose();
-                                                            
-                                                            
-                                                            MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
-                                                                function(status){
-                                                                    var sessionTime = new Date(parseInt(obj.starttime));
-                                                                    var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
-                        
-                                                                    message += 'Synchronisation de la session du '+sessionDate+' de l\'utilisateur '+userG.fullname+' pour le module '+moduleN.name+' Effectuée.<br><br>';
-                                                                    if (indexU == (users.length * modulesId.length)) {
-                                                                        
-                                                                        MM.fs.removeFile (sessionFile,
-                                                                             function (result) {
-                                                                                MM.log('Le fichier '+sessionFile+' a bien été effacé');
-                                                                                $("#synchroR").hide();
-                                                                                MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
-                                                                             },
-                                                                             function (result) {
-                                                                                MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
-                                                                                $("#synchroR").show();
-                                                                             }
-                                                                             
-                                                                        );
-                                                                    }
-                                                                    indexU++;
-                                                                },
-                                                                {
-                                                                    getFromCache: false,
-                                                                    saveToCache: false
-                                                                },
-                                                                function(e) {
-                                                                    MM.log("Error updating report/completion " + e);
-                                                                    message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
-                                                                    MM.popErrorMessage(e);
-                                                                    $("#synchroR").show();
-                                                                }
-                                                            );
-                                                                
-                                                        });  
+                                                    var users = obj.users.split(",");
+                                                    var indexU=1;
                                                     
-                                                    });
+                                                    
+                                                    
+                                                         
+                                                    var data = {
+                                                        "userid" : obj.users,
+                                                        "moduleid" : obj.modulesId,
+                                                        "courseid" : course,
+                                                        "starttime" : obj.starttime,
+                                                        "endtime" : obj.endtime,
+                                                        "modulesstart" : obj.modulesStart,
+                                                        "modulesend" : obj.modulesEnd,
+                                                        "managerid" : MM.site.get('userid')
+                                                    }
+                                    
+                                                    MM.widgets.dialogClose();
+                                                                   
+                                                    MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
+                                                        function(status){
+                                                            var sessionTime = new Date(parseInt(obj.starttime));
+                                                            var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
+                                                            $.each(status.participants_user, function( indexP, valueP ) {
+                                                                MM.log('Participants:'+valueP);
+                                                            }
+                                                            message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
+                                                            
+                                                            MM.fs.removeFile (sessionFile,
+                                                                function (result) {
+                                                                   MM.log('Le fichier '+sessionFile+' a bien été effacé');
+                                                                   $("#synchroR").hide();
+                                                                   MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
+                                                                },
+                                                                function (result) {
+                                                                   MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
+                                                                   $("#synchroR").show();
+                                                                }
+                                                                
+                                                           );
+                                                            
+                                                        },
+                                                        {
+                                                            getFromCache: false,
+                                                            saveToCache: false
+                                                        },
+                                                        function(e) {
+                                                            MM.log("Error updating report/completion " + e);
+                                                            message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
+                                                            MM.popErrorMessage(e);
+                                                            $("#synchroR").show();
+                                                        }
+                                                    );
+                                                                
+                                                    
+                                                    
+                                                
                                                     
                                                 },
                                                 function(result) {
