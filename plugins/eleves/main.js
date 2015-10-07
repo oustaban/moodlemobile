@@ -430,8 +430,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         function(status){
                                                             var sessionTime = new Date(parseInt(obj.starttime));
                                                             var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
-                                                            $.each(status.participants_user, function( indexP, valueP ) {
-                                                                MM.log('Participants:'+valueP);
+                                                            var participants_users = status.participants_user.split(",");
+                                                            var participants_id = status.participants_id.split(",");
+                                                            
+                                                            
+                                                            $.each(participants_users, function( indexP, valueP ) {
+                                                                
+                                                                var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
+                                                                MM.log('Participants:'+valueU+','+signatureFile);
+                                                                
                                                             });
                                                             
                                                             message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
@@ -445,6 +452,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 function (result) {
                                                                    MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
                                                                    $("#synchroR").show();
+                                                                   MM.fs.fileExists(fileSignature,
+                                                                        function(path) {
+                                                                            MM.log('Signature Existe');
+                                                                            
+                                                                        },
+                                                                        function(path) {
+                                                                            MM.log('Signature Existe pas');
+                                                                        }
+                                                                   );
                                                                 }
                                                                 
                                                            );
