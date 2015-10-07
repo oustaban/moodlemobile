@@ -446,7 +446,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             options.fileName = participants_id[indexU]+'.png';
                                                                             options.mimeType="image/png";
                                                                             options.params = {
-                                                                                token:MM.config.current_token,
                                                                                 itemid:participants_id[indexU]
                                                                             };
                                                                             options.chunkedMode = false;
