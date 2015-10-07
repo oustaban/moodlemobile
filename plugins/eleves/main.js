@@ -445,6 +445,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             options.fileKey="file";
                                                                             options.fileName = participants_id[indexU]+'.png';
                                                                             options.mimeType="image/png";
+                                                                            options.params = {
+                                                                                token:MM.config.current_token
+                                                                            };
+                                                                            options.chunkedMode = false;
+                                                                            options.headers = {
+                                                                              Connection: "close"
+                                                                            };
                                                                             
                                                                             var ft = new FileTransfer();
                                                                             ft.upload(
