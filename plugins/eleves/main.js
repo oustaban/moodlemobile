@@ -446,7 +446,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             options.fileName = participants_id[indexU]+'.png';
                                                                             options.mimeType="image/png";
                                                                             options.params = {
-                                                                                token:MM.config.current_token
+                                                                                token:MM.config.current_token,
+                                                                                itemid:participants_id[indexU]
                                                                             };
                                                                             options.chunkedMode = false;
                                                                             options.headers = {
@@ -456,12 +457,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             var ft = new FileTransfer();
                                                                             ft.upload(
                                                                                       path,
-                                                                                      MM.config.current_site.siteurl + '/webservice/upload.php',
-                                                                                      function(r){
+                                                                                      MM.config.current_site.siteurl + '/local/session/uploadsignatureoffline.php',
+                                                                                      function(){
                                                                                         MM.log('Upload réussi');
-                                                                                        MM.log("Code = " + r.responseCode);
-                                                                                        MM.log("Response = " + r.response);
-                                                                                        MM.log("Sent = " + r.bytesSent);
+                                                                                        
 
                                                                                         MM.fs.removeFile (path,
                                                                                             function (result) {
@@ -472,10 +471,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                             }
                                                                                        );
                                                                                       },
-                                                                                      function(error){
+                                                                                      function(){
                                                                                          MM.log('Upload pas réussi');
-                                                                                         MM.log("An error has occurred: Code = " = error.code);
-
+                                                                                        
                                                                                       },
                                                                                       options
                                                                             );
