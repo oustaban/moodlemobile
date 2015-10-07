@@ -397,6 +397,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if(entries.length > 0) {
                                     
                                     $.each(entries, function(index, entry) {
+                                        MM.log('File:'+entry.name);
+                                        
                                         var name = entry.name.split("session_");
                                         if (name[1]) {
                                             var sessionFile =  MM.config.current_site.id + "/" + course + "/result/" + entry.name;
@@ -702,6 +704,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var endtime = new Date(parseInt(timeSession));
                         var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinutes();
+                        var startimer = $(this).attr('starttime');
                         var startime = new Date(parseInt($(this).attr('starttime')));
                         MM.log('starttime:'+$(this).attr('starttime'));
                         var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
@@ -842,7 +845,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     var lenghta = modulesId.length - 1;
                                     var lenghtb = moduleStart.length - 1;
                                     var lenghtc = moduleEnd.length - 1;
-                                    var content = '{"starttime":"'+startime+'","users":"'+realusers+'","endtime":"'+timeSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
+                                    var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+timeSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
                                     
                                     MM.log('Session Load OK : '+resultFile + ' : ' + content + ' : ' + timeSession);
                                     
