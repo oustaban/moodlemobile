@@ -432,7 +432,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
                                                             $.each(status.participants_user, function( indexP, valueP ) {
                                                                 MM.log('Participants:'+valueP);
-                                                            }
+                                                            });
+                                                            
                                                             message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
                                                             
                                                             MM.fs.removeFile (sessionFile,
