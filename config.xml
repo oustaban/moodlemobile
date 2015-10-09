@@ -75,7 +75,6 @@
     <gap:platform name="ios" />
     <gap:platform name="android" />
 
-    <gap:plugin name="com.orcasinc.childbrowser" version="5.0.1" />
     <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
