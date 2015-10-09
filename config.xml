@@ -21,11 +21,11 @@
         <application android:debuggable="true" />
     </gap:config-file>
 
-    <preference name="phonegap-version" value="3.7.0" />
+    <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
-    <preference name="stay-in-webview"  value="false" />
+    <preference name="stay-in-webview"  value="true" />
     <preference name="webviewbounce"    value="false" />
     <preference name="prerendered-icon" value="true" />
     <preference name="load-url-timeout" value="60000" />
