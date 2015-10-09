@@ -494,6 +494,6 @@
         </array>
     </gap:config-file>
 
-    <access origin="*" subdomain="true" />
+    <access origin="*" subdomains="true" />
 
 </widget>
