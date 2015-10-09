@@ -1939,31 +1939,32 @@ div.jqi button.jqidefaultbutton {
 }
 #synchroR {
   display:none;
-  color:#ecb112;
-  font-color:white;
+  color:white;
+  background: -webkit-linear-gradient(top, #ecb112, #ecb112);
 }
 #offlineC {
   display:none;
 }
 #showSessionL {
   color:green;
-  font-color:white;
+  color:white;
+  background: -webkit-linear-gradient(top, #00FF00, #00FF00);
 }
 #showCourseL {
   display:none;
-  color:green;
-  font-color:white;
+  color:white;
+  background: -webkit-linear-gradient(top, #00FF00, #00FF00);
 }
 #stopCourseL {
   display:none;
-  color:red;
-  font-color:white;
+  color:white;
+  background: -webkit-linear-gradient(top, #FF0000, #FF0000);
 }
 #showSessionL {
   display:none;
 }
 #stopSessionL {
   display:none;
-  color:red;
-  font-color:white;
+  color:white;
+  background: -webkit-linear-gradient(top, #FF0000, #FF0000);
 }
