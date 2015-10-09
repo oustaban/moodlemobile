@@ -1939,19 +1939,31 @@ div.jqi button.jqidefaultbutton {
 }
 #synchroR {
   display:none;
+  color:#ecb112;
+  font-color:white;
 }
 #offlineC {
   display:none;
 }
+#showSessionL {
+  color:green;
+  font-color:white;
+}
 #showCourseL {
   display:none;
+  color:green;
+  font-color:white;
 }
 #stopCourseL {
   display:none;
+  color:red;
+  font-color:white;
 }
 #showSessionL {
   display:none;
 }
 #stopSessionL {
   display:none;
+  color:red;
+  font-color:white;
 }
