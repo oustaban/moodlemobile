@@ -459,7 +459,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                     MM.moodleDownloadFile(downloadURL, path.file,
                         function(fullpath) {
-                            MM.log("Content: Download of content finished " + fullpath.fullPath + " URL: " + downloadURL + " Index: " +index + "Local path: " + path.file);
+                            MM.log("Content: Download of content finished " + fullpath + " URL: " + downloadURL + " Index: " +index + "Local path: " + path.file);
                             
                             var exts = path.file.split(".");
                             var dirs = path.file.split("/");

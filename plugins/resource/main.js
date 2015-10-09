@@ -125,7 +125,10 @@ define(templates, function (viewSingleTpl, viewMultipleTpl, dialogTpl) {
             };
             var title = MM.tpl.render(MM.plugins.resource.templates.dialog.html, data);
 
-            MM.widgets.renderIframeModal(title, path);
+            //MM.widgets.renderIframeModal(title, path);
+            MM.widgets.renderIframeModule(title, path);
+            
+            
         },
 
         templates: {
