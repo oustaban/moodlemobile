@@ -407,8 +407,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.log( "Session File OK:" + sessionFile);
                                                     var obj = JSON.parse(result);
                                                     var modulesId = obj.modulesId.split(",");
+                                                    var modulesName = "";
                                                     var users = obj.users.split(",");
                                                     var indexU=1;
+                                                    
                                                     
                                                     
                                                     
