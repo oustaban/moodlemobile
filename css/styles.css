@@ -1939,32 +1939,31 @@ div.jqi button.jqidefaultbutton {
 }
 #synchroR {
   display:none;
-  color:white;
-  background: -webkit-linear-gradient(top, #ecb112, #ecb112);
+  color:black;
+  background: -webkit-linear-gradient(top, #FF8C00, #FF8C00);
 }
 #offlineC {
   display:none;
 }
 #showSessionL {
-  color:green;
-  color:white;
-  background: -webkit-linear-gradient(top, #00FF00, #00FF00);
+  color:black;
+  background: -webkit-linear-gradient(top, #008000, #008000);
 }
 #showCourseL {
   display:none;
-  color:white;
-  background: -webkit-linear-gradient(top, #00FF00, #00FF00);
+  color:black;
+  background: -webkit-linear-gradient(top, #008000, #008000);
 }
 #stopCourseL {
   display:none;
-  color:white;
-  background: -webkit-linear-gradient(top, #FF0000, #FF0000);
+  color:black;
+  background: -webkit-linear-gradient(top, #C03000, #C03000);
 }
 #showSessionL {
   display:none;
 }
 #stopSessionL {
   display:none;
-  color:white;
-  background: -webkit-linear-gradient(top, #FF0000, #FF0000);
+  color:black;
+  background: -webkit-linear-gradient(top, #C03000, #C03000);
 }
