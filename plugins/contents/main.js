@@ -126,6 +126,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                     var contentsStored = [];
                     MM.db.each("contents", function(el){
+                        contentsStored.push(el.get("id"));
                         var same = 0;
                         $.each(JSON.parse(JSON.stringify(contents)), function(index1, sections){
                             // Skip sections deleting contents..
@@ -136,7 +137,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             sectionName = sections.name;
                             $.each(sections.modules, function(index2, content){
                                 MM.log("ContentIDCheck: " + content.id + "," + el.get("id"));
-                                if ((el.get("id") == content.id)) {
+                                contentsStored.indexOf(content.id) > -1
+                                if (contentsStored.indexOf(content.id) > -1) {
                                     same = 1;
                                 }
                             });
@@ -144,9 +146,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                         MM.log("ContentIDCheck: " + same + "," + el.get("id"));
                         if (same == 0) {
                             MM.db.remove("contents", el.get("id"));
-                        } else {
-                            contentsStored.push(el.get("id"));
-                        }
+                        } 
                     });
 
                     var finalContents = [];
