@@ -126,7 +126,26 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                     var contentsStored = [];
                     MM.db.each("contents", function(el){
-                        contentsStored.push(el.get("id"));
+                        var same = 0;
+                        $.each(JSON.parse(JSON.stringify(contents)), function(index1, sections){
+                            // Skip sections deleting contents..
+                            if (sectionId > -1 && sectionId != index1) {
+                                // This is a continue.
+                                return true;
+                            }
+                            sectionName = sections.name;
+                            $.each(sections.modules, function(index2, content){
+                                MM.log("ContentIDCheck: " + content.id);
+                                if ((el.get("id") == content.id)) {
+                                    same = 1;
+                                }
+                            });
+                        });
+                        if (same == 0) {
+                            MM.db.remove("contents", el.get("id"));
+                        } else {
+                            contentsStored.push(el.get("id"));
+                        }
                     });
 
                     var finalContents = [];
@@ -213,7 +232,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 //var contentElements = ['filename', 'fileurl' , 'filesize',
                                 //    'timecreated', 'timemodified', 'author', 'license'];
                                 var contentElements = ['filesize',
-                                    'timecreated', 'timemodified', 'author', 'license'];
+                                    'timecreated', 'timemodified', 'author', 'license', 'fileurl'];
 
                                 for (var indexEl in c.contents) {
                                     _.each(contentElements, function(el) {
