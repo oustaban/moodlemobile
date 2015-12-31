@@ -137,13 +137,12 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             sectionName = sections.name;
                             $.each(sections.modules, function(index2, content){
                                 MM.log("ContentIDCheck: " + content.id + "," + el.get("id"));
-                                contentsStored.indexOf(content.id) > -1
                                 if (contentsStored.indexOf(content.id) > -1) {
                                     same = 1;
                                 }
                             });
                         });
-                        MM.log("ContentIDCheck: " + same + "," + el.get("id"));
+                        MM.log("same: " + same + "," + el.get("id"));
                         if (same == 0) {
                             MM.db.remove("contents", el.get("id"));
                         } 
