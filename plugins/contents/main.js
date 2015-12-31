@@ -128,6 +128,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     MM.db.each("contents", function(el){
                         contentsStored.push(el.get("id"));
                         var same = 0;
+                        MM.log("ContentIDCheck: " +
                         $.each(JSON.parse(JSON.stringify(contents)), function(index1, sections){
                             // Skip sections deleting contents..
                             if (sectionId > -1 && sectionId != index1) {
@@ -141,7 +142,10 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 content.id = MM.config.current_site.id + "-" + content.contentid;
                                 MM.log("ContentIDCheck: " + content.id + "," + el.get("id"));
                                 if (contentsStored.indexOf(content.id) > -1) {
+                                    MM.log("ContentIDCheck:checked:"+same);
                                     same = 1;
+                                } else {
+                                    MM.log("ContentIDCheck:Not checked:"+same);
                                 }
                             });
                         });
