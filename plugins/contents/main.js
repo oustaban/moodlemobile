@@ -136,6 +136,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             }
                             sectionName = sections.name;
                             $.each(sections.modules, function(index2, content){
+                                content.contentid = content.id;
+                                content.courseid = courseId;
+                                content.id = MM.config.current_site.id + "-" + content.contentid;
                                 MM.log("ContentIDCheck: " + content.id + "," + el.get("id"));
                                 if (contentsStored.indexOf(content.id) > -1) {
                                     same = 1;
