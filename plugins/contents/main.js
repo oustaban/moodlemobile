@@ -128,7 +128,6 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     MM.db.each("contents", function(el){
                         contentsStored.push(el.get("id"));
                         var same = 0;
-                        MM.log("ContentIDCheck: " +
                         $.each(JSON.parse(JSON.stringify(contents)), function(index1, sections){
                             // Skip sections deleting contents..
                             if (sectionId > -1 && sectionId != index1) {
