@@ -140,7 +140,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 content.courseid = courseId;
                                 content.id = MM.config.current_site.id + "-" + content.contentid;
                                 MM.log("ContentIDCheck: " + content.id + "," + el.get("id"));
-                                if (contentsStored.indexOf(content.id) > -1) {
+                                if (el.get("id") == content.id) {
                                     MM.log("ContentIDCheck:checked:"+same);
                                     same = 1;
                                 } else {
