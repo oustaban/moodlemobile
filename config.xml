@@ -5,11 +5,9 @@
         id        = "net.magnetic.inhni"
         versionCode = "100"
         version   = "1.0">
-    <name>Moodle Inhni</name>
+    <name>INHNOV 1.0</name>
 
-    <description>
-        Moodle Mobile Inhni app
-    </description>
+    <description></description>
 
     <author href="http://magnetic.coop" email="s.leduc@magnetic.coop">
         Sébastien Leduc
@@ -22,7 +20,7 @@
     </gap:config-file>
 
     <preference name="phonegap-version" value="3.7.0" />
-    <preference name="orientation"      value="default" />
+    <preference name="orientation"      value="landscape" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
     <preference name="stay-in-webview"  value="true" />
@@ -58,10 +56,15 @@
     <icon src="img/icon/ios/icon-57@2x.png"         gap:platform="ios"        width="114" height="114" />
     <icon src="img/icon/ios/icon-72@2x.png"         gap:platform="ios"        width="144" height="144" />
 
-    <gap:splash src="img/splash/android/android_ldpi_portrait.png.png" gap:platform="android" gap:density="ldpi"/>
-    <gap:splash src="img/splash/android/android_mdpi_portrait.png" gap:platform="android" gap:density="mdpi"/>
-    <gap:splash src="img/splash/android/android_hdpi_portrait.png" gap:platform="android" gap:density="hdpi"/>
-    <gap:splash src="img/splash/android/android_xhdpi_portrait.png" gap:platform="android" gap:density="xhdpi"/>
+    <gap:splash src="img/splash/android/android_ldpi_portrait.png" gap:platform="android" gap:density="port-ldpi"/>
+    <gap:splash src="img/splash/android/android_mdpi_portrait.png" gap:platform="android" gap:density="port-mdpi"/>
+    <gap:splash src="img/splash/android/android_hdpi_portrait.png" gap:platform="android" gap:density="port-hdpi"/>
+    <gap:splash src="img/splash/android/android_xhdpi_portrait.png" gap:platform="android" gap:density="port-xhdpi"/>
+    
+    <gap:splash src="img/splash/android/android_ldpi_landscape.png" gap:platform="android" gap:density="ldpi"/>
+    <gap:splash src="img/splash/android/android_mdpi_landscape.png" gap:platform="android" gap:density="mdpi"/>
+    <gap:splash src="img/splash/android/android_hdpi_landscape.png" gap:platform="android" gap:density="hdpi"/>
+    <gap:splash src="img/splash/android/android_xhdpi_landscape.png" gap:platform="android" gap:density="xhdpi"/>
 
     <gap:splash src="img/splash/ios/iphone_portrait.png" gap:platform="ios" width="320" height="480"/>
     <gap:splash src="img/splash/ios/iphone_retina_portrait.png" gap:platform="ios" width="640" height="960"/>

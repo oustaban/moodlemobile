@@ -753,6 +753,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             timeSession = $(this).attr('time');
                         }
                         timeSession = $(this).attr('starttime');
+                        var endSession = d.getTime();
                         
                         var endtime = new Date(parseInt(timeSession));
                         var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinutes();
@@ -897,7 +898,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     var lenghta = modulesId.length - 1;
                                     var lenghtb = moduleStart.length - 1;
                                     var lenghtc = moduleEnd.length - 1;
-                                    var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+timeSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
+                                    var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+endSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
                                     
                                     MM.log('Session Load OK : '+resultFile + ' : ' + content + ' : ' + timeSession);
                                     

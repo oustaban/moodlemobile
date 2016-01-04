@@ -125,6 +125,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     var firstContent = 0;
 
                     var contentsStored = [];
+                    
+                    
                     MM.db.each("contents", function(el){
                         contentsStored.push(el.get("id"));
                         var same = 0;
@@ -238,7 +240,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 //var contentElements = ['filename', 'fileurl' , 'filesize',
                                 //    'timecreated', 'timemodified', 'author', 'license'];
                                 var contentElements = ['filesize',
-                                    'timecreated', 'timemodified', 'author', 'license', 'fileurl'];
+                                    'timecreated', 'timemodified', 'author', 'license'];
 
                                 for (var indexEl in c.contents) {
                                     _.each(contentElements, function(el) {
