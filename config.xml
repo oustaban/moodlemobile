@@ -56,15 +56,15 @@
     <icon src="img/icon/ios/icon-57@2x.png"         gap:platform="ios"        width="114" height="114" />
     <icon src="img/icon/ios/icon-72@2x.png"         gap:platform="ios"        width="144" height="144" />
 
-    <gap:splash src="img/splash/android/android_ldpi_portrait.png" gap:platform="android" gap:density="port-ldpi"/>
-    <gap:splash src="img/splash/android/android_mdpi_portrait.png" gap:platform="android" gap:density="port-mdpi"/>
-    <gap:splash src="img/splash/android/android_hdpi_portrait.png" gap:platform="android" gap:density="port-hdpi"/>
-    <gap:splash src="img/splash/android/android_xhdpi_portrait.png" gap:platform="android" gap:density="port-xhdpi"/>
+    <gap:splash src="img/splash/android/android_ldpi_portrait.png" gap:platform="android" gap:density="ldpi" gap:qualifier="port-ldpi"/>
+    <gap:splash src="img/splash/android/android_mdpi_portrait.png" gap:platform="android" gap:density="mdpi" gap:qualifier="port-mdpi"/>
+    <gap:splash src="img/splash/android/android_hdpi_portrait.png" gap:platform="android" gap:density="hdpi" gap:qualifier="port-hdpi"/>
+    <gap:splash src="img/splash/android/android_xhdpi_portrait.png" gap:platform="android" gap:density="xhdpi" gap:qualifier="port-xhdpi"/>
     
-    <gap:splash src="img/splash/android/android_ldpi_landscape.png" gap:platform="android" gap:density="land-ldpi"/>
-    <gap:splash src="img/splash/android/android_mdpi_landscape.png" gap:platform="android" gap:density="land-mdpi"/>
-    <gap:splash src="img/splash/android/android_hdpi_landscape.png" gap:platform="android" gap:density="land-hdpi"/>
-    <gap:splash src="img/splash/android/android_xhdpi_landscape.png" gap:platform="android" gap:density="land-xhdpi"/>
+    <gap:splash src="img/splash/android/android_ldpi_landscape.png" gap:platform="android" gap:density="ldpi" gap:qualifier="land-ldpi"/>
+    <gap:splash src="img/splash/android/android_mdpi_landscape.png" gap:platform="android" gap:density="mdpi" gap:qualifier="land-mdpi"/>
+    <gap:splash src="img/splash/android/android_hdpi_landscape.png" gap:platform="android" gap:density="hdpi" gap:qualifier="land-hdpi"/>
+    <gap:splash src="img/splash/android/android_xhdpi_landscape.png" gap:platform="android" gap:density="xhdpi" gap:qualifier="land-xhdpi"/>
 
     <gap:splash src="img/splash/ios/iphone_portrait.png" gap:platform="ios" width="320" height="480"/>
     <gap:splash src="img/splash/ios/iphone_retina_portrait.png" gap:platform="ios" width="640" height="960"/>
