@@ -574,7 +574,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function (result) {
                                         $("#showSessionL").hide();
                                         var obj = JSON.parse(result);
-                                        var starttime = obj.startime;
+                                        var starttime = obj.starttime;
                                         MM.fs.createFile(resultFile,
                                             function(fileEntry) {
                                                 var content = '{"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'"}';
@@ -606,7 +606,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.fs.findFileAndReadContents(resultFile,
                                 function (result) {
                                         var obj = JSON.parse(result);
-                                        var starttime = obj.startime;
+                                        var starttime = obj.starttime;
                                         MM.fs.createFile(resultFile,
                                             function(fileEntry) {
                                                 var content = '{"starttime":"'+starttime+'","users":""}';
@@ -920,7 +920,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#stopSessionL').hide();
                                                     $("#synchroR").show();
                                                     $("#stopSessionL").attr('time','');
-                                                    $("#stopSessionL").attr('startime','');
+                                                    $("#stopSessionL").attr('starttime','');
                                                     
                                                     $('input:checkbox').each(function() {
                                                         $(this).attr("disabled", false );
@@ -1072,7 +1072,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $('#stopCourseL').hide();
                                 $('#stopSessionL').hide();
                                 $("#stopSessionL").attr('time','');
-                                $("#stopSessionL").attr('startime','');
+                                $("#stopSessionL").attr('starttime','');
                                 
                                 $('input:checkbox').each(function() {
                                     $(this).attr("disabled", false );
