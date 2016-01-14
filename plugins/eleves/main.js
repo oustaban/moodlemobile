@@ -632,6 +632,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     $("#showSessionL").hide();
                                 }
                             );
+                            
+                            $("#stopSessionL").attr("users","");
+                            $("#showCourseL").attr("users","");
+                            $("#stopCourseL").attr("users","");
                                 
                             
                         }
