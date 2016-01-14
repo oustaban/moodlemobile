@@ -303,7 +303,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                     
                                     var namefile = entry.name.split(".");
-                                    if (!isNaN(namefile[0]) {
+                                    if (!isNaN(namefile[0])) {
                                     
                                         var moduleFile =  MM.config.current_site.id + "/" + courseId + "/result/" + entry.name;
                                 
