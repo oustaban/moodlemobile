@@ -295,10 +295,30 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             if(entries.length > 0) {
                                 
                                 $.each(entries, function(index, entry) {
+                                    
                                     MM.log('Session Stockée:'+entry.name);
                                     var name = entry.name.split("session_");
                                     if (name[1]) {
                                         $("#synchroR").show();
+                                    }
+                                    
+                                    var namefile = entry.name.split(".");
+                                    if (!isNaN(namefile[0]) {
+                                    
+                                        var moduleFile =  MM.config.current_site.id + "/" + courseId + "/result/" + entry.name;
+                                
+                                        MM.fs.findFileAndReadContents(moduleFile,
+                                            function (resultModule) {
+                                                var obj = JSON.parse(resultModule);
+                                                if (!obj.endtime) {
+                                                     $('#showSessionL').hide();
+                                                     $('#offlineC').hide();
+                                                     $('#showCourseL').hide();
+                                                     $('#stopCourseL').show();
+                                                     $('#stopSessionL').hide();    
+                                                }
+                                            }
+                                        );
                                     }
                                 });
                             }
