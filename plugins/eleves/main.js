@@ -311,11 +311,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             function (resultModule) {
                                                 var obj = JSON.parse(resultModule);
                                                 if (!obj.endtime) {
+                                                    
                                                      $('#showSessionL').hide();
                                                      $('#offlineC').hide();
                                                      $('#showCourseL').hide();
                                                      $('#stopCourseL').show();
-                                                     $('#stopSessionL').hide();    
+                                                     $('#stopSessionL').hide();
+                                                     
+                                                     $("#stopCourseL").attr("module",namefile[0]);
                                                 }
                                             }
                                         );
