@@ -1221,8 +1221,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                        MM.fs.writeInFile(fileEntry, content, 
                                           function(fileUrl) {
                                               MM.log('Write Result OK:'+fileUrl);
+                                              var selectedCourse = $( "#offlineC option:selected" ).val();
+                                              
                                               $('#stopCourseL').hide();
-                                              $("#showCourseL").show();
+                                              if (selectedCourse != 0)
+                                                $("#showCourseL").show();
+                                              else
+                                                $("#showCourseL").hide();
                                               $('#stopSessionL').show();
                                               $('#offlineC').show();
                                           },
