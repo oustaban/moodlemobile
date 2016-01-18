@@ -462,7 +462,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             $.each(participants_users, function( indexU, valueU ) {
                                                                 
                                                                 var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
-								var signatureRelFile =  MM.config.current_site.id + "/" + course + "/result/" + value + '_' + obj.starttime + '.png';
+								var signatureRelFile =  MM.config.current_site.id + "/" + course + "/result/" + valueU + '_' + obj.starttime + '.png';
                                                                 MM.log('Participants:'+valueU+','+signatureFile);
                                                                 MM.fs.fileExists(signatureFile,
                                                                         function(path) {
