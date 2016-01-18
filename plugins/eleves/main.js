@@ -462,6 +462,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             $.each(participants_users, function( indexU, valueU ) {
                                                                 
                                                                 var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
+								var signatureRelFile =  MM.config.current_site.id + "/" + course + "/result/" + value + '_' + obj.starttime + '.png';
                                                                 MM.log('Participants:'+valueU+','+signatureFile);
                                                                 MM.fs.fileExists(signatureFile,
                                                                         function(path) {
@@ -486,12 +487,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                         MM.log('Upload réussi');
                                                                                         
 
-                                                                                        MM.fs.removeFile (path,
+                                                                                        MM.fs.removeFile (signatureRelFile,
                                                                                             function (result) {
-                                                                                               MM.log('Le fichier '+path+' a bien été effacé');
+                                                                                               MM.log('Le fichier '+signatureRelFile+' a bien été effacé');
                                                                                             },
                                                                                             function (result) {
-                                                                                               MM.log('Le fichier '+path+' n a pas pu étre effacé');
+                                                                                               MM.log('Le fichier '+signatureRelFile+' n a pas pu étre effacé');
                                                                                             }
                                                                                        );
                                                                                       },

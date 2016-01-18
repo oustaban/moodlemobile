@@ -630,7 +630,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                          },
                          background,
                          function (percent) {
-                            MM.log(percent);
+                            //MM.log(percent);
                             $(percentCssId).html(parseInt(percent*100)+'%')
                          }
                     );
