@@ -20,7 +20,7 @@
         <application android:debuggable="false" />
     </gap:config-file>
 
-    <preference name="phonegap-version" value="cli-5.1.2" />
+    <preference name="phonegap-version" value="cli-5.2.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
