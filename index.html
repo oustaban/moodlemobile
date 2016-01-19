@@ -68,6 +68,8 @@
             MM.log('Deviceready fired');
             //screen.lockOrientation('portrait');
             MM.deviceReady = true;
+            
+            StatusBar.hide();
             //screen.unlockOrientation();
             // Store the device locale for further uses.
             navigator.globalization.getLocaleName(
