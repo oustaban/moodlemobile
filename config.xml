@@ -104,11 +104,13 @@
     <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
     <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" />
     <gap:plugin name="ch.ti8m.documenthandler" version="0.2.1" />
+    <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
 
     <gap:config-file platform="android" parent="/manifest">
          <application android:debuggable="false" />
     </gap:config-file>
 
+    <allow-navigation href="*" />
     <!-- See MOBILE-892 -->
     <preference name="permissions" value="none"/>
 
