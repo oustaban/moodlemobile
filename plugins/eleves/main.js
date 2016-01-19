@@ -410,6 +410,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var course = $(this).attr('course');
                         var message = "";
                         var on = $(this).attr('on');
+                        var btnSynchro = $(this);
                         MM.log("Synchro Start");
                         
                         
@@ -521,13 +522,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                     function (result) {
                                                                        MM.log('Le fichier '+sessionFile+' a bien été effacé');
                                                                        $("#synchroR").hide();
-                                                                       $(this).attr('on','off');
+                                                                       btnSynchro.attr('on','off');
                                                                        MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
                                                                     },
                                                                     function (result) {
                                                                        MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
                                                                        $("#synchroR").hide();
-                                                                       $(this).attr('on','off');
+                                                                       btnSynchro.attr('on','off');
                                                                        
                                                                     }
                                                                     
@@ -542,7 +543,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 MM.log("Error updating report/completion " + e);
                                                                 message = "Erreur de synchronisation des notes et résultat de "+name+", veuillez réessayer.<br><br>";
                                                                 MM.popErrorMessage(e);
-                                                                $(this).attr('on','off');
+                                                                btnSynchro.attr('on','off');
                                                                 $("#synchroR").show();
                                                             }
                                                         );
@@ -554,7 +555,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     },
                                                     function(result) {
                                                         MM.log( "Session File NOK :" + sessionFile);
-                                                        $(this).attr('on','off');
+                                                        btnSynchro.attr('on','off');
                                                     }
                                                 );
                                                     
