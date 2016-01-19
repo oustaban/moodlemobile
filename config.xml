@@ -95,16 +95,16 @@
     <plugin name="cordova-plugin-screen-orientation" spec="1.4.0" source="pgb" />
     
 
-    <gap:plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" />
     <gap:plugin name="net.tunts.webintent" />
-    <gap:plugin name="com.phonegap.plugins.childbrowser" spec="5.0.0" source="pgb" />
+    <gap:plugin name="com.phonegap.plugins.childbrowser" />
     <gap:plugin name="nl.x-services.plugins.launchmyapp">
         <param name="URL_SCHEME" value="inhni" />
     </gap:plugin>
     <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
     <gap:plugin name="de.appplant.cordova.plugin.local-notification" version="0.8.1" />
     <gap:plugin name="ch.ti8m.documenthandler" version="0.2.1" />
-    <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="pgb" />
+    <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" />
 
     <gap:config-file platform="android" parent="/manifest">
          <application android:debuggable="false" />
