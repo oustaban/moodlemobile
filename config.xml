@@ -95,9 +95,9 @@
     <plugin name="cordova-plugin-screen-orientation" spec="1.4.0" source="pgb" />
     
 
-    <gap:plugin name="com.phonegap.plugins.pushplugin" source="pgb" version="2.5.0" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />
     <gap:plugin name="net.tunts.webintent" />
-    <gap:plugin name="com.orcasinc.childbrowser" source="pgb" />
+    <gap:plugin name="com.phonegap.plugins.childbrowser" spec="5.0.0" source="pgb" />
     <gap:plugin name="nl.x-services.plugins.launchmyapp">
         <param name="URL_SCHEME" value="inhni" />
     </gap:plugin>
