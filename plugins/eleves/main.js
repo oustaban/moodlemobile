@@ -409,157 +409,168 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var names = namesList.split(",");
                         var course = $(this).attr('course');
                         var message = "";
-                        
-                        
+                        var on = $(this).attr('on');
                         MM.log("Synchro Start");
                         
-                        var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
-                        MM.fs.getDirectoryContents(directoryResult,
-                            function(entries) {
-    
-                                if(entries.length > 0) {
-                                    
-                                    $.each(entries, function(index, entry) {
-                                        MM.log('File:'+entry.name);
+                        
+                        if (on == undefined || on == "off") {
+                            $(this).attr('on','on');
+                            MM.log('Synchro On:'+on+','+$(this).attr('on'));
+                            var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
+                            MM.fs.getDirectoryContents(directoryResult,
+                                function(entries) {
+        
+                                    if(entries.length > 0) {
                                         
-                                        var name = entry.name.split("session_");
-                                        if (name[1]) {
-                                            var sessionFile =  MM.config.current_site.id + "/" + course + "/result/" + entry.name;
-                                            MM.fs.findFileAndReadContents(sessionFile,
-                                                function(result) {
-                                                    MM.log( "Session File OK:" + sessionFile);
-                                                    var obj = JSON.parse(result);
-                                                    var modulesId = obj.modulesId.split(",");
-                                                    var modulesName = "";
-                                                    var users = obj.users.split(",");
-                                                    var indexU=1;
-                                                    
-                                                    
-                                                    
-                                                    
-                                                         
-                                                    var data = {
-                                                        "userid" : obj.users,
-                                                        "moduleid" : obj.modulesId,
-                                                        "courseid" : course,
-                                                        "starttime" : obj.starttime,
-                                                        "endtime" : obj.endtime,
-                                                        "modulesstart" : obj.modulesStart,
-                                                        "modulesend" : obj.modulesEnd,
-                                                        "managerid" : MM.site.get('userid')
-                                                    }
-                                    
-                                                    MM.widgets.dialogClose();
-                                                                   
-                                                    MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
-                                                        function(status){
-                                                            var sessionTime = new Date(parseInt(obj.starttime));
-                                                            var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
-                                                            var participants_users = status.participants_user.split(",");
-                                                            var participants_id = status.participants_id.split(",");
-                                                            
-                                                            
-                                                            $.each(participants_users, function( indexU, valueU ) {
-                                                                
-                                                                var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
-								var signatureRelFile =  MM.config.current_site.id + "/" + course + "/result/" + valueU + '_' + obj.starttime + '.png';
-                                                                MM.log('Participants:'+valueU+','+signatureFile);
-                                                                MM.fs.fileExists(signatureFile,
-                                                                        function(path) {
-                                                                            MM.log('Signature '+path+' Existe');
-                                                                            var options = {};
-                                                                            options.fileKey="file";
-                                                                            options.fileName = participants_id[indexU]+'.png';
-                                                                            options.mimeType="image/png";
-                                                                            options.params = {
-                                                                                itemid:participants_id[indexU]
-                                                                            };
-                                                                            options.chunkedMode = false;
-                                                                            options.headers = {
-                                                                              Connection: "close"
-                                                                            };
-                                                                            
-                                                                            var ft = new FileTransfer();
-                                                                            ft.upload(
-                                                                                      path,
-                                                                                      MM.config.current_site.siteurl + '/local/session/uploadsignatureoffline.php',
-                                                                                      function(){
-                                                                                        MM.log('Upload réussi');
-                                                                                        
-
-                                                                                        MM.fs.removeFile (signatureRelFile,
-                                                                                            function (result) {
-                                                                                               MM.log('Le fichier '+signatureRelFile+' a bien été effacé');
-                                                                                            },
-                                                                                            function (result) {
-                                                                                               MM.log('Le fichier '+signatureRelFile+' n a pas pu étre effacé');
-                                                                                            }
-                                                                                       );
-                                                                                      },
-                                                                                      function(){
-                                                                                         MM.log('Upload pas réussi');
-                                                                                        
-                                                                                      },
-                                                                                      options
-                                                                            );
-
-                                                                            
-                                                                        },
-                                                                        function(path) {
-                                                                            MM.log('Signature Existe pas');
-                                                                        }
-                                                                   );
-                                                                
-                                                            });
-                                                            
-                                                            message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
-                                                            
-                                                            MM.fs.removeFile (sessionFile,
-                                                                function (result) {
-                                                                   MM.log('Le fichier '+sessionFile+' a bien été effacé');
-                                                                   $("#synchroR").hide();
-                                                                   MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
-                                                                },
-                                                                function (result) {
-                                                                   MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
-                                                                   $("#synchroR").show();
-                                                                   
-                                                                }
-                                                                
-                                                           );
-                                                            
-                                                        },
-                                                        {
-                                                            getFromCache: false,
-                                                            saveToCache: false
-                                                        },
-                                                        function(e) {
-                                                            MM.log("Error updating report/completion " + e);
-                                                            message = "Erreur de synchronisation des notes et résultat de "+names[index]+", veuillez réessayer.<br><br>";
-                                                            MM.popErrorMessage(e);
-                                                            $("#synchroR").show();
+                                        $.each(entries, function(index, entry) {
+                                            MM.log('File:'+entry.name);
+                                            
+                                            var name = entry.name.split("session_");
+                                            if (name[1]) {
+                                                var sessionFile =  MM.config.current_site.id + "/" + course + "/result/" + entry.name;
+                                                MM.fs.findFileAndReadContents(sessionFile,
+                                                    function(result) {
+                                                        MM.log( "Session File OK:" + sessionFile);
+                                                        var obj = JSON.parse(result);
+                                                        var modulesId = obj.modulesId.split(",");
+                                                        var modulesName = "";
+                                                        var users = obj.users.split(",");
+                                                        var indexU=1;
+                                                        
+                                                        
+                                                        
+                                                        
+                                                             
+                                                        var data = {
+                                                            "userid" : obj.users,
+                                                            "moduleid" : obj.modulesId,
+                                                            "courseid" : course,
+                                                            "starttime" : obj.starttime,
+                                                            "endtime" : obj.endtime,
+                                                            "modulesstart" : obj.modulesStart,
+                                                            "modulesend" : obj.modulesEnd,
+                                                            "managerid" : MM.site.get('userid')
                                                         }
-                                                    );
+                                        
+                                                        MM.widgets.dialogClose();
+                                                                       
+                                                        MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
+                                                            function(status){
+                                                                var sessionTime = new Date(parseInt(obj.starttime));
+                                                                var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
+                                                                var participants_users = status.participants_user.split(",");
+                                                                var participants_id = status.participants_id.split(",");
                                                                 
+                                                                
+                                                                $.each(participants_users, function( indexU, valueU ) {
+                                                                    
+                                                                    var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
+                                                                    var signatureRelFile =  MM.config.current_site.id + "/" + course + "/result/" + valueU + '_' + obj.starttime + '.png';
+                                                                    MM.log('Participants:'+valueU+','+signatureFile);
+                                                                    MM.fs.fileExists(signatureFile,
+                                                                            function(path) {
+                                                                                MM.log('Signature '+path+' Existe');
+                                                                                var options = {};
+                                                                                options.fileKey="file";
+                                                                                options.fileName = participants_id[indexU]+'.png';
+                                                                                options.mimeType="image/png";
+                                                                                options.params = {
+                                                                                    itemid:participants_id[indexU]
+                                                                                };
+                                                                                options.chunkedMode = false;
+                                                                                options.headers = {
+                                                                                  Connection: "close"
+                                                                                };
+                                                                                
+                                                                                var ft = new FileTransfer();
+                                                                                ft.upload(
+                                                                                          path,
+                                                                                          MM.config.current_site.siteurl + '/local/session/uploadsignatureoffline.php',
+                                                                                          function(){
+                                                                                            MM.log('Upload réussi');
+                                                                                            
+    
+                                                                                            MM.fs.removeFile (signatureRelFile,
+                                                                                                function (result) {
+                                                                                                   MM.log('Le fichier '+signatureRelFile+' a bien été effacé');
+                                                                                                },
+                                                                                                function (result) {
+                                                                                                   MM.log('Le fichier '+signatureRelFile+' n a pas pu étre effacé');
+                                                                                                }
+                                                                                           );
+                                                                                          },
+                                                                                          function(){
+                                                                                             MM.log('Upload pas réussi');
+                                                                                            
+                                                                                          },
+                                                                                          options
+                                                                                );
+    
+                                                                                
+                                                                            },
+                                                                            function(path) {
+                                                                                MM.log('Signature Existe pas');
+                                                                            }
+                                                                       );
+                                                                    
+                                                                });
+                                                                
+                                                                message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
+                                                                
+                                                                MM.fs.removeFile (sessionFile,
+                                                                    function (result) {
+                                                                       MM.log('Le fichier '+sessionFile+' a bien été effacé');
+                                                                       $("#synchroR").hide();
+                                                                       $(this).attr('on','off');
+                                                                       MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
+                                                                    },
+                                                                    function (result) {
+                                                                       MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
+                                                                       $("#synchroR").hide();
+                                                                       $(this).attr('on','off');
+                                                                       
+                                                                    }
+                                                                    
+                                                               );
+                                                                
+                                                            },
+                                                            {
+                                                                getFromCache: false,
+                                                                saveToCache: false
+                                                            },
+                                                            function(e) {
+                                                                MM.log("Error updating report/completion " + e);
+                                                                message = "Erreur de synchronisation des notes et résultat de "+name+", veuillez réessayer.<br><br>";
+                                                                MM.popErrorMessage(e);
+                                                                $(this).attr('on','off');
+                                                                $("#synchroR").show();
+                                                            }
+                                                        );
+                                                                    
+                                                        
+                                                        
                                                     
+                                                        
+                                                    },
+                                                    function(result) {
+                                                        MM.log( "Session File NOK :" + sessionFile);
+                                                        $(this).attr('on','off');
+                                                    }
+                                                );
                                                     
-                                                
-                                                    
-                                                },
-                                                function(result) {
-                                                    MM.log( "Session File NOK :" + sessionFile);
-                                                }
-                                            );
-                                                
-                                        }
-                                    });
+                                            }
+                                        });
+                                    }
+                                    
+                                },
+                                function() {
+                                    //
                                 }
-                                
-                            },
-                            function() {
-                                //
-                            }
-                        );
+                            );
+                        
+                        } else {
+                            MM.log( "Session En cours" + sessionFile);
+                        }
                         
                         
                         MM.widgets.dialogClose();
@@ -845,7 +856,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
-                                                            MM.log('Session Module Go:'+html);
+                                                            MM.log('Session Module Go:');
                                                             MM.widgets.dialog(html, options);
                                                         }
                                                         indexUser++;
@@ -855,7 +866,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
-                                                            MM.log('Session Module Go:'+html);
+                                                            MM.log('Session Module Go:');
                                                             MM.widgets.dialog(html, options);
                                                         }
                                                         indexUser++;
