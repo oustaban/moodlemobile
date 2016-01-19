@@ -92,6 +92,7 @@
     <gap:plugin name="cordova-plugin-statusbar" source="npm" />
     <gap:plugin name="org.chromium.zip" version="2.1.0" />
     <plugin name="cordova-plugin-screen-orientation" source="npm" />
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     
 
     <gap:plugin name="com.phonegap.plugins.pushplugin" spec="2.5.0" source="pgb" />
@@ -108,6 +109,8 @@
          <application android:debuggable="false" />
     </gap:config-file>
 
+    <allow-navigation href="*" />
+    
     <!-- See MOBILE-892 -->
     <preference name="permissions" value="none"/>
 
