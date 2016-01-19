@@ -96,7 +96,6 @@
 
     <gap:plugin name="com.phonegap.plugins.pushplugin" source="pgb" version="2.5.0" />
     <gap:plugin name="net.tunts.webintent" />
-    <gap:plugin name="com.phonegap.plugins.childbrowser" />
     <gap:plugin name="nl.x-services.plugins.launchmyapp">
         <param name="URL_SCHEME" value="inhni" />
     </gap:plugin>
