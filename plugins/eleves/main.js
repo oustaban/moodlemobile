@@ -541,10 +541,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             },
                                                             function(e) {
                                                                 MM.log("Error updating report/completion " + e);
-                                                                message = "Erreur de synchronisation des notes et résultat de "+name+", veuillez réessayer.<br><br>";
-                                                                MM.popErrorMessage(e);
+                                                                //message = "Erreur de synchronisation des notes et résultat de "+name+", veuillez réessayer.<br><br>";
+                                                                //MM.popErrorMessage(e);
                                                                 btnSynchro.attr('on','off');
                                                                 $("#synchroR").show();
+                                                                MM.fs.removeFile (sessionFile,
+                                                                    function (result) {
+                                                                       MM.log('Le fichier '+sessionFile+' a bien été effacé');
+                                                                    },
+                                                                    function (result) {
+                                                                       MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
+                                                                    }  
+                                                               );
                                                             }
                                                         );
                                                                     
