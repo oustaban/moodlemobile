@@ -28,7 +28,7 @@
     <preference name="webviewbounce"    value="false" />
     <preference name="prerendered-icon" value="true" />
     <preference name="load-url-timeout" value="60000" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
 
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="iosPersistentFileLocation" value="Compatibility" />
@@ -104,9 +104,7 @@
     <gap:plugin name="ch.ti8m.documenthandler" version="0.2.1" />
     <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" source="pgb" version="1.1.1" />
 
-    <gap:config-file platform="android" parent="/manifest">
-         <application android:debuggable="false" />
-    </gap:config-file>
+    
 
     <allow-navigation href="*" />
     <!-- See MOBILE-892 -->
