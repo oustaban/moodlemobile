@@ -69,7 +69,9 @@
             //screen.lockOrientation('portrait');
             MM.deviceReady = true;
             
-            StatusBar.hide();
+            setTimeout(function() {
+                StatusBar.hide();
+            }, 2000);
 			//StatusBar.overlaysWebView(true);
             //screen.unlockOrientation();
             // Store the device locale for further uses.
