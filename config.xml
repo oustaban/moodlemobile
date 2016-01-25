@@ -17,7 +17,7 @@
     
     
     <gap:config-file platform="android" parent="/manifest">
-        <application android:debuggable="false" />
+        <application android:debuggable="true" />
     </gap:config-file>
 
     <preference name="phonegap-version" value="cli-5.2.0" />
