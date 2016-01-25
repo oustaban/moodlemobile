@@ -102,8 +102,7 @@
     </gap:plugin>
     <gap:plugin name="com.ionic.keyboard" version="1.0.3" />
     <gap:plugin name="ch.ti8m.documenthandler" version="0.2.1" />
-    <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" source="pgb" version="1.1.1" />
-
+    
     
 
     <allow-navigation href="*" />
