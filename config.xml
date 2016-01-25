@@ -87,7 +87,7 @@
     <gap:plugin name="org.apache.cordova.globalization" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="cordova-plugin-statusbar" source="npm" />
+    <gap:plugin name="org.apache.cordova.statusbar" />
     <gap:plugin name="org.chromium.zip" version="2.1.0" />
     <plugin name="cordova-plugin-screen-orientation" spec="1.4.0" source="pgb" />
     
