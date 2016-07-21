@@ -172,12 +172,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             }
             // Adding loading icon.
             $('a[href="#eleves/' +courseId+ '"]').addClass('loading-row');
+            
+            
 
             MM.plugins.eleves._loadEleves(courseId, 0, MM.plugins.eleves.limitNumber,
                 function(users) {
                     // Removing loading icon.
                     $('a[href="#eleves/' +courseId+ '"]').removeClass('loading-row');
-
+                    
+                    
                     var showMore = true;
                     if (users.length < MM.plugins.eleves.limitNumber) {
                         showMore = false;
@@ -584,8 +587,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     //Check Button
                     MM.log("Check Button");
                     var selected = [];
-                    $('input:checkbox').on(MM.clickType, function(e) {
+                    
+                    $('li#lielevelP').on(MM.clickType, function(e) {
                         selected = [];
+                        var checkbox = $('#' + $(this).attr('eleve'));
+                        MM.log('label clicked:'+$(this).attr('eleve'));
+                        if(checkbox.is(':checked'))
+                              checkbox.prop('checked',false);
+                        else
+                           checkbox.prop('checked',true);
                         $('input:checked').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
                             selected.push($(this).val());
@@ -678,6 +688,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                         }
                         
+                    });
+                    
+                    $('input.elevecheckbox').on(MM.clickType, function(e) {
+                        if($(this).is(':checked'))
+                              $(this).prop('checked',false);
+                        else
+                           $(this).prop('checked',true);
                     });
                     
                     //Select Course
@@ -1208,16 +1225,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
             
                         var html = '';
-            
-                        var usersS = users.split(",");
-                        $.each(usersS, function( indexS, valueS ) {
-                            var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
-                            MM.log('stopCourseL each:'+valueS+','+userP);
-                            var userG = userP.toJSON();
-                            html += '<label>'+userG.fullname+':</label><input type="text" id="addnotescore'+indexS+'" user="'+userG.userid+'" name="addnotescore'+indexS+'" value=""> % <br>';
-                        });
-                            
-                        
+			if (users!="") {
+                        	var usersS = users.split(",");
+                        	$.each(usersS, function( indexS, valueS ) {
+                            		MM.log(indexS+','+valueS);
+			    		var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
+                            		MM.log('stopCourseL each:'+valueS+','+userP);
+                            		var userG = userP.toJSON();
+                            		html += '<label>'+userG.fullname+':</label><input type="text" id="addnotescore'+indexS+'" user="'+userG.userid+'" name="addnotescore'+indexS+'" value=""> % <br>';
+                        	});
+			}
+
                         var resultFile =  MM.config.current_site.id + "/" + course + "/result/" + module + ".json";
                                 
                         MM.fs.findFileAndReadContents(resultFile,

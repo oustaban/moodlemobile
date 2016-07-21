@@ -142,12 +142,16 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 content.courseid = courseId;
                                 content.id = MM.config.current_site.id + "-" + content.contentid;
                                 MM.log("ContentIDCheck: " + content.id + "," + el.get("id"));
-                                if (el.get("id") == content.id) {
-                                    MM.log("ContentIDCheck:checked:"+same);
-                                    same = 1;
-                                } else {
-                                    MM.log("ContentIDCheck:Not checked:"+same);
-                                }
+                                if (el.get("courseid") == content.courseId) {
+					if (el.get("id") == content.id) {
+                                    		MM.log("ContentIDCheck:checked:"+same);
+                                    		same = 1;
+                                	} else {
+                                    		MM.log("ContentIDCheck:Not checked:"+same);
+                                	}
+				} else {
+					same = 1;
+				}
                             });
                         });
                         MM.log("same: " + same + "," + el.get("id"));
@@ -427,23 +431,28 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             } else {
                 file = content.contents[0];
             }
-
-            // Now we check if we have to alert the user that is about to download a large file.
-            if (file.filesize) {
-                // filesize is in bytes.
-                var filesize = parseInt(file.filesize);
-                if (filesize > FILE_SIZE_WARNING[MM.deviceType]) {
-                    var notice = MM.lang.s("noticelargefile");
-                    notice += " " + MM.lang.s("filesize") + " " + MM.util.bytesToSize(filesize, 2) + "<br />";
-                    notice += MM.lang.s("confirmcontinuedownload");
-
-                    MM.popConfirm(notice, function() {
-                        MM.plugins.contents.downloadContentFile(courseId, sectionId, contentId, index, true);
-                    });
-                    return;
+            
+            if (!MM.deviceConnected()) {
+                var error = MM.lang.s('offline2');
+                MM.popMessage(error);
+            } else {
+                // Now we check if we have to alert the user that is about to download a large file.
+                if (file.filesize) {
+                    // filesize is in bytes.
+                    var filesize = parseInt(file.filesize);
+                    if (filesize > FILE_SIZE_WARNING[MM.deviceType]) {
+                        var notice = MM.lang.s("noticelargefile");
+                        notice += " " + MM.lang.s("filesize") + " " + MM.util.bytesToSize(filesize, 2) + "<br />";
+                        notice += MM.lang.s("confirmcontinuedownload");
+    
+                        MM.popConfirm(notice, function() {
+                            MM.plugins.contents.downloadContentFile(courseId, sectionId, contentId, index, true);
+                        });
+                        return;
+                    }
                 }
+                MM.plugins.contents.downloadContentFile(courseId, sectionId, contentId, index, true);
             }
-            MM.plugins.contents.downloadContentFile(courseId, sectionId, contentId, index, true);
         },
 
         downloadContentFile: function(courseId, sectionId, contentId, index, open, background, successCallback, errorCallback) {
@@ -749,7 +758,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 for (var el in fileParams) {
                     var param = fileParams[el];
                     if (typeof(file[param]) != "undefined" && file[param]) {
-                        information += MM.lang.s(param)+': ';
+                        if (param != "localpath")
+                            information += MM.lang.s(param)+': ';
 
                         var value = file[param];
 
@@ -767,17 +777,19 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 break;
                             case "localpath":
                                 var url = MM.fs.getRoot() + '/' + value;
-                                value = '<a href="' + url + '" rel="external">' +url + '</a>';
+                                value = "";
+                                //value = '<a href="' + url + '" rel="external">' +url + '</a>';
                                 break;
                             default:
-                                value = file[param];
+                                //value = file[param];
+                                value = "";
                         }
 
                         information += value + '<br />';
                     }
                 }
             }
-
+            /*
             information += '<p>' + MM.lang.s("viewableonthisapp") + ': ';
 
             if (content.webOnly && !MM.checkModPlugin(content.modname)) {
@@ -788,7 +800,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             information += "</p>";
 
             information += '<p><a href="'+content.url+'" target="_blank">'+content.url+'</a></p>';
-
+            */
+            
             MM.plugins.contents.infoBox = $('<div id="infobox-'+contentId+'"><div class="arrow-box-contents">'+information+'</div></div>').addClass("arrow_box");
             $('body').append(MM.plugins.contents.infoBox);
 

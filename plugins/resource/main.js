@@ -68,8 +68,13 @@ define(templates, function (viewSingleTpl, viewMultipleTpl, dialogTpl) {
                 var path = $(this).data("path");
                 path = MM.fs.getRoot() + "/" + path;
                 MM.log('resource-downloaded clicked:'+path);
-
-                MM.plugins.resource._showResource(path);
+                if (!MM.deviceConnected()) {
+                    var error = MM.lang.s('offline1');
+                    MM.popMessage(error);
+                }
+                
+                else
+                    MM.plugins.resource._showResource(path);
             });
 
             $(".resource-download-all").on(MM.clickType, function(e) {
@@ -123,6 +128,7 @@ define(templates, function (viewSingleTpl, viewMultipleTpl, dialogTpl) {
             var data = {
                 path: path
             };
+	    MM.log('_showResource:'+path);
             var title = MM.tpl.render(MM.plugins.resource.templates.dialog.html, data);
 
             //MM.widgets.renderIframeModal(title, path);

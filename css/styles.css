@@ -335,6 +335,24 @@ hr {
   display: block;
   overflow: hidden;
 }
+.media .bdeleve {
+  vertical-align: middle;
+  overflow: hidden;
+  width:100%;
+}
+.media .bdeleve input {
+  margin-right: 12px;
+  margin-left:12px;
+  width:20px;
+  height:40px;
+  vertical-align:middle
+}
+.media .bdeleve span.eleveP {
+  text-align:left;
+  padding-left:10px;
+  vertical-align:middle
+  
+}
 /* =2.6 - LOADING OBJECT
 -------------------------------------------------------------------------- */
 .loading-row2 {

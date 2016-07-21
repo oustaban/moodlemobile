@@ -1,13 +1,11 @@
 <% _.each(users, function(user) { %>
-<li class="nav-item">
+<li class="nav-item" id="lielevelP" eleve="eleveP<%= user.id %>">
     <div style="float:left;width:100%">
-        <a href="javascript:void(0)" class="media touch-row">
-            <div class="img">
-                <!--<img src="<%= user.profileimageurlsmall %>" alt="img">-->
-                <input id="eleveP" type="checkbox" name="participants[]" value="<%= user.id %>">
-            </div>
-            <div class="bd">
-              <p><%= user.fullname %></p>
+        <a href="javascript:void(0)" class="media touch-row" >
+            
+            <div class="bdeleve">
+              <input class="elevecheckbox" id="eleveP<%= user.id %>" type="checkbox" name="participants[]" value="<%= user.id %>">
+              <span><%= user.fullname %></span>
             </div>
         </a>
     </div>
