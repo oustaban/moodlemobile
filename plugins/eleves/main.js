@@ -202,7 +202,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     });
                     */
                     
-                    var localCourses = MM.db.where('contents', {'courseid':courseId, 'siteid':MM.config.current_site.id});
+                    var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
                     MM.log('LocalCourses:'+localCourses+','+localCourses.length);
                     var modulesL = [];
                     
@@ -795,7 +795,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         
                         
-                        var localCourses = MM.db.where('contents', {'courseid':course, 'siteid':MM.config.current_site.id});
+                        var localCourses = MM.db.where('contents', {'courseid':course, 'site':MM.config.current_site.id});
                         var moduleStart = "";
                         var moduleEnd = "";
                         var modulesId = "";
@@ -1311,7 +1311,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 function(users) {
                     
                     
-                    var onlines = MM.db.where("contents", {name:'online',courseid:courseId,siteid:MM.config.current_site.id});
+                    var onlines = MM.db.where("contents", {name:'online',courseid:courseId,site:MM.config.current_site.id});
                     MM.log('onlines:'+onlines);
                     if (onlines && onlines != "") {
                         var online = onlines[0].toJSON();
@@ -1383,10 +1383,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    var test1 = MM.db.where("contents", {"name":"offline", "courseid" : courseId,  'siteid':MM.config.current_site.id});
-                    var test2 = MM.db.where('contents', {'name':'offline',  'siteid':MM.config.current_site.id});
-                    var test3 = MM.db.where('contents', {'courseid':courseId, 'siteid':MM.config.current_site.id});
-                    var offlines = MM.db.where("contents", {"courseid" : courseId,"name":"offline", 'siteid':MM.config.current_site.id});
+                    var test1 = MM.db.where("contents", {"name":"offline", "courseid" : courseId,  'site':MM.config.current_site.id});
+                    var test2 = MM.db.where('contents', {'name':'offline',  'site':MM.config.current_site.id});
+                    var test3 = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
+                    var offlines = MM.db.where("contents", {"courseid" : courseId,"name":"offline", 'site':MM.config.current_site.id});
                     var test4 = MM.db.get("contents", MM.config.current_site.id + "-96");
                     
                     MM.log('offlines:'+offlines+'::'+courseId+'::'+test1+'::'+test2+'::'+test3+'::'+test4);
