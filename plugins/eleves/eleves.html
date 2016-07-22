@@ -3,7 +3,7 @@
             <input type="search" results="5" placeholder="Search...">
         </form>-->
         <div id="firstcolumn">
-            <div id="divsearch"><input type="text" name="search" id="search"></div>
+            <div id="divsearch"><input type="text" name="search" id="search" placeholder="Rechercher un participant..."></div>
             <div id="listeparticipants">
                 <ul class="nav nav-v">
                     <%= MM.tpl.render(MM.plugins.eleves.templates.elevesRow.html, {"courseId": courseId, "users": users}) %>

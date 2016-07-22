@@ -2031,12 +2031,13 @@ p.selectiontitle {
   line-height: 40px;
   padding: 0;
   margin-bottom:0px;
+  padding-left:10px;
 }
 section.users-index-list {
   height:81%;
 }
 div#listeparticipants {
-  height:100%;
+  height:93%;
   overflow:scroll;
 }
 div.centered2 {
@@ -2052,6 +2053,10 @@ li#lielevelP {
 }
 span#eleve {
   min-width: 300px;
-float: left;
-line-height: 40px;
+  float: left;
+  line-height: 40px;
+}
+span#roweleve {
+padding-left: 80px;
+font-size: 25px;
 }
