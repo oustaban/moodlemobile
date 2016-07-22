@@ -1985,3 +1985,32 @@ div.jqi button.jqidefaultbutton {
   color:black;
   background: -webkit-linear-gradient(top, #C03000, #C03000);
 }
+
+
+#buttons {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    z-index: 999;
+}
+div#firstcolum {
+  width:50%;
+}
+div#secondcolum {
+  width:50%;
+}
+div#divsearch {
+  height:20px;
+  width:100%;
+}
+div#divselection {
+  height:20px;
+  width:100%;
+}
+input.elevecheckbox {
+  display:none;
+}
+button#pif {
+  margin-left:10px;
+}
