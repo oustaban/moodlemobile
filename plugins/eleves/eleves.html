@@ -4,13 +4,17 @@
         </form>-->
         <div id="firstcolumn">
             <div id="divsearch"><input type="text" name="search" id="search"></div>
-            <ul class="nav nav-v">
-                <%= MM.tpl.render(MM.plugins.eleves.templates.elevesRow.html, {"courseId": courseId, "users": users}) %>
-            </ul>
+            <div id="listeparticipants">
+                <ul class="nav nav-v">
+                    <%= MM.tpl.render(MM.plugins.eleves.templates.elevesRow.html, {"courseId": courseId, "users": users}) %>
+                </ul>
+            </div>
         </div>
         <div id="secondcolumn">
-            <div id="divselection"><p>Participant(s) Sélectionné(s)</p></div>
-            <ul class="nav2 nav-v"></ul>
+            <div id="divselection"><p class="selectiontitle">Participant(s) Sélectionné(s)</p></div>
+            <div id="listeparticipants">
+                Ò<ul class="nav2 nav-v"></ul>
+            </div>
         </div>
     </section>
     <% if (showMore) { %>
@@ -19,25 +23,24 @@
     </div>
     <% } %>
     <div id="buttons">
-        <div class="centered">
+        <div class="centered2">
             <button id="showSessionL" course="<%= courseId %>" users="" path="" module="">Démarrage session</button>
         </div>
-        <div class="centered">
+        <div class="centered2">
             <select name="offlineC" id="offlineC">
                 <option value="">Sélectionner un module</option>
             </select>
         </div>
-        <div class="centered">
+        <div class="centered2">
             <button id="showCourseL" course="<%= courseId %>" users="" path="" module="">Démarrer le module</button>
         </div>
-        <div class="centered">
+        <div class="centered2">
             <button id="stopCourseL" course="<%= courseId %>" users="" module="">Arrêter le module</button></a>
         </div>
-        <div class="centered">
-            <br/><br/>
+        <div class="centered2">
             <button id="stopSessionL" course="<%= courseId %>" starttime="" users="" path="" module="">Fin de session</button>
         </div>
-        <div class="centered">
+        <div class="centered2">
             <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>">Synchroniser les Résultats</button>
         </div>
     </div>
