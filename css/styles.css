@@ -2001,11 +2001,13 @@ div#firstcolumn {
   width:50%;
   float:left;
   border:1px solid black;
+  height:100%;
 }
 div#secondcolumn {
   width:50%;
   float:left;
   border:1px solid black;
+  height:100%;
 }
 div#divsearch {
   height:40px;
@@ -2044,4 +2046,12 @@ div.centered2 {
   display: block;
   /* min-width: 10px; */
   padding-left: 10px
+}
+li#lielevelP {
+  padding-left:10px;
+}
+span#eleve {
+  min-width: 300px;
+float: left;
+line-height: 40px;
 }
