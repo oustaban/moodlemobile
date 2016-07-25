@@ -1291,8 +1291,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log("Search:"+sword);
                         var participants = $( '#listeParticipants' ).val();
                         //var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
-                        var searchparticipants = MM.collections['users'].fetch();
-                        searchparticipants.filter(function(user) {
+                        MM.collections['users'].fetch();
+                        var searchparticipants = MM.collections['users'].filter(function(user) {
                           return _.some(
                             [ user.get('fullname') ], 
                             function(value) {
