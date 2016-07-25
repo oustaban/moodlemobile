@@ -1286,11 +1286,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     });
                     
                     
-                    $('#search').on("change", function(e) {
-                        var sword = $( "#search" ).val();
+                    $('#search').keyup(function(e) {
+                        var sword = $( "#search" ).val().toLowerCase();
                         MM.log("Search:"+sword);
                         var participants = $( '#listeParticipants' ).val();
-                        var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
+                        //var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
+                        var searchparticipants = MM.collections[users].fetch();
+                        searchparticipants.filter(function(model) {
+                          return _.some(
+                            [ model.get('fullname') ], 
+                            function(value) {
+                              return value.toLowerCase().indexOf(search) != -1;
+                            });
+                         });
                         
                         if (searchparticipants && searchparticipants != "") {
                             $.each(searchparticipants, function( index, value ) {
