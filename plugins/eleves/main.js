@@ -1225,16 +1225,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
             
                         var html = '';
-			if (users!="") {
+                        if (users!="") {
                         	var usersS = users.split(",");
                         	$.each(usersS, function( indexS, valueS ) {
                             		MM.log(indexS+','+valueS);
-			    		var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
+                                    var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                             		MM.log('stopCourseL each:'+valueS+','+userP);
                             		var userG = userP.toJSON();
                             		html += '<label>'+userG.fullname+':</label><input type="text" id="addnotescore'+indexS+'" user="'+userG.userid+'" name="addnotescore'+indexS+'" value=""> % <br>';
                         	});
-			}
+                        }
 
                         var resultFile =  MM.config.current_site.id + "/" + course + "/result/" + module + ".json";
                                 
@@ -1283,6 +1283,23 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                         );
                     
+                    });
+                    
+                    
+                    $('#search').on("change", function(e) {
+                        var sword = $( "#search" ).val();
+                        MM.log("Search:"+sword);
+                        var participants = $( '#listeParticipants' ).val();
+                        var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
+                        
+                        if (searchparticipants && searchparticipants != "") {
+                            $.each(searchparticipants, function( index, value ) {
+                                var myparticipant = value.toJSON();
+                                MM.log('Find participant :'+myparticipant.fullname+'/'+myparticipant.userid);
+                            });
+                        }
+                        
+                        
                     });
 
                 }, function(m) {

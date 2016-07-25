@@ -4,6 +4,7 @@
         </form>-->
         <div id="firstcolumn">
             <div id="divsearch"><input type="text" name="search" id="search" placeholder="Rechercher un participant..."></div>
+            <input type="hidden" name="listeParticipants" value="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>">
             <div id="listeparticipants">
                 <ul class="nav nav-v">
                     <%= MM.tpl.render(MM.plugins.eleves.templates.elevesRow.html, {"courseId": courseId, "users": users}) %>
@@ -12,6 +13,7 @@
         </div>
         <div id="secondcolumn">
             <div id="divselection"><p class="selectiontitle">Participant(s) Sélectionné(s)</p></div>
+            <input type="hidden" name="listeParticipants2" value="">
             <div id="listeparticipants">
                 <ul class="nav2 nav-v"></ul>
             </div>
