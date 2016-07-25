@@ -1291,12 +1291,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log("Search:"+sword);
                         var participants = $( '#listeParticipants' ).val();
                         //var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
-                        var searchparticipants = MM.collections[users].fetch();
-                        searchparticipants.filter(function(model) {
+                        var searchparticipants = MM.collections['users'].fetch();
+                        searchparticipants.filter(function(user) {
                           return _.some(
-                            [ model.get('fullname') ], 
+                            [ user.get('fullname') ], 
                             function(value) {
-                              return value.toLowerCase().indexOf(search) != -1;
+                              return value.toLowerCase().indexOf(sword) != -1;
                             });
                          });
                         
