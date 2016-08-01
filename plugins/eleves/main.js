@@ -609,7 +609,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         else {
                            checkbox.prop('checked',true);
                            myusers = myusers.filter(function (el) {return el.userid !== checkbox.val();});
-                           MM.log('myusers.length:'+myusers.length);
+                           myusers2 = myusers.filter(function (el) {return el.userid !== checkbox.val();});
+                           
+                           MM.log('myusers.length:'+myusers2.length+'/'+checkbox.val());
                            var objectWithEvents = $(this).detach();
                            $('ul.nav-v2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
