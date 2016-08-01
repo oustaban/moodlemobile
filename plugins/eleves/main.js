@@ -349,7 +349,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var pageTitle = "";
 
                     if (course) {
-                        pageTitle = course.get("shortname");;
+                        pageTitle = course.get("shortname");
                     }
 
                     MM.panels.show('right', html, {title: pageTitle});
@@ -1292,7 +1292,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var participants = $( '#listeParticipants' ).val();
                         //var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
                         MM.collections['users'].fetch();
-                        var searchparticipants = MM.collections['users'].filter(function(user) {
+                        //var searchparticipants = MM.collections['users'].filter(function(user) {
+                        var searchparticipants = users.filter(function(user) {
                           return _.some(
                             [ user.get('fullname') ], 
                             function(value) {
