@@ -588,7 +588,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log("Check Button");
                     var selected = [];
                     
-                    $('li#lielevelP').on(MM.clickType, function(e) {
+                    $('.users-index-list li#lielevelP').on(MM.clickType, function(e) {
                         selected = [];
                         var checkbox = $('#' + $(this).attr('eleve'));
                         
