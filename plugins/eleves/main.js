@@ -372,6 +372,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
                         MM.db.insert('users', newUser);
                     });
+                    
+                    var myusers = users;
 
                     // Show more button.
                     $("#eleves-showmore").on(MM.clickType, function(e) {
@@ -587,7 +589,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     //Check Button
                     MM.log("Check Button");
                     var selected = [];
-                    var myusers = users;
+                    
                     
                     $('li#lielevelP').on(MM.clickType, function(e) {
                         selected = [];
@@ -599,6 +601,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               checkbox.prop('checked',false);
                               var theuser = MM.db.where('users', {'userid':checkbox.val()});
                               myusers.push(theuser[0]);
+                              MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $(this).detach();
                               $('ul.nav-v').append(objectWithEvents);
                               //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
@@ -606,6 +609,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         else {
                            checkbox.prop('checked',true);
                            myusers = myusers.filter(function (el) {return el.userid !== checkbox.val();});
+                           MM.log('myusers.length:'+myusers.length);
                            var objectWithEvents = $(this).detach();
                            $('ul.nav-v2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
