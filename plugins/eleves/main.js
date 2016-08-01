@@ -1288,12 +1288,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     $('#search').keyup(function(e) {
                         var sword = $( "#search" ).val().toLowerCase();
-                        MM.log("Search:"+sword.'/Users:'+users);
+                        MM.log("Search:"+sword+'/Users:'+users);
+                        var newusers;
                         users.forEach(function(user) {
                             MM.log("User:"+user.id+'/'+user.fullname);
+                            if (user.fullname.toLowerCase().indexOf(sword) != -1) {
+                                searchparticipants[] = user;
+                            }
                         });
                         var participants = $( '#listeParticipants' ).val();
                         //var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
+                        /*
                         MM.collections['users'].fetch();
                         var searchparticipants = MM.collections['users'].filter(function(user) {
                           return _.some(
@@ -1302,6 +1307,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               return value.toLowerCase().indexOf(sword) != -1;
                             });
                          });
+                        */
                         
                         if (searchparticipants && searchparticipants != "") {
                             $.each(searchparticipants, function( index, value ) {
