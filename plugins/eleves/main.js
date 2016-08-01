@@ -1294,6 +1294,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log("User:"+user.id+'/'+user.fullname);
                             if (user.fullname.toLowerCase().indexOf(sword) != -1) {
                                 searchparticipants.push(user);
+                                MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
                             }
                         });
                         var participants = $( '#listeParticipants' ).val();
@@ -1310,8 +1311,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         */
                         
                         if (searchparticipants && searchparticipants != "") {
-                            $.each(searchparticipants, function( index, value ) {
-                                var myparticipant = value.toJSON();
+                            $.each(searchparticipants, function( index, myparticipant ) {
+                                //var myparticipant = value.toJSON();
                                 MM.log('Find participant :'+myparticipant.fullname+'/'+myparticipant.userid);
                             });
                         }
