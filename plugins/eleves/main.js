@@ -596,12 +596,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
-                              $('ul.nav-v').append($(this).prop('outerHTML'));
+                              $(this).clone().appendTo($('ul.nav-v'));
                               $("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         else {
                            checkbox.prop('checked',true);
-                           $('ul.nav-v2').append($(this).prop('outerHTML'));
+                           $(this).clone().appendTo($('ul.nav-v2'));
                            $("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         
