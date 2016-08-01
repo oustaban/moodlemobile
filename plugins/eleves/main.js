@@ -1288,12 +1288,26 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     $('#search').keyup(function(e) {
                         var sword = $( "#search" ).val().toLowerCase();
-                        MM.log("Search:"+sword);
+                        MM.log("Search:"+sword.'/Users:'+users);
                         var participants = $( '#listeParticipants' ).val();
                         //var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
-                        MM.collections['users'].fetch();
+                        var Myuser = Backbone.Model;
+                        
+                        
+
+                        var Myusers = Backbone.Collection.extend({
+                            model: myuser,
+                            parse: function (response) {
+                              return response
+                            }
+                        });
+                        
+                        var theusers = new Myusers(users, {parse: true});
+                        
+                        //MM.collections['users'].fetch();
                         //var searchparticipants = MM.collections['users'].filter(function(user) {
-                        var searchparticipants = users.filter(function(user) {
+                        MM.collections['theusers'].fetch();
+                        var searchparticipants = MM.collections['theusers'].filter(function(user) {
                           return _.some(
                             [ user.get('fullname') ], 
                             function(value) {
