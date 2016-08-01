@@ -592,13 +592,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         selected = [];
                         var checkbox = $('#' + $(this).attr('eleve'));
                         MM.log('label clicked:'+$(this).attr('eleve'));
-                        if(checkbox.is(':checked'))
+                        $('ul.nav2').html('');
+                        if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
-                        else
+                        }
+                        else {
                            checkbox.prop('checked',true);
+                        }
                         var li = $(this);
                         
-                        $('ul.nav2').html('');
+                        
                         $('input:checked').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
                             selected.push($(this).val());
