@@ -605,8 +605,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $('input:checked').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
                             selected.push($(this).val());
-                            $('ul.nav2').append($("li[eleve='"+$(this).attr('id')+"']" ).html());
-                            $('ul.nav').remove($("li[eleve='"+$(this).attr('id')+"']"));
+                            $('ul.nav2').append($("li[eleve='"+$(this).attr('id')+"']" ).prop('outerHTML'));
+                            $("ul.nav li[eleve='"+$(this).attr('id')+"']").remove();
                         });
                                              
                         if (selected.length > 0) {
