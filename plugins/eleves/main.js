@@ -588,7 +588,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log("Check Button");
                     var selected = [];
                     
-                    $('.users-index-list li#lielevelP').on(MM.clickType, function(e) {
+                    $('li#lielevelP').on(MM.clickType, function(e) {
                         selected = [];
                         var checkbox = $('#' + $(this).attr('eleve'));
                         
@@ -597,12 +597,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
                               $(this).clone().appendTo($('ul.nav-v'));
-                              $("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
+                              $(this).remove();
+                              //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         else {
                            checkbox.prop('checked',true);
                            $(this).clone().appendTo($('ul.nav-v2'));
-                           $("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
+                           $(this).remove();
+                           //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         
                         
