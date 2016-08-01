@@ -252,6 +252,9 @@ hr {
 .nav-v .nav-item {
   float: none;
 }
+.nav-v2 .nav-item {
+  float: none;
+}
 .selected-row {
   background-image: url(../img/list-rightarrow.png);
   background-repeat: no-repeat;
@@ -2059,4 +2062,8 @@ span#eleve {
 span#roweleve {
 padding-left: 80px;
 font-size: 25px;
+}
+
+li.hide {
+  display:none;
 }

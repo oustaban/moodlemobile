@@ -587,6 +587,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     //Check Button
                     MM.log("Check Button");
                     var selected = [];
+                    var myusers = users;
                     
                     $('li#lielevelP').on(MM.clickType, function(e) {
                         selected = [];
@@ -596,12 +597,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
+                              var theuser = MM.db.where('users', {'userid':checkbox.val()});
+                              myusers.push(theuser[0]);
                               var objectWithEvents = $(this).detach();
                               $('ul.nav-v').append(objectWithEvents);
                               //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         else {
                            checkbox.prop('checked',true);
+                           myusers = myusers.filter(function (el) {return el.userid !== checkbox.val();});
                            var objectWithEvents = $(this).detach();
                            $('ul.nav-v2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
@@ -1305,11 +1309,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var sword = $( "#search" ).val().toLowerCase();
                         MM.log("Search:"+sword+'/Users:'+users);
                         var searchparticipants = [];
-                        users.forEach(function(user) {
+                        myusers.forEach(function(user) {
                             MM.log("User:"+user.id+'/'+user.fullname);
                             if (user.fullname.toLowerCase().indexOf(sword) != -1) {
                                 searchparticipants.push(user);
+                                //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
+                                $("ul.nav-v li[eleve='eleveP"+user.userid+"']").removeClass('hide');
                                 MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
+                            } else {
+                                $("ul.nav-v li[eleve='eleveP"+user.userid+"']").addClass('hide');
                             }
                         });
                         var participants = $( '#listeParticipants' ).val();
