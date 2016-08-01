@@ -1289,11 +1289,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     $('#search').keyup(function(e) {
                         var sword = $( "#search" ).val().toLowerCase();
                         MM.log("Search:"+sword+'/Users:'+users);
-                        var newusers;
+                        var searchparticipants = [];
                         users.forEach(function(user) {
                             MM.log("User:"+user.id+'/'+user.fullname);
                             if (user.fullname.toLowerCase().indexOf(sword) != -1) {
-                                searchparticipants[] = user;
+                                searchparticipants.push(user);
                             }
                         });
                         var participants = $( '#listeParticipants' ).val();
