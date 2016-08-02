@@ -602,7 +602,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               var theuser = MM.db.where('users', {userid:checkbox.val(), site:MM.config.current_site.id});
                               MM.log(theuser);
                               for(var propertyName in theuser[0]) {
-                                    MM.log(propertyname+':'+theuser[0][propertyname])
+                                    MM.log(propertyName+':'+theuser[0][propertyName])
                                     // propertyName is what you want
                                     // you can get the value like this: myObject[propertyName]
                               }
