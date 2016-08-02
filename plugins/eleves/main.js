@@ -599,7 +599,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
-                              var theuser = MM.db.where('users', {'userid':checkbox.val(),'site':MM.config.current_site.id});
+                              var theuser = MM.db.where('users', {userid:checkbox.val(), site:MM.config.current_site.id});
                               MM.log(theuser);
                               for(var propertyName in theuser[0]) {
                                     MM.log(propertyname+':'+theuser[0][propertyname])
