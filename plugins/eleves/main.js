@@ -599,14 +599,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
-                              var theuser = MM.db.where('users', {userid:checkbox.val(), site:MM.config.current_site.id});
-                              MM.log(theuser);
-                              for(var propertyName in theuser[0]) {
-                                    //MM.log(propertyName+':'+theuser[0][propertyName])
-                                    // propertyName is what you want
-                                    // you can get the value like this: myObject[propertyName]
-                              }
-                              theuser[0].set('id',checkbox.val());
+                              var theuser = MM.db.where('users', {userid:parseInt(checkbox.val())});
+                              MM.log('theuser:'+theuser);
+                              theuser[0].set('id',parseInt(checkbox.val()));
                               var thenewuser = theuser[0].toJSON();
                               myusers.push(thenewuser);
                               MM.log('myusers.length:'+myusers.length);
@@ -616,10 +611,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         else {
                            checkbox.prop('checked',true);
-                           mynewusers = jQuery.grep(myusers, function( el ) {
-                            return el.id !== checkbox.val();
+                           myusers.forEach(function(user) {
+                              for(var propertyName in user) {
+                                    MM.log(propertyName+':'+user[propertyName])
+                              }
                            });
-                           MM.log('mynewusers.length:'+mynewusers.length+'/'+checkbox.val());
+                           myusers = $.grep(myusers, function( el ) {
+                            return el.id !== parseInt(checkbox.val());
+                           });
+                           MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
                            var objectWithEvents = $(this).detach();
                            $('ul.nav-v2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
