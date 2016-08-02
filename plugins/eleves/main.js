@@ -600,26 +600,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
                               var theuser = MM.db.where('users', {userid:parseInt(checkbox.val())});
-                              MM.log('theuser:'+theuser);
+                              //MM.log('theuser:'+theuser);
                               theuser[0].set('id',parseInt(checkbox.val()));
                               var thenewuser = theuser[0].toJSON();
                               myusers.push(thenewuser);
-                              MM.log('myusers.length:'+myusers.length);
+                              //MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $(this).detach();
                               $('ul.nav-v').append(objectWithEvents);
                               //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         else {
                            checkbox.prop('checked',true);
-                           myusers.forEach(function(user) {
-                              for(var propertyName in user) {
-                                    MM.log(propertyName+':'+user[propertyName])
-                              }
-                           });
                            myusers = $.grep(myusers, function( el ) {
                             return el.id !== parseInt(checkbox.val());
                            });
-                           MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
+                           //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
                            var objectWithEvents = $(this).detach();
                            $('ul.nav-v2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
@@ -1187,10 +1182,38 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    //Start Signature
+                    //Pif button
+                    $("#pif").on(MM.clickType, function(e) {
                     
-                    
-                    
+                        e.preventDefault();
+                        var course = $(this).attr("course");
+                        var user = $(this).attr("user");
+                        
+                        var addNote = "Valider";
+                        var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>A remplir avant la formation</td><td>&nbsp;</td><td>A remplir à l’issue du parcours de formation</td></tr><tr><td>Compétences à développer dans le cadre du parcours de formation</td><td>Intitulé des séquences pédagogiques</td><td>Compétences acquises à l’issue du parcours de formation</td></tr>';
+                        
+                        var local_contents = MM.db.where("contents",{courseid : courseId});
+                        local_contents.forEach(function(local_content) {
+                             var content = local_content.toJSON();
+                             html +='<tr><td><input type="checkbox" name="b_'+content.id+'"></td><td>'+content.name+'</td><td><input type="checkbox" name="a_'+content.id+'"></td></tr>';
+                        });
+                        
+                        html +='</table></div>';
+                        
+                        var options = {
+                            title: 'Protocole Individuel de Formation bipartite',
+                            width: "90%",
+                            buttons: {}
+                        };
+                        
+                        options.buttons[MM.lang.s("cancel")] = function() {
+                            MM.Router.navigate("eleves/" + course );
+                            MM.widgets.dialogClose();
+                        };
+                        
+                        MM.widgets.dialog(html, options);
+                        
+                    });
                     
                     
                     //Start Course Offline
@@ -1324,28 +1347,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log("Search:"+sword+'/Users:'+users);
                         var searchparticipants = [];
                         myusers.forEach(function(user) {
-                            MM.log("User:"+user.id+'/'+user.fullname);
+                            //MM.log("User:"+user.id+'/'+user.fullname);
                             if (user.fullname.toLowerCase().indexOf(sword) != -1) {
                                 searchparticipants.push(user);
-                                //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                                 $("ul.nav-v li[eleve='eleveP"+user.id+"']").removeClass('hide');
-                                MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
+                                //MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
                             } else {
                                 $("ul.nav-v li[eleve='eleveP"+user.id+"']").addClass('hide');
                             }
                         });
                         var participants = $( '#listeParticipants' ).val();
-                        //var searchparticipants = MM.db.where("users", {fullname:'%'+sword+'%'});
-                        /*
-                        MM.collections['users'].fetch();
-                        var searchparticipants = MM.collections['users'].filter(function(user) {
-                          return _.some(
-                            [ user.get('fullname') ], 
-                            function(value) {
-                              return value.toLowerCase().indexOf(sword) != -1;
-                            });
-                         });
-                        */
                         
                         if (searchparticipants && searchparticipants != "") {
                             $.each(searchparticipants, function( index, myparticipant ) {

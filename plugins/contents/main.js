@@ -126,8 +126,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                     var contentsStored = [];
                     
-                    
-                    MM.db.each("contents", function(el){
+                    var local_contents = MM.db.where("contents",{courseid : courseId);
+                    local_contents.forEach(function(el) {
+                    //MM.db.each("contents", function(el){
                         contentsStored.push(el.get("id"));
                         var same = 0;
                         $.each(JSON.parse(JSON.stringify(contents)), function(index1, sections){
@@ -143,15 +144,23 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 content.id = MM.config.current_site.id + "-" + content.contentid;
                                 MM.log("ContentIDCheck: " + content.id + "," + el.get("id"));
                                 if (el.get("courseid") == content.courseId) {
-					if (el.get("id") == content.id) {
+                                    if (el.get("id") == content.id) {
                                     		MM.log("ContentIDCheck:checked:"+same);
                                     		same = 1;
                                 	} else {
                                     		MM.log("ContentIDCheck:Not checked:"+same);
                                 	}
-				} else {
-					same = 1;
-				}
+                                } else {
+                                    same = 1;
+                                }
+                                /*
+                                if (el.get("id") == content.id) {
+                                    MM.log("ContentIDCheck:checked:"+same);
+                                    same = 1;
+                                } else {
+                                    MM.log("ContentIDCheck:Not checked:"+same);
+                                }
+                                */
                             });
                         });
                         MM.log("same: " + same + "," + el.get("id"));
