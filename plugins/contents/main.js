@@ -126,7 +126,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                     var contentsStored = [];
                     
-                    var local_contents = MM.db.where("contents",{courseid : courseId);
+                    var local_contents = MM.db.where("contents",{courseid : courseId});
                     local_contents.forEach(function(el) {
                     //MM.db.each("contents", function(el){
                         contentsStored.push(el.get("id"));
