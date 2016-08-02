@@ -602,12 +602,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               var theuser = MM.db.where('users', {userid:checkbox.val(), site:MM.config.current_site.id});
                               MM.log(theuser);
                               for(var propertyName in theuser[0]) {
-                                    MM.log(propertyName+':'+theuser[0][propertyName])
+                                    //MM.log(propertyName+':'+theuser[0][propertyName])
                                     // propertyName is what you want
                                     // you can get the value like this: myObject[propertyName]
                               }
-                              theuser[0][id] = checkbox.val();
-                              myusers.push(theuser[0]);
+                              theuser[0].set('id',checkbox.val());
+                              var thenewuser = theuser[0].toJSON();
+                              myusers.push(thenewuser);
                               MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $(this).detach();
                               $('ul.nav-v').append(objectWithEvents);
@@ -615,10 +616,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         else {
                            checkbox.prop('checked',true);
-                           myusers = jQuery.grep(myusers, function( el ) {
+                           mynewusers = jQuery.grep(myusers, function( el ) {
                             return el.id !== checkbox.val();
                            });
-                           MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
+                           MM.log('mynewusers.length:'+mynewusers.length+'/'+checkbox.val());
                            var objectWithEvents = $(this).detach();
                            $('ul.nav-v2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
