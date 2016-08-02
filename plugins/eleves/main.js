@@ -600,7 +600,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
                               var theuser = MM.db.where('users', {'userid':checkbox.val()});
-                              theuser[0].id = checkbox.val();
+                              MM.log(theuser);
+                              for(var propertyName in theuser[0]) {
+                                    MM.log(propertyname+':'+theuser[0][propertyname])
+                                    // propertyName is what you want
+                                    // you can get the value like this: myObject[propertyName]
+                              }
+                              theuser[0][id] = checkbox.val();
                               myusers.push(theuser[0]);
                               MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $(this).detach();
