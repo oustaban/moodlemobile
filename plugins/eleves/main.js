@@ -595,7 +595,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         selected = [];
                         var checkbox = $('#' + $(this).attr('eleve'));
                         
-                        MM.log('label clicked:'+$(this).attr('eleve'));
+                        MM.log('label clicked:'+$(this).attr('eleve')+"/"+checkbox.val());
                         
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
