@@ -1328,10 +1328,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             if (user.fullname.toLowerCase().indexOf(sword) != -1) {
                                 searchparticipants.push(user);
                                 //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
-                                $("ul.nav-v li[eleve='eleveP"+user.userid+"']").removeClass('hide');
+                                $("ul.nav-v li[eleve='eleveP"+user.id+"']").removeClass('hide');
                                 MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
                             } else {
-                                $("ul.nav-v li[eleve='eleveP"+user.userid+"']").addClass('hide');
+                                $("ul.nav-v li[eleve='eleveP"+user.id+"']").addClass('hide');
                             }
                         });
                         var participants = $( '#listeParticipants' ).val();
@@ -1350,7 +1350,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         if (searchparticipants && searchparticipants != "") {
                             $.each(searchparticipants, function( index, myparticipant ) {
                                 //var myparticipant = value.toJSON();
-                                MM.log('Find participant :'+myparticipant.fullname+'/'+myparticipant.userid);
+                                MM.log('Find participant :'+myparticipant.fullname+'/'+myparticipant.id);
                             });
                         }
                         
