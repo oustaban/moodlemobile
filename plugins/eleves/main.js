@@ -600,6 +600,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
                               var theuser = MM.db.where('users', {'userid':checkbox.val()});
+                              theuser[0].id = checkbox.val();
                               myusers.push(theuser[0]);
                               MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $(this).detach();
@@ -609,7 +610,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         else {
                            checkbox.prop('checked',true);
                            myusers = jQuery.grep(myusers, function( el ) {
-                            return el.userid !== checkbox.val();
+                            return el.id !== checkbox.val();
                            });
                            MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
                            var objectWithEvents = $(this).detach();
