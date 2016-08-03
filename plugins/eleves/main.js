@@ -243,6 +243,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                     MM.log('json session :'+sessionFile);
+                    var myusers = users;
+                    
                     MM.fs.findFileAndReadContents(sessionFile,
                         function (result) {
                             MM.log('Load Session : OK' + result);
@@ -253,6 +255,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $('input:checkbox').each(function() {
                                     if ($(this).val() == user) {
                                         $(this).prop("checked", true );
+                                        myusers = $.grep(myusers, function( el ) {
+                                            return el.id !== parseInt($(this).val());
+                                        });
+                                        //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
+                                        var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('id')+"']").detach();
+                                        $('ul#listeparticipants2').append(objectWithEvents);
+                                        
                                     }
                                     //$(this).attr("disabled", true );
                                 });
@@ -374,7 +383,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.db.insert('users', newUser);
                     });
                     
-                    var myusers = users;
+                    
 
                     // Show more button.
                     $("#eleves-showmore").on(MM.clickType, function(e) {
