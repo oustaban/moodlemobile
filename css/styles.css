@@ -1996,13 +1996,14 @@ div.jqi button.jqidefaultbutton {
 
 #buttons {
     bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    z-index: 999;
-    background-color: #fff;
-    border: 1px solid black;
-    height: 65px;
+/* left: 0; */
+position: absolute;
+/* right: 0; */
+z-index: 999;
+background-color: #fff;
+border: 1px solid black;
+height: 15%;
+width: 100%;
 }
 div#firstcolumn {
   width:50%;
