@@ -606,7 +606,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               myusers.push(thenewuser);
                               //MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $(this).detach();
-                              $('ul.nav-v').append(objectWithEvents);
+                              $('ul#listparticipants1').append(objectWithEvents);
                               //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         else {
@@ -616,7 +616,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            });
                            //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
                            var objectWithEvents = $(this).detach();
-                           $('ul.nav-v2').append(objectWithEvents);
+                           $('ul#listparticipants2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         
