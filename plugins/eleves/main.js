@@ -1230,7 +1230,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.widgets.dialog(html, options);
                             
                         });
-                    }):
+                    });
                     
                     
                     //Start Course Offline
