@@ -606,8 +606,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               var thenewuser = theuser[0].toJSON();
                               myusers.push(thenewuser);
                               //MM.log('myusers.length:'+myusers.length);
-                              var objectWithEvents = $("ul#listparticipants2 li[eleve='"+$(this).attr('eleve')+"']").detach();
-                              $('ul#listparticipants1').append(objectWithEvents);
+                              var objectWithEvents = $("ul#listeparticipants2 li[eleve='"+$(this).attr('eleve')+"']").detach();
+                              $('ul#listeparticipants1').append(objectWithEvents);
                               //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         else {
@@ -616,8 +616,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             return el.id !== parseInt(checkbox.val());
                            });
                            //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
-                           var objectWithEvents = $("ul#listparticipants1 li[eleve='"+$(this).attr('eleve')+"']").detach();
-                           $('ul#listparticipants2').append(objectWithEvents);
+                           var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('eleve')+"']").detach();
+                           $('ul#listeparticipants2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         
