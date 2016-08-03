@@ -1197,38 +1197,40 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     //Pif button
-                    $("#pif").on(MM.clickType, function(e) {
-                        MM.log('pif clicked');
-                        e.preventDefault();
-                        var course = $(this).attr("course");
-                        var user = $(this).attr("user");
-                        MM.log('pif:'+course+'/'+user);
-                        var addNote = "Valider";
-                        var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>A remplir avant la formation</td><td>&nbsp;</td><td>A remplir à l’issue du parcours de formation</td></tr><tr><td>Compétences à développer dans le cadre du parcours de formation</td><td>Intitulé des séquences pédagogiques</td><td>Compétences acquises à l’issue du parcours de formation</td></tr>';
-                        
-                        var local_contents = MM.db.where("contents",{courseid : courseId});
-                        local_contents.forEach(function(local_content) {
-                             var content = local_content.toJSON();
-                             html +='<tr><td><input type="checkbox" name="b_'+content.id+'"></td><td>'+content.name+'</td><td><input type="checkbox" name="a_'+content.id+'"></td></tr>';
+                    $( "#pif" ).each(function(index) {
+                        $(this).on(MM.clickType, function(e) {
+                            MM.log('pif clicked');
+                            e.preventDefault();
+                            var course = $(this).attr("course");
+                            var user = $(this).attr("user");
+                            MM.log('pif:'+course+'/'+user);
+                            var addNote = "Valider";
+                            var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>A remplir avant la formation</td><td>&nbsp;</td><td>A remplir à l’issue du parcours de formation</td></tr><tr><td>Compétences à développer dans le cadre du parcours de formation</td><td>Intitulé des séquences pédagogiques</td><td>Compétences acquises à l’issue du parcours de formation</td></tr>';
+                            
+                            var local_contents = MM.db.where("contents",{courseid : courseId});
+                            local_contents.forEach(function(local_content) {
+                                 var content = local_content.toJSON();
+                                 html +='<tr><td><input type="checkbox" name="b_'+content.id+'"></td><td>'+content.name+'</td><td><input type="checkbox" name="a_'+content.id+'"></td></tr>';
+                            });
+                            
+                            html +='</table></div>';
+                            
+                            var options = {
+                                title: 'Protocole Individuel de Formation bipartite pour '+user,
+                                width: "90%",
+                                marginTop: "10%",
+                                buttons: {}
+                            };
+                            
+                            options.buttons[MM.lang.s("cancel")] = function() {
+                                MM.Router.navigate("eleves/" + course );
+                                MM.widgets.dialogClose();
+                            };
+                            
+                            MM.widgets.dialog(html, options);
+                            
                         });
-                        
-                        html +='</table></div>';
-                        
-                        var options = {
-                            title: 'Protocole Individuel de Formation bipartite',
-                            width: "90%",
-                            marginTop: "10%",
-                            buttons: {}
-                        };
-                        
-                        options.buttons[MM.lang.s("cancel")] = function() {
-                            MM.Router.navigate("eleves/" + course );
-                            MM.widgets.dialogClose();
-                        };
-                        
-                        MM.widgets.dialog(html, options);
-                        
-                    });
+                    }):
                     
                     
                     //Start Course Offline
