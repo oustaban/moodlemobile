@@ -2065,11 +2065,13 @@ span#eleve {
   display: table-cell;
   vertical-align: middle;
   height:50px;
+  width:100%;
 }
 span#roweleve {
 display:table-cell;
 height: 50px;
-
+width:100%;
+padding-right:10px;
 vertical-align: middle;
 }
 
