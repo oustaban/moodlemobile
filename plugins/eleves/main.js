@@ -605,7 +605,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               var thenewuser = theuser[0].toJSON();
                               myusers.push(thenewuser);
                               //MM.log('myusers.length:'+myusers.length);
-                              var objectWithEvents = $(this).detach();
+                              var objectWithEvents = $("ul.participants2 li[eleve='"+$(this).attr('eleve')+"']").detach();
                               $('ul#listparticipants1').append(objectWithEvents);
                               //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
@@ -615,7 +615,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             return el.id !== parseInt(checkbox.val());
                            });
                            //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
-                           var objectWithEvents = $(this).detach();
+                           var objectWithEvents = $("ul.participants1 li[eleve='"+$(this).attr('eleve')+"']").detach();
                            $('ul#listparticipants2').append(objectWithEvents);
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
