@@ -1203,6 +1203,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var options = {
                             title: 'Protocole Individuel de Formation bipartite',
                             width: "90%",
+                            marginTop: "10%",
                             buttons: {}
                         };
                         
