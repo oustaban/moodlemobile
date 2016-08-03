@@ -1200,7 +1200,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     $( "#pif" ).each(function(index) {
                         $(this).on(MM.clickType, function(e) {
                             MM.log('pif clicked');
-                            e.preventDefault();
+                            //e.preventDefault();
                             var course = $(this).attr("course");
                             var user = $(this).attr("user");
                             MM.log('pif:'+course+'/'+user);
