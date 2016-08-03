@@ -245,6 +245,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log('json session :'+sessionFile);
                     
                     var myusers = users;
+                    MM.log('myusers.length:'+myusers.length);
                     
                     MM.fs.findFileAndReadContents(sessionFile,
                         function (result) {
@@ -257,8 +258,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.log('User:'+user+'/Checkbox:'+parseInt($(this).val())+'/id:'+$(this).attr('id'));
                                     if ($(this).val() == user) {
                                         $(this).prop("checked", true );
+                                        MM.log('myusers.length:'+myusers.length);
                                         myusers = $.grep(myusers, function( el ) {
-                                            return el.id !== parseInt($(this).val());
+                                            return el.id !== user);
                                         });
                                         MM.log('myusers.length:'+myusers.length);
                                         var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('id')+"']").detach();
