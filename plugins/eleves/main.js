@@ -243,6 +243,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                     MM.log('json session :'+sessionFile);
+                    
                     var myusers = users;
                     
                     MM.fs.findFileAndReadContents(sessionFile,
@@ -253,12 +254,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             $.each(users, function(index, user) {
                                 $('input:checkbox').each(function() {
+                                    MM.log('User:'+user+'/Checkbox:'+parseInt($(this).val())+'/id:'+$(this).attr('id'));
                                     if ($(this).val() == user) {
                                         $(this).prop("checked", true );
                                         myusers = $.grep(myusers, function( el ) {
                                             return el.id !== parseInt($(this).val());
                                         });
-                                        //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
+                                        MM.log('myusers.length:'+myusers.length);
                                         var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('id')+"']").detach();
                                         $('ul#listeparticipants2').append(objectWithEvents);
                                         
