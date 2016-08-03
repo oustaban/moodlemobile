@@ -2076,7 +2076,7 @@ padding-right:10px;
 vertical-align: middle;
 }
 
-li#lielevelP .hide {
+li#lielevelP.nav-item.hide {
   display:none;
 }
 #pif {
