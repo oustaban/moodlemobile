@@ -1,7 +1,7 @@
 <% _.each(users, function(user) { %>
 <li class="nav-item" id="lielevelP" eleve="eleveP<%= user.id %>">
     <button id="pif" course="<%= courseId %>" user="<%= user.id %>" path="" module="">PIF</button>
-    <div style="float:left;width:100%">
+    <div style="display:table-cell;width:100%;vertical-align:middle;">
         <a href="javascript:void(0)" class="media touch-row" >        
             <div class="bdeleve">
               <input class="elevecheckbox" id="eleveP<%= user.id %>" type="checkbox" name="participants[]" value="<%= user.id %>">

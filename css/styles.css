@@ -319,6 +319,9 @@ hr {
   overflow: hidden;
   *overflow: visible;
   zoom: 1;
+  height: 100%;
+  display: block;
+  vertical-align: middle;
 }
 .media .img {
   float: left;
@@ -335,8 +338,9 @@ hr {
   height:40px;
 }
 .media .bd {
-  display: block;
-  overflow: hidden;
+  display: table;
+  width:100%;
+  
 }
 .media .bdeleve {
   vertical-align: middle;
@@ -2053,17 +2057,28 @@ div.centered2 {
 }
 li#lielevelP {
   padding-left:10px;
+  display: table;
+  width: 100%;
+  height: auto;
 }
 span#eleve {
-  min-width: 300px;
-  float: left;
-  line-height: 40px;
+  display: table-cell;
+  vertical-align: middle;
+  height:50px;
 }
 span#roweleve {
-padding-left: 80px;
-font-size: 25px;
+display:table-cell;
+height: 50px;
+
+vertical-align: middle;
 }
 
 li.hide {
   display:none;
+}
+#pif {
+  width: 80px;
+  margin-right: 10px;
+  display: table-cell;
+  height: 50px;
 }
