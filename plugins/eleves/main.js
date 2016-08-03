@@ -260,7 +260,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $(this).prop("checked", true );
                                         MM.log('myusers.length:'+myusers.length);
                                         myusers = $.grep(myusers, function( el ) {
-                                            return el.id !== user);
+                                            return el.id !== user;
                                         });
                                         MM.log('myusers.length:'+myusers.length);
                                         var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('id')+"']").detach();
