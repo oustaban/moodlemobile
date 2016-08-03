@@ -338,8 +338,8 @@ hr {
   height:40px;
 }
 .media .bd {
-  display: table;
-  width:100%;
+  display: block;
+  overflow:hidden;
   
 }
 .media .bdeleve {
