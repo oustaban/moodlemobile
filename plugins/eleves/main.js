@@ -1198,11 +1198,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     //Pif button
                     $("#pif").on(MM.clickType, function(e) {
-                    
+                        MM.log('pif clicked');
                         e.preventDefault();
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
-                        
+                        MM.log('pif:'+course+'/'+user);
                         var addNote = "Valider";
                         var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>A remplir avant la formation</td><td>&nbsp;</td><td>A remplir à l’issue du parcours de formation</td></tr><tr><td>Compétences à développer dans le cadre du parcours de formation</td><td>Intitulé des séquences pédagogiques</td><td>Compétences acquises à l’issue du parcours de formation</td></tr>';
                         
