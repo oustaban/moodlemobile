@@ -1352,10 +1352,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //MM.log("User:"+user.id+'/'+user.fullname);
                             if (user.fullname.toLowerCase().indexOf(sword) != -1) {
                                 searchparticipants.push(user);
-                                $("ul.nav-v li[eleve='eleveP"+user.id+"']").removeClass('hide');
+                                $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").removeClass('hide');
                                 //MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
                             } else {
-                                $("ul.nav-v li[eleve='eleveP"+user.id+"']").addClass('hide');
+                                $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").addClass('hide');
                             }
                         });
                         var participants = $( '#listeParticipants' ).val();
