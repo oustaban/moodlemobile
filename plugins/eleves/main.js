@@ -1212,6 +1212,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                  var content = local_content.toJSON();
                                  if (content.name.toLowerCase().indexOf('offline') == -1) {
                                     html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"></td></tr>';
+                                 }
                             });
                             
                             html +='</table></div>';
