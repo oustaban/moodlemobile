@@ -1197,7 +1197,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     //Pif button
-                    $( "#pif" ).each(function(index) {
+                    $( "button#pif" ).each(function(index) {
                         $(this).on(MM.clickType, function(e) {
                             MM.log('pif clicked');
                             //e.preventDefault();
