@@ -1210,7 +1210,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var local_contents = MM.db.where("contents",{courseid : courseId});
                             local_contents.forEach(function(local_content) {
                                  var content = local_content.toJSON();
-                                 html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"></td></tr>';
+                                 if (content.name.toLowerCase().indexOf('offline') == -1) {
+                                    html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"></td></tr>';
                             });
                             
                             html +='</table></div>';
@@ -1232,8 +1233,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.log('userspif:'+userspif);
                                 if (userspif && userspif != "") {
                                     var userpif = userspif[0].toJSON();
+                                    MM.log('userpif:'+userpif);
+                                    var pifs = userpif.pif;
+                                    MM.log('pifs:'+pifs);
+                                    pifs = $.grep(pifs, function( el ) {
+                                            return el.courseid !== course;
+                                    });
+                                    MM.log('pif length:'+pifs.length);
                                     var thisuser = MM.db.get('users',userpif.id);
-                                    var pifs = [];
                                     var b;
                                     var a;
                                     var scormid;
@@ -1258,7 +1265,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                       MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
                                     });
                                     MM.log('pifs:'+pifs)
-                                    MM.log('pif:'+pifs[0]+'/'+pifs[0][scormid]);
+                                    MM.log('pif:'+pifs[0]+'/'+pifs[0].scormid);
                                     //MM.db.set(thisuser,"pif",);
                                 }
                             }
