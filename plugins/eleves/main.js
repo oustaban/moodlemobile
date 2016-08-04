@@ -1197,8 +1197,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     //Pif button
-                    $( "button#pif" ).each(function(index) {
-                        $(this).on(MM.clickType, function(e) {
+                    
+                        $('button#pif').on(MM.clickType, function(e) {
                             MM.log('pif clicked');
                             //e.preventDefault();
                             var course = $(this).attr("course");
@@ -1230,7 +1230,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.widgets.dialog(html, options);
                             
                         });
-                    });
+                
                     
                     
                     //Start Course Offline
