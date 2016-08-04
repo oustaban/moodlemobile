@@ -1274,7 +1274,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             a = 0;
                                         }
                                       }
-                                      if ($(this).attr('genre') == 'b') {
+                                      if ($(this).attr('genre') == 'a') {
                                         if ($(this).is(':checked')) {
                                             b = 1;
                                         } else {
