@@ -1227,7 +1227,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     if (pifscormb.length>0) {
                                         html+=' checked="checked"';
                                     }
-                                    html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'";
+                                    html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
                                     pifscorme = $.grep(pifscourse, function( el ) {
                                             return el.scormid === content.contentid && begin === 1;
                                     });
