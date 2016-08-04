@@ -1204,6 +1204,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var course = $(this).attr("course");
                             var user = $(this).attr("user");
                             MM.log('pif:'+course+'/'+user);
+                            
+                            var userspif = MM.db.where('users', {userid:parseInt(user)});
+                            var userpif = userspif[0].toJSON();
+                            var pifs = userpif.pif;
+                            pifscourse = $.grep(pifs, function( el ) {
+                                            return el.courseid === course;
+                            });
+                            var thisuser = MM.db.get('users',userpif.id);
+                            
                             var addNote = "Valider";
                             var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>A remplir avant la formation</td><td>&nbsp;</td><td>A remplir à l’issue du parcours de formation</td></tr><tr><td>Compétences à développer dans le cadre du parcours de formation</td><td>Intitulé des séquences pédagogiques</td><td>Compétences acquises à l’issue du parcours de formation</td></tr>';
                             
@@ -1211,7 +1220,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             local_contents.forEach(function(local_content) {
                                  var content = local_content.toJSON();
                                  if (content.modname == "scorm") {
-                                    html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"></td></tr>';
+                                    html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                    pifscormb = $.grep(pifscourse, function( el ) {
+                                            return el.scormid === content.contentid && begin === 1;
+                                    });
+                                    if (pifscormb.length>0) {
+                                        html+=' checked="checked"';
+                                    }
+                                    html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'";
+                                    pifscorme = $.grep(pifscourse, function( el ) {
+                                            return el.scormid === content.contentid && begin === 1;
+                                    });
+                                    if (pifscorme.length>0) {
+                                        html+=' checked="checked"';
+                                    }
+                                    html +='></td></tr>';
                                  }
                             });
                             
@@ -1230,18 +1253,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             };
                             
                             options.buttons["Valider"] = function() {
-                                var userspif = MM.db.where('users', {userid:parseInt(user)});
                                 MM.log('userspif:'+userspif);
                                 if (userspif && userspif != "") {
-                                    var userpif = userspif[0].toJSON();
                                     MM.log('userpif:'+userpif);
-                                    var pifs = userpif.pif;
                                     MM.log('pifs:'+pifs);
                                     pifs = $.grep(pifs, function( el ) {
                                             return el.courseid !== course;
                                     });
                                     MM.log('pifs length:'+pifs.length);
-                                    var thisuser = MM.db.get('users',userpif.id);
                                     MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
                                     var b;
                                     var a;
