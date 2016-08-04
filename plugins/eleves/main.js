@@ -1228,7 +1228,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             };
                             
                             options.buttons["Valider"] = function() {
-                                var userspif = var theuser = MM.db.where('users', {userid:parseInt(user)});
+                                var userspif = MM.db.where('users', {userid:parseInt(user)});
                                 MM.log('userspif:'+userspif);
                                 if (userspif && userspif != "") {
                                     var userpif = userspif[0].toJSON();
