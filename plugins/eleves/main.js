@@ -1287,7 +1287,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     });
                                     MM.log('pifs length:'+pifs.length)
                                     MM.log('pif:'+pifs[0]+'/'+pifs[0].scormid);
-                                    MM.db.set(thisuser,"pif",pifs);
+                                    thisuser.save({pif:pifs});
                                 }
                             }
                             
