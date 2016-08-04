@@ -1210,7 +1210,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var local_contents = MM.db.where("contents",{courseid : courseId});
                             local_contents.forEach(function(local_content) {
                                  var content = local_content.toJSON();
-                                 html +='<tr style="height:25px"><td><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"></td></tr>';
+                                 html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"></td></tr>';
                             });
                             
                             html +='</table></div>';
