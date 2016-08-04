@@ -1211,7 +1211,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             pifscourse = $.grep(pifs, function( el ) {
                                             return el.courseid === course;
                             });
-                            MM.log('pifscourse lengtg:'+pifcourse.length);
+                            MM.log('pifscourse length:'+pifscourse.length);
                             
                             var thisuser = MM.db.get('users',userpif.id);
                             
@@ -1226,7 +1226,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     pifscormb = $.grep(pifscourse, function( el ) {
                                             return el.scormid === content.contentid && begin === 1;
                                     });
-                                    MM.log('pifscormb lengtg:'+pifscormb.length);
+                                    MM.log('pifscormb length:'+pifscormb.length);
                                     if (pifscormb.length>0) {
                                         html+=' checked="checked"';
                                     }
@@ -1234,7 +1234,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     pifscorme = $.grep(pifscourse, function( el ) {
                                             return el.scormid === content.contentid && end === 1;
                                     });
-                                    MM.log('pifscorme lengtg:'+pifscorme.length);
+                                    MM.log('pifscorme length:'+pifscorme.length);
                                     if (pifscorme.length>0) {
                                         html+=' checked="checked"';
                                     }
