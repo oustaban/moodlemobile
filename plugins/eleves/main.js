@@ -1211,6 +1211,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             pifscourse = $.grep(pifs, function( el ) {
                                             return el.courseid === course;
                             });
+                            MM.log('pifscourse lengtg:'+pifcourse.length);
+                            
                             var thisuser = MM.db.get('users',userpif.id);
                             
                             var addNote = "Valider";
@@ -1224,13 +1226,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     pifscormb = $.grep(pifscourse, function( el ) {
                                             return el.scormid === content.contentid && begin === 1;
                                     });
+                                    MM.log('pifscormb lengtg:'+pifscormb.length);
                                     if (pifscormb.length>0) {
                                         html+=' checked="checked"';
                                     }
                                     html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
                                     pifscorme = $.grep(pifscourse, function( el ) {
-                                            return el.scormid === content.contentid && begin === 1;
+                                            return el.scormid === content.contentid && end === 1;
                                     });
+                                    MM.log('pifscorme lengtg:'+pifscorme.length);
                                     if (pifscorme.length>0) {
                                         html+=' checked="checked"';
                                     }
