@@ -1210,7 +1210,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var local_contents = MM.db.where("contents",{courseid : courseId});
                             local_contents.forEach(function(local_content) {
                                  var content = local_content.toJSON();
-                                 if (content.name.toLowerCase().indexOf('offline') == -1) {
+                                 if (content.modname == "scorm") {
                                     html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"></td></tr>';
                                  }
                             });
@@ -1242,6 +1242,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     });
                                     MM.log('pifs length:'+pifs.length);
                                     var thisuser = MM.db.get('users',userpif.id);
+                                    MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
                                     var b;
                                     var a;
                                     var scormid;
