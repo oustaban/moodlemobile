@@ -140,6 +140,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             sectionName = sections.name;
                             $.each(sections.modules, function(index2, content){
                                 content.contentid = content.id;
+                                content.section = sectionId;
                                 content.courseid = courseId;
                                 content.id = MM.config.current_site.id + "-" + content.contentid;
                                 MM.log("ContentIDCheck: " + content.id + "," + el.get("id"));
@@ -181,6 +182,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             MM.log("ContentID: " + content.id);
                             content.contentid = content.id;
                             content.courseid = courseId;
+                            content.section = sectionId;
                             content.id = MM.config.current_site.id + "-" + content.contentid;
                             
                             

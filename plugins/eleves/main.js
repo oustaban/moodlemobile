@@ -1240,7 +1240,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     pifs = $.grep(pifs, function( el ) {
                                             return el.courseid !== course;
                                     });
-                                    MM.log('pif length:'+pifs.length);
+                                    MM.log('pifs length:'+pifs.length);
                                     var thisuser = MM.db.get('users',userpif.id);
                                     var b;
                                     var a;
@@ -1265,9 +1265,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                       }
                                       MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
                                     });
-                                    MM.log('pifs:'+pifs)
+                                    MM.log('pifs length:'+pifs.length)
                                     MM.log('pif:'+pifs[0]+'/'+pifs[0].scormid);
-                                    //MM.db.set(thisuser,"pif",);
+                                    MM.db.set(thisuser,"pif",pifs);
                                 }
                             }
                             
