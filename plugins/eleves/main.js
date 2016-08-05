@@ -665,6 +665,20 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         
                         //On reinit la search
+                        $('input#search').val('');
+                        var sword = $( "#search" ).val().toLowerCase();
+                        MM.log("Search:"+sword+'/Users:'+users);
+                        var searchparticipants = [];
+                        myusers.forEach(function(user) {
+                            //MM.log("User:"+user.id+'/'+user.fullname);
+                            if (user.fullname.toLowerCase().indexOf(sword) != -1) {
+                                searchparticipants.push(user);
+                                $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").removeClass('hide');
+                                //MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
+                            } else {
+                                $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").addClass('hide');
+                            }
+                        });
                         
                         
                         
