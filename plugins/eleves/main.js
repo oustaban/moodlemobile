@@ -620,7 +620,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               myusers.push(thenewuser);
                               //MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $("ul#listeparticipants2 li[eleve='"+$(this).attr('eleve')+"']").detach();
-                              $('ul#listeparticipants1').append(objectWithEvents);
+                              if ( $('ul#listeparticipants1').children().length > 0 ) {
+                                    var last=0;
+                                    $('ul#listeparticipants1 li').each(function() {
+                                        if (parseInt($(this).attr('index')) < parseInt(objectWithEvents.attr('index'))) {
+                                            last = $(this);
+                                        }
+                                    });
+                                    if (last) {
+                                        objectWithEvents.insertAfter(last);
+                                    } else {
+                                        $('ul#listeparticipants1').preprend(objectWithEvents);
+                                    } 
+                               } else {
+                                    $('ul#listeparticipants1').append(objectWithEvents);
+                               }
+                              //$('ul#listeparticipants1').append(objectWithEvents);
                               //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         else {
@@ -633,7 +648,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            if ( $('ul#listeparticipants2').children().length > 0 ) {
                                 var last=0;
                                 $('ul#listeparticipants2 li').each(function() {
-                                    if ($(this).attr('index') < objectWithEvents.attr('index')) {
+                                    if (parseInt($(this).attr('index')) < parseInt(objectWithEvents.attr('index'))) {
                                         last = $(this);
                                     }
                                 });
@@ -641,9 +656,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     objectWithEvents.insertAfter(last);
                                 } else {
                                     $('ul#listeparticipants2').preprend(objectWithEvents);
-                                }
-                                
-                                
+                                } 
                            } else {
                                 $('ul#listeparticipants2').append(objectWithEvents);
                            }
