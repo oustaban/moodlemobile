@@ -456,12 +456,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var modulesName = "";
                                                         var users = obj.users.split(",");
                                                         var indexU=1;
-                                                        var pifs = [];
-                                                        users.forEach(function(user) {
-                                                            var newUserPif = MM.db.get('users', MM.config.current_site.id + '-' + user.id);
-                                                            pifs.push(newUserPif.pif)
-                                                            
-                                                        });
+                                                        
                                                         
                                                         
                                                              
@@ -473,8 +468,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             "endtime" : obj.endtime,
                                                             "modulesstart" : obj.modulesStart,
                                                             "modulesend" : obj.modulesEnd,
-                                                            "managerid" : MM.site.get('userid'),
-                                                            "pif" : pifs
+                                                            "managerid" : MM.site.get('userid')
                                                         }
                                         
                                                         MM.widgets.dialogClose();
