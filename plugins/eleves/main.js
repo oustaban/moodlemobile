@@ -630,7 +630,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     if (last) {
                                         objectWithEvents.insertAfter(last);
                                     } else {
-                                        $('ul#listeparticipants1').preprend(objectWithEvents);
+                                        $('ul#listeparticipants1').prepend(objectWithEvents);
                                     } 
                                } else {
                                     $('ul#listeparticipants1').append(objectWithEvents);
@@ -655,7 +655,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if (last) {
                                     objectWithEvents.insertAfter(last);
                                 } else {
-                                    $('ul#listeparticipants2').preprend(objectWithEvents);
+                                    $('ul#listeparticipants2').prepend(objectWithEvents);
                                 } 
                            } else {
                                 $('ul#listeparticipants2').append(objectWithEvents);
