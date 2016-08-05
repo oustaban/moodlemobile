@@ -1249,6 +1249,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //e.preventDefault();
                             var course = $(this).attr("course");
                             var user = $(this).attr("user");
+                            var theuser = MM.db.get('users',user);
                             MM.log('pif:'+course+'/'+user);
                             
                             var userspif = MM.db.where('users', {userid:parseInt(user)});
@@ -1291,7 +1292,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             html +='</table></div>';
                             
                             var options = {
-                                title: 'Protocole Individuel de Formation bipartite pour '+user,
+                                title: 'Protocole Individuel de Formation bipartite pour '+theuser.fullname,
                                 width: "90%",
                                 marginTop: "10%",
                                 buttons: {}
