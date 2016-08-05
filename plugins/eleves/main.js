@@ -1208,7 +1208,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var userpif = userspif[0].toJSON();
                             var pifs = userpif.pif;
                             pifscourse = $.grep(pifs, function( el ) {
-                                            return el.courseid === course;
+                                            return el.courseid == course;
                             });
                             MM.log('pifscourse length:'+pifscourse.length);
                             
@@ -1223,7 +1223,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                  if (content.modname == "scorm") {
                                     html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                                     pifscormb = $.grep(pifscourse, function( el ) {
-                                            return el.scormid === content.contentid && begin === 1;
+                                            return el.scormid == content.contentid && begin == 1;
                                     });
                                     MM.log('pifscormb length:'+pifscormb.length);
                                     if (pifscormb.length>0) {
@@ -1231,7 +1231,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                     html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
                                     pifscorme = $.grep(pifscourse, function( el ) {
-                                            return el.scormid === content.contentid && end === 1;
+                                            return el.scormid == content.contentid && end == 1;
                                     });
                                     MM.log('pifscorme length:'+pifscorme.length);
                                     if (pifscorme.length>0) {
