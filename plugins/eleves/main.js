@@ -605,6 +605,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     $('a#lielevelP').on(MM.clickType, function(e) {
+                        
                         selected = [];
                         var checkbox = $('#' + $(this).attr('eleve'));
                         
@@ -629,7 +630,24 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            });
                            //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
                            var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('eleve')+"']").detach();
-                           $('ul#listeparticipants2').append(objectWithEvents);
+                           if ( $('ul#listeparticipants2').children().length > 0 ) {
+                                var last=0;
+                                $('$("ul#listeparticipants2 li').each(function() {
+                                    if ($(this).attr('index') < objectWithEvents.attr('index')) {
+                                        last = $(this);
+                                    }
+                                });
+                                if (last) {
+                                    objectWithEvents.insertAfter(last);
+                                } else {
+                                    $('ul#listeparticipants2').preprend(objectWithEvents);
+                                }
+                                
+                                
+                           } else {
+                                $('ul#listeparticipants2').append(objectWithEvents);
+                           }
+                           
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         
@@ -1223,7 +1241,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                  if (content.modname == "scorm") {
                                     html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                                     pifscormb = $.grep(pifscourse, function( el ) {
-                                            return el.scormid == content.contentid && begin == 1;
+                                            return el.scormid == content.contentid && el.begin == 1;
                                     });
                                     MM.log('pifscormb length:'+pifscormb.length);
                                     if (pifscormb.length>0) {
@@ -1231,7 +1249,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                     html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
                                     pifscorme = $.grep(pifscourse, function( el ) {
-                                            return el.scormid == content.contentid && end == 1;
+                                            return el.scormid == content.contentid && el.end == 1;
                                     });
                                     MM.log('pifscorme length:'+pifscorme.length);
                                     if (pifscorme.length>0) {
@@ -1292,6 +1310,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.log('pif:'+pifs[0]+'/'+pifs[0].scormid);
                                     thisuser.save({pif:pifs});
                                 }
+                                //MM.Router.navigate("eleves/" + course );
+                                MM.widgets.dialogClose();
                             }
                             
                             MM.widgets.dialog(html, options);
