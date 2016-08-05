@@ -632,7 +632,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('eleve')+"']").detach();
                            if ( $('ul#listeparticipants2').children().length > 0 ) {
                                 var last=0;
-                                $('$("ul#listeparticipants2 li').each(function() {
+                                $('ul#listeparticipants2 li').each(function() {
                                     if ($(this).attr('index') < objectWithEvents.attr('index')) {
                                         last = $(this);
                                     }
