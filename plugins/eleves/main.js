@@ -682,7 +682,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         
                         
-                        $('input:checked').each(function() {
+                        $('input.elevecheckbox:checked').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
                             selected.push($(this).val());
                             //$('ul.nav-v2').append($("li[eleve='"+$(this).attr('id')+"']" ).prop('outerHTML'));
