@@ -1,5 +1,5 @@
-<% _.each(users, function(user) { %>
-<li class="nav-item" id="lielevelP" eleve="eleveP<%= user.id %>">
+<% var index =0;_.each(users, function(user) { %>
+<li index="<%= index %>" class="nav-item" id="lielevelP" eleve="eleveP<%= user.id %>">
     <button id="pif" course="<%= courseId %>" user="<%= user.id %>" path="" module="">PIF</button>
     <div style="display:table-cell;width:100%;vertical-align:middle;">
         <a href="javascript:void(0)" id="lielevelP" eleve="eleveP<%= user.id %>" class="media touch-row" >        
@@ -11,4 +11,4 @@
         </a>
     </div>
 </li>
-<% }); %>
+<% index++;}); %>
