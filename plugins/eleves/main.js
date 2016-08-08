@@ -1291,7 +1291,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             html +='</table></div>';
 
                             var options = {
-                                title: 'Protocole Individuel de Formation bipartite pour '+thisuser.fullname,
+                                title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
                                 width: "90%",
                                 marginTop: "10%",
                                 buttons: {}
