@@ -30,7 +30,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
         ],
 
         limitNumber: 100,
-        
+
         contentsPageRendered: function() {
                     MM.log('Eleve contentsPageRendered');
                     $("#showCourse").on(MM.clickType, function(e) {
@@ -40,14 +40,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var user = $(this).attr("user");
                         var fileResult = MM.config.current_site.id+"/"+course+"/result/"+user+".json";
                         MM.log('click start:'+path+','+fileResult);
-                        
+
                         //create local result file
                         MM.fs.createFile(fileResult,
                             function(fileEntry) {
                                 var d = new Date();
                                 var content = '{"starttime":"'+d.getTime()+'"}';
                                 MM.log('Create Result :'+content);
-                                MM.fs.writeInFile(fileEntry, content, 
+                                MM.fs.writeInFile(fileEntry, content,
                                     function(fileUrl) {
                                         MM.log('Write Result :'+fileUrl);
                                         $('#stopCourse').show();
@@ -55,30 +55,30 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function(fileUrl) {
                                         MM.log('Write Result NOK:'+content);
                                     }
-                                    
+
                                 );
-                            },   
-                                
+                            },
+
                             function(fileEntry) {
                                MM.log('Create Result : NOK');
                             }
                         );
-                    
+
                         //launch offline course
                         MM.plugins.resource._showResource(path);
                     });
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+
+
+
+
+
+
+
         },
-        
-        
-        
-        
+
+
+
+
         stopCourse: function(courseId, userId) {
             //var addNote = MM.lang.s("addnote");
             var addNote = "Ajouter";
@@ -98,11 +98,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     "notes[0][text]": $("#addnotescore").val(),
                     "notes[0][format]": 1
                 };
-                
+
                 var score = $("#addnotescore").val();
                 var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/" + userId + ".json";
                 var message = "Note Enregistrée.";
-                
+
                 MM.fs.findFileAndReadContents(resultFile,
                   function (result) {
                     MM.log('Result OK :'+result);
@@ -111,27 +111,27 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'","note":"'+score+'"}';
                     MM.log('Create Result :'+content);
                     var fileResult = MM.config.current_site.id+"/"+courseId+"/result/"+userId+".json";
-                    
-                    
+
+
                     //create local result file
                     MM.fs.createFile(fileResult,
                         function(fileEntry) {
-                             MM.fs.writeInFile(fileEntry, content, 
+                             MM.fs.writeInFile(fileEntry, content,
                                 function(fileUrl) {
                                     MM.log('Write Result OK:'+fileUrl);
                                     $('#stopCourse').hide();
                                     $("#synchroR").show();
                                     message = "Note Enregistrée.";
-                                    
+
                                 },
                                 function(fileUrl) {
                                     MM.log('Write Result NOK:'+content);
                                     message = "Problème lors de l'écriture.Veuillez Réessayer.";
                                 }
-                                
+
                             );
-                        },   
-                            
+                        },
+
                         function(fileEntry) {
                            MM.log('Create Result : NOK');
                            message = "Problème lors de l'écriture.Veuillez Réessayer.";
@@ -143,19 +143,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     message = "Problème lors de l'écriture.Veuillez Réessayer.";
                   }
                 );
-                
+
                 MM.widgets.dialogClose();
                 MM.popMessage(message, {title:'Ajouter une note', autoclose: 5000, resizable: false});
                 MM.Router.navigate("eleve/" + courseId + "/" + userId);
-                
+
             };
-            
+
             options.buttons[MM.lang.s("cancel")] = function() {
                 MM.Router.navigate("eleve/" + courseId + "/" + userId);
                 MM.widgets.dialogClose();
             };
 
-            
+
 
             var html = '\
             <input type="text" id="addnotescore" name="addnotescore" value=""> %\
@@ -163,7 +163,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
             MM.widgets.dialog(html, options);
         },
-        
+
         showEleves: function(courseId) {
             MM.panels.showLoading('center');
 
@@ -172,15 +172,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             }
             // Adding loading icon.
             $('a[href="#eleves/' +courseId+ '"]').addClass('loading-row');
-            
-            
+
+
 
             MM.plugins.eleves._loadEleves(courseId, 0, MM.plugins.eleves.limitNumber,
                 function(users) {
                     // Removing loading icon.
                     $('a[href="#eleves/' +courseId+ '"]').removeClass('loading-row');
-                    
-                    
+
+
                     var showMore = true;
                     if (users.length < MM.plugins.eleves.limitNumber) {
                         showMore = false;
@@ -201,16 +201,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         );
                     });
                     */
-                    
+
                     var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
                     MM.log('LocalCourses:'+localCourses+','+localCourses.length);
                     var modulesL = [];
-                    
+
                     if (localCourses) {
-                        
-                        
+
+
                         $('#offlineC').html('<option value="0">Sélectionner un cours</option>')
-                        
+
                         $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
                             if (localCourse.contents) {
@@ -218,20 +218,20 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 var localContentId = localCourse.url.split("?id=");
                                 var localPathCourse = MM.plugins.contents.getLocalPaths2(courseId, localContentId[1], localFile);
                                 modulesL.push(localContentId[1]);
-                                
+
                                 MM.fs.fileExists(localPathCourse.file,
                                     function(path) {
-                                        
+
                                         var localPathOffline = MM.fs.getRoot() + '/' + localPathCourse.file;
                                         MM.log('offline LocalCourse:'+localPathOffline+' exist');
-                                        
-                                        $('#offlineC').append($('<option>', { 
+
+                                        $('#offlineC').append($('<option>', {
                                             value: localPathOffline + ',' + localContentId[1],
-                                            text : localCourse.name 
+                                            text : localCourse.name
                                         }));
                                         //$('#offlineC').show();
-                                        
-                                    
+
+
                                     },
                                     function(path) {
                                        MM.log('offline LocalCourse:'+localPathCourse.file+' Not exist');
@@ -240,19 +240,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                         });
                     }
-                    
+
                     var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                     MM.log('json session :'+sessionFile);
-                    
+
                     var myusers = users;
                     MM.log('myusers.length:'+myusers.length);
-                    
+
                     MM.fs.findFileAndReadContents(sessionFile,
                         function (result) {
                             MM.log('Load Session : OK' + result);
                             var obj = JSON.parse(result);
                             var users = obj.users.split(",");
-                            
+
                             $.each(users, function(index, user) {
                                 $('input:checkbox').each(function() {
                                     MM.log('User:'+user+'/Checkbox:'+parseInt($(this).val())+'/id:'+$(this).attr('id'));
@@ -265,75 +265,75 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         MM.log('myusers.length:'+myusers.length);
                                         var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('id')+"']").detach();
                                         $('ul#listeparticipants2').append(objectWithEvents);
-                                        
+
                                     }
                                     //$(this).attr("disabled", true );
                                 });
                             });
-                            
-                            
+
+
                             $('#showSessionL').hide();
                             $('#offlineC').show();
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
-                            $('#stopSessionL').show();      
+                            $('#stopSessionL').show();
                             //$('#synchroR').hide();
                             $('#showSessionL').attr('users',users);
                             $('#showCourseL').attr('users',users);
                             $('#stopCourseL').attr('users',users);
                             $('#stopSessionL').attr('users',users);
                             $('#stopSessionL').attr('starttime',obj.starttime);
-                            
-                            
+
+
                         },
                         function (result) {
                             MM.log('Load Session : NOK' + result);
-                            if ($('#offlineC option').length>1) {    
+                            if ($('#offlineC option').length>1) {
                                 $('input:checked').each(function() {
                                     $('#showSessionL').show();
                                 });
                             }
-                            
+
                             $('#offlineC').hide();
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
-                            $('#stopSessionL').hide();      
+                            $('#stopSessionL').hide();
                             //$('#synchroR').hide();
                         }
                     );
-                    
-                    
-                    
+
+
+
                     var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
                     MM.fs.getDirectoryContents(directoryResult,
                         function(entries) {
 
                             if(entries.length > 0) {
-                                
+
                                 $.each(entries, function(index, entry) {
-                                    
+
                                     MM.log('Session Stockée:'+entry.name);
                                     var name = entry.name.split("session_");
                                     if (name[1]) {
                                         $("#synchroR").show();
                                     }
-                                    
+
                                     var namefile = entry.name.split(".");
                                     if (!isNaN(namefile[0])) {
-                                    
+
                                         var moduleFile =  MM.config.current_site.id + "/" + courseId + "/result/" + entry.name;
-                                
+
                                         MM.fs.findFileAndReadContents(moduleFile,
                                             function (resultModule) {
                                                 var obj = JSON.parse(resultModule);
                                                 if (!obj.endtime) {
-                                                    
+
                                                      $('#showSessionL').hide();
                                                      $('#offlineC').hide();
                                                      $('#showCourseL').hide();
                                                      $('#stopCourseL').show();
                                                      $('#stopSessionL').hide();
-                                                     
+
                                                      $("#stopCourseL").attr("module",namefile[0]);
                                                 }
                                             }
@@ -341,15 +341,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                 });
                             }
-                            
+
                         },
                         function() {
                             //
                         }
                     );
-                    
-                    
-                    
+
+
+
                     var tpl = {
                         users: users,
                         deviceType: MM.deviceType,
@@ -386,8 +386,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
                         MM.db.insert('users', newUser);
                     });
-                    
-                    
+
+
 
                     // Show more button.
                     $("#eleves-showmore").on(MM.clickType, function(e) {
@@ -408,18 +408,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if (users.length < MM.plugins.eleves.limitNumber) {
                                     that.css("display", "none");
                                 }
-                                
-                    
+
+
                             },
                             function() {
                                 that.removeClass("loading-row-black");
                             }
                         );
                     });
-                    
+
                     //Synchro Button
                     $("#synchroR").on(MM.clickType, function(e) {
-                        
+
                         var lenghto = $(this).attr('users').length - 1;
                         var userList = $(this).attr('users').substr(0, lenghto);
                         var users = userList.split(",");
@@ -431,20 +431,20 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var on = $(this).attr('on');
                         var btnSynchro = $(this);
                         MM.log("Synchro Start");
-                        
-                        
+
+
                         if (on == undefined || on == "off") {
                             $(this).attr('on','on');
                             MM.log('Synchro On:'+on+','+$(this).attr('on'));
                             var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
                             MM.fs.getDirectoryContents(directoryResult,
                                 function(entries) {
-        
+
                                     if(entries.length > 0) {
-                                        
+
                                         $.each(entries, function(index, entry) {
                                             MM.log('File:'+entry.name);
-                                            
+
                                             var name = entry.name.split("session_");
                                             if (name[1]) {
                                                 var sessionFile =  MM.config.current_site.id + "/" + course + "/result/" + entry.name;
@@ -456,10 +456,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var modulesName = "";
                                                         var users = obj.users.split(",");
                                                         var indexU=1;
-                                                        
-                                                        
-                                                        
-                                                             
+
+
+
+
                                                         var data = {
                                                             "userid" : obj.users,
                                                             "moduleid" : obj.modulesId,
@@ -470,19 +470,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             "modulesend" : obj.modulesEnd,
                                                             "managerid" : MM.site.get('userid')
                                                         }
-                                        
+
                                                         MM.widgets.dialogClose();
-                                                                       
+
                                                         MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                                             function(status){
                                                                 var sessionTime = new Date(parseInt(obj.starttime));
                                                                 var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
                                                                 var participants_users = status.participants_user.split(",");
                                                                 var participants_id = status.participants_id.split(",");
-                                                                
-                                                                
+
+
                                                                 $.each(participants_users, function( indexU, valueU ) {
-                                                                    
+
                                                                     var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
                                                                     var signatureRelFile =  MM.config.current_site.id + "/" + course + "/result/" + valueU + '_' + obj.starttime + '.png';
                                                                     MM.log('Participants:'+valueU+','+signatureFile);
@@ -500,15 +500,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                 options.headers = {
                                                                                   Connection: "close"
                                                                                 };
-                                                                                
+
                                                                                 var ft = new FileTransfer();
                                                                                 ft.upload(
                                                                                           path,
                                                                                           MM.config.current_site.siteurl + '/local/session/uploadsignatureoffline.php',
                                                                                           function(){
                                                                                             MM.log('Upload réussi');
-                                                                                            
-    
+
+
                                                                                             MM.fs.removeFile (signatureRelFile,
                                                                                                 function (result) {
                                                                                                    MM.log('Le fichier '+signatureRelFile+' a bien été effacé');
@@ -520,22 +520,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                           },
                                                                                           function(){
                                                                                              MM.log('Upload pas réussi');
-                                                                                            
+
                                                                                           },
                                                                                           options
                                                                                 );
-    
-                                                                                
+
+
                                                                             },
                                                                             function(path) {
                                                                                 MM.log('Signature Existe pas');
                                                                             }
                                                                        );
-                                                                    
+
                                                                 });
-                                                                
+
                                                                 message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
-                                                                
+
                                                                 MM.fs.removeFile (sessionFile,
                                                                     function (result) {
                                                                        MM.log('Le fichier '+sessionFile+' a bien été effacé');
@@ -547,11 +547,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
                                                                        $("#synchroR").hide();
                                                                        btnSynchro.attr('on','off');
-                                                                       
+
                                                                     }
-                                                                    
+
                                                                );
-                                                                
+
                                                             },
                                                             {
                                                                 getFromCache: false,
@@ -564,53 +564,53 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 //MM.popErrorMessage(e);
                                                                 btnSynchro.attr('on','off');
                                                                 $("#synchroR").show();
-                                                                
+
                                                             }
                                                         );
-                                                                    
-                                                        
-                                                        
-                                                    
-                                                        
+
+
+
+
+
                                                     },
                                                     function(result) {
                                                         MM.log( "Session File NOK :" + sessionFile);
                                                         btnSynchro.attr('on','off');
                                                     }
                                                 );
-                                                    
+
                                             }
                                         });
                                     }
-                                    
+
                                 },
                                 function() {
                                     //
                                 }
                             );
-                        
+
                         } else {
                             MM.log( "Session En cours" + sessionFile);
                         }
-                        
-                        
+
+
                         MM.widgets.dialogClose();
-                        
-                        
+
+
                     });
-                    
+
                     //Check Button
                     MM.log("Check Button");
                     var selected = [];
-                    
-                    
+
+
                     $('a#lielevelP').on(MM.clickType, function(e) {
-                        
+
                         selected = [];
                         var checkbox = $('#' + $(this).attr('eleve'));
-                        
+
                         MM.log('label clicked:'+$(this).attr('eleve')+"/"+checkbox.val());
-                        
+
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
                               var theuser = MM.db.where('users', {userid:parseInt(checkbox.val())});
@@ -631,7 +631,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         objectWithEvents.insertAfter(last);
                                     } else {
                                         $('ul#listeparticipants1').prepend(objectWithEvents);
-                                    } 
+                                    }
                                } else {
                                     $('ul#listeparticipants1').append(objectWithEvents);
                                }
@@ -656,14 +656,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     objectWithEvents.insertAfter(last);
                                 } else {
                                     $('ul#listeparticipants2').prepend(objectWithEvents);
-                                } 
+                                }
                            } else {
                                 $('ul#listeparticipants2').append(objectWithEvents);
                            }
-                           
+
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
-                        
+
                         //On reinit la search
                         $('input#search').val('');
                         var sword = $( "#search" ).val().toLowerCase();
@@ -679,33 +679,33 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").addClass('hide');
                             }
                         });
-                        
-                        
-                        
+
+
+
                         $('input.elevecheckbox:checked').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
                             selected.push($(this).val());
                             //$('ul.nav-v2').append($("li[eleve='"+$(this).attr('id')+"']" ).prop('outerHTML'));
                             //$("ul.nav-v li[eleve='"+$(this).attr('id')+"']").remove();
                         });
-                                             
+
                         if (selected.length > 0) {
-                            MM.log("Check Button:"+selected.length);   
-                            
+                            MM.log("Check Button:"+selected.length);
+
                             var usersSelected = "";
                             $.each(selected, function(indexSelected, valueSelected) {
                                 usersSelected += valueSelected+",";
                             });
                             var lenghtSelected = usersSelected.length - 1;
-                            if ($('#offlineC option').length>1) { 
+                            if ($('#offlineC option').length>1) {
                                 $("#showSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 $("#stopSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 $("#showCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 //$("#showSessionL").show();
-                                
+
                                 var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
-                            
+
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
                                         $("#showSessionL").hide();
@@ -715,20 +715,20 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             function(fileEntry) {
                                                 var content = '{"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'"}';
                                                 MM.log('Create Session start :'+content);
-                                                MM.fs.writeInFile(fileEntry, content, 
+                                                MM.fs.writeInFile(fileEntry, content,
                                                     function(fileUrl) {
                                                         MM.log('Write Session :'+fileUrl);
                                                     },
                                                     function(fileUrl) {
                                                         MM.log('Write Session NOK:'+content);
                                                     }
-                                                    
+
                                                 );
-                                            },   
-                                                
+                                            },
+
                                             function(fileEntry) {
                                                MM.log('Create Session : NOK');
-                                               
+
                                             }
                                         );
                                     },
@@ -747,20 +747,20 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             function(fileEntry) {
                                                 var content = '{"starttime":"'+starttime+'","users":""}';
                                                 MM.log('Create Session start :'+content);
-                                                MM.fs.writeInFile(fileEntry, content, 
+                                                MM.fs.writeInFile(fileEntry, content,
                                                     function(fileUrl) {
                                                         MM.log('Write Session :'+fileUrl);
                                                     },
                                                     function(fileUrl) {
                                                         MM.log('Write Session NOK:'+content);
                                                     }
-                                                    
+
                                                 );
-                                            },   
-                                                
+                                            },
+
                                             function(fileEntry) {
                                                MM.log('Create Session : NOK');
-                                               
+
                                             }
                                         );
                                 },
@@ -768,27 +768,27 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     $("#showSessionL").hide();
                                 }
                             );
-                            
+
                             $("#stopSessionL").attr("users","");
                             $("#showCourseL").attr("users","");
                             $("#stopCourseL").attr("users","");
-                                
-                            
+
+
                         }
-                        
+
                     });
-                    
+
                     $('input.elevecheckbox').on(MM.clickType, function(e) {
                         if($(this).is(':checked'))
                               $(this).prop('checked',false);
                         else
                            $(this).prop('checked',true);
                     });
-                    
+
                     //Select Course
                     MM.log("Selected Course");
                     $('#offlineC').on("change", function(e) {
-                        
+
                         var selectedCourse = $( "#offlineC option:selected" ).val();
                         var option = selectedCourse.split(",");
                         $("#showCourseL").attr("path",option[0]);
@@ -796,26 +796,26 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $("#stopCourseL").attr("path",option[0]);
                         $("#stopCourseL").attr("module",option[1]);
                         MM.log("Change Selected Course:"+selectedCourse);
-                        
+
                         if (selectedCourse != 0) {
                            MM.log("Selected Course:"+selectedCourse);
-                           
+
                            usersSelected = "";
                            $.each(selected, function(indexSelected, valueSelected) {
                                 usersSelected += valueSelected+",";
                            });
                            lenghtSelected = usersSelected.length - 1;
                            $("#showCourseL").show();
-                           $("#stopCourseL").hide(); 
+                           $("#stopCourseL").hide();
                         } else {
                            $("#showCourseL").hide();
-                           $("#stopCourseL").hide(); 
+                           $("#stopCourseL").hide();
                            MM.log("Selected Course NOK");
                         }
-                        
+
                     });
-                    
-                    
+
+
                     //Start Course Offline
                     $("#showSessionL").on(MM.clickType, function(e) {
                         e.preventDefault();
@@ -825,29 +825,29 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var users = $(this).attr("users");
                         var module = $(this).attr("module");
                         MM.log('showSessionL:'+path+','+course+','+users+','+module);
-                        
+
                         var usersL = users.split(",");
                         */
-                        
+
                         var course = $(this).attr("course");
-                        
+
                         $('input:checkbox').each(function() {
                             MM.log("Check Button Checked:" + $(this).val());
                             //$(this).attr("disabled", true);
                         });
-                        
+
                         $('#offlineC > option').removeAttr("selected");
                         $('#offlineC option[value="0"]').prop('selected', true);
-                        
+
                         var users = $(this).attr('users');
-                        
+
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
                         MM.fs.createFile(fileResultL,
                             function(fileEntry) {
                                 var d = new Date();
                                 var content = '{"starttime":"'+d.getTime()+'","users":"'+users+'"}';
                                 MM.log('Create Session start :'+content);
-                                MM.fs.writeInFile(fileEntry, content, 
+                                MM.fs.writeInFile(fileEntry, content,
                                     function(fileUrl) {
                                         MM.log('Write Session :'+fileUrl);
                                         $('#stopSessionL').attr('starttime',d.getTime());
@@ -858,31 +858,31 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function(fileUrl) {
                                         MM.log('Write Session NOK:'+content);
                                     }
-                                    
+
                                 );
-                            },   
-                                
+                            },
+
                             function(fileEntry) {
                                MM.log('Create Session : NOK');
-                               
+
                             }
                         );
-                        
+
                     });
-                    
-                    
-                    
+
+
+
                     //Stop Session
                     $("#stopSessionL").on(MM.clickType, function(e) {
-                        
+
                         e.preventDefault();
                         var course = $(this).attr("course");
                         var users = $(this).attr("users");
                         var module = $(this).attr("module");
                         MM.log('stopSessionL:'+course+','+users+','+module);
-                        
-                        
-                        
+
+
+
                         var localCourses = MM.db.where('contents', {'courseid':course, 'site':MM.config.current_site.id});
                         var moduleStart = "";
                         var moduleEnd = "";
@@ -901,14 +901,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         timeSession = $(this).attr('starttime');
                         var endSession = d.getTime();
-                        
+
                         var endtime = new Date(parseInt(timeSession));
                         var endDate = endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear()+" "+endtime.getHours()+":"+endtime.getMinutes();
                         var startimer = $(this).attr('starttime');
                         var startime = new Date(parseInt($(this).attr('starttime')));
                         MM.log('starttime:'+$(this).attr('starttime'));
                         var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
-                        
+
                         var addNote = "Valider";
                         var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
 
@@ -917,21 +917,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             width: "90%",
                             buttons: {}
                         };
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
+
+
                         $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
                             if (localCourse.contents) {
                                 indexCourse++;
                             }
                         });
-                        
-                        
+
+
                         $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
                             if (localCourse.contents) {
@@ -955,9 +955,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                 var userG = userP.toJSON();
                                                 var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+valueS+"_"+timeSession+".png";
-                                                
+
                                                 var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+valueS + "_" + timeSession + ".png";
-                                    
+
                                                 MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
@@ -980,22 +980,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         indexUser++;
                                                     }
                                                 );
-                                                
+
                                                 MM.fs.fileExists(fileSignature,
                                                     function(path) {
-                                                        
-                                                        
+
+
                                                     },
                                                     function(path) {
-                                                        
+
                                                     }
                                                 );
-                                                    
-                                                
+
+
                                             });
-                                            
-                                            
-                                            
+
+
+
                                         }
                                         indexCourse2++;
                                     },
@@ -1009,29 +1009,29 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             });
                                             html += '</table></div>';
                                             MM.log('Session Module Go:'+html);
-                                            
+
                                             MM.widgets.dialog(html, options);
                                         }
                                         indexCourse2++;
                                     }
-                                    
+
                                 );
-                                
-                            }                              
-                                                              
+
+                            }
+
                         });
-                        
-                        
-                        
-                        
-                        
+
+
+
+
+
                         options.buttons[addNote] = function() {
-            
+
                             MM.popConfirm("Etes-vous sûr de vouloir enregistrer cette session ?", function() {
-                            
+
                                 var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                                 var message = "Session Enregistrée.";
-                                    
+
                                 MM.fs.findFileAndReadContents(resultFile,
                                   function (result) {
                                     MM.log('Load Session : OK' + result);
@@ -1039,27 +1039,27 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     var users = obj.users;
                                     var starttime = obj.starttime;
                                     var realusers = $('#stopSessionL').attr('users');
-                        
-                        
+
+
                                     var lenghto = result.length - 1;
                                     var lenghta = modulesId.length - 1;
                                     var lenghtb = moduleStart.length - 1;
                                     var lenghtc = moduleEnd.length - 1;
                                     var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+endSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
-                                    
+
                                     MM.log('Session Load OK : '+resultFile + ' : ' + content + ' : ' + timeSession);
-                                    
+
                                     var fileResult = MM.config.current_site.id+"/"+course+"/result/session_"+timeSession+".json";
-                                    
+
                                     //create local result file
                                     MM.fs.createFile(fileResult,
                                         function(fileEntry) {
-                                             MM.fs.writeInFile(fileEntry, content, 
+                                             MM.fs.writeInFile(fileEntry, content,
                                                 function(fileUrl) {
-                                                    
+
                                                     MM.log('Write Session OK:'+fileUrl);
                                                     MM.log('Write Session content:'+content);
-                                                    
+
                                                     $('#showSessionL').show();
                                                     $('#offlineC').hide();
                                                     $('#showCourseL').hide();
@@ -1068,11 +1068,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $("#synchroR").show();
                                                     $("#stopSessionL").attr('time','');
                                                     $("#stopSessionL").attr('starttime','');
-                                                    
+
                                                     $('input:checkbox').each(function() {
                                                         $(this).attr("disabled", false );
                                                     });
-                                                    
+
                                                     message = "Session Enregistrée.";
                                                     var oldFile = MM.config.current_site.id+"/"+course+"/result/session.json";
                                                     MM.fs.removeFile (oldFile,
@@ -1083,7 +1083,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             MM.log('session.json not deleted:'+oldFile);
                                                          }
                                                     );
-                                                    
+
                                                     $.each(localCourses, function( index, value ) {
                                                         var localCourse = value.toJSON();
                                                         if (localCourse.contents) {
@@ -1102,55 +1102,55 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                    );
                                                                 },
                                                                 function(path) {
-                                                                    
+
                                                                 }
                                                             );
                                                         }
                                                     });
-                                                         
-                                                    
+
+
                                                 },
                                                 function(fileUrl) {
                                                     MM.log('Write Session NOK:'+content);
                                                     message = "Problème lors de l'écriture.Veuillez Réessayer.";
                                                 }
-                                                
+
                                             );
-                                        },   
-                                            
+                                        },
+
                                         function(fileEntry) {
                                            MM.log('Create Session : NOK');
                                            message = "Problème lors de l'écriture.Veuillez Réessayer.";
                                         }
                                     );
-                                                    
-                                    
+
+
                                   },
                                   function(result) {
                                     MM.log('Session NOK :'+result+','+resultFile);
                                     message = "Problème lors de l'écriture.Veuillez Réessayer.";
                                   }
                                 );
-                                
-                                
+
+
                                 MM.widgets.dialogClose();
                                 MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate, autoclose: 5000, resizable: false});
                                 MM.Router.navigate("eleves/" + course);
-                                
+
                             });
                         };
-                        
+
                         options.buttons[MM.lang.s("cancel")] = function() {
                             MM.Router.navigate("eleves/" + course );
                             MM.widgets.dialogClose();
                         };
-                        
+
                         options.buttons["Effacer"] = function() {
                             MM.popConfirm("Etes-vous sûr de vouloir effacer cette session ?", function() {
-                                
+
                                 var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                                 var message = "Session Effacée.";
-                                    
+
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
                                         MM.fs.removeFile (resultFile,
@@ -1163,10 +1163,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         );
                                     },
                                     function (result) {
-                                    
+
                                     }
                                 );
-                                
+
                                 $.each(localCourses, function( index, value ) {
                                     var localCourse = value.toJSON();
                                     if (localCourse.contents) {
@@ -1185,17 +1185,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                );
                                             },
                                             function(path) {
-                                                
+
                                             }
                                         );
                                     }
                                 });
-                                
+
                                 $.each(usersS, function( indexS, valueS ) {
                                     var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                     var userG = userP.toJSON();
                                     var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+userG.userid + "_" + timeSession + ".png";
-                                    
+
                                     MM.fs.findFileAndReadContents(signatureFile,
                                         function(path) {
                                             MM.fs.removeFile (signatureFile,
@@ -1210,9 +1210,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         function(path) {
                                             MM.log(signatureFile + ' not exist.');
                                         }
-                                    ); 
+                                    );
                                 });
-                                
+
                                 $('#showSessionL').show();
                                 $('#offlineC').hide();
                                 $('#showCourseL').hide();
@@ -1220,38 +1220,37 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $('#stopSessionL').hide();
                                 $("#stopSessionL").attr('time','');
                                 $("#stopSessionL").attr('starttime','');
-                                
+
                                 $('input:checkbox').each(function() {
                                     $(this).attr("disabled", false );
                                 });
-                                                    
+
                                 $("#stopSessionL").attr('time','');
                                 MM.widgets.dialogClose();
                                 MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate, autoclose: 5000, resizable: false});
                                 MM.Router.navigate("eleves/" + course);
-                                
-                                
+
+
                             });
                         };
-            
-                        
-            
-                        
-                    
+
+
+
+
+
                     });
-                    
-                    
-                    
+
+
+
                     //Pif button
-                    
+
                         $('button#pif').on(MM.clickType, function(e) {
                             MM.log('pif clicked');
                             //e.preventDefault();
                             var course = $(this).attr("course");
                             var user = $(this).attr("user");
-                            var theuser = MM.db.get('users',user);
                             MM.log('pif:'+course+'/'+user);
-                            
+
                             var userspif = MM.db.where('users', {userid:parseInt(user)});
                             var userpif = userspif[0].toJSON();
                             var pifs = userpif.pif;
@@ -1259,13 +1258,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             return el.courseid == course;
                             });
                             MM.log('pifscourse length:'+pifscourse.length);
-                            
+
                             var thisuser = MM.db.get('users',userpif.id);
-                            
+
                             var addNote = "Valider";
                             var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>A remplir avant la formation</td><td>&nbsp;</td><td>A remplir à l’issue du parcours de formation</td></tr><tr><td>Compétences à développer dans le cadre du parcours de formation</td><td>Intitulé des séquences pédagogiques</td><td>Compétences acquises à l’issue du parcours de formation</td></tr>';
+<<<<<<< HEAD
                             
                             var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
+=======
+
+                            var local_contents = MM.db.where("contents",{courseid : courseId});
+>>>>>>> 862d2952400fa944800aabb3745f3da54530ee14
                             local_contents.forEach(function(local_content) {
                                  var content = local_content.toJSON();
                                  if (content.modname == "scorm") {
@@ -1288,21 +1292,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     html +='></td></tr>';
                                  }
                             });
-                            
+
                             html +='</table></div>';
-                            
+
                             var options = {
-                                title: 'Protocole Individuel de Formation bipartite pour '+theuser.fullname,
+                                title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
                                 width: "90%",
                                 marginTop: "10%",
                                 buttons: {}
                             };
-                            
+
                             options.buttons[MM.lang.s("cancel")] = function() {
                                 MM.Router.navigate("eleves/" + course );
                                 MM.widgets.dialogClose();
                             };
-                            
+
                             options.buttons["Valider"] = function() {
                                 MM.log('userspif:'+userspif);
                                 if (userspif && userspif != "") {
@@ -1332,7 +1336,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             b = 0;
                                         }
                                         pifs.push({courseid:course,scormid:scormid,begin:a,end:b});
-                                        
+
                                       }
                                       MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
                                     });
@@ -1343,13 +1347,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 //MM.Router.navigate("eleves/" + course );
                                 MM.widgets.dialogClose();
                             }
-                            
+
                             MM.widgets.dialog(html, options);
-                            
+
                         });
-                
-                    
-                    
+
+
+
                     //Start Course Offline
                     $("#showCourseL").on(MM.clickType, function(e) {
                         e.preventDefault();
@@ -1358,17 +1362,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var users = $(this).attr("users");
                         var module = $(this).attr("module");
                         MM.log('showCourseL:'+path+','+course+','+users+','+module);
-                        
+
                         var usersL = users.split(",");
-                        
-                        
+
+
                                 var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+module+".json";
                                 MM.fs.createFile(fileResultL,
                                     function(fileEntry) {
                                         var d = new Date();
                                         var content = '{"starttime":"'+d.getTime()+'"}';
                                         MM.log('Create Result :'+content);
-                                        MM.fs.writeInFile(fileEntry, content, 
+                                        MM.fs.writeInFile(fileEntry, content,
                                             function(fileUrl) {
                                                 MM.log('Write Result :'+fileUrl);
                                                 $('#stopCourseL').show();
@@ -1376,28 +1380,28 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $('#stopSessionL').hide();
                                                 $('#offlineC').hide();
                                                 MM.plugins.resource._showResource(path);
-                                    
-                                                
-                                                
+
+
+
                                             },
                                             function(fileUrl) {
                                                 MM.log('Write Result NOK:'+content);
                                                 //MM.plugins.resource._showResource(path);
-                                            
+
                                             }
-                                            
+
                                         );
-                                    },   
-                                        
+                                    },
+
                                     function(fileEntry) {
                                        MM.log('Create Result : NOK');
                                        //MM.plugins.resource._showResource(path);
                                     }
                                 );
-                    
+
                     });
-                    
-                    
+
+
                     //Stop Course Offline
                     $("#stopCourseL").on(MM.clickType, function(e) {
                         e.preventDefault();
@@ -1405,7 +1409,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var users = $(this).attr("users");
                         var module = $(this).attr("module");
                         MM.log('stopCourseL:'+course+','+users+','+module);
-                        
+
                         var addNote = "Ajouter";
 
                         var options = {
@@ -1413,7 +1417,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             width: "100%",
                             buttons: {}
                         };
-            
+
                         var html = '';
                         if (users!="") {
                         	var usersS = users.split(",");
@@ -1427,7 +1431,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
 
                         var resultFile =  MM.config.current_site.id + "/" + course + "/result/" + module + ".json";
-                                
+
                         MM.fs.findFileAndReadContents(resultFile,
                             function (result) {
                               MM.log('Result OK :'+result);
@@ -1436,16 +1440,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'"}';
                               MM.log('Create Result :'+content);
                               var fileResult = MM.config.current_site.id+"/"+course+"/result/"+module+".json";
-                              
-                              
+
+
                               //create local result file
                               MM.fs.createFile(fileResult,
                                   function(fileEntry) {
-                                       MM.fs.writeInFile(fileEntry, content, 
+                                       MM.fs.writeInFile(fileEntry, content,
                                           function(fileUrl) {
                                               MM.log('Write Result OK:'+fileUrl);
                                               var selectedCourse = $( "#offlineC option:selected" ).val();
-                                              
+
                                               $('#stopCourseL').hide();
                                               if (selectedCourse != 0)
                                                 $("#showCourseL").show();
@@ -1457,25 +1461,25 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                           function(fileUrl) {
                                               MM.log('Write Result NOK:'+content);
                                           }
-                                          
+
                                       );
-                                  },   
-                                      
+                                  },
+
                                   function(fileEntry) {
                                      MM.log('Create Result : NOK');
-                                     
+
                                   }
                               );
                             },
                             function(result) {
                               MM.log('Result NOK :'+result+','+resultFile);
-                    
+
                             }
                         );
-                    
+
                     });
-                    
-                    
+
+
                     $('#search').keyup(function(e) {
                         var sword = $( "#search" ).val().toLowerCase();
                         MM.log("Search:"+sword+'/Users:'+users);
@@ -1491,15 +1495,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                         });
                         var participants = $( '#listeParticipants' ).val();
-                        
+
                         if (searchparticipants && searchparticipants != "") {
                             $.each(searchparticipants, function( index, myparticipant ) {
                                 //var myparticipant = value.toJSON();
                                 MM.log('Find participant :'+myparticipant.fullname+'/'+myparticipant.id);
                             });
                         }
-                        
-                        
+
+
                     });
 
                 }, function(m) {
@@ -1526,8 +1530,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 'local_mobile_get_users_by_courseid_departmentid',
                 data,
                 function(users) {
-                    
-                    
+
+
                     var onlines = MM.db.where("contents", {name:'online',courseid:courseId,site:MM.config.current_site.id});
                     MM.log('onlines:'+onlines);
                     if (onlines && onlines != "") {
@@ -1565,7 +1569,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 "userlist[0][userid]": userId,
                 "userlist[0][courseid]": courseId
             };
-            
+
 
             MM.moodleWSCall(
                 'moodle_user_get_course_participants_by_id',
@@ -1597,38 +1601,38 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     if (newUser.country && typeof countries[newUser.country] != "undefined") {
                         newUser.country = countries[newUser.country];
                     }
-                    
-                    
-                    
+
+
+
                     var test1 = MM.db.where("contents", {"name":"offline", "courseid" : courseId,  'site':MM.config.current_site.id});
                     var test2 = MM.db.where('contents', {'name':'offline',  'site':MM.config.current_site.id});
                     var test3 = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
                     var offlines = MM.db.where("contents", {"courseid" : courseId,"name":"offline", 'site':MM.config.current_site.id});
                     var test4 = MM.db.get("contents", MM.config.current_site.id + "-96");
-                    
+
                     MM.log('offlines:'+offlines+'::'+courseId+'::'+test1+'::'+test2+'::'+test3+'::'+test4);
                     if (offlines && offlines != "") {
-                        
+
                         var offline = offlines[0].toJSON();
                         //var offline = offlines.toJSON();
                         var file = offline.contents[0];
                         contentid = offline.url.split("?id=");
-                        
+
                         var pathCourse = MM.plugins.contents.getLocalPaths2(courseId, contentid[1], file);
-                        
+
                         MM.log('offline Course:'+pathCourse.file+','+pathCourse.directory+','+contentid[1]);
-                        
-                        
+
+
                         MM.fs.fileExists(pathCourse.file,
                             function(path) {
-                                
+
                                 newUser.offline = MM.fs.getRoot() + '/' + pathCourse.file;
                                 newUser.debug = 3;
                                 newUser.contentid = contentid[1];
                                 //var pathResult = MM.plugins.contents.getLocalPaths(courseId, newUser.id, "result.json");
-                                            
+
                                 //MM.log('offline Result:'+pathResult.file+','+pathResult.directory+','+path);
-                                
+
                                 MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
                                 var tpl = {
                                     "user": newUser,
@@ -1636,23 +1640,23 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     "courseid": courseId,
                                     "popUp": popUp
                                 };
-            
+
                                 var html = MM.tpl.render(MM.plugins.eleves.templates.eleve.html, tpl);
                                 newUser.id = MM.config.current_site.id + "-" + newUser.id;
                                 MM.db.insert("users", newUser);
-            
+
                                 $(menuEl, '#panel-center').removeClass('loading-row-black');
                                 MM.panels.show('right', html, {title: pageTitle});
-                                
+
                                 MM.plugins.eleves.contentsPageRendered();
-                                
-                            
+
+
                             },
                             function(path) {
                                newUser.offline = "no_offline_content";
                                newUser.debug = 2;
                                MM.log('offline Result: Not exist');
-                               
+
                                MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
                                 var tpl = {
                                     "user": newUser,
@@ -1660,21 +1664,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     "courseid": courseId,
                                     "popUp": popUp
                                 };
-            
+
                                 var html = MM.tpl.render(MM.plugins.eleves.templates.eleve.html, tpl);
                                 newUser.id = MM.config.current_site.id + "-" + newUser.id;
                                 MM.db.insert("users", newUser);
-            
+
                                 $(menuEl, '#panel-center').removeClass('loading-row-black');
                                 MM.panels.show('right', html, {title: pageTitle});
                             }
                         );
-                    
-                        
+
+
                     } else {
                         newUser.offline = "no_offline_content";
                         newUser.debug = 1;
-                        
+
                         MM.log('offline Sumary:'+newUser.debug+','+newUser.offline);
                         var tpl = {
                             "user": newUser,
@@ -1682,17 +1686,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             "courseid": courseId,
                             "popUp": popUp
                         };
-    
+
                         var html = MM.tpl.render(MM.plugins.eleves.templates.eleve.html, tpl);
                         newUser.id = MM.config.current_site.id + "-" + newUser.id;
                         MM.db.insert("users", newUser);
-    
+
                         $(menuEl, '#panel-center').removeClass('loading-row-black');
                         MM.panels.show('right', html, {title: pageTitle});
                     }
-                    
-                    
-                    
+
+
+
                 },
                 {
                     logging: {
@@ -1718,8 +1722,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             }
             return false;
         },
-        
-        
+
+
 
 
         templates: {
