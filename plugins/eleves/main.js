@@ -1270,10 +1270,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                  var content = local_content.toJSON();
                                  if (content.modname == "scorm") {
                                     html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
-                                    pifscormb = $.grep(pifscourse, function( el ) {
+                                    if (pifcourse.length > 0) {
+                                        pifscormb = $.grep(pifscourse, function( el ) {
                                             return el.scormid == content.contentid && el.begin == 1;
-                                    });
-                                    MM.log('pifscormb length:'+pifscormb.length);
+                                        });
+                                        MM.log('pifscormb length:'+pifscormb.length);
+                                    } else {
+                                        pifscormb = [1];
+                                    }
+                                    
                                     if (pifscormb.length>0) {
                                         html+=' checked="checked"';
                                     }
