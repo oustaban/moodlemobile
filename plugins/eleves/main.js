@@ -467,6 +467,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             });
                                                         });
                                                         
+                                                        var pifscoursejson = JSON.stringify(pifscourse);
+                                                        
                                                         MM.log("pifs synchro:"+pifscourse.length);
                                                              
                                                         var data = {
@@ -478,7 +480,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             "modulesstart" : obj.modulesStart,
                                                             "modulesend" : obj.modulesEnd,
                                                             "managerid" : MM.site.get('userid'),
-                                                            "pifs" : pifscourse
+                                                            "pifs" : pifscoursejson
                                                         }
                                         
                                                         MM.widgets.dialogClose();
