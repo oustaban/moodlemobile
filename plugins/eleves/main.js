@@ -457,8 +457,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var users = obj.users.split(",");
                                                         var indexU=1;
                                                         
+                                                        //Get Pifs
+                                                        $.each(users, function( indexU1, valueU1 ) {
+                                                            var userspif = MM.db.where('users', {userid:parseInt(valueU1)});
+                                                            var userpif = userspif[0].toJSON();
+                                                            var pifs = userpif.pif;
+                                                            pifscourse[indexU1] = $.grep(pifs, function( el ) {
+                                                                            return el.courseid == course;
+                                                            });
+                                                        });
                                                         
-                                                        
+                                                        MM.log("pifs synchro:"+pifscourse.length);
                                                              
                                                         var data = {
                                                             "userid" : obj.users,
@@ -468,7 +477,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             "endtime" : obj.endtime,
                                                             "modulesstart" : obj.modulesStart,
                                                             "modulesend" : obj.modulesEnd,
-                                                            "managerid" : MM.site.get('userid')
+                                                            "managerid" : MM.site.get('userid'),
+                                                            "pifs" : pifscourse
                                                         }
                                         
                                                         MM.widgets.dialogClose();
