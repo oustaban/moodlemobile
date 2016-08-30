@@ -1325,9 +1325,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if (userspif && userspif != "") {
                                     MM.log('userpif:'+userpif);
                                     MM.log('pifs:'+pifs);
-                                    pifs = $.grep(pifs, function( el ) {
+                                    pifs2 = $.grep(pifs, function( el ) {
                                             MM.log('grep:'+el.courseid+'/'+course);
-                                            return el.courseid !== course;
+                                            return el.courseid != course;
                                     });
                                     MM.log('pifs length:'+pifs.length);
                                     MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
@@ -1349,14 +1349,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         } else {
                                             b = 0;
                                         }
-                                        pifs.push({courseid:course,scormid:scormid,begin:a,end:b});
+                                        pifs2.push({courseid:course,scormid:scormid,begin:a,end:b});
                                         
                                       }
                                       MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
                                     });
-                                    MM.log('pifs length:'+pifs.length)
-                                    MM.log('pif:'+pifs[0]+'/'+pifs[0].scormid);
-                                    thisuser.save({pif:pifs});
+                                    MM.log('pifs length:'+pifs2.length)
+                                    MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
+                                    thisuser.save({pif:pifs2});
                                 }
                                 //MM.Router.navigate("eleves/" + course );
                                 MM.widgets.dialogClose();
