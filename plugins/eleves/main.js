@@ -1329,7 +1329,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             MM.log('grep:'+el.courseid+'/'+course);
                                             return el.courseid != course;
                                     });
-                                    MM.log('pifs length:'+pifs.length);
+                                    MM.log('pifs length:'+pifs2.length);
                                     MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
                                     var b;
                                     var a;
