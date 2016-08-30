@@ -1326,6 +1326,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.log('userpif:'+userpif);
                                     MM.log('pifs:'+pifs);
                                     pifs = $.grep(pifs, function( el ) {
+                                            MM.log('grep:'+el.courseid+'/'+course);
                                             return el.courseid !== course;
                                     });
                                     MM.log('pifs length:'+pifs.length);
