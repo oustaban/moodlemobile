@@ -632,7 +632,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               myusers.push(thenewuser);
                               //MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $("ul#listeparticipants2 li[eleve='"+$(this).attr('eleve')+"']").detach();
-                              objectWithEvents.html(objectWithEvents.html().replace('<span id="roweleve">&gt;</span>', '<span id="roweleve">&lt;</span>')); 
+                              var lihtml = objectWithEvents.html()
+                              lihtml = lihtml.replace('<span id="roweleve">&lt;</span>', '<span id="roweleve">&gt;</span>'); 
+                              objectWithEvents.html(lihtml);
+                              
                               if ( $('ul#listeparticipants1').children().length > 0 ) {
                                     var last=0;
                                     $('ul#listeparticipants1 li').each(function() {
@@ -658,8 +661,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            });
                            //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
                            var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('eleve')+"']").detach();
-                           objectWithEvents.html(objectWithEvents.html().replace('<span id="roweleve">&lt;</span>', '<span id="roweleve">&gt;</span>'));var objectWithEvents = objectWithEvents.replace('<span id="roweleve">&lt;</span>', '<span id="roweleve">&gt;</span>'); 
-                              
+                           var lihtml = objectWithEvents.html()
+                           lihtml = lihtml.replace('<span id="roweleve">&gt;</span>', '<span id="roweleve">&lt;</span>'); 
+                           objectWithEvents.html(lihtml);   
+                           
                            if ( $('ul#listeparticipants2').children().length > 0 ) {
                                 var last=0;
                                 $('ul#listeparticipants2 li').each(function() {
