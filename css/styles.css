@@ -2084,4 +2084,5 @@ li#lielevelP.nav-item.hide {
   margin-right: 10px;
   display: table-cell;
   height: 50px;
+  border: 2px solid black;
 }

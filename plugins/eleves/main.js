@@ -632,6 +632,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               myusers.push(thenewuser);
                               //MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $("ul#listeparticipants2 li[eleve='"+$(this).attr('eleve')+"']").detach();
+                              var objectWithEvents = objectWithEvents.replace('<span id="roweleve">&gt;</span>', '<span id="roweleve">&lt;</span>'); 
                               if ( $('ul#listeparticipants1').children().length > 0 ) {
                                     var last=0;
                                     $('ul#listeparticipants1 li').each(function() {
@@ -657,6 +658,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            });
                            //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
                            var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('eleve')+"']").detach();
+                           var objectWithEvents = objectWithEvents.replace('<span id="roweleve">&lt;</span>', '<span id="roweleve">&gt;</span>'); 
+                              
                            if ( $('ul#listeparticipants2').children().length > 0 ) {
                                 var last=0;
                                 $('ul#listeparticipants2 li').each(function() {
@@ -1275,7 +1278,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var thisuser = MM.db.get('users',userpif.id);
                             
                             var addNote = "Valider";
-                            var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>A remplir avant la formation</td><td>&nbsp;</td><td>A remplir à l’issue du parcours de formation</td></tr><tr><td>Compétences à développer dans le cadre du parcours de formation</td><td>Intitulé des séquences pédagogiques</td><td>Compétences acquises à l’issue du parcours de formation</td></tr>';
+                            var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td><b>A remplir avant la formation</b></td><td>&nbsp;</td><td><b>A remplir à l’issue du parcours de formation</b></td></tr><tr><td><b>Compétences à développer dans le cadre du parcours de formation</b></td><td><b>Intitulé des séquences pédagogiques</b></td><td><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
                             
                             var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                             local_contents.forEach(function(local_content) {
