@@ -462,12 +462,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var modulesName = "";
                                                         var users = obj.users.split(",");
                                                         var indexU=1;
-                                                        
+                                                        var pifscourse = new Array();
                                                         //Get Pifs
                                                         $.each(users, function( indexU1, valueU1 ) {
                                                             var userspif = MM.db.where('users', {userid:parseInt(valueU1)});
                                                             var userpif = userspif[0].toJSON();
                                                             var pifs = userpif.pif;
+                                                            if (!pifs) {
+                                                                pifs = '[]';
+                                                            }
                                                             pifscourse[indexU1] = $.grep(pifs, function( el ) {
                                                                             return el.courseid == course;
                                                             });
