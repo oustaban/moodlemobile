@@ -631,6 +631,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
+                              checkbox.attr('checked','');
                               var theuser = MM.db.where('users', {userid:parseInt(checkbox.val())});
                               //MM.log('theuser:'+theuser);
                               theuser[0].set('id',parseInt(checkbox.val()));
@@ -638,9 +639,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               myusers.push(thenewuser);
                               //MM.log('myusers.length:'+myusers.length);
                               var objectWithEvents = $("ul#listeparticipants2 li[eleve='"+$(this).attr('eleve')+"']").detach();
-                              //var lihtml = objectWithEvents.html();
-                              //lihtml = lihtml.replace('<span id="roweleve">&lt;</span>', '<span id="roweleve">&gt;</span>'); 
-                              //objectWithEvents.html(lihtml);
+                              var lihtml = objectWithEvents.html();
+                              lihtml = lihtml.replace('<span id="roweleve">&lt;</span>', '<span id="roweleve">&gt;</span>'); 
+                              objectWithEvents.html(lihtml);
                               
                               if ( $('ul#listeparticipants1').children().length > 0 ) {
                                     var last=0;
@@ -662,32 +663,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         else {
                            checkbox.prop('checked',true);
+                           checkbox.attr('checked','checked')
                            myusers = $.grep(myusers, function( el ) {
                             return el.id !== parseInt(checkbox.val());
                            });
                            //MM.log('myusers.length:'+myusers.length+'/'+checkbox.val());
                            var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('eleve')+"']").detach();
-                           //var lihtml = objectWithEvents.html();
-                           //lihtml = lihtml.replace('<span id="roweleve">&gt;</span>', '<span id="roweleve">&lt;</span>'); 
-                           //console.log(lihtml+'/'+objectWithEvents.html());
-                           //objectWithEvents.html(lihtml);   
-                           $.map(objectWithEvents, function(value, key) {
-                                MM.log('objectWithEvents:'+key+' / '+value);
-                                $.map(value, function(value2, key2) {
-                                    MM.log('objectWithEvents2:'+key2+' / '+value2);
-                                });
-                           });
-                           
                            var lihtml = objectWithEvents.html();
                            lihtml = lihtml.replace('<span id="roweleve">&gt;</span>', '<span id="roweleve">&lt;</span>'); 
                            objectWithEvents.html(lihtml);
                            
-                           $.map(objectWithEvents, function(value, key) {
-                                MM.log('objectWithEvents:'+key+' / '+value);
-                                $.map(value, function(value2, key2) {
-                                    MM.log('objectWithEvents2:'+key2+' / '+value2);
-                                });
-                           });
+                           
+                           
+                          
                            
                            if ( $('ul#listeparticipants2').children().length > 0 ) {
                                 var last=0;
