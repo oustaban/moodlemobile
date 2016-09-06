@@ -2068,22 +2068,21 @@ span#eleve {
   height:50px;
   width:100%;
 }
-#listeparticipants1 span#roweleve {
-display:table-cell;
-height: 50px;
-width:100%;
-padding-right:10px;
-vertical-align: middle;
-content:">";
+
+span#roweleve {
+  display:table-cell;
+  height: 50px;
+  width:100%;
+  padding-right:10px;
+  vertical-align: middle;
 }
 
-#listeparticipants2 span#roweleve {
-display:table-cell;
-height: 50px;
-width:100%;
-padding-right:10px;
-vertical-align: middle;
-content:"<";
+#listeparticipants1 span#roweleve:before {
+  content:">";
+}
+
+#listeparticipants2 span#roweleve:before {
+  content:"<";
 }
 
 li#lielevelP.nav-item.hide {
