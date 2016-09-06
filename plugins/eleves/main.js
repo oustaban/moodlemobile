@@ -631,7 +631,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
-                              checkbox.attr('checked','');
                               var theuser = MM.db.where('users', {userid:parseInt(checkbox.val())});
                               //MM.log('theuser:'+theuser);
                               theuser[0].set('id',parseInt(checkbox.val()));
@@ -658,12 +657,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                } else {
                                     $('ul#listeparticipants1').append(objectWithEvents);
                                }
+                               checkbox.prop('checked',false);
                               //$('ul#listeparticipants1').append(objectWithEvents);
                               //$("ul.nav-v2 li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
                         else {
                            checkbox.prop('checked',true);
-                           checkbox.attr('checked','checked')
                            myusers = $.grep(myusers, function( el ) {
                             return el.id !== parseInt(checkbox.val());
                            });
@@ -692,6 +691,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            } else {
                                 $('ul#listeparticipants2').append(objectWithEvents);
                            }
+                           checkbox.prop('checked',true);
                            
                            //$("ul.nav-v li[eleve='"+$(this).attr('eleve')+"']").remove();
                         }
