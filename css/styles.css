@@ -2085,4 +2085,6 @@ li#lielevelP.nav-item.hide {
   display: table-cell;
   height: 50px;
   border: 2px solid black;
+  background: -webkit-linear-gradient(top, #ccc, #777);
+  color: #000;
 }
