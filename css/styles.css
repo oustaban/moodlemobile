@@ -2068,12 +2068,22 @@ span#eleve {
   height:50px;
   width:100%;
 }
-span#roweleve {
+#listeparticipants1 span#roweleve {
 display:table-cell;
 height: 50px;
 width:100%;
 padding-right:10px;
 vertical-align: middle;
+content:">";
+}
+
+#listeparticipants2 span#roweleve {
+display:table-cell;
+height: 50px;
+width:100%;
+padding-right:10px;
+vertical-align: middle;
+content:"<";
 }
 
 li#lielevelP.nav-item.hide {
