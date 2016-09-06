@@ -673,6 +673,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            //objectWithEvents.html(lihtml);   
                            $.map(objectWithEvents, function(value, key) {
                                 MM.log('objectWithEvents:'+key+' / '+value);
+                                $.map(value, function(value2, key2) {
+                                    MM.log('objectWithEvents2:'+key2+' / '+value2);
+                                });
                            });
                            if ( $('ul#listeparticipants2').children().length > 0 ) {
                                 var last=0;
