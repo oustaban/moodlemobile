@@ -677,6 +677,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.log('objectWithEvents2:'+key2+' / '+value2);
                                 });
                            });
+                           
+                           var lihtml = objectWithEvents.html();
+                           lihtml = lihtml.replace('<span id="roweleve">&gt;</span>', '<span id="roweleve">&lt;</span>'); 
+                           objectWithEvents.html(lihtml);
+                           
+                           $.map(objectWithEvents, function(value, key) {
+                                MM.log('objectWithEvents:'+key+' / '+value);
+                                $.map(value, function(value2, key2) {
+                                    MM.log('objectWithEvents2:'+key2+' / '+value2);
+                                });
+                           });
+                           
                            if ( $('ul#listeparticipants2').children().length > 0 ) {
                                 var last=0;
                                 $('ul#listeparticipants2 li').each(function() {
