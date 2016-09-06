@@ -381,9 +381,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             'id': MM.config.current_site.id + '-' + user.id,
                             'userid': user.id,
                             'fullname': user.fullname,
-                            'profileimageurl': user.profileimageurl,
-                            'pif':user.pif,
+                            'profileimageurl': user.profileimageurl
                         };
+                        var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
+                        if (checkUser) {
+                            var checkUserJ = checkUser.toJSON();
+                            newUser.pif = checkUserJ.pif;
+                        } else {
+                            newUser.pif = user.pif;
+                        }
                         MM.db.insert('users', newUser);
                     });
                     
