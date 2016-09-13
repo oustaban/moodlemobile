@@ -870,7 +870,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                         
                         
-                        $(button[id=notes]).each(function() {
+                        $('button[id=notes]').each(function() {
                             $(this).css('display','table-cell');
                         });
                         
