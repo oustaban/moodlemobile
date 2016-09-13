@@ -2097,3 +2097,12 @@ li#lielevelP.nav-item.hide {
   background: -webkit-linear-gradient(top, #ccc, #777);
   color: #000;
 }
+#notes {
+  width: 80px;
+  margin-right: 10px;
+  height: 50px;
+  border: 2px solid black;
+  background: -webkit-linear-gradient(top, #ccc, #777);
+  color: #000;
+  display:none;
+}

@@ -869,6 +869,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //$(this).attr("disabled", true);
                         });
                         
+                        
+                        $('#notes').each(function() {
+                            $(this).css('display','table-cell');
+                        });
+                        
                         $('#offlineC > option').removeAttr("selected");
                         $('#offlineC option[value="0"]').prop('selected', true);
                         
