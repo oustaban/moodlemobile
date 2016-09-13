@@ -382,7 +382,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             'userid': user.id,
                             'fullname': user.fullname,
                             'profileimageurl': user.profileimageurl,
-                            'notes':user.notes;
+                            'notes':user.notes
                         };
                         var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
                         if (checkUser) {
