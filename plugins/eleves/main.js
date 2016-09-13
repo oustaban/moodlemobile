@@ -381,7 +381,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             'id': MM.config.current_site.id + '-' + user.id,
                             'userid': user.id,
                             'fullname': user.fullname,
-                            'profileimageurl': user.profileimageurl
+                            'profileimageurl': user.profileimageurl,
+                            'notes':user.notes;
                         };
                         var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
                         if (checkUser) {
@@ -870,9 +871,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                         
                         
-                        $('button[id=notes]').each(function() {
-                            $(this).css('display','table-cell');
-                        });
+                        
                         
                         $('#offlineC > option').removeAttr("selected");
                         $('#offlineC option[value="0"]').prop('selected', true);
@@ -1282,115 +1281,209 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     //Pif button
                     
-                        $('button#pif').on(MM.clickType, function(e) {
-                            MM.log('pif clicked');
-                            //e.preventDefault();
-                            var course = $(this).attr("course");
-                            var user = $(this).attr("user");
-                            var theuser = MM.db.get('users',parseInt(user));
-                            MM.log('pif:'+course+'/'+user);
-                            
-                            var userspif = MM.db.where('users', {userid:parseInt(user)});
-                            var userpif = userspif[0].toJSON();
-                            var pifs = userpif.pif;
-                            pifscourse = $.grep(pifs, function( el ) {
-                                            return el.courseid == course;
-                            });
-                            MM.log('pifscourse length:'+pifscourse.length);
-                            
-                            var thisuser = MM.db.get('users',userpif.id);
-                            
-                            var addNote = "Valider";
-                            var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td><b>A remplir avant la formation</b></td><td>&nbsp;</td><td><b>A remplir à l’issue du parcours de formation</b></td></tr><tr><td><b>Compétences à développer dans le cadre du parcours de formation</b></td><td><b>Intitulé des séquences pédagogiques</b></td><td><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
-                            
-                            var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
-                            local_contents.forEach(function(local_content) {
-                                 var content = local_content.toJSON();
-                                 if (content.modname == "scorm") {
-                                    html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
-                                    if (pifscourse.length > 0) {
-                                        pifscormb = $.grep(pifscourse, function( el ) {
-                                            return el.scormid == content.contentid && el.begin == 1;
-                                        });
-                                        MM.log('pifscormb length:'+pifscormb.length);
-                                    } else {
-                                        pifscormb = [1];
-                                    }
-                                    
-                                    if (pifscormb.length>0) {
-                                        html+=' checked="checked"';
-                                    }
-                                    html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
-                                    pifscorme = $.grep(pifscourse, function( el ) {
-                                            return el.scormid == content.contentid && el.end == 1;
-                                    });
-                                    MM.log('pifscorme length:'+pifscorme.length);
-                                    if (pifscorme.length>0) {
-                                        html+=' checked="checked"';
-                                    }
-                                    html +='></td></tr>';
-                                 }
-                            });
-                            
-                            html +='</table></div>';
-                            
-                            var options = {
-                                title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
-                                width: "90%",
-                                marginTop: "10%",
-                                buttons: {}
-                            };
-                            
-                            options.buttons[MM.lang.s("cancel")] = function() {
-                                MM.Router.navigate("eleves/" + course );
-                                MM.widgets.dialogClose();
-                            };
-                            
-                            options.buttons["Valider"] = function() {
-                                MM.log('userspif:'+userspif);
-                                if (userspif && userspif != "") {
-                                    MM.log('userpif:'+userpif);
-                                    MM.log('pifs:'+pifs);
-                                    pifs2 = $.grep(pifs, function( el ) {
-                                            MM.log('grep:'+el.courseid+'/'+course);
-                                            return el.courseid != course;
-                                    });
-                                    MM.log('pifs length:'+pifs2.length);
-                                    MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
-                                    var b;
-                                    var a;
-                                    var scormid;
-                                    $('input#checkboxpif').each(function(index) {
-                                      if ($(this).attr('genre') == 'b') {
-                                        scormid = $(this).attr('content');
-                                        if ($(this).is(':checked')) {
-                                            a = 1;
-                                        } else {
-                                            a = 0;
-                                        }
-                                      }
-                                      if ($(this).attr('genre') == 'a') {
-                                        if ($(this).is(':checked')) {
-                                            b = 1;
-                                        } else {
-                                            b = 0;
-                                        }
-                                        pifs2.push({courseid:course,scormid:scormid,begin:a,end:b});
-                                        
-                                      }
-                                      MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
-                                    });
-                                    MM.log('pifs length:'+pifs2.length)
-                                    MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
-                                    thisuser.save({pif:pifs2});
-                                }
-                                //MM.Router.navigate("eleves/" + course );
-                                MM.widgets.dialogClose();
-                            }
-                            
-                            MM.widgets.dialog(html, options);
-                            
+                    $('button#pif').on(MM.clickType, function(e) {
+                        MM.log('pif clicked');
+                        //e.preventDefault();
+                        var course = $(this).attr("course");
+                        var user = $(this).attr("user");
+                        var theuser = MM.db.get('users',parseInt(user));
+                        MM.log('pif:'+course+'/'+user);
+                        
+                        var userspif = MM.db.where('users', {userid:parseInt(user)});
+                        var userpif = userspif[0].toJSON();
+                        var pifs = userpif.pif;
+                        pifscourse = $.grep(pifs, function( el ) {
+                                        return el.courseid == course;
                         });
+                        MM.log('pifscourse length:'+pifscourse.length);
+                        
+                        var thisuser = MM.db.get('users',userpif.id);
+                        
+                        var addNote = "Valider";
+                        var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td><b>A remplir avant la formation</b></td><td>&nbsp;</td><td><b>A remplir à l’issue du parcours de formation</b></td></tr><tr><td><b>Compétences à développer dans le cadre du parcours de formation</b></td><td><b>Intitulé des séquences pédagogiques</b></td><td><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
+                        
+                        var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
+                        local_contents.forEach(function(local_content) {
+                             var content = local_content.toJSON();
+                             if (content.modname == "scorm") {
+                                html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                if (pifscourse.length > 0) {
+                                    pifscormb = $.grep(pifscourse, function( el ) {
+                                        return el.scormid == content.contentid && el.begin == 1;
+                                    });
+                                    MM.log('pifscormb length:'+pifscormb.length);
+                                } else {
+                                    pifscormb = [1];
+                                }
+                                
+                                if (pifscormb.length>0) {
+                                    html+=' checked="checked"';
+                                }
+                                html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
+                                pifscorme = $.grep(pifscourse, function( el ) {
+                                        return el.scormid == content.contentid && el.end == 1;
+                                });
+                                MM.log('pifscorme length:'+pifscorme.length);
+                                if (pifscorme.length>0) {
+                                    html+=' checked="checked"';
+                                }
+                                html +='></td></tr>';
+                             }
+                        });
+                        
+                        html +='</table></div>';
+                        
+                        var options = {
+                            title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
+                            width: "90%",
+                            marginTop: "10%",
+                            buttons: {}
+                        };
+                        
+                        options.buttons[MM.lang.s("cancel")] = function() {
+                            MM.Router.navigate("eleves/" + course );
+                            MM.widgets.dialogClose();
+                        };
+                        
+                        options.buttons["Valider"] = function() {
+                            MM.log('userspif:'+userspif);
+                            if (userspif && userspif != "") {
+                                MM.log('userpif:'+userpif);
+                                MM.log('pifs:'+pifs);
+                                pifs2 = $.grep(pifs, function( el ) {
+                                        MM.log('grep:'+el.courseid+'/'+course);
+                                        return el.courseid != course;
+                                });
+                                MM.log('pifs length:'+pifs2.length);
+                                MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
+                                var b;
+                                var a;
+                                var scormid;
+                                $('input#checkboxpif').each(function(index) {
+                                  if ($(this).attr('genre') == 'b') {
+                                    scormid = $(this).attr('content');
+                                    if ($(this).is(':checked')) {
+                                        a = 1;
+                                    } else {
+                                        a = 0;
+                                    }
+                                  }
+                                  if ($(this).attr('genre') == 'a') {
+                                    if ($(this).is(':checked')) {
+                                        b = 1;
+                                    } else {
+                                        b = 0;
+                                    }
+                                    pifs2.push({courseid:course,scormid:scormid,begin:a,end:b});
+                                    
+                                  }
+                                  MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
+                                });
+                                MM.log('pifs length:'+pifs2.length)
+                                MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
+                                thisuser.save({pif:pifs2});
+                            }
+                            //MM.Router.navigate("eleves/" + course );
+                            MM.widgets.dialogClose();
+                        }
+                        
+                        MM.widgets.dialog(html, options);
+                        
+                    });
+                    
+                    
+                    //Notes button
+                    
+                    $('button#notes').on(MM.clickType, function(e) {
+                        MM.log('notes clicked');
+                        //e.preventDefault();
+                        var course = $(this).attr("course");
+                        var user = $(this).attr("user");
+                        var theuser = MM.db.get('users',parseInt(user));
+                        MM.log('Notes:'+course+'/'+user);
+                        
+                        var usersnotes = MM.db.where('users', {userid:parseInt(user)});
+                        var usernotes = usersnotes[0].toJSON();
+                        var notes = usernotes.notes;
+                        notescourse = $.grep(notes, function( el ) {
+                                        return el.courseid == course;
+                        });
+                        MM.log('notescourse length:'+notescourse.length);
+                        
+                        var thisuser = MM.db.get('users',usernotes.id);
+                        
+                        var addNote = "Valider";
+                        var html = '<div id="sessionContent"><table width="100%" border="1">';
+                        
+                        var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
+                        local_contents.forEach(function(local_content) {
+                             var content = local_content.toJSON();
+                             if (content.modname == "scorm") {
+                                html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                if (pifscourse.length > 0) {
+                                    pifscormb = $.grep(pifscourse, function( el ) {
+                                        return el.scormid == content.contentid && el.begin == 1;
+                                    });
+                                    MM.log('pifscormb length:'+pifscormb.length);
+                                } else {
+                                    pifscormb = [1];
+                                }
+                                
+                                if (pifscormb.length>0) {
+                                    html+=' checked="checked"';
+                                }
+                                html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
+                                pifscorme = $.grep(pifscourse, function( el ) {
+                                        return el.scormid == content.contentid && el.end == 1;
+                                });
+                                MM.log('pifscorme length:'+pifscorme.length);
+                                if (pifscorme.length>0) {
+                                    html+=' checked="checked"';
+                                }
+                                html +='></td></tr>';
+                             }
+                        });
+                        
+                        html +='</table></div>';
+                        
+                        var options = {
+                            title: 'Notes pour '+usernotes.fullname,
+                            width: "90%",
+                            marginTop: "10%",
+                            buttons: {}
+                        };
+                        
+                        options.buttons[MM.lang.s("cancel")] = function() {
+                            MM.Router.navigate("eleves/" + course );
+                            MM.widgets.dialogClose();
+                        };
+                        
+                        options.buttons["Valider"] = function() {
+                            MM.log('usersnotes:'+usersnotes);
+                            if (usersnotes && usersnotes != "") {
+                                MM.log('usernotes:'+usernotes);
+                                MM.log('notes:'+notes);
+                                notes2 = $.grep(notes, function( el ) {
+                                        MM.log('grep:'+el.courseid+'/'+course);
+                                        return el.courseid != course;
+                                });
+                                MM.log('notes length:'+notes2.length);
+                                MM.log('thisuser:'+usernotes.id+'/'+thisuser.id);
+                                var b;
+                                var a;
+                                var scormid;
+                                
+                                MM.log('notes length:'+notes2.length)
+                                MM.log('notes2:'+notes2[0]+'/'+notes2[0].scormid);
+                                thisuser.save({notes2:notes2});
+                            }
+                            //MM.Router.navigate("eleves/" + course );
+                            MM.widgets.dialogClose();
+                        }
+                        
+                        MM.widgets.dialog(html, options);
+                        
+                    });
                 
                     
                     
