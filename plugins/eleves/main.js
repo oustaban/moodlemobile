@@ -1419,7 +1419,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //
                             var datenote =  new Date(notecourse.notetime*1000);
                             var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
-                            html+='<tr><td style="height:40px">'+notetime+'</td><td>'+notecourse.note+'</td></tr>';
+                            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td></tr>';
                         });
                         
                         
@@ -1427,8 +1427,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var options = {
                             title: 'Notes pour '+usernotes.fullname,
-                            width: "90%",
-                            marginTop: "10%",
+                            width: "90%"
                             buttons: {}
                         };
                         
