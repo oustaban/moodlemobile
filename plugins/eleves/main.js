@@ -1396,6 +1396,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     $('button#notes').on(MM.clickType, function(e) {
                         MM.log('notes clicked');
+                        var button=$(this);
                         //e.preventDefault();
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
@@ -1437,26 +1438,34 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
                         
                         options.buttons["Ajouter une note"] = function() {
-                            MM.log('usersnotes:'+usersnotes);
-                            if (usersnotes && usersnotes != "") {
-                                MM.log('usernotes:'+usernotes);
-                                MM.log('notes:'+notes);
-                                notes2 = $.grep(notes, function( el ) {
-                                        MM.log('grep:'+el.courseid+'/'+course);
-                                        return el.courseid != course;
-                                });
-                                MM.log('notes length:'+notes2.length);
-                                MM.log('thisuser:'+usernotes.id+'/'+thisuser.id);
-                                var b;
-                                var a;
-                                var scormid;
-                                
-                                MM.log('notes length:'+notes2.length)
-                                MM.log('notes2:'+notes2[0]+'/'+notes2[0].scormid);
-                                thisuser.save({notes2:notes2});
-                            }
-                            //MM.Router.navigate("eleves/" + course );
+                            
                             MM.widgets.dialogClose();
+                            
+                            var html2 = '<div id="sessionContent"><table width="100%" border="1">';
+                            html2+='<tr><td style="height:40px"><textarea id="thenote" cols="20" rows="5" name="thenote"></textarea></td></tr>';
+                            html2+='</table></div>';
+                            
+                            var options2 = {
+                                title: 'Ajouter une note pour '+usernotes.fullname,
+                                width: "90%",
+                                buttons: {}
+                            };
+                            
+                            options.buttons[MM.lang.s("cancel")] = function() {
+                                //MM.Router.navigate("eleves/" + course );
+                                MM.widgets.dialogClose();
+                                button.click();
+                            };
+                            
+                            
+                            options2.buttons["Valider"] = function() {
+                                MM.widgets.dialogClose();
+                                button.click();
+                            }
+                            
+                            MM.widgets.dialog(html2, options2);
+                            
+                            
                         }
                         
                         MM.widgets.dialog(html, options);
