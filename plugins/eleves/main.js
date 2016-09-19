@@ -1418,7 +1418,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         notescourse.forEach(function(notecourse) {
                             var notetime = notecourse.notetime.getDate()+"/"+(notecourse.notetime.getMonth()+1)+"/"+notecourse.notetime.getFullYear();
                             html+='<tr><td style="height:40px"></td>'+notetime+'<td>'+notecourse.note+'</td></tr>';
-                        }
+                        });
                         
                         
                         html+='</table></div>';
