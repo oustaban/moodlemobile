@@ -1427,7 +1427,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var options = {
                             title: 'Notes pour '+usernotes.fullname,
-                            width: "90%"
+                            width: "90%",
                             buttons: {}
                         };
                         
