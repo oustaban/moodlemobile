@@ -1415,34 +1415,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var addNote = "Valider";
                         var html = '<div id="sessionContent"><table width="100%" border="1">';
                         
-                        var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
-                        local_contents.forEach(function(local_content) {
-                             var content = local_content.toJSON();
-                             if (content.modname == "scorm") {
-                                html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
-                                if (pifscourse.length > 0) {
-                                    pifscormb = $.grep(pifscourse, function( el ) {
-                                        return el.scormid == content.contentid && el.begin == 1;
-                                    });
-                                    MM.log('pifscormb length:'+pifscormb.length);
-                                } else {
-                                    pifscormb = [1];
-                                }
-                                
-                                if (pifscormb.length>0) {
-                                    html+=' checked="checked"';
-                                }
-                                html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
-                                pifscorme = $.grep(pifscourse, function( el ) {
-                                        return el.scormid == content.contentid && el.end == 1;
-                                });
-                                MM.log('pifscorme length:'+pifscorme.length);
-                                if (pifscorme.length>0) {
-                                    html+=' checked="checked"';
-                                }
-                                html +='></td></tr>';
-                             }
-                        });
+                        notescourse.forEach(function(notecourse) {
+                            var notetime = notecourse.notetime.getDate()+"/"+(notecourse.notetime.getMonth()+1)+"/"+notecourse.notetime.getFullYear();
+                            htlm+='<tr><td style="height:40px"></td>'+notetime+'<td>'+notecourse.note+'</td></tr>';
+                        }
+                        
                         
                         html +='</table></div>';
                         
@@ -1458,7 +1435,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.widgets.dialogClose();
                         };
                         
-                        options.buttons["Valider"] = function() {
+                        options.buttons["Ajouter une note"] = function() {
                             MM.log('usersnotes:'+usersnotes);
                             if (usersnotes && usersnotes != "") {
                                 MM.log('usernotes:'+usernotes);
