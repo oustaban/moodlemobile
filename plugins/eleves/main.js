@@ -1416,8 +1416,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var html = '<div id="sessionContent"><table width="100%" border="1">';
                         
                         notescourse.forEach(function(notecourse) {
-                            //var notetime = notecourse.notetime.getDate()+"/"+(notecourse.notetime.getMonth()+1)+"/"+notecourse.notetime.getFullYear();
-                            html+='<tr><td style="height:40px"></td>'+notecourse.notetime+'<td>'+notecourse.note+'</td></tr>';
+                            //
+                            var datenote =  new Date(notecourse.notetime);
+                            var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
+                            html+='<tr><td style="height:40px">'+datenote+'</td><td>'+notecourse.note+'</td></tr>';
                         });
                         
                         
