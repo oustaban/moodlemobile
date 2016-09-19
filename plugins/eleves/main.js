@@ -1480,7 +1480,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.log('Recreate Session start :'+content);
                                                     MM.fs.writeInFile(fileEntry, content, 
                                                         function(fileUrl) {
-                                                            MM.log('Write Session :'+fileUrl);
+                                                            MM.log('Write Session OK:'+fileUrl);
                                                         },
                                                         function(fileUrl) {
                                                             MM.log('Write Session NOK:'+content);
@@ -1496,7 +1496,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             );
                                     },
                                     function (result) {
-                                        $("#showSessionL").hide();
+                                        MM.log('Session file not found');
                                     }
                                 );
                             
