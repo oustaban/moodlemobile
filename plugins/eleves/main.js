@@ -1403,6 +1403,23 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var theuser = MM.db.get('users',parseInt(user));
                         MM.log('Notes:'+course+'/'+user);
                         
+                        var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                        var sessionnotes;
+                        MM.fs.findFileAndReadContents(resultFile,
+                            function (result) {
+                                    var obj = JSON.parse(result);
+                                    var starttime = obj.starttime;
+                                    var users = obj.users;
+                                    if (obj.notes) {
+                                       sessionnotes = obj.notes;
+                                    }
+                                    
+                            },
+                            function (result {
+                                //code
+                            }
+                        );
+                        
                         var usersnotes = MM.db.where('users', {userid:parseInt(user)});
                         var usernotes = usersnotes[0].toJSON();
                         var notes = usernotes.notes;
@@ -1416,7 +1433,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var addNote = "Valider";
                         var html = '<div id="sessionContent"><table width="100%" border="1">';
                         
-                        notescourse.forEach(function(notecourse) {
+                        
+                        var mergednotes=sessionnotes.concat(notescourse);
+                        
+                        mergednotes.forEach(function(notecourse) {
                             //
                             var datenote =  new Date(notecourse.notetime*1000);
                             var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
@@ -1437,7 +1457,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.widgets.dialogClose();
                         };
                         
-                        var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                        
                         MM.fs.fileExists(resultFile,
                             function (result) {
                                 options.buttons["Ajouter une note"] = function() {
@@ -1477,12 +1497,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     if (obj.notes)
                                                         var getnotes = obj.notes;
                                                     
+                                                    courseid":120,"sessionid":240,"noteid":2,"note":"note 2","notetime":1473777247
                                                     if (getnotes) {
-                                                        getnotes.push({"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
+                                                        getnotes.push({"courseid":course,"sessionid":,"noteid":,"notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
                                                         var jsonNotes = JSON.stringify(getnotes);
                                                     }
                                                     else 
-                                                        var jsonNotes = '[{"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}]';
+                                                        var jsonNotes = '[{"courseid":'+course+',"sessionid":,"noteid":,"notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}]';
                                                     
                                                     MM.log('jsonNotes:'+jsonNotes);
                                                     
