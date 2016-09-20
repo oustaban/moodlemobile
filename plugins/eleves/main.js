@@ -1836,7 +1836,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
     var thisuser = MM.db.get('users',usernotes.id);
     
     var addNote = "Valider";
-    var html = '<div id="sessionContent"><table width="100%" border="1">';
+    var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
     
     if (sessionnotes && notescourse)
         var mergednotes=sessionnotes.concat(notescourse);
@@ -1849,7 +1849,10 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
         //
         var datenote =  new Date(notecourse.notetime*1000);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
-        html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td></tr>';
+        if (notecourse.sessionid)
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td>&nbsp;</td></tr>';
+        else
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td><button course="'+notecourse.courseid+'" user="'+notecourse.userid+'" notetime="'+notecource.notetime+'" id="clearnote" name="clearnote" value="Effacer"/></td></tr>'
     });
     
     
