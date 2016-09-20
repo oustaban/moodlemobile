@@ -1411,150 +1411,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     if (obj.notes) {
                                        sessionnotes = obj.notes;
                                     }
-                                    MM.log('Sessionnotes:'+sessionnotes);
+                                    MM.log('Sessionnotes OK:'+sessionnotes);
+                                    manageNotes(course,user,theuser,resultFile,sessionnotes);
                                     
                             },
                             function (result) {
-                                //code
+                                MM.log('Sessionnotes NOK:'+sessionnotes);
+                                manageNotes(course,user,theuser,resultFile,sessionnotes);
                             }
                         );
                         
-                        sleep(2000);
                         
-                        var usersnotes = MM.db.where('users', {userid:parseInt(user)});
-                        var usernotes = usersnotes[0].toJSON();
-                        var notes = usernotes.notes;
-                        notescourse = $.grep(notes, function( el ) {
-                                        return el.courseid == course;
-                        });
-                        MM.log('notescourse length:'+notescourse.length);
-                        
-                        var thisuser = MM.db.get('users',usernotes.id);
-                        
-                        var addNote = "Valider";
-                        var html = '<div id="sessionContent"><table width="100%" border="1">';
-                        
-                        if (sessionnotes && notescourse)
-                            var mergednotes=sessionnotes.concat(notescourse);
-                        if (!sessionnotes && notescourse)
-                            mergednotes = notescourse;
-                        if (sessionnotes && !notescourse)
-                            mergednotes = sessionnotes;
-                        
-                        mergednotes.forEach(function(notecourse) {
-                            //
-                            var datenote =  new Date(notecourse.notetime*1000);
-                            var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
-                            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td></tr>';
-                        });
-                        
-                        
-                        html+='</table></div>';
-                        
-                        var options = {
-                            title: 'Notes pour '+usernotes.fullname,
-                            width: "90%",
-                            buttons: {}
-                        };
-                        
-                        options.buttons[MM.lang.s("cancel")] = function() {
-                            MM.Router.navigate("eleves/" + course );
-                            MM.widgets.dialogClose();
-                        };
-                        
-                        
-                        MM.fs.fileExists(resultFile,
-                            function (result) {
-                                options.buttons["Ajouter une note"] = function() {
-                                    
-                                    MM.widgets.dialogClose();
-                                    
-                                    var html2 = '<div id="sessionContent"><table width="100%" border="1">';
-                                    html2+='<tr><td style="height:40px"><textarea id="thenote" cols="20" rows="5" name="thenote"></textarea></td></tr>';
-                                    html2+='<script>$("#thenote").focus();</script>';
-                                    html2+='</table></div>';
-                                    
-                                    var options2 = {
-                                        title: 'Ajouter une note pour '+usernotes.fullname,
-                                        width: "90%",
-                                        buttons: {}
-                                    };
-                                    
-                                    options2.buttons[MM.lang.s("cancel")] = function() {
-                                        //MM.Router.navigate("eleves/" + course );
-                                        MM.widgets.dialogClose();
-                                        button.click();
-                                    };
-                                    
-                                    
-                                    options2.buttons["Valider"] = function() {
-                                        MM.widgets.dialogClose();
-                                        MM.log('Valider Ajout Note');
-                                        
-                                        
-                                        
-                                        MM.fs.findFileAndReadContents(resultFile,
-                                            function (result) {
-                                                    var obj = JSON.parse(result);
-                                                    var starttime = obj.starttime;
-                                                    var users = obj.users;
-                                                    
-                                                    if (obj.notes)
-                                                        var getnotes = obj.notes;
-                                                    
-                                                    if (getnotes) {
-                                                        getnotes.push({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
-                                                        var jsonNotes = JSON.stringify(getnotes);
-                                                    }
-                                                    else 
-                                                        var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":"","notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}]';
-                                                    
-                                                    MM.log('jsonNotes:'+jsonNotes);
-                                                    
-                                                    MM.fs.createFile(resultFile,
-                                                        function(fileEntry) {
-                                                            var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":'+jsonNotes+'}';
-                                                            MM.log('Recreate Session start :'+content);
-                                                            MM.fs.writeInFile(fileEntry, content, 
-                                                                function(fileUrl) {
-                                                                    MM.log('Write Session OK:'+fileUrl);
-                                                                    button.click();
-                                                                },
-                                                                function(fileUrl) {
-                                                                    MM.log('Write Session NOK:'+content);
-                                                                    button.click();
-                                                                }
-                                                                
-                                                            );
-                                                        },   
-                                                            
-                                                        function(fileEntry) {
-                                                           MM.log('Recreate Session : NOK');
-                                                           button.click();
-                                                           
-                                                        }
-                                                    );
-                                            },
-                                            function (result) {
-                                                MM.log('Session file not found');
-                                                button.click();
-                                            }
-                                        );
-                                    
-                                        
-                                    }
-                                    
-                                    MM.widgets.dialog(html2, options2);
-                                    
-                                    
-                                }
-                                MM.widgets.dialog(html, options);
-                            },
-                            function (result) {
-                                MM.log('Session file not found');
-                                MM.widgets.dialog(html, options);
-                            }
-                        );
                             
                         
                         
@@ -1954,3 +1821,142 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
     MM.registerPlugin(plugin);
 });
+
+
+function manageNotes(course,user,theuser,resultFile,sessionnotes) {
+    
+    var usersnotes = MM.db.where('users', {userid:parseInt(user)});
+    var usernotes = usersnotes[0].toJSON();
+    var notes = usernotes.notes;
+    notescourse = $.grep(notes, function( el ) {
+                    return el.courseid == course;
+    });
+    MM.log('notescourse length:'+notescourse.length);
+    
+    var thisuser = MM.db.get('users',usernotes.id);
+    
+    var addNote = "Valider";
+    var html = '<div id="sessionContent"><table width="100%" border="1">';
+    
+    if (sessionnotes && notescourse)
+        var mergednotes=sessionnotes.concat(notescourse);
+    if (!sessionnotes && notescourse)
+        mergednotes = notescourse;
+    if (sessionnotes && !notescourse)
+        mergednotes = sessionnotes;
+    
+    mergednotes.forEach(function(notecourse) {
+        //
+        var datenote =  new Date(notecourse.notetime*1000);
+        var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
+        html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td></tr>';
+    });
+    
+    
+    html+='</table></div>';
+    
+    var options = {
+        title: 'Notes pour '+usernotes.fullname,
+        width: "90%",
+        buttons: {}
+    };
+    
+    options.buttons[MM.lang.s("cancel")] = function() {
+        MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+    };
+    
+    
+    MM.fs.fileExists(resultFile,
+        function (result) {
+            options.buttons["Ajouter une note"] = function() {
+                
+                MM.widgets.dialogClose();
+                
+                var html2 = '<div id="sessionContent"><table width="100%" border="1">';
+                html2+='<tr><td style="height:40px"><textarea id="thenote" cols="20" rows="5" name="thenote"></textarea></td></tr>';
+                html2+='<script>$("#thenote").focus();</script>';
+                html2+='</table></div>';
+                
+                var options2 = {
+                    title: 'Ajouter une note pour '+usernotes.fullname,
+                    width: "90%",
+                    buttons: {}
+                };
+                
+                options2.buttons[MM.lang.s("cancel")] = function() {
+                    //MM.Router.navigate("eleves/" + course );
+                    MM.widgets.dialogClose();
+                    button.click();
+                };
+                
+                
+                options2.buttons["Valider"] = function() {
+                    MM.widgets.dialogClose();
+                    MM.log('Valider Ajout Note');
+                    
+                    
+                    
+                    MM.fs.findFileAndReadContents(resultFile,
+                        function (result) {
+                                var obj = JSON.parse(result);
+                                var starttime = obj.starttime;
+                                var users = obj.users;
+                                
+                                if (obj.notes)
+                                    var getnotes = obj.notes;
+                                
+                                if (getnotes) {
+                                    getnotes.push({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
+                                    var jsonNotes = JSON.stringify(getnotes);
+                                }
+                                else 
+                                    var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":"","notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}]';
+                                
+                                MM.log('jsonNotes:'+jsonNotes);
+                                
+                                MM.fs.createFile(resultFile,
+                                    function(fileEntry) {
+                                        var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":'+jsonNotes+'}';
+                                        MM.log('Recreate Session start :'+content);
+                                        MM.fs.writeInFile(fileEntry, content, 
+                                            function(fileUrl) {
+                                                MM.log('Write Session OK:'+fileUrl);
+                                                button.click();
+                                            },
+                                            function(fileUrl) {
+                                                MM.log('Write Session NOK:'+content);
+                                                button.click();
+                                            }
+                                            
+                                        );
+                                    },   
+                                        
+                                    function(fileEntry) {
+                                       MM.log('Recreate Session : NOK');
+                                       button.click();
+                                       
+                                    }
+                                );
+                        },
+                        function (result) {
+                            MM.log('Session file not found');
+                            button.click();
+                        }
+                    );
+                
+                    
+                }
+                
+                MM.widgets.dialog(html2, options2);
+                
+                
+            }
+            MM.widgets.dialog(html, options);
+        },
+        function (result) {
+            MM.log('Session file not found');
+            MM.widgets.dialog(html, options);
+        }
+    );
+}
