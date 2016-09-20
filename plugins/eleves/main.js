@@ -1481,9 +1481,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.fs.writeInFile(fileEntry, content, 
                                                         function(fileUrl) {
                                                             MM.log('Write Session OK:'+fileUrl);
+                                                            button.click();
                                                         },
                                                         function(fileUrl) {
                                                             MM.log('Write Session NOK:'+content);
+                                                            button.click();
                                                         }
                                                         
                                                     );
@@ -1491,6 +1493,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     
                                                 function(fileEntry) {
                                                    MM.log('Create Session : NOK');
+                                                   button.click();
                                                    
                                                 }
                                             );
@@ -1500,7 +1503,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                 );
                             
-                                button.click();
+                                
                             }
                             
                             MM.widgets.dialog(html2, options2);
