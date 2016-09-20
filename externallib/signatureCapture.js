@@ -1,3 +1,13 @@
+function sleep(millisecondes) {
+	var start = new Date().getTime();
+	var timer = true;
+	while (timer) {
+		if ((new Date().getTime() - start)> milliseconds) {
+			timer = false;
+		}
+	}
+}
+
 function SignatureCapture( canvasID ) {
 	this.touchSupported = Modernizr.touch;
 	this.canvasID = canvasID;
