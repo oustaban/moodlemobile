@@ -1415,7 +1415,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                     
                             },
-                            function (result {
+                            function (result) {
                                 //code
                             }
                         );
