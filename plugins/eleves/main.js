@@ -1408,11 +1408,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.fs.findFileAndReadContents(resultFile,
                             function (result) {
                                     var obj = JSON.parse(result);
-                                    var starttime = obj.starttime;
-                                    var users = obj.users;
                                     if (obj.notes) {
                                        sessionnotes = obj.notes;
                                     }
+                                    MM.log('Sessionnotes:'+sessionnotes);
                                     
                             },
                             function (result) {
@@ -1433,7 +1432,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var addNote = "Valider";
                         var html = '<div id="sessionContent"><table width="100%" border="1">';
                         
-                        if (sessionnotes && motescourse)
+                        if (sessionnotes && notescourse)
                             var mergednotes=sessionnotes.concat(notescourse);
                         if (!sessionnotes && notescourse)
                             mergednotes = notescourse;
