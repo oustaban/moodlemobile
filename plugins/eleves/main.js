@@ -748,9 +748,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $("#showSessionL").hide();
                                         var obj = JSON.parse(result);
                                         var starttime = obj.starttime;
+                                        var jsonNotes = '""';
+                                        if (obj.notes)
+                                            var getnotes = obj.notes;
+                                        
+                                        if (getnotes) {
+                                            var jsonNotes = JSON.stringify(getnotes);
+                                        }
                                         MM.fs.createFile(resultFile,
                                             function(fileEntry) {
-                                                var content = '{"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'"}';
+                                                var content = '{"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
                                                 MM.log('Create Session start :'+content);
                                                 MM.fs.writeInFile(fileEntry, content, 
                                                     function(fileUrl) {
@@ -1001,7 +1008,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"><button id="notes" course="'+course+'" user="'+valueS+'" path="" module="">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"><button id="notes2" course="'+course+'" user="'+valueS+'" path="" module="">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1011,7 +1018,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button><button id="notes" course="'+course+'" user="'+valueS+'" path="" module="">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" path="" module="">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1430,6 +1437,36 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                         
                         
+                        
+                    });
+                    
+                    
+                    $('button#notes2').on(MM.clickType, function(e) {
+                        MM.log('notes2 clicked');
+                        var button=$(this);
+                        //e.preventDefault();
+                        var course = $(this).attr("course");
+                        var user = $(this).attr("user");
+                        var theuser = MM.db.get('users',parseInt(user));
+                        MM.log('Notes:'+course+'/'+user);
+                        
+                        var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                        var sessionnotes;
+                        MM.fs.findFileAndReadContents(resultFile,
+                            function (result) {
+                                    var obj = JSON.parse(result);
+                                    if (obj.notes) {
+                                       sessionnotes = obj.notes;
+                                    }
+                                    MM.log('Sessionnotes OK:'+sessionnotes);
+                                    manageNotes(course,user,theuser,resultFile,sessionnotes,button);
+                                    
+                            },
+                            function (result) {
+                                MM.log('Sessionnotes NOK:'+sessionnotes);
+                                manageNotes(course,user,theuser,resultFile,sessionnotes,button);
+                            }
+                        );
                         
                     });
                 
