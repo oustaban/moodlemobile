@@ -1498,11 +1498,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var getnotes = obj.notes;
                                                     
                                                     if (getnotes) {
-                                                        getnotes.push({"courseid":course,"sessionid":,"noteid":,"notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
+                                                        getnotes.push({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
                                                         var jsonNotes = JSON.stringify(getnotes);
                                                     }
                                                     else 
-                                                        var jsonNotes = '[{"courseid":'+course+',"sessionid":,"noteid":,"notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}]';
+                                                        var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":"","notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}]';
                                                     
                                                     MM.log('jsonNotes:'+jsonNotes);
                                                     
