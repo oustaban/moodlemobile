@@ -1478,13 +1478,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             if (getnotes)
                                                 getnotes.push({"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
                                             else 
-                                                getnotes = {"note":$("#thenote").val().replace(/\"/g,'\\"'),"userid":user};
+                                                getnotes = '{"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}';
                                             
                                             MM.log('getnotes:'+getnotes);
                                             
                                             MM.fs.createFile(resultFile,
                                                 function(fileEntry) {
-                                                    var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":"'+getnotes+'"}';
+                                                    var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":'+getnotes+'}';
                                                     MM.log('Recreate Session start :'+content);
                                                     MM.fs.writeInFile(fileEntry, content, 
                                                         function(fileUrl) {
