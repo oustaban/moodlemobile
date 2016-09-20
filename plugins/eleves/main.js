@@ -1840,15 +1840,21 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
     
     var thisuser = MM.db.get('users',usernotes.id);
     
+    if (sessionnotes) {
+        sessionnotes2 = $.grep(sessionnotes, function( el ) {
+                    return el.courseid == course && el.userid == user ;
+        });
+    }
+    
     var addNote = "Valider";
     var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
     
-    if (sessionnotes && notescourse)
-        var mergednotes=sessionnotes.concat(notescourse);
-    if (!sessionnotes && notescourse)
+    if (sessionnotes2 && notescourse)
+        var mergednotes=sessionnotes2.concat(notescourse);
+    if (!sessionnotes2 && notescourse)
         mergednotes = notescourse;
-    if (sessionnotes && !notescourse)
-        mergednotes = sessionnotes;
+    if (sessionnotes2 && !notescourse)
+        mergednotes = sessionnotes2;
     
     mergednotes.forEach(function(notecourse) {
         //
