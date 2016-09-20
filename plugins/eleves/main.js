@@ -1462,19 +1462,23 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             options2.buttons["Valider"] = function() {
                                 MM.widgets.dialogClose();
                                 MM.log('Valider Ajout Note');
+                                
+                                
+                                
                                 var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
                                             var obj = JSON.parse(result);
                                             var starttime = obj.starttime;
                                             var users = obj.users;
+                                            
                                             if (obj.notes)
                                                 var getnotes = obj.notes;
                                             
                                             if (getnotes)
-                                                getnotes+=","+$('#thenote')+val();
+                                                getnotes+=","+$('#thenote').val();
                                             else 
-                                                getnotes = $('#thenote')+val();
+                                                getnotes = $('#thenote').val();
                                             
                                             MM.log('getnotes:'+getnotes);
                                             
