@@ -457,7 +457,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 var sessionFile =  MM.config.current_site.id + "/" + course + "/result/" + entry.name;
                                                 MM.fs.findFileAndReadContents(sessionFile,
                                                     function(result) {
-                                                        MM.log( "Session File OK:" + sessionFile);
+                                                        MM.log( "Session File OK:" + sessionFile + '/' + result);
                                                         var obj = JSON.parse(result);
                                                         var modulesId = obj.modulesId.split(",");
                                                         var modulesName = "";
@@ -478,6 +478,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         });
                                                         
                                                         var pifscoursejson = JSON.stringify(pifscourse);
+                                                        MM.log('check');
                                                         var jsonnotes = JSON.stringify(obj.notes);
                                                         
                                                         MM.log("pifs synchro:"+pifscourse.length);
