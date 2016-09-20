@@ -1008,7 +1008,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"><button id="notes2" course="'+course+'" user="'+valueS+'" path="" module="">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1018,7 +1018,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" path="" module="">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -2012,3 +2012,36 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
         }
     );
 }
+
+
+
+function notePopin( elem ) {
+    
+    MM.log('notes2 clicked');
+    MM.widgets.dialogClose();
+    var button=$("#stopSessionL");
+    //e.preventDefault();
+    var course = $(elem).attr("course");
+    var user = $(elem).attr("user");
+    var theuser = MM.db.get('users',parseInt(user));
+    MM.log('Notes:'+course+'/'+user);
+    
+    var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+    var sessionnotes;
+    MM.fs.findFileAndReadContents(resultFile,
+        function (result) {
+                var obj = JSON.parse(result);
+                if (obj.notes) {
+                   sessionnotes = obj.notes;
+                }
+                MM.log('Sessionnotes OK:'+sessionnotes);
+                manageNotes(course,user,theuser,resultFile,sessionnotes,button);
+                
+        },
+        function (result) {
+            MM.log('Sessionnotes NOK:'+sessionnotes);
+            manageNotes(course,user,theuser,resultFile,sessionnotes,button);
+        }
+    );
+}
+                                            /
