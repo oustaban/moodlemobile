@@ -1852,7 +1852,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
         if (notecourse.sessionid)
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td>&nbsp;</td></tr>';
         else
-            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td><button course="'+notecourse.courseid+'" user="'+notecourse.userid+'" notetime="'+notecourse.notetime+'" id="clearnote" name="clearnote" value="Effacer"/></td></tr>'
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td><button course="'+notecourse.courseid+'" user="'+notecourse.userid+'" notetime="'+notecourse.notetime+'" id="clearnote" name="clearnote" value="Effacer">Effacer</button></td></tr>'
     });
     
     
@@ -1910,7 +1910,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
                                     var getnotes = obj.notes;
                                 
                                 if (getnotes) {
-                                    getnotes.push({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
+                                    getnotes.pop({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
                                     var jsonNotes = JSON.stringify(getnotes);
                                 }
                                 else 
