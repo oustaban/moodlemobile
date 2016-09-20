@@ -2044,4 +2044,3 @@ function notePopin( elem ) {
         }
     );
 }
-                                            /
