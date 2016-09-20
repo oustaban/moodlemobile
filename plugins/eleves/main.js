@@ -1865,7 +1865,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 });
 
 
-function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
+function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2=0) {
     
     var usersnotes = MM.db.where('users', {userid:parseInt(user)});
     var usernotes = usersnotes[0].toJSON();
@@ -1885,7 +1885,8 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
     }
     
     var addNote = "Valider";
-    var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
+    //var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
+    var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td></tr>';
     
     if (sessionnotes2 && notescourse)
         var mergednotes=sessionnotes2.concat(notescourse);
@@ -1898,10 +1899,13 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
         //
         var datenote =  new Date(notecourse.notetime*1000);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
+        html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td></tr>';
+        /*
         if (notecourse.sessionid)
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td>&nbsp;</td></tr>';
         else
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td><button course="'+notecourse.courseid+'" user="'+notecourse.userid+'" notetime="'+notecourse.notetime+'" id="clearnote" name="clearnote" value="Effacer">Effacer</button></td></tr>'
+        */
     });
     
     
@@ -1916,6 +1920,9 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
     options.buttons[MM.lang.s("cancel")] = function() {
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
+        if (button2) {
+            $('#stopSessionL').click();
+        }
     };
     
     
@@ -2035,12 +2042,12 @@ function notePopin( elem ) {
                    sessionnotes = obj.notes;
                 }
                 MM.log('Sessionnotes OK:'+sessionnotes);
-                manageNotes(course,user,theuser,resultFile,sessionnotes,button);
+                manageNotes(course,user,theuser,resultFile,sessionnotes,button,1);
                 
         },
         function (result) {
             MM.log('Sessionnotes NOK:'+sessionnotes);
-            manageNotes(course,user,theuser,resultFile,sessionnotes,button);
+            manageNotes(course,user,theuser,resultFile,sessionnotes,button,1);
         }
     );
 }
