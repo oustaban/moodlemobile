@@ -1852,7 +1852,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
         if (notecourse.sessionid)
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td>&nbsp;</td></tr>';
         else
-            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td><button course="'+notecourse.courseid+'" user="'+notecourse.userid+'" notetime="'+notecource.notetime+'" id="clearnote" name="clearnote" value="Effacer"/></td></tr>'
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td><button course="'+notecourse.courseid+'" user="'+notecourse.userid+'" notetime="'+notecourse.notetime+'" id="clearnote" name="clearnote" value="Effacer"/></td></tr>'
     });
     
     
