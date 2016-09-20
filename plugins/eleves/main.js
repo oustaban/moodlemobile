@@ -1433,8 +1433,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var addNote = "Valider";
                         var html = '<div id="sessionContent"><table width="100%" border="1">';
                         
-                        
-                        var mergednotes=sessionnotes.concat(notescourse);
+                        if (sessionnotes && motescourse){
+                            var mergednotes=sessionnotes.concat(notescourse);
+                        if (!sessionnotes && notescourse)
+                            mergednotes = notescourse;
+                        if (sessionnotes && !notescourse)
+                            mergednotes = sessionnotes;
                         
                         mergednotes.forEach(function(notecourse) {
                             //
