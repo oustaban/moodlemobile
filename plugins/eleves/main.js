@@ -1419,7 +1419,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                         );
                         
-                        sleep(1000);
+                        sleep(2000);
                         
                         var usersnotes = MM.db.where('users', {userid:parseInt(user)});
                         var usernotes = usersnotes[0].toJSON();
