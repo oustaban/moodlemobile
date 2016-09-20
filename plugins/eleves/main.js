@@ -478,6 +478,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         });
                                                         
                                                         var pifscoursejson = JSON.stringify(pifscourse);
+                                                        var jsonnotes = JSON.stringify(obj.notes);
                                                         
                                                         MM.log("pifs synchro:"+pifscourse.length);
                                                              
@@ -490,7 +491,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             "modulesstart" : obj.modulesStart,
                                                             "modulesend" : obj.modulesEnd,
                                                             "managerid" : MM.site.get('userid'),
-                                                            "pifs" : pifscoursejson
+                                                            "pifs" : pifscoursejson,
+                                                            "notes" : jsonnotes
                                                         }
                                         
                                                         MM.widgets.dialogClose();
