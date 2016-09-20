@@ -1424,12 +1424,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                        sessionnotes = obj.notes;
                                     }
                                     MM.log('Sessionnotes OK:'+sessionnotes);
-                                    manageNotes(course,user,theuser,resultFile,sessionnotes,button);
+                                    manageNotes(course,user,theuser,resultFile,sessionnotes,button,0);
                                     
                             },
                             function (result) {
                                 MM.log('Sessionnotes NOK:'+sessionnotes);
-                                manageNotes(course,user,theuser,resultFile,sessionnotes,button);
+                                manageNotes(course,user,theuser,resultFile,sessionnotes,button,0);
                             }
                         );
                         
@@ -1441,34 +1441,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     });
                     
                     
-                    $('button#notes2').on(MM.clickType, function(e) {
-                        MM.log('notes2 clicked');
-                        var button=$(this);
-                        //e.preventDefault();
-                        var course = $(this).attr("course");
-                        var user = $(this).attr("user");
-                        var theuser = MM.db.get('users',parseInt(user));
-                        MM.log('Notes:'+course+'/'+user);
-                        
-                        var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
-                        var sessionnotes;
-                        MM.fs.findFileAndReadContents(resultFile,
-                            function (result) {
-                                    var obj = JSON.parse(result);
-                                    if (obj.notes) {
-                                       sessionnotes = obj.notes;
-                                    }
-                                    MM.log('Sessionnotes OK:'+sessionnotes);
-                                    manageNotes(course,user,theuser,resultFile,sessionnotes,button);
-                                    
-                            },
-                            function (result) {
-                                MM.log('Sessionnotes NOK:'+sessionnotes);
-                                manageNotes(course,user,theuser,resultFile,sessionnotes,button);
-                            }
-                        );
-                        
-                    });
+                    
                 
                     
                     
@@ -1865,7 +1838,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 });
 
 
-function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2=0) {
+function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2) {
     
     var usersnotes = MM.db.where('users', {userid:parseInt(user)});
     var usernotes = usersnotes[0].toJSON();
