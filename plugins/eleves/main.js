@@ -998,7 +998,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"><button id="notes" course="'+course+'" user="'+valueS+'" path="" module="">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1008,7 +1008,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)">Signature</button><button id="notes" course="'+course+'" user="'+valueS+'" path="" module="">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1075,6 +1075,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     var obj = JSON.parse(result);
                                     var users = obj.users;
                                     var starttime = obj.starttime;
+                                    var notes = obj.notes;
+                                    var jsonNotes = JSON.stringify(notes);
                                     var realusers = $('#stopSessionL').attr('users');
                         
                         
@@ -1082,7 +1084,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     var lenghta = modulesId.length - 1;
                                     var lenghtb = moduleStart.length - 1;
                                     var lenghtc = moduleEnd.length - 1;
-                                    var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+endSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'"}';
+                                    var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+endSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'","notes:"'+jsonNotes+'}';
                                     
                                     MM.log('Session Load OK : '+resultFile + ' : ' + content + ' : ' + timeSession);
                                     
