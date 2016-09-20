@@ -1087,7 +1087,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     var lenghta = modulesId.length - 1;
                                     var lenghtb = moduleStart.length - 1;
                                     var lenghtc = moduleEnd.length - 1;
-                                    var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+endSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'","notes:"'+jsonNotes+'}';
+                                    var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+endSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'","notes":'+jsonNotes+'}';
                                     
                                     MM.log('Session Load OK : '+resultFile + ' : ' + content + ' : ' + timeSession);
                                     
