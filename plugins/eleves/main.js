@@ -1839,6 +1839,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
     MM.log('notescourse length:'+notescourse.length);
     
     var thisuser = MM.db.get('users',usernotes.id);
+    var sessionnotes2;
     
     if (sessionnotes) {
         sessionnotes2 = $.grep(sessionnotes, function( el ) {
