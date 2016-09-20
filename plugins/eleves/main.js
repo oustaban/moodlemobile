@@ -1497,7 +1497,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     if (obj.notes)
                                                         var getnotes = obj.notes;
                                                     
-                                                    courseid":120,"sessionid":240,"noteid":2,"note":"note 2","notetime":1473777247
                                                     if (getnotes) {
                                                         getnotes.push({"courseid":course,"sessionid":,"noteid":,"notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
                                                         var jsonNotes = JSON.stringify(getnotes);
