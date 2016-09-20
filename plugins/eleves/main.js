@@ -1523,14 +1523,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                     
                                 }
+                                MM.widgets.dialog(html, options);
                             },
                             function (result) {
                                 MM.log('Session file not found');
+                                MM.widgets.dialog(html, options);
                             }
                         );
                             
                         
-                        MM.widgets.dialog(html, options);
+                        
                         
                     });
                 
