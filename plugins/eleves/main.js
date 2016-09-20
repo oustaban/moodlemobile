@@ -1468,12 +1468,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             var obj = JSON.parse(result);
                                             var starttime = obj.starttime;
                                             var users = obj.users;
-                                            var getnotes = obj.notes;
-                                            if (getnotes != "") {
+                                            if (obj.notes)
+                                                var getnotes = obj.notes;
+                                            
+                                            if (getnotes)
                                                 getnotes+=","+$('#thenote')+val();
-                                            } else {
+                                            else 
                                                 getnotes = $('#thenote')+val();
-                                            }
+                                            
+                                            MM.log('getnotes:'+getnotes);
+                                            
                                             MM.fs.createFile(resultFile,
                                                 function(fileEntry) {
                                                     var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":"'+notes+'"}';
@@ -1500,6 +1504,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     },
                                     function (result) {
                                         MM.log('Session file not found');
+                                        button.click();
                                     }
                                 );
                             
