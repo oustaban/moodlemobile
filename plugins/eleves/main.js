@@ -1475,16 +1475,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             if (obj.notes)
                                                 var getnotes = obj.notes;
                                             
-                                            if (getnotes)
+                                            if (getnotes) {
                                                 getnotes.push({"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
+                                                var jsonNotes = JSON.stringify(getnotes);
+                                            }
                                             else 
-                                                getnotes = '{"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}';
+                                                var jsonNotes = '{"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}';
                                             
-                                            MM.log('getnotes:'+getnotes);
+                                            MM.log('jsonNotes:'+jsonNotes);
                                             
                                             MM.fs.createFile(resultFile,
                                                 function(fileEntry) {
-                                                    var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":'+getnotes+'}';
+                                                    var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":"'+jsonNotes+'"}';
                                                     MM.log('Recreate Session start :'+content);
                                                     MM.fs.writeInFile(fileEntry, content, 
                                                         function(fileUrl) {
