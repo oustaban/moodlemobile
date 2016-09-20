@@ -1478,7 +1478,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             if (getnotes)
                                                 getnotes.push({"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
                                             else 
-                                                getnotes = '{"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}';
+                                                getnotes = {"note":$("#thenote").val().replace(/\"/g,'\\"'),"userid":user};
                                             
                                             MM.log('getnotes:'+getnotes);
                                             
