@@ -1,4 +1,4 @@
-function sleep(millisecondes) {
+function sleep(milliseconds) {
 	var start = new Date().getTime();
 	var timer = true;
 	while (timer) {
