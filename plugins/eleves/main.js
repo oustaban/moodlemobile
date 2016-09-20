@@ -1910,7 +1910,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
                                     var getnotes = obj.notes;
                                 
                                 if (getnotes) {
-                                    getnotes.pop({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
+                                    getnotes.unshift({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
                                     var jsonNotes = JSON.stringify(getnotes);
                                 }
                                 else 
