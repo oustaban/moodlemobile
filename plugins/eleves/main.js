@@ -1412,12 +1412,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                        sessionnotes = obj.notes;
                                     }
                                     MM.log('Sessionnotes OK:'+sessionnotes);
-                                    manageNotes(course,user,theuser,resultFile,sessionnotes);
+                                    manageNotes(course,user,theuser,resultFile,sessionnotes,button);
                                     
                             },
                             function (result) {
                                 MM.log('Sessionnotes NOK:'+sessionnotes);
-                                manageNotes(course,user,theuser,resultFile,sessionnotes);
+                                manageNotes(course,user,theuser,resultFile,sessionnotes,button);
                             }
                         );
                         
@@ -1823,7 +1823,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 });
 
 
-function manageNotes(course,user,theuser,resultFile,sessionnotes) {
+function manageNotes(course,user,theuser,resultFile,sessionnotes,button) {
     
     var usersnotes = MM.db.where('users', {userid:parseInt(user)});
     var usernotes = usersnotes[0].toJSON();
