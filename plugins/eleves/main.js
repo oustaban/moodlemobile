@@ -1621,7 +1621,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 'local_mobile_get_users_by_courseid_departmentid',
                 data,
                 function(users) {
-                    var oldFile = '2abbbd539e5f3a1616ad2abd8c7ba23e/120/result/354.json';
+                    var oldFile = '2abbbd539e5f3a1616ad2abd8c7ba23e/120/result/session.json';
                     MM.fs.removeFile (oldFile,
                                                          function (result) {
                                                             MM.log('session.json deleted:'+oldFile);
