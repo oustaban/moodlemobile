@@ -1871,7 +1871,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
         //
         var datenote =  new Date(notecourse.notetime*1000);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
-        html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+decodeURI(notecourse.note)+'</td></tr>';
+        html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td></tr>';
         /*
         if (notecourse.sessionid)
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td>&nbsp;</td></tr>';
@@ -2022,4 +2022,9 @@ function notePopin( elem ) {
             manageNotes(course,user,theuser,resultFile,sessionnotes,button,1);
         }
     );
+}
+
+function nl2br (str, is_xhtml) {   
+    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
 }
