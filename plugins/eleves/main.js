@@ -1871,7 +1871,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
         //
         var datenote =  new Date(notecourse.notetime*1000);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
-        html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td></tr>';
+        html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+decodeURI(notecourse.note)+'</td></tr>';
         /*
         if (notecourse.sessionid)
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td>&nbsp;</td></tr>';
