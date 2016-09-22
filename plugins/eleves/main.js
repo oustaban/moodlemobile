@@ -1621,15 +1621,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 'local_mobile_get_users_by_courseid_departmentid',
                 data,
                 function(users) {
-                    var oldFile = '2abbbd539e5f3a1616ad2abd8c7ba23e/120/result/session.json';
-                    MM.fs.removeFile (oldFile,
-                                                         function (result) {
-                                                            MM.log('session.json deleted:'+oldFile);
-                                                         },
-                                                         function (result) {
-                                                            MM.log('session.json not deleted:'+oldFile);
-                                                         }
-                                                    );
                     
                     var onlines = MM.db.where("contents", {name:'online',courseid:courseId,site:MM.config.current_site.id});
                     MM.log('onlines:'+onlines);
@@ -1898,7 +1889,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
         buttons: {}
     };
     
-    options.buttons[MM.lang.s("cancel")] = function() {
+    options.buttons["Fermer"] = function() {
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
         if (button2) {
@@ -1947,11 +1938,11 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
                                     var getnotes = obj.notes;
                                 
                                 if (getnotes) {
-                                    getnotes.unshift({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":$('#thenote').val().replace(/\"/g,'\\"'),"userid":user});
+                                    getnotes.unshift({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":encodeURI($('#thenote').val()),"userid":user});
                                     var jsonNotes = JSON.stringify(getnotes);
                                 }
                                 else 
-                                    var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":"","notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+$("#thenote").val().replace(/\"/g,'\\"')+'","userid":'+user+'}]';
+                                    var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":"","notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+encodeURI($("#thenote").val())+'","userid":'+user+'}]';
                                 
                                 MM.log('jsonNotes:'+jsonNotes);
                                 
