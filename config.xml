@@ -500,5 +500,6 @@
     
 
     <access origin="*" subdomains="true" />
+    <allow-navigation href="http://*/*" />
 
 </widget>
