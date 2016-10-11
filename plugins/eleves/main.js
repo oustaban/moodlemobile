@@ -479,9 +479,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         
                                                         var pifscoursejson = JSON.stringify(pifscourse);
                                                         MM.log('check');
-                                                        var jsonnotes = JSON.stringify(obj.notes);
+                                                        if (obj.notes) {
+                                                            var jsonnotes = JSON.stringify(obj.notes);
+                                                        } else {
+                                                            jsonnotes = "[]";
+                                                        }
+                                                        
+                                                        
                                                         
                                                         MM.log("pifs synchro:"+pifscourse.length);
+                                                        MM.log("Json notes:"+jsonnotes);
                                                              
                                                         var data = {
                                                             "userid" : obj.users,
