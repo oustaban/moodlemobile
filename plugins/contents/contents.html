@@ -8,7 +8,7 @@
     </header>
     <% _.each(sections, function(section) { %>
     <% if (section.modules && section.modules.length >0) { %>
-    <% if (course.managertype == 2) { %>
+    <% if (course.managertype == 2 || course.managertype == 3) { %>
     <% if (section.name=="Offline") { %>
     <section>
         <% if (sections.length > 1) { %>

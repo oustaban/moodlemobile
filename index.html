@@ -268,7 +268,7 @@
                 <ul class="nav submenu">
                     <% _.each(coursePlugins, function(plugin) { %>
                         <% if (plugin.name == 'eleves') { %>
-                            <% if (course.managertype == 2) { %>
+                            <% if (course.managertype == 2 || course.managertype==3) { %>
                             <li class="nav-item">
                                 <a href="<%= plugin.menuURL %><%= course.id %>" class="touch-row">
                                     <% if (plugin.icon) { %>
