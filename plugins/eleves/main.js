@@ -2015,6 +2015,8 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
                 MM.widgets.dialog(html, options);
             }
         );
+    } else {
+        MM.widgets.dialog(html, options);
     }
 }
 
