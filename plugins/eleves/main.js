@@ -1098,6 +1098,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     var notes = obj.notes;
                                     var jsonNotes = JSON.stringify(notes);
                                     var realusers = $('#stopSessionL').attr('users');
+                                    if (jsonNotes == null) {
+                                        jsonNotes ="[]";
+                                    }
                         
                         
                                     var lenghto = result.length - 1;
@@ -1953,6 +1956,10 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
                                 }
                                 else 
                                     var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":"","notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+encodeURI($("#thenote").val())+'","userid":'+user+'}]';
+                                
+                                if (jsonNotes == null) {
+                                    jsonNotes="[]";
+                                }
                                 
                                 MM.log('jsonNotes:'+jsonNotes);
                                 
