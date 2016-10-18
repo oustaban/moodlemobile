@@ -2056,7 +2056,7 @@ function nl2br (str, is_xhtml) {
 function checkthispif(elem) {
     MM.log('checkbox pif clicked');
     var content = $(elem).attr("content");
-    if(elem.is(':checked')) {
+    if($(elem).prop('checked')) {
         $('input[name="a_'+content+'"]').prop('disabled', false);
     } else {
         $('input[name="a_'+content+'"]').prop('disabled', true);
