@@ -762,6 +762,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         if (getnotes) {
                                             var jsonNotes = JSON.stringify(getnotes);
                                         }
+                                        if (jsonNotes == null) {
+                                            jsonNotes="[]";
+                                        }
                                         MM.fs.createFile(resultFile,
                                             function(fileEntry) {
                                                 var content = '{"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
