@@ -1330,27 +1330,34 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                         local_contents.forEach(function(local_content) {
                              var content = local_content.toJSON();
+                             var unchecked = 0;
                              if (content.modname == "scorm") {
-                                html +='<tr><td style="height:40px"><input type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                html +='<tr><td style="height:40px"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                                 if (pifscourse.length > 0) {
                                     pifscormb = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
                                     });
                                     MM.log('pifscormb length:'+pifscormb.length);
+                                    
                                 } else {
                                     pifscormb = [1];
                                 }
                                 
                                 if (pifscormb.length>0) {
                                     html+=' checked="checked"';
+                                } else {
+                                    unchecked = 1;
                                 }
-                                html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.id+'"';
+                                html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                                 pifscorme = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.end == 1;
                                 });
                                 MM.log('pifscorme length:'+pifscorme.length);
                                 if (pifscorme.length>0) {
                                     html+=' checked="checked"';
+                                }
+                                if (unchecked) {
+                                    html+=' disabled="true"'
                                 }
                                 html +='></td></tr>';
                              }
@@ -2044,4 +2051,14 @@ function notePopin( elem ) {
 function nl2br (str, is_xhtml) {   
     var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+}
+
+function checkthispif(elem) {
+    MM.log('checkbox pif clicked');
+    var content = $(elem).attr("content");
+    if(elem.is(':checked')) {
+        $('input[name="a_'+content+'"]').prop('disabled', false);
+    } else {
+        $('input[name="a_'+content+'"]').prop('disabled', true);
+    }
 }
