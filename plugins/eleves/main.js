@@ -1892,7 +1892,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
     
     mergednotes.forEach(function(notecourse) {
         //
-        MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note);
+        MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note+'/'+resultFile);
         var datenote =  new Date(notecourse.notetime*1000);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
         MM.fs.fileExists(resultFile,
@@ -1915,6 +1915,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
     
     
     html+='</table></div>';
+    MM.log('html:'+html);
     
     var options = {
         title: 'Notes pour '+usernotes.fullname,
