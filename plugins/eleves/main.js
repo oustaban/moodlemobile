@@ -1898,7 +1898,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
                 MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note+'/'+resultFile);
                 var datenote =  new Date(notecourse.notetime*1000);
                 var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
-                html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this)">Supprimer</button></td></tr>';
+                html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this)">Supprimer</button></td></tr>';
             });
             html+='</table></div>';
             MM.log('html:'+html);
@@ -2181,7 +2181,8 @@ function SupprimerNotePopin( elem ) {
     var course = $(elem).attr("course");
     var note = $(elem).attr("note");
     var user = $(elem).attr("user");
-    var button=$("button#notes2[user='"+user+"']");
+    var session = $(elem).attr("session");
+    var button=$("button#notes[user='"+user+"']");
     
     var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
     var sessionnotes;
@@ -2205,11 +2206,11 @@ function SupprimerNotePopin( elem ) {
                     function() {
                         MM.log('Confirmation Suppression Note');
                         if (sessionnotes) {
-                            sessionnotes.unshift({"courseid":course,"sessionid":"","noteid":note,"notetime":Math.floor(Date.now() / 1000),"note":"","userid":"","action":"supprimer"});
+                            sessionnotes.unshift({"courseid":course,"sessionid":session,"noteid":note,"notetime":Math.floor(Date.now() / 1000),"note":"","userid":"","action":"supprimer"});
                             var jsonNotes = JSON.stringify(getnotes);
                         }
                         else 
-                            var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":'+note+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"","userid":"","action":"supprimer"}]';
+                            var jsonNotes = '[{"courseid":'+course+',"sessionid":'+session+',"noteid":'+note+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"","userid":"","action":"supprimer"}]';
                         
                         if (jsonNotes == null) {
                             jsonNotes="[]";
