@@ -1870,6 +1870,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
     var thisuser = MM.db.get('users',usernotes.id);
     var sessionnotes2;
     
+    MM.log('notescourse length:'+notescourse.length);
     if (sessionnotes) {
         sessionnotes2 = $.grep(sessionnotes, function( el ) {
                     return el.courseid == course && el.userid == user ;
@@ -2206,11 +2207,11 @@ function SupprimerNotePopin( elem ) {
                     function() {
                         MM.log('Confirmation Suppression Note');
                         if (sessionnotes) {
-                            sessionnotes.unshift({"courseid":course,"sessionid":session,"noteid":note,"notetime":Math.floor(Date.now() / 1000),"note":"","userid":"","action":"supprimer"});
+                            sessionnotes.unshift({"courseid":course,"sessionid":session,"noteid":note,"notetime":Math.floor(Date.now() / 1000),"note":"","userid":user,"action":"supprimer"});
                             var jsonNotes = JSON.stringify(getnotes);
                         }
                         else 
-                            var jsonNotes = '[{"courseid":'+course+',"sessionid":'+session+',"noteid":'+note+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"","userid":"","action":"supprimer"}]';
+                            var jsonNotes = '[{"courseid":'+course+',"sessionid":'+session+',"noteid":'+note+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"","userid":'+user+',"action":"supprimer"}]';
                         
                         if (jsonNotes == null) {
                             jsonNotes="[]";
