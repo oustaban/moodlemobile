@@ -1892,14 +1892,16 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
     
     mergednotes.forEach(function(notecourse) {
         //
-        MM.log('notecourse:'+notecourse);
+        MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note);
         var datenote =  new Date(notecourse.notetime*1000);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
         MM.fs.fileExists(resultFile,
             function (result) {
+                 MM.log('OK1');
                 html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.course+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.course+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this)">Supprimer</button></td></tr>';
             },
             function (result) {
+                MM.log('OK2');
                 html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td>Pour pouvoir modifier ou supprimer une note il faut préalablement démarrer une session/td></tr>';
             }
         );       
