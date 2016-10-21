@@ -1878,7 +1878,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
     
     var addNote = "Valider";
     //var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
-    var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td></tr>';
+    var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Dernière Modification le</td><td>Note</td><td>Action</td></tr>';
     
     if (sessionnotes2 && notescourse)
         var mergednotes=sessionnotes2.concat(notescourse);
@@ -1890,8 +1890,17 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
     mergednotes.forEach(function(notecourse) {
         //
         var datenote =  new Date(notecourse.notetime*1000);
-        var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear();
-        html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td></tr>';
+        var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
+        MM.fs.fileExists(resultFile,
+            function (result) {
+                html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.course+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.course+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this)">Supprimer</button></td></tr>';
+        
+            },
+            function (result) {
+                html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td>Pour pouvoir modifier ou supprimer une note il faut préalablement démarrer une session/td></tr>';
+            },
+        );
+            
         /*
         if (notecourse.sessionid)
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+notecourse.note+'</td><td>&nbsp;</td></tr>';
@@ -1958,12 +1967,13 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
                                     if (obj.notes)
                                         var getnotes = obj.notes;
                                     
+                                    var idalea = chaine_aleatoire(8);
                                     if (getnotes) {
-                                        getnotes.unshift({"courseid":course,"sessionid":"","noteid":"","notetime":Math.floor(Date.now() / 1000),"note":encodeURI($('#thenote').val()),"userid":user});
+                                        getnotes.unshift({"courseid":course,"sessionid":"","noteid":idalea,"notetime":Math.floor(Date.now() / 1000),"note":encodeURI($('#thenote').val()),"userid":user,"action":"ajouter"});
                                         var jsonNotes = JSON.stringify(getnotes);
                                     }
                                     else 
-                                        var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":"","notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+encodeURI($("#thenote").val())+'","userid":'+user+'}]';
+                                        var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":'+idalea+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+encodeURI($("#thenote").val())+'","userid":'+user+',"action":"ajouter"}]';
                                     
                                     if (jsonNotes == null) {
                                         jsonNotes="[]";
@@ -2052,6 +2062,89 @@ function notePopin( elem ) {
     );
 }
 
+
+
+function SupprimerNotePopin( elem ) {
+    
+    MM.log('SupprimerNotePopin');
+    MM.widgets.dialogClose();
+    var course = $(elem).attr("course");
+    var note = $(elem).attr("note");
+    var user = $(elem).attr("user");
+    var button=$("button#notes2[user='"+user+"']");
+    
+    var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+    var sessionnotes;
+    
+    MM.fs.findFileAndReadContents(resultFile,
+        function (result) {
+                var obj = JSON.parse(result);
+                if (obj.notes) {
+                   var sessionnotes = obj.notes;
+                }
+                var starttime = obj.starttime;
+                var users = obj.users;
+                
+                if (sessionnotes) {
+                    var sessionnotes2 = $.grep(sessionnotes, function( el ) {
+                                return el.noteid == note ;
+                    });
+                }
+    
+                MM.popConfirm( "Etes vous sûr de vouloir supprimer cette note ?",
+                    function() {
+                        MM.log('Confirmation Suppression Note');
+                        if (sessionnotes) {
+                            sessionnotes.unshift({"courseid":course,"sessionid":"","noteid":note,"notetime":Math.floor(Date.now() / 1000),"note":"","userid":"","action":"supprimer"});
+                            var jsonNotes = JSON.stringify(getnotes);
+                        }
+                        else 
+                            var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":'+note+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"","userid":"","action":"supprimer"}]';
+                        
+                        if (jsonNotes == null) {
+                            jsonNotes="[]";
+                        }
+                        MM.log('jsonNotes:'+jsonNotes);
+                                
+                        MM.fs.createFile(resultFile,
+                            function(fileEntry) {
+                                var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":'+jsonNotes+'}';
+                                MM.log('Recreate Session:'+content);
+                                MM.fs.writeInFile(fileEntry, content, 
+                                    function(fileUrl) {
+                                        MM.log('Write Session OK:'+fileUrl);
+                                        button.click();
+                                    },
+                                    function(fileUrl) {
+                                        MM.log('Write Session NOK:'+content);
+                                        button.click();
+                                    }
+                                    
+                                );
+                            },   
+                                
+                            function(fileEntry) {
+                               MM.log('Recreate Session : NOK');
+                               button.click();
+                               
+                            }
+                        );
+                    },
+                    function() {
+                        MM.log('Annulation Suppression Note');
+                        button.click();
+                    }
+                );
+                
+        },
+        function (result) {
+            MM.log('Sessionnotes NOK:'+sessionnotes);
+            button.click();
+        }
+    );
+    
+}
+
 function nl2br (str, is_xhtml) {   
     var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
     return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
@@ -2065,4 +2158,18 @@ function checkthispif(elem) {
     } else {
         $('input[name="a_'+content+'"]').prop('disabled', true);
     }
+}
+
+// Génération d'une chaine aléatoire
+function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn123456789')
+{
+    $nb_lettres = strlen($chaine) - 1;
+    $generation = '';
+    for($i=0; $i < $nb_car; $i++)
+    {
+        $pos = mt_rand(0, $nb_lettres);
+        $car = $chaine[$pos];
+        $generation .= $car;
+    }
+    return $generation;
 }
