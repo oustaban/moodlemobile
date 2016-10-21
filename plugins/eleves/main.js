@@ -2219,7 +2219,7 @@ function SupprimerNotePopin( elem ) {
                         MM.fs.createFile(resultFile,
                             function(fileEntry) {
                                 var content = '{"starttime":"'+starttime+'","users":"'+users+'","notes":'+jsonNotes+'}';
-                                MM.log('Recreate Session:'+content);
+                                MM.log('Recrate Session:'+content);
                                 MM.fs.writeInFile(fileEntry, content, 
                                     function(fileUrl) {
                                         MM.log('Write Session OK:'+fileUrl);
