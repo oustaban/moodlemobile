@@ -2159,15 +2159,12 @@ function checkthispif(elem) {
 }
 
 // Génération d'une chaine aléatoire
-function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn123456789')
+function chaine_aleatoire(plength)
 {
-    $nb_lettres = strlen($chaine) - 1;
-    $generation = '';
-    for($i=0; $i < $nb_car; $i++)
-    {
-        $pos = mt_rand(0, $nb_lettres);
-        $car = $chaine[$pos];
-        $generation .= $car;
+	var temp="";
+    var keylist="abcdefghijklmnopqrstuvwxyz123456789";
+	for (var i=0;i<plength;i++) {
+        temp+=keylist.charAt(Math.floor(Math.random()*keylist.length));
     }
-    return $generation;
+	return temp
 }
