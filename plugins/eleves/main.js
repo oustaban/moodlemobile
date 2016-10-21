@@ -1876,6 +1876,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
         });
     }
     
+    trace('sessionnotes2:'+sessionnotes2);
     var addNote = "Valider";
     //var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
     var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Dernière Modification le</td><td>Note</td><td>Action</td></tr>';
@@ -1886,6 +1887,8 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
         mergednotes = notescourse;
     if (sessionnotes2 && !notescourse)
         mergednotes = sessionnotes2;
+    
+    trace('mergednotes:'+mergednotes);
     
     mergednotes.forEach(function(notecourse) {
         //
