@@ -1898,7 +1898,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2)
                 MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note+'/'+resultFile);
                 var datenote =  new Date(notecourse.notetime*1000);
                 var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
-                html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.course+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.course+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this)">Supprimer</button></td></tr>';
+                html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this)">Supprimer</button></td></tr>';
             });
             html+='</table></div>';
             MM.log('html:'+html);
