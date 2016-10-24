@@ -1879,27 +1879,47 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
             return parseFloat(a.notetime) - parseFloat(b.notetime);
         });
         //On compare les notes de session avec les notes dans le cache
-        sessionnotes2.forEach(function(notesession,indexsession) {
+        for (var i=0;i<sessionotes2.length;i++) {
             MM.log('Parcours sessionotes2/cache :'+sessionnotes2.length);
-            notescourse.forEach(function(notecourse,indexcourse) {
-                if (notesession.noteid ==  notecourse.noteid) {
-                    if (notessesion.action == "supprimer") {
+            for (var k=0;k<notescourse.length;k++) {
+                if (sessionotes2[i].noteid ==  notescourse[k].noteid) {
+                    if (sessionotes2[i].action == "supprimer") {
                          MM.log('Suppression note Cache par note Session');
-                         notescourse.splice(indexcourse,1);
-                         sessionnotes2.splice(indexsession,1);
+                         notescourse.splice(k,1);
+                         sessionnotes2.splice(i,1);
                          break;
                     }
-                    if (notessesion.action == "modifier") {
+                    if (sessionotes2[i].action == "modifier") {
                          MM.log('Modification note Cache par note Session');
-                         notescourse[index].note = notesession.note;
-                         sessionnotes2.splice(indexsession,1);
+                         notescourse[k].note = notesession.note;
+                         sessionnotes2.splice(i,1);
                          
                     }
                 }
-            }); 
-        });
+            }
+        }
         
         //On compare les notes de session avec les autres notes de session
+        for (i=0;i<sessionotes2.length;i++) {
+            MM.log('Parcours sessionotes2/cache :'+sessionnotes2.length);
+            for (k=0;k<notesession2.length;k++) {
+                if (sessionotes2[i].noteid ==  sessionotes2[k].noteid) {
+                    if (sessionotes2[k].action == "supprimer") {
+                         MM.log('Suppression note Session par note Session');
+                         sessionnotes2.splice(k,1);
+                         sessionnotes2.splice(i,1);
+                         break;
+                    }
+                    if (sessionotes2[k].action == "modifier") {
+                         MM.log('Modification note Session par note Session');
+                         sessionnotes2[i].note = sessionnotes2[k].note;
+                         sessionnotes2.splice(k,1);
+                         
+                    }
+                }
+            }
+        }
+        
         sessionnotes2.forEach(function(notesession,indexsession) {
             MM.log('Parcours sessionotes2/sessionotes2 :'+sessionnotes2.length);
             sessionnotes2.forEach(function(notesession2,indexsession2) {
