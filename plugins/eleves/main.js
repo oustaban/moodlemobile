@@ -1920,25 +1920,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
             }
         }
         
-        sessionnotes2.forEach(function(notesession,indexsession) {
-            MM.log('Parcours sessionotes2/sessionotes2 :'+sessionnotes2.length);
-            sessionnotes2.forEach(function(notesession2,indexsession2) {
-                if (notesession.noteid ==  notesession2.noteid) {
-                    if (notessesion2.action == "supprimer") {
-                        MM.log('Suppression note Session par note Session');
-                         sessionnotes2.splice(indexsession2,1);
-                         sessionnotes2.splice(indexsession,1);
-                         break;
-                    }
-                    if (notessesion2.action == "modifier") {
-                         MM.log('Modification note Session par note Session')
-                         sessionnotes2[indexsession].note = notesession2.note;
-                         sessionnotes2.splice(indexsession2,1);
-                         break;
-                    }
-                }
-            }); 
-        });
+        
         
     }
     
