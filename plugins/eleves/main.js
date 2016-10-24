@@ -2134,7 +2134,7 @@ function SupprimerNotePopin( elem ) {
                         MM.log('Confirmation Suppression Note');
                         if (sessionnotes) {
                             sessionnotes.unshift({"courseid":course,"sessionid":session,"noteid":note,"notetime":Math.floor(Date.now() / 1000),"note":"","userid":user,"action":"supprimer"});
-                            var jsonNotes = JSON.stringify(getnotes);
+                            var jsonNotes = JSON.stringify(sessionnotes);
                         }
                         else 
                             var jsonNotes = '[{"courseid":'+course+',"sessionid":'+session+',"noteid":'+note+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"","userid":'+user+',"action":"supprimer"}]';
