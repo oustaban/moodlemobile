@@ -1926,7 +1926,10 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 }
             }
         }
-        
+        //On réordonne les notes par date desc
+        sessionnotes2.sort(function(a, b) {
+            return parseFloat(b.notetime) - parseFloat(a.notetime);
+        });
         
         
     }
