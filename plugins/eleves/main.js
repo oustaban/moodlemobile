@@ -1909,7 +1909,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                          MM.log('Suppression note Session par note Session:'+sessionnotes2[k].noteid + 'par' + sessionnotes2[i].noteid );
                          sessionnotes2.splice(i,1);
                          sessionnotes2.splice(k-1,1);
-                         i=0;
+                         i=-1;
                          
                          break;
                     }
