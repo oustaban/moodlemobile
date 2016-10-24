@@ -1875,6 +1875,41 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         sessionnotes2 = $.grep(sessionnotes, function( el ) {
                     return el.courseid == course && el.userid == user ;
         });
+        sessionnotes2.sort(function(a, b) {
+            return parseFloat(a.notetime) - parseFloat(b.notetime);
+        });
+        //On compare les notes de session avec les notes dans le cache
+        sessionnotes2.forEach(function(notesession,indexsession) {
+            notescourse.forEach(function(notescourse,indexcourse) {
+                if (notesession.noteid =  notecourse.noteid) {
+                    if (notessesion.action == "supprimer") {
+                         notescourse.splice(indexcourse,1);
+                         sessionnotes2.splice(indexsession,1);
+                    }
+                    if (notessesion.action == "modifier") {
+                         notescourse[index].note = notesession.note;
+                         sessionnotes2.splice(indexsession,1);
+                    }
+                }
+            }); 
+        });
+        
+        //On compare les notes de session avec les autres notes de session
+        sessionnotes2.forEach(function(notesession,indexsession) {
+            sessionnotes2.forEach(function(notesession2,indexsession2) {
+                if (notesession.noteid =  notesession2.noteid) {
+                    if (notessesion2.action == "supprimer") {
+                         sessionnotes2.splice(indexsession2,1);
+                         sessionnotes2.splice(indexsession2,1);
+                    }
+                    if (notessesion2.action == "modifier") {
+                         sessionnotes2[indexsession].note = notesession2.note;
+                         sessionnotes2.splice(indexsession2,1);
+                    }
+                }
+            }); 
+        });
+        
     }
     
     MM.log('sessionnotes2:'+sessionnotes2);
@@ -1892,7 +1927,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     MM.log('mergednotes:'+mergednotes);
     
     mergednotes.forEach(function(notecourse) {
-        MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note+'/'+resultFile);
+        MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note+'/'+notecourse.action);
         var datenote =  new Date(notecourse.notetime*1000);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
         if (sessionOk) {
