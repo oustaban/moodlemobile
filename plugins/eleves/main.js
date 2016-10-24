@@ -1880,13 +1880,16 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         });
         //On compare les notes de session avec les notes dans le cache
         sessionnotes2.forEach(function(notesession,indexsession) {
+            MM.log('Parcours sessionotes2/cache :'sessionnotes2.length);
             notescourse.forEach(function(notecourse,indexcourse) {
                 if (notesession.noteid =  notecourse.noteid) {
                     if (notessesion.action == "supprimer") {
+                         MM.log('Suppression note Cache par note Session');
                          notescourse.splice(indexcourse,1);
                          sessionnotes2.splice(indexsession,1);
                     }
                     if (notessesion.action == "modifier") {
+                         MM.log('Modification note Cache par note Session');
                          notescourse[index].note = notesession.note;
                          sessionnotes2.splice(indexsession,1);
                     }
@@ -1896,13 +1899,16 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         
         //On compare les notes de session avec les autres notes de session
         sessionnotes2.forEach(function(notesession,indexsession) {
+            MM.log('Parcours sessionotes2/sessionotes2 :'sessionnotes2.length);
             sessionnotes2.forEach(function(notesession2,indexsession2) {
                 if (notesession.noteid =  notesession2.noteid) {
                     if (notessesion2.action == "supprimer") {
+                        MM.log('Suppression note Session par note Session');
                          sessionnotes2.splice(indexsession2,1);
                          sessionnotes2.splice(indexsession,1);
                     }
                     if (notessesion2.action == "modifier") {
+                         MM.log('Modification note Session par note Session')
                          sessionnotes2[indexsession].note = notesession2.note;
                          sessionnotes2.splice(indexsession2,1);
                     }
