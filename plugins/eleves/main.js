@@ -1879,17 +1879,17 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
             return parseFloat(a.notetime) - parseFloat(b.notetime);
         });
         //On compare les notes de session avec les notes dans le cache
-        for (var i=0;i<sessionotes2.length;i++) {
+        for (var i=0;i<sessionnotes2.length;i++) {
             MM.log('Parcours sessionotes2/cache :'+sessionnotes2.length);
             for (var k=0;k<notescourse.length;k++) {
-                if (sessionotes2[i].noteid ==  notescourse[k].noteid) {
-                    if (sessionotes2[i].action == "supprimer") {
+                if (sessionnotes2[i].noteid ==  notescourse[k].noteid) {
+                    if (sessionnotes2[i].action == "supprimer") {
                          MM.log('Suppression note Cache par note Session');
                          notescourse.splice(k,1);
                          sessionnotes2.splice(i,1);
                          break;
                     }
-                    if (sessionotes2[i].action == "modifier") {
+                    if (sessionnotes2[i].action == "modifier") {
                          MM.log('Modification note Cache par note Session');
                          notescourse[k].note = notesession.note;
                          sessionnotes2.splice(i,1);
@@ -1900,17 +1900,17 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         }
         
         //On compare les notes de session avec les autres notes de session
-        for (i=0;i<sessionotes2.length;i++) {
+        for (i=0;i<sessionnotes2.length;i++) {
             MM.log('Parcours sessionotes2/cache :'+sessionnotes2.length);
-            for (k=0;k<notesession2.length;k++) {
-                if (sessionotes2[i].noteid ==  sessionotes2[k].noteid) {
-                    if (sessionotes2[k].action == "supprimer") {
+            for (k=0;k<sessionnotes2.length;k++) {
+                if (sessionnotes2[i].noteid ==  sessionnotes2[k].noteid) {
+                    if (sessionnotes2[k].action == "supprimer") {
                          MM.log('Suppression note Session par note Session');
                          sessionnotes2.splice(k,1);
                          sessionnotes2.splice(i,1);
                          break;
                     }
-                    if (sessionotes2[k].action == "modifier") {
+                    if (sessionnotes2[k].action == "modifier") {
                          MM.log('Modification note Session par note Session');
                          sessionnotes2[i].note = sessionnotes2[k].note;
                          sessionnotes2.splice(k,1);
