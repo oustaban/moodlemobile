@@ -2006,7 +2006,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                             if (obj.notes)
                                 var getnotes = obj.notes;
                             
-                            var idalea = chaine_aleatoire(8);
+                            var idalea = chaine_aleatoire(12);
                             if (getnotes) {
                                 getnotes.unshift({"courseid":course,"sessionid":"","noteid":idalea,"notetime":Math.floor(Date.now() / 1000),"note":encodeURI($('#thenote').val()),"userid":user,"action":"ajouter"});
                                 var jsonNotes = JSON.stringify(getnotes);
@@ -2083,6 +2083,7 @@ function notePopin( elem ) {
     var sessionnotes;
     MM.fs.findFileAndReadContents(resultFile,
         function (result) {
+                MM.log('JSON Session:' + result);
                 var obj = JSON.parse(result);
                 if (obj.notes) {
                    sessionnotes = obj.notes;
@@ -2201,7 +2202,7 @@ function checkthispif(elem) {
 function chaine_aleatoire(plength)
 {
 	var temp="";
-    var keylist="abcdefghijklmnopqrstuvwxyz123456789";
+    var keylist="123456789";
 	for (var i=0;i<plength;i++) {
         temp+=keylist.charAt(Math.floor(Math.random()*keylist.length));
     }
