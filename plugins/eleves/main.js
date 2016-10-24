@@ -1885,7 +1885,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 
                 if (sessionnotes2[i].noteid ==  notescourse[k].noteid) {
                     if (sessionnotes2[i].action == "supprimer") {
-                         MM.log('Suppression note Cache par note Session:'+sessionnotes2[i].noteid);
+                         MM.log('Suppression note Cache par note Session:'+notescourse[k].noteid+' par '+sessionnotes2[i].noteid);
                          notescourse.splice(k,1);
                          sessionnotes2.splice(i,1);
                          break;
@@ -1906,7 +1906,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 MM.log('Parcours Session/Session :'+sessionnotes2.length+'/'+i+'/'+k);
                 if (sessionnotes2[i].noteid ==  sessionnotes2[k].noteid) {
                     if (sessionnotes2[k].action == "supprimer") {
-                         MM.log('Suppression note Session par note Session');
+                         MM.log('Suppression note Session par note Session:'+sessionnotes2[k].noteid + 'par' + sessionnotes2[i].noteid );
                          sessionnotes2.splice(k,1);
                          sessionnotes2.splice(i,1);
                          break;
