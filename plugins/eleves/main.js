@@ -1880,7 +1880,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         });
         //On compare les notes de session avec les notes dans le cache
         sessionnotes2.forEach(function(notesession,indexsession) {
-            MM.log('Parcours sessionotes2/cache :'sessionnotes2.length);
+            MM.log('Parcours sessionotes2/cache :'+sessionnotes2.length);
             notescourse.forEach(function(notecourse,indexcourse) {
                 if (notesession.noteid =  notecourse.noteid) {
                     if (notessesion.action == "supprimer") {
@@ -1899,7 +1899,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         
         //On compare les notes de session avec les autres notes de session
         sessionnotes2.forEach(function(notesession,indexsession) {
-            MM.log('Parcours sessionotes2/sessionotes2 :'sessionnotes2.length);
+            MM.log('Parcours sessionotes2/sessionotes2 :'+sessionnotes2.length);
             sessionnotes2.forEach(function(notesession2,indexsession2) {
                 if (notesession.noteid =  notesession2.noteid) {
                     if (notessesion2.action == "supprimer") {
