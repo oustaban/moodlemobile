@@ -1880,7 +1880,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         });
         //On compare les notes de session avec les notes dans le cache
         sessionnotes2.forEach(function(notesession,indexsession) {
-            notescourse.forEach(function(notescourse,indexcourse) {
+            notescourse.forEach(function(notecourse,indexcourse) {
                 if (notesession.noteid =  notecourse.noteid) {
                     if (notessesion.action == "supprimer") {
                          notescourse.splice(indexcourse,1);
@@ -1900,7 +1900,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 if (notesession.noteid =  notesession2.noteid) {
                     if (notessesion2.action == "supprimer") {
                          sessionnotes2.splice(indexsession2,1);
-                         sessionnotes2.splice(indexsession2,1);
+                         sessionnotes2.splice(indexsession,1);
                     }
                     if (notessesion2.action == "modifier") {
                          sessionnotes2[indexsession].note = notesession2.note;
