@@ -1950,7 +1950,11 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         var datenote =  new Date(notecourse.notetime*1000);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
         if (sessionOk) {
-            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this)">Supprimer</button></td></tr>';
+            if (button2)
+                var backTo = 1;
+            else
+                backTo = 0;
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this,'+backTo+')">Supprimer</button></td></tr>';
         } else {
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td>Pour pouvoir modifier ou supprimer une note il faut préalablement démarrer une session</td></tr>';
         }
@@ -2108,7 +2112,7 @@ function notePopin( elem ) {
 
 
 
-function SupprimerNotePopin( elem ) {
+function SupprimerNotePopin( elem,backTo ) {
     
     MM.log('SupprimerNotePopin');
     MM.widgets.dialogClose();
@@ -2116,8 +2120,10 @@ function SupprimerNotePopin( elem ) {
     var note = $(elem).attr("note");
     var user = $(elem).attr("user");
     var session = $(elem).attr("session");
-    var button=$("button#notes[user='"+user+"']");
-    
+    if (!backTo)
+        var button=$("button#notes[user='"+user+"']");
+    else
+        button=$("#stopSessionL");
     var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
     var sessionnotes;
     
