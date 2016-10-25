@@ -2208,7 +2208,7 @@ function ModifierNotePopin( elem,backTo ) {
     var note = $(elem).attr("note");
     var user = $(elem).attr("user");
     var session = $(elem).attr("session");
-    var message = nl2br(decodeURI($(elem).attr("message")))
+    var message = decodeURI($(elem).attr("message"));
     if (!backTo)
         var button=$("button#notes[user='"+user+"']");
     else
