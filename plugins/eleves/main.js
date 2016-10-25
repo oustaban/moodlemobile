@@ -1957,7 +1957,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 var backTo = 1;
             else
                 backTo = 0;
-            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" message="'+notecourse.note+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this)">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this,'+backTo+')">Supprimer</button></td></tr>';
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" message="'+notecourse.note+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this,'+backTo+')">Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this,'+backTo+')">Supprimer</button></td></tr>';
         } else {
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td>Pour pouvoir modifier ou supprimer une note il faut préalablement démarrer une session</td></tr>';
         }
