@@ -2264,6 +2264,7 @@ function ModifierNotePopin( elem,backTo ) {
                         jsonNotes="[]";
                     }
                     
+                    $(elem).attr("message",encodeURI($('#thenote').val()));
                     MM.log('jsonNotes:'+jsonNotes);
                     
                     MM.fs.createFile(resultFile,
