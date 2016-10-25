@@ -2254,11 +2254,11 @@ function ModifierNotePopin( elem,backTo ) {
                     
                     var idalea = chaine_aleatoire(12);
                     if (getnotes) {
-                        getnotes.unshift({"courseid":course,"sessionid":"","noteid":note,"notetime":Math.floor(Date.now() / 1000),"note":encodeURI($('#thenote').val()),"userid":user,"action":"modifier"});
+                        getnotes.unshift({"courseid":course,"sessionid":session,"noteid":note,"notetime":Math.floor(Date.now() / 1000),"note":encodeURI($('#thenote').val()),"userid":user,"action":"modifier"});
                         var jsonNotes = JSON.stringify(getnotes);
                     }
                     else 
-                        var jsonNotes = '[{"courseid":'+course+',"sessionid":"","noteid":'+note+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+encodeURI($("#thenote").val())+'","userid":'+user+',"action":"modifier"}]';
+                        var jsonNotes = '[{"courseid":'+course+',"sessionid":'+session+',"noteid":'+note+',"notetime":'+Math.floor(Date.now() / 1000)+',"note":"'+encodeURI($("#thenote").val())+'","userid":'+user+',"action":"modifier"}]';
                     
                     if (jsonNotes == null) {
                         jsonNotes="[]";
