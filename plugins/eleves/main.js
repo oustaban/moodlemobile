@@ -1894,6 +1894,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                     if (sessionnotes2[i].action == "modifier") {
                          MM.log('Modification note Cache par note Session');
                          notescourse[k].note = sessionnotes2[i].note;
+                         notescourse[k].notetime = sessionnotes2[i].notetime;
                          sessionnotes2.splice(i,1);
                          i=-1;
                          break;
@@ -1919,6 +1920,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                     if (sessionnotes2[k].action == "modifier") {
                          MM.log('Modification note Session par note Session');
                          sessionnotes2[i].note = sessionnotes2[k].note;
+                         sessionnotes2[i].notetime = sessionnotes2[k].notetime;
                          sessionnotes2.splice(k,1);
                          i=-1;
                          break;
