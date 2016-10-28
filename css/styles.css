@@ -1968,7 +1968,7 @@ div.jqi button.jqidefaultbutton {
   background: -webkit-linear-gradient(top, #FF8C00, #FF8C00);
 }
 #offlineC {
-  display:none;
+  visibility:hidden;
 }
 #showSessionL {
   color:black;

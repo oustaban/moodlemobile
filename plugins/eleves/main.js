@@ -273,7 +273,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             
                             $('#showSessionL').hide();
-                            $('#offlineC').show();
+                            //$('#offlineC').show();
+                            $('#offlineC').css('visibility','visible');
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
                             $('#stopSessionL').show();      
@@ -294,7 +295,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 });
                             }
                             
-                            $('#offlineC').hide();
+                            //$('#offlineC').hide();
+                            $('#offlineC').css('visibility','hidden');
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
                             $('#stopSessionL').hide();      
@@ -329,7 +331,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 if (!obj.endtime) {
                                                     
                                                      $('#showSessionL').hide();
-                                                     $('#offlineC').hide();
+                                                     //$('#offlineC').hide();
+                                                     $('#offlineC').css('visibility','hidden');
                                                      $('#showCourseL').hide();
                                                      $('#stopCourseL').show();
                                                      $('#stopSessionL').hide();
@@ -910,7 +913,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $('#stopSessionL').attr('starttime',d.getTime());
                                         $('#stopSessionL').hide();
                                         $('#showSessionL').hide();
-                                        $('#offlineC').show();
+                                        //$('#offlineC').show();
+                                        $('#offlineC').css('visibility','visible');
                                     },
                                     function(fileUrl) {
                                         MM.log('Write Session NOK:'+content);
@@ -1123,7 +1127,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.log('Write Session content:'+content);
                                                     
                                                     $('#showSessionL').show();
-                                                    $('#offlineC').hide();
+                                                    //$('#offlineC').hide();
+                                                    $('#offlineC').css('visibility','hidden');
                                                     $('#showCourseL').hide();
                                                     $('#stopCourseL').hide();
                                                     $('#stopSessionL').hide();
@@ -1276,7 +1281,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 });
                                 
                                 $('#showSessionL').show();
-                                $('#offlineC').hide();
+                                //$('#offlineC').hide();
+                                $('#offlineC').css('visibility','hidden');
                                 $('#showCourseL').hide();
                                 $('#stopCourseL').hide();
                                 $('#stopSessionL').hide();
@@ -1489,7 +1495,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $('#stopCourseL').show();
                                                 $('#showCourseL').hide();
                                                 $('#stopSessionL').hide();
-                                                $('#offlineC').hide();
+                                                //$('#offlineC').hide();
+                                                $('#offlineC').css('visibility','hidden');
                                                 MM.plugins.resource._showResource(path);
                                     
                                                 
@@ -1567,7 +1574,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                               else
                                                 $("#showCourseL").hide();
                                               $('#stopSessionL').show();
-                                              $('#offlineC').show();
+                                              //$('#offlineC').show();
+                                              $('#offlineC').css('visibility','visible');
                                           },
                                           function(fileUrl) {
                                               MM.log('Write Result NOK:'+content);
