@@ -971,7 +971,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
                         
                         var addNote = "Valider";
-                        var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Apprenants</td><td>Modules</td><td>Actions</td></tr>';
+                        var html = '<div id="sessionContent"><table width="100%" border="0" class="tablo"><tr><th>Apprenants</th><th>Modules</th><th>Actions</th></tr>';
 
                         var options = {
                             title: 'Récapitulatif de la session du '+startDate,
@@ -1331,7 +1331,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var thisuser = MM.db.get('users',userpif.id);
                         
                         var addNote = "Valider";
-                        var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td><b>A remplir avant la formation</b></td><td>&nbsp;</td><td><b>A remplir à l’issue du parcours de formation</b></td></tr><tr><td><b>Compétences à développer dans le cadre du parcours de formation</b></td><td><b>Intitulé des séquences pédagogiques</b></td><td><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
+                        var html = '<div id="sessionContent"><table width="100%" border="0" class="tablo"><tr><th><b>A remplir avant la formation</b></th><th>&nbsp;</th><th><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td><b>Compétences à développer dans le cadre du parcours de formation</b></td><td><b>Intitulé des séquences pédagogiques</b></td><td><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
                         
                         var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                         local_contents.forEach(function(local_content) {
@@ -1946,7 +1946,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     MM.log('sessionnotes2:'+sessionnotes2);
     var addNote = "Valider";
     //var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
-    var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Dernière Modification le</td><td>Note</td><td>Action</td></tr>';
+    var html = '<div id="sessionContent"><table width="100%" border="0" class="tablo"><tr><th>Dernière Modification le</th><th>Note</th><th>Action</th></tr>';
     
     if (sessionnotes2 && notescourse)
         var mergednotes=sessionnotes2.concat(notescourse);
@@ -1996,7 +1996,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
             
             MM.widgets.dialogClose();
             
-            var html2 = '<div id="sessionContent"><table width="100%" border="1">';
+            var html2 = '<div id="sessionContent"><table width="100%" border="0" class="tablo">';
             html2+='<tr><td style="height:40px"><textarea id="thenote" cols="20" rows="5" name="thenote"></textarea></td></tr>';
             html2+='<script>$("#thenote").focus();</script>';
             html2+='</table></div>';
@@ -2228,7 +2228,7 @@ function ModifierNotePopin( elem,backTo ) {
     var usersnotes = MM.db.where('users', {userid:parseInt(user)});
     var usernotes = usersnotes[0].toJSON();
     
-    var html2 = '<div id="sessionContent"><table width="100%" border="1">';
+    var html2 = '<div id="sessionContent"><table width="100%" border="0" class="tablo">';
     html2+='<tr><td style="height:40px"><textarea id="thenote" cols="20" rows="5" name="thenote">'+message+'</textarea></td></tr>';
     html2+='<script>$("#thenote").focus();</script>';
     html2+='</table></div>';
