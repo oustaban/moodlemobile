@@ -1987,12 +1987,16 @@ div.jqi button.jqidefaultbutton {
 #showSessionL {
   display:none;
   height:40px;
+  width:300px;
 }
 #stopSessionL {
   display:none;
   height:40px;
 }
-
+#noteM, #noteS {
+  width:150px;
+  height:50px;
+}
 
 #buttons {
     bottom: 0;
