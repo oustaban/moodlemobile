@@ -81,7 +81,7 @@
 
     <gap:platform name="ios" />
     <gap:platform name="android" />
-    <gap platform name="winphone" />
+    <gap:platform name="winphone" />
 
     <plugin name="cordova-plugin-inappbrowser" spec="1.5.0" source="npm" />
     <plugin name="cordova-plugin-camera" spec="2.3.0" source="npm" />
