@@ -2088,6 +2088,13 @@ span#roweleve {
   content:"<";
 }
 
+ul#listeparticipants1 li:nth-child(odd) {
+		background:#fff7ec;
+}
+ul#listeparticipants2 li:nth-child(odd) {
+		background:#fff7ec;
+}
+
 li#lielevelP.nav-item.hide {
   display:none;
 }
