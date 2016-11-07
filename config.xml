@@ -31,6 +31,9 @@
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="iosPersistentFileLocation" value="Compatibility" />
 
+    <preference name="windows-appx-target" value="uap" />
+    <preference name="windows-arch" value="anycpu" />
+
     <icon src="icon.png" />
     <icon src="img/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
     <icon src="img/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
