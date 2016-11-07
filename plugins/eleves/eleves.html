@@ -26,7 +26,7 @@
     <% } %>
     <div id="buttons">
         <div class="centered2">
-            <button id="showSessionL" course="<%= courseId %>" users="" path="" module="">Démarrage session</button>
+            <button id="showSessionL" course="<%= courseId %>" users="" path="" module="" class="btn grd-vert text-blanc">Démarrage session</button>
         </div>
         <div class="centered2">
             <select name="offlineC" id="offlineC">
@@ -34,15 +34,15 @@
             </select>
         </div>
         <div class="centered2">
-            <button id="showCourseL" course="<%= courseId %>" users="" path="" module="">Démarrer le module</button>
+            <button id="showCourseL" course="<%= courseId %>" users="" path="" module="" class="btn grd-vert text-blanc">Démarrer le module</button>
         </div>
         <div class="centered2">
-            <button id="stopCourseL" course="<%= courseId %>" users="" module="">Arrêter le module</button></a>
+            <button id="stopCourseL" course="<%= courseId %>" users="" module="" class="btn grd-rouge text-blanc">Arrêter le module</button></a>
         </div>
         <div class="centered2">
-            <button id="stopSessionL" course="<%= courseId %>" starttime="" users="" path="" module="">Fin de session</button>
+            <button id="stopSessionL" course="<%= courseId %>" starttime="" users="" path="" module="" class="btn grd-rouge text-blanc">Fin de session</button>
         </div>
         <div class="centered2">
-            <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>">Synchroniser les Résultats</button>
+            <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>" class="btn grd-orange text-blanc" >Synchroniser les Résultats</button>
         </div>
     </div>
