@@ -1961,36 +1961,34 @@ div.jqi button.jqidefaultbutton {
 
 #stopCourse {
   display:none;
+  height:40px;
 }
 #synchroR {
   display:none;
-  color:black;
-  background: -webkit-linear-gradient(top, #FF8C00, #FF8C00);
+  height:40px;
 }
 #offlineC {
   visibility:hidden;
 }
 #showSessionL {
-  color:black;
-  background: -webkit-linear-gradient(top, #008000, #008000);
+  height:40px;
+  
 }
 #showCourseL {
   display:none;
-  color:black;
-  background: -webkit-linear-gradient(top, #008000, #008000);
+  height:40px;
 }
 #stopCourseL {
   display:none;
-  color:black;
-  background: -webkit-linear-gradient(top, #C03000, #C03000);
+  height:40px;
 }
 #showSessionL {
   display:none;
+  height:40px;
 }
 #stopSessionL {
   display:none;
-  color:black;
-  background: -webkit-linear-gradient(top, #C03000, #C03000);
+  height:40px;
 }
 
 
@@ -2056,7 +2054,7 @@ div#listeparticipants {
 div.centered2 {
   float: left;
   margin: auto;
-  padding-top: 12px;
+  padding-top: 2px;
   display: block;
   /* min-width: 10px; */
   padding-left: 10px
@@ -2094,12 +2092,12 @@ li#lielevelP.nav-item.hide {
   display:none;
 }
 #pif {
-  width: 80px;
+  width: 100px;
   display: table-cell;
   height: 50px;
 }
 #notes {
-  width: 80px;
+  width: 100px;
   height: 50px;
   display:table-cell;
 }
@@ -2109,11 +2107,10 @@ li#lielevelP.nav-item.hide {
 	.btn {
 		border:2px #aaaaaa solid;
 		border-radius: 8px;
-		padding:12px 28px;
 		font-family: "Open sans","Helvetica","Arial",sans-serif;
 		font-weight:normal; 
 		font-size:22px;
-		margin:5px 15px;
+		margin:10px 10px;
 	}
 	.btn:active {
 		border:2px #333 solid;
