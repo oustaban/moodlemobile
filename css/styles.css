@@ -2088,24 +2088,7 @@ span#roweleve {
 li#lielevelP.nav-item.hide {
   display:none;
 }
-#pif {
-  width: 80px;
-  margin-right: 10px;
-  display: table-cell;
-  height: 50px;
-  border: 2px solid black;
-  background: -webkit-linear-gradient(top, #ccc, #777);
-  color: #000;
-}
-#notes {
-  width: 80px;
-  margin-right: 10px;
-  height: 50px;
-  border: 2px solid black;
-  background: -webkit-linear-gradient(top, #ccc, #777);
-  color: #000;
-  display:table-cell;
-}
+
 
 
 /* BOUTONS */
