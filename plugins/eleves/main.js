@@ -1378,10 +1378,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             buttons: {}
                         };
                         
-                        options.buttons[MM.lang.s("cancel")] = function() {
-                            MM.Router.navigate("eleves/" + course );
-                            MM.widgets.dialogClose();
-                        };
+                        
                         
                         options.buttons["Valider"] = function() {
                             MM.log('userspif:'+userspif);
@@ -1424,6 +1421,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //MM.Router.navigate("eleves/" + course );
                             MM.widgets.dialogClose();
                         }
+                        
+                        options.buttons[MM.lang.s("cancel")] = function() {
+                            MM.Router.navigate("eleves/" + course );
+                            MM.widgets.dialogClose();
+                        };
                         
                         MM.widgets.dialog(html, options);
                         
@@ -2239,11 +2241,7 @@ function ModifierNotePopin( elem,backTo ) {
         buttons: {}
     };
     
-    options2.buttons[MM.lang.s("cancel")] = function() {
-        //MM.Router.navigate("eleves/" + course );
-        MM.widgets.dialogClose();
-        button.click();
-    };
+   
     
     
     options2.buttons["Valider"] = function() {
@@ -2308,6 +2306,12 @@ function ModifierNotePopin( elem,backTo ) {
     
         
     }
+    
+     options2.buttons[MM.lang.s("cancel")] = function() {
+        //MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+        button.click();
+    };
     
     MM.widgets.dialog(html2, options2);
     
