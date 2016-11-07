@@ -2020,10 +2020,15 @@ div#secondcolumn {
 div#divsearch {
   height:40px;
   border-bottom:1px solid black;
+  background: #203469;
+  color: #fff;
 }
 div#divselection {
   height:40px;
   border-bottom:1px solid black;
+  background: #203469;
+  color: #fff;
+    
 }
 input.elevecheckbox {
   display:none;
