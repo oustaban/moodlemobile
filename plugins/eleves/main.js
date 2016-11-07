@@ -1983,13 +1983,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         buttons: {}
     };
     
-    options.buttons["Fermer"] = function() {
-        MM.Router.navigate("eleves/" + course );
-        MM.widgets.dialogClose();
-        if (button2) {
-            $('#stopSessionL').click();
-        }
-    };
+    
     
     
     if (button2) {
@@ -2082,9 +2076,25 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
             
             
         }
+        
+        options.buttons["Fermer"] = function() {
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            if (button2) {
+                $('#stopSessionL').click();
+            }
+        };
         MM.widgets.dialog(html, options);
             
     } else {
+        
+        options.buttons["Fermer"] = function() {
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            if (button2) {
+                $('#stopSessionL').click();
+            }
+        };
         MM.widgets.dialog(html, options);
     }
         
