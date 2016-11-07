@@ -33,6 +33,7 @@
 
     <preference name="windows-appx-target" value="uap" />
     <preference name="windows-arch" value="anycpu" />
+    <preference name="windows-identity-name" value="inhni" />
 
     <icon src="icon.png" />
     <icon src="img/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
