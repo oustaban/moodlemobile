@@ -1022,7 +1022,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'"><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'" width="300"><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1032,7 +1032,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-vert text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-vert text-blanc">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-vert text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
