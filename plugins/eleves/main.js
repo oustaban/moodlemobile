@@ -88,7 +88,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 width: "90%",
                 buttons: {}
             };
-
+            
+            options.buttons[MM.lang.s("cancel")] = function() {
+                MM.Router.navigate("eleve/" + courseId + "/" + userId);
+                MM.widgets.dialogClose();
+            };
+            options.buttons[MM.lang.s("cancel")]['style'] = "modal-button-3";
+            
+            options.buttons[addNote]['style'] = "modla-button-1";
             options.buttons[addNote] = function() {
 
                 var data = {
@@ -150,10 +157,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 
             };
             
-            options.buttons[MM.lang.s("cancel")] = function() {
-                MM.Router.navigate("eleve/" + courseId + "/" + userId);
-                MM.widgets.dialogClose();
-            };
+            
 
             
 
@@ -971,7 +975,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
                         
                         var addNote = "Valider";
-                        var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th>Apprenants</th><th>Modules</th><th>Actions</th></tr>';
+                        var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th>Apprenants</th><th>Modules</th><th class="center">Actions</th></tr>';
 
                         var options = {
                             title: 'Récapitulatif de la session du '+startDate,
@@ -1086,6 +1090,105 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         
                         
+                        
+                        
+                        options.buttons[MM.lang.s("cancel")] = function() {
+                            MM.Router.navigate("eleves/" + course );
+                            MM.widgets.dialogClose();
+                        };
+                        
+                        options.buttons["Effacer"]['style'] = "modal-button-3";
+                        options.buttons["Effacer"] = function() {
+                            MM.popConfirm("Etes-vous sûr de vouloir effacer cette session ?", function() {
+                                
+                                var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                                var message = "Session Effacée.";
+                                    
+                                MM.fs.findFileAndReadContents(resultFile,
+                                    function (result) {
+                                        MM.fs.removeFile (resultFile,
+                                            function (result) {
+                                               MM.log('session.json deleted:'+resultFile);
+                                            },
+                                            function (result) {
+                                               MM.log('session.json not deleted:'+resultFile);
+                                            }
+                                        );
+                                    },
+                                    function (result) {
+                                    
+                                    }
+                                );
+                                
+                                $.each(localCourses, function( index, value ) {
+                                    var localCourse = value.toJSON();
+                                    if (localCourse.contents) {
+                                        var localFile = localCourse.contents[0];
+                                        var localContentId = localCourse.url.split("?id=");
+                                        var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
+                                        MM.fs.findFileAndReadContents(fileResultL,
+                                            function(path) {
+                                                MM.fs.removeFile (fileResultL,
+                                                    function (result) {
+                                                       MM.log(fileResultL + ' deleted');
+                                                    },
+                                                    function (result) {
+                                                       MM.log(fileResultL + ' not deleted');
+                                                    }
+                                               );
+                                            },
+                                            function(path) {
+                                                
+                                            }
+                                        );
+                                    }
+                                });
+                                
+                                $.each(usersS, function( indexS, valueS ) {
+                                    var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
+                                    var userG = userP.toJSON();
+                                    var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+userG.userid + "_" + timeSession + ".png";
+                                    
+                                    MM.fs.findFileAndReadContents(signatureFile,
+                                        function(path) {
+                                            MM.fs.removeFile (signatureFile,
+                                                function (result) {
+                                                   MM.log(signatureFile + ' deleted');
+                                                },
+                                                function (result) {
+                                                   MM.log(signatureFile + ' not deleted');
+                                                }
+                                           );
+                                        },
+                                        function(path) {
+                                            MM.log(signatureFile + ' not exist.');
+                                        }
+                                    ); 
+                                });
+                                
+                                $('#showSessionL').show();
+                                //$('#offlineC').hide();
+                                $('#offlineC').css('visibility','hidden');
+                                $('#showCourseL').hide();
+                                $('#stopCourseL').hide();
+                                $('#stopSessionL').hide();
+                                $("#stopSessionL").attr('time','');
+                                $("#stopSessionL").attr('starttime','');
+                                
+                                $('input:checkbox').each(function() {
+                                    $(this).attr("disabled", false );
+                                });
+                                                    
+                                $("#stopSessionL").attr('time','');
+                                MM.widgets.dialogClose();
+                                MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate, autoclose: 5000, resizable: false});
+                                MM.Router.navigate("eleves/" + course);
+                                
+                                
+                            });
+                        };
+            
+                        options.buttons[addNote]['style'] = "modal-button-2";
                         options.buttons[addNote] = function() {
             
                             MM.popConfirm("Etes-vous sûr de vouloir enregistrer cette session ?", function() {
@@ -1207,102 +1310,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             });
                         };
                         
-                        options.buttons[MM.lang.s("cancel")] = function() {
-                            MM.Router.navigate("eleves/" + course );
-                            MM.widgets.dialogClose();
-                        };
-                        
-                        options.buttons["Effacer"] = function() {
-                            MM.popConfirm("Etes-vous sûr de vouloir effacer cette session ?", function() {
-                                
-                                var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
-                                var message = "Session Effacée.";
-                                    
-                                MM.fs.findFileAndReadContents(resultFile,
-                                    function (result) {
-                                        MM.fs.removeFile (resultFile,
-                                            function (result) {
-                                               MM.log('session.json deleted:'+resultFile);
-                                            },
-                                            function (result) {
-                                               MM.log('session.json not deleted:'+resultFile);
-                                            }
-                                        );
-                                    },
-                                    function (result) {
-                                    
-                                    }
-                                );
-                                
-                                $.each(localCourses, function( index, value ) {
-                                    var localCourse = value.toJSON();
-                                    if (localCourse.contents) {
-                                        var localFile = localCourse.contents[0];
-                                        var localContentId = localCourse.url.split("?id=");
-                                        var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
-                                        MM.fs.findFileAndReadContents(fileResultL,
-                                            function(path) {
-                                                MM.fs.removeFile (fileResultL,
-                                                    function (result) {
-                                                       MM.log(fileResultL + ' deleted');
-                                                    },
-                                                    function (result) {
-                                                       MM.log(fileResultL + ' not deleted');
-                                                    }
-                                               );
-                                            },
-                                            function(path) {
-                                                
-                                            }
-                                        );
-                                    }
-                                });
-                                
-                                $.each(usersS, function( indexS, valueS ) {
-                                    var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
-                                    var userG = userP.toJSON();
-                                    var signatureFile = MM.config.current_site.id+"/"+course+"/result/"+userG.userid + "_" + timeSession + ".png";
-                                    
-                                    MM.fs.findFileAndReadContents(signatureFile,
-                                        function(path) {
-                                            MM.fs.removeFile (signatureFile,
-                                                function (result) {
-                                                   MM.log(signatureFile + ' deleted');
-                                                },
-                                                function (result) {
-                                                   MM.log(signatureFile + ' not deleted');
-                                                }
-                                           );
-                                        },
-                                        function(path) {
-                                            MM.log(signatureFile + ' not exist.');
-                                        }
-                                    ); 
-                                });
-                                
-                                $('#showSessionL').show();
-                                //$('#offlineC').hide();
-                                $('#offlineC').css('visibility','hidden');
-                                $('#showCourseL').hide();
-                                $('#stopCourseL').hide();
-                                $('#stopSessionL').hide();
-                                $("#stopSessionL").attr('time','');
-                                $("#stopSessionL").attr('starttime','');
-                                
-                                $('input:checkbox').each(function() {
-                                    $(this).attr("disabled", false );
-                                });
-                                                    
-                                $("#stopSessionL").attr('time','');
-                                MM.widgets.dialogClose();
-                                MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate, autoclose: 5000, resizable: false});
-                                MM.Router.navigate("eleves/" + course);
-                                
-                                
-                            });
-                        };
-            
-                        
             
                         
                     
@@ -1331,14 +1338,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var thisuser = MM.db.get('users',userpif.id);
                         
                         var addNote = "Valider";
-                        var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th><b>A remplir avant la formation</b></th><th>&nbsp;</th><th><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td><b>Compétences à développer dans le cadre du parcours de formation</b></td><td><b>Intitulé des séquences pédagogiques</b></td><td><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
+                        var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center"><b>Intitulé des séquences pédagogiques</b></td><td class="center"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
                         
                         var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                         local_contents.forEach(function(local_content) {
                              var content = local_content.toJSON();
                              var unchecked = 0;
                              if (content.modname == "scorm") {
-                                html +='<tr><td style="height:40px"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                html +='<tr><td style="height:40px" align="center"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                                 if (pifscourse.length > 0) {
                                     pifscormb = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
@@ -1354,7 +1361,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 } else {
                                     unchecked = 1;
                                 }
-                                html +='></td><td>'+content.name+'</td><td><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                                html +='></td><td  align="center">'+content.name+'</td><td  align="center"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                                 pifscorme = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.end == 1;
                                 });
@@ -1378,7 +1385,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             buttons: {}
                         };
                         
-                        
+                        options.buttons[MM.lang.s("cancel")] = function() {
+                            MM.Router.navigate("eleves/" + course );
+                            MM.widgets.dialogClose();
+                        };
                         
                         options.buttons["Valider"] = function() {
                             MM.log('userspif:'+userspif);
@@ -1422,10 +1432,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.widgets.dialogClose();
                         }
                         
-                        options.buttons[MM.lang.s("cancel")] = function() {
-                            MM.Router.navigate("eleves/" + course );
-                            MM.widgets.dialogClose();
-                        };
+                        
                         
                         MM.widgets.dialog(html, options);
                         
@@ -1948,7 +1955,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     MM.log('sessionnotes2:'+sessionnotes2);
     var addNote = "Valider";
     //var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
-    var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th>Dernière Modification le</th><th>Note</th><th>Action</th></tr>';
+    var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr align="center"><th>Dernière Modification le</th><th>Note</th><th class="center">Action</th></tr>';
     
     if (sessionnotes2 && notescourse)
         var mergednotes=sessionnotes2.concat(notescourse);
@@ -1987,7 +1994,14 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     
     
     if (button2) {
-        
+        options.buttons["Fermer"] = function() {
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            if (button2) {
+                $('#stopSessionL').click();
+            }
+        };
+        options.buttons["Fermer"]['style'] ="modal-button-3";
         options.buttons["Ajouter une note"] = function() {
             
             MM.widgets.dialogClose();
@@ -2077,13 +2091,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
             
         }
         
-        options.buttons["Fermer"] = function() {
-            MM.Router.navigate("eleves/" + course );
-            MM.widgets.dialogClose();
-            if (button2) {
-                $('#stopSessionL').click();
-            }
-        };
+        
         MM.widgets.dialog(html, options);
             
     } else {
@@ -2095,6 +2103,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 $('#stopSessionL').click();
             }
         };
+        options.buttons["Fermer"]['style'] ="modal-button-3"
         MM.widgets.dialog(html, options);
     }
         

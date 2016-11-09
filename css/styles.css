@@ -2144,14 +2144,14 @@ li#lielevelP.nav-item.hide {
 		background: linear-gradient(to top, #a80501 0%,#a80501 75%,#fe8686 100%); /
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a80501', endColorstr='#fe8686',GradientType=0 ); 
 	}
-	.grd-orange, .modal-button-2 {
+	.grd-orange≈ {
 		background: #ff9101; 
 		background: -moz-linear-gradient(bottom, #ff9101 75%, #fce9c8 100%);
 		background: -webkit-linear-gradient(bottom, #ff9101 75%,#fce9c8 100%); 
 		background: linear-gradient(to top, #ff9101 75%,#fce9c8 100%); 
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9101', endColorstr='#fce9c8',GradientType=0 ); 
 	}
-	.grd-vert, .modal-button-1 {
+	.grd-vert, .modal-button-2 {
 		background: #2da801; 
 		background: -moz-linear-gradient(bottom, #2da801 75%, #b0fe86 100%); 
 		background: -webkit-linear-gradient(bottom, #2da801 75%,#b0fe86 100%); 
@@ -2172,7 +2172,7 @@ li#lielevelP.nav-item.hide {
 		background: linear-gradient(to top, #bbbbbb 75%,#f3f3f3 100%); 
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbbbbb', endColorstr='#f3f3f3',GradientType=0 );
 	}
-	.grd-blanc {
+	.grd-blanc, .modal-button-1 {
 		background: #fff;
 	}
 	/* TABLEAU */
