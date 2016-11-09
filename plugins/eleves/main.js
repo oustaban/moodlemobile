@@ -1345,7 +1345,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                              var content = local_content.toJSON();
                              var unchecked = 0;
                              if (content.modname == "scorm") {
-                                html +='<tr><td style="height:40px" align="center"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                html +='<tr><td style="height:40px" class="center"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                                 if (pifscourse.length > 0) {
                                     pifscormb = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
@@ -1361,7 +1361,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 } else {
                                     unchecked = 1;
                                 }
-                                html +='></td><td  align="center">'+content.name+'</td><td  align="center"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                                html +='></td><td  class="center">'+content.name+'</td><td  class="center"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                                 pifscorme = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.end == 1;
                                 });
@@ -2103,7 +2103,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 $('#stopSessionL').click();
             }
         };
-        options.buttons["Fermer"]['style'] ="modal-button-3"
+        options.buttons["Fermer"]['style'] ="modal-button-3";
         MM.widgets.dialog(html, options);
     }
         
