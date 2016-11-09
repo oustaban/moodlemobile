@@ -2175,6 +2175,10 @@ li#lielevelP.nav-item.hide {
 	.grd-blanc, .modal-button-1 {
 		background: #fff;
 	}
+    
+    .modal-button-1 {
+      color:#777;
+	}  
 	/* TABLEAU */
 	.tablo {
 		width: 100%;
