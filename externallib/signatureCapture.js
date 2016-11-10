@@ -289,7 +289,7 @@ function signaturePopin( elem ) {
 													//sigCapture.clear();
                                                 };
 												
-												options.buttons["Effacer"]['style'] = "modal-button-3";
+												//options.buttons["Effacer"]['style'] = "modal-button-3";
 												
 												options.buttons["Valider"] = function() {
                                                     //var sigCapture2 = new SignatureCapture( "canvassignature" );
@@ -330,7 +330,7 @@ function signaturePopin( elem ) {
                                                                 
                                                     
                                                 };
-												options.buttons["Valider"]['style'] = "modal-button-2";
+												//options.buttons["Valider"]['style'] = "modal-button-2";
                                                 
                                                 MM.widgets.dialog(html, options);
                                                 
