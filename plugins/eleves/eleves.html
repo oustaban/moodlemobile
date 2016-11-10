@@ -40,7 +40,7 @@
             <button id="stopCourseL" course="<%= courseId %>" users="" module="" class="btn grd-rouge text-blanc">Arrêter le module</button></a>
         </div>
         <div class="centered2">
-            <button id="stopSessionL" course="<%= courseId %>" starttime="" users="" path="" module="" class="btn grd-orabge text-blanc">Fermer la session</button>
+            <button id="stopSessionL" course="<%= courseId %>" starttime="" users="" path="" module="" class="btn grd-orange text-blanc">Fermer la session</button>
         </div>
         <div class="centered2">
             <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>" class="btn grd-orange text-blanc" >Synchroniser les Résultats</button>
