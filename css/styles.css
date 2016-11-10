@@ -2144,7 +2144,7 @@ li#lielevelP.nav-item.hide {
 		background: linear-gradient(to top, #a80501 0%,#a80501 75%,#fe8686 100%); /
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a80501', endColorstr='#fe8686',GradientType=0 ); 
 	}
-	.grd-orange≈ {
+	.grd-orange {
 		background: #ff9101; 
 		background: -moz-linear-gradient(bottom, #ff9101 75%, #fce9c8 100%);
 		background: -webkit-linear-gradient(bottom, #ff9101 75%,#fce9c8 100%); 
@@ -2203,4 +2203,9 @@ li#lielevelP.nav-item.hide {
 	.tablo .center {
 		text-align:center;
 		color:#fff;
+	}
+    
+    .tablo .center2 {
+		text-align:center;
+		color:#000;
 	}
