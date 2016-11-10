@@ -272,7 +272,26 @@ function signaturePopin( elem ) {
                                                 
                                                 
                                                 
-                                                options.buttons["Valider"] = function() {
+                                                
+												
+												options.buttons[MM.lang.s("cancel")] = function() {
+                                                    MM.Router.navigate("eleves/" + course );
+                                                    MM.widgets.dialogClose();
+                                                    $('#stopSessionL').click();
+                                                };
+                                                
+                                                
+                                                
+                                                options.buttons["Effacer"] = function() {
+                                                    //var sig2 = $('#canvassignature').get(0).toDataURL("image/png");
+													var sig2 = new SignatureCapture( "canvassignature" );
+                                                    sig2.clear();
+													//sigCapture.clear();
+                                                };
+												
+												options.buttons["Effacer"]['style'] = "modal-button-3";
+												
+												options.buttons["Valider"] = function() {
                                                     //var sigCapture2 = new SignatureCapture( "canvassignature" );
 													var sig = $('#canvassignature').get(0).toDataURL("image/png");
 													//var index = sig.indexOf( "," )+1;
@@ -311,21 +330,7 @@ function signaturePopin( elem ) {
                                                                 
                                                     
                                                 };
-												
-												options.buttons[MM.lang.s("cancel")] = function() {
-                                                    MM.Router.navigate("eleves/" + course );
-                                                    MM.widgets.dialogClose();
-                                                    $('#stopSessionL').click();
-                                                };
-                                                
-                                                
-                                                
-                                                options.buttons["Effacer"] = function() {
-                                                    //var sig2 = $('#canvassignature').get(0).toDataURL("image/png");
-													var sig2 = new SignatureCapture( "canvassignature" );
-                                                    sig2.clear();
-													//sigCapture.clear();
-                                                };
+												options.buttons["Valider"]['style'] = "modal-button-2";
                                                 
                                                 MM.widgets.dialog(html, options);
                                                 

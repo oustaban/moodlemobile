@@ -974,8 +974,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log('starttime:'+$(this).attr('starttime'));
                         var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
                         
-                        var addNote = "Valider";
-                        var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th>Apprenants</th><th>Modules</th><th class="center">Actions</th></tr>';
+                        var addNote = "Valider la session";
+                        var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th>Participants</th><th class="center">Modules</th><th class="center">Actions</th></tr>';
 
                         var options = {
                             title: 'Récapitulatif de la session du '+startDate,
@@ -1036,7 +1036,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-vert text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1097,8 +1097,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.widgets.dialogClose();
                         };
                         
-                        options.buttons["Effacer"]['style'] = "modal-button-3";
-                        options.buttons["Effacer"] = function() {
+                        
+                        options.buttons["Effacer la session"] = function() {
                             MM.popConfirm("Etes-vous sûr de vouloir effacer cette session ?", function() {
                                 
                                 var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
@@ -1187,8 +1187,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                             });
                         };
+                        options.buttons["Effacer la session"]['style'] = "modal-button-3";
             
-                        options.buttons[addNote]['style'] = "modal-button-2";
                         options.buttons[addNote] = function() {
             
                             MM.popConfirm("Etes-vous sûr de vouloir enregistrer cette session ?", function() {
@@ -1309,6 +1309,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                             });
                         };
+                        options.buttons[addNote]['style'] = "modal-button-2";
+                        
                         
             
                         
@@ -1955,7 +1957,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     MM.log('sessionnotes2:'+sessionnotes2);
     var addNote = "Valider";
     //var html = '<div id="sessionContent"><table width="100%" border="1"><tr><td>Date</td><td>Note</td><td>Actions</td></tr>';
-    var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr align="center"><th>Dernière Modification le</th><th>Note</th><th class="center">Action</th></tr>';
+    var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr align="center"><th>Ajoutée le</th><th>Note</th><th class="center">Actions</th></tr>';
     
     if (sessionnotes2 && notescourse)
         var mergednotes=sessionnotes2.concat(notescourse);
@@ -1975,7 +1977,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 var backTo = 1;
             else
                 backTo = 0;
-            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" message="'+notecourse.note+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this,'+backTo+')" class="btn grd-vert text-blanc" >Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this,'+backTo+')" class="btn grd-rouge text-blanc">Supprimer</button></td></tr>';
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" message="'+notecourse.note+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this,'+backTo+')" class="btn grd-orange text-blanc" >Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this,'+backTo+')" class="btn grd-rouge text-blanc">Supprimer</button></td></tr>';
         } else {
             html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td>Pour pouvoir modifier ou supprimer une note il faut préalablement démarrer une session</td></tr>';
         }
@@ -2001,7 +2003,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 $('#stopSessionL').click();
             }
         };
-        options.buttons["Fermer"]['style'] ="modal-button-3";
+        options.buttons["Fermer"]['style'] ="modal-button-1";
         options.buttons["Ajouter une note"] = function() {
             
             MM.widgets.dialogClose();
@@ -2103,7 +2105,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 $('#stopSessionL').click();
             }
         };
-        options.buttons["Fermer"]['style'] ="modal-button-3";
+        options.buttons["Fermer"]['style'] ="modal-button-1";
         MM.widgets.dialog(html, options);
     }
         
