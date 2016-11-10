@@ -2077,6 +2077,8 @@ span#eleve {
   vertical-align: middle;
   height:50px;
   width:100%;
+  color:#000;
+  font-size:18px;
 }
 
 span#roweleve {
@@ -2085,6 +2087,8 @@ span#roweleve {
   width:100%;
   padding-right:10px;
   vertical-align: middle;
+  color:#000;
+  font-size:18px;
 }
 
 #listeparticipants1 span#roweleve:before {
