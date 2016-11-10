@@ -1340,14 +1340,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var thisuser = MM.db.get('users',userpif.id);
                         
                         var addNote = "Valider";
-                        var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center"><b>Intitulé des séquences pédagogiques</b></td><td class="center"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
+                        var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Intitulé des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
                         
                         var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                         local_contents.forEach(function(local_content) {
                              var content = local_content.toJSON();
                              var unchecked = 0;
                              if (content.modname == "scorm") {
-                                html +='<tr><td style="height:40px" class="center"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                html +='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                                 if (pifscourse.length > 0) {
                                     pifscormb = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
@@ -1363,7 +1363,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 } else {
                                     unchecked = 1;
                                 }
-                                html +='></td><td  class="center">'+content.name+'</td><td  class="center"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                                html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                                 pifscorme = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.end == 1;
                                 });
@@ -2263,7 +2263,11 @@ function ModifierNotePopin( elem,backTo ) {
     };
     
    
-    
+    options2.buttons[MM.lang.s("cancel")] = function() {
+        //MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+        button.click();
+    };
     
     options2.buttons["Valider"] = function() {
         MM.widgets.dialogClose();
@@ -2328,11 +2332,7 @@ function ModifierNotePopin( elem,backTo ) {
         
     }
     
-     options2.buttons[MM.lang.s("cancel")] = function() {
-        //MM.Router.navigate("eleves/" + course );
-        MM.widgets.dialogClose();
-        button.click();
-    };
+     
     
     MM.widgets.dialog(html2, options2);
     
