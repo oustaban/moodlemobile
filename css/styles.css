@@ -1966,6 +1966,7 @@ div.jqi button.jqidefaultbutton {
 #synchroR {
   display:none;
   height:40px;
+  width:300px;
 }
 #offlineC {
   visibility:hidden;
