@@ -1403,6 +1403,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
                             var coursepif = coursespif[0].toJSON();
                             var pif = coursepif.pif
+                            MM.log('pif:'+pif);
                             pif = pif.replace('/\{COMPANY_MANAGER\}/',MM.config.current_site.fullname);
                             pif = pif.replace('/\{USER_LAST_NAME\}/',userpif.lastname);
                             pif = pif.replace('/\{USER_FIRST_NAME\}/',userpif.firstname);
@@ -1412,6 +1413,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             pif = pif.replace('/\{COMPANY_ADDRESS\}/','');
                             pif = pif.replace('/\{COMPANY_POSTAL_CODE\}/','');
                             pif = pif.replace('/\{COMPANY_CITY\}/','');
+                            MM.log('pif:'+pif);
                             
                             
                             var html2 = '<div id="pifContent">'+pif+'</div>';
