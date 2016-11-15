@@ -1404,15 +1404,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var coursepif = coursespif[0].toJSON();
                             var pif = coursepif.pif
                             MM.log('pif:'+pif);
-                            pif = pif.replace('/\{COMPANY_MANAGER\}/',MM.config.current_site.fullname);
-                            pif = pif.replace('/\{USER_LAST_NAME\}/',userpif.lastname);
-                            pif = pif.replace('/\{USER_FIRST_NAME\}/',userpif.firstname);
-                            pif = pif.replace('/\{USER_EMAIL\}/',userpif.email);
-                            pif = pif.replace('/\{PAGE_BREAK\}/','');
-                            pif = pif.replace('/\{COMPANY_NUMBER\}/','');
-                            pif = pif.replace('/\{COMPANY_ADDRESS\}/','');
-                            pif = pif.replace('/\{COMPANY_POSTAL_CODE\}/','');
-                            pif = pif.replace('/\{COMPANY_CITY\}/','');
+                            pif = pif.replace('/\{COMPANY_MANAGER\}/gi',MM.config.current_site.fullname);
+                            pif = pif.replace('/\{USER_LAST_NAME\}/gi',userpif.lastname);
+                            pif = pif.replace('/\{USER_FIRST_NAME\}/gi',userpif.firstname);
+                            pif = pif.replace('/\{USER_EMAIL\}/gi',userpif.email);
+                            pif = pif.replace('/\{PAGE_BREAK\}/gi','');
+                            pif = pif.replace('/\{COMPANY_NUMBER\}/gi','');
+                            pif = pif.replace('/\{COMPANY_ADDRESS\}/gi','');
+                            pif = pif.replace('/\{COMPANY_POSTAL_CODE\}/gi','');
+                            pif = pif.replace('/\{COMPANY_CITY\}/gi','');
                             MM.log('pif:'+pif);
                             
                             
