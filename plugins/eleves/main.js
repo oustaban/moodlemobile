@@ -1396,21 +1396,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.Router.navigate("eleves/" + course );
                             MM.widgets.dialogClose();
                         };
+                        
                         options.buttons["Voir le pif"] = function() {
                             MM.log('Voir le pif:'+courseId);
                             MM.widgets.dialogClose();
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
                             var coursepif = coursespif[0].toJSON();
                             var pif = coursepif.pif
-                            pif = pif.replace('/{COMPANY_MANAGER}/i',MM.config.current_site.fullname);
-                            pif = pif.replace('/{USER_LAST_NAME}/i',userpif.lastname);
-                            pif = pif.replace('/{USER_FIRST_NAME}/i',userpif.firstname);
-                            pif = pif.replace('/{USER_EMAIL}/i',userpif.email);
-                            pif = pif.replace('/{PAGE_BREAK}/i','');
-                            pif = pif.replace('/{COMPANY_NUMBER}/i','');
-                            pif = pif.replace('/{COMPANY_ADDRESS}/i','');
-                            pif = pif.replace('/{COMPANY_POSTAL_CODE}/i','');
-                            pif = pif.replace('/{COMPANY_CITY}/i','');
+                            pif = pif.replace('/\{COMPANY_MANAGER\}/',MM.config.current_site.fullname);
+                            pif = pif.replace('/\{USER_LAST_NAME\}/',userpif.lastname);
+                            pif = pif.replace('/\{USER_FIRST_NAME\}/',userpif.firstname);
+                            pif = pif.replace('/\{USER_EMAIL\}/',userpif.email);
+                            pif = pif.replace('/\{PAGE_BREAK\}/','');
+                            pif = pif.replace('/\{COMPANY_NUMBER\}/','');
+                            pif = pif.replace('/\{COMPANY_ADDRESS\}/','');
+                            pif = pif.replace('/\{COMPANY_POSTAL_CODE\}/','');
+                            pif = pif.replace('/\{COMPANY_CITY\}/','');
                             
                             
                             var html2 = '<div id="pifContent">'+pif+'</div>';
