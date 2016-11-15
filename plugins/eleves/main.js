@@ -1391,12 +1391,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.Router.navigate("eleves/" + course );
                             MM.widgets.dialogClose();
                         };
-                        
                         options.buttons["Voir le pif"] = function() {
-                            MM.log('Voir le pif');
+                            MM.log('Voir le pif:'+courseId);
                             MM.widgets.dialogClose();
                             var coursepif = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                             var pif = coursepif[0].toJSON();
+                            MM.log("pif:"+pif.pif);
                             
                             
                             var html2 = '<div id="sessionContent">'+pif.pif+'</div>';
