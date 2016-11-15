@@ -1320,9 +1320,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     //Pif button
-                    
                     $('button#pif').on(MM.clickType, function(e) {
                         MM.log('pif clicked');
+                        var button = $(this);
                         //e.preventDefault();
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
@@ -1391,6 +1391,35 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.Router.navigate("eleves/" + course );
                             MM.widgets.dialogClose();
                         };
+                        
+                        options.buttons["Voir le pif"] = function() {
+                            MM.widgets.dialogClose();
+                            var coursepif = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
+                            var pif = coursepif[0].toJSON();
+                            
+                            
+                            var html2 = '<div id="sessionContent">'+pif+'</div>';
+                            
+                            
+                            var options2 = {
+                                title: 'Voir le pif de '+userpif.fullname,
+                                width: "100%",
+                                buttons: {}
+                            };
+                            
+                           
+                            options2.buttons["Fermer"] = function() {
+                                //MM.Router.navigate("eleves/" + course );
+                                MM.widgets.dialogClose();
+                                button.click();
+                            };
+                            
+                            MM.widgets.dialog(html2, options2);
+                            
+                            
+                        };
+                        options.buttons["Voir le pif"]["style"] = "modal-button-2";
+                        
                         
                         options.buttons["Valider"] = function() {
                             MM.log('userspif:'+userspif);
@@ -2003,7 +2032,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 $('#stopSessionL').click();
             }
         };
-        options.buttons["Fermer"]['style'] ="modal-button-1";
+        options.buttons["Fermer"]['style'] = "modal-button-1";
         options.buttons["Ajouter une note"] = function() {
             
             MM.widgets.dialogClose();
