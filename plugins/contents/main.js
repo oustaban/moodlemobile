@@ -178,9 +178,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             return true;
                         }
                         sectionName = sections.name;
-                        if (sections.pif) {
-                            course.save({pif:sections.pif});
-                        }
+                        
                         $.each(sections.modules, function(index2, content){
                             MM.log("ContentID: " + content.id);
                             content.contentid = content.id;
@@ -188,6 +186,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             content.section = sectionId;
                             content.id = MM.config.current_site.id + "-" + content.contentid;
                             
+                            if (content.pif) {
+                                course.save({pif:content.pif});
+                            }
                             
                             
                             
