@@ -1396,7 +1396,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         options.buttons["Voir le pif"] = function() {
                             MM.log('Voir le pif:'+courseId);
                             MM.widgets.dialogClose();
-                            var coursespif = MM.db.where("courses",{"courseid" : courseId, "siteid": MM.config.current_site.id});
+                            var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
                             var coursepif = coursespif[0].toJSON();
                             MM.log("pif:"+coursepif.pif);
                             
