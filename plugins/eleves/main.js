@@ -1340,7 +1340,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var thisuser = MM.db.get('users',userpif.id);
                         
                         var addNote = "Valider";
-                        var html = '<div id="sessionContent"><h1>Article 3 – Le besoin de compétences à développer et visas des compétences acquises –</h1>';
+                        var html = '<div id="sessionContent"><h1><b>Article 3 – Le besoin de compétences à développer et visas des compétences acquises –</b></h1>';
                         html+= '<p>La grille suivante est un outil simple à remplir avant et à la fin de la formation, afin de formaliser l\'individualisation du parcours de formation et d\'en vérifier les acquis. Il constitue donc le référentiel des compétences visées, des objectifs pédagogiques associés, et des compétences acquises au terme du parcours de formation individualisé. Il n\'y a pas de pré requis pour cette formation.</p>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Intitulé des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
                         
@@ -1396,12 +1396,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         options.buttons["Voir le pif"] = function() {
                             MM.log('Voir le pif:'+courseId);
                             MM.widgets.dialogClose();
-                            var coursepif = MM.db.where("courses",{courseid : courseId, siteid: MM.config.current_site.id});
-                            var pif = coursepif[0].toJSON();
-                            MM.log("pif:"+pif.pif);
+                            var coursespif = MM.db.where("courses",{"courseid" : courseId, "siteid": MM.config.current_site.id});
+                            var coursepif = coursespif[0].toJSON();
+                            MM.log("pif:"+coursepif.pif);
                             
                             
-                            var html2 = '<div id="sessionContent">'+pif.pif+'</div>';
+                            var html2 = '<div id="sessionContent">'+coursepif.pif+'</div>';
                             
                             
                             var options2 = {
