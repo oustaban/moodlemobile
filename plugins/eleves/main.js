@@ -1401,7 +1401,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log("pif:"+coursepif.pif);
                             
                             
-                            var html2 = '<div id="sessionContent">'+coursepif.pif+'</div>';
+                            var html2 = '<div id="pifContent">'+coursepif.pif+'</div>';
                             
                             
                             var options2 = {
