@@ -48,7 +48,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 'options[0][value]': true
             };
 
-            MM.moodleWSCall('local_mobile_get_course_contents_and_pif', data, function(contents) {
+            MM.moodleWSCall('core_course_get_contents', data, function(contents) {
                 // Removing loading icon.
                 $('a[href="#course/contents/' +courseId+ '"]').removeClass('loading-row');
                 var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
@@ -116,7 +116,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             };
 
             MM.moodleWSCall(
-                'local_mobile_get_course_contents_and_pif',
+                'core_course_get_contents',
                 data,
                 function(contents) {
                     var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
@@ -186,9 +186,11 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             content.section = sectionId;
                             content.id = MM.config.current_site.id + "-" + content.contentid;
                             
+                            /*
                             if (content.pif) {
                                 course.save({pif:content.pif});
                             }
+                            */
                             
                             
                             
