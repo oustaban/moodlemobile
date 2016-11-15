@@ -1984,6 +1984,7 @@ div.jqi button.jqidefaultbutton {
 #stopCourseL {
   display:none;
   height:40px;
+  width:300px;
 }
 #showSessionL {
   display:none;

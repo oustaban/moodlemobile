@@ -1026,7 +1026,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.fs.findFileAndReadContents(fileSignature,
                                                     function(path) {
                                                         MM.log('Image Signature OK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><img src="'+ path +'" width="300"><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><img src="'+ path +'" width="300"><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1036,7 +1036,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     },
                                                     function(path) {
                                                         MM.log('Image Signature NOK:'+fileSignature);
-                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                        html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
                                                         if (indexUser == usersS.length) {
                                                             html += '</table></div>';
                                                             MM.log('Session Module Go:');
@@ -1977,9 +1977,9 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
                 var backTo = 1;
             else
                 backTo = 0;
-            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" message="'+notecourse.note+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this,'+backTo+')" class="btn grd-orange text-blanc" >Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this,'+backTo+')" class="btn grd-rouge text-blanc">Supprimer</button></td></tr>';
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td class="center2"><button id="noteM" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" message="'+notecourse.note+'" note="'+notecourse.noteid+'" onclick="ModifierNotePopin(this,'+backTo+')" class="btn grd-orange text-blanc" >Modifier</button><button id="noteS" user="'+user+'" course="'+notecourse.courseid+'" session="'+notecourse.sessionid+'" note="'+notecourse.noteid+'" onclick="SupprimerNotePopin(this,'+backTo+')" class="btn grd-rouge text-blanc">Supprimer</button></td></tr>';
         } else {
-            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td>Pour pouvoir modifier ou supprimer une note il faut préalablement démarrer une session</td></tr>';
+            html+='<tr><td style="height:40px;width:100px">'+notetime+'</td><td>'+nl2br(decodeURI(notecourse.note))+'</td><td class="center2">Pour pouvoir modifier ou supprimer une note il faut préalablement démarrer une session</td></tr>';
         }
     });
     
