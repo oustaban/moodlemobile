@@ -389,7 +389,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             'userid': user.id,
                             'fullname': user.fullname,
                             'profileimageurl': user.profileimageurl,
-                            'notes':user.notes
+                            'notes':user.notes,
+                            'lastname': user.lastname,
+                            'firstname': user.firstname,
+                            'email': user.email
                         };
                         var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
                         if (checkUser) {
@@ -1398,10 +1401,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.widgets.dialogClose();
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
                             var coursepif = coursespif[0].toJSON();
-                            MM.log("pif:"+coursepif.pif);
+                            var pif = coursepif.pif
+                            pif = pif.replace('/\{COMPANY_MANAGER\}/i',MM.config.current_site.fullname);
+                            pif = pif.replace('/\{USER_LAST_NAME\}/i',userpif.lastname);
+                            pif = pif.replace('/\{USER_FIRST_NAME\}/i',userpif.firstname);
+                            pif = pif.replace('/\{USER_EMAIL\}/i',userpif.email);
+                            pif = pif.replace('/\{PAGE_BREAK\}/i','');
+                            pif = pif.replace('/\{COMPANY_NUMBER\}/i','');
+                            pif = pif.replace('/\{COMPANY_ADDRESS\}/i','');
+                            pif = pif.replace('/\{COMPANY_POSTAL_CODE\}/i','');
+                            pif = pif.replace('/\{COMPANY_CITY\}/i','');
                             
                             
-                            var html2 = '<div id="pifContent">'+coursepif.pif+'</div>';
+                            var html2 = '<div id="pifContent">'+pif+'</div>';
                             
                             
                             var options2 = {
