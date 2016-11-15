@@ -1393,12 +1393,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
                         
                         options.buttons["Voir le pif"] = function() {
+                            MM.log('Voir le pif');
                             MM.widgets.dialogClose();
                             var coursepif = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                             var pif = coursepif[0].toJSON();
                             
                             
-                            var html2 = '<div id="sessionContent">'+pif+'</div>';
+                            var html2 = '<div id="sessionContent">'+pif.pif+'</div>';
                             
                             
                             var options2 = {
@@ -1418,7 +1419,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             
                         };
-                        options.buttons["Voir le pif"]["style"] = "modal-button-2";
+                        options.buttons["Voir le pif"]["style"] = "modal-button-4";
                         
                         
                         options.buttons["Valider"] = function() {
@@ -1462,6 +1463,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //MM.Router.navigate("eleves/" + course );
                             MM.widgets.dialogClose();
                         }
+                        options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         
                         
