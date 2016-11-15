@@ -1402,15 +1402,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
                             var coursepif = coursespif[0].toJSON();
                             var pif = coursepif.pif
-                            pif = pif.replace('/\{COMPANY_MANAGER\}/i',MM.config.current_site.fullname);
-                            pif = pif.replace('/\{USER_LAST_NAME\}/i',userpif.lastname);
-                            pif = pif.replace('/\{USER_FIRST_NAME\}/i',userpif.firstname);
-                            pif = pif.replace('/\{USER_EMAIL\}/i',userpif.email);
-                            pif = pif.replace('/\{PAGE_BREAK\}/i','');
-                            pif = pif.replace('/\{COMPANY_NUMBER\}/i','');
-                            pif = pif.replace('/\{COMPANY_ADDRESS\}/i','');
-                            pif = pif.replace('/\{COMPANY_POSTAL_CODE\}/i','');
-                            pif = pif.replace('/\{COMPANY_CITY\}/i','');
+                            pif = pif.replace('/{COMPANY_MANAGER}/i',MM.config.current_site.fullname);
+                            pif = pif.replace('/{USER_LAST_NAME}/i',userpif.lastname);
+                            pif = pif.replace('/{USER_FIRST_NAME}/i',userpif.firstname);
+                            pif = pif.replace('/{USER_EMAIL}/i',userpif.email);
+                            pif = pif.replace('/{PAGE_BREAK}/i','');
+                            pif = pif.replace('/{COMPANY_NUMBER}/i','');
+                            pif = pif.replace('/{COMPANY_ADDRESS}/i','');
+                            pif = pif.replace('/{COMPANY_POSTAL_CODE}/i','');
+                            pif = pif.replace('/{COMPANY_CITY}/i','');
                             
                             
                             var html2 = '<div id="pifContent">'+pif+'</div>';
