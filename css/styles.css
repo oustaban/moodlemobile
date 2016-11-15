@@ -1641,6 +1641,14 @@ hr {
   overflow: auto;
   max-height: 50vh;
 }
+#pifContent {
+  overflow: auto;
+  max-height: 50vh;
+}
+#app-dialog .modalContent #pifContent{
+  text-align:left; 
+}
+
 #app-dialog .modalContent textarea {
   color: #666666;
 }
