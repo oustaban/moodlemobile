@@ -1342,6 +1342,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var thisuser = MM.db.get('users',userpif.id);
                         
+                        var total_duration = 0;
+                        
                         var addNote = "Valider";
                         var html = '<div id="pifContent"><h1><b>Article 3 – Le besoin de compétences à développer et visas des compétences acquises –</b></h1>';
                         html+= '<p>La grille suivante est un outil simple à remplir avant et à la fin de la formation, afin de formaliser l\'individualisation du parcours de formation et d\'en vérifier les acquis. Il constitue donc le référentiel des compétences visées, des objectifs pédagogiques associés, et des compétences acquises au terme du parcours de formation individualisé. Il n\'y a pas de pré requis pour cette formation.</p>';
@@ -1365,6 +1367,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 if (pifscormb.length>0) {
                                     html+=' checked="checked"';
+                                    total_duration += content.pif_duration;
                                 } else {
                                     unchecked = 1;
                                 }
@@ -1403,7 +1406,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
                             var coursepif = coursespif[0].toJSON();
                             var pif = coursepif.pif
-                            MM.log('pif:'+pif);
                             pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),coursepif.company_manager);
                             pif = pif.replace(new RegExp('{USER_LAST_NAME}', 'gi'),userpif.lastname);
                             pif = pif.replace(new RegExp('{USER_FIRST_NAME}', 'gi'),userpif.firstname);
@@ -1418,6 +1420,49 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var date = aujourdhui.toLocaleFormat("%e %B %Y");
                             
                             pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
+                            
+                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),coursepif.startdate);
+                            pif = pif.replace(new RegExp('{FORMATION_END:DD/MM/YYYY}', 'gi'),coursepif.enddate);
+                            
+                            total_duration = total_duration / 60 / 60;
+                            
+                            pif = pif.replace(new RegExp('{FORMATION_DURATION}', 'gi'),total_duration);
+                            
+                            var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
+                            local_contents.forEach(function(local_content) {
+                                 var content = local_content.toJSON();
+                                 var unchecked = 0;
+                                 if (content.modname == "scorm") {
+                                    if (pifscourse.length > 0) {
+                                        pifscormb = $.grep(pifscourse, function( el ) {
+                                            return el.scormid == content.contentid && el.begin == 1;
+                                        });
+                                        MM.log('pifscormb length:'+pifscormb.length);
+                                        
+                                    } else {
+                                        pifscormb = [1];
+                                    }
+                                    
+                                    if (pifscormb.length>0) {
+                                        html+=' checked="checked"';
+                                    } else {
+                                        unchecked = 1;
+                                    }
+                                    html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                                    pifscorme = $.grep(pifscourse, function( el ) {
+                                            return el.scormid == content.contentid && el.end == 1;
+                                    });
+                                    MM.log('pifscorme length:'+pifscorme.length);
+                                    if (pifscorme.length>0) {
+                                        html+=' checked="checked"';
+                                    }
+                                    if (unchecked) {
+                                        html+=' disabled="true"'
+                                    }
+                                    html +='></td></tr>';
+                                 }
+                            });
+                            
 
                             //MM.log('pif:'+pif);
                             
