@@ -1413,7 +1413,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             pif = pif.replace(new RegExp('{COMPANY_ADDRESS}', 'gi'),coursepif.company_address);
                             pif = pif.replace(new RegExp('{COMPANY_POSTAL_CODE}', 'gi'),coursepif.company_cp);
                             pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),coursepif.company_city);
-                            MM.log('pif:'+pif);
+                            
+                            var aujourdhui = new Date();
+                            var date = aujourdhui.toLocaleFormat("%e %B %Y");
+                            
+                            pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
+
+                            //MM.log('pif:'+pif);
                             
                             
                             var html2 = '<div id="pifContent">'+pif+'</div>';
