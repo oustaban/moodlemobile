@@ -1404,15 +1404,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var coursepif = coursespif[0].toJSON();
                             var pif = coursepif.pif
                             MM.log('pif:'+pif);
-                            pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),MM.config.current_site.fullname);
+                            pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),coursepif.company_manager);
                             pif = pif.replace(new RegExp('{USER_LAST_NAME}', 'gi'),userpif.lastname);
                             pif = pif.replace(new RegExp('{USER_FIRST_NAME}', 'gi'),userpif.firstname);
                             pif = pif.replace(new RegExp('{USER_EMAIL}', 'gi'),userpif.email);
                             pif = pif.replace(new RegExp('{PAGE_BREAK}', 'gi'),'');
-                            pif = pif.replace(new RegExp('{COMPANY_NUMBER}', 'gi'),'');
-                            pif = pif.replace(new RegExp('{COMPANY_ADDRESS}', 'gi'),'');
-                            pif = pif.replace(new RegExp('{COMPANY_POSTAL_CODE}', 'gi'),'');
-                            pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),'');
+                            pif = pif.replace(new RegExp('{COMPANY_NUMBER}', 'gi'),coursepif.company_number);
+                            pif = pif.replace(new RegExp('{COMPANY_ADDRESS}', 'gi'),coursepif.company_address);
+                            pif = pif.replace(new RegExp('{COMPANY_POSTAL_CODE}', 'gi'),coursepif.company_cp);
+                            pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),coursepif.company_city);
                             MM.log('pif:'+pif);
                             
                             
