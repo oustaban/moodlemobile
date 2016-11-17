@@ -343,11 +343,9 @@ function signaturePopin( elem ) {
 
 
 
-function signaturePifPopin( elem,button ) {
+	function signaturePifPopin( elem,button ) {
 
-                                            //$("#signature").on(MM.clickType, function(e) {
-                        
-                                                MM.widgets.dialogClose();
+												MM.widgets.dialogClose();
                                                 
                                                 var userid = $(elem).attr("userid");
 												var type = $(elem).attr("id");
@@ -363,7 +361,7 @@ function signaturePifPopin( elem,button ) {
 												if (type=="signature_stagiaire_apres"){
                                                     popTitle = "Signature du stagiaire pour valider les compétences acquises";
                                                 }
-												if (type=="signature_manager_apres'){
+												if (type=="signature_manager_apres"){
                                                     popTitle = "Signature du manager pour valider les compétences acquises";
                                                 }
 												
@@ -422,7 +420,7 @@ function signaturePifPopin( elem,button ) {
 													if (type=="signature_stagiaire_apres"){
 														fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_pif_stagiaire_apres.png";
 													}
-													if (type=="signature_manager_apres'){
+													if (type=="signature_manager_apres"){
 														fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_pif_manager_apres.png";
 													}
                                                     
@@ -461,5 +459,5 @@ function signaturePifPopin( elem,button ) {
                                                     var sigCapture = new SignatureCapture( "canvassignature" );
                                                 });
                                                 
-}
+	}
 			
