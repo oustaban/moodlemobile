@@ -1395,7 +1395,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 }
                                 html +='></td></tr>';
                                 htmlpif +='</td></tr>';
-                                if (pifscorme.length>0 && pifscormb.length>0){
+                                if (pifscormb.length>0){
                                     htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
                                
                                 }
