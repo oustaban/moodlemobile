@@ -1439,9 +1439,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
                             
+                            MM.log("user/licenses:"+parseInt(user)+'/'+coursepif.licenses)
                             var license = $.grep(coursepif.licenses, function( el ) {
                                 return el.userid == parseInt(user);
                             });
+                            MM.log("license:"+license);
                             
                             pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),license.start);
                             pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),license.end);
