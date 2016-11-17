@@ -1396,7 +1396,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                         
                         html +='</table></div>';
-                        htmlpif +='</table></div>';
+                        htmlpif +='</table>';
                         
                         var options = {
                             title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
