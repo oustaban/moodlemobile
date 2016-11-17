@@ -1424,7 +1424,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
                             var coursepif = coursespif[0].toJSON();
                             var pif = coursepif.pif
-                            pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),coursepif.company_manager);
+                            pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),MM.config.current_site.fullname);
                             pif = pif.replace(new RegExp('{USER_LAST_NAME}', 'gi'),userpif.lastname);
                             pif = pif.replace(new RegExp('{USER_FIRST_NAME}', 'gi'),userpif.firstname);
                             pif = pif.replace(new RegExp('{USER_EMAIL}', 'gi'),userpif.email);
@@ -1439,15 +1439,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
                             
-                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),coursepif.startdate);
-                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),coursepif.enddate);
+                            var license = $.grep(coursepif.licenses, function( el ) {
+                                return el.userid == parseInt(user);
+                            });
+                            
+                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),license.start);
+                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),license.end);
                             
                             total_duration = total_duration / 60 / 60;
                             
-                            pif = pif.replace(new RegExp('{FORMATION_DURATION}', 'gi'),total_duration);
+                            pif = pif.replace(new RegExp('{FORMATION_DURATION}', 'gi'),total_duration + ' heure(s)');
                             
                             pif = pif.replace(new RegExp('{TABLE_LIST}', 'gi'),htmlpif);
-                            pif2 = pif.replace(new RegExp('{TABLE_DONE}', 'gi'),htmlpif2);
+                            pif = pif.replace(new RegExp('{TABLE_DONE}', 'gi'),htmlpif2);
                             
                             
                             
