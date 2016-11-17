@@ -1402,19 +1402,312 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                              }
                         });
                         
-                        html +='</table>';
+                        html +='</table><br/><br/>';
                         htmlpif +='</table>';
                         htmlpif2 +='</table>';
                         
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences à développer</b></th></tr>';
                         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
-                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
-                        html += '</table>';
                         
-                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
-                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
-                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
-                        html += '</table></div>';
+                        
+                        var signatureFile1 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_avant.png";
+                        var signatureFile2 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_avant.png";
+                        var signatureFile3 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_apres.png";
+                        var signatureFile4 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_apres.png";
+                
+                        MM.fs.findFileAndReadContents(fileSignature1,
+                            function(path) {
+                                MM.log('Image Signature Manager avant OK:'+fileSignature1);
+                                html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                
+                                MM.fs.findFileAndReadContents(fileSignature2,
+                                    function(path) {
+                                        MM.log('Image Signature Stagiaire avant OK:'+fileSignature2);
+                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                        MM.fs.findFileAndReadContents(fileSignature3,
+                                            function(path) {
+                                                MM.log('Image Signature Manager aprés OK:'+fileSignature3);
+                                                html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                                MM.fs.findFileAndReadContents(fileSignature4,
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    },
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    }
+                                                );
+                                            },
+                                            function(path) {
+                                                MM.log('Image Signature Manager aprés NOK:'+fileSignature3);
+                                                html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                                MM.fs.findFileAndReadContents(fileSignature4,
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    },
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    }
+                                                );
+                                            }
+                                        );
+                                
+                                    },
+                                    function(path) {
+                                        MM.log('Image Signature Stagiaire avant NOK:'+fileSignature2);
+                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                
+                                        MM.fs.findFileAndReadContents(fileSignature3,
+                                            function(path) {
+                                                MM.log('Image Signature Manager aprés OK:'+fileSignature3);
+                                                html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td><';
+                                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                                MM.fs.findFileAndReadContents(fileSignature4,
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    },
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    }
+                                                );
+                                            },
+                                            function(path) {
+                                                MM.log('Image Signature Manager aprés NOK:'+fileSignature3);
+                                                html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                                MM.fs.findFileAndReadContents(fileSignature4,
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    },
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    }
+                                                );
+                                            }
+                                        );
+                                    }
+                                );
+                            },
+                            function(path) {
+                                MM.log('Image Signature Manager avant NOK:'+fileSignature1);
+                                html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                        
+                                MM.fs.findFileAndReadContents(fileSignature2,
+                                    function(path) {
+                                        MM.log('Image Signature Stagiaire avant OK:'+fileSignature2);
+                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td>';
+                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                
+                                        MM.fs.findFileAndReadContents(fileSignature3,
+                                            function(path) {
+                                                MM.log('Image Signature Manager aprés OK:'+fileSignature3);
+                                                html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                                MM.fs.findFileAndReadContents(fileSignature4,
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    },
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    }
+                                                );
+                                            },
+                                            function(path) {
+                                                MM.log('Image Signature Manager aprés NOK:'+fileSignature3);
+                                                html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                                MM.fs.findFileAndReadContents(fileSignature4,
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    },
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    }
+                                                );
+                                            }
+                                        );
+                                    },
+                                    function(path) {
+                                        MM.log('Image Signature Stagiaire avant NOK:'+fileSignature2);
+                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                
+                                        MM.fs.findFileAndReadContents(fileSignature3,
+                                            function(path) {
+                                                MM.log('Image Signature Manager aprés OK:'+fileSignature3);
+                                                html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                                MM.fs.findFileAndReadContents(fileSignature4,
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    },
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    }
+                                                );
+                                            },
+                                            function(path) {
+                                                MM.log('Image Signature Manager aprés NOK:'+fileSignature3);
+                                                html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                                                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                        
+                                                MM.fs.findFileAndReadContents(fileSignature4,
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    },
+                                                    function(path) {
+                                                        MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                
+                                                        html += '</table><br/><br/>';
+                                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
+                                                        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
+                                                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                                                        html += '</table></div>';
+                                                    }
+                                                );
+                                            }
+                                        );
+                                    }
+                                );
+                            }
+                        );
+                        
+                        
                         
                         var options = {
                             title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,

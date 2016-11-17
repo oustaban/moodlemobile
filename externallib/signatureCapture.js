@@ -388,7 +388,7 @@ function signaturePopin( elem ) {
 												
 												options.buttons[MM.lang.s("cancel")] = function() {
                                                     MM.widgets.dialogClose();
-                                                    button.click();
+                                                    $('button#pif[user="'+userid+'"]').click();
                                                 };
                                                 
                                                 
