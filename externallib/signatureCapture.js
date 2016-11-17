@@ -343,7 +343,7 @@ function signaturePopin( elem ) {
 
 
 
-	function signaturePifPopin( elem,button ) {
+	function signaturePifPopin( elem ) {
 
 												MM.widgets.dialogClose();
                                                 
@@ -432,19 +432,19 @@ function signaturePopin( elem ) {
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Pif OK : ' + fileUrl);
 																	MM.widgets.dialogClose();
-																	button.click();
+																	$('button#pif[user="'+userid+'"]').click();
                                                                 },
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Pif NOK : ' + fileUrl);
 																	MM.widgets.dialogClose();
-																	button.click();
+																	$('button#pif[user="'+userid+'"]').click();
                                                                 }
                                                             );
                                                         },
                                                         function(fileEntry) {
                                                             MM.log(' Write Signature Pif NOK : ' + fileSignature);
 															MM.widgets.dialogClose();
-															button.click();
+															$('button#pif[user="'+userid+'"]').click();
                                                         }
                                                     );
                                                                 
