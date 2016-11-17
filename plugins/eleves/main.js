@@ -1410,10 +1410,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
                         
                         
-                        var signatureFile1 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_avant.png";
-                        var signatureFile2 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_avant.png";
-                        var signatureFile3 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_apres.png";
-                        var signatureFile4 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_apres.png";
+                        var fileSignature1 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_avant.png";
+                        var fileSignature2 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_avant.png";
+                        var fileSignature3 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_apres.png";
+                        var fileSignature4 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_apres.png";
                 
                         MM.fs.findFileAndReadContents(fileSignature1,
                             function(path) {
