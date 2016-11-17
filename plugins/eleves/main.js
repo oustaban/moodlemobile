@@ -1348,13 +1348,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var html = '<div id="pifContent"><h1><b>Article 3 – Le besoin de compétences à développer et visas des compétences acquises –</b></h1>';
                         html+= '<p>La grille suivante est un outil simple à remplir avant et à la fin de la formation, afin de formaliser l\'individualisation du parcours de formation et d\'en vérifier les acquis. Il constitue donc le référentiel des compétences visées, des objectifs pédagogiques associés, et des compétences acquises au terme du parcours de formation individualisé. Il n\'y a pas de pré requis pour cette formation.</p>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Intitulé des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
+                        var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';'
                         
                         var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                         local_contents.forEach(function(local_content) {
                              var content = local_content.toJSON();
                              var unchecked = 0;
                              if (content.modname == "scorm") {
-                                html +='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                                htmlpif += '<tr><td style="height:40px" class="center2">';
+                                
                                 if (pifscourse.length > 0) {
                                     pifscormb = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
@@ -1368,25 +1371,32 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if (pifscormb.length>0) {
                                     html+=' checked="checked"';
                                     total_duration += content.pif_duration;
+                                    htmlpif+='X';
                                 } else {
                                     unchecked = 1;
+                                    htmlpif+='';
                                 }
                                 html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                                htmlpif +='></td><td  class="center2">'+pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">';
                                 pifscorme = $.grep(pifscourse, function( el ) {
                                         return el.scormid == content.contentid && el.end == 1;
                                 });
                                 MM.log('pifscorme length:'+pifscorme.length);
                                 if (pifscorme.length>0) {
                                     html+=' checked="checked"';
+                                    htmlpif += 'X';
                                 }
                                 if (unchecked) {
                                     html+=' disabled="true"'
+                                    htmlpif+='';
                                 }
                                 html +='></td></tr>';
+                                htmlpif +='></td></tr>';
                              }
                         });
                         
                         html +='</table></div>';
+                        htmlpif +='</table></div>';
                         
                         var options = {
                             title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
@@ -1422,46 +1432,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
                             
                             pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),coursepif.startdate);
-                            pif = pif.replace(new RegExp('{FORMATION_END:DD/MM/YYYY}', 'gi'),coursepif.enddate);
+                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),coursepif.enddate);
                             
                             total_duration = total_duration / 60 / 60;
                             
                             pif = pif.replace(new RegExp('{FORMATION_DURATION}', 'gi'),total_duration);
                             
-                            var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
-                            local_contents.forEach(function(local_content) {
-                                 var content = local_content.toJSON();
-                                 var unchecked = 0;
-                                 if (content.modname == "scorm") {
-                                    if (pifscourse.length > 0) {
-                                        pifscormb = $.grep(pifscourse, function( el ) {
-                                            return el.scormid == content.contentid && el.begin == 1;
-                                        });
-                                        MM.log('pifscormb length:'+pifscormb.length);
-                                        
-                                    } else {
-                                        pifscormb = [1];
-                                    }
-                                    
-                                    if (pifscormb.length>0) {
-                                        html+=' checked="checked"';
-                                    } else {
-                                        unchecked = 1;
-                                    }
-                                    html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
-                                    pifscorme = $.grep(pifscourse, function( el ) {
-                                            return el.scormid == content.contentid && el.end == 1;
-                                    });
-                                    MM.log('pifscorme length:'+pifscorme.length);
-                                    if (pifscorme.length>0) {
-                                        html+=' checked="checked"';
-                                    }
-                                    if (unchecked) {
-                                        html+=' disabled="true"'
-                                    }
-                                    html +='></td></tr>';
-                                 }
-                            });
+                            pif = pif.replace(new RegExp('{TABLE_LIST}', 'gi'),htmlpif);
+                            
+                            
                             
 
                             //MM.log('pif:'+pif);
