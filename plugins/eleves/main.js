@@ -1443,10 +1443,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var license = $.grep(coursepif.licenses, function( el ) {
                                 return el.userid == parseInt(user);
                             });
-                            MM.log("license:"+license);
+                            MM.log("license:"+license + 'start:' + license[0].start);
                             
-                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),license.start);
-                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),license.end);
+                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),license[0].start);
+                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),license[0].end);
                             
                             total_duration = total_duration / 60 / 60;
                             
