@@ -340,4 +340,126 @@ function signaturePopin( elem ) {
                                                 });
                                                 
 }
+
+
+
+function signaturePifPopin( elem,button ) {
+
+                                            //$("#signature").on(MM.clickType, function(e) {
+                        
+                                                MM.widgets.dialogClose();
+                                                
+                                                var userid = $(elem).attr("userid");
+												var type = $(elem).attr("id");
+												var course = $(elem).attr("course");
+												
+												var popTitle ="";
+												if (type=="signature_stagiaire_avant"){
+                                                    popTitle = "Signature du stagiaire pour valider les compétences à développer";
+                                                }
+												if (type=="signature_manager_avant"){
+                                                    popTitle = "Signature du manager pour valider les compétences à développer";
+                                                }
+												if (type=="signature_stagiaire_apres"){
+                                                    popTitle = "Signature du stagiaire pour valider les compétences acquises";
+                                                }
+												if (type=="signature_manager_apres'){
+                                                    popTitle = "Signature du manager pour valider les compétences acquises";
+                                                }
+												
+                                                
+												//var sigCapture = new SignatureCapture( "canvassignature" );
+                                                
+                                                MM.log('PifSignature : ' + type + ',' + userid);
+                                                
+                                                var userP = MM.db.get('users', MM.config.current_site.id + "-" + userid);
+                                                var userG = userP.toJSON();
+                                                
+                                                var addNote = "Valider";
+                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div><script>$(document).ready(function(e) { var sigCapture = new SignatureCapture( "canvassignature" ); });</script>';
+                        
+                                                var options = {
+                                                    title: popTitle,
+                                                    width: "90%",
+                                                    buttons: {}
+                                                };
+                                                
+                                                
+                                                
+                                                
+												
+												options.buttons[MM.lang.s("cancel")] = function() {
+                                                    MM.widgets.dialogClose();
+                                                    button.click();
+                                                };
+                                                
+                                                
+                                                
+                                                options.buttons["Effacer"] = function() {
+                                                    //var sig2 = $('#canvassignature').get(0).toDataURL("image/png");
+													var sig2 = new SignatureCapture( "canvassignature" );
+                                                    sig2.clear();
+													//sigCapture.clear();
+                                                };
+												
+												options.buttons["Effacer"]['style'] = "modal-button-3";
+												
+												options.buttons["Valider"] = function() {
+                                                    //var sigCapture2 = new SignatureCapture( "canvassignature" );
+													var sig = $('#canvassignature').get(0).toDataURL("image/png");
+													//var index = sig.indexOf( "," )+1;
+													//sig = sig.substring( index );
+													
+                                                    //var sigDec = Base64.decode(sig);
+													//var sigData = "data:image/png;base64,"+sig;
+													var fileSignature = "";
+													if (type=="signature_stagiaire_avant"){
+														fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_pif_stagiaire_avant.png";
+													}
+													if (type=="signature_manager_avant"){
+														fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_pif_manager_avant.png";
+													}
+													if (type=="signature_stagiaire_apres"){
+														fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_pif_stagiaire_apres.png";
+													}
+													if (type=="signature_manager_apres'){
+														fileSignature = MM.config.current_site.id+"/"+course+"/result/"+userid+"_pif_manager_apres.png";
+													}
+                                                    
+													
+                                                    //create local result file
+                                                    MM.fs.createFile(fileSignature,
+                                                        function(fileEntry) {
+                                                            MM.fs.writeInFile(fileEntry, sig, 
+                                                                function(fileUrl) {
+                                                                    MM.log(' Write Signature Pif OK : ' + fileUrl);
+																	MM.widgets.dialogClose();
+																	button.click();
+                                                                },
+                                                                function(fileUrl) {
+                                                                    MM.log(' Write Signature Pif NOK : ' + fileUrl);
+																	MM.widgets.dialogClose();
+																	button.click();
+                                                                }
+                                                            );
+                                                        },
+                                                        function(fileEntry) {
+                                                            MM.log(' Write Signature Pif NOK : ' + fileSignature);
+															MM.widgets.dialogClose();
+															button.click();
+                                                        }
+                                                    );
+                                                                
+                                                    
+                                                };
+												options.buttons["Valider"]['style'] = "modal-button-2";
+                                                
+                                                MM.widgets.dialog(html, options);
+                                                
+                                                
+                                                $(document).ready(function(e) {     
+                                                    var sigCapture = new SignatureCapture( "canvassignature" );
+                                                });
+                                                
+}
 			

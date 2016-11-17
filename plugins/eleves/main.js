@@ -1402,19 +1402,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                              }
                         });
                         
-                        html +='</table></div>';
+                        html +='</table>';
                         htmlpif +='</table>';
                         htmlpif2 +='</table>';
                         
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences à développer</b></th></tr>';
                         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
-                        html += '<tr><td class="center2"><button id="signature_manager_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this,button)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this,button)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                         html += '</table>';
                         
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences acquises</b></th></tr>';
                         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>'
-                        html += '<tr><td class="center2"><button id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
-                        html += '</table>';
+                        html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this,button)" class="btn grd-grisfonce text-blanc">Signature</button></td><td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" onclick="signaturePifPopin(this,button)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                        html += '</table></div>';
                         
                         var options = {
                             title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
