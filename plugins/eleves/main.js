@@ -1444,9 +1444,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 return el.userid == parseInt(user);
                             });
                             MM.log("license:"+license + 'start:' + license[0].start);
+                            var start = new Date(license[0].start);
+                            var end = new Date(license[0].end);
                             
-                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),license[0].start.getDate()+'/'+(license[0].start.getMonth()+1)+'/'+license[0].start.getFullYear());
-                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),license[0].end.getDate()+'/'+(license[0].end.getMonth()+1)+'/'+license[0].end.getFullYear());
+                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),start.getDate()+'/'+(start.getMonth()+1)+'/'+start.getFullYear());
+                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),end.getDate()+'/'+(end.getMonth()+1)+'/'+end.getFullYear());
                             
                             total_duration = total_duration / 60 / 60;
                             
