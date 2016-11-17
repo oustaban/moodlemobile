@@ -1417,7 +1417,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),coursepif.company_city);
                             
                             var aujourdhui = new Date();
-                            var date = aujourdhui.toLocaleFormat("%e %B %Y");
+                            var date = aujourdhui.getDate()+'/'+(aujourdhui.getMonth()+1)+'/'+aujourdhui.getFullYear();
                             
                             pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
                             
