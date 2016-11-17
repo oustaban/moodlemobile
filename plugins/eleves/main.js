@@ -1493,13 +1493,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     },
                                     function(path) {
                                         MM.log('Image Signature Stagiaire avant NOK:'+fileSignature2);
-                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         MM.fs.findFileAndReadContents(fileSignature3,
                                             function(path) {
                                                 MM.log('Image Signature Manager aprés OK:'+fileSignature3);
-                                                html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td><';
+                                                html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
                                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
@@ -1569,7 +1569,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.findFileAndReadContents(fileSignature2,
                                     function(path) {
                                         MM.log('Image Signature Stagiaire avant OK:'+fileSignature2);
-                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td>';
+                                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         MM.fs.findFileAndReadContents(fileSignature3,
