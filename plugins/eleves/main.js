@@ -2823,7 +2823,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         
         options.buttons["Fermer"] = function() {
             MM.widgets.dialogClose();
-            $('button#pif[user="'+thisuser.id+'"]').click();
+            $('button#pif[user="'+thisuser.userid+'"]').click();
         };
         
                         
