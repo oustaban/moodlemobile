@@ -1541,7 +1541,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1553,7 +1553,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1574,7 +1574,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1586,7 +1586,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1619,7 +1619,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1631,7 +1631,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1652,7 +1652,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1664,7 +1664,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1706,7 +1706,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1718,7 +1718,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1739,7 +1739,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1751,7 +1751,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1784,7 +1784,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1796,7 +1796,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1817,7 +1817,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
@@ -1829,7 +1829,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                         html += '</table></div>';
                                                         
-                                                        options.buttons["Valider"] = validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4);
+                                                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4); };
                                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                                         
                                                         MM.widgets.dialog(html, options);
