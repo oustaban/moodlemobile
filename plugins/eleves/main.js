@@ -1406,6 +1406,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         htmlpif +='</table>';
                         htmlpif2 +='</table>';
                         
+                        var pifsignature1 = 0;
+                        var pifsignature2 = 0;
+                        var pifsignature3 = 0;
+                        var pifsignature4 = 0;
                         
                         var options = {
                             title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
@@ -1458,7 +1462,29 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             pif = pif.replace(new RegExp('{TABLE_LIST}', 'gi'),htmlpif);
                             pif = pif.replace(new RegExp('{TABLE_DONE}', 'gi'),htmlpif2);
                             
+                            if (pifsignature1 == 0) {
+                                pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'');
+                            } else {
+                                pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'<img src="'+pifsignature1+'" width="300">');
+                            }
                             
+                            if (pifsignature2 == 0) {
+                                pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'');
+                            } else {
+                                pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
+                            }
+                            
+                            if (pifsignature3 == 0) {
+                                pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
+                            } else {
+                                pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
+                            }
+                            
+                            if (pifsignature4 == 0) {
+                                pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
+                            } else {
+                                pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                            }
                             
 
                             //MM.log('pif:'+pif);
@@ -1503,22 +1529,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var fileSignature3 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_apres.png";
                         var fileSignature4 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_apres.png";
                         
-                        var pifsignature1 = 0;
-                        var pifsignature2 = 0;
-                        var pifsignature3 = 0;
-                        var pifsignature4 = 0;
+                        
                         
                 
                         MM.fs.findFileAndReadContents(fileSignature1,
                             function(path) {
-                                pifsignature1 = 1;
+                                pifsignature1 = path;
                                 MM.log('Image Signature Manager avant OK:'+fileSignature1);
                                 html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                 MM.fs.findFileAndReadContents(fileSignature2,
                                     function(path) {
-                                        pifsignature2 = 1;
+                                        pifsignature2 = path;
                                         MM.log('Image Signature Stagiaire avant OK:'+fileSignature2);
                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                         html += '</table><br/><br/>';
@@ -1527,14 +1550,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         
                                         MM.fs.findFileAndReadContents(fileSignature3,
                                             function(path) {
-                                                pifsignature3 = 1;
+                                                pifsignature3 = path;
                                                 MM.log('Image Signature Manager aprés OK:'+fileSignature3);
                                                 html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
                                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
                                                     function(path) {
-                                                        pifsignature4 = 1;
+                                                        pifsignature4 = path;
                                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
                                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
@@ -1567,7 +1590,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
                                                     function(path) {
-                                                        pifsignature4 = 1;
+                                                        pifsignature4 = path;
                                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
                                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
@@ -1605,14 +1628,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                         MM.fs.findFileAndReadContents(fileSignature3,
                                             function(path) {
-                                                pifsignature3 = 1;
+                                                pifsignature3 = path;
                                                 MM.log('Image Signature Manager aprés OK:'+fileSignature3);
                                                 html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
                                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
                                                     function(path) {
-                                                        pifsignature4 = 1;
+                                                        pifsignature4 = path;
                                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
                                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
@@ -1645,7 +1668,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
                                                     function(path) {
-                                                        pifsignature4 = 1;
+                                                        pifsignature4 = path;
                                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
                                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
@@ -1682,7 +1705,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                                 MM.fs.findFileAndReadContents(fileSignature2,
                                     function(path) {
-                                        pifsignature2 = 1;
+                                        pifsignature2 = path;
                                         MM.log('Image Signature Stagiaire avant OK:'+fileSignature2);
                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
@@ -1699,7 +1722,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
                                                     function(path) {
-                                                        pifsignature4 = 1;
+                                                        pifsignature4 = path;
                                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
                                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
@@ -1732,7 +1755,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
                                                     function(path) {
-                                                        pifsignature4 = 1;
+                                                        pifsignature4 = path;
                                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
                                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
@@ -1770,14 +1793,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                         MM.fs.findFileAndReadContents(fileSignature3,
                                             function(path) {
-                                                pifsignature3 = 1;
+                                                pifsignature3 = path;
                                                 MM.log('Image Signature Manager aprés OK:'+fileSignature3);
                                                 html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
                                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
                                                     function(path) {
-                                                        pifsignature4 = 1;
+                                                        pifsignature4 = path;
                                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
                                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
@@ -1810,7 +1833,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                                 MM.fs.findFileAndReadContents(fileSignature4,
                                                     function(path) {
-                                                        pifsignature4 = 1;
+                                                        pifsignature4 = path;
                                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
                                                         html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
                                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
