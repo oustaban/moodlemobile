@@ -2776,6 +2776,7 @@ function chaine_aleatoire(plength)
 function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4) {
     MM.log('userspif:'+userspif);
     if (userspif && userspif != "") {
+        var userpif = userspif[0].toJSON();
         //MM.log('userpif:'+userpif);
         MM.log('pifs:'+pifs);
         pifs2 = $.grep(pifs, function( el ) {
@@ -2823,8 +2824,8 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         
         options.buttons["Fermer"] = function() {
             MM.widgets.dialogClose();
-            MM.log("Dialog:"+thisuser.userid);
-            $('button#pif[user="'+thisuser.userid+'"]').click();
+            MM.log("Dialog:"+userpif.userid);
+            $('button#pif[user="'+userpif.userid+'"]').click();
         };
         
                         
