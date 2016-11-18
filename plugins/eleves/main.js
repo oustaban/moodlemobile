@@ -2783,7 +2783,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                 return el.courseid != course;
         });
         MM.log('pifs length:'+pifs2.length);
-        //MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
+        MM.log('thisuser:'+thisuser.id);
         var b;
         var a;
         var scormid;
@@ -2818,8 +2818,6 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         
         var options = {
             title: '',
-            width: "90%",
-            marginTop: "10%",
             buttons: {}
         };
         
