@@ -2829,11 +2829,11 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         };
         
                         
-        if (valider ==0 && avant == 1 && (pifsignature1 == 0 || pifsignature2 == 0)) {
+        if (valider == 1 && avant == 1 && (pifsignature1 == 0 || pifsignature2 == 0)) {
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
             valider = 0;
         }
-        if (valider == 0 && apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
+        if (valider == 1 && apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.",options);
             valider = 0;
         }
