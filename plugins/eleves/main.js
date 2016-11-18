@@ -2776,14 +2776,14 @@ function chaine_aleatoire(plength)
 function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4) {
     MM.log('userspif:'+userspif);
     if (userspif && userspif != "") {
-        MM.log('userpif:'+userpif);
+        //MM.log('userpif:'+userpif);
         MM.log('pifs:'+pifs);
         pifs2 = $.grep(pifs, function( el ) {
                 MM.log('grep:'+el.courseid+'/'+course);
                 return el.courseid != course;
         });
         MM.log('pifs length:'+pifs2.length);
-        MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
+        //MM.log('thisuser:'+userpif.id+'/'+thisuser.id);
         var b;
         var a;
         var scormid;
