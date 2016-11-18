@@ -2814,20 +2814,36 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         });
         MM.log('pifs length:'+pifs2.length)
         MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
-        if (avant == 1 && (pifsignature1 == 0 || pifsignature2 == 0)) {
-            MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.");
+        thisuser.save({pif:pifs2});
+        
+        var options = {
+            title: '',
+            width: "90%",
+            marginTop: "10%",
+            buttons: {}
+        };
+        
+        options.buttons["Fermer"] = function() {
+            MM.widgets.dialogClose();
+            $('button#pif[user="'+thisuser.id+'"]').click();
+        };
+        
+                        
+        if (valider ==0 && avant == 1 && (pifsignature1 == 0 || pifsignature2 == 0)) {
+            MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
             valider = 0;
         }
-        if (apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
-            MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.");
+        if (valider == 0 && apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
+            MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.",options);
             valider = 0;
         }
+        
         
     }
     //MM.Router.navigate("eleves/" + course );
     if (valider == 1) {
         MM.log("Save PIF");
-        thisuser.save({pif:pifs2});
+        
         MM.widgets.dialogClose();
     }
     
