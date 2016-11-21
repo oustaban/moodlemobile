@@ -430,7 +430,7 @@ function signaturePopin( elem ) {
                                                         function(fileEntry) {
                                                             MM.fs.writeInFile(fileEntry, sig, 
                                                                 function(fileUrl) {
-                                                                    MM.log(' Write Signature Pif OK : ' + fileUrl);
+                                                                    MM.log(' Write Signature Pif OK : ' + fileUrl + '/' + sig);
 																	MM.widgets.dialogClose();
 																	$('button#pif[user="'+userid+'"]').click();
                                                                 },
