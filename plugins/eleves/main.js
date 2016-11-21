@@ -422,6 +422,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 },
                                 function(fullpath) {
                                     MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" NOK");
+                                },
+                                false,
+                                function (percent) {
+                                   MM.log(percent);
                                 }
                             );
                         }
