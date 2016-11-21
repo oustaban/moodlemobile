@@ -407,10 +407,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         //var newuserpif = newUser.toJSON();
                         
                         var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
-                                        return el.courseid == courseId && el.signature_manager_avant == 1;
+                                        return el.courseid == courseId && el.signature_avant_manager == 1;
                         });
                         
-                        MM.log("pifusercoursewithsignature:"+user.id+'/'+courseId+'/'+pifusercoursewithsignature[0]+'/'+newUser.pif[0]);
+                        MM.log("pifusercoursewithsignature:"+user.id+'/'+courseId+'/'+pifusercoursewithsignature[0]+'/'+newUser.pif[0].signature_avant_manager);
                         
                         if (pifusercoursewithsignature[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
