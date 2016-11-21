@@ -396,11 +396,35 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
                         var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
                         if (checkUser) {
-                            var checkUserJ = checkUser.toJSON();
-                            newUser.pif = checkUserJ.pif;
+                            //Cas ou on recupere pas les infos serveurs
+                            //var checkUserJ = checkUser.toJSON();
+                            //newUser.pif = checkUserJ.pif;
+                            newUser.pif = user.pif;
                         } else {
                             newUser.pif = user.pif;
                         }
+                        
+                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                                        return el.courseid == courseId && el.signature_manager_avant == 1;
+                        });
+                        
+                        if (pifusercoursewithsignature[0]) {
+                            MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
+                            var downloadUrl = MM.config.current_site.siteurl + '/local/session/pif/'+courseId+'_'+user.id+'_signature_avant_manager.png';
+                            var uploadFile = MM.config.current_site.id+"/"+courseId+"/result/"+user.id+"_pif_stagiaire_avant.png";
+                            MM.moodleDownloadFile(downloadURL, uploadFile,
+                                function(fullpath) {
+                                    MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" OK");
+                                },
+                                function(fullpath) {
+                                    MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" NOK");
+                                }
+                            );
+                        }
+                        
+                        
+                        
+                            
                         MM.db.insert('users', newUser);
                     });
                     
