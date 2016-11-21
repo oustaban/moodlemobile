@@ -1552,10 +1552,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         
                         
-                        var fileSignature1 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_avant.png";
-                        var fileSignature2 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_avant.png";
-                        var fileSignature3 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_manager_apres.png";
-                        var fileSignature4 = MM.config.current_site.id+"/"+course+"/result/"+user+"_pif_stagiaire_apres.png";
+                        var fileSignature1 = MM.config.current_site.id+"/"+course+"/"+user+"_pif_manager_avant.png";
+                        var fileSignature2 = MM.config.current_site.id+"/"+course+"/"+user+"_pif_stagiaire_avant.png";
+                        var fileSignature3 = MM.config.current_site.id+"/"+course+"/"+user+"_pif_manager_apres.png";
+                        var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_pif_stagiaire_apres.png";
                         
                         
                         
