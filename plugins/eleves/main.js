@@ -406,11 +406,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         //var newuserpif = newUser.toJSON();
                         
-                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                        var pifusercoursewithsignature = $.grep(newUser.pif.toJSON(), function( el ) {
                                         return el.courseid == courseId && el.signature_manager_avant == 1;
                         });
                         
-                        MM.log("pifusercoursewithsignature:"+pifusercoursewithsignature[0]+'/'+newUser.pif);
+                        MM.log("pifusercoursewithsignature:"+user.id+'/'+courseId+'/'+pifusercoursewithsignature[0]+'/'+newUser.pif.toJSON());
                         
                         if (pifusercoursewithsignature[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
