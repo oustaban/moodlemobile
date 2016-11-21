@@ -414,7 +414,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if (pifusercoursewithsignature[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
-                            var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/pif/'+courseId+'_'+user.id+'_signature_avant_manager.png');
+                            var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_avant_manager.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_pif_manager_avant.png";
                             MM.fs.findFileAndReadContents(uploadFile,
                                 function(fullpath) {
