@@ -422,7 +422,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 },
                                 function(fullpath) {
                                     MM.log(uploadFile+' Pas Présent');
-                                    MM.createFile(uploadFile,
+                                    MM.fs.createFile(uploadFile,
                                         function(fullpath) {
                                             MM.log("Création de "+uploadFile+" OK");
                                             MM.moodleDownloadFile(downloadUrl, uploadFile,
