@@ -416,7 +416,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = MM.config.current_site.siteurl + '/local/session/pif/'+courseId+'_'+user.id+'_signature_avant_manager.png';
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_pif_stagiaire_avant.png";
-                            MM.moodleDownloadFile(downloadURL, uploadFile,
+                            MM.moodleDownloadFile(downloadUrl, uploadFile,
                                 function(fullpath) {
                                     MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" OK");
                                 },
