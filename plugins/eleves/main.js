@@ -404,14 +404,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             newUser.pif = user.pif;
                         }
                         
-                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                        var newuserpif = newUser.toJSON();
+                        
+                        var pifusercoursewithsignature = $.grep(newuserpif.pif, function( el ) {
                                         return el.courseid == courseId && el.signature_manager_avant == 1;
                         });
+                        
+                        MM.log("pifusercoursewithsignature:"+pifusercoursewithsignature[0]);
                         
                         if (pifusercoursewithsignature[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = MM.config.current_site.siteurl + '/local/session/pif/'+courseId+'_'+user.id+'_signature_avant_manager.png';
-                            var uploadFile = MM.config.current_site.id+"/"+courseId+"/result/"+user.id+"_pif_stagiaire_avant.png";
+                            var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_pif_stagiaire_avant.png";
                             MM.moodleDownloadFile(downloadURL, uploadFile,
                                 function(fullpath) {
                                     MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" OK");
