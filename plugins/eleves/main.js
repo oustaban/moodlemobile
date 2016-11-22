@@ -776,6 +776,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             MM.fs.removeFile (filePifSignatures,
                                                                                 function (result) {
                                                                                    MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
+                                                                                   $.each(participants_users, function( indexU, valueU ) {
+                                                                                        MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
+                                                                                   });
+                                                                                   MM.plugins.eleves.showEleves(course);
                                                                                 },
                                                                                 function (result) {
                                                                                    MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
@@ -799,10 +803,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        MM.log('Le fichier '+sessionFile+' a bien été effacé');
                                                                        $("#synchroR").hide();
                                                                        btnSynchro.attr('on','off');
-                                                                       $.each(participants_users, function( indexU, valueU ) {
-                                                                            MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
-                                                                       });
-                                                                       MM.plugins.eleves.showEleves(course);
+                                                                       
                                                                        
                                                                        MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
                                                                     },
