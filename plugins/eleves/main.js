@@ -1455,7 +1455,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                 } else {
                                     
-                                    var pifArray2 = new Array(pifArray);
+                                    var pifArray2 = pifArray;
                                     MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
                                     
                                     pifscormb = $.grep(pifArray2, function( el ) {
