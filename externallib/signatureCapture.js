@@ -354,6 +354,7 @@ function signaturePopin( elem ) {
 												var b;
 												var a;
 												var scormid;
+												var pifs4 = new Array();
 												$('input#checkboxpif').each(function(index) {
 												  if ($(this).attr('genre') == 'b') {
 													scormid = $(this).attr('content');
@@ -369,11 +370,11 @@ function signaturePopin( elem ) {
 													} else {
 														b = 0;
 													}
-													pifs2.push({courseid:course,scormid:scormid,begin:a,end:b});
+													pifs4.push({courseid:course,scormid:scormid,begin:a,end:b});
 													
 												  }
 												});
-												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs2));
+												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
 												
 												MM.widgets.dialogClose();
 												

@@ -2957,6 +2957,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         var avant = 0;
         var apres = 0;
         var valider = 1;
+        var pifs3 = new Array();
         $('input#checkboxpif').each(function(index) {
           if ($(this).attr('genre') == 'b') {
             scormid = $(this).attr('content');
@@ -2975,14 +2976,14 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                 b = 0;
             }
             pifs2.push({courseid:course,scormid:scormid,begin:a,end:b});
-            
+            pifs3.push({courseid:course,scormid:scormid,begin:a,end:b});
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
-        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs2));
+        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
                             
-        MM.log('pifs length:'+pifs2.length)
-        MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
+        //MM.log('pifs length:'+pifs2.length)
+        //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
         
         
         var options = {
