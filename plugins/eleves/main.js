@@ -1390,6 +1390,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                         MM.log('pifscourse length:'+pifscourse.length);
                         
+                        var pifArray = $(this).attr('pif');
+                        
                         var thisuser = MM.db.get('users',userpif.id);
                         
                         var total_duration = 0;
@@ -1409,45 +1411,80 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                                 htmlpif += '<tr><td style="height:40px" class="center2">';
                                 
+                                if (pifArray == "") {
                                 
-                                if (pifscourse.length > 0) {
-                                    pifscormb = $.grep(pifscourse, function( el ) {
+                                    if (pifscourse.length > 0) {
+                                        pifscormb = $.grep(pifscourse, function( el ) {
+                                            return el.scormid == content.contentid && el.begin == 1;
+                                        });
+                                        MM.log('pifscormb length:'+pifscormb.length);
+                                        
+                                    } else {
+                                        pifscormb = [1];
+                                    }
+                                    
+                                    if (pifscormb.length>0) {
+                                        html+=' checked="checked"';
+                                        total_duration += content.pif_duration;
+                                        htmlpif+='X';
+                                    } else {
+                                        unchecked = 1;
+                                        htmlpif+='';
+                                    }
+                                    html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                                    htmlpif +='</td><td  class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
+                                     
+                                    pifscorme = $.grep(pifscourse, function( el ) {
+                                            return el.scormid == content.contentid && el.end == 1;
+                                    });
+                                    MM.log('pifscorme length:'+pifscorme.length);
+                                    if (pifscorme.length>0) {
+                                        html+=' checked="checked"';
+                                        htmlpif += 'X';
+                                    }
+                                    if (unchecked) {
+                                        html+=' disabled="true"'
+                                        htmlpif+='';
+                                    }
+                                    html +='></td></tr>';
+                                    htmlpif +='</td></tr>';
+                                    if (pifscormb.length>0){
+                                        htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
+                                    }
+                                } else {
+                                    MM.log('PIF Button Attr');
+                                    pifscormb = $.grep(pifArray, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
                                     });
-                                    MM.log('pifscormb length:'+pifscormb.length);
                                     
-                                } else {
-                                    pifscormb = [1];
-                                }
-                                
-                                if (pifscormb.length>0) {
-                                    html+=' checked="checked"';
-                                    total_duration += content.pif_duration;
-                                    htmlpif+='X';
-                                } else {
-                                    unchecked = 1;
-                                    htmlpif+='';
-                                }
-                                html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
-                                htmlpif +='</td><td  class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
-                                 
-                                pifscorme = $.grep(pifscourse, function( el ) {
-                                        return el.scormid == content.contentid && el.end == 1;
-                                });
-                                MM.log('pifscorme length:'+pifscorme.length);
-                                if (pifscorme.length>0) {
-                                    html+=' checked="checked"';
-                                    htmlpif += 'X';
-                                }
-                                if (unchecked) {
-                                    html+=' disabled="true"'
-                                    htmlpif+='';
-                                }
-                                html +='></td></tr>';
-                                htmlpif +='</td></tr>';
-                                if (pifscormb.length>0){
-                                    htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
-                               
+                                    if (pifscormb.length>0) {
+                                        html+=' checked="checked"';
+                                        total_duration += content.pif_duration;
+                                        htmlpif+='X';
+                                    } else {
+                                        unchecked = 1;
+                                        htmlpif+='';
+                                    }
+                                    html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                                    htmlpif +='</td><td  class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
+                                     
+                                    pifscorme = $.grep(pifArray, function( el ) {
+                                            return el.scormid == content.contentid && el.end == 1;
+                                    });
+                                    if (pifscorme.length>0) {
+                                        html+=' checked="checked"';
+                                        htmlpif += 'X';
+                                    }
+                                    if (unchecked) {
+                                        html+=' disabled="true"'
+                                        htmlpif+='';
+                                    }
+                                    html +='></td></tr>';
+                                    htmlpif +='</td></tr>';
+                                    if (pifscormb.length>0){
+                                        htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
+                                   
+                                    }
                                 }
                              }
                         });
@@ -1455,6 +1492,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         html +='</table><br/><br/>';
                         htmlpif +='</table>';
                         htmlpif2 +='</table>';
+                        
+                        if (pifArray != ""){
+                            $(this).attr("pif","");
+                        }
                         
                         var pifsignature1 = 0;
                         var pifsignature2 = 0;
@@ -1475,6 +1516,31 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         options.buttons["Voir le pif"] = function() {
                             MM.log('Voir le pif:'+courseId);
+                            var a;
+                            var b;
+                            var scormid;
+                            var pifbutton = new Array();
+                            $('input#checkboxpif').each(function(index) {
+                                if ($(this).attr('genre') == 'b') {
+                                  scormid = $(this).attr('content');
+                                  if ($(this).is(':checked')) {
+                                      a = 1;
+                                  } else {
+                                      a = 0;
+                                  }
+                                }
+                                if ($(this).attr('genre') == 'a') {
+                                  if ($(this).is(':checked')) {
+                                      b = 1;
+                                  } else {
+                                      b = 0;
+                                  }
+                                  pifbutton.push({scormid:scormid,begin:a,end:b});
+                                  
+                                }
+                            });
+                            button.attr('pif',pifbutton.toJSON());
+                            
                             MM.widgets.dialogClose();
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
                             var coursepif = coursespif[0].toJSON();
