@@ -462,6 +462,8 @@ function signaturePopin( elem ) {
 																	
 																	var filePifSignatures = MM.config.current_site.id+"/"+course+"/pîfsignatures.json";
 																	
+																	MM.log('filePifSignatures : ' + filePifSignatures);
+																	
 																	MM.fs.findFileAndReadContents(filePifSignatures,
 																		function (result) {
                                                                             pifArray = JSON.parse(result);
@@ -484,20 +486,22 @@ function signaturePopin( elem ) {
 																			);
 																		},
 																		function (path) {
+																			MM.log('filePifSignatures Not Exist');
                                                                             MM.fs.createFile(filePifSignatures,
 																				function(fileEntry) {
+																					MM.log('Create filePifSignatures :'+fileEntry+' OK');
 																					pifArray = new Array();
 																					pifArray.push(fileSignature);
 																					MM.fs.writeInFile(filePifSignatures, JSON.stringify(pifArray), 
 																						function(fileUrl) {
-																							MM.log('Write PifSignature :'+fileUrl+' OK');
+																							MM.log('Write filePifSignatures :'+fileUrl+' OK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																							
 																							
 																						},
 																						function(fileUrl) {
-																							MM.log('Write PifSignature :'+fileUrl+' NOK');
+																							MM.log('Write filePifSignatures :'+fileUrl+' NOK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																						
@@ -507,7 +511,7 @@ function signaturePopin( elem ) {
 																				},   
 																					
 																				function(fileEntry) {
-																				   MM.log('Create PifSignature : NOK');
+																				   MM.log('Create filePifSignatures : NOK');
 																				   MM.widgets.dialogClose();
 																					$('button#pif[user="'+userid+'"]').click();
 																				}
