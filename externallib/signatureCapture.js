@@ -470,21 +470,28 @@ function signaturePopin( elem ) {
 																			pifArray.push(fileSignature);
 																			var content = JSON.stringify(pifArray);
 																			MM.log('filePifSignatures Exist:'+content);
-																			MM.fs.writeInFile(filePifSignatures, content, 
-																				function(fileUrl) {
-																					MM.log('Write PifSignature :'+fileUrl+' OK');
-																					MM.widgets.dialogClose();
-																					$('button#pif[user="'+userid+'"]').click();
+																			MM.fs.createFile(filePifSignatures,
+																				function(fileEntry2) {
+																					MM.fs.writeInFile(fileEntry2, content , 
+																						function(fileUrl2) {
+																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
+																							MM.widgets.dialogClose();
+																							$('button#pif[user="'+userid+'"]').click();
+																						},
+																						function(fileUrl2) {
+																							MM.log('Write filePifSignatures :'+fileUrl2+' NOK');
+																							MM.widgets.dialogClose();
+																							$('button#pif[user="'+userid+'"]').click();
+																						
+																						}
+																					);
+																				},   
 																					
-																					
-																				},
-																				function(fileUrl) {
-																					MM.log('Write PifSignature :'+fileUrl+' NOK');
-																					MM.widgets.dialogClose();
+																				function(fileEntry2) {
+																				   MM.log('Create filePifSignatures : NOK');
+																				   MM.widgets.dialogClose();
 																					$('button#pif[user="'+userid+'"]').click();
-																				
 																				}
-																				
 																			);
 																		},
 																		function (result) {
