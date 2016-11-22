@@ -1455,7 +1455,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                 } else {
                                     
-                                    var pifArray2 = pifArray;
+                                    var pifArray2 = JSON.parse(pifArray);
                                     MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
                                     
                                     pifscormb = $.grep(pifArray2, function( el ) {
@@ -1544,7 +1544,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                   
                                 }
                             });
-                            button.attr('pif',pifbutton);
+                            button.attr('pif',JSON.Stringify(pifbutton));
                             
                             MM.widgets.dialogClose();
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
