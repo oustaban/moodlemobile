@@ -460,7 +460,7 @@ function signaturePopin( elem ) {
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Pif OK : ' + fileUrl);
 																	
-																	var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+userid+"_pîfsignatures.json";
+																	var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+userid+"_pifsignatures.json";
 																	
 																	MM.log('filePifSignatures : ' + filePifSignatures);
 																	
