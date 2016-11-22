@@ -488,20 +488,22 @@ function signaturePopin( elem ) {
 																		function (path) {
 																			MM.log('filePifSignatures Not Exist');
                                                                             MM.fs.createFile(filePifSignatures,
-																				function(fileEntry) {
-																					MM.log('Create filePifSignatures :'+fileEntry+' OK');
+																				function(fileEntry2) {
 																					pifArray = new Array();
 																					pifArray.push(fileSignature);
-																					MM.fs.writeInFile(filePifSignatures, JSON.stringify(pifArray), 
-																						function(fileUrl) {
-																							MM.log('Write filePifSignatures :'+fileUrl+' OK');
+																					var content = JSON.stringify(pifArray);
+																					MM.log('Create filePifSignatures :'+fileEntry2+' OK/'+content);
+																					
+																					MM.fs.writeInFile(filePifSignatures, content , 
+																						function(fileUrl2) {
+																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																							
 																							
 																						},
-																						function(fileUrl) {
-																							MM.log('Write filePifSignatures :'+fileUrl+' NOK');
+																						function(fileUrlé) {
+																							MM.log('Write filePifSignatures :'+fileUrl2+' NOK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																						
@@ -510,7 +512,7 @@ function signaturePopin( elem ) {
 																					);
 																				},   
 																					
-																				function(fileEntry) {
+																				function(fileEntry2) {
 																				   MM.log('Create filePifSignatures : NOK');
 																				   MM.widgets.dialogClose();
 																					$('button#pif[user="'+userid+'"]').click();

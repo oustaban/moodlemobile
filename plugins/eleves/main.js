@@ -410,8 +410,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         return el.courseid == courseId && el.signature_avant_manager == 1;
                         });
                         
-                        //MM.log("pifusercoursewithsignature:"+user.id+'/'+courseId+'/'+pifusercoursewithsignature[0]+'/'+newUser.pif[0].signature_avant_manager);
-                        
                         if (pifusercoursewithsignature[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_avant_manager.png');
@@ -444,8 +442,122 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     );
                                 }
                             );
-                            
-                            
+                        }
+                        
+                        
+                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                                        return el.courseid == courseId && el.signature_avant_stagiaire == 1;
+                        });
+                        
+                        if (pifusercoursewithsignature[0]) {
+                            MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
+                            var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_avant_stagiaire.png');
+                            var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_pif_stagiaire_avant.png";
+                            MM.fs.findFileAndReadContents(uploadFile,
+                                function(fullpath) {
+                                    MM.log(uploadFile+' Présent');
+                                },
+                                function(fullpath) {
+                                    MM.log(uploadFile+' Pas Présent');
+                                    MM.fs.createFile(uploadFile,
+                                        function(fullpath) {
+                                            MM.log("Création de "+uploadFile+" OK");
+                                            MM.moodleDownloadFile(downloadUrl, uploadFile,
+                                                function(fullpath) {
+                                                    MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" OK");
+                                                },
+                                                function(fullpath) {
+                                                    MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" NOK");
+                                                },
+                                                false,
+                                                function (percent) {
+                                                   MM.log(percent);
+                                                }
+                                            );
+                                        },
+                                        function(fullpath) {
+                                            MM.log("Création de "+uploadFile+" NOK");
+                                        }
+                                    );
+                                }
+                            );
+                        }
+                        
+                        
+                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                                        return el.courseid == courseId && el.signature_apres_manager == 1;
+                        });
+                        
+                        if (pifusercoursewithsignature[0]) {
+                            MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
+                            var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_apres_manager.png');
+                            var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_pif_manager_apres.png";
+                            MM.fs.findFileAndReadContents(uploadFile,
+                                function(fullpath) {
+                                    MM.log(uploadFile+' Présent');
+                                },
+                                function(fullpath) {
+                                    MM.log(uploadFile+' Pas Présent');
+                                    MM.fs.createFile(uploadFile,
+                                        function(fullpath) {
+                                            MM.log("Création de "+uploadFile+" OK");
+                                            MM.moodleDownloadFile(downloadUrl, uploadFile,
+                                                function(fullpath) {
+                                                    MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" OK");
+                                                },
+                                                function(fullpath) {
+                                                    MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" NOK");
+                                                },
+                                                false,
+                                                function (percent) {
+                                                   MM.log(percent);
+                                                }
+                                            );
+                                        },
+                                        function(fullpath) {
+                                            MM.log("Création de "+uploadFile+" NOK");
+                                        }
+                                    );
+                                }
+                            );
+                        }
+                        
+                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                                        return el.courseid == courseId && el.signature_apres_stagiaire == 1;
+                        });
+                        
+                        if (pifusercoursewithsignature[0]) {
+                            MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
+                            var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_apres_stagiaire.png');
+                            var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_pif_stagiaire_apres.png";
+                            MM.fs.findFileAndReadContents(uploadFile,
+                                function(fullpath) {
+                                    MM.log(uploadFile+' Présent');
+                                },
+                                function(fullpath) {
+                                    MM.log(uploadFile+' Pas Présent');
+                                    MM.fs.createFile(uploadFile,
+                                        function(fullpath) {
+                                            MM.log("Création de "+uploadFile+" OK");
+                                            MM.moodleDownloadFile(downloadUrl, uploadFile,
+                                                function(fullpath) {
+                                                    MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" OK");
+                                                },
+                                                function(fullpath) {
+                                                    MM.log("Upload de "+downloadUrl+" vers "+uploadFile+" NOK");
+                                                },
+                                                false,
+                                                function (percent) {
+                                                   MM.log(percent);
+                                                }
+                                            );
+                                        },
+                                        function(fullpath) {
+                                            MM.log("Création de "+uploadFile+" NOK");
+                                        }
+                                    );
+                                }
+                            );
                         }
                         
                         
