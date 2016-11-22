@@ -1457,7 +1457,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         total_duration += content.pif_duration;
                                     } else {
                                         unchecked = 1;
-                                        htmlpif+='';
                                     }
                                     html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                                      
@@ -1546,7 +1545,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         unchecked = 1;
                                         htmlpif+='';
                                     }
-                                    htmlpif +='</td><td  class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center3">';
+                                    htmlpif +='</td><td  class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
                                      
                                     pifscorme = $.grep(pifbutton, function( el ) {
                                             return el.scormid == content.contentid && el.end == 1;
