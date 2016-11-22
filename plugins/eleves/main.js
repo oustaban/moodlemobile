@@ -1401,8 +1401,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var html = '<div id="pifContent"><h1><b>Article 3 – Le besoin de compétences à développer et visas des compétences acquises –</b></h1>';
                         html+= '<p>La grille suivante est un outil simple à remplir avant et à la fin de la formation, afin de formaliser l\'individualisation du parcours de formation et d\'en vérifier les acquis. Il constitue donc le référentiel des compétences visées, des objectifs pédagogiques associés, et des compétences acquises au terme du parcours de formation individualisé. Il n\'y a pas de pré requis pour cette formation.</p>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Intitulé des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
-                        var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l\'issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l\'issue du parcours de formation</b></td></tr>';
-                        var htmlpif2 = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>Intitulés des séquences pédagogiques</b></th><th class="center"><b>Objectifs pédagogiques poursuivis</b></th><th class="center"><b>Modalités pédagogiques du module de formation</b></th><th class="center"><b>Durée estimative forfaitaire</b></th></tr>';
                         
                         var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
                         local_contents.forEach(function(local_content) {
@@ -1414,7 +1412,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 if (pifArray == "") {
                                 
-                                    MM.log('pifscourse:'+pifscourse+'/'+pifscourse.length+'/'+pifscourse[0]+'/'+pifscourse[0].scormid);
+                                    //MM.log('pifscourse:'+pifscourse+'/'+pifscourse.length+'/'+pifscourse[0]+'/'+pifscourse[0].scormid);
                                     if (pifscourse.length > 0) {
                                         pifscormb = $.grep(pifscourse, function( el ) {
                                             return el.scormid == content.contentid && el.begin == 1;
@@ -1428,13 +1426,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     if (pifscormb.length>0) {
                                         html+=' checked="checked"';
                                         total_duration += content.pif_duration;
-                                        htmlpif+='X';
                                     } else {
                                         unchecked = 1;
-                                        htmlpif+='';
                                     }
                                     html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
-                                    htmlpif +='</td><td  class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
                                      
                                     pifscorme = $.grep(pifscourse, function( el ) {
                                             return el.scormid == content.contentid && el.end == 1;
@@ -1442,21 +1437,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.log('pifscorme length:'+pifscorme.length);
                                     if (pifscorme.length>0) {
                                         html+=' checked="checked"';
-                                        htmlpif += 'X';
                                     }
                                     if (unchecked) {
                                         html+=' disabled="true"'
-                                        htmlpif+='';
                                     }
                                     html +='></td></tr>';
-                                    htmlpif +='</td></tr>';
-                                    if (pifscormb.length>0){
-                                        htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
-                                    }
+                                    
                                 } else {
                                     
                                     var pifArray2 = JSON.parse(pifArray);
-                                    MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
+                                    //MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
                                     
                                     pifscormb = $.grep(pifArray2, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
@@ -1465,38 +1455,29 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     if (pifscormb.length>0) {
                                         html+=' checked="checked"';
                                         total_duration += content.pif_duration;
-                                        htmlpif+='X';
                                     } else {
                                         unchecked = 1;
                                         htmlpif+='';
                                     }
                                     html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
-                                    htmlpif +='</td><td  class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
                                      
-                                    pifscorme = $.grep(pifArray, function( el ) {
+                                    pifscorme = $.grep(pifArray2, function( el ) {
                                             return el.scormid == content.contentid && el.end == 1;
                                     });
                                     if (pifscorme.length>0) {
                                         html+=' checked="checked"';
-                                        htmlpif += 'X';
                                     }
                                     if (unchecked) {
                                         html+=' disabled="true"'
-                                        htmlpif+='';
                                     }
                                     html +='></td></tr>';
-                                    htmlpif +='</td></tr>';
-                                    if (pifscormb.length>0){
-                                        htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
-                                   
-                                    }
+                                    
                                 }
                              }
                         });
                         
                         html +='</table><br/><br/>';
-                        htmlpif +='</table>';
-                        htmlpif2 +='</table>';
+                        
                         
                         if (pifArray != ""){
                             $(this).attr("pif","");
@@ -1545,6 +1526,48 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 }
                             });
                             button.attr('pif',JSON.stringify(pifbutton));
+                            
+                            var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l\'issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l\'issue du parcours de formation</b></td></tr>';
+                            var htmlpif2 = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>Intitulés des séquences pédagogiques</b></th><th class="center"><b>Objectifs pédagogiques poursuivis</b></th><th class="center"><b>Modalités pédagogiques du module de formation</b></th><th class="center"><b>Durée estimative forfaitaire</b></th></tr>';
+                        
+                            local_contents.forEach(function(local_content) {
+                                var content = local_content.toJSON();
+                                var unchecked = 0;
+                                if (content.modname == "scorm") {
+                                    htmlpif += '<tr><td style="height:40px" class="center2">';
+                                   
+                                    pifscormb = $.grep(pifbutton, function( el ) {
+                                        return el.scormid == content.contentid && el.begin == 1;
+                                    });
+                                    
+                                    if (pifscormb.length>0) {
+                                        htmlpif+='X';
+                                    } else {
+                                        unchecked = 1;
+                                        htmlpif+='';
+                                    }
+                                    htmlpif +='</td><td  class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
+                                     
+                                    pifscorme = $.grep(pifbutton, function( el ) {
+                                            return el.scormid == content.contentid && el.end == 1;
+                                    });
+                                    if (pifscorme.length>0) {
+                                        htmlpif += 'X';
+                                    }
+                                    if (unchecked) {
+                                        html+=' disabled="true"';
+                                    }
+                                    htmlpif +='</td></tr>';
+                                    if (pifscormb.length>0){
+                                        htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
+                                   
+                                    }
+                                }
+                            });
+                            
+                            htmlpif +='</table>';
+                            htmlpif2 +='</table>';
+                             
                             
                             MM.widgets.dialogClose();
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
