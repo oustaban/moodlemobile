@@ -1414,6 +1414,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 if (pifArray == "") {
                                 
+                                    MM.log('pifscourse:'+pifscourse+'/'+pifscourse.length+'/'+pifscourse[0]+'/'+pifscourse[0].scormid);
                                     if (pifscourse.length > 0) {
                                         pifscormb = $.grep(pifscourse, function( el ) {
                                             return el.scormid == content.contentid && el.begin == 1;
