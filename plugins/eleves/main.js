@@ -736,7 +736,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             }
                                                                     );
                                                                     
-                                                                    var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+valueU+"_pîfsignatures.json";
+                                                                    var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+valueU+"_pifsignatures.json";
                                                                     MM.log('Synchro filePifSignatures : ' + filePifSignatures);
                                                                     MM.fs.findFileAndReadContents(filePifSignatures,
                                                                         function (result) {
