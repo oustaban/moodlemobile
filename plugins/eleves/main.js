@@ -1454,10 +1454,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                 } else {
                                     
+                                    var pifArray2 = new Array(pifArray);
+                                    MM.log('PIF Button Attr:'+pifArray2[0].scormid+'/'+pifArray2[0].begin+'/'+content.contentid);
                                     
-                                    MM.log('PIF Button Attr:'+pifArray[0].scormid+'/'+pifArray[0].begin+'/'+content.contentid);
-                                    
-                                    pifscormb = $.grep(pifArray, function( el ) {
+                                    pifscormb = $.grep(pifArray2, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
                                     });
                                     
