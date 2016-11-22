@@ -750,18 +750,25 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                 options2.headers = {
                                                                                   Connection: "close"
                                                                                 };
-                                                                                var ft = new FileTransfer();
-                                                                                    ft.upload(
-                                                                                            valuePif,
-                                                                                            MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
-                                                                                            function(){
-                                                                                              MM.log('Upload Pif réussi:'+valuePif);
-                                                                                            },
-                                                                                            function(){
-                                                                                               MM.log('Upload Pif pas réussi:'+valuePif);
-                                                                                            },
-                                                                                            options2
-                                                                                  );
+                                                                                 MM.fs.fileExists(valuePif,
+                                                                                    function(path) {
+                                                                                        var ft = new FileTransfer();
+                                                                                            ft.upload(
+                                                                                                    path,
+                                                                                                    MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
+                                                                                                    function(){
+                                                                                                      MM.log('Upload Pif réussi:'+path);
+                                                                                                    },
+                                                                                                    function(){
+                                                                                                       MM.log('Upload Pif pas réussi:'+path);
+                                                                                                    },
+                                                                                                    options2
+                                                                                          );
+                                                                                    },
+                                                                                    function (path) {
+                                                                                        //
+                                                                                    }
+                                                                                );
                                                                             });
                                                                             MM.fs.removeFile (filePifSignatures,
                                                                                 function (result) {
@@ -792,7 +799,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        $.each(participants_users, function( indexU, valueU ) {
                                                                             MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
                                                                        });
-                                                                        MM.plugins.eleves.showEleves(course);
+                                                                       MM.plugins.eleves.showEleves(course);
                                                                        
                                                                        MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
                                                                     },
