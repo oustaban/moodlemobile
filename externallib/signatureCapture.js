@@ -355,7 +355,7 @@ function signaturePopin( elem ) {
 												var a;
 												var scormid;
 												var pifs4 = new Array();
-												var pifArray
+												var pifArray;
 												$('input#checkboxpif').each(function(index) {
 												  if ($(this).attr('genre') == 'b') {
 													scormid = $(this).attr('content');
@@ -486,6 +486,7 @@ function signaturePopin( elem ) {
 																		function (path) {
                                                                             MM.fs.createFile(filePifSignatures,
 																				function(fileEntry) {
+																					pifArray = new Array();
 																					pifArray.push(fileSignature);
 																					MM.fs.writeInFile(filePifSignatures, JSON.stringify(pifArray), 
 																						function(fileUrl) {
