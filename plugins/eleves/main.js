@@ -1408,7 +1408,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                              var unchecked = 0;
                              if (content.modname == "scorm") {
                                 html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
-                                htmlpif += '<tr><td style="height:40px" class="center2">';
+                                
                                 
                                 if (pifArray == "") {
                                 
@@ -1546,7 +1546,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         unchecked = 1;
                                         htmlpif+='';
                                     }
-                                    htmlpif +='</td><td  class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
+                                    htmlpif +='</td><td  class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center3">';
                                      
                                     pifscorme = $.grep(pifbutton, function( el ) {
                                             return el.scormid == content.contentid && el.end == 1;
@@ -1559,7 +1559,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     }
                                     htmlpif +='</td></tr>';
                                     if (pifscormb.length>0){
-                                        htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
+                                        htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center3">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
                                    
                                     }
                                 }
