@@ -1455,7 +1455,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 } else {
                                     
                                     
-                                    pifArray = pifArray.toJSON();
                                     MM.log('PIF Button Attr:'+pifArray+'/'+content.contentid);
                                     
                                     pifscormb = $.grep(pifArray, function( el ) {
