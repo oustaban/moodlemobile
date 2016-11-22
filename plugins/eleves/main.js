@@ -3104,9 +3104,9 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                 obj.signature_apres_manager = 1;
             }
             if (pifsignature4 == 0) {
-                obj.signature_apres_manager = 0;
+                obj.signature_apres_stagiaire = 0;
             } else {
-                obj.signature_apres_manager = 1;
+                obj.signature_apres_stagiaire = 1;
             }
             
             pifs2.push(obj);
