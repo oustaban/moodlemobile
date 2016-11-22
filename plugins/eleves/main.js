@@ -734,9 +734,53 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             function(path) {
                                                                                 MM.log('Signature Existe pas');
                                                                             }
-                                                                       );
+                                                                    );
+                                                                    
+                                                                    var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+valueU+"_pîfsignatures.json";
+                                                                    MM.log('Synchro filePifSignatures : ' + filePifSignatures);
+                                                                    MM.fs.findFileAndReadContents(filePifSignatures,
+                                                                        function (result) {
+                                                                            pifSignatureArray = JSON.parse(result);
+                                                                            $.each(pifSignatureArray, function( indexPif, valuePif ) {
+                                                                                var options2 = {};
+                                                                                options.fileKey="file";
+                                                                                options.fileName = valuePif;
+                                                                                options.mimeType="image/png";
+                                                                                options.chunkedMode = false;
+                                                                                options.headers = {
+                                                                                  Connection: "close"
+                                                                                };
+                                                                                var ft = new FileTransfer();
+                                                                                    ft.upload(
+                                                                                            valuePif,
+                                                                                            MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
+                                                                                            function(){
+                                                                                              MM.log('Upload Pif réussi');
+                                                                                            },
+                                                                                            function(){
+                                                                                               MM.log('Upload Pif pas réussi');
+                                                                                            },
+                                                                                            options2
+                                                                                  );
+                                                                            });
+                                                                            MM.fs.removeFile (filePifSignatures,
+                                                                                function (result) {
+                                                                                   MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
+                                                                                },
+                                                                                function (result) {
+                                                                                   MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
+                                                                                }
+                                                                            );
+                                                                            
+                                                                        },
+                                                                        function(result) {
+                                                                            MM.log('Pas de filePifSignatures')
+                                                                        }
+                                                                    );
                                                                     
                                                                 });
+                                                                
+                                                                
                                                                 
                                                                 message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
                                                                 
@@ -755,6 +799,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                     }
                                                                     
                                                                );
+                                                                
+                                                                
                                                                 
                                                             },
                                                             {
