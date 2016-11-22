@@ -496,7 +496,7 @@ function signaturePopin( elem ) {
 																					var content = JSON.stringify(pifArray);
 																					MM.log('Create filePifSignatures :'+fileEntry2+' OK/'+content);
 																					
-																					MM.fs.writeInFile(filePifSignatures, content , 
+																					MM.fs.writeInFile(fileEntry2, content , 
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose();
