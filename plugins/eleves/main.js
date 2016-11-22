@@ -2979,9 +2979,11 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
+        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs2));
+                            
         MM.log('pifs length:'+pifs2.length)
         MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
-        thisuser.save({pif:pifs2});
+        
         
         var options = {
             title: '',
@@ -3003,13 +3005,16 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.",options);
             valider = 0;
         }
+        if (valider == 1){
+                    thisuser.save({pif:pifs2});
+
+        }
         
         
     }
     //MM.Router.navigate("eleves/" + course );
     if (valider == 1) {
         MM.log("Save PIF");
-        
         MM.widgets.dialogClose();
     }
     
