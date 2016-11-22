@@ -355,6 +355,7 @@ function signaturePopin( elem ) {
 												var a;
 												var scormid;
 												var pifs4 = new Array();
+												var pifArray
 												$('input#checkboxpif').each(function(index) {
 												  if ($(this).attr('genre') == 'b') {
 													scormid = $(this).attr('content');
@@ -457,13 +458,13 @@ function signaturePopin( elem ) {
                                                         function(fileEntry) {
                                                             MM.fs.writeInFile(fileEntry, sig, 
                                                                 function(fileUrl) {
-                                                                    MM.log(' Write Signature Pif OK : ' + fileUrl + '/' + sig);
+                                                                    MM.log(' Write Signature Pif OK : ' + fileUrl);
 																	
 																	var filePifSignatures = MM.config.current_site.id+"/"+course+"/pîfsignatures.json";
 																	
 																	MM.fs.findFileAndReadContents(filePifSignatures,
 																		function (result) {
-                                                                            var pifArray = JSON.parse(result);
+                                                                            pifArray = JSON.parse(result);
 																			pifArray.push(fileSignature);
 																			MM.fs.writeInFile(filePifSignatures, JSON.stringify(pifArray), 
 																				function(fileUrl) {
