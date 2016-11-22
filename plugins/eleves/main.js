@@ -1540,7 +1540,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                   
                                 }
                             });
-                            button.attr('pif',pifbutton.toJSON());
+                            button.attr('pif',JSON.stringify(pifbutton));
                             
                             MM.widgets.dialogClose();
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
