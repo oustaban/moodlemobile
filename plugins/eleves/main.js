@@ -1391,6 +1391,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.log('pifscourse length:'+pifscourse.length);
                         
                         var pifArray = $(this).attr('pif');
+                        MM.log('pifArray:'+pifArray);
                         
                         var thisuser = MM.db.get('users',userpif.id);
                         
