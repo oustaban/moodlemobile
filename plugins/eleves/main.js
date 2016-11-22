@@ -2403,7 +2403,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 "options[1][name]" : "limitnumber",
                 "options[1][value]": limitNumber,
                 "options[2][name]": "userfields",
-                "options[2][value]": "email",
+                "options[2][value]": "email,firstname,lastname",
             };
 
             MM.moodleWSCall(
