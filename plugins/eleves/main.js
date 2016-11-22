@@ -1455,7 +1455,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 } else {
                                     
                                     
-                                    MM.log('PIF Button Attr:'+pifArray+'/'+content.contentid);
+                                    MM.log('PIF Button Attr:'+pifArray[0].scormid+'/'+pifArray[0].begin+'/'+content.contentid);
                                     
                                     pifscormb = $.grep(pifArray, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
