@@ -746,7 +746,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                 options2.fileKey="file";
                                                                                 options2.fileName = valuePif;
                                                                                 options2.mimeType="image/png";
-                                                                                options.params = {
+                                                                                options2.params = {
                                                                                     course:course
                                                                                 };
                                                                                 options2.chunkedMode = false;
