@@ -345,11 +345,37 @@ function signaturePopin( elem ) {
 
 	function signaturePifPopin( elem ) {
 
-												MM.widgets.dialogClose();
+												
                                                 
                                                 var userid = $(elem).attr("userid");
 												var type = $(elem).attr("id");
 												var course = $(elem).attr("course");
+												
+												var b;
+												var a;
+												var scormid;
+												$('input#checkboxpif').each(function(index) {
+												  if ($(this).attr('genre') == 'b') {
+													scormid = $(this).attr('content');
+													if ($(this).is(':checked')) {
+														a = 1;
+													} else {
+														a = 0;
+													}
+												  }
+												  if ($(this).attr('genre') == 'a') {
+													if ($(this).is(':checked')) {
+														b = 1;
+													} else {
+														b = 0;
+													}
+													pifs2.push({courseid:course,scormid:scormid,begin:a,end:b});
+													
+												  }
+												});
+												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs2));
+												
+												MM.widgets.dialogClose();
 												
 												var popTitle ="";
 												if (type=="signature_stagiaire_avant"){
@@ -431,8 +457,60 @@ function signaturePopin( elem ) {
                                                             MM.fs.writeInFile(fileEntry, sig, 
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Pif OK : ' + fileUrl + '/' + sig);
-																	MM.widgets.dialogClose();
-																	$('button#pif[user="'+userid+'"]').click();
+																	
+																	var filePifSignatures = MM.config.current_site.id+"/"+course+"/pîfsignatures.json";
+																	
+																	MM.fs.findFileAndReadContents(filePifSignatures,
+																		function (result) {
+                                                                            var pifArray = JSON.parse(result);
+																			pifArray.push(fileSignature);
+																			MM.fs.writeInFile(filePifSignatures, JSON.stringify(pifArray), 
+																				function(fileUrl) {
+																					MM.log('Write PifSignature :'+fileUrl+' OK');
+																					MM.widgets.dialogClose();
+																					$('button#pif[user="'+userid+'"]').click();
+																					
+																					
+																				},
+																				function(fileUrl) {
+																					MM.log('Write PifSignature :'+fileUrl+' NOK');
+																					MM.widgets.dialogClose();
+																					$('button#pif[user="'+userid+'"]').click();
+																				
+																				}
+																				
+																			);
+																		},
+																		function (path) {
+                                                                            MM.fs.createFile(filePifSignatures,
+																				function(fileEntry) {
+																					pifArray.push(fileSignature);
+																					MM.fs.writeInFile(filePifSignatures, JSON.stringify(pifArray), 
+																						function(fileUrl) {
+																							MM.log('Write PifSignature :'+fileUrl+' OK');
+																							MM.widgets.dialogClose();
+																							$('button#pif[user="'+userid+'"]').click();
+																							
+																							
+																						},
+																						function(fileUrl) {
+																							MM.log('Write PifSignature :'+fileUrl+' NOK');
+																							MM.widgets.dialogClose();
+																							$('button#pif[user="'+userid+'"]').click();
+																						
+																						}
+																						
+																					);
+																				},   
+																					
+																				function(fileEntry) {
+																				   MM.log('Create PifSignature : NOK');
+																				   MM.widgets.dialogClose();
+																					$('button#pif[user="'+userid+'"]').click();
+																				}
+																			);
+                                                                        }
+																	);
                                                                 },
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Pif NOK : ' + fileUrl);
