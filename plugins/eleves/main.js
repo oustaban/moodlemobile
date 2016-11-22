@@ -1544,7 +1544,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                   
                                 }
                             });
-                            button.attr('pif',JSON.Stringify(pifbutton));
+                            button.attr('pif',JSON.stringify(pifbutton));
                             
                             MM.widgets.dialogClose();
                             var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
