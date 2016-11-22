@@ -3087,7 +3087,30 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             } else {
                 b = 0;
             }
-            pifs2.push({courseid:course,scormid:scormid,begin:a,end:b});
+            signature_avant_manager
+            var obj = {courseid:course,scormid:scormid,begin:a,end:b};
+            if (pifsignature1 == 0) {
+                obj.signature_avant_manager = 0;
+            } else {
+                obj.signature_avant_manager = 1;
+            }
+            if (pifsignature2 == 0) {
+                obj.signature_avant_stagiaire = 0;
+            } else {
+                obj.signature_avant_stagiaire = 1;
+            }
+            if (pifsignature3 == 0) {
+                obj.signature_apres_manager = 0;
+            } else {
+                obj.signature_apres_manager = 1;
+            }
+            if (pifsignature4 == 0) {
+                obj.signature_apres_manager = 0;
+            } else {
+                obj.signature_apres_manager = 1;
+            }
+            
+            pifs2.push(obj);
             pifs3.push({courseid:course,scormid:scormid,begin:a,end:b});
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
@@ -3119,6 +3142,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             valider = 0;
         }
         if (valider == 1){
+                    $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
                     thisuser.save({pif:pifs2});
 
         }
