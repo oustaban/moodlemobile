@@ -2402,6 +2402,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                 "options[0][value]": limitFrom,
                 "options[1][name]" : "limitnumber",
                 "options[1][value]": limitNumber,
+                "options[2][name]": "userfields",
+                "options[2][value]": "email",
             };
 
             MM.moodleWSCall(
