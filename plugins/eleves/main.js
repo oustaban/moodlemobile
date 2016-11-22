@@ -1453,7 +1453,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center2">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
                                     }
                                 } else {
-                                    MM.log('PIF Button Attr');
+                                    
+                                    
+                                    pifArray = pifArray.toJSON();
+                                    MM.log('PIF Button Attr:'+pifArray+'/'+content.contentid);
+                                    
                                     pifscormb = $.grep(pifArray, function( el ) {
                                         return el.scormid == content.contentid && el.begin == 1;
                                     });
