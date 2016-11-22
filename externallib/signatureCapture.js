@@ -468,7 +468,9 @@ function signaturePopin( elem ) {
 																		function (result) {
                                                                             pifArray = JSON.parse(result);
 																			pifArray.push(fileSignature);
-																			MM.fs.writeInFile(filePifSignatures, JSON.stringify(pifArray), 
+																			var content = JSON.stringify(pifArray);
+																			MM.log('filePifSignatures Exist:'+content);
+																			MM.fs.writeInFile(filePifSignatures, content, 
 																				function(fileUrl) {
 																					MM.log('Write PifSignature :'+fileUrl+' OK');
 																					MM.widgets.dialogClose();
@@ -485,7 +487,7 @@ function signaturePopin( elem ) {
 																				
 																			);
 																		},
-																		function (path) {
+																		function (result) {
 																			MM.log('filePifSignatures Not Exist');
                                                                             MM.fs.createFile(filePifSignatures,
 																				function(fileEntry2) {
@@ -499,16 +501,13 @@ function signaturePopin( elem ) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
-																							
-																							
 																						},
-																						function(fileUrlé) {
+																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' NOK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
-																						
 																					);
 																				},   
 																					
