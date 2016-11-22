@@ -743,11 +743,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             pifSignatureArray = JSON.parse(result);
                                                                             $.each(pifSignatureArray, function( indexPif, valuePif ) {
                                                                                 var options2 = {};
-                                                                                options.fileKey="file";
-                                                                                options.fileName = valuePif;
-                                                                                options.mimeType="image/png";
-                                                                                options.chunkedMode = false;
-                                                                                options.headers = {
+                                                                                options2.fileKey="file";
+                                                                                options2.fileName = valuePif;
+                                                                                options2.mimeType="image/png";
+                                                                                options2.chunkedMode = false;
+                                                                                options2.headers = {
                                                                                   Connection: "close"
                                                                                 };
                                                                                 var ft = new FileTransfer();
@@ -755,10 +755,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                             valuePif,
                                                                                             MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
                                                                                             function(){
-                                                                                              MM.log('Upload Pif réussi');
+                                                                                              MM.log('Upload Pif réussi:'+valuePif);
                                                                                             },
                                                                                             function(){
-                                                                                               MM.log('Upload Pif pas réussi');
+                                                                                               MM.log('Upload Pif pas réussi:'+valuePif);
                                                                                             },
                                                                                             options2
                                                                                   );
@@ -789,6 +789,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        MM.log('Le fichier '+sessionFile+' a bien été effacé');
                                                                        $("#synchroR").hide();
                                                                        btnSynchro.attr('on','off');
+                                                                       $.each(participants_users, function( indexU, valueU ) {
+                                                                            MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
+                                                                       });
+                                                                        MM.plugins.eleves.showEleves(course);
+                                                                       
                                                                        MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
                                                                     },
                                                                     function (result) {
