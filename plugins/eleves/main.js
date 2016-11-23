@@ -400,7 +400,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             var checkUserJ = checkUser.toJSON();
                             newUser.pif = checkUserJ.pif;
-                            MM.log('Check User:'+checkUserJ+id);
+                            MM.log('Check User:'+checkUserJ.id);
                             //newUser.pif = user.pif;
                         } else {
                             newUser.pif = user.pif;
