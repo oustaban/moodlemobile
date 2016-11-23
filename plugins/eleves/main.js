@@ -492,7 +492,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif 3 pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl3 = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_manager_apres.png');
                             var uploadFile3 = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_manager_apres.png";
-                            MM.fs.fileExists(uploadFile,
+                            MM.fs.fileExists(uploadFile3,
                                 function(fullpath) {
                                     MM.log(uploadFile3+' Présent');
                                 },
