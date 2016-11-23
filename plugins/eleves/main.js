@@ -414,7 +414,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_manager_avant.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_manager_avant.png";
-                            MM.fs.findFileAndReadContents(uploadFile,
+                            MM.fs.fileExists(uploadFile,
                                 function(fullpath) {
                                     MM.log(uploadFile+' Présent');
                                 },
@@ -453,7 +453,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_stagiaire_avant.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_stagiaire_avant.png";
-                            MM.fs.findFileAndReadContents(uploadFile,
+                            MM.fs.fileExists(uploadFile,
                                 function(fullpath) {
                                     MM.log(uploadFile+' Présent');
                                 },
@@ -492,7 +492,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_manager_apres.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_manager_apres.png";
-                            MM.fs.findFileAndReadContents(uploadFile,
+                            MM.fs.fileExists(uploadFile,
                                 function(fullpath) {
                                     MM.log(uploadFile+' Présent');
                                 },
@@ -530,7 +530,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_stagiaire_apres.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_stagiaire_apres.png";
-                            MM.fs.findFileAndReadContents(uploadFile,
+                            MM.fs.fileExists(uploadFile,
                                 function(fullpath) {
                                     MM.log(uploadFile+' Présent');
                                 },
