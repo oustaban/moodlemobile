@@ -397,8 +397,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
                         if (checkUser) {
                             //Cas ou on recupere pas les infos serveurs
+                            
                             var checkUserJ = checkUser.toJSON();
                             newUser.pif = checkUserJ.pif;
+                            MM.log('Check User:'+checkUserJ+id);
                             //newUser.pif = user.pif;
                         } else {
                             newUser.pif = user.pif;
