@@ -803,13 +803,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        $("#synchroR").hide();
                                                                        btnSynchro.attr('on','off');
                                                                        $.each(participants_users, function( indexU, valueU ) {
-                                                                            MM.log('Remove User:'+valueU);
+                                                                            MM.log('Remove User:'+MM.config.current_site.id + "-" + valueU);
                                                                             MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
                                                                        });
                                                                        
                                                                        
                                                                        MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
-                                                                       sleep(5);
+                                                                       sleep(5000);
                                                                        MM.plugins.eleves.showEleves(course);
                                                                     },
                                                                     function (result) {
