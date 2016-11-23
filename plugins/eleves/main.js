@@ -398,8 +398,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         if (checkUser) {
                             //Cas ou on recupere pas les infos serveurs
                             //var checkUserJ = checkUser.toJSON();
-                            //newUser.pif = checkUserJ.pif;
-                            newUser.pif = user.pif;
+                            newUser.pif = checkUserJ.pif;
+                            //newUser.pif = user.pif;
                         } else {
                             newUser.pif = user.pif;
                         }
