@@ -440,16 +440,16 @@ function signaturePopin( elem ) {
 													//var sigData = "data:image/png;base64,"+sig;
 													var fileSignature = "";
 													if (type=="signature_stagiaire_avant"){
-														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_pif_stagiaire_avant.png";
+														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_signature_stagiaire_avant.png";
 													}
 													if (type=="signature_manager_avant"){
-														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_pif_manager_avant.png";
+														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_signature_manager_avant.png";
 													}
 													if (type=="signature_stagiaire_apres"){
-														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_pif_stagiaire_apres.png";
+														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_signature_stagiaire_apres.png";
 													}
 													if (type=="signature_manager_apres"){
-														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_pif_manager_apres.png";
+														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_signature_manager_apres.png";
 													}
                                                     
 													
