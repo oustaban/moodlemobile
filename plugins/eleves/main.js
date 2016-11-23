@@ -406,11 +406,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         //var newuserpif = newUser.toJSON();
                         
-                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                        var pifusercoursewithsignature1 = $.grep(newUser.pif, function( el ) {
                                         return el.courseid == courseId && el.signature_avant_manager == 1;
                         });
                         
-                        if (pifusercoursewithsignature[0]) {
+                        if (pifusercoursewithsignature1[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_manager_avant.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_manager_avant.png";
@@ -445,11 +445,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         
                         
-                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                        var pifusercoursewithsignature2 = $.grep(newUser.pif, function( el ) {
                                         return el.courseid == courseId && el.signature_avant_stagiaire == 1;
                         });
                         
-                        if (pifusercoursewithsignature[0]) {
+                        if (pifusercoursewithsignature2[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_stagiaire_avant.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_stagiaire_avant.png";
@@ -484,11 +484,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         
                         
-                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                        var pifusercoursewithsignature3 = $.grep(newUser.pif, function( el ) {
                                         return el.courseid == courseId && el.signature_apres_manager == 1;
                         });
                         
-                        if (pifusercoursewithsignature[0]) {
+                        if (pifusercoursewithsignature3[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_manager_apres.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_manager_apres.png";
@@ -522,11 +522,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             );
                         }
                         
-                        var pifusercoursewithsignature = $.grep(newUser.pif, function( el ) {
+                        var pifusercoursewithsignature4 = $.grep(newUser.pif, function( el ) {
                                         return el.courseid == courseId && el.signature_apres_stagiaire == 1;
                         });
                         
-                        if (pifusercoursewithsignature[0]) {
+                        if (pifusercoursewithsignature4[0]) {
                             MM.log('Signature Pif pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_stagiaire_apres.png');
                             var uploadFile = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_stagiaire_apres.png";
