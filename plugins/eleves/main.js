@@ -2436,7 +2436,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         data: {
                             courseid: courseId
                         }
-                    }
+                    },
+                    getFromCache: false,
+                    saveToCache: true
                 },
                 function(m) {
                     errorCallback(m);
