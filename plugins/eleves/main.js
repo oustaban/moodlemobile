@@ -416,11 +416,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif 1 pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl1 = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_manager_avant.png');
                             var uploadFile1 = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_manager_avant.png";
+                            /*
                             MM.fs.fileExists(uploadFile1,
                                 function(fullpath) {
                                     MM.log(uploadFile1+' Présent');
                                 },
                                 function(fullpath) {
+                            */
                                     MM.log(uploadFile1+' Pas Présent');
                                     MM.fs.createFile(uploadFile1,
                                         function(fullpath) {
@@ -442,8 +444,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             MM.log("Création de "+uploadFile1+" NOK");
                                         }
                                     );
+                            /*
                                 }
                             );
+                            */
                         }
                         
                         
