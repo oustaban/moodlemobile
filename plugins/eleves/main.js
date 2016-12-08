@@ -3184,7 +3184,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             } else {
                 b = 0;
             }
-            var obj = {courseid:course,scormid:scormid,begin:a,end:b};
+            var obj = {courseid:course,scormid:scormid,begin:a,end:b,managerid:MM.config.current_site.userid};
             if (pifsignature1 == 0) {
                 obj.signature_avant_manager = 0;
             } else {
