@@ -350,6 +350,8 @@ function signaturePopin( elem ) {
                                                 var userid = $(elem).attr("userid");
 												var type = $(elem).attr("id");
 												var course = $(elem).attr("course");
+												var managerid = $(elem).attr("managerid");
+												var managername = $(elem).attr("managername");
 												
 												var b;
 												var a;
@@ -371,7 +373,7 @@ function signaturePopin( elem ) {
 													} else {
 														b = 0;
 													}
-													pifs4.push({courseid:course,scormid:scormid,begin:a,end:b});
+													pifs4.push({courseid:course,scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername});
 													
 												  }
 												});
