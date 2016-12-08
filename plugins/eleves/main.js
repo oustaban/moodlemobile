@@ -1595,12 +1595,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                         MM.log('pifscourse length:'+pifscourse.length);
                         
-                        if (pifscourse.length > 0) {
-                            var managerid = pifscourse[0].managerid;
-                            var managername = pifscourse[0].managername
+                        if (pifArray == "") {
+                            if (pifscourse.length > 0) {
+                                var managerid = pifscourse[0].managerid;
+                                var managername = pifscourse[0].managername
+                            } else {
+                                managerid = MM.config.current_site.userid;
+                                managername =MM.config.current_site.fullname;
+                            }
                         } else {
-                            managerid = MM.config.current_site.userid;
-                            managername =MM.config.current_site.fullname;
+                            var pifArray2 = JSON.parse(pifArray);
+                            var managerid = pifArray2[0].managerid;
+                            var managername = pifArray2[0].managername
+                            
                         }
                         MM.log('manager:'+managerid+'/'+managername);
                         
@@ -1659,7 +1666,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                 } else {
                                     
-                                    var pifArray2 = JSON.parse(pifArray);
+                                    
                                     //MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
                                     
                                     pifscormb = $.grep(pifArray2, function( el ) {
@@ -3216,7 +3223,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             }
             
             pifs2.push(obj);
-            pifs3.push({courseid:course,scormid:scormid,begin:a,end:b});
+            pifs3.push({courseid:course,scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername});
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
