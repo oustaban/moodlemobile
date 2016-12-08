@@ -1744,7 +1744,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                   } else {
                                       b = 0;
                                   }
-                                  pifbutton.push({scormid:scormid,begin:a,end:b});
+                                  pifbutton.push({scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername});
                                   
                                 }
                             });
