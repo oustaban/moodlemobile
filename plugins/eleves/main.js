@@ -3168,7 +3168,7 @@ function chaine_aleatoire(plength)
 
 
 function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername) {
-    MM.log('userspif:'+userspif);
+    MM.log('validerPif:'+userspif+'/'+managerid+'/'+managername);
     if (userspif && userspif != "") {
         var userpif = userspif[0].toJSON();
         //MM.log('userpif:'+userpif);
