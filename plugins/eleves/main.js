@@ -1595,6 +1595,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                         MM.log('pifscourse length:'+pifscourse.length);
                         
+                        
+                        var pifArray = $(this).attr('pif');
+                        MM.log('pifArray:'+pifArray);
+                        
                         if (pifArray == "") {
                             if (pifscourse.length > 0) {
                                 var managerid = pifscourse[0].managerid;
@@ -1611,8 +1615,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         MM.log('manager:'+managerid+'/'+managername);
                         
-                        var pifArray = $(this).attr('pif');
-                        MM.log('pifArray:'+pifArray);
+                        
                         
                         var thisuser = MM.db.get('users',userpif.id);
                         
