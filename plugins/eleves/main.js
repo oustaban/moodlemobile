@@ -1597,7 +1597,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if (pifscourse.length > 0) {
                             var managerid = pifscourse[0].managerid;
-                            var managername = pifscourse[0].managename
+                            var managername = pifscourse[0].managername
                         } else {
                             managerid = MM.config.current_site.userid;
                             managername =MM.config.current_site.fullname;
