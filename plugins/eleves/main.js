@@ -667,8 +667,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var userspif = MM.db.where("users",{site: MM.config.current_site.id});
                                                         $.each(userspif, function( indexUsers, userpif ) {
                                                             var jsonpif = userpif.toJSON();
-                                                            MM.log('License:'+indexLicense+"/"+license.userid);
-                                                            var userspif = MM.db.where('users', {userid:parseInt(license.userid)});
                                                             var pifs = jsonpif.pif;
                                                             if (!pifs) {
                                                                 pifs = '[]';
