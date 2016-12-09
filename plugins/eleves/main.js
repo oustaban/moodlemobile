@@ -669,7 +669,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         $.each(userspif, function( indexUsers, userpif ) {
                                                             var jsonpif = userpif.toJSON();
                                                             var pifs = jsonpif.pif;
-                                                            MM.log('UsersPif:'+jsonpif.userid);
+                                                            MM.log('UsersPif:'+jsonpif.id+'/'+course+'/'+MM.config.current_site.id);
                                                             pifsusers += jsonpif.userid+',';
                                                             if (!pifs) {
                                                                 pifs = '[]';
@@ -677,7 +677,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             pifscourse[indexUsers] = $.grep(pifs, function( el ) {
                                                                             return el.courseid == course;
                                                             });
-                                                            
+                                                            MM.log('pifscourse:'+pifscourse.length);
                                                         });
                                                         
                                                         $.each(userspif, function( indexUsers, userpif ) {
@@ -3193,7 +3193,7 @@ function chaine_aleatoire(plength)
 
 
 function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername) {
-    MM.log('validerPif:'+userspif+'/'+managerid+'/'+managername);
+    MM.log('validerPif:'+userspif+'/'+course+'/'+managerid+'/'+managername);
     if (userspif && userspif != "") {
         var userpif = userspif[0].toJSON();
         //MM.log('userpif:'+userpif);
