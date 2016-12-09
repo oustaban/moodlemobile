@@ -664,33 +664,26 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var indexU=1;
                                                         var pifscourse = new Array();
                                                         //Get Pifs
-                                                        var coursespif = MM.db.where("courses",{courseid : parseInt(course), siteid: MM.config.current_site.id});
-                                                        var coursepif = coursespif[0].toJSON();
-                                                        var licenses = coursepif.licenses;
-                                                        $.each(licenses, function( indexLicense, license ) {
+                                                        var userspif = MM.db.where("users",{site: MM.config.current_site.id});
+                                                        $.each(userspif, function( indexUsers, userpif ) {
+                                                            var jsonpif = userpif.toJSON();
                                                             MM.log('License:'+indexLicense+"/"+license.userid);
                                                             var userspif = MM.db.where('users', {userid:parseInt(license.userid)});
-                                                            if (userspif[0]) {
-                                                                var userpif = userspif[0].toJSON();
-                                                                var pifs = userpif.pif;
-                                                                if (!pifs) {
-                                                                    pifs = '[]';
-                                                                }
-                                                                
-                                                            } else {
+                                                            var pifs = jsonpif.pif;
+                                                            if (!pifs) {
                                                                 pifs = '[]';
                                                             }
-                                                            pifscourse[indexLicense] = $.grep(pifs, function( el ) {
+                                                            pifscourse[jsonpif.userid] = $.grep(pifs, function( el ) {
                                                                             return el.courseid == course;
                                                             });
                                                             
                                                         });
                                                         
-                                                        $.each(licenses, function( indexLicense, license ) {
+                                                        $.each(userspif, function( indexUsers, userpif ) {
                                                             
-                                                           
+                                                           jsonpif = userpif.toJSON();
                                                             
-                                                            var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+license.userid+"_pifsignatures.json";
+                                                            var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_pifsignatures.json";
                                                             MM.log('Synchro filePifSignatures : ' + filePifSignatures);
                                                             MM.fs.findFileAndReadContents(filePifSignatures,
                                                                 function (result) {
