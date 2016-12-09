@@ -664,6 +664,89 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var indexU=1;
                                                         var pifscourse = new Array();
                                                         //Get Pifs
+                                                        var coursespif = MM.db.where("courses",{courseid : parseInt(course), siteid: MM.config.current_site.id});
+                                                        var coursepif = coursespif[0].toJSON();
+                                                        var licenses = coursepif.licenses;
+                                                        $.each(licenses, function( indexLicense, license ) {
+                                                            
+                                                            var userspif = MM.db.where('users', {userid:parseInt(license.userid)});
+                                                            var userpif = userspif[0].toJSON();
+                                                            var pifs = userpif.pif;
+                                                            if (!pifs) {
+                                                                pifs = '[]';
+                                                            }
+                                                            pifscourse[indexLicense] = $.grep(pifs, function( el ) {
+                                                                            return el.courseid == course;
+                                                            });
+                                                        )};
+                                                        
+                                                        $.each(licenses, function( indexLicense, license ) {
+                                                            
+                                                            var userspif = MM.db.where('users', {userid:parseInt(license.userid)});
+                                                            var userpif = userspif[0].toJSON();
+                                                            var pifs = userpif.pif;
+                                                            if (!pifs) {
+                                                                pifs = '[]';
+                                                            }
+                                                            pifscourse[indexLicense] = $.grep(pifs, function( el ) {
+                                                                            return el.courseid == course;
+                                                            });
+                                                            
+                                                            var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+license.userid+"_pifsignatures.json";
+                                                            MM.log('Synchro filePifSignatures : ' + filePifSignatures);
+                                                            MM.fs.findFileAndReadContents(filePifSignatures,
+                                                                function (result) {
+                                                                    pifSignatureArray = JSON.parse(result);
+                                                                    $.each(pifSignatureArray, function( indexPif, valuePif ) {
+                                                                        var options2 = {};
+                                                                        options2.fileKey="file";
+                                                                        options2.fileName = valuePif;
+                                                                        options2.mimeType="image/png";
+                                                                        options2.params = {
+                                                                            course:course
+                                                                        };
+                                                                        options2.chunkedMode = false;
+                                                                        options2.headers = {
+                                                                          Connection: "close"
+                                                                        };
+                                                                         MM.fs.fileExists(valuePif,
+                                                                            function(path) {
+                                                                                var ft = new FileTransfer();
+                                                                                    ft.upload(
+                                                                                            path,
+                                                                                            MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
+                                                                                            function(){
+                                                                                              MM.log('Upload Pif réussi:'+path);
+                                                                                            },
+                                                                                            function(){
+                                                                                               MM.log('Upload Pif pas réussi:'+path);
+                                                                                            },
+                                                                                            options2
+                                                                                  );
+                                                                            },
+                                                                            function (path) {
+                                                                                //
+                                                                            }
+                                                                        );
+                                                                    });
+                                                                    MM.fs.removeFile (filePifSignatures,
+                                                                        function (result) {
+                                                                           MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
+                                                                           
+                                                                        },
+                                                                        function (result) {
+                                                                           MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
+                                                                        }
+                                                                    );
+                                                                    
+                                                                },
+                                                                function(result) {
+                                                                    MM.log('Pas de filePifSignatures')
+                                                                }
+                                                            );
+                                                        });
+                                                        
+                                                        /*
                                                         $.each(users, function( indexU1, valueU1 ) {
                                                             var userspif = MM.db.where('users', {userid:parseInt(valueU1)});
                                                             var userpif = userspif[0].toJSON();
@@ -675,7 +758,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             return el.courseid == course;
                                                             });
                                                         });
-                                                        
+                                                        */
                                                         var pifscoursejson = JSON.stringify(pifscourse);
                                                         MM.log('check');
                                                         if (obj.notes) {
@@ -765,65 +848,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                     
                                                                     
                                                                     
-                                                                });
-                                                                
-                                                                
-                                                                var coursespif = MM.db.where("courses",{courseid : parseInt(course), siteid: MM.config.current_site.id});
-                                                                var coursepif = coursespif[0].toJSON();
-                                                                
-                                                                $.each(coursepif.licenses, function( indexPif, valuePif ) {
-                                                                    var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+valuePif.userid+"_pifsignatures.json";
-                                                                    MM.log('Synchro filePifSignatures : ' + filePifSignatures);
-                                                                    MM.fs.findFileAndReadContents(filePifSignatures,
-                                                                        function (result) {
-                                                                            pifSignatureArray = JSON.parse(result);
-                                                                            $.each(pifSignatureArray, function( indexPif, valuePif ) {
-                                                                                var options2 = {};
-                                                                                options2.fileKey="file";
-                                                                                options2.fileName = valuePif;
-                                                                                options2.mimeType="image/png";
-                                                                                options2.params = {
-                                                                                    course:course
-                                                                                };
-                                                                                options2.chunkedMode = false;
-                                                                                options2.headers = {
-                                                                                  Connection: "close"
-                                                                                };
-                                                                                 MM.fs.fileExists(valuePif,
-                                                                                    function(path) {
-                                                                                        var ft = new FileTransfer();
-                                                                                            ft.upload(
-                                                                                                    path,
-                                                                                                    MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
-                                                                                                    function(){
-                                                                                                      MM.log('Upload Pif réussi:'+path);
-                                                                                                    },
-                                                                                                    function(){
-                                                                                                       MM.log('Upload Pif pas réussi:'+path);
-                                                                                                    },
-                                                                                                    options2
-                                                                                          );
-                                                                                    },
-                                                                                    function (path) {
-                                                                                        //
-                                                                                    }
-                                                                                );
-                                                                            });
-                                                                            MM.fs.removeFile (filePifSignatures,
-                                                                                function (result) {
-                                                                                   MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
-                                                                                   
-                                                                                },
-                                                                                function (result) {
-                                                                                   MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
-                                                                                }
-                                                                            );
-                                                                            
-                                                                        },
-                                                                        function(result) {
-                                                                            MM.log('Pas de filePifSignatures')
-                                                                        }
-                                                                    ); 
                                                                 });
                                                                 
                                                                 
