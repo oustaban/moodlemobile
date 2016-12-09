@@ -688,15 +688,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         
                                                         $.each(licenses, function( indexLicense, license ) {
                                                             
-                                                            var userspif = MM.db.where('users', {userid:parseInt(license.userid)});
-                                                            var userpif = userspif[0].toJSON();
-                                                            var pifs = userpif.pif;
-                                                            if (!pifs) {
-                                                                pifs = '[]';
-                                                            }
-                                                            pifscourse[indexLicense] = $.grep(pifs, function( el ) {
-                                                                            return el.courseid == course;
-                                                            });
+                                                           
                                                             
                                                             var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+license.userid+"_pifsignatures.json";
                                                             MM.log('Synchro filePifSignatures : ' + filePifSignatures);
