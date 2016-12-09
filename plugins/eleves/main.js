@@ -668,16 +668,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var coursepif = coursespif[0].toJSON();
                                                         var licenses = coursepif.licenses;
                                                         $.each(licenses, function( indexLicense, license ) {
-                                                            
+                                                            MM.log('License:'+indexLicense+"/"+license.userid);
                                                             var userspif = MM.db.where('users', {userid:parseInt(license.userid)});
-                                                            var userpif = userspif[0].toJSON();
-                                                            var pifs = userpif.pif;
-                                                            if (!pifs) {
+                                                            if (userpif[0] == undefined) {
+                                                                var userpif = userspif[0].toJSON();
+                                                                var pifs = userpif.pif;
+                                                                if (!pifs) {
+                                                                    pifs = '[]';
+                                                                }
+                                                                
+                                                            } else {
                                                                 pifs = '[]';
                                                             }
                                                             pifscourse[indexLicense] = $.grep(pifs, function( el ) {
                                                                             return el.courseid == course;
                                                             });
+                                                            
                                                         });
                                                         
                                                         $.each(licenses, function( indexLicense, license ) {
