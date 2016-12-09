@@ -663,15 +663,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var users = obj.users.split(",");
                                                         var indexU=1;
                                                         var pifscourse = new Array();
+                                                        var pifsusers = "";
                                                         //Get Pifs
                                                         var userspif = MM.db.where("users",{site: MM.config.current_site.id});
                                                         $.each(userspif, function( indexUsers, userpif ) {
                                                             var jsonpif = userpif.toJSON();
                                                             var pifs = jsonpif.pif;
+                                                            MM.log('UsersPif:'+jsonpif.userid);
+                                                            pifsusers += jsonpif.userid+',';
                                                             if (!pifs) {
                                                                 pifs = '[]';
                                                             }
-                                                            pifscourse[jsonpif.userid] = $.grep(pifs, function( el ) {
+                                                            pifscourse[indexUsers] = $.grep(pifs, function( el ) {
                                                                             return el.courseid == course;
                                                             });
                                                             
@@ -771,6 +774,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             "modulesend" : obj.modulesEnd,
                                                             "managerid" : MM.site.get('userid'),
                                                             "pifs" : pifscoursejson,
+                                                            "pifsusers" : pifsusers,
                                                             "notes" : jsonnotes
                                                         }
                                         
