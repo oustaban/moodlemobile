@@ -670,7 +670,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         $.each(licenses, function( indexLicense, license ) {
                                                             MM.log('License:'+indexLicense+"/"+license.userid);
                                                             var userspif = MM.db.where('users', {userid:parseInt(license.userid)});
-                                                            if (userpif[0]) {
+                                                            if (userspif[0]) {
                                                                 var userpif = userspif[0].toJSON();
                                                                 var pifs = userpif.pif;
                                                                 if (!pifs) {
