@@ -678,7 +678,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             pifscourse[indexLicense] = $.grep(pifs, function( el ) {
                                                                             return el.courseid == course;
                                                             });
-                                                        )};
+                                                        });
                                                         
                                                         $.each(licenses, function( indexLicense, license ) {
                                                             
