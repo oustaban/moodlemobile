@@ -763,7 +763,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             }
                                                                     );
                                                                     
-                                                                    var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+valueU+"_pifsignatures.json";
+                                                                    
+                                                                    
+                                                                });
+                                                                
+                                                                
+                                                                var coursespif = MM.db.where("courses",{courseid : parseInt(course), siteid: MM.config.current_site.id});
+                                                                var coursepif = coursespif[0].toJSON();
+                                                                
+                                                                $.each(coursepif.licenses, function( indexPif, valuePif ) {
+                                                                    var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+valuePif.userid+"_pifsignatures.json";
                                                                     MM.log('Synchro filePifSignatures : ' + filePifSignatures);
                                                                     MM.fs.findFileAndReadContents(filePifSignatures,
                                                                         function (result) {
@@ -814,8 +823,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                         function(result) {
                                                                             MM.log('Pas de filePifSignatures')
                                                                         }
-                                                                    );
-                                                                    
+                                                                    ); 
                                                                 });
                                                                 
                                                                 
