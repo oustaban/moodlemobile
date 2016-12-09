@@ -1642,7 +1642,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         
                         
-                        var thisuser = MM.db.get('users',{userid:parseInt(user)});
+                        var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
+                        
+                        MM.log(thisuser);
                         
                         var total_duration = 0;
                         
@@ -3204,7 +3206,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         });
         
         MM.log('pifs length:'+pifs2.length);
-        MM.log('thisuser:'+thisuser[0].userid);
+        MM.log('thisuser:'+thisuser);
         var b;
         var a;
         var scormid;
@@ -3284,7 +3286,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         }
         if (valider == 1){
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
-                    thisuser[0].save({pif:pifs2});
+                    thisuser.save({pif:pifs2});
 
         }
         
