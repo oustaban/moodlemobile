@@ -638,6 +638,81 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var btnSynchro = $(this);
                         MM.log("Synchro Start");
                         
+                        //Get Pifs
+                        var pifscourse = new Array();
+                        var pifsusers = "";
+                        var userspif = MM.db.where("users",{site: MM.config.current_site.id});
+                        $.each(userspif, function( indexUsers, userpif ) {
+                            var jsonpif = userpif.toJSON();
+                            var pifs = jsonpif.pif;
+                            MM.log('UsersPif:'+jsonpif.id+'/'+course+'/'+MM.config.current_site.id);
+                            pifsusers += jsonpif.userid+',';
+                            if (!pifs) {
+                                pifs = '[]';
+                            }
+                            pifscourse[indexUsers] = $.grep(pifs, function( el ) {
+                                            return el.courseid == course;
+                            });
+                            MM.log('pifscourse:'+pifscourse.length);
+                        });
+                        
+                        $.each(userspif, function( indexUsers, userpif ) {
+                            
+                           jsonpif = userpif.toJSON();
+                            
+                            var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_pifsignatures.json";
+                            MM.log('Synchro filePifSignatures : ' + filePifSignatures);
+                            MM.fs.findFileAndReadContents(filePifSignatures,
+                                function (result) {
+                                    pifSignatureArray = JSON.parse(result);
+                                    $.each(pifSignatureArray, function( indexPif, valuePif ) {
+                                        var options2 = {};
+                                        options2.fileKey="file";
+                                        options2.fileName = valuePif;
+                                        options2.mimeType="image/png";
+                                        options2.params = {
+                                            course:course
+                                        };
+                                        options2.chunkedMode = false;
+                                        options2.headers = {
+                                          Connection: "close"
+                                        };
+                                         MM.fs.fileExists(valuePif,
+                                            function(path) {
+                                                var ft = new FileTransfer();
+                                                    ft.upload(
+                                                            path,
+                                                            MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
+                                                            function(){
+                                                              MM.log('Upload Pif réussi:'+path);
+                                                            },
+                                                            function(){
+                                                               MM.log('Upload Pif pas réussi:'+path);
+                                                            },
+                                                            options2
+                                                  );
+                                            },
+                                            function (path) {
+                                                //
+                                            }
+                                        );
+                                    });
+                                    MM.fs.removeFile (filePifSignatures,
+                                        function (result) {
+                                           MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
+                                           
+                                        },
+                                        function (result) {
+                                           MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
+                                        }
+                                    );
+                                    
+                                },
+                                function(result) {
+                                    MM.log('Pas de filePifSignatures')
+                                }
+                            );
+                        });
                         
                         if (on == undefined || on == "off") {
                             $(this).attr('on','on');
@@ -662,81 +737,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         var modulesName = "";
                                                         var users = obj.users.split(",");
                                                         var indexU=1;
-                                                        var pifscourse = new Array();
-                                                        var pifsusers = "";
-                                                        //Get Pifs
-                                                        var userspif = MM.db.where("users",{site: MM.config.current_site.id});
-                                                        $.each(userspif, function( indexUsers, userpif ) {
-                                                            var jsonpif = userpif.toJSON();
-                                                            var pifs = jsonpif.pif;
-                                                            MM.log('UsersPif:'+jsonpif.id+'/'+course+'/'+MM.config.current_site.id);
-                                                            pifsusers += jsonpif.userid+',';
-                                                            if (!pifs) {
-                                                                pifs = '[]';
-                                                            }
-                                                            pifscourse[indexUsers] = $.grep(pifs, function( el ) {
-                                                                            return el.courseid == course;
-                                                            });
-                                                            MM.log('pifscourse:'+pifscourse.length);
-                                                        });
                                                         
-                                                        $.each(userspif, function( indexUsers, userpif ) {
-                                                            
-                                                           jsonpif = userpif.toJSON();
-                                                            
-                                                            var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_pifsignatures.json";
-                                                            MM.log('Synchro filePifSignatures : ' + filePifSignatures);
-                                                            MM.fs.findFileAndReadContents(filePifSignatures,
-                                                                function (result) {
-                                                                    pifSignatureArray = JSON.parse(result);
-                                                                    $.each(pifSignatureArray, function( indexPif, valuePif ) {
-                                                                        var options2 = {};
-                                                                        options2.fileKey="file";
-                                                                        options2.fileName = valuePif;
-                                                                        options2.mimeType="image/png";
-                                                                        options2.params = {
-                                                                            course:course
-                                                                        };
-                                                                        options2.chunkedMode = false;
-                                                                        options2.headers = {
-                                                                          Connection: "close"
-                                                                        };
-                                                                         MM.fs.fileExists(valuePif,
-                                                                            function(path) {
-                                                                                var ft = new FileTransfer();
-                                                                                    ft.upload(
-                                                                                            path,
-                                                                                            MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
-                                                                                            function(){
-                                                                                              MM.log('Upload Pif réussi:'+path);
-                                                                                            },
-                                                                                            function(){
-                                                                                               MM.log('Upload Pif pas réussi:'+path);
-                                                                                            },
-                                                                                            options2
-                                                                                  );
-                                                                            },
-                                                                            function (path) {
-                                                                                //
-                                                                            }
-                                                                        );
-                                                                    });
-                                                                    MM.fs.removeFile (filePifSignatures,
-                                                                        function (result) {
-                                                                           MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
-                                                                           
-                                                                        },
-                                                                        function (result) {
-                                                                           MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
-                                                                        }
-                                                                    );
-                                                                    
-                                                                },
-                                                                function(result) {
-                                                                    MM.log('Pas de filePifSignatures')
-                                                                }
-                                                            );
-                                                        });
                                                         
                                                         /*
                                                         $.each(users, function( indexU1, valueU1 ) {
