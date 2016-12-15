@@ -678,7 +678,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         options2.headers = {
                                           Connection: "close"
                                         };
-                                         MM.fs.fileExists(valuePif,
+                                         MM.fs.fileExists(MM.config.current_site.id+"/"+course+"/"+valuePif,
                                             function(path) {
                                                 var ft = new FileTransfer();
                                                     ft.upload(
