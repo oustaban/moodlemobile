@@ -696,7 +696,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                   );
                                             },
                                             function (path) {
-                                                MM.log('Pif signature existe pas:'+path+'||+'MM.config.current_site.id+"/"+course+"/"+valuePif);
+                                                MM.log('Pif signature existe pas:'+path+'||'+MM.config.current_site.id+"/"+course+"/"+valuePif);
                                             }
                                         );
                                     });
