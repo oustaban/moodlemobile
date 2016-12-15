@@ -667,9 +667,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 function (result) {
                                     pifSignatureArray = JSON.parse(result);
                                     $.each(pifSignatureArray, function( indexPif, valuePif ) {
+                                        var file = valuePif.split("/");
                                         var options2 = {};
                                         options2.fileKey="file";
-                                        options2.fileName = valuePif;
+                                        options2.fileName = file[file.length-1];
                                         options2.mimeType="image/png";
                                         options2.params = {
                                             course:course
@@ -678,8 +679,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         options2.headers = {
                                           Connection: "close"
                                         };
-                                        MM.log('Pif Json:'+valuePif);
-                                         MM.fs.fileExists(MM.config.current_site.id+"/"+course+"/"+valuePif,
+                                        MM.log('Pif Json:'+valuePif+'||'+file[file.length-1]);
+                                         MM.fs.fileExists(valuePif,
                                             function(path) {
                                                 var ft = new FileTransfer();
                                                     ft.upload(
@@ -695,7 +696,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                   );
                                             },
                                             function (path) {
-                                                //
+                                                MM.log('Pif signature existe pas:'+path+'||+'MM.config.current_site.id+"/"+course+"/"+valuePif);
                                             }
                                         );
                                     });
