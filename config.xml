@@ -28,7 +28,7 @@
     <preference name="AndroidPersistentFileLocation" value="Internal" />
     <preference name="iosPersistentFileLocation" value="Compatibility" />
 
-    <preference name="windows-appx-target" value="8.1-win" />
+    <preference name="windows-appx-target" value="uap" />
     <preference name="windows-arch" value="anycpu" />
     <preference name="windows-identity-name" value="20793Magnetic.coop.com.inhni.inhnov" />
 
