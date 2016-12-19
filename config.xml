@@ -33,11 +33,16 @@
     <preference name="windows-identity-name" value="20793Magnetic.coop.com.inhni.inhnov" />
 
     <icon src="icon.png" />
-    <icon src="img/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
-    <icon src="img/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
-    <icon src="img/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
-    <icon src="img/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
-    <icon src="img/icon/android/icon-144-xxhdpi.png"  gap:platform="android"    gap:density="xxhdpi" />
+    
+    <icon src="img/icon/w8/icon-30.png" width="30" height="30" gap:platform="winphone" />
+    <icon src="img/icon/w8/icon-50.png" width="50" height="50" gap:platform="winphone" />
+    <icon src="img/icon/w8/icon-150.png" width="150" height="150" gap:platform="winphone" />
+    <icon src="img/icon/wp8/icon-62.png" width="62" height="62" gap:platform="winphone" />
+    <icon src="img/icon/wp8/icon-73.png" width="73" height="73" gap:platform="winphone" />
+
+    <icon src="img/icon/ios/icon-small.png" gap:platform="ios" width="29" height="29" />
+    <icon src="img/icon/ios/icon-small@2x.png" gap:platform="ios" width="58" height="58" />
+    <icon src="img/icon/ios/icon-small@3x.png" gap:platform="ios" width="87" height="87" />
 
     <icon src="img/icon/ios/icon-small.png" gap:platform="ios" width="29" height="29" />
     <icon src="img/icon/ios/icon-small@2x.png" gap:platform="ios" width="58" height="58" />
@@ -75,6 +80,9 @@
     <gap:splash src="img/splash/ios/ipad_landscape.png" gap:platform="ios" width="1024" height="748"/>
     <gap:splash src="img/splash/ios/ipad_retina_portrait.png" gap:platform="ios" width="1536" height="2008"/>
     <gap:splash src="img/splash/ios/ipad_retina_landscape.png" gap:platform="ios" width="2048" height="1496"/>
+    
+    <gap:splash gap:platform="winphone" width="1100" height="720" src="img/splash/w8/winphone_xhdpi_landscape.png" />
+    <gap:splash gap:platform="winphone" width="720"  height="960"  src="img/splash/w8/winphone_xhdpi_portrait.png" />
 
     <gap:platform name="ios" />
     <gap:platform name="android" />
