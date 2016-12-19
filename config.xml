@@ -15,7 +15,7 @@
     
     
 
-    <preference name="phonegap-version" value="cli-5.4.1" />
+    <preference name="phonegap-version" value="cli-6.3.0" />
     <preference name="orientation"      value="landscape" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
@@ -27,6 +27,7 @@
 
     <preference name="AndroidPersistentFileLocation" value="Internal" />
     <preference name="iosPersistentFileLocation" value="Compatibility" />
+
 
     <preference name="windows-appx-target" value="uap" />
     <preference name="windows-arch" value="x64" />
