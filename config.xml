@@ -30,7 +30,7 @@
 
 
     <preference name="windows-appx-target" value="uap" />
-    <preference name="windows-arch" value="x64" />
+    <preference name="windows-arch" value="x86" />
     <preference name="windows-identity-name" value="20793Magnetic.coop.com.inhni.inhnov" />
 
     <icon src="icon.png" />
