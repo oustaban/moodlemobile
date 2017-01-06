@@ -855,16 +855,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        MM.log('Le fichier '+sessionFile+' a bien été effacé');
                                                                        $("#synchroR").hide();
                                                                        btnSynchro.attr('on','off');
-                                                                       /*
                                                                        $.each(participants_users, function( indexU, valueU ) {
                                                                             MM.log('Remove User:'+MM.config.current_site.id + "-" + valueU);
                                                                             MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
                                                                        });
-                                                                       */
+                                                                       
                                                                        
                                                                        MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
-                                                                       //sleep(5000);
-                                                                       //MM.plugins.eleves.showEleves(course);
+                                                                       sleep(5000);
+                                                                       MM.plugins.eleves.showEleves(course);
                                                                     },
                                                                     function (result) {
                                                                        MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
