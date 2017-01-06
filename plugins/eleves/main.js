@@ -395,8 +395,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             'email': user.email
                         };
                         var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
-                        if (checkUser) {
-                        //if (checkUser && !MM.deviceConnected()) {
+                        if (checkUser && !MM.deviceConnected()) {
                             //Cas ou on recupere pas les infos serveurs
                             
                             var checkUserJ = checkUser.toJSON();
