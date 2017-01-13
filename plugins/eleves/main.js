@@ -896,7 +896,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        });
                                                                        
                                                                        //MM.widgets.dialogClose();
-                                                                       //MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                                       MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                                                        //sleep(5000);
                                                                        //$("#showSessionL").show();
                                                                        MM.plugins.eleves.showEleves(course);
@@ -941,11 +941,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     
                                             }
                                         });
-                                        MM.log('TEST:'+message);
-                                        MM.widgets.dialogClose();
-                                        if (message!="") {
-                                            MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                                        }
+                                        
                                         
                                                                        
                                     }
