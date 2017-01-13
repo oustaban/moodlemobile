@@ -865,7 +865,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        });
                                                                        
                                                                        
-                                                                       MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 7000, resizable: false});
+                                                                       MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                                                        sleep(5000);
                                                                        MM.plugins.eleves.showEleves(course);
                                                                     },
