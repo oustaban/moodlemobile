@@ -186,6 +186,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     var showMore = true;
+                    var sessioncurrent = 0;
                     if (users.length < MM.plugins.eleves.limitNumber) {
                         showMore = false;
                     }
@@ -289,6 +290,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#stopSessionL').attr('users',users);
                             $('#stopSessionL').attr('starttime',obj.starttime);
                             
+                            sessioncurrent = 1;
+                            
                             
                         },
                         function (result) {
@@ -320,7 +323,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                     MM.log('Session Stockée:'+entry.name);
                                     var name = entry.name.split("session_");
-                                    if (name[1]) {
+                                    if (name[1] && !sessioncurrent) {
                                         $("#synchroR").show();
                                     }
                                     
