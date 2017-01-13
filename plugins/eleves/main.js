@@ -642,6 +642,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var btnSynchro = $(this);
                         MM.log("Synchro Start");
                         
+                        if (MM.deviceConnected())
+                            var messagestart = 'Synchronisation des sessions en cours. Veuillez patienter.';
+                        else
+                            var messagestart = 'Veuillez vous connecter pour synchroniser vos résultats.';
+                        
+                        MM.log('MessageStart:'+messagestart);
+                        MM.popMessage(messagestart, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                            
                         //Get Pifs
                         var pifscourse = new Array();
                         var pifsusers = "";
@@ -739,13 +747,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                         
                         if (on == undefined || on == "off") {
-                            if (MM.deviceConnected())
-                                var messagestart = 'Synchronisation des sessions en cours. Veuillez patienter.';
-                            else
-                                var messagestart = 'Veuillez vous connecter pour synchroniser vos résultats.';
                             
-                            MM.log('MessageStart:'+messagestart);
-                            MM.popMessage(messagestart, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                 
                             $(this).attr('on','on');
                             MM.log('Synchro On:'+on+','+$(this).attr('on'));
