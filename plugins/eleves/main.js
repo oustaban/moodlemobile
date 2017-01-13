@@ -187,6 +187,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     var showMore = true;
                     var sessioncurrent = 0;
+                    
                     if (users.length < MM.plugins.eleves.limitNumber) {
                         showMore = false;
                     }
@@ -283,7 +284,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
                             $('#stopSessionL').show();      
-                            //$('#synchroR').hide();
+                            $('#synchroR').hide();
                             $('#showSessionL').attr('users',users);
                             $('#showCourseL').attr('users',users);
                             $('#stopCourseL').attr('users',users);
@@ -307,7 +308,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
                             $('#stopSessionL').hide();      
-                            //$('#synchroR').hide();
+                            $('#synchroR').hide();
                         }
                     );
                     
