@@ -2834,7 +2834,8 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     
     mergednotes.forEach(function(notecourse) {
         MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note+'/'+notecourse.action);
-        var datenote =  new Date(notecourse.notetime*1000);
+        //var datenote =  new Date(notecourse.notetime*1000);
+        var datenote = new Date(notecourse.notetime*1000).toISOString().substr(0, 19);
         var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
         if (sessionOk) {
             if (button2)
