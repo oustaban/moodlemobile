@@ -818,7 +818,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                                             function(status){
                                                                 var sessionTime = new Date(parseInt(obj.starttime));
-                                                                var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
+                                                                
+                                                                //var sessionDate = sessionTime.getDate()+"/"+(sessionTime.getMonth()+1)+"/"+sessionTime.getFullYear()+" "+sessionTime.getHours()+":"+sessionTime.getMinutes();
+                                                                var sessionDate = ("0" + sessionTime.getDate()).slice(-2)+"/"+("0" + (sessionTime.getMonth() + 1)).slice(-2)+"/"+sessionTime.getFullYear() + ' à ' + ("0" + sessionTime.getHours()).slice(-2)+":"+("0" + sessionTime.getMinutes()).slice(-2);
+        
                                                                 var participants_users = status.participants_user.split(",");
                                                                 var participants_id = status.participants_id.split(",");
                                                                 
@@ -1290,8 +1293,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var startimer = $(this).attr('starttime');
                         var startime = new Date(parseInt($(this).attr('starttime')));
                         MM.log('starttime:'+$(this).attr('starttime'));
-                        var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
-                        
+                        //var startDate = startime.getDate()+"/"+(startime.getMonth()+1)+"/"+startime.getFullYear()+" à "+startime.getHours()+":"+startime.getMinutes();
+                        var startDate = ("0" + startime.getDate()).slice(-2)+"/"+("0" + (startime.getMonth() + 1)).slice(-2)+"/"+startime.getFullYear() + ' à ' + ("0" + startime.getHours()).slice(-2)+":"+("0" + startime.getMinutes()).slice(-2);
+        
                         var addNote = "Valider la session";
                         var html = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th>Participants</th><th class="center">Modules</th><th class="center">Actions</th></tr>';
 
@@ -1869,7 +1873,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),coursepif.company_city);
                             
                             var aujourdhui = new Date();
-                            var date = aujourdhui.getDate()+'/'+(aujourdhui.getMonth()+1)+'/'+aujourdhui.getFullYear();
+                            //var date = aujourdhui.getDate()+'/'+(aujourdhui.getMonth()+1)+'/'+aujourdhui.getFullYear();
+                            var date = ("0" + aujourdhui.getDate()).slice(-2)+"/"+("0" + (aujourdhui.getMonth() + 1)).slice(-2)+"/"+aujourdhui.getFullYear();
+        
                             
                             pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
                             
@@ -1880,9 +1886,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log("license:"+license + 'start:' + license[0].start);
                             var start = new Date(parseInt(license[0].start)*1000);
                             var end = new Date(parseInt(license[0].end)*1000);
+                            var sdate = ("0" + start.getDate()).slice(-2)+"/"+("0" + (start.getMonth() + 1)).slice(-2)+"/"+start.getFullYear();
+                            var edate = ("0" + end.getDate()).slice(-2)+"/"+("0" + (end.getMonth() + 1)).slice(-2)+"/"+end.getFullYear();
+        
                             
-                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),start.getDate()+'/'+(start.getMonth()+1)+'/'+start.getFullYear());
-                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),end.getDate()+'/'+(end.getMonth()+1)+'/'+end.getFullYear());
+                            //pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),start.getDate()+'/'+(start.getMonth()+1)+'/'+start.getFullYear());
+                            //pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),end.getDate()+'/'+(end.getMonth()+1)+'/'+end.getFullYear());
+                            
+                            pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),sdate);
+                            pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),edate);
                             
                             total_duration = total_duration / 60 / 60;
                             
@@ -2834,9 +2846,9 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     
     mergednotes.forEach(function(notecourse) {
         MM.log('notecourse:'+notecourse.noteid+'/'+notecourse.note+'/'+notecourse.action);
-        //var datenote =  new Date(notecourse.notetime*1000);
-        var datenote = new Date(notecourse.notetime*1000).toISOString().substr(0, 19);
-        var notetime = datenote.getDate()+"/"+(datenote.getMonth()+1)+"/"+datenote.getFullYear() + ' à ' + datenote.getHours()+":"+datenote.getMinutes();
+        var datenote =  new Date(notecourse.notetime*1000);
+        //var datenote = new Date(notecourse.notetime*1000).toISOString().substr(0, 19);
+        var notetime = ("0" + datenote.getDate()).slice(-2)+"/"+("0" + (datenote.getMonth() + 1)).slice(-2)+"/"+datenote.getFullYear() + ' à ' + ("0" + datenote.getHours()).slice(-2)+":"+("0" + datenote.getMinutes()).slice(-2);
         if (sessionOk) {
             if (button2)
                 var backTo = 1;
