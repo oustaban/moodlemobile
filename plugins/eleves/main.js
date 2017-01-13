@@ -941,8 +941,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     
                                             }
                                         });
-                                        
-                                        MM.widgets.dialogClose();
+                                        MM.log('TEST:'+message);
+                                        //MM.widgets.dialogClose();
                                         if (message!="") {
                                             MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                         }
