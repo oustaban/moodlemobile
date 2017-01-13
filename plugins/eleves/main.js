@@ -669,6 +669,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.fs.findFileAndReadContents(filePifSignatures,
                                 function (result) {
                                     pifSignatureArray = JSON.parse(result);
+                                    var countPifSig = pifSignatureArray.length;
+                                    var indexPifSig = 0;
                                     $.each(pifSignatureArray, function( indexPif, valuePif ) {
                                         var file = valuePif.split("/");
                                         var options2 = {};
@@ -691,6 +693,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
                                                             function(){
                                                               MM.log('Upload Pif réussi:'+path);
+                                                              indexPifSig = indexPifSig + 1;
+                                                              if (indexPifSig == countPifSig) {
+                                                                    MM.fs.removeFile (filePifSignatures,
+                                                                        function (result) {
+                                                                           MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
+                                                                           
+                                                                        },
+                                                                        function (result) {
+                                                                           MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
+                                                                        }
+                                                                    );
+                                                                }
                                                             },
                                                             function(){
                                                                MM.log('Upload Pif pas réussi:'+path);
@@ -700,18 +714,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             },
                                             function (path) {
                                                 MM.log('Pif signature existe pas:'+path+'||'+MM.config.current_site.id+"/"+course+"/"+valuePif);
+                                                indexPifSig = indexPifSig + 1;
+                                                if (indexPifSig == countPifSig) {
+                                                    MM.fs.removeFile (filePifSignatures,
+                                                        function (result) {
+                                                           MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
+                                                           
+                                                        },
+                                                        function (result) {
+                                                           MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
+                                                        }
+                                                    );
+                                                }
                                             }
                                         );
                                     });
-                                    MM.fs.removeFile (filePifSignatures,
-                                        function (result) {
-                                           MM.log('Le fichier '+filePifSignatures+' a bien été effacé');
-                                           
-                                        },
-                                        function (result) {
-                                           MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
-                                        }
-                                    );
+                                    
                                     
                                 },
                                 function(result) {
