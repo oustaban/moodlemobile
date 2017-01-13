@@ -740,9 +740,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if (on == undefined || on == "off") {
                             if (MM.deviceConnected())
-                                MM.popMessage("Synchronisation des sessions en cours. Veuillez patienter.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                var messagestart = 'Synchronisation des sessions en cours. Veuillez patienter.';
                             else
-                                MM.popMessage("Veuillez vous connecter pour synchroniser vos résultats.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                var messagestart = 'Veuillez vous connecter pour synchroniser vos résultats.';
+                            
+                            MM.log('MessageStart:'+messagestart);
+                            MM.popMessage(messagestart, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                
                             $(this).attr('on','on');
                             MM.log('Synchro On:'+on+','+$(this).attr('on'));
                             var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
