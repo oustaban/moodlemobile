@@ -898,8 +898,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                        MM.widgets.dialogClose();
                                                                        MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                                                        sleep(5000);
-                                                                       $("#showSessionL").show();
-                                                                       //MM.plugins.eleves.showEleves(course);
+                                                                       //$("#showSessionL").show();
+                                                                       MM.plugins.eleves.showEleves(course);
                                                                     },
                                                                     function (result) {
                                                                        MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
