@@ -892,7 +892,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                             MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
                                                                        });
                                                                        
-                                                                       
+                                                                       MM.widgets.dialogClose();
                                                                        MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                                                        sleep(5000);
                                                                        MM.plugins.eleves.showEleves(course);
