@@ -1202,6 +1202,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $('#stopSessionL').attr('starttime',d.getTime());
                                         $('#stopSessionL').hide();
                                         $('#showSessionL').hide();
+                                        $('#synchroR').hide();
                                         //$('#offlineC').show();
                                         $('#offlineC').css('visibility','visible');
                                     },
