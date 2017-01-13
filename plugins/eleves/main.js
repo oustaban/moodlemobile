@@ -813,7 +813,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             "notes" : jsonnotes
                                                         }
                                         
-                                                        MM.widgets.dialogClose();
+                                                        //MM.widgets.dialogClose();
                                                                        
                                                         MM.moodleWSCall('local_mobile_update_report_completion_by_userid_courseid', data,
                                                             function(status){
@@ -950,7 +950,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         
                         
-                        MM.widgets.dialogClose();
+                        //MM.widgets.dialogClose();
                         
                         
                     });
