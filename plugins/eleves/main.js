@@ -245,6 +245,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 );
                             }
                         });
+			$('#offlineC').append('<optgroup label=""></optgroup>');
                     }
                     
                     var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
