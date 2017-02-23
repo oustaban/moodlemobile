@@ -245,7 +245,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 );
                             }
                         });
-			$('#offlineC').append('<optgroup label=""></optgroup>');
+			var group = $('<optgroup label=""></optgroup>');
+			group.appendTo($('#offlinceC'));
                     }
                     
                     var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
