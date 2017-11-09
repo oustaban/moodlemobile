@@ -1669,7 +1669,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var pifArray = $(this).attr('pif');
                         MM.log('pifArray:'+pifArray);
                         
-                        if (pifArray == "") {
+                        if (pifArray == "" || pifArray == "[]") {
                             if (pifscourse.length > 0) {
                                 var managerid = pifscourse[0].managerid;
                                 var managername = pifscourse[0].managername
