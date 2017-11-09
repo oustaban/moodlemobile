@@ -970,7 +970,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     $('a#lielevelP').on(MM.clickType, function(e) {
-                        event.preventDefault(); 
+                        e.preventDefault(); 
                         selected = [];
                         var checkbox = $('#' + $(this).attr('eleve'));
                         
