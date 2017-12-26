@@ -7,7 +7,7 @@
             <input type="hidden" name="listeParticipants" value="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>">
             <div id="listeparticipants">
                 <ul id="listeparticipants1" class="nav nav-v">
-                    <%= MM.tpl.render(MM.plugins.eleves.templates.elevesRow.html, {"courseId": courseId, "users": users}) %>
+                    <%= MM.tpl.render(MM.plugins.eleves.templates.elevesRow.html, {"courseId": courseId, "users": users, "versions": versions}) %>
                 </ul>
             </div>
         </div>

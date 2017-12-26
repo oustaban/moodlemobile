@@ -213,22 +213,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var versionArray = new Array();
                     $.each(users, function( index, user ) {
                             versionArray[index] = 0;
-                            MM.log('User Pif1:'+user.pif);
                             pifscourse[index] = $.grep(user.pif, function( el ) {
                                             return el.courseid == courseId;
                             });
-                            MM.log('User Pif2:'+pifscourse[index]);
                             if (pifscourse[index].length > 0) {
-                                MM.log('User Pif3:');
                                 $.each(pifscourse[index], function( indexpif, pif ) {
                                     if (pif.version > versionArray[index] ) {
-                                        MM.log('User Pif4:');
                                         versionArray[index] = pif.version
                                     }
                                 });
                             }
                             versionArray[index] = versionArray[index] + 1;
-                            MM.log('Version:'+user.id+'/'+courseId+'/'+versionArray[index]);
                     });
                     
                     var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
@@ -388,6 +383,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     var tpl = {
                         users: users,
+                        versions: versionArray,
                         deviceType: MM.deviceType,
                         courseId: courseId,
                         showMore: showMore
