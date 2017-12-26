@@ -213,12 +213,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var versionArray = new Array();
                     $.each(users, function( index, user ) {
                             versionArray[index] = 0;
+                            MM.log('User Pif1:'+user.pif);
                             pifscourse[index] = $.grep(user.pif, function( el ) {
                                             return el.courseid == courseId;
                             });
+                            MM.log('User Pif2:'+pifscourse[index]);
                             if (pifscourse[index].length > 0) {
+                                MM.log('User Pif3:');
                                 $.each(pifscourse[index], function( indexpif, pif ) {
                                     if (pif.version > versionArray[index] ) {
+                                        MM.log('User Pif4:');
                                         versionArray[index] = pif.version
                                     }
                                 });
