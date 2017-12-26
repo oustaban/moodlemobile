@@ -3259,8 +3259,30 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                 return el.courseid != course;
         });
         
-        MM.log('pifs length:'+pifs2.length);
+        pifsversion = $.grep(pifs, function( el ) {
+                return el.courseid == course;
+        });
+        
+        MM.log('pifs2 length:'+pifs2.length);
+        MM.log('pifs3 length:'+pifs3.length);
         MM.log('thisuser:'+thisuser);
+        
+        var version = 0;
+        if (pifs3.length != 0) {
+            pifsversion.forEach(function(pifversion) {
+                //MM.log("User:"+user.id+'/'+user.fullname);
+                if (pifversion.version > version) {
+                    version = pifversion.version
+                }
+            });
+        }
+        
+        version = version + 1;
+        
+        var d = new Date();
+        var date_version = d.getTime()
+        
+        
         var b;
         var a;
         var scormid;
@@ -3285,7 +3307,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             } else {
                 b = 0;
             }
-            var obj = {courseid:course,scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername};
+            var obj = {version:version,date_version:date_version,courseid:course,scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername};
             if (pifsignature1 == 0) {
                 obj.signature_avant_manager = 0;
             } else {
@@ -3308,7 +3330,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             }
             
             pifs2.push(obj);
-            pifs3.push({courseid:course,scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername});
+            pifs3.push({version:version,date_version:date_version,courseid:course,scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername});
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
