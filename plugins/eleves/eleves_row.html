@@ -1,5 +1,5 @@
-<% var index =0;_.each(users, function(index,user) { %>
-<li index="<%= index %>" class="nav-item" id="lielevelP" eleve="eleveP<%= user.id %>">
+<% var index =0;_.each(users, function(user) { %>
+<li index="<%= index %>" class="nav-item" id="lielevelP" eleve="eleveP<%= user.id %>"><%= index %>/<%= versions[index] %>
 	<a style="padding:0;margin:0" href="javascript:void(0)" id="modifierpif" pif="" version="<%= versions[index] %>" course="<%= courseId %>" user="<%= user.id %>" path="" module=""></a>
 	<button id="pif" pif="" course="<%= courseId %>" version="<%= versions[index] %>" user="<%= user.id %>" path="" module="" class="btn grd-grisfonce text-blanc">PIF</button>
     <button id="notes" course="<%= courseId %>" user="<%= user.id %>" path="" module="" class="btn grd-grisclair text-blanc">Notes</button>
