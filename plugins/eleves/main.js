@@ -1671,7 +1671,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var button = $(this);
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
-                        var version = $(this).attr("user");
+                        var version = $(this).attr("version");
                         var theuser = MM.db.get('users',parseInt(user));
                         MM.log('pif:'+course+'/'+user);
                         
@@ -1714,7 +1714,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var html = '<div id="pifContent"><br/><br/>';
                         html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
                         html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p><br/><br/>';
-                        html += '<p align="center"><button course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Voir le PIF</button><button id="modifierpif" course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
+                        html += '<p align="center"><button course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Voir le PIF</button><button onclick="modifierPif('+button+','+user+','+course+','+version+')" id="modifierpif" course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
                         html += '<br/><br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
                         html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button class="modal-button-1">Voir</button></td></tr>';
@@ -1733,6 +1733,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     });
                     
                     //Modifier le Pif button
+                    
                     $('button#modifierpif').on(MM.clickType, function(e) {
                         MM.log('Modifier pif clicked');
                         var button = $(this);
@@ -3458,5 +3459,681 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         MM.log("Save PIF");
         MM.widgets.dialogClose();
     }
+    
+}
+
+
+
+//Modifier le Pif button
+                    
+function modifierPif(button,user,course,version) {
+    
+    MM.log('Modifier pif clicked');
+    var button = button;
+    //e.preventDefault();
+    var course = course;
+    var user = user;
+    var version = version;
+    var theuser = MM.db.get('users',parseInt(user));
+    MM.log('pif:'+course+'/'+user+'/'+version);
+    
+    var userspif = MM.db.where('users', {userid:parseInt(user)});
+    var userpif = userspif[0].toJSON();
+    var pifs = userpif.pif;
+    pifscourse = $.grep(pifs, function( el ) {
+                    return el.courseid == course;
+    });
+    MM.log('pifscourse length:'+pifscourse.length);
+    
+    
+    var pifArray = $(this).attr('pif');
+    MM.log('pifArray:'+pifArray);
+    
+    if (pifArray == "" || pifArray == "[]") {
+        if (pifscourse.length > 0) {
+            var managerid = pifscourse[0].managerid;
+            var managername = pifscourse[0].managername
+        } else {
+            managerid = MM.config.current_site.userid;
+            managername =MM.config.current_site.fullname;
+        }
+    } else {
+        var pifArray2 = JSON.parse(pifArray);
+        var managerid = pifArray2[0].managerid;
+        var managername = pifArray2[0].managername
+        
+    }
+    MM.log('manager:'+managerid+'/'+managername);
+    
+    
+    
+    var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
+    
+    MM.log(thisuser);
+    
+    var total_duration = 0;
+    
+    var addNote = "Valider";
+    var html = '<div id="pifContent"><h1><b>Article 3 – Le besoin de compétences à développer et visas des compétences acquises –</b></h1>';
+    html+= '<p>La grille suivante est un outil simple à remplir avant et à la fin de la formation, afin de formaliser l\'individualisation du parcours de formation et d\'en vérifier les acquis. Il constitue donc le référentiel des compétences visées, des objectifs pédagogiques associés, et des compétences acquises au terme du parcours de formation individualisé. Il n\'y a pas de pré requis pour cette formation.</p>';
+    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Intitulé des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
+    
+    var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
+    local_contents.forEach(function(local_content) {
+         var content = local_content.toJSON();
+         var unchecked = 0;
+         if (content.modname == "scorm") {
+            html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+            
+            
+            if (pifArray == "") {
+            
+                //MM.log('pifscourse:'+pifscourse+'/'+pifscourse.length+'/'+pifscourse[0]+'/'+pifscourse[0].scormid);
+                if (pifscourse.length > 0) {
+                    pifscormb = $.grep(pifscourse, function( el ) {
+                        return el.scormid == content.contentid && el.begin == 1;
+                    });
+                    MM.log('pifscormb length:'+pifscormb.length);
+                    
+                } else {
+                    pifscormb = [1];
+                }
+                
+                if (pifscormb.length>0) {
+                    html+=' checked="checked"';
+                    total_duration += content.pif_duration;
+                } else {
+                    unchecked = 1;
+                }
+                html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                 
+                pifscorme = $.grep(pifscourse, function( el ) {
+                        return el.scormid == content.contentid && el.end == 1;
+                });
+                MM.log('pifscorme length:'+pifscorme.length);
+                if (pifscorme.length>0) {
+                    html+=' checked="checked"';
+                }
+                if (unchecked) {
+                    html+=' disabled="true"'
+                }
+                html +='></td></tr>';
+                
+            } else {
+                
+                
+                //MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
+                
+                pifscormb = $.grep(pifArray2, function( el ) {
+                    return el.scormid == content.contentid && el.begin == 1;
+                });
+                
+                if (pifscormb.length>0) {
+                    html+=' checked="checked"';
+                    total_duration += content.pif_duration;
+                } else {
+                    unchecked = 1;
+                }
+                html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                 
+                pifscorme = $.grep(pifArray2, function( el ) {
+                        return el.scormid == content.contentid && el.end == 1;
+                });
+                if (pifscorme.length>0) {
+                    html+=' checked="checked"';
+                }
+                if (unchecked) {
+                    html+=' disabled="true"'
+                }
+                html +='></td></tr>';
+                
+            }
+         }
+    });
+    
+    html +='</table><br/><br/>';
+    
+    
+    if (pifArray != ""){
+        $(this).attr("pif","");
+    }
+    
+    var pifsignature1 = 0;
+    var pifsignature2 = 0;
+    var pifsignature3 = 0;
+    var pifsignature4 = 0;
+    
+    var options = {
+        title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
+        width: "90%",
+        marginTop: "10%",
+        buttons: {}
+    };
+    
+    options.buttons[MM.lang.s("cancel")] = function() {
+        MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+    };
+    
+    options.buttons["Voir le pif"] = function() {
+        MM.log('Voir le pif:'+courseId);
+        var a;
+        var b;
+        var scormid;
+        var pifbutton = new Array();
+        $('input#checkboxpif').each(function(index) {
+            if ($(this).attr('genre') == 'b') {
+              scormid = $(this).attr('content');
+              if ($(this).is(':checked')) {
+                  a = 1;
+              } else {
+                  a = 0;
+              }
+            }
+            if ($(this).attr('genre') == 'a') {
+              if ($(this).is(':checked')) {
+                  b = 1;
+              } else {
+                  b = 0;
+              }
+              pifbutton.push({scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername});
+              
+            }
+        });
+        button.attr('pif',JSON.stringify(pifbutton));
+        
+        var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l\'issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l\'issue du parcours de formation</b></td></tr>';
+        var htmlpif2 = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>Intitulés des séquences pédagogiques</b></th><th class="center"><b>Objectifs pédagogiques poursuivis</b></th><th class="center"><b>Modalités pédagogiques du module de formation</b></th><th class="center"><b>Durée estimative forfaitaire</b></th></tr>';
+    
+        local_contents.forEach(function(local_content) {
+            var content = local_content.toJSON();
+            var unchecked = 0;
+            if (content.modname == "scorm") {
+                htmlpif += '<tr><td style="height:40px" class="center2">';
+               
+                pifscormb = $.grep(pifbutton, function( el ) {
+                    return el.scormid == content.contentid && el.begin == 1;
+                });
+                
+                if (pifscormb.length>0) {
+                    htmlpif+='X';
+                } else {
+                    unchecked = 1;
+                    htmlpif+='';
+                }
+                htmlpif +='</td><td  class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
+                 
+                pifscorme = $.grep(pifbutton, function( el ) {
+                        return el.scormid == content.contentid && el.end == 1;
+                });
+                if (pifscorme.length>0) {
+                    htmlpif += 'X';
+                }
+                if (unchecked) {
+                    html+=' disabled="true"';
+                }
+                htmlpif +='</td></tr>';
+                if (pifscormb.length>0){
+                    htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center3">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
+               
+                }
+            }
+        });
+        
+        htmlpif +='</table>';
+        htmlpif2 +='</table>';
+         
+        
+        MM.widgets.dialogClose();
+        var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
+        var coursepif = coursespif[0].toJSON();
+        var pif = coursepif.pif
+        pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),managername);
+        pif = pif.replace(new RegExp('{USER_LAST_NAME}', 'gi'),userpif.lastname);
+        pif = pif.replace(new RegExp('{USER_FIRST_NAME}', 'gi'),userpif.firstname);
+        pif = pif.replace(new RegExp('{USER_EMAIL}', 'gi'),userpif.email);
+        pif = pif.replace(new RegExp('{PAGE_BREAK}', 'gi'),'');
+        pif = pif.replace(new RegExp('{COMPANY_NUMBER}', 'gi'),coursepif.company_number);
+        pif = pif.replace(new RegExp('{COMPANY_ADDRESS}', 'gi'),coursepif.company_address);
+        pif = pif.replace(new RegExp('{COMPANY_POSTAL_CODE}', 'gi'),coursepif.company_cp);
+        pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),coursepif.company_city);
+        
+        var aujourdhui = new Date();
+        //var date = aujourdhui.getDate()+'/'+(aujourdhui.getMonth()+1)+'/'+aujourdhui.getFullYear();
+        var date = ("0" + aujourdhui.getDate()).slice(-2)+"/"+("0" + (aujourdhui.getMonth() + 1)).slice(-2)+"/"+aujourdhui.getFullYear();
+
+        
+        pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
+        
+        MM.log("user/licenses:"+parseInt(user)+'/'+coursepif.licenses)
+        var license = $.grep(coursepif.licenses, function( el ) {
+            return el.userid == parseInt(user);
+        });
+        MM.log("license:"+license + 'start:' + license[0].start);
+        var start = new Date(parseInt(license[0].start)*1000);
+        var end = new Date(parseInt(license[0].end)*1000);
+        var sdate = ("0" + start.getDate()).slice(-2)+"/"+("0" + (start.getMonth() + 1)).slice(-2)+"/"+start.getFullYear();
+        var edate = ("0" + end.getDate()).slice(-2)+"/"+("0" + (end.getMonth() + 1)).slice(-2)+"/"+end.getFullYear();
+
+        
+        //pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),start.getDate()+'/'+(start.getMonth()+1)+'/'+start.getFullYear());
+        //pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),end.getDate()+'/'+(end.getMonth()+1)+'/'+end.getFullYear());
+        
+        pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),sdate);
+        pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),edate);
+        
+        total_duration = total_duration / 60 / 60;
+        
+        pif = pif.replace(new RegExp('{FORMATION_DURATION}', 'gi'),total_duration + ' heure(s)');
+        
+        pif = pif.replace(new RegExp('{TABLE_LIST}', 'gi'),htmlpif);
+        pif = pif.replace(new RegExp('{TABLE_DONE}', 'gi'),htmlpif2);
+        
+        if (pifsignature1 == 0) {
+            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'');
+        } else {
+            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'<img src="'+pifsignature1+'" width="300">');
+        }
+        
+        if (pifsignature2 == 0) {
+            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'');
+        } else {
+            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
+        }
+        
+        if (pifsignature3 == 0) {
+            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
+        } else {
+            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
+        }
+        
+        if (pifsignature4 == 0) {
+            pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
+        } else {
+            pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+        }
+        
+
+        //MM.log('pif:'+pif);
+        
+        
+        var html2 = '<div id="pifContent">'+pif+'</div>';
+        
+        
+        var options2 = {
+            title: 'Voir le pif de '+userpif.fullname,
+            width: "100%",
+            buttons: {}
+        };
+        
+       
+        options2.buttons["Fermer"] = function() {
+            //MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            button.click();
+        };
+        
+        MM.widgets.dialog(html2, options2);
+        
+        
+    };
+    options.buttons["Voir le pif"]["style"] = "modal-button-4";
+    
+    
+    
+    
+    
+    
+    
+    
+    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>AVANT LA FORMATION<br/>Signer pour valider les compétences à développer</b></th></tr>';
+    html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
+    
+    
+    
+    var fileSignature1 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_avant.png";
+    var fileSignature2 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_avant.png";
+    var fileSignature3 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_apres.png";
+    var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_apres.png";
+    
+    
+    
+
+    MM.fs.findFileAndReadContents(fileSignature1,
+        function(path) {
+            pifsignature1 = path;
+            MM.log('Image Signature Manager avant OK:'+fileSignature1);
+            html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+            
+            MM.fs.findFileAndReadContents(fileSignature2,
+                function(path) {
+                    pifsignature2 = path;
+                    MM.log('Image Signature Stagiaire avant OK 1:'+fileSignature2);
+                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                    html += '</table><br/><br/>';
+                    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>APRES LA FORMATION<br/>Signer pour valider les compétences acquises</b></th></tr>';
+                    html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
+                                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            MM.log('Image Signature Manager aprés OK 1:'+fileSignature3);
+                            html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    MM.log('Image Signature Stagiaire aprés OK 1:'+fileSignature4);
+                                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                },
+                                function(path) {
+                                    MM.log('Image Signature Stagiaire aprés NOK 1:'+fileSignature4);
+                                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                }
+                            );
+                        },
+                        function(path) {
+                            MM.log('Image Signature Manager aprés NOK 1:'+fileSignature3);
+                            html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    MM.log('Image Signature Stagiaire aprés OK 1:'+fileSignature4);
+                                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                },
+                                function(path) {
+                                    MM.log('Image Signature Stagiaire aprés NOK 1:'+fileSignature4);
+                                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                }
+                            );
+                        }
+                    );
+            
+                },
+                function(path) {
+                    MM.log('Image Signature Stagiaire avant NOK 1:'+fileSignature2);
+                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                    html += '</table><br/><br/>';
+                    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>APRES LA FORMATION<br/>Signer pour valider les compétences acquises</b></th></tr>';
+                    html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
+                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            MM.log('Image Signature Manager aprés OK:'+fileSignature3);
+                            html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                },
+                                function(path) {
+                                    MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                }
+                            );
+                        },
+                        function(path) {
+                            MM.log('Image Signature Manager aprés NOK:'+fileSignature3);
+                            html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                },
+                                function(path) {
+                                    MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                }
+                            );
+                        }
+                    );
+                }
+            );
+        },
+        function(path) {
+            MM.log('Image Signature Manager avant NOK:'+fileSignature1);
+            html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_avant" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+    
+            MM.fs.findFileAndReadContents(fileSignature2,
+                function(path) {
+                    pifsignature2 = path;
+                    MM.log('Image Signature Stagiaire avant OK 2:'+fileSignature2);
+                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    html += '</table><br/><br/>';
+                    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>APRES LA FORMATION<br/>Signer pour valider les compétences acquises</b></th></tr>';
+                    html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
+                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = 1;
+                            MM.log('Image Signature Manager aprés OK:'+fileSignature3);
+                            html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                },
+                                function(path) {
+                                    MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                }
+                            );
+                        },
+                        function(path) {
+                            MM.log('Image Signature Manager aprés NOK:'+fileSignature3);
+                            html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                },
+                                function(path) {
+                                    MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                }
+                            );
+                        }
+                    );
+                },
+                function(path) {
+                    MM.log('Image Signature Stagiaire avant NOK 2:'+fileSignature2);
+                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    html += '</table><br/><br/>';
+                    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>APRES LA FORMATION<br/>Signer pour valider les compétences acquises</b></th></tr>';
+                    html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';              
+                
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            MM.log('Image Signature Manager aprés OK:'+fileSignature3);
+                            html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                },
+                                function(path) {
+                                    MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                }
+                            );
+                        },
+                        function(path) {
+                            MM.log('Image Signature Manager aprés NOK:'+fileSignature3);
+                            html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                            //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                    
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
+                                    html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                },
+                                function(path) {
+                                    MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
+                                    html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                                    //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                            
+                                    html += '</table></div>';
+                                    
+                                    options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername); };
+                                    options.buttons["Valider"]["style"] = "modal-button-2";
+                                    
+                                    MM.widgets.dialog(html, options);
+                                }
+                            );
+                        }
+                    );
+                }
+            );
+        }
+    );
+    
+    
+    
+    
     
 }
