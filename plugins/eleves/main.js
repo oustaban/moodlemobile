@@ -1708,7 +1708,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         MM.widgets.dialog(html, options);
                         
-                    }
+                    });
                     
                     //Modifier le Pif button
                     $('a#modifierpif').on(MM.clickType, function(e) {
