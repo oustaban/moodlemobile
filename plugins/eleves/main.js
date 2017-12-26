@@ -1646,10 +1646,73 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     });
                     
                     
-                    
                     //Pif button
                     $('button#pif').on(MM.clickType, function(e) {
-                        MM.log('pif clicked');
+                        MM.log('Pif clicked');
+                        var button = $(this);
+                        var course = $(this).attr("course");
+                        var user = $(this).attr("user");
+                        var theuser = MM.db.get('users',parseInt(user));
+                        MM.log('pif:'+course+'/'+user);
+                        
+                        var userspif = MM.db.where('users', {userid:parseInt(user)});
+                        var userpif = userspif[0].toJSON();
+                        var pifs = userpif.pif;
+                        pifscourse = $.grep(pifs, function( el ) {
+                                        return el.courseid == course;
+                        });
+                        MM.log('pifscourse length:'+pifscourse.length);
+                        
+                        
+                        var pifArray = $(this).attr('pif');
+                        MM.log('pifArray:'+pifArray);
+                        
+                        if (pifArray == "" || pifArray == "[]") {
+                            if (pifscourse.length > 0) {
+                                var managerid = pifscourse[0].managerid;
+                                var managername = pifscourse[0].managername
+                            } else {
+                                managerid = MM.config.current_site.userid;
+                                managername =MM.config.current_site.fullname;
+                            }
+                        } else {
+                            var pifArray2 = JSON.parse(pifArray);
+                            var managerid = pifArray2[0].managerid;
+                            var managername = pifArray2[0].managername
+                            
+                        }
+                        MM.log('manager:'+managerid+'/'+managername);
+                        
+                        
+                        
+                        var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
+                        
+                        MM.log(thisuser);
+                        
+                        var total_duration = 0;
+                        
+                        var html = '<div id="pifContent">';
+                        html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
+                        html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p>';
+                        html += '<p align="center"><button class="modal-button-1" style="width: 25%">Voir le PIF</button><button class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
+                        html += '<br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
+                        html += '<br/><p><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span> <button class="modal-button-1" style="width: 25%">Voir</button></p>';
+                        html += '<br/><p><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span> <button class="modal-button-1" style="width: 25%">Compléter</button></p>';
+                        
+                        var options = {
+                            title: 'Stagiaire '+userpif.fullname,
+                            width: "90%",
+                            marginTop: "10%",
+                            buttons: {}
+                        };
+                        
+                        MM.widgets.dialog(html, options);
+                        
+                    }
+                    
+                    //Modifier le Pif button
+                    $('a#modifierpif').on(MM.clickType, function(e) {
+                        MM.log('Modifier pif clicked');
                         var button = $(this);
                         //e.preventDefault();
                         var course = $(this).attr("course");
