@@ -1643,6 +1643,11 @@ hr {
   overflow: auto;
   max-height: 50vh;
 }
+
+#pifContent2 {
+  overflow: auto;
+  max-height: 50vh;
+}
 #app-dialog .modalContent #pifContent{
   text-align:left; 
 }

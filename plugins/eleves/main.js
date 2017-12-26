@@ -181,6 +181,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
             MM.plugins.eleves._loadEleves(courseId, 0, MM.plugins.eleves.limitNumber,
                 function(users) {
+                    
                     // Removing loading icon.
                     $('a[href="#eleves/' +courseId+ '"]').removeClass('loading-row');
                     
@@ -207,6 +208,24 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         );
                     });
                     */
+                    //Get Last Version Pif of User
+                    var pifscourse = new Array();
+                    var versionArray = new Array();
+                    $.each(users, function( index, user ) {
+                            versionArray[index] = 0;
+                            pifscourse[index] = $.grep(user.pif, function( el ) {
+                                            return el.courseid == courseId;
+                            });
+                            if (pifscourse[index].length > 0) {
+                                $.each(pifscourse[index], function( indexpif, pif ) {
+                                    if (pif.version > versionArray[index] ) {
+                                        versionArray[index] = pif.version
+                                    }
+                                });
+                            }
+                            versionArray[index] = versionArray[index] + 1;
+                            MM.log('Version:'+user.id+'/'+courseId+'/'+versionArray[index]);
+                    });
                     
                     var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
                     MM.log('LocalCourses:'+localCourses+','+localCourses.length);
@@ -1704,7 +1723,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var options = {
                             title: 'Stagiaire '+userpif.fullname,
                             width: "98%",
-                            marginTop: "2%",
+                            marginTop: "10%",
                             buttons: {}
                         };
                         
