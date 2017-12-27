@@ -1714,7 +1714,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var html = '<div id="pifContent"><br/><br/>';
                         html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
                         html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p><br/><br/>';
-                        html += '<p align="center"><button course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\',\''+pifArray+'\')" id="modifierpif" course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
+                        html += '<p align="center"><button course="'+course+'" user="'+user+'" pif="'+pifArray+'" version="'+version+'" class="modal-button-1" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\',\''+pifArray+'\')" id="modifierpif" course="'+course+'" user="'+user+'" pif="'+pifArray+'" version="'+version+'" class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
                         html += '<br/><br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
                         html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button class="modal-button-1">Voir</button></td></tr>';
@@ -1730,11 +1730,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         MM.widgets.dialog(html, options);
                         
+                        if (pifArray != "") {
+                            $("a#modifierpif").click();
+                        }
+                        
                     });
                     
                     //Modifier le Pif button
                     
                     $('button#modifierpif').on(MM.clickType, function(e) {
+                        
                         MM.log('Modifier pif clicked');
                         var button = $(this);
                         //e.preventDefault();
@@ -3594,8 +3599,11 @@ function modifierPif(button,user,course,version,pif) {
     var pifsignature3 = 0;
     var pifsignature4 = 0;
     
+    var avenantsignature1 = 0;
+    var avenantsignature2 = 0;
+    
     var options = {
-        title: 'Modifier le PIF du staigiaire : '+userpif.fullname,
+        title: 'Modifier le PIF du stagiaire : '+userpif.fullname,
         width: "98%",
         marginTop: "10%",
         buttons: {}
@@ -3964,10 +3972,6 @@ function modifierPif(button,user,course,version,pif) {
         );
     
     } else {
-        options.buttons["VALIDER et SIGNER L'AVENANT"] = function() {
-            MM.widgets.dialogClose();
-            $('button#pif[user="'+userpif.userid+'"]').click();
-        };
         
         var today = new Date();
         var dd = today.getDate();
