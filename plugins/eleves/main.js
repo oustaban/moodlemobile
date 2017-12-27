@@ -3470,6 +3470,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
 function modifierPif(button,user,course,version,pif) {
     
     MM.log('Modifier pif clicked');
+    
     var button = button;
     //e.preventDefault();
     var course = course;
@@ -3615,7 +3616,7 @@ function modifierPif(button,user,course,version,pif) {
     options.buttons[MM.lang.s("cancel")] = function() {
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
-        button.click();
+        $('button#pif[user="'+userpif.userid+'"]').click();
     };
     
     
