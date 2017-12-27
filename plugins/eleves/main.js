@@ -4051,7 +4051,7 @@ function modifierPif(button,user,course,version,pif) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(version:version,userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername,version,today,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,today,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
@@ -4064,7 +4064,7 @@ function modifierPif(button,user,course,version,pif) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername,version,today,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,today,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
