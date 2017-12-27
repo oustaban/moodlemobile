@@ -3472,6 +3472,7 @@ function modifierPif(button,user,course,version,pif) {
     var button = button;
     //e.preventDefault();
     var course = course;
+    var courseId = course;
     var user = user;
     var version = version;
     var theuser = MM.db.get('users',parseInt(user));
