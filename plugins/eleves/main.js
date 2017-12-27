@@ -1722,7 +1722,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         html += '</table>';
                         
                         var options = {
-                            title: 'Stagiaire '+userpif.fullname,
+                            title: 'Stagiaire '+userpif.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
                             width: "98%",
                             marginTop: "10%",
                             buttons: {}
@@ -3991,5 +3991,14 @@ function modifierPif(button,user,course,version,pif) {
     }
     
     
+    
+}
+
+
+
+function closeDialog(course,user) {
+    MM.Router.navigate("eleves/" + course );
+    MM.widgets.dialogClose();
+    $('button#pif[user="'+user+'"]').click();
     
 }

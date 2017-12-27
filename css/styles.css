@@ -1646,6 +1646,9 @@ hr {
   text-align:center;
   font-weight:bold;
   padding:10px;
+  margin: 20px;
+  font-size: 14px;
+  color: #000;
 }
 
 #pifContent {
