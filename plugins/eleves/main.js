@@ -3352,6 +3352,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         MM.log('thisuser:'+thisuser);
         
         var version = 0;
+        
         if (pifs3.length != 0) {
             pifsversion.forEach(function(pifversion) {
                 //MM.log("User:"+user.id+'/'+user.fullname);
