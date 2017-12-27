@@ -3458,6 +3458,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
     if (valider == 1) {
         MM.log("Save PIF");
         MM.widgets.dialogClose();
+        $('button#pif[user="'+userpif.userid+'"]').click();
     }
     
 }
@@ -3606,7 +3607,7 @@ function modifierPif(button,user,course,version,pif) {
     
     var options = {
         title: 'Protocole Individuel de Formation bipartite pour '+userpif.fullname,
-        width: "90%",
+        width: "98%",
         marginTop: "10%",
         buttons: {}
     };
@@ -3614,175 +3615,8 @@ function modifierPif(button,user,course,version,pif) {
     options.buttons[MM.lang.s("cancel")] = function() {
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
+        button.click();
     };
-    
-    options.buttons["Voir le pif"] = function() {
-        MM.log('Voir le pif:'+courseId);
-        var a;
-        var b;
-        var scormid;
-        var pifbutton = new Array();
-        $('input#checkboxpif').each(function(index) {
-            if ($(this).attr('genre') == 'b') {
-              scormid = $(this).attr('content');
-              if ($(this).is(':checked')) {
-                  a = 1;
-              } else {
-                  a = 0;
-              }
-            }
-            if ($(this).attr('genre') == 'a') {
-              if ($(this).is(':checked')) {
-                  b = 1;
-              } else {
-                  b = 0;
-              }
-              pifbutton.push({scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername});
-              
-            }
-        });
-        button.attr('pif',JSON.stringify(pifbutton));
-        
-        var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l\'issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l\'issue du parcours de formation</b></td></tr>';
-        var htmlpif2 = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>Intitulés des séquences pédagogiques</b></th><th class="center"><b>Objectifs pédagogiques poursuivis</b></th><th class="center"><b>Modalités pédagogiques du module de formation</b></th><th class="center"><b>Durée estimative forfaitaire</b></th></tr>';
-    
-        local_contents.forEach(function(local_content) {
-            var content = local_content.toJSON();
-            var unchecked = 0;
-            if (content.modname == "scorm") {
-                htmlpif += '<tr><td style="height:40px" class="center2">';
-               
-                pifscormb = $.grep(pifbutton, function( el ) {
-                    return el.scormid == content.contentid && el.begin == 1;
-                });
-                
-                if (pifscormb.length>0) {
-                    htmlpif+='X';
-                } else {
-                    unchecked = 1;
-                    htmlpif+='';
-                }
-                htmlpif +='</td><td  class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
-                 
-                pifscorme = $.grep(pifbutton, function( el ) {
-                        return el.scormid == content.contentid && el.end == 1;
-                });
-                if (pifscorme.length>0) {
-                    htmlpif += 'X';
-                }
-                if (unchecked) {
-                    html+=' disabled="true"';
-                }
-                htmlpif +='</td></tr>';
-                if (pifscormb.length>0){
-                    htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center3">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
-               
-                }
-            }
-        });
-        
-        htmlpif +='</table>';
-        htmlpif2 +='</table>';
-         
-        
-        MM.widgets.dialogClose();
-        var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
-        var coursepif = coursespif[0].toJSON();
-        var pif = coursepif.pif
-        pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),managername);
-        pif = pif.replace(new RegExp('{USER_LAST_NAME}', 'gi'),userpif.lastname);
-        pif = pif.replace(new RegExp('{USER_FIRST_NAME}', 'gi'),userpif.firstname);
-        pif = pif.replace(new RegExp('{USER_EMAIL}', 'gi'),userpif.email);
-        pif = pif.replace(new RegExp('{PAGE_BREAK}', 'gi'),'');
-        pif = pif.replace(new RegExp('{COMPANY_NUMBER}', 'gi'),coursepif.company_number);
-        pif = pif.replace(new RegExp('{COMPANY_ADDRESS}', 'gi'),coursepif.company_address);
-        pif = pif.replace(new RegExp('{COMPANY_POSTAL_CODE}', 'gi'),coursepif.company_cp);
-        pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),coursepif.company_city);
-        
-        var aujourdhui = new Date();
-        //var date = aujourdhui.getDate()+'/'+(aujourdhui.getMonth()+1)+'/'+aujourdhui.getFullYear();
-        var date = ("0" + aujourdhui.getDate()).slice(-2)+"/"+("0" + (aujourdhui.getMonth() + 1)).slice(-2)+"/"+aujourdhui.getFullYear();
-
-        
-        pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
-        
-        MM.log("user/licenses:"+parseInt(user)+'/'+coursepif.licenses)
-        var license = $.grep(coursepif.licenses, function( el ) {
-            return el.userid == parseInt(user);
-        });
-        MM.log("license:"+license + 'start:' + license[0].start);
-        var start = new Date(parseInt(license[0].start)*1000);
-        var end = new Date(parseInt(license[0].end)*1000);
-        var sdate = ("0" + start.getDate()).slice(-2)+"/"+("0" + (start.getMonth() + 1)).slice(-2)+"/"+start.getFullYear();
-        var edate = ("0" + end.getDate()).slice(-2)+"/"+("0" + (end.getMonth() + 1)).slice(-2)+"/"+end.getFullYear();
-
-        
-        //pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),start.getDate()+'/'+(start.getMonth()+1)+'/'+start.getFullYear());
-        //pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),end.getDate()+'/'+(end.getMonth()+1)+'/'+end.getFullYear());
-        
-        pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),sdate);
-        pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),edate);
-        
-        total_duration = total_duration / 60 / 60;
-        
-        pif = pif.replace(new RegExp('{FORMATION_DURATION}', 'gi'),total_duration + ' heure(s)');
-        
-        pif = pif.replace(new RegExp('{TABLE_LIST}', 'gi'),htmlpif);
-        pif = pif.replace(new RegExp('{TABLE_DONE}', 'gi'),htmlpif2);
-        
-        if (pifsignature1 == 0) {
-            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'');
-        } else {
-            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'<img src="'+pifsignature1+'" width="300">');
-        }
-        
-        if (pifsignature2 == 0) {
-            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'');
-        } else {
-            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
-        }
-        
-        if (pifsignature3 == 0) {
-            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
-        } else {
-            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
-        }
-        
-        if (pifsignature4 == 0) {
-            pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
-        } else {
-            pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
-        }
-        
-
-        //MM.log('pif:'+pif);
-        
-        
-        var html2 = '<div id="pifContent">'+pif+'</div>';
-        
-        
-        var options2 = {
-            title: 'Voir le pif de '+userpif.fullname,
-            width: "100%",
-            buttons: {}
-        };
-        
-       
-        options2.buttons["Fermer"] = function() {
-            //MM.Router.navigate("eleves/" + course );
-            MM.widgets.dialogClose();
-            button.click();
-        };
-        
-        MM.widgets.dialog(html2, options2);
-        
-        
-    };
-    options.buttons["Voir le pif"]["style"] = "modal-button-4";
-    
-    
-    
-    
     
     
     
@@ -3836,6 +3670,7 @@ function modifierPif(button,user,course,version,pif) {
                                     options.buttons["Valider"]["style"] = "modal-button-2";
                                     
                                     MM.widgets.dialog(html, options);
+                                    
                                 },
                                 function(path) {
                                     MM.log('Image Signature Stagiaire aprés NOK 1:'+fileSignature4);
@@ -3848,6 +3683,7 @@ function modifierPif(button,user,course,version,pif) {
                                     options.buttons["Valider"]["style"] = "modal-button-2";
                                     
                                     MM.widgets.dialog(html, options);
+                                    
                                 }
                             );
                         },
@@ -3869,6 +3705,7 @@ function modifierPif(button,user,course,version,pif) {
                                     options.buttons["Valider"]["style"] = "modal-button-2";
                                     
                                     MM.widgets.dialog(html, options);
+                                    
                                 },
                                 function(path) {
                                     MM.log('Image Signature Stagiaire aprés NOK 1:'+fileSignature4);
@@ -3881,6 +3718,7 @@ function modifierPif(button,user,course,version,pif) {
                                     options.buttons["Valider"]["style"] = "modal-button-2";
                                     
                                     MM.widgets.dialog(html, options);
+                                    
                                 }
                             );
                         }
@@ -3914,6 +3752,7 @@ function modifierPif(button,user,course,version,pif) {
                                     options.buttons["Valider"]["style"] = "modal-button-2";
                                     
                                     MM.widgets.dialog(html, options);
+                                   
                                 },
                                 function(path) {
                                     MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
@@ -3926,7 +3765,7 @@ function modifierPif(button,user,course,version,pif) {
                                     options.buttons["Valider"]["style"] = "modal-button-2";
                                     
                                     MM.widgets.dialog(html, options);
-                                }
+                                    
                             );
                         },
                         function(path) {
