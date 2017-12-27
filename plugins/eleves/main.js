@@ -3992,7 +3992,7 @@ function modifierPif(button,user,course,version,pif) {
         {
             mm='0'+mm;
         } 
-        var current = dd+'/'+mm+'/'+yyyy+' à ' today.getHours() + ":" + today.getMinutes();
+        var current = dd+'/'+mm+'/'+yyyy+' à ' + today.getHours() + ':' + today.getMinutes();
 
         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><td class="center2" colspan="2"><b>AVENANT</b><br/>Je certifie vouloir apporter ces dernières modifications à l\'article 3 du Protocole Individuel de Formation (PIF) bipartite et le stagiaire bénéficiaire en a bien pris connaissance.<br/><br/>Modifié le '+current+'<br/><br/><br/></td></tr><tr><th class="center" colspan="2"><b>Signez pour valider les modifications apportées au PIF</b></th></tr>';
         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
