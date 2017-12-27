@@ -3999,6 +3999,4 @@ function modifierPif(button,user,course,version,pif) {
 function closeDialog(course,user) {
     MM.Router.navigate("eleves/" + course );
     MM.widgets.dialogClose();
-    $('button#pif[user="'+user+'"]').click();
-    
 }

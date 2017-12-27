@@ -1640,6 +1640,9 @@ hr {
   max-height: 50vh;
 }
 
+.closedialog {
+  float:right;
+}
 .avenant {
   border:2px solid #000;
   background-color:#d6ae50;
