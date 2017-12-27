@@ -3348,19 +3348,9 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         
         
         MM.log('pifs2 length:'+pifs2.length);
-        MM.log('pifs3 length:'+pifs3.length);
         MM.log('thisuser:'+thisuser);
         
-        var version = 0;
         
-        if (pifs3.length != 0) {
-            pifsversion.forEach(function(pifversion) {
-                //MM.log("User:"+user.id+'/'+user.fullname);
-                if (pifversion.version > version) {
-                    version = pifversion.version
-                }
-            });
-        }
         
         
         var b;
@@ -4099,7 +4089,6 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         
         
         MM.log('pifs2 length:'+pifs2.length);
-        MM.log('pifs3 length:'+pifs3.length);
         MM.log('thisuser:'+thisuser);
         
         
