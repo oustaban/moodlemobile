@@ -3766,6 +3766,7 @@ function modifierPif(button,user,course,version,pif) {
                                     
                                     MM.widgets.dialog(html, options);
                                     
+                                }
                             );
                         },
                         function(path) {
