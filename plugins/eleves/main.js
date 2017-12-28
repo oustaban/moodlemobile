@@ -1685,6 +1685,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         
                         var pifArrayOrg = $(this).attr('pif');
+                        MM.log('pifArrayOrg:'+pifArrayOrg);
                         pifArray = pifArrayOrg.replace(/\\"/g, '"');
                         MM.log('pifArray:'+pifArray);
                         
@@ -2815,6 +2816,7 @@ function modifierPif(button,user,course,version) {
     
     //var pifArray = pif;
     var pifArray = $('button#modifierpif').attr('pif');
+    MM.log('pifArray:'+pifArray);
     pifArray = pifArray.replace(/\\"/g, '"');
     MM.log('pifArray:'+pifArray);
     
