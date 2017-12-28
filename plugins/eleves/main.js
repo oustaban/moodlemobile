@@ -2775,6 +2775,8 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
                     MM.log("Save PIF:"+pifs2);
                     thisuser.save({pif:pifs2});
+                    version = version + 1;
+                    $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
 
         }
         
@@ -3514,6 +3516,8 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
                     MM.log('Save:'+pifs2);
                     thisuser.save({pif:pifs2});
+                    version = version + 1;
+                    $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
 
         }
         
