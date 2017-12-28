@@ -1712,10 +1712,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var total_duration = 0;
                         
+                        pifArray = pifArray.replace(/"/g, '\\"');
+                        
                         var html = '<div id="pifContent"><br/><br/>';
                         html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
                         html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p><br/><br/>';
-                        html += '<p align="center"><button course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\',\''+pifArray+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
+                        html += '<p align="center"><button course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" pif="'+pifArray+'" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
                         html += '<br/><br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
                         html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button class="modal-button-1">Voir</button></td></tr>';
@@ -1732,7 +1734,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.widgets.dialog(html, options);
                         
                         if (pifArray != "") {
-                            //$("button#modifierpif").click();
+                            $("button#modifierpif").click();
                         }
                         
                     });
@@ -3460,7 +3462,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
 
 //Modifier le Pif button
                     
-function modifierPif(button,user,course,version,pif) {
+function modifierPif(button,user,course,version) {
     
     MM.log('Modifier pif clicked');
     
@@ -3482,7 +3484,8 @@ function modifierPif(button,user,course,version,pif) {
     MM.log('pifscourse length:'+pifscourse.length);
     
     
-    var pifArray = pif;
+    //var pifArray = pif;
+    var pifArray = button.attr('pif');
     MM.log('pifArray:'+pifArray);
     
     if (pifArray == "" || pifArray == "[]") {
