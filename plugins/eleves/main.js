@@ -2968,8 +2968,7 @@ function modifierPif(button,user,course,version) {
         var fileSignature3 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_apres.png";
         var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_apres.png";
         
-        var today = new Date();
-        
+        var today = Date.now();
     
         MM.fs.findFileAndReadContents(fileSignature1,
             function(path) {
@@ -3313,6 +3312,7 @@ function modifierPif(button,user,course,version) {
     } else {
         
         var today = new Date();
+        var now = Date.now();
         var dd = today.getDate();
 
         var mm = today.getMonth()+1; 
@@ -3328,7 +3328,7 @@ function modifierPif(button,user,course,version) {
         } 
         var current = dd+'/'+mm+'/'+yyyy+' à ' + today.getHours() + ':' + today.getMinutes();
 
-        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><td class="center2" colspan="2"><b>AVENANT</b><br/>Je certifie vouloir apporter ces dernières modifications à l\'article 3 du Protocole Individuel de Formation (PIF) bipartite et le stagiaire bénéficiaire en a bien pris connaissance.<br/><br/>Modifié le '+current+'<br/><br/><br/></td></tr><tr><th class="center" colspan="2"><b>Signez pour valider les modifications apportées au PIF</b></th></tr>';
+        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><td class="center2" colspan="2"><b>AVENANT</b><br/><br/>Je certifie vouloir apporter ces dernières modifications à l\'article 3 du Protocole Individuel de Formation (PIF) bipartite et le stagiaire bénéficiaire en a bien pris connaissance.<br/><br/>Modifié le '+current+'<br/><br/><br/></td></tr><tr><th class="center" colspan="2"><b>Signez pour valider les modifications apportées au PIF</b></th></tr>';
         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
         
         var fileAvenant1 = MM.config.current_site.id+"/"+course+"/"+user+"_"+version+"_signature_manager.png";
@@ -3350,7 +3350,7 @@ function modifierPif(button,user,course,version) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,today,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
@@ -3363,7 +3363,7 @@ function modifierPif(button,user,course,version) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,today,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
@@ -3385,7 +3385,7 @@ function modifierPif(button,user,course,version) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,today,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
@@ -3398,7 +3398,7 @@ function modifierPif(button,user,course,version) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,today,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
