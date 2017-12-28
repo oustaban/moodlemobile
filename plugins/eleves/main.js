@@ -2852,7 +2852,7 @@ function modifierPif(button,user,course,version) {
     if (version > 1) {
         html+= '<div class="avenant">Vous pouvez modifier les compétences du stagiaire à acquérir ou qui ont été acquises dans le cadre du parcours de formation.<br/>Ces compétences figurent dans l\'article 3 du PIF (repris ci-dessous).<br/>Pour chaque modification apportée à l\'article 3, il vous sera demandé de signer un avenant avec votre stagiaire.</div>';
     }
-    html+= '<div id="pifContent"><h1><b>Article 3 – Le besoin de compétences à développer et visas des compétences acquises –</b></h1>';
+    html+= '<h1><b>Article 3 – Le besoin de compétences à développer et visas des compétences acquises –</b></h1>';
     html+= '<p>La grille suivante est un outil simple à remplir avant et à la fin de la formation, afin de formaliser l\'individualisation du parcours de formation et d\'en vérifier les acquis. Il constitue donc le référentiel des compétences visées, des objectifs pédagogiques associés, et des compétences acquises au terme du parcours de formation individualisé. Il n\'y a pas de pré requis pour cette formation.</p>';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Intitulé des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
     
