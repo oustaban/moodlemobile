@@ -1685,6 +1685,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         
                         var pifArray = $(this).attr('pif');
+                        pifArray = pifArray.replace(/\\"/g, '"');
                         MM.log('pifArray:'+pifArray);
                         
                         if (pifArray == "" || pifArray == "[]") {
