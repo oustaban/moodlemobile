@@ -3361,7 +3361,7 @@ function modifierPif(button,user,course,version) {
                     },
                     function(path) {
                         MM.log('Image Signature Stagiaire Avenant NOK Version :'+version+' : '+fileAvenant2);
-                        html += '<td class="center2"><button version="'+version+'" course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signatureAvenantPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                        html += '<td class="center2"><button version="'+version+'" course="'+courseId+'" id="signature_stagiaire" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signatureAvenantPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                 
                         html += '</table></div>';
@@ -3376,7 +3376,7 @@ function modifierPif(button,user,course,version) {
             },
             function(path) {
                 MM.log('Image Signature Manager Avenant NOK Version :'+version+' : '+fileAvenant1);
-                html += '<tr><td class="center2"><button version="'+version+'" course="'+courseId+'" id="signature_manager_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signatureAvenantPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                html += '<tr><td class="center2"><button version="'+version+'" course="'+courseId+'" id="signature_manager" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signatureAvenantPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
         
                 MM.fs.findFileAndReadContents(fileAvenant2,
@@ -3396,7 +3396,7 @@ function modifierPif(button,user,course,version) {
                     },
                     function(path) {
                         MM.log('Image Signature Stagiaire Avenant NOK Version :'+version+' : '+fileAvenant2);
-                        html += '<td class="center2"><button version="'+version+'" course="'+courseId+'" id="signature_stagiaire_apres" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                        html += '<td class="center2"><button version="'+version+'" course="'+courseId+'" id="signature_stagiaire" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signatureAvenantPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                 
                         html += '</table></div>';

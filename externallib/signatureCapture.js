@@ -555,4 +555,209 @@ function signaturePopin( elem ) {
                                                 });
                                                 
 	}
+	
+	
+	function signatureAvenantPopin( elem ) {
+
+												
+                                                
+                                                var userid = $(elem).attr("userid");
+												var type = $(elem).attr("id");
+												var course = $(elem).attr("course");
+												var managerid = $(elem).attr("managerid");
+												var managername = $(elem).attr("managername");
+												var version = $(elem).attr("version");
+												
+												var b;
+												var a;
+												var scormid;
+												var pifs4 = new Array();
+												var pifArray;
+												$('input#checkboxpif').each(function(index) {
+												  if ($(this).attr('genre') == 'b') {
+													scormid = $(this).attr('content');
+													if ($(this).is(':checked')) {
+														a = 1;
+													} else {
+														a = 0;
+													}
+												  }
+												  if ($(this).attr('genre') == 'a') {
+													if ($(this).is(':checked')) {
+														b = 1;
+													} else {
+														b = 0;
+													}
+													pifs4.push({courseid:course,scormid:scormid,begin:a,end:b,managerid:managerid,managername:managername});
+													
+												  }
+												});
+												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
+												
+												MM.widgets.dialogClose();
+												
+												var popTitle ="";
+												if (type=="signature_stagiaire"){
+                                                    popTitle = "Signature de l'avenant par le stagiaire";
+                                                }
+												if (type=="signature_manager"){
+                                                    popTitle = "Signature de l'avenant par le manager";
+                                                }
+												
+												
+                                                
+												//var sigCapture = new SignatureCapture( "canvassignature" );
+                                                
+                                                MM.log('AvenantSignature : ' + type + ',' + userid);
+                                                
+                                                var userP = MM.db.get('users', MM.config.current_site.id + "-" + userid);
+                                                var userG = userP.toJSON();
+                                                
+                                                var addNote = "Valider";
+                                                var html = '<div id="canvasContainer" style="background-color:#cccccc"><canvas id="canvassignature" name="canvassignature" height="200px" /></div><script>$(document).ready(function(e) { var sigCapture = new SignatureCapture( "canvassignature" ); });</script>';
+                        
+                                                var options = {
+                                                    title: popTitle,
+                                                    width: "90%",
+                                                    buttons: {}
+                                                };
+                                                
+                                                
+                                                
+                                                
+												
+												options.buttons[MM.lang.s("cancel")] = function() {
+                                                    MM.widgets.dialogClose();
+                                                    $('button#pif[user="'+userid+'"]').click();
+                                                };
+                                                
+                                                
+                                                
+                                                options.buttons["Effacer"] = function() {
+                                                    //var sig2 = $('#canvassignature').get(0).toDataURL("image/png");
+													var sig2 = new SignatureCapture( "canvassignature" );
+                                                    sig2.clear();
+													//sigCapture.clear();
+                                                };
+												
+												options.buttons["Effacer"]['style'] = "modal-button-3";
+												
+												options.buttons["Valider"] = function() {
+                                                    //var sigCapture2 = new SignatureCapture( "canvassignature" );
+													var sig = $('#canvassignature').get(0).toDataURL("image/png");
+													//var index = sig.indexOf( "," )+1;
+													//sig = sig.substring( index );
+													
+                                                    //var sigDec = Base64.decode(sig);
+													//var sigData = "data:image/png;base64,"+sig;
+													var fileSignature = "";
+													if (type=="signature_stagiaire"){
+														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_"+version+"_signature_stagiaire.png";
+													}
+													if (type=="signature_manager"){
+														fileSignature = MM.config.current_site.id+"/"+course+"/"+userid+"_"+version+"_signature_manager.png";
+													}
+													
+                                                    
+													
+                                                    //create local result file
+                                                    MM.fs.createFile(fileSignature,
+                                                        function(fileEntry) {
+                                                            MM.fs.writeInFile(fileEntry, sig, 
+                                                                function(fileUrl) {
+                                                                    MM.log(' Write Signature Avenant OK : ' + fileUrl);
+																	
+																	var fileAvenantSignatures = MM.config.current_site.id+"/"+course+"/"+userid+"_avenantsignatures.json";
+																	
+																	MM.log('fileAvanantSignatures : ' + fileAvenantSignatures);
+																	
+																	MM.fs.findFileAndReadContents(fileAvenantSignatures,
+																		function (result) {
+                                                                            pifArray = JSON.parse(result);
+																			pifArray.push(fileSignature);
+																			var content = JSON.stringify(pifArray);
+																			MM.log('fileAvanantSignatures Exist:'+content);
+																			MM.fs.createFile(fileAvanantSignatures,
+																				function(fileEntry2) {
+																					MM.fs.writeInFile(fileEntry2, content , 
+																						function(fileUrl2) {
+																							MM.log('Write fileAvanantSignatures :'+fileUrl2+' OK');
+																							MM.widgets.dialogClose();
+																							$('button#pif[user="'+userid+'"]').click();
+																						},
+																						function(fileUrl2) {
+																							MM.log('Write fileAvanantSignatures :'+fileUrl2+' NOK');
+																							MM.widgets.dialogClose();
+																							$('button#pif[user="'+userid+'"]').click();
+																						
+																						}
+																					);
+																				},   
+																					
+																				function(fileEntry2) {
+																				   MM.log('Create fileAvanantSignatures : NOK');
+																				   MM.widgets.dialogClose();
+																					$('button#pif[user="'+userid+'"]').click();
+																				}
+																			);
+																		},
+																		function (result) {
+																			MM.log('fileAvanantSignatures Not Exist');
+                                                                            MM.fs.createFile(fileAvanantSignatures,
+																				function(fileEntry2) {
+																					pifArray = new Array();
+																					pifArray.push(fileSignature);
+																					var content = JSON.stringify(pifArray);
+																					MM.log('Create fileAvanantSignatures :'+fileEntry2+' OK/'+content);
+																					
+																					MM.fs.writeInFile(fileEntry2, content , 
+																						function(fileUrl2) {
+																							MM.log('Write fileAvanantSignatures :'+fileUrl2+' OK');
+																							MM.widgets.dialogClose();
+																							$('button#pif[user="'+userid+'"]').click();
+																						},
+																						function(fileUrl2) {
+																							MM.log('Write fileAvanantSignatures :'+fileUrl2+' NOK');
+																							MM.widgets.dialogClose();
+																							$('button#pif[user="'+userid+'"]').click();
+																						
+																						}
+																					);
+																				},   
+																					
+																				function(fileEntry2) {
+																				   MM.log('Create fileAvanantSignatures : NOK');
+																				   MM.widgets.dialogClose();
+																					$('button#pif[user="'+userid+'"]').click();
+																				}
+																			);
+                                                                        }
+																	);
+                                                                },
+                                                                function(fileUrl) {
+                                                                    MM.log(' Write Signature Avenant NOK : ' + fileUrl);
+																	MM.widgets.dialogClose();
+																	$('button#pif[user="'+userid+'"]').click();
+                                                                }
+                                                            );
+                                                        },
+                                                        function(fileEntry) {
+                                                            MM.log(' Write Signature Avenant NOK : ' + fileSignature);
+															MM.widgets.dialogClose();
+															$('button#pif[user="'+userid+'"]').click();
+                                                        }
+                                                    );
+                                                                
+                                                    
+                                                };
+												options.buttons["Valider"]['style'] = "modal-button-2";
+                                                
+                                                MM.widgets.dialog(html, options);
+                                                
+                                                
+                                                $(document).ready(function(e) {     
+                                                    var sigCapture = new SignatureCapture( "canvassignature" );
+                                                });
+                                                
+	}
 			
