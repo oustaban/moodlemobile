@@ -3485,7 +3485,7 @@ function modifierPif(button,user,course,version) {
     
     
     //var pifArray = pif;
-    var pifArray = $('button#modifierpif").attr('pif');
+    var pifArray = $('button#modifierpif').attr('pif');
     MM.log('pifArray:'+pifArray);
     
     if (pifArray == "" || pifArray == "[]") {
