@@ -3409,7 +3409,9 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
-        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
+        var pifbutton = JSON.stringify(pifs3);
+        pifbutton = pifbutton.replace(/"/g, '\"');
+        $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
                             
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
