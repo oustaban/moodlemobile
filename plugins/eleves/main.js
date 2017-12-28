@@ -2773,6 +2773,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         }
         if (valider == 1){
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                    MM.log("Save PIF:"+pifs2);
                     thisuser.save({pif:pifs2});
 
         }
