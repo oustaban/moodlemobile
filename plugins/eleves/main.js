@@ -3511,6 +3511,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         
         if (valider == 1){
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                    MM.log('Save:'+pifs2);
                     thisuser.save({pif:pifs2});
 
         }
