@@ -1652,6 +1652,7 @@ hr {
   margin: 20px;
   font-size: 14px;
   color: #000;
+  display:block;
 }
 
 #pifContent {

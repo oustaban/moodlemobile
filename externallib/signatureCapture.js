@@ -669,7 +669,7 @@ function signaturePopin( elem ) {
 																	
 																	var fileAvenantSignatures = MM.config.current_site.id+"/"+course+"/"+userid+"_avenantsignatures.json";
 																	
-																	MM.log('fileAvanantSignatures : ' + fileAvenantSignatures);
+																	MM.log('fileAvenantSignatures : ' + fileAvenantSignatures);
 																	
 																	MM.fs.findFileAndReadContents(fileAvenantSignatures,
 																		function (result) {
@@ -681,12 +681,12 @@ function signaturePopin( elem ) {
 																				function(fileEntry2) {
 																					MM.fs.writeInFile(fileEntry2, content , 
 																						function(fileUrl2) {
-																							MM.log('Write fileAvanantSignatures :'+fileUrl2+' OK');
+																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
-																							MM.log('Write fileAvanantSignatures :'+fileUrl2+' NOK');
+																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' NOK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																						
@@ -695,29 +695,29 @@ function signaturePopin( elem ) {
 																				},   
 																					
 																				function(fileEntry2) {
-																				   MM.log('Create fileAvanantSignatures : NOK');
+																				   MM.log('Create fileAvenantSignatures : NOK');
 																				   MM.widgets.dialogClose();
 																					$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
 																		},
 																		function (result) {
-																			MM.log('fileAvanantSignatures Not Exist');
-                                                                            MM.fs.createFile(fileAvanantSignatures,
+																			MM.log('fileAvenantSignatures Not Exist');
+                                                                            MM.fs.createFile(fileAvenantSignatures,
 																				function(fileEntry2) {
 																					pifArray = new Array();
 																					pifArray.push(fileSignature);
 																					var content = JSON.stringify(pifArray);
-																					MM.log('Create fileAvanantSignatures :'+fileEntry2+' OK/'+content);
+																					MM.log('Create fileAvenantSignatures :'+fileEntry2+' OK/'+content);
 																					
 																					MM.fs.writeInFile(fileEntry2, content , 
 																						function(fileUrl2) {
-																							MM.log('Write fileAvanantSignatures :'+fileUrl2+' OK');
+																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
-																							MM.log('Write fileAvanantSignatures :'+fileUrl2+' NOK');
+																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' NOK');
 																							MM.widgets.dialogClose();
 																							$('button#pif[user="'+userid+'"]').click();
 																						
@@ -726,7 +726,7 @@ function signaturePopin( elem ) {
 																				},   
 																					
 																				function(fileEntry2) {
-																				   MM.log('Create fileAvanantSignatures : NOK');
+																				   MM.log('Create fileAvenantSignatures : NOK');
 																				   MM.widgets.dialogClose();
 																					$('button#pif[user="'+userid+'"]').click();
 																				}
