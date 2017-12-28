@@ -1735,7 +1735,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.widgets.dialog(html, options);
                         
                         if (pifArray != "") {
-                            //$("button#modifierpif").click();
+                            $("button#modifierpif").click();
                         }
                         
                     });
