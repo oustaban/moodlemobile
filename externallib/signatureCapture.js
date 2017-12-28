@@ -676,8 +676,8 @@ function signaturePopin( elem ) {
                                                                             pifArray = JSON.parse(result);
 																			pifArray.push(fileSignature);
 																			var content = JSON.stringify(pifArray);
-																			MM.log('fileAvanantSignatures Exist:'+content);
-																			MM.fs.createFile(fileAvanantSignatures,
+																			MM.log('fileAvenantSignatures Exist:'+content);
+																			MM.fs.createFile(fileAvenantSignatures,
 																				function(fileEntry2) {
 																					MM.fs.writeInFile(fileEntry2, content , 
 																						function(fileUrl2) {
