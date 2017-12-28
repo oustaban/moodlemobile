@@ -3486,6 +3486,7 @@ function modifierPif(button,user,course,version) {
     
     //var pifArray = pif;
     var pifArray = $('button#modifierpif').attr('pif');
+    pifArray = pifArray.replace(/\\"/g, '"');
     MM.log('pifArray:'+pifArray);
     
     if (pifArray == "" || pifArray == "[]") {
