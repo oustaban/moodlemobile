@@ -1718,7 +1718,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var html = '<div id="pifContent"><br/><br/>';
                         html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
                         html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p><br/><br/>';
-                        html += '<p align="center"><button course="'+course+'" user="'+user+'" pif="" version="'+version+'" class="modal-button-1" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" pif="'+pifArrayOrg+'" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
+                        html += '<p align="center"><button course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-1" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-1" style="width: 25%">Modifier le PIF</button></p>';
                         html += '<br/><br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
                         html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button class="modal-button-1">Voir</button></td></tr>';
@@ -2815,7 +2815,7 @@ function modifierPif(button,user,course,version) {
     
     
     //var pifArray = pif;
-    var pifArray = $('button#modifierpif').attr('pif');
+    var pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
     MM.log('pifArray:'+pifArray);
     pifArray = pifArray.replace(/\\"/g, '"');
     MM.log('pifArray:'+pifArray);
@@ -2930,7 +2930,7 @@ function modifierPif(button,user,course,version) {
     
     
     if (pifArray != ""){
-        $(this).attr("pif","");
+        $('button#pif[user="'+userpif.userid+'"]').attr("pif","");
     }
     
     var pifsignature1 = 0;
