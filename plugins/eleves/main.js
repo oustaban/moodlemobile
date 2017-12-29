@@ -2851,7 +2851,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
                     MM.log("Save PIF1:"+pifs2);
                     thisuser.save({pif:pifs2});
-                    version = version + 1;
+                    version = parseInt(version) + 1;
                     $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
 
         }
@@ -3496,7 +3496,7 @@ function modifierPif(button,user,course,version) {
 }
 
 function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername,version,date_version,avenantsignature1,avenantsignature2) {
-    MM.log('validerPif:'+userspif+'/'+course+'/'+managerid+'/'+managername);
+    MM.log('validerAvenant:'+userspif+'/'+course+'/'+managerid+'/'+managername);
     if (userspif && userspif != "") {
         var userpif = userspif[0].toJSON();
         //MM.log('userpif:'+userpif);
@@ -3592,7 +3592,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
                     MM.log('Save:'+pifs2+','+pifs2.length);
                     thisuser.save({pif:pifs2});
-                    version = version + 1;
+                    version = parseInt(version) + 1;
                     $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
 
         }
