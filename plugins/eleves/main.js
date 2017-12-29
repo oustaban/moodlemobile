@@ -429,14 +429,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //newUser.pif = user.pif;
                         }
                         if (checkUser && MM.deviceConnected()) {
+                            MM.log('CHECK USER CONNECTED');
                             var newpif = user.pif;
                             checkUserJ = checkUser.toJSON();
                             checkUserJ.pif.forEach(function(checkpif) {
+                                MM.log('CHECK USER CONNECTED:'+checkpif.courseid+'/'+checkpif.version);
                                 var checkpifexist = $.grep(user.pif, function( el ) {
                                         return el.courseid == checkpif.courseid && el.version == checkpif.version
                                 });
                                 if (!checkpifexist) {
+                                    MM.log('CHECK USER CONNECTED: NEW');
                                     newpif.push(checkpif);   
+                                } else {
+                                    MM.log('CHECK USER CONNECTED: ALREADY');
                                 }
                             });
                             newUser.pif = newpif;
