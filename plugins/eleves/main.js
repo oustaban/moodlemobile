@@ -429,7 +429,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //newUser.pif = user.pif;
                         }
                         if (checkUser && MM.deviceConnected()) {
-                            MM.log('CHECK USER CONNECTED');
+                            MM.log('CHECK USER CONNECTED:'+user.id);
                             var newpif = user.pif;
                             checkUserJ = checkUser.toJSON();
                             checkUserJ.pif.forEach(function(checkpif) {
