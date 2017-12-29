@@ -224,6 +224,62 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 });
                             }
                             versionArray[index] = versionArray[index] + 1;
+                            
+                            //Recup des signatures avenants => version>=2
+                            for (var av=2;av<versionArray[index];av++) {
+                                MM.log('Upload signature avenant:'+user.id+' et cours:'+courseId);
+                                var downloadUrlav = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');
+                                var uploadFileav = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";
+                                if (MM.deviceConnected()) {
+                                
+                                        MM.fs.createFile(uploadFileav,
+                                            function(fullpath) {
+                                                MM.log("Création de "+uploadFileav+" OK");
+                                                MM.moodleDownloadFile(downloadUrlav, uploadFileav,
+                                                    function(fullpath) {
+                                                        MM.log("Upload de "+downloadUrlav+" vers "+uploadFileav+" OK");
+                                                    },
+                                                    function(fullpath) {
+                                                        MM.log("Upload de "+downloadUrlav+" vers "+uploadFileav+" NOK");
+                                                    },
+                                                    false,
+                                                    function (percent) {
+                                                       MM.log(percent);
+                                                    }
+                                                );
+                                            },
+                                            function(fullpath) {
+                                                MM.log("Création de "+uploadFileav+" NOK");
+                                            }
+                                        );
+                                }
+                                
+                                var downloadUrlavs = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_statgiaire.png');
+                                var uploadFileavs = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_statgiaire.png";
+                                if (MM.deviceConnected()) {
+                                
+                                        MM.fs.createFile(uploadFileavs,
+                                            function(fullpath) {
+                                                MM.log("Création de "+uploadFileavs+" OK");
+                                                MM.moodleDownloadFile(downloadUrlavs, uploadFileav,
+                                                    function(fullpath) {
+                                                        MM.log("Upload de "+downloadUrlavs+" vers "+uploadFileavs+" OK");
+                                                    },
+                                                    function(fullpath) {
+                                                        MM.log("Upload de "+downloadUrlavs+" vers "+uploadFileavs+" NOK");
+                                                    },
+                                                    false,
+                                                    function (percent) {
+                                                       MM.log(percent);
+                                                    }
+                                                );
+                                            },
+                                            function(fullpath) {
+                                                MM.log("Création de "+uploadFileavs+" NOK");
+                                            }
+                                        );
+                                } 
+                            }
                     });
                     
                     var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
@@ -406,6 +462,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $("#panel-center li:eq(0)").addClass("selected-row");
                     }
 
+                    
+                        
                     // Save the users in the users table.
                     var newUser;
                     $.each(users, function( index, user ) {
@@ -455,6 +513,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         
                         //var newuserpif = newUser.toJSON();
+                        
+                        
                         
                         var pifusercoursewithsignature1 = $.grep(newUser.pif, function( el ) {
                                         return el.courseid == courseId && el.signature_avant_manager == 1;
