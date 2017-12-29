@@ -440,7 +440,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 });
                                 MM.log('CHECK USER CONNECTED:'+checkpifexist);
                                 MM.log('CHECK USER CONNECTED:'+user.pif);
-                                if (!checkpifexist) {
+                                if (!checkpifexist || checkpifexist == '') {
                                     MM.log('CHECK USER CONNECTED: NEW');
                                     newpif.push(checkpif);   
                                 } else {
