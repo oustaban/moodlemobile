@@ -261,7 +261,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         MM.fs.createFile(uploadFileavs,
                                             function(fullpath) {
                                                 MM.log("Création de "+uploadFileavs+" OK");
-                                                MM.moodleDownloadFile(downloadUrlavs, uploadFileav,
+                                                MM.moodleDownloadFile(downloadUrlavs, uploadFileavs,
                                                     function(fullpath) {
                                                         MM.log("Upload de "+downloadUrlavs+" vers "+uploadFileavs+" OK");
                                                     },
