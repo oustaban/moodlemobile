@@ -436,13 +436,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.log('CHECK USER CONNECTED:'+checkpif.courseid+'/'+checkpif.version);
                                 var checkpifexist = 0;
                                 var checkpifexist = $.grep(user.pif, function( el ) {
-                                        return el.courseid == checkpif.courseid && el.version == checkpif.version
+                                        return el.courseid == checkpif.courseid && el.version == checkpif.version  && el.scormid == checkpif.scormid
                                 });
                                 MM.log('CHECK USER CONNECTED:'+checkpifexist);
                                 MM.log('CHECK USER CONNECTED:'+user.pif);
                                 if (!checkpifexist || checkpifexist == '') {
                                     MM.log('CHECK USER CONNECTED: NEW');
-                                    //newpif.push(checkpif);   
+                                    newpif.push(checkpif);   
                                 } else {
                                     MM.log('CHECK USER CONNECTED: ALREADY');
                                 }
