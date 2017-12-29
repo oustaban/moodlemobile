@@ -408,7 +408,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
                     // Save the users in the users table.
                     var newUser;
-                    users.forEach(function(index,user) {
+                    $.each(users, function( index, user ) {
+                    //users.forEach(function(index,user) {
                         newUser = {
                             'id': MM.config.current_site.id + '-' + user.id,
                             'userid': user.id,
