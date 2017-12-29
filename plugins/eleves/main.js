@@ -437,6 +437,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 var checkpifexist = $.grep(user.pif, function( el ) {
                                         return el.courseid == checkpif.courseid && el.version == checkpif.version
                                 });
+                                MM.log('CHECK USER CONNECTED:'+checkpifexist);
                                 if (!checkpifexist) {
                                     MM.log('CHECK USER CONNECTED: NEW');
                                     newpif.push(checkpif);   
