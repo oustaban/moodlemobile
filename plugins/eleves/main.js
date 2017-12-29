@@ -381,11 +381,34 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    
+                    var tpl = {
+                        users: users,
+                        versions: versionArray,
+                        deviceType: MM.deviceType,
+                        courseId: courseId,
+                        showMore: showMore
+                    };
+                    var html = MM.tpl.render(MM.plugins.eleves.templates.eleves.html, tpl);
+
+                    var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
+                    var pageTitle = "";
+
+                    if (course) {
+                        pageTitle = course.get("shortname");
+                    }
+
+                    MM.panels.show('right', html, {title: pageTitle});
+
+                    // Load the first user
+                    if (MM.deviceType == "tablet" && users.length > 0) {
+                        $("#panel-center li:eq(0)").addClass("selected-row");
+                        //MM.plugins.eleves.showEleve(courseId, users.shift().id);
+                        $("#panel-center li:eq(0)").addClass("selected-row");
+                    }
 
                     // Save the users in the users table.
                     var newUser;
-                    users.forEach(function(index, user) {
+                    users.forEach(function(index,user) {
                         newUser = {
                             'id': MM.config.current_site.id + '-' + user.id,
                             'userid': user.id,
@@ -416,6 +439,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if (!checkpifexist || checkpifexist == '') {
                                     if (versionArray[index] <= checkpif.version)
                                         versionArray[index] = versionArray[index] + 1;
+                                    $('button#pif[user="'+user.id+'"]').attr('version',versionArray[index]);
                                     newpif.push(checkpif);   
                                 } else {
                                     //MM.log('CHECK USER CONNECTED: ALREADY');
@@ -519,36 +543,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             */
                         }
                         
-                        
-                        
-                        
-                        var tpl = {
-                            users: users,
-                            versions: versionArray,
-                            deviceType: MM.deviceType,
-                            courseId: courseId,
-                            showMore: showMore
-                        };
-                        var html = MM.tpl.render(MM.plugins.eleves.templates.eleves.html, tpl);
-    
-                        var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
-                        var pageTitle = "";
-    
-                        if (course) {
-                            pageTitle = course.get("shortname");
-                        }
-    
-                        MM.panels.show('right', html, {title: pageTitle});
-    
-                        // Load the first user
-                        if (MM.deviceType == "tablet" && users.length > 0) {
-                            $("#panel-center li:eq(0)").addClass("selected-row");
-                            //MM.plugins.eleves.showEleve(courseId, users.shift().id);
-                            $("#panel-center li:eq(0)").addClass("selected-row");
-                        }
-                    
-                    
-                    
                         
                         var pifusercoursewithsignature3 = $.grep(newUser.pif, function( el ) {
                                         return el.courseid == courseId && el.signature_apres_manager == 1;
