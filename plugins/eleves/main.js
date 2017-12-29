@@ -434,10 +434,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             checkUserJ = checkUser.toJSON();
                             checkUserJ.pif.forEach(function(checkpif) {
                                 MM.log('CHECK USER CONNECTED:'+checkpif.courseid+'/'+checkpif.version);
+                                var checkpifexist = 0;
                                 var checkpifexist = $.grep(user.pif, function( el ) {
                                         return el.courseid == checkpif.courseid && el.version == checkpif.version
                                 });
                                 MM.log('CHECK USER CONNECTED:'+checkpifexist);
+                                MM.log('CHECK USER CONNECTED:'+user.pif);
                                 if (!checkpifexist) {
                                     MM.log('CHECK USER CONNECTED: NEW');
                                     newpif.push(checkpif);   
