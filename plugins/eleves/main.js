@@ -254,8 +254,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         );
                                 }
                                 
-                                var downloadUrlavs = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_statgiaire.png');
-                                var uploadFileavs = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_statgiaire.png";
+                                var downloadUrlavs = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');
+                                var uploadFileavs = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
                                 if (MM.deviceConnected()) {
                                 
                                         MM.fs.createFile(uploadFileavs,
