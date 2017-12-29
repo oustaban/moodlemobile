@@ -427,7 +427,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             newUser.pif = checkUserJ.pif;
                             MM.log('Check User:'+checkUserJ.id);
                             //newUser.pif = user.pif;
-                        } else {
+                        }
+                        if (checkUser && MM.deviceConnected()) {
+                            var newpif = user.pif;
+                            checkUserJ = checkUser.toJSON();
+                            checkUserJ.pif.forEach(function(checkpif) {
+                                var checkpifexist = $.grep(user.pif, function( el ) {
+                                        return el.courseid == checkpif.courseid && el.version == checkpif.version
+                                });
+                                if (!checkpifexist) {
+                                    newpif.push(checkpif);   
+                                }
+                            });
+                            newUser.pif = newpif;
+                        }
+                        if (!checkUser) {
                             newUser.pif = user.pif;
                         }
                         
