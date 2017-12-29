@@ -381,34 +381,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    var tpl = {
-                        users: users,
-                        versions: versionArray,
-                        deviceType: MM.deviceType,
-                        courseId: courseId,
-                        showMore: showMore
-                    };
-                    var html = MM.tpl.render(MM.plugins.eleves.templates.eleves.html, tpl);
-
-                    var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
-                    var pageTitle = "";
-
-                    if (course) {
-                        pageTitle = course.get("shortname");
-                    }
-
-                    MM.panels.show('right', html, {title: pageTitle});
-
-                    // Load the first user
-                    if (MM.deviceType == "tablet" && users.length > 0) {
-                        $("#panel-center li:eq(0)").addClass("selected-row");
-                        //MM.plugins.eleves.showEleve(courseId, users.shift().id);
-                        $("#panel-center li:eq(0)").addClass("selected-row");
-                    }
+                    
 
                     // Save the users in the users table.
                     var newUser;
-                    users.forEach(function(user) {
+                    users.forEach(function(index, user) {
                         newUser = {
                             'id': MM.config.current_site.id + '-' + user.id,
                             'userid': user.id,
@@ -429,28 +406,24 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //newUser.pif = user.pif;
                         }
                         if (checkUser && MM.deviceConnected()) {
-                            MM.log('CHECK USER CONNECTED:'+user.id);
                             var newpif = user.pif;
                             checkUserJ = checkUser.toJSON();
                             checkUserJ.pif.forEach(function(checkpif) {
-                                MM.log('CHECK USER CONNECTED:'+checkpif.courseid+'/'+checkpif.version);
                                 var checkpifexist = 0;
                                 var checkpifexist = $.grep(user.pif, function( el ) {
                                         return el.courseid == checkpif.courseid && el.version == checkpif.version  && el.scormid == checkpif.scormid
                                 });
-                                MM.log('CHECK USER CONNECTED:'+checkpifexist);
-                                MM.log('CHECK USER CONNECTED:'+user.pif);
                                 if (!checkpifexist || checkpifexist == '') {
-                                    MM.log('CHECK USER CONNECTED: NEW');
+                                    if (versionArray[index] <= checkpif.version)
+                                        versionArray[index] = versionArray[index] + 1;
                                     newpif.push(checkpif);   
                                 } else {
-                                    MM.log('CHECK USER CONNECTED: ALREADY');
+                                    //MM.log('CHECK USER CONNECTED: ALREADY');
                                 }
                             });
                             newUser.pif = newpif;
                         }
                         if (!checkUser) {
-                            MM.log('NO CHECK USER');
                             newUser.pif = user.pif;
                         }
                         
@@ -546,6 +519,36 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             */
                         }
                         
+                        
+                        
+                        
+                        var tpl = {
+                            users: users,
+                            versions: versionArray,
+                            deviceType: MM.deviceType,
+                            courseId: courseId,
+                            showMore: showMore
+                        };
+                        var html = MM.tpl.render(MM.plugins.eleves.templates.eleves.html, tpl);
+    
+                        var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
+                        var pageTitle = "";
+    
+                        if (course) {
+                            pageTitle = course.get("shortname");
+                        }
+    
+                        MM.panels.show('right', html, {title: pageTitle});
+    
+                        // Load the first user
+                        if (MM.deviceType == "tablet" && users.length > 0) {
+                            $("#panel-center li:eq(0)").addClass("selected-row");
+                            //MM.plugins.eleves.showEleve(courseId, users.shift().id);
+                            $("#panel-center li:eq(0)").addClass("selected-row");
+                        }
+                    
+                    
+                    
                         
                         var pifusercoursewithsignature3 = $.grep(newUser.pif, function( el ) {
                                         return el.courseid == courseId && el.signature_apres_manager == 1;
