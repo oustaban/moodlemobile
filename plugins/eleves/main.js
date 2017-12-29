@@ -3071,7 +3071,7 @@ function modifierPif(button,user,course,version) {
         var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_apres.png";
         
         var d = new Date();
-        var today = d.getTime();
+        var today = parseInt(d.getTime()/1000);
                                 
     
         MM.fs.findFileAndReadContents(fileSignature1,
@@ -3416,7 +3416,7 @@ function modifierPif(button,user,course,version) {
     } else {
         
         var today = new Date();
-        var now = today.getTime();
+        var now = parseInt(today.getTime()/1000);
         var dd = today.getDate();
 
         var mm = today.getMonth()+1; 
