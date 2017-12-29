@@ -437,9 +437,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         return el.courseid == checkpif.courseid && el.version == checkpif.version  && el.scormid == checkpif.scormid
                                 });
                                 if (!checkpifexist || checkpifexist == '') {
+                                    /*
                                     if (versionArray[index] <= checkpif.version)
                                         versionArray[index] = versionArray[index] + 1;
                                     $('button#pif[user="'+user.id+'"]').attr('version',versionArray[index]);
+                                    */
                                     newpif.push(checkpif);   
                                 } else {
                                     //MM.log('CHECK USER CONNECTED: ALREADY');
