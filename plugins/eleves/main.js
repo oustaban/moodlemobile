@@ -691,7 +691,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         $.each(userspif, function( indexUsers, userpif ) {
                             
-                           jsonpif = userpif.toJSON();
+                            jsonpif = userpif.toJSON();
                             
                             var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_pifsignatures.json";
                             MM.log('Synchro filePifSignatures : ' + filePifSignatures);
@@ -765,6 +765,81 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     MM.log('Pas de filePifSignatures')
                                 }
                             );
+                            
+                            
+                            var fileAvenantSignatures = MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_avenantsignatures.json";
+                            MM.log('Synchro fileAvenantSignatures : ' + fileAvenantSignatures);
+                            MM.fs.findFileAndReadContents(fileAvenantSignatures,
+                                function (result) {
+                                    avenantSignatureArray = JSON.parse(result);
+                                    var countAvenantSig = avenantSignatureArray.length;
+                                    var indexAvenantSig = 0;
+                                    $.each(avenantSignatureArray, function( indexAvenant, valueAvenant ) {
+                                        var file = valueAvenant.split("/");
+                                        var options2 = {};
+                                        options2.fileKey="file";
+                                        options2.fileName = file[file.length-1];
+                                        options2.mimeType="image/png";
+                                        options2.params = {
+                                            course:course
+                                        };
+                                        options2.chunkedMode = false;
+                                        options2.headers = {
+                                          Connection: "close"
+                                        };
+                                        MM.log('Avenant Json:'+valueAvenant+'||'+file[file.length-1]);
+                                         MM.fs.fileExists(valueAvenant,
+                                            function(path) {
+                                                var ft = new FileTransfer();
+                                                    ft.upload(
+                                                            path,
+                                                            MM.config.current_site.siteurl + '/local/session/uploadsignatureavenant.php',
+                                                            function(){
+                                                              MM.log('Upload Avenant réussi:'+path);
+                                                              indexAvenantSig = indexAvenantSig + 1;
+                                                              if (indexAvenantSig == countAvenantSig) {
+                                                                    MM.fs.removeFile (fileAvenantSignatures,
+                                                                        function (result) {
+                                                                           MM.log('Le fichier '+fileAvenantSignatures+' a bien été effacé');
+                                                                           
+                                                                        },
+                                                                        function (result) {
+                                                                           MM.log('Le fichier '+fileAvenantSignatures+' n a pas pu étre effacé');
+                                                                        }
+                                                                    );
+                                                                }
+                                                            },
+                                                            function(){
+                                                               MM.log('Upload Avenant pas réussi:'+path);
+                                                            },
+                                                            options2
+                                                  );
+                                            },
+                                            function (path) {
+                                                MM.log('Avenant signature existe pas:'+path+'||'+MM.config.current_site.id+"/"+course+"/"+valueAvenant);
+                                                indexAvenantSig = indexAvenantSig + 1;
+                                                if (indexAvenantSig == countAvenantSig) {
+                                                    MM.fs.removeFile (fileAvenantSignatures,
+                                                        function (result) {
+                                                           MM.log('Le fichier '+fileAvenantSignatures+' a bien été effacé');
+                                                           
+                                                        },
+                                                        function (result) {
+                                                           MM.log('Le fichier '+fileAvenantSignatures+' n a pas pu étre effacé');
+                                                        }
+                                                    );
+                                                }
+                                            }
+                                        );
+                                    });
+                                    
+                                    
+                                },
+                                function(result) {
+                                    MM.log('Pas de fileAvenantSignatures')
+                                }
+                            );
+                            
                         });
                         
                         if (on == undefined || on == "off") {
@@ -1681,6 +1756,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         pifscourse = $.grep(pifs, function( el ) {
                                         return el.courseid == course;
                         });
+                        
                         MM.log('pifscourse length:'+pifscourse.length);
                         
                         
@@ -3514,7 +3590,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         
         if (valider == 1){
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
-                    MM.log('Save:'+pifs2);
+                    MM.log('Save:'+pifs2+','+pifs2.length);
                     thisuser.save({pif:pifs2});
                     version = version + 1;
                     $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
