@@ -263,8 +263,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 );
                             }
                         });
-			var group = $('<optgroup label=""></optgroup>');
-			group.appendTo($('#offlinceC'));
+                        var group = $('<optgroup label=""></optgroup>');
+                        group.appendTo($('#offlinceC'));
                     }
                     
                     var sessionFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
@@ -447,6 +447,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             newUser.pif = newpif;
                         }
                         if (!checkUser) {
+                            MM.log('NO CHECK USER');
                             newUser.pif = user.pif;
                         }
                         
