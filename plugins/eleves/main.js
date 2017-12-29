@@ -2849,7 +2849,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         }
         if (valider == 1){
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
-                    MM.log("Save PIF:"+pifs2);
+                    MM.log("Save PIF1:"+pifs2);
                     thisuser.save({pif:pifs2});
                     version = version + 1;
                     $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
@@ -2860,7 +2860,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
     }
     //MM.Router.navigate("eleves/" + course );
     if (valider == 1) {
-        MM.log("Save PIF");
+        MM.log("Save PIF2:");
         MM.widgets.dialogClose();
         $('button#pif[user="'+userpif.userid+'"]').click();
     }
