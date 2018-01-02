@@ -3128,7 +3128,9 @@ function voirpif(courseId,user,version) {
     
     var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l\'issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l\'issue du parcours de formation</b></td></tr>';
     var htmlpif2 = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>Intitulés des séquences pédagogiques</b></th><th class="center"><b>Objectifs pédagogiques poursuivis</b></th><th class="center"><b>Modalités pédagogiques du module de formation</b></th><th class="center"><b>Durée estimative forfaitaire</b></th></tr>';
-
+    
+    var total_duration = 0;
+    
     var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
     local_contents.forEach(function(local_content) {
         var content = local_content.toJSON();
@@ -3142,6 +3144,7 @@ function voirpif(courseId,user,version) {
             
             if (pifscormb.length>0) {
                 htmlpif+='X';
+                total_duration += content.pif_duration;
             } else {
                 unchecked = 1;
                 htmlpif+='';
