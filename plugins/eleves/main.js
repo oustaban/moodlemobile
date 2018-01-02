@@ -2974,16 +2974,17 @@ function voirlespif(courseId,user) {
             if (pif.version == 1 ) {
                 link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\')">PIF ['+pif.versiondate+']</a></p>');
             } else {
-                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\'))">Voir le PIF</a></p>');
+                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\'))">PIF et Avenant ['+pif.versiondate+']</a></p>');
             }
             version=pif.version;
         }
     });
-    link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+version+'\'))">PIF et Avenant ['+pif.versiondate+']</a></p>');
+    link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+version+'\'))">Voir le PIF</a></p>');
                         
     var html = '<div id="pifContent"><br/><br/>';
     
     for (var i = link.length-1;i--;i>=0) {
+        MM.log("i:"+i);
         html+=link[i];
     }
     html+='</div>';
