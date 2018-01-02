@@ -2970,6 +2970,7 @@ function voirpif(courseId,user,version) {
     pifscourse = $.grep(pifs, function( el ) {
                     return el.courseid == courseId && el.version == version;
     });
+    MM.log('pifscourse:'+pifscourse.length+'/'+pifscourse[0]);
     var managerid = pifscourse[0].managerid;
     var managername = pifscourse[0].managername;
     
