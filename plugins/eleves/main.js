@@ -2956,6 +2956,53 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
     
 }
 
+function voirlespif(courseId,user) {
+
+    var userspif = MM.db.where('users', {userid:parseInt(user)});
+    var userpif = userspif[0].toJSON();
+    var pifs = userpif.pif;
+    pifscourse = $.grep(pifs, function( el ) {
+                    return el.courseid == course;
+    });
+    
+    var version = 0;
+    var link = new Array();
+
+    $.each(pifscourse, function( index, pif ) {
+        if (pif.version > version ) {
+            if (pif.version == 1 ) {
+                link.push('<a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\')">PIF ['+pif.version_date+']</a><br/>');
+            } else {
+                link.push('<a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\'))">Voir le PIF</a><br/>');
+            }
+            version=pif.version;
+        }
+    });
+    link.push('<a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+version+'\'))">PIF et Avenant ['+pif.version_date+']</a><br/>');
+                        
+    var html = '<div id="pifContent"><br/><br/>';
+    
+    for (var i = link.length-1;i--;i>=0) {
+        html+=link[i];
+    }
+    html+='</div>';
+    
+    var options = {
+        title: 'Stagiaire '+userpif.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+courseId+','+user+')">X</a></div>',
+        width: "98%",
+        marginTop: "5%",
+        buttons: {}
+    };
+    
+    options.buttons["Fermer"] = function() {
+        //MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+        $('button#pif[user="'+userpif.userid+'"]').click();
+    };
+    
+    MM.widgets.dialog(html, options);
+    
+}
 
 function voirpif(courseId,user,version) {
     
