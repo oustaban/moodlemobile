@@ -2971,7 +2971,7 @@ function voirlespif(courseId,user) {
 
     $.each(pifscourse, function( index, pif ) {
         if (pif.version > version ) {
-            MM.log("Version:"+pif);
+            MM.log("Version:"+pif.versiondate);
             newpif = pif.version + 1;
             var dateversion = new Date(parseInt(pif.versiondate)*1000);
             var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" "+dateversion.getHours()+":"+dateversion.getMinutes();
@@ -3063,7 +3063,7 @@ function voirpif(courseId,user,version) {
                 htmlpif += 'X';
             }
             if (unchecked) {
-                html+=' disabled="true"';
+                htmlpif+=' disabled="true"';
             }
             htmlpif +='</td></tr>';
             if (pifscormb.length>0){
@@ -3888,7 +3888,7 @@ function modifierPif(button,user,course,version) {
                         
                         MM.fs.findFileAndReadContents(fileSignature3,
                             function(path) {
-                                pifsignature3 = 1;
+                                pifsignature3 = path;
                                 MM.log('Image Signature Manager aprés OK:'+fileSignature3);
                                 html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
