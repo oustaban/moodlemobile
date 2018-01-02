@@ -2967,11 +2967,12 @@ function voirlespif(courseId,user) {
     
     var version = 0;
     var link = new Array();
+    var newpif = 0;
 
     $.each(pifscourse, function( index, pif ) {
         if (pif.version > version ) {
             MM.log("Version:"+pif.version);
-            var newpif = pif.version + 1;
+            newpif = pif.version + 1;
             var dateversion = new Date(parseInt(pif.versiondate)*1000);
             var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" "+dateversion.getHours()+":"+dateversion.getMinutes();
             if (pif.version == 1 ) {
