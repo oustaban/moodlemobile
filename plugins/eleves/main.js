@@ -3000,6 +3000,7 @@ function voirpif(courseId,user,version) {
     MM.fs.findFileAndReadContents(fileSignature1,
         function(path) {
             pifsignature1 = path;
+            MM.log('OK:'+path);
             
             MM.fs.findFileAndReadContents(fileSignature2,
                 function(path) {
@@ -3062,7 +3063,7 @@ function voirpif(courseId,user,version) {
             );
         },
         function(path) {
-            
+            MM.log('NOK:'+path);
             MM.fs.findFileAndReadContents(fileSignature2,
                 function(path) {
                     pifsignature2 = path;
