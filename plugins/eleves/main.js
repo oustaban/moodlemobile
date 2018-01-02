@@ -2459,7 +2459,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     
     var options = {
         title: 'Notes pour '+usernotes.fullname,
-        width: "90%",
+        width: "98%",
         buttons: {}
     };
     
@@ -2983,14 +2983,14 @@ function voirpif(courseId,user,version) {
     var pifsignature3 = 0;
     var pifsignature4 = 0;
 
-    var fileSignature1 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_avant.png";
-    var fileSignature2 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_avant.png";
+    var fileSignature1 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_avant.png";
+    var fileSignature2 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_avant.png";
     if (version == 1) {
-        var fileSignature3 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_apres.png";
-        var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_apres.png";
+        var fileSignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_apres.png";
+        var fileSignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_apres.png";
     } else {
-        var fileSignature3 = MM.config.current_site.id+"/"+course+"/"+user+"_"+version+"_signature_manager.png";
-        var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_"+version+"_signature_stagiaire.png";
+        var fileSignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_manager.png";
+        var fileSignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_stagiaire.png";
     }
     
     var d = new Date();
@@ -3413,7 +3413,7 @@ function modifierPif(button,user,course,version) {
     var options = {
         title: 'Modifier le PIF du stagiaire : '+userpif.fullname,
         width: "98%",
-        marginTop: "10%",
+        marginTop: "5%",
         buttons: {}
     };
     
