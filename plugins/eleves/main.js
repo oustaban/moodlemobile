@@ -2971,19 +2971,22 @@ function voirlespif(courseId,user) {
     $.each(pifscourse, function( index, pif ) {
         if (pif.version > version ) {
             MM.log("Version:"+pif.version);
+            var newpif = pif.version + 1;
+            var dateversion = new Date(parseInt(pif.versiondate)*1000);
+            var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" "+dateversion.getHours()+":"+dateversion.getMinutes();
             if (pif.version == 1 ) {
-                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\')">PIF ['+pif.versiondate+']</a></p>');
+                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">PIF ['+newdate+']</a></p>');
             } else {
-                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\'))">PIF et Avenant ['+pif.versiondate+']</a></p>');
+                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">PIF et Avenant ['+newdate+']</a></p>');
             }
             version=pif.version;
         }
     });
-    link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+version+'\'))">Voir le PIF</a></p>');
+    link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF</a></p>');
                         
     var html = '<div id="pifContent"><br/><br/>';
     
-    for (var i = link.length-1;i--;i>=0) {
+    for (var i = link.length;i--;i>=0) {
         MM.log("i:"+i);
         html+=link[i];
     }
