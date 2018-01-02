@@ -2970,15 +2970,16 @@ function voirlespif(courseId,user) {
 
     $.each(pifscourse, function( index, pif ) {
         if (pif.version > version ) {
+            MM.log("Version:"+pif.version);
             if (pif.version == 1 ) {
-                link.push('<a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\')">PIF ['+pif.version_date+']</a><br/>');
+                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\')">PIF ['+pif.versiondate+']</a></p>');
             } else {
-                link.push('<a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\'))">Voir le PIF</a><br/>');
+                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+pif.version+'\'))">Voir le PIF</a></p>');
             }
             version=pif.version;
         }
     });
-    link.push('<a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+version+'\'))">PIF et Avenant ['+pif.version_date+']</a><br/>');
+    link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+version+'\'))">PIF et Avenant ['+pif.versiondate+']</a></p>');
                         
     var html = '<div id="pifContent"><br/><br/>';
     
@@ -2990,7 +2991,7 @@ function voirlespif(courseId,user) {
     var options = {
         title: 'Stagiaire '+userpif.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+courseId+','+user+')">X</a></div>',
         width: "98%",
-        marginTop: "5%",
+        marginTop: "20%",
         buttons: {}
     };
     
