@@ -2962,7 +2962,7 @@ function voirlespif(courseId,user) {
     var userpif = userspif[0].toJSON();
     var pifs = userpif.pif;
     pifscourse = $.grep(pifs, function( el ) {
-                    return el.courseid == course;
+                    return el.courseid == courseId;
     });
     
     var version = 0;
