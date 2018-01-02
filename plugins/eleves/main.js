@@ -2983,20 +2983,21 @@ function voirpif(courseId,user,version) {
     var pifsignature3 = 0;
     var pifsignature4 = 0;
 
-    var fileSignature1 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_avant.png";
-    var fileSignature2 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_avant.png";
+    //var fileSignature1 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_avant.png";
+    var pifsignature1 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_avant.png";
+    var pifsignature2 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_avant.png";
     if (version == 1) {
-        var fileSignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_apres.png";
-        var fileSignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_apres.png";
+        var pifsignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_apres.png";
+        var pifsignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_apres.png";
     } else {
-        var fileSignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_manager.png";
-        var fileSignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_stagiaire.png";
+        var pifsignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_manager.png";
+        var pifsignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_stagiaire.png";
     }
     
     var d = new Date();
     var today = parseInt(d.getTime()/1000);
                             
-
+    /*
     MM.fs.findFileAndReadContents(fileSignature1,
         function(path) {
             pifsignature1 = path;
@@ -3124,6 +3125,7 @@ function voirpif(courseId,user,version) {
             );
         }
     );
+    */
     
     
     var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l\'issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l\'issue du parcours de formation</b></td></tr>';
