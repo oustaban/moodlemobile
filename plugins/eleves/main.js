@@ -2972,7 +2972,7 @@ function voirlespif(courseId,user) {
     $.each(pifscourse, function( index, pif ) {
         if (pif.version > version ) {
             MM.log("Version:"+pif.date_version);
-            newpif = pif.version + 1;
+            newpif = parseInt(pif.version) + 1;
             var dateversion = new Date(parseInt(pif.date_version)*1000);
             var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" "+dateversion.getHours()+":"+dateversion.getMinutes();
             if (pif.version == 1 ) {
@@ -3013,7 +3013,7 @@ function voirlespif(courseId,user) {
 function voirpif(courseId,user,version) {
     
     MM.log('Voir le pif:'+courseId);
-    version = version - 1;
+    version = parseInt(version) - 1;
     var a;
     var b;
     var scormid;
