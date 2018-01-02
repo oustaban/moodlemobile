@@ -1892,7 +1892,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var options = {
                             title: 'Stagiaire '+userpif.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
                             width: "98%",
-                            marginTop: "10%",
+                            marginTop: "5%",
                             buttons: {}
                         };
                         
@@ -2486,7 +2486,8 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
             
             var options2 = {
                 title: 'Ajouter une note pour '+usernotes.fullname,
-                width: "90%",
+                width: "98%",
+                marginTop: "5%",
                 buttons: {}
             };
             

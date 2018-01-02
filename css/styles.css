@@ -1636,7 +1636,7 @@ hr {
 }
 #sessionContent {
   overflow: auto;
-  max-height: 100vh;
+  max-height: 70vh;
 }
 .closedialog {
   float:right;
@@ -1655,12 +1655,12 @@ hr {
 
 #pifContent {
   overflow: auto;
-  max-height: 100vh;
+  max-height: 70vh;
 }
 
 #pifContent2 {
   overflow: auto;
-  max-height: 100vh;
+  max-height: 70vh;
 }
 #app-dialog .modalContent #pifContent{
   text-align:left; 
