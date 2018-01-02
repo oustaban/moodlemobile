@@ -2978,158 +2978,6 @@ function voirpif(courseId,user,version) {
     var managerid = pifscourse[0].managerid;
     var managername = pifscourse[0].managername;
     
-    var pifsignature1 = 0;
-    var pifsignature2 = 0;
-    var pifsignature3 = 0;
-    var pifsignature4 = 0;
-
-    var fileSignature1 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_avant.png";
-    var fileSignature2 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_avant.png";
-    if (version == 1) {
-        var fileSignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_apres.png";
-        var fileSignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_apres.png";
-    } else {
-        var fileSignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_manager.png";
-        var fileSignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_stagiaire.png";
-    }
-    
-    var d = new Date();
-    var today = parseInt(d.getTime()/1000);
-                            
-    
-    MM.fs.findFileAndReadContents(fileSignature1,
-        function(path) {
-            pifsignature1 = path;
-            MM.log('OK:'+path);
-            
-            MM.fs.findFileAndReadContents(fileSignature2,
-                function(path) {
-                    pifsignature2 = path;
-                    
-                    MM.fs.findFileAndReadContents(fileSignature3,
-                        function(path) {
-                            pifsignature3 = path;
-                            
-                            MM.fs.findFileAndReadContents(fileSignature4,
-                                function(path) {
-                                    pifsignature4 = path;
-                                },
-                                function(path) {
-                                     
-                                }
-                            );
-                        },
-                        function(path) {
-                            
-                            MM.fs.findFileAndReadContents(fileSignature4,
-                                function(path) {
-                                    pifsignature4 = path;
-                                },
-                                function(path) {
-                                
-                                }
-                            );
-                        }
-                    );
-                },
-                function(path) {
-                    
-                    MM.fs.findFileAndReadContents(fileSignature3,
-                        function(path) {
-                            pifsignature3 = path;
-                            
-                            MM.fs.findFileAndReadContents(fileSignature4,
-                                function(path) {
-                                    pifsignature4 = path;
-                                },
-                                function(path) {
-                                    
-                                }
-                            );
-                        },
-                        function(path) {
-                            
-                            MM.fs.findFileAndReadContents(fileSignature4,
-                                function(path) {
-                                    pifsignature4 = path;
-                                },
-                                function(path) {
-                                    
-                                }
-                            );
-                        }
-                    );
-                }
-            );
-        },
-        function(path) {
-            MM.log('NOK:'+path);
-            MM.fs.findFileAndReadContents(fileSignature2,
-                function(path) {
-                    pifsignature2 = path;
-                    
-                    MM.fs.findFileAndReadContents(fileSignature3,
-                        function(path) {
-                            pifsignature3 = 1;
-                            
-                            MM.fs.findFileAndReadContents(fileSignature4,
-                                function(path) {
-                                    pifsignature4 = path;
-                                },
-                                function(path) {
-                                    
-                                }
-                            );
-                        },
-                        function(path) {
-                            
-                            MM.fs.findFileAndReadContents(fileSignature4,
-                                function(path) {
-                                    pifsignature4 = path;
-                                },
-                                function(path) {
-                                    
-                                }
-                            );
-                        }
-                    );
-                },
-                function(path) {
-                    
-                    MM.fs.findFileAndReadContents(fileSignature3,
-                        function(path) {
-                            pifsignature3 = path;
-                            
-                            MM.fs.findFileAndReadContents(fileSignature4,
-                                function(path) {
-                                    pifsignature4 = path;
-                                },
-                                function(path) {
-                                    
-                                }
-                            );
-                        },
-                        function(path) {
-                           
-                           MM.fs.findFileAndReadContents(fileSignature4,
-                                function(path) {
-                                    pifsignature4 = path;
-                                },
-                                function(path) {
-                                    
-                                }
-                            );
-                        }
-                    );
-                }
-            );
-        }
-    );
-    
-    
-    MM.log('pifsignature:'+pifsignature1+'|'+pifsignature2+'|'+pifsignature3+'|'+pifsignature4);
-    
-    
     var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l\'issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l\'issue du parcours de formation</b></td></tr>';
     var htmlpif2 = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>Intitulés des séquences pédagogiques</b></th><th class="center"><b>Objectifs pédagogiques poursuivis</b></th><th class="center"><b>Modalités pédagogiques du module de formation</b></th><th class="center"><b>Durée estimative forfaitaire</b></th></tr>';
     
@@ -3218,51 +3066,401 @@ function voirpif(courseId,user,version) {
     pif = pif.replace(new RegExp('{TABLE_LIST}', 'gi'),htmlpif);
     pif = pif.replace(new RegExp('{TABLE_DONE}', 'gi'),htmlpif2);
     
-    if (pifsignature1 == 0) {
-        pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'');
-    } else {
-        pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'<img src="'+pifsignature1+'" width="300">');
-    }
-    
-    if (pifsignature2 == 0) {
-        pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'');
-    } else {
-        pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
-    }
-    
-    if (pifsignature3 == 0) {
-        pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
-    } else {
-        pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
-    }
-    
-    if (pifsignature4 == 0) {
-        pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
-    } else {
-        pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
-    }
-    
+    var pifsignature1 = 0;
+    var pifsignature2 = 0;
+    var pifsignature3 = 0;
+    var pifsignature4 = 0;
 
-    //MM.log('pif:'+pif);
+    var fileSignature1 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_avant.png";
+    var fileSignature2 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_avant.png";
+    if (version == 1) {
+        var fileSignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_manager_apres.png";
+        var fileSignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_signature_stagiaire_apres.png";
+    } else {
+        var fileSignature3 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_manager.png";
+        var fileSignature4 = MM.config.current_site.id+"/"+courseId+"/"+user+"_"+version+"_signature_stagiaire.png";
+    }
+    
+    var d = new Date();
+    var today = parseInt(d.getTime()/1000);
+                            
+    
+    MM.fs.findFileAndReadContents(fileSignature1,
+        function(path) {
+            pifsignature1 = path;
+            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'<img src="'+pifsignature1+'" width="300">');
+            
+            MM.fs.findFileAndReadContents(fileSignature2,
+                function(path) {
+                    pifsignature2 = path;
+                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_STAGIAIRE}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
+                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                },
+                                function(path) {
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                     
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                }
+                            );
+                        },
+                        function(path) {
+                            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                },
+                                function(path) {
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                }
+                            );
+                        }
+                    );
+                },
+                function(path) {
+                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_STAGIAIRE}', 'gi'),'');
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                },
+                                function(path) {
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                }
+                            );
+                        },
+                        function(path) {
+                            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                },
+                                function(path) {
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                }
+                            );
+                        }
+                    );
+                }
+            );
+        },
+        function(path) {
+            pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'');
+            
+            MM.fs.findFileAndReadContents(fileSignature2,
+                function(path) {
+                    pifsignature2 = path;
+                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_STAGIAIRE}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
+                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
+                            
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                },
+                                function(path) {
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                }
+                            );
+                        },
+                        function(path) {
+                            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                },
+                                function(path) {
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                }
+                            );
+                        }
+                    );
+                },
+                function(path) {
+                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_STAGIAIRE}', 'gi'),'');
+                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                },
+                                function(path) {
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                }
+                            );
+                        },
+                        function(path) {
+                           pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
+                           
+                           MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                },
+                                function(path) {
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    
+                                    var html2 = '<div id="pifContent">'+pif+'</div>';
+                                    var options2 = {
+                                        title: 'Voir le pif de '+userpif.fullname,
+                                        width: "100%",
+                                        buttons: {}
+                                    }
+                                    options2.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        MM.widgets.dialogClose();
+                                        $('button#pif[user="'+userpif.userid+'"]').click();
+                                    };
+                                    
+                                    MM.widgets.dialog(html2, options2);
+                                    
+                                }
+                            );
+                        }
+                    );
+                }
+            );
+        }
+    );
     
     
-    var html2 = '<div id="pifContent">'+pif+'</div>';
-    
-    
-    var options2 = {
-        title: 'Voir le pif de '+userpif.fullname,
-        width: "100%",
-        buttons: {}
-    };
-    
-   
-    options2.buttons["Fermer"] = function() {
-        //MM.Router.navigate("eleves/" + course );
-        MM.widgets.dialogClose();
-        $('button#pif[user="'+userpif.userid+'"]').click();
-    };
-    
-    MM.widgets.dialog(html2, options2);
                             
                             
 }
