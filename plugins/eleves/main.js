@@ -3093,7 +3093,7 @@ function voirpif(courseId,user,version) {
             MM.fs.findFileAndReadContents(fileSignature2,
                 function(path) {
                     pifsignature2 = path;
-                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_STAGIAIRE}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
+                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
                     
                     MM.fs.findFileAndReadContents(fileSignature3,
                         function(path) {
@@ -3103,7 +3103,7 @@ function voirpif(courseId,user,version) {
                             MM.fs.findFileAndReadContents(fileSignature4,
                                 function(path) {
                                     pifsignature4 = path;
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3120,7 +3120,7 @@ function voirpif(courseId,user,version) {
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
                                      
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3144,7 +3144,7 @@ function voirpif(courseId,user,version) {
                             MM.fs.findFileAndReadContents(fileSignature4,
                                 function(path) {
                                     pifsignature4 = path;
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3161,7 +3161,7 @@ function voirpif(courseId,user,version) {
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3182,7 +3182,7 @@ function voirpif(courseId,user,version) {
                     );
                 },
                 function(path) {
-                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_STAGIAIRE}', 'gi'),'');
+                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'');
                     MM.fs.findFileAndReadContents(fileSignature3,
                         function(path) {
                             pifsignature3 = path;
@@ -3191,7 +3191,7 @@ function voirpif(courseId,user,version) {
                             MM.fs.findFileAndReadContents(fileSignature4,
                                 function(path) {
                                     pifsignature4 = path;
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3208,7 +3208,7 @@ function voirpif(courseId,user,version) {
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3232,7 +3232,7 @@ function voirpif(courseId,user,version) {
                             MM.fs.findFileAndReadContents(fileSignature4,
                                 function(path) {
                                     pifsignature4 = path;
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3249,7 +3249,7 @@ function voirpif(courseId,user,version) {
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3277,7 +3277,7 @@ function voirpif(courseId,user,version) {
             MM.fs.findFileAndReadContents(fileSignature2,
                 function(path) {
                     pifsignature2 = path;
-                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_STAGIAIRE}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
+                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
                     
                     MM.fs.findFileAndReadContents(fileSignature3,
                         function(path) {
@@ -3288,7 +3288,7 @@ function voirpif(courseId,user,version) {
                             MM.fs.findFileAndReadContents(fileSignature4,
                                 function(path) {
                                     pifsignature4 = path;
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3305,7 +3305,7 @@ function voirpif(courseId,user,version) {
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3329,7 +3329,7 @@ function voirpif(courseId,user,version) {
                             MM.fs.findFileAndReadContents(fileSignature4,
                                 function(path) {
                                     pifsignature4 = path;
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3346,7 +3346,7 @@ function voirpif(courseId,user,version) {
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3367,7 +3367,7 @@ function voirpif(courseId,user,version) {
                     );
                 },
                 function(path) {
-                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_STAGIAIRE}', 'gi'),'');
+                    pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'');
                     
                     MM.fs.findFileAndReadContents(fileSignature3,
                         function(path) {
@@ -3377,7 +3377,7 @@ function voirpif(courseId,user,version) {
                             MM.fs.findFileAndReadContents(fileSignature4,
                                 function(path) {
                                     pifsignature4 = path;
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3394,7 +3394,7 @@ function voirpif(courseId,user,version) {
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3418,7 +3418,7 @@ function voirpif(courseId,user,version) {
                            MM.fs.findFileAndReadContents(fileSignature4,
                                 function(path) {
                                     pifsignature4 = path;
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
@@ -3435,7 +3435,7 @@ function voirpif(courseId,user,version) {
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
-                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_STAGIAIRE}', 'gi'),'');
+                                    pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
                                     
                                     var html2 = '<div id="pifContent">'+pif+'</div>';
                                     var options2 = {
