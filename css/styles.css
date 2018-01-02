@@ -1633,13 +1633,11 @@ hr {
 #app-dialog .modalContent {
   padding: 20px;
   text-align: center;
-  
 }
 #sessionContent {
   overflow: auto;
-  max-height: 50vh;
+  max-height: 100vh;
 }
-
 .closedialog {
   float:right;
 }
@@ -2162,11 +2160,32 @@ li#lielevelP.nav-item.hide {
 	.btn:active {
 		border:2px #333 solid;
 	}
-	.text-blanc, .modal-button-1, .modal-button-2, .modal-button-3, .modal-button-4 {
+	.text-blanc, .modal-button-1, .modal-button-2, .modal-button-3, .modal-button-4, .modal-button-5, .modal-button-5 {
 		color:#fff;
 		text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
 		-moz-text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
 		-webkit-text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+	}
+	.modal-button-5 {
+	  width: 25%;
+	  background: #144283;
+	  color: #fff;
+	  border: 1px solid #144283;
+	  margin-right: 10px;  
+	}
+	.modal-button-6 {
+	  width: 25%;
+	  background: #fff;
+	  color: #144283;
+	  border: 1px solid #144283;
+	  margin-right: 10px;  
+	}
+	.pifgris {
+	  font-weight:bold;
+	}
+	.pifnoir {
+	  font-weight:bold;
+	  color:#000;
 	}
 	.text-gris {
 		color:#777;
