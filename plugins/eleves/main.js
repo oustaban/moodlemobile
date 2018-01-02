@@ -225,11 +225,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                             versionArray[index] = versionArray[index] + 1;
                             
+                            var downloadUrlav = [];
+                            var uploadFileav = [];
+                            var downloadUrlavs = [];
+                            var uploadFileavs = [];
+                            
                             //Recup des signatures avenants => version>=2
                             for (var av=2;av<versionArray[index];av++) {
                                 MM.log('Upload signature avenant:'+user.id+' et cours:'+courseId);
-                                var downloadUrlav[av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');
-                                var uploadFileav[av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";
+                                downloadUrlav[av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');
+                                uploadFileav[av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";
                                 if (MM.deviceConnected()) {
                                 
                                         MM.fs.createFile(uploadFileav[av],
@@ -254,8 +259,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         );
                                 }
                                 
-                                var downloadUrlavs[av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');
-                                var uploadFileavs[av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
+                                downloadUrlavs[av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');
+                                uploadFileavs[av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
                                 if (MM.deviceConnected()) {
                                 
                                         MM.fs.createFile(uploadFileavs[av],
