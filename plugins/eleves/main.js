@@ -1877,11 +1877,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var html = '<div id="pifContent"><br/><br/>';
                         html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
                         html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p><br/><br/>';
-                        html += '<p align="center"><button course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                        if (version == 1)
+                            html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                        else
+                            html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         html += '<br/><br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
                         html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button class="modal-button-1">Voir</button></td></tr>';
-                        html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button class="modal-button-5">Compléter</button></td></tr>';
+                        html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" class="modal-button-5">Compléter</button></td></tr>';
                         html += '</table>';
                         
                         var options = {
@@ -2951,9 +2954,308 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
 }
 
 
+function voirpif(courseId,user,version) {
+    
+    MM.log('Voir le pif:'+courseId);
+    var a;
+    var b;
+    var scormid;
+    var pifbutton = new Array();
+    var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
+    var coursepif = coursespif[0].toJSON();
+    var pif = coursepif.pif;
+    var userspif = MM.db.where('users', {userid:parseInt(user)});
+    var userpif = userspif[0].toJSON();
+    var pifs = userpif.pif;
+    pifscourse = $.grep(pifs, function( el ) {
+                    return el.courseid == courseId && el.version == version;
+    });
+    var managerid = pifscourse[0].managerid;
+    var managername = pifscourse[0].managername;
+    
+    var pifsignature1 = 0;
+    var pifsignature2 = 0;
+    var pifsignature3 = 0;
+    var pifsignature4 = 0;
 
-//Modifier le Pif button
+    var fileSignature1 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_avant.png";
+    var fileSignature2 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_avant.png";
+    if (version == 1) {
+        var fileSignature3 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_apres.png";
+        var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_apres.png";
+    } else {
+        var fileSignature3 = MM.config.current_site.id+"/"+course+"/"+user+"_"+version+"_signature_manager.png";
+        var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_"+version+"_signature_stagiaire.png";
+    }
+    
+    var d = new Date();
+    var today = parseInt(d.getTime()/1000);
+                            
+
+    MM.fs.findFileAndReadContents(fileSignature1,
+        function(path) {
+            pifsignature1 = path;
+            
+            MM.fs.findFileAndReadContents(fileSignature2,
+                function(path) {
+                    pifsignature2 = path;
                     
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                },
+                                function(path) {
+                                     
+                                }
+                            );
+                        },
+                        function(path) {
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                },
+                                function(path) {
+                                
+                                }
+                            );
+                        }
+                    );
+                },
+                function(path) {
+                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                },
+                                function(path) {
+                                    
+                                }
+                            );
+                        },
+                        function(path) {
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                },
+                                function(path) {
+                                    
+                                }
+                            );
+                        }
+                    );
+                }
+            );
+        },
+        function(path) {
+            
+            MM.fs.findFileAndReadContents(fileSignature2,
+                function(path) {
+                    pifsignature2 = path;
+                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = 1;
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                },
+                                function(path) {
+                                    
+                                }
+                            );
+                        },
+                        function(path) {
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                },
+                                function(path) {
+                                    
+                                }
+                            );
+                        }
+                    );
+                },
+                function(path) {
+                    
+                    MM.fs.findFileAndReadContents(fileSignature3,
+                        function(path) {
+                            pifsignature3 = path;
+                            
+                            MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                },
+                                function(path) {
+                                    
+                                }
+                            );
+                        },
+                        function(path) {
+                           
+                           MM.fs.findFileAndReadContents(fileSignature4,
+                                function(path) {
+                                    pifsignature4 = path;
+                                },
+                                function(path) {
+                                    
+                                }
+                            );
+                        }
+                    );
+                }
+            );
+        }
+    );
+    
+    
+    var htmlpif = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th>&nbsp;</th><th class="center"><b>A remplir à l\'issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Objectifs pédagogiques poursuivis</b></td><td class="center2"><b>Intitulés des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l\'issue du parcours de formation</b></td></tr>';
+    var htmlpif2 = '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>Intitulés des séquences pédagogiques</b></th><th class="center"><b>Objectifs pédagogiques poursuivis</b></th><th class="center"><b>Modalités pédagogiques du module de formation</b></th><th class="center"><b>Durée estimative forfaitaire</b></th></tr>';
+
+    var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
+    local_contents.forEach(function(local_content) {
+        var content = local_content.toJSON();
+        var unchecked = 0;
+        if (content.modname == "scorm") {
+            htmlpif += '<tr><td style="height:40px" class="center2">';
+           
+            pifscormb = $.grep(pifscourse, function( el ) {
+                return el.scormid == content.contentid && el.begin == 1;
+            });
+            
+            if (pifscormb.length>0) {
+                htmlpif+='X';
+            } else {
+                unchecked = 1;
+                htmlpif+='';
+            }
+            htmlpif +='</td><td  class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center2">'+content.pif_fullname+'</td><td class="center2">';
+             
+            pifscorme = $.grep(pifscourse, function( el ) {
+                    return el.scormid == content.contentid && el.end == 1;
+            });
+            if (pifscorme.length>0) {
+                htmlpif += 'X';
+            }
+            if (unchecked) {
+                html+=' disabled="true"';
+            }
+            htmlpif +='</td></tr>';
+            if (pifscormb.length>0){
+                htmlpif2 +='</td><td  class="center2">'+content.pif_fullname+'</td><td class="center3">'+content.pif_pedagogicalobjectives+'</td><td class="center3">'+content.pif_pedagogicalprocedures+'</td><td class="center2">'+(content.pif_duration/60/60)+' heure(s)</td></tr>';
+           
+            }
+        }
+    });
+    
+    htmlpif +='</table>';
+    htmlpif2 +='</table>';
+    
+    
+    
+    pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),managername);
+    pif = pif.replace(new RegExp('{USER_LAST_NAME}', 'gi'),userpif.lastname);
+    pif = pif.replace(new RegExp('{USER_FIRST_NAME}', 'gi'),userpif.firstname);
+    pif = pif.replace(new RegExp('{USER_EMAIL}', 'gi'),userpif.email);
+    pif = pif.replace(new RegExp('{PAGE_BREAK}', 'gi'),'');
+    pif = pif.replace(new RegExp('{COMPANY_NUMBER}', 'gi'),coursepif.company_number);
+    pif = pif.replace(new RegExp('{COMPANY_ADDRESS}', 'gi'),coursepif.company_address);
+    pif = pif.replace(new RegExp('{COMPANY_POSTAL_CODE}', 'gi'),coursepif.company_cp);
+    pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),coursepif.company_city);
+    
+    var aujourdhui = new Date();
+    //var date = aujourdhui.getDate()+'/'+(aujourdhui.getMonth()+1)+'/'+aujourdhui.getFullYear();
+    var date = ("0" + aujourdhui.getDate()).slice(-2)+"/"+("0" + (aujourdhui.getMonth() + 1)).slice(-2)+"/"+aujourdhui.getFullYear();
+
+    
+    pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
+    
+    MM.log("user/licenses:"+parseInt(user)+'/'+coursepif.licenses)
+    var license = $.grep(coursepif.licenses, function( el ) {
+        return el.userid == parseInt(user);
+    });
+    MM.log("license:"+license + 'start:' + license[0].start);
+    var start = new Date(parseInt(license[0].start)*1000);
+    var end = new Date(parseInt(license[0].end)*1000);
+    var sdate = ("0" + start.getDate()).slice(-2)+"/"+("0" + (start.getMonth() + 1)).slice(-2)+"/"+start.getFullYear();
+    var edate = ("0" + end.getDate()).slice(-2)+"/"+("0" + (end.getMonth() + 1)).slice(-2)+"/"+end.getFullYear();
+
+    
+    //pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),start.getDate()+'/'+(start.getMonth()+1)+'/'+start.getFullYear());
+    //pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),end.getDate()+'/'+(end.getMonth()+1)+'/'+end.getFullYear());
+    
+    pif = pif.replace(new RegExp('{FORMATION_START:DD/MM/YYYY}', 'gi'),sdate);
+    pif = pif.replace(new RegExp('{FORMATION_END:<strong>DD/MM/YYYY</strong>}', 'gi'),edate);
+    
+    total_duration = total_duration / 60 / 60;
+    
+    pif = pif.replace(new RegExp('{FORMATION_DURATION}', 'gi'),total_duration + ' heure(s)');
+    
+    pif = pif.replace(new RegExp('{TABLE_LIST}', 'gi'),htmlpif);
+    pif = pif.replace(new RegExp('{TABLE_DONE}', 'gi'),htmlpif2);
+    
+    if (pifsignature1 == 0) {
+        pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'');
+    } else {
+        pif = pif.replace(new RegExp('{SIGNATURE_AVANT_MANAGER}', 'gi'),'<img src="'+pifsignature1+'" width="300">');
+    }
+    
+    if (pifsignature2 == 0) {
+        pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'');
+    } else {
+        pif = pif.replace(new RegExp('{SIGNATURE_AVANT_PARTICIPANT}', 'gi'),'<img src="'+pifsignature2+'" width="300">');
+    }
+    
+    if (pifsignature3 == 0) {
+        pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'');
+    } else {
+        pif = pif.replace(new RegExp('{SIGNATURE_APRES_MANAGER}', 'gi'),'<img src="'+pifsignature3+'" width="300">');
+    }
+    
+    if (pifsignature4 == 0) {
+        pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
+    } else {
+        pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'<img src="'+pifsignature4+'" width="300">');
+    }
+    
+
+    //MM.log('pif:'+pif);
+    
+    
+    var html2 = '<div id="pifContent">'+pif+'</div>';
+    
+    
+    var options2 = {
+        title: 'Voir le pif de '+userpif.fullname,
+        width: "100%",
+        buttons: {}
+    };
+    
+   
+    options2.buttons["Fermer"] = function() {
+        //MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+        $('button#pif[user="'+userpif.userid+'"]').click();
+    };
+    
+    MM.widgets.dialog(html2, options2);
+                            
+                            
+}
+
+//Modifier le Pif button               
 function modifierPif(button,user,course,version) {
     
     MM.log('Modifier pif clicked');
@@ -2985,7 +3287,7 @@ function modifierPif(button,user,course,version) {
     if (pifArray == "" || pifArray == "[]") {
         if (pifscourse.length > 0) {
             var managerid = pifscourse[0].managerid;
-            var managername = pifscourse[0].managername
+            var managername = pifscourse[0].managername;
         } else {
             managerid = MM.config.current_site.userid;
             managername =MM.config.current_site.fullname;
