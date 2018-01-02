@@ -2971,7 +2971,7 @@ function voirlespif(courseId,user) {
 
     $.each(pifscourse, function( index, pif ) {
         if (pif.version > version ) {
-            MM.log("Version:"+pif.version);
+            MM.log("Version:"+pif);
             newpif = pif.version + 1;
             var dateversion = new Date(parseInt(pif.versiondate)*1000);
             var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" "+dateversion.getHours()+":"+dateversion.getMinutes();
