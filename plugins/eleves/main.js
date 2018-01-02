@@ -225,10 +225,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                             versionArray[index] = versionArray[index] + 1;
                             
-                            var downloadUrlav = [];
-                            var uploadFileav = [];
-                            var downloadUrlavs = [];
-                            var uploadFileavs = [];
+                            var downloadUrlav = new Array();
+                            var uploadFileav = new Array();
+                            var downloadUrlavs = new Array();
+                            var uploadFileavs = new Array();
                             
                             //Recup des signatures avenants => version>=2
                             for (var av=2;av<versionArray[index];av++) {
