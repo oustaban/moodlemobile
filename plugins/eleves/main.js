@@ -2959,6 +2959,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
 function voirpif(courseId,user,version) {
     
     MM.log('Voir le pif:'+courseId);
+    version = version - 1;
     var a;
     var b;
     var scormid;
