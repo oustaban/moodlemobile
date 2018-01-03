@@ -225,27 +225,24 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                             versionArray[index] = versionArray[index] + 1;
                             
-                            var downloadUrlav = new Array();
-                            var uploadFileav = new Array();
-                            var downloadUrlavs = new Array();
-                            var uploadFileavs = new Array();
+                            
                             
                             //Recup des signatures avenants => version>=2
                             for (var av=2;av<versionArray[index];av++) {
                                 MM.log('Upload signature avenant:'+user.id+' et cours:'+courseId);
-                                downloadUrlav[av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');
-                                uploadFileav[av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";
+                                this['downloadUrlav'+av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');
+                                this['uploadFileav'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";
                                 if (MM.deviceConnected()) {
                                 
-                                        MM.fs.createFile(uploadFileav[av],
+                                        MM.fs.createFile(this['uploadFileav'+av],
                                             function(fullpath) {
-                                                MM.log("Création de "+uploadFileav[av]+" OK");
-                                                MM.moodleDownloadFile(downloadUrlav[av], uploadFileav[av],
+                                                MM.log("Création de "+this['uploadFileav'+av]+" OK");
+                                                MM.moodleDownloadFile(this['downloadUrlav'+av]], this['uploadFileav'+av],
                                                     function(fullpath) {
-                                                        MM.log("Upload de "+downloadUrlav[av]+" vers "+uploadFileav[av]+" OK");
+                                                        MM.log("Upload de "+this['downloadUrlav'+av]+" vers "+this['uploadFileav'+av]+" OK");
                                                     },
                                                     function(fullpath) {
-                                                        MM.log("Upload de "+downloadUrlav[av]+" vers "+uploadFileav[av]+" NOK");
+                                                        MM.log("Upload de "+this['downloadUrlav'+av]+" vers "+this['uploadFileav'+av]+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
@@ -254,24 +251,24 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 );
                                             },
                                             function(fullpath) {
-                                                MM.log("Création de "+uploadFileav[av]+" NOK");
+                                                MM.log("Création de "+this['uploadFileav'+av]+" NOK");
                                             }
                                         );
                                 }
                                 
-                                downloadUrlavs[av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');
-                                uploadFileavs[av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
+                                this['downloadUrlavs'+av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');
+                                this['uploadFileavs'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
                                 if (MM.deviceConnected()) {
                                 
                                         MM.fs.createFile(uploadFileavs[av],
                                             function(fullpath) {
-                                                MM.log("Création de "+uploadFileavs[av]+" OK");
-                                                MM.moodleDownloadFile(downloadUrlavs[av], uploadFileavs[av],
+                                                MM.log("Création de "+this['uploadFileavs'+av]+" OK");
+                                                MM.moodleDownloadFile(this['downloadUrlavs'+av], this['uploadFileavs'+av],
                                                     function(fullpath) {
-                                                        MM.log("Upload de "+downloadUrlavs[av]+" vers "+uploadFileavs[av]+" OK");
+                                                        MM.log("Upload de "+this['downloadUrlavs'+av]+" vers "+this['uploadFileavs'+av]+" OK");
                                                     },
                                                     function(fullpath) {
-                                                        MM.log("Upload de "+downloadUrlavs[av]+" vers "+uploadFileavs[av]+" NOK");
+                                                        MM.log("Upload de "+this['downloadUrlavs'+av]+" vers "+this['uploadFileavs'+av]+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
@@ -280,7 +277,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 );
                                             },
                                             function(fullpath) {
-                                                MM.log("Création de "+uploadFileavs[av]+" NOK");
+                                                MM.log("Création de "+this['uploadFileavs'+av]+" NOK");
                                             }
                                         );
                                 } 
