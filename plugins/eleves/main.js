@@ -245,21 +245,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                         MM.fs.createFile(window['uploadFileav'+av],
                                             function(fullpath1) {
-                                                if (window['uploadFileav'+av] == undefined) {
-                                                    var uploadFile1 = fullpath1.fullPath.substring(1);
-                                                } else {
-                                                    uploadFile1 = window['uploadFileav'+av]
-                                                }
                                                 window['downloadUrlav'+av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');
+                                                window['uploadFileav'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";
                                 
-                                                MM.log("Création de "+uploadFile1+" OK : " + window['downloadUrlav'+av]);
+                                                MM.log("Création de "+window['uploadFileav'+av]+" OK : " + window['downloadUrlav'+av]);
                                                 
-                                                MM.moodleDownloadFile(window['downloadUrlav'+av], uploadFile1,
+                                                MM.moodleDownloadFile(window['downloadUrlav'+av], window['uploadFileav'+av],
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+uploadFile1" OK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]" OK");
                                                     },
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+uploadFile1+" NOK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
@@ -277,20 +273,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                         MM.fs.createFile(window['uploadFileavs'+av],
                                             function(fullpath3) {
-                                                if (window['uploadFileavs'+av] == undefined) {
-                                                    var uploadFile3 = fullpath3.fullPath.substring(1);
-                                                } else {
-                                                    uploadFile3 = window['uploadFileavs'+av]
-                                                }
                                                 window['downloadUrlavs'+av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');
+                                                window['uploadFileavs'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
                                 
-                                                MM.log("Création de "+uploadFile3+" OK : " + window['downloadUrlavs'+av]);
-                                                MM.moodleDownloadFile(window['downloadUrlavs'+av], uploadFile3,
+                                                MM.log("Création de "+window['uploadFileavs'+av]+" OK : " + window['downloadUrlavs'+av]);
+                                                MM.moodleDownloadFile(window['downloadUrlavs'+av], window['uploadFileavs'+av],
                                                     function(fullpath4) {
-                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+uploadFile3+" OK");
+                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+window['uploadFileavs'+av]+" OK");
                                                     },
                                                     function(fullpath4) {
-                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+uploadFile3+" NOK");
+                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+window['uploadFileavs'+av]+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
