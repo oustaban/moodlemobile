@@ -6,7 +6,7 @@ var templates = [
 ];
 
 define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
-    var plugin = {x
+    var plugin = {
         settings: {
             name: "eleves",
             type: "course",
