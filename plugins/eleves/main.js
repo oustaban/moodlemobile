@@ -238,6 +238,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         MM.fs.createFile(window['uploadFileav'+av],
                                             function(fullpath1) {
                                                 MM.log("Création de "+fullpath1+"|"+window['uploadFileav'+av]+" OK");
+                                                for(var propertyName in fullpath1) {
+                                                    MM.log('Property:'+propertyName+':'+fullpath1[propertyName]);
+                                                    // you can get the value like this: myObject[propertyName]
+                                                 }
                                                 MM.moodleDownloadFile(window['downloadUrlav'+av], window['uploadFileav'+av],
                                                     function(fullpath2) {
                                                         MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]+" OK");
