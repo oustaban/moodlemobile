@@ -225,37 +225,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             }
                             versionArray[index] = versionArray[index] + 1;
                             
-                            for (var av=2;av<versionArray[index];av++) {
-                                window['downloadUrlav'+av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');
-                                window['uploadFileav'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";
-                                window['downloadUrlavs'+av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');
-                                window['uploadFileavs'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
-                                
-                                if (MM.deviceConnected()) {
-                                        MM.fs.createFile(window['uploadFileav'+av],
-                                            function(fullpath1) {
-                                                MM.log("Création de "+window['uploadFileav'+av]+" OK");
-                                            },
-                                            function(fullpath1) {
-                                                MM.log("Création de "+window['uploadFileav'+av]+" NOK");
-                                            }
-                                        );
-                                }
-                                
-                                if (MM.deviceConnected()) {
-                                
-                                        MM.fs.createFile(window['uploadFileavs'+av],
-                                            function(fullpath3) {
-                                                MM.log("Création de "+window['uploadFileavs'+av]+" OK");
-                                            },
-                                            function(fullpath3) {
-                                                MM.log("Création de "+window['uploadFileavs'+av]+" NOK");
-                                            }
-                                        );
-                                } 
-                            }
                             
-                                
                             //Recup des signatures avenants => version>=2
                             if (MM.deviceConnected() && versionArray[index]>2) {
                                     var downloadAM = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_2_signature_manager.png');
@@ -4254,44 +4224,64 @@ function closeDialog(course,user) {
 
 
 function downloadAvenantsManager(download,upload,av,max) {
-    MM.moodleDownloadFile(download,upload,
-        function(fullpath2) {
-            MM.log("Upload de "+download+" vers "+upload+" OK");
-            av = av + 1;
-            if (av <= max) {       
-                var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');;
-                var uploadA = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";;
-                downloadAvenantsManager(downloadA,uploadA,av,max)
-            }
+    
+    MM.log('downloadAvenantsManager:'+download+','+upload+','+av+','+max);
+    MM.fs.createFile(upload,
+        function(fullpath1) {
+            MM.log("Création de "+upload+" OK");
+            MM.moodleDownloadFile(download,upload,
+                function(fullpath2) {
+                    MM.log("Upload de "+download+" vers "+upload+" OK");
+                    av = av + 1;
+                    if (av <= max) {
+                        var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');;
+                        var uploadA = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";;
+                        downloadAvenantsManager(downloadA,uploadA,av,max)
+                    }
+                },
+                function(fullpath2) {
+                    MM.log("Upload de "+download+" vers "+upload+" NOK");
+                },
+                false,
+                function (percent) {
+                   MM.log(percent);
+                }
+            );
         },
-        function(fullpath2) {
-            MM.log("Upload de "+download+" vers "+upload+" NOK");
-        },
-        false,
-        function (percent) {
-           MM.log(percent);
+        function(fullpath1) {
+            MM.log("Création de "+upload+" NOK");
         }
     );
 }
 
 
 function downloadAvenantsStagiaire(download,upload,av,max) {
-    MM.moodleDownloadFile(download,upload,
-        function(fullpath2) {
-            MM.log("Upload de "+download+" vers "+upload+" OK");
-            av = av + 1;
-            if (av <= max) {
-                var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');;
-                var uploadA = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";;
-                downloadAvenantsStagiaire(downloadA,uploadA,av,max)
-            }
+    MM.log('downloadAvenantsStagiaire:'+download+','+upload+','+av+','+max);
+    MM.fs.createFile(upload,
+        function(fullpath1) {
+            MM.log("Création de "+upload+" OK");
+            MM.moodleDownloadFile(download,upload,
+                function(fullpath2) {
+                    MM.log("Upload de "+download+" vers "+upload+" OK");
+                    av = av + 1;
+                    if (av <= max) {
+                        var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');;
+                        var uploadA = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";;
+                        downloadAvenantsStagiaire(downloadA,uploadA,av,max)
+                    }
+                },
+                function(fullpath2) {
+                    MM.log("Upload de "+download+" vers "+upload+" NOK");
+                },
+                false,
+                function (percent) {
+                   MM.log(percent);
+                }
+            );
         },
-        function(fullpath2) {
-            MM.log("Upload de "+download+" vers "+upload+" NOK");
-        },
-        false,
-        function (percent) {
-           MM.log(percent);
+        function(fullpath1) {
+            MM.log("Création de "+upload+" NOK");
         }
     );
+    
 }
