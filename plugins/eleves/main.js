@@ -232,8 +232,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 window['uploadFileavs'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
                                 
                                 if (MM.deviceConnected()) {
-                                        downloadAvenantsManager(downloadAM,uploadAM,2,versionArray[index]);
-                                        downloadAvenantsStagiaire(downloadAS,uploadAS,2,versionArray[index]);
                                         MM.fs.createFile(window['uploadFileav'+av],
                                             function(fullpath1) {
                                                 MM.log("Création de "+window['uploadFileav'+av]+" OK");
