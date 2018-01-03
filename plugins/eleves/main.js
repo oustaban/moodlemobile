@@ -236,13 +236,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if (MM.deviceConnected()) {
                                 
                                         MM.fs.createFile(window['uploadFileav'+av],
-                                            function(fullpath) {
+                                            function(fullpath1) {
                                                 MM.log("Création de "+window['uploadFileav'+av]+" OK");
                                                 MM.moodleDownloadFile(window['downloadUrlav'+av], window['uploadFileav'+av],
-                                                    function(fullpath) {
+                                                    function(fullpath2) {
                                                         MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]+" OK");
                                                     },
-                                                    function(fullpath) {
+                                                    function(fullpath2) {
                                                         MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]+" NOK");
                                                     },
                                                     false,
@@ -251,7 +251,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     }
                                                 );
                                             },
-                                            function(fullpath) {
+                                            function(fullpath1) {
                                                 MM.log("Création de "+window['uploadFileav'+av]+" NOK");
                                             }
                                         );
@@ -263,13 +263,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if (MM.deviceConnected()) {
                                 
                                         MM.fs.createFile(window['uploadFileavs'+av],
-                                            function(fullpath) {
+                                            function(fullpath3) {
                                                 MM.log("Création de "+window['uploadFileavs'+av]+" OK");
                                                 MM.moodleDownloadFile(window['downloadUrlavs'+av], window['uploadFileavs'+av],
-                                                    function(fullpath) {
+                                                    function(fullpath4) {
                                                         MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+window['uploadFileavs'+av]+" OK");
                                                     },
-                                                    function(fullpath) {
+                                                    function(fullpath4) {
                                                         MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+window['uploadFileavs'+av]+" NOK");
                                                     },
                                                     false,
@@ -278,7 +278,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     }
                                                 );
                                             },
-                                            function(fullpath) {
+                                            function(fullpath3) {
                                                 MM.log("Création de "+window['uploadFileavs'+av]+" NOK");
                                             }
                                         );
