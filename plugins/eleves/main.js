@@ -252,7 +252,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                 MM.moodleDownloadFile(window['downloadUrlav'+av], window['uploadFileav'+av],
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]" OK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]+" OK");
                                                     },
                                                     function(fullpath2) {
                                                         MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]+" NOK");
