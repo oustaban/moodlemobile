@@ -237,14 +237,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                         MM.fs.createFile(window['uploadFileav'+av],
                                             function(fullpath1) {
-                                                MM.log("Création de "+fullpath1.fullPath.substring(1)+"|"+window['uploadFileav'+av]+" OK");
+                                                if (window['uploadFileav'+av] == undefined) {
+                                                    var uploadFile1 = fullpath1.fullPath.substring(1);
+                                                } else {
+                                                    uploadFile1 = window['uploadFileav'+av]
+                                                }
+                                                MM.log("Création de "+uploadFile1+" OK");
                                                 
-                                                MM.moodleDownloadFile(window['downloadUrlav'+av], fullpath1.fullPath.substring(1),
+                                                MM.moodleDownloadFile(window['downloadUrlav'+av], uploadFile1,
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+fullpath1.fullPath.substring(1)+" OK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+uploadFile1+" OK");
                                                     },
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+fullpath1.fullPath.substring(1)+" NOK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+uploadFile1+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
@@ -265,13 +270,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                         MM.fs.createFile(window['uploadFileavs'+av],
                                             function(fullpath3) {
-                                                MM.log("Création de "+fullpath3.fullPath.substring(1)+"|"+window['uploadFileavs'+av]+" OK");
-                                                MM.moodleDownloadFile(window['downloadUrlavs'+av], fullpath3.fullPath.substring(1),
+                                                if (window['uploadFileavs'+av] == undefined) {
+                                                    var uploadFile3 = fullpath3.fullPath.substring(1);
+                                                } else {
+                                                    uploadFile3 = window['uploadFileavs'+av]
+                                                }
+                                                MM.log("Création de "+uploadFile3+" OK");
+                                                MM.moodleDownloadFile(window['downloadUrlavs'+av], uploadFile3,
                                                     function(fullpath4) {
-                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+fullpath3.fullPath.substring(1)+" OK");
+                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+uploadFile3+" OK");
                                                     },
                                                     function(fullpath4) {
-                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+fullpath3.fullPath.substring(1)+" NOK");
+                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+uploadFile3+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
