@@ -4256,7 +4256,7 @@ function closeDialog(course,user) {
 
 
 function downloadAvenantsManager(download,upload,av,max) {
-    MM.moodleDownloadFile(download,upload
+    MM.moodleDownloadFile(download,upload,
         function(fullpath2) {
             MM.log("Upload de "+download+" vers "+upload+" OK");
             av = av + 1;
@@ -4278,7 +4278,7 @@ function downloadAvenantsManager(download,upload,av,max) {
 
 
 function downloadAvenantsStagiaire(download,upload,av,max) {
-    MM.moodleDownloadFile(download,upload
+    MM.moodleDownloadFile(download,upload,
         function(fullpath2) {
             MM.log("Upload de "+download+" vers "+upload+" OK");
             av = av + 1;
