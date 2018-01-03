@@ -242,7 +242,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 } else {
                                                     uploadFile1 = window['uploadFileav'+av]
                                                 }
-                                                MM.log("Création de "+uploadFile1+" OK");
+                                                MM.log("Création de "+uploadFile1+" OK : " + window['downloadUrlav'+av]);
                                                 
                                                 MM.moodleDownloadFile(window['downloadUrlav'+av], uploadFile1,
                                                     function(fullpath2) {
@@ -275,7 +275,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 } else {
                                                     uploadFile3 = window['uploadFileavs'+av]
                                                 }
-                                                MM.log("Création de "+uploadFile3+" OK");
+                                                MM.log("Création de "+uploadFile3+" OK : " + window['downloadUrlavs'+av]);
                                                 MM.moodleDownloadFile(window['downloadUrlavs'+av], uploadFile3,
                                                     function(fullpath4) {
                                                         MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+uploadFile3+" OK");
