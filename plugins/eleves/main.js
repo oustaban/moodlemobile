@@ -260,7 +260,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 this['uploadFileavs'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
                                 if (MM.deviceConnected()) {
                                 
-                                        MM.fs.createFile(uploadFileavs[av],
+                                        MM.fs.createFile(this['uploadFileavs'+av],
                                             function(fullpath) {
                                                 MM.log("Création de "+this['uploadFileavs'+av]+" OK");
                                                 MM.moodleDownloadFile(this['downloadUrlavs'+av], this['uploadFileavs'+av],
