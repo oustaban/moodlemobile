@@ -4236,7 +4236,7 @@ function downloadAvenantsManager(download,upload,av,max,courseId,userId) {
                     if (av <= max) {
                         var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+userId+'_'+av+'_signature_manager.png');;
                         var uploadA = MM.config.current_site.id+"/"+courseId+"/"+userId+"_"+av+"_signature_manager.png";;
-                        downloadAvenantsManager(downloadA,uploadA,av,max)
+                        downloadAvenantsManager(downloadA,uploadA,av,max,courseId,userId)
                     }
                 },
                 function(fullpath2) {
@@ -4267,7 +4267,7 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
                     if (av <= max) {
                         var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+userId+'_'+av+'_signature_stagiaire.png');;
                         var uploadA = MM.config.current_site.id+"/"+courseId+"/"+userId+"_"+av+"_signature_stagiaire.png";;
-                        downloadAvenantsStagiaire(downloadA,uploadA,av,max)
+                        downloadAvenantsStagiaire(downloadA,uploadA,av,max,courseId,userId)
                     }
                 },
                 function(fullpath2) {
