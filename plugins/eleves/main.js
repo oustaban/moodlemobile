@@ -237,17 +237,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                         MM.fs.createFile(window['uploadFileav'+av],
                                             function(fullpath1) {
-                                                MM.log("Création de "+fullpath1+"|"+window['uploadFileav'+av]+" OK");
-                                                for(var propertyName in fullpath1) {
-                                                    MM.log('Property:'+propertyName+':'+fullpath1[propertyName]);
-                                                    // you can get the value like this: myObject[propertyName]
-                                                 }
-                                                MM.moodleDownloadFile(window['downloadUrlav'+av], window['uploadFileav'+av],
+                                                MM.log("Création de "+fullpath1.fullPath+"|"+window['uploadFileav'+av]+" OK");
+                                                
+                                                MM.moodleDownloadFile(window['downloadUrlav'+av], fullpath1.fullPath,
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]+" OK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+fullpath1.fullPath+" OK");
                                                     },
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+window['uploadFileav'+av]+" NOK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+fullpath1.fullPath+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
@@ -256,7 +253,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 );
                                             },
                                             function(fullpath1) {
-                                                MM.log("Création de "+window['uploadFileav'+av]+" NOK");
+                                                MM.log("Création de "+fullpath1.fullPath+" NOK");
                                             }
                                         );
                                 }
