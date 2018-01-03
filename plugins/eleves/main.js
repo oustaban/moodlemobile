@@ -232,7 +232,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.log('Upload signature avenant:'+user.id+' et cours:'+courseId);
                                 window['downloadUrlav'+av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_manager.png');
                                 window['uploadFileav'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_manager.png";
-                                trace('BIP:'+window['uploadFileav'+av]);
+                                MM.log('BIP:'+window['uploadFileav'+av]);
                                 if (MM.deviceConnected()) {
                                 
                                         MM.fs.createFile(window['uploadFileav'+av],
@@ -259,7 +259,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 window['downloadUrlavs'+av] = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_'+av+'_signature_stagiaire.png');
                                 window['uploadFileavs'+av] = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_"+av+"_signature_stagiaire.png";
-                                trace('BOP:'+window['uploadFileavs'+av]);
+                                MM.log('BOP:'+window['uploadFileavs'+av]);
                                 if (MM.deviceConnected()) {
                                 
                                         MM.fs.createFile(window['uploadFileavs'+av],
