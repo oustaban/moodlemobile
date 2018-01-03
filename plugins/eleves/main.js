@@ -237,14 +237,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                         MM.fs.createFile(window['uploadFileav'+av],
                                             function(fullpath1) {
-                                                MM.log("Création de "+fullpath1.fullPath+"|"+window['uploadFileav'+av]+" OK");
+                                                MM.log("Création de "+fullpath1.fullPath.substring(1)+"|"+window['uploadFileav'+av]+" OK");
                                                 
-                                                MM.moodleDownloadFile(window['downloadUrlav'+av], fullpath1.fullPath,
+                                                MM.moodleDownloadFile(window['downloadUrlav'+av], fullpath1.fullPath.substring(1),
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+fullpath1.fullPath+" OK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+fullpath1.fullPath.substring(1)+" OK");
                                                     },
                                                     function(fullpath2) {
-                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+fullpath1.fullPath+" NOK");
+                                                        MM.log("Upload de "+window['downloadUrlav'+av]+" vers "+fullpath1.fullPath.substring(1)+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
@@ -265,13 +265,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                         MM.fs.createFile(window['uploadFileavs'+av],
                                             function(fullpath3) {
-                                                MM.log("Création de "+window['uploadFileavs'+av]+" OK");
-                                                MM.moodleDownloadFile(window['downloadUrlavs'+av], window['uploadFileavs'+av],
+                                                MM.log("Création de "+fullpath3.fullPath.substring(1)+"|"+window['uploadFileavs'+av]+" OK");
+                                                MM.moodleDownloadFile(window['downloadUrlavs'+av], fullpath3.fullPath.substring(1),
                                                     function(fullpath4) {
-                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+window['uploadFileavs'+av]+" OK");
+                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+fullpath3.fullPath.substring(1)+" OK");
                                                     },
                                                     function(fullpath4) {
-                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+window['uploadFileavs'+av]+" NOK");
+                                                        MM.log("Upload de "+window['downloadUrlavs'+av]+" vers "+fullpath3.fullPath.substring(1)+" NOK");
                                                     },
                                                     false,
                                                     function (percent) {
