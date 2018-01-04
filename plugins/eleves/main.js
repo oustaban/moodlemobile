@@ -314,7 +314,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             
                             $('#showSessionL').hide();
-                            $('#showTimer').hide();
+                            $('#showTimer').show();
                             //$('#offlineC').show();
                             $('#offlineC').css('visibility','visible');
                             $('#showCourseL').hide();
@@ -336,7 +336,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             if ($('#offlineC option').length>1) {    
                                 $('input:checked').each(function() {
                                     $('#showSessionL').show();
-                                    $('#showTimer').show();
+                                    $('#showTimer').hide();
                                 });
                             }
                             
@@ -376,7 +376,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 if (!obj.endtime) {
                                                     
                                                      $('#showSessionL').hide();
-                                                     $('#showTimer').hide();
+                                                     $('#showTimer').show();
                                                      //$('#offlineC').hide();
                                                      $('#offlineC').css('visibility','hidden');
                                                      $('#showCourseL').hide();
@@ -1225,7 +1225,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
                                         $("#showSessionL").hide();
-                                        $("#showTimer").hide();
+                                        $("#showTimer").show();
                                         var obj = JSON.parse(result);
                                         var starttime = obj.starttime;
                                         var jsonNotes = '""';
@@ -1261,7 +1261,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     },
                                     function (result) {
                                         $("#showSessionL").show();
-                                        $("#showTimer").show();
+                                        $("#showTimer").hide();
                                     }
                                 );
                             }
@@ -1645,7 +1645,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 });
                                 
                                 $('#showSessionL').show();
-                                $('#showTimer').show();
+                                $('#showTimer').hide();
                                 //$('#offlineC').hide();
                                 $('#offlineC').css('visibility','hidden');
                                 $('#showCourseL').hide();
@@ -1709,7 +1709,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.log('Write Session content:'+content);
                                                     
                                                     $('#showSessionL').show();
-                                                    $('#showTimer').show();
+                                                    $('#showTimer').hide();
                                                     //$('#offlineC').hide();
                                                     $('#offlineC').css('visibility','hidden');
                                                     $('#showCourseL').hide();
