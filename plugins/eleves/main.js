@@ -1878,10 +1878,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if (pifArray != "") {
                             $("button#modifierpif").click();
-                            window.setInterval(function() {
-                                var elem = document.getElementById('pifContent');
-                                elem.scrollTop = elem.scrollHeight;
-                            }, 2000);
+                            
                         }
                         
                     });
@@ -4065,6 +4062,12 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
+                        if (pifArray != "") {
+                            window.setInterval(function() {
+                                    var elem = document.getElementById('pifContent');
+                                    elem.scrollTop = elem.scrollHeight;
+                            }, 1000);
+                        }
                         
                     },
                     function(path) {
@@ -4078,6 +4081,12 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
+                        if (pifArray != "") {
+                            window.setInterval(function() {
+                                    var elem = document.getElementById('pifContent');
+                                    elem.scrollTop = elem.scrollHeight;
+                            }, 1000);
+                        }
                         
                     }
                 );
@@ -4100,6 +4109,12 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
+                        if (pifArray != "") {
+                            window.setInterval(function() {
+                                    var elem = document.getElementById('pifContent');
+                                    elem.scrollTop = elem.scrollHeight;
+                            }, 1000);
+                        }
                         
                     },
                     function(path) {
@@ -4113,6 +4128,12 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
+                        if (pifArray != "") {
+                            window.setInterval(function() {
+                                    var elem = document.getElementById('pifContent');
+                                    elem.scrollTop = elem.scrollHeight;
+                            }, 1000);
+                        }
                         
                     }
                 );
