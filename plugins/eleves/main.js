@@ -4063,7 +4063,7 @@ function modifierPif(button,user,course,version) {
                         
                         MM.widgets.dialog(html, options);
                         if (pifArray != "") {
-                            window.setInterval(function() {
+                            window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
                             }, 1000);
@@ -4082,7 +4082,7 @@ function modifierPif(button,user,course,version) {
                         
                         MM.widgets.dialog(html, options);
                         if (pifArray != "") {
-                            window.setInterval(function() {
+                            window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
                             }, 1000);
@@ -4110,7 +4110,7 @@ function modifierPif(button,user,course,version) {
                         
                         MM.widgets.dialog(html, options);
                         if (pifArray != "") {
-                            window.setInterval(function() {
+                            window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
                             }, 1000);
@@ -4129,7 +4129,7 @@ function modifierPif(button,user,course,version) {
                         
                         MM.widgets.dialog(html, options);
                         if (pifArray != "") {
-                            window.setInterval(function() {
+                            window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
                             }, 1000);
