@@ -346,6 +346,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#stopCourseL').hide();
                             $('#stopSessionL').hide();      
                             $('#synchroR').hide();
+                            $('#showTimer').hide();
                         }
                     );
                     
@@ -1369,7 +1370,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $('#offlineC option[value="0"]').prop('selected', true);
                         
                         var users = $(this).attr('users');
-                        
+                        timer = null;
+                        delete timer;
                         var timer = new Timer();
                         timer.start({precision: 'seconds'});
                         timer.addEventListener('secondsUpdated', function (e) {
