@@ -25,6 +25,7 @@
     </div>
     <% } %>
     <div id="buttons">
+        <div id="showTimer"></div>
         <div class="centered2">
             <button id="showSessionL" course="<%= courseId %>" users="" path="" module="" class="btn grd-vert text-blanc">Démarrer la session</button>
         </div>
@@ -45,5 +46,5 @@
         <div class="centered2">
             <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>" class="btn grd-orange text-blanc" >Synchroniser les Résultats</button>
         </div>
-        <div id="showTimer"></div>
+        
     </div>
