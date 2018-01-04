@@ -1878,6 +1878,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if (pifArray != "") {
                             $("button#modifierpif").click();
+                            window.setInterval(function() {
+                                var elem = document.getElementById('pifContent');
+                                elem.scrollTop = elem.scrollHeight;
+                            }, 2000);
                         }
                         
                     });
@@ -4057,7 +4061,7 @@ function modifierPif(button,user,course,version) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider les modifications"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
@@ -4070,7 +4074,7 @@ function modifierPif(button,user,course,version) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider les modifications"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
@@ -4092,7 +4096,7 @@ function modifierPif(button,user,course,version) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider les modifications"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
@@ -4105,7 +4109,7 @@ function modifierPif(button,user,course,version) {
                 
                         html += '</table></div>';
                         
-                        options.buttons["Valider"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
+                        options.buttons["Valider les modifications"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
@@ -4210,6 +4214,8 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
             $('button#pif[user="'+userpif.userid+'"]').click();
         };
         
+        
+        
                         
         if (valider == 1 && (avenantsignature1 == 0 || avenantsignature2 == 0)) {
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
@@ -4230,8 +4236,15 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
     //MM.Router.navigate("eleves/" + course );
     if (valider == 1) {
         MM.log("Save PIF");
-        MM.widgets.dialogClose();
-        $('button#pif[user="'+userpif.userid+'"]').click();
+        options2.buttons["Fermer"] = function() {
+            MM.widgets.dialogClose();
+            MM.log("Dialog:"+userpif.userid);
+            $('button#pif[user="'+userpif.userid+'"]').click();
+        };
+        MM.popMessage("<h3>Vos modifications ont été enregistrées</h3>Pour qu'elles soient prises en compte, n'oubliez pas de fermer et valider la présente session de formation.<br/><br/>Si vous êtes hors-ligne, synchronisez vos données lors de votre prochaine connexion à un réseau.",options2);
+            
+        //MM.widgets.dialogClose();
+        //$('button#pif[user="'+userpif.userid+'"]').click();
     }
     
 }
@@ -4309,17 +4322,30 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
 function upTime(countTo) {
   now = new Date();
   difference = (now.getTime()-countTo);
+  
+  diffalerte = (now.getTime()-trigger);
 
-  days=Math.floor(difference/(60*60*1000*24)*1);
-  hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
+  /*
+  if (diffalerte >= (60 * 30 * 1000)) {
+    trigger = now.getTime();
+    //alertIdle();
+  }
+  */
+  //days=Math.floor(difference/(60*60*1000*24)*1);
+  hours=Math.floor(difference/(60*60*1000)*1);
+  //hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
   mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
   secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
 
-  document.getElementById('days').firstChild.nodeValue = days;
-  document.getElementById('hours').firstChild.nodeValue = hours;
-  document.getElementById('minutes').firstChild.nodeValue = mins;
-  document.getElementById('seconds').firstChild.nodeValue = secs;
+  //if (document.getElementById('days'))
+    //document.getElementById('days').firstChild.nodeValue = days;
+  if (document.getElementById('hours'))
+    document.getElementById('hours').firstChild.nodeValue = hours;
+  if (document.getElementById('minutes'))
+    document.getElementById('minutes').firstChild.nodeValue = mins;
+  if (document.getElementById('seconds'))
+    document.getElementById('seconds').firstChild.nodeValue = secs;
 
   clearTimeout(upTime.to);
-  upTime.to=setTimeout(function(){ upTime(countTo); },1000);
+  upTime.to=setTimeout(function(){ upTime(countTo,trigger); },1000);
 }
