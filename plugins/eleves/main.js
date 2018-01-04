@@ -1371,14 +1371,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var users = $(this).attr('users');
                         
-                        var timer = new Timer();
                         
-                        
-                        timer.stop();
-                        timer.reset();
-                        timer.removeEventListener('secondsUpdated', sessionTimer(timer));
-                        timer.start({precision: 'seconds'});
-                        timer.addEventListener('secondsUpdated', sessionTimer(timer));
+                        timerInstance.stop();
+                        timerInstance.removeEventListener('secondsUpdated');
+                        timerInstance.start({precision: 'seconds'});
+                        timerInstance.addEventListener('secondsUpdated', function(e) {
+                            $('#showTimer .days').html(timerInstance.getTimeValues().days);
+                            $('#showTimer .hours').html(timerInstance.getTimeValues().hours);
+                            $('#showTimer .minutes').html(timerInstance.getTimeValues().minutes);
+                            $('#showTimer .seconds').html(timerInstance.getTimeValues().seconds);
+                        });  
                         
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
@@ -4304,7 +4306,7 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
 }
 
 
-function sessionTimer(timer) {
+function sessionTimer(event) {
     $('#showTimer .days').html(timer.getTimeValues().days);
     $('#showTimer .hours').html(timer.getTimeValues().hours);
     $('#showTimer .minutes').html(timer.getTimeValues().minutes);
