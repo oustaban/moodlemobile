@@ -1373,7 +1373,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var timer = new Timer();
                         timer.start();
                         timer.addEventListener('secondsUpdated', function (e) {
-                            $('#basicUsage').html(timer.getTimeValues().toString());
+                            $('#showTimer').html(timer.getTimeValues().toString());
                         });
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
