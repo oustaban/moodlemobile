@@ -177,13 +177,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             // Adding loading icon.
             $('a[href="#eleves/' +courseId+ '"]').addClass('loading-row');
             
-            var timerInstance = new Timer();
-            timerInstance.addEventListener('secondsUpdated', function(e) {
-                $('#showTimer .days').html(timerInstance.getTimeValues().days);
-                $('#showTimer .hours').html(timerInstance.getTimeValues().hours);
-                $('#showTimer .minutes').html(timerInstance.getTimeValues().minutes);
-                $('#showTimer .seconds').html(timerInstance.getTimeValues().seconds);
-            });  
+            
             
             
 
@@ -335,11 +329,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#stopSessionL').attr('users',users);
                             $('#stopSessionL').attr('starttime',obj.starttime);
                             
-                            timerInstance.reset();
-                            timerInstance.stop();
-                            var d = new Date();
-                            var startCounter =  (d.getTime() - obj.starttime)/1000;
-                            timerInstance.start({precision: 'seconds', startValues: {seconds: startCounter}});
+                            upTime(obj.starttime);
                             
                             sessioncurrent = 1;
                             
@@ -1386,9 +1376,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var users = $(this).attr('users');
                         
                         
-                        timerInstance.reset();
-                        timerInstance.stop();
-                        timerInstance.start({precision: 'seconds'});
+                        var timernow = new Date();
+                        var now = timernow.getTime();
+                        
+                        upTime(now);
                         
                         
                         
@@ -4315,9 +4306,20 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
 }
 
 
-function sessionTimer(timer) {
-    $('#showTimer .days').html(timer.getTimeValues().days);
-    $('#showTimer .hours').html(timer.getTimeValues().hours);
-    $('#showTimer .minutes').html(timer.getTimeValues().minutes);
-    $('#showTimer .seconds').html(timer.getTimeValues().seconds);
+function upTime(countTo) {
+  now = new Date();
+  difference = (now.getTime()-countTo);
+
+  days=Math.floor(difference/(60*60*1000*24)*1);
+  hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
+  mins=Math.floor(((difference%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
+  secs=Math.floor((((difference%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
+
+  document.getElementById('days').firstChild.nodeValue = days;
+  document.getElementById('hours').firstChild.nodeValue = hours;
+  document.getElementById('minutes').firstChild.nodeValue = mins;
+  document.getElementById('seconds').firstChild.nodeValue = secs;
+
+  clearTimeout(upTime.to);
+  upTime.to=setTimeout(function(){ upTime(countTo); },1000);
 }
