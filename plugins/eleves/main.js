@@ -328,6 +328,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#stopSessionL').attr('users',users);
                             $('#stopSessionL').attr('starttime',obj.starttime);
                             
+                            timerInstance.reset();
+                            timerInstance.stop();
+                            timerInstance.removeEventListener('secondsUpdated');
+                            var d = new Date();
+                            var startCounter =  (d.getTime() - obj.starttime)/1000;
+                            timerInstance.start({precision: 'seconds', startValues: {seconds: startCounter}});
+                            timerInstance.addEventListener('secondsUpdated', function(e) {
+                                $('#showTimer .days').html(timerInstance.getTimeValues().days);
+                                $('#showTimer .hours').html(timerInstance.getTimeValues().hours);
+                                $('#showTimer .minutes').html(timerInstance.getTimeValues().minutes);
+                                $('#showTimer .seconds').html(timerInstance.getTimeValues().seconds);
+                            });  
+                            
                             sessioncurrent = 1;
                             
                             
@@ -1373,6 +1386,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var users = $(this).attr('users');
                         
                         
+                        timerInstance.reset();
                         timerInstance.stop();
                         timerInstance.removeEventListener('secondsUpdated');
                         timerInstance.start({precision: 'seconds'});
