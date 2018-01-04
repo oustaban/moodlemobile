@@ -339,13 +339,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var d = new Date();
                             var startCounter =  (d.getTime() - obj.starttime)/1000;
                             timerInstance.start({precision: 'seconds', startValues: {seconds: startCounter}});
+                            /*
                             timerInstance.addEventListener('secondsUpdated', function(e) {
                                 $('#showTimer .days').html(timerInstance.getTimeValues().days);
                                 $('#showTimer .hours').html(timerInstance.getTimeValues().hours);
                                 $('#showTimer .minutes').html(timerInstance.getTimeValues().minutes);
                                 $('#showTimer .seconds').html(timerInstance.getTimeValues().seconds);
                             });  
-                            
+                            */
                             sessioncurrent = 1;
                             
                             
