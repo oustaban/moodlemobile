@@ -177,6 +177,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             // Adding loading icon.
             $('a[href="#eleves/' +courseId+ '"]').addClass('loading-row');
             
+            var timerInstance = new Timer();
             
 
             MM.plugins.eleves._loadEleves(courseId, 0, MM.plugins.eleves.limitNumber,
