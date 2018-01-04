@@ -4062,7 +4062,7 @@ function modifierPif(button,user,course,version) {
                         html += '</table></div>';
                         
                         options.buttons["Valider les modifications"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
-                        options.buttons["Valider"]["style"] = "modal-button-2";
+                        options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
                         
@@ -4075,7 +4075,7 @@ function modifierPif(button,user,course,version) {
                         html += '</table></div>';
                         
                         options.buttons["Valider les modifications"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
-                        options.buttons["Valider"]["style"] = "modal-button-2";
+                        options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
                         
@@ -4097,7 +4097,7 @@ function modifierPif(button,user,course,version) {
                         html += '</table></div>';
                         
                         options.buttons["Valider les modifications"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
-                        options.buttons["Valider"]["style"] = "modal-button-2";
+                        options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
                         
@@ -4110,7 +4110,7 @@ function modifierPif(button,user,course,version) {
                         html += '</table></div>';
                         
                         options.buttons["Valider les modifications"] = function() { validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
-                        options.buttons["Valider"]["style"] = "modal-button-2";
+                        options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         MM.widgets.dialog(html, options);
                         
