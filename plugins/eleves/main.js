@@ -1370,21 +1370,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $('#offlineC option[value="0"]').prop('selected', true);
                         
                         var users = $(this).attr('users');
-                        if (!timer) {
-                            MM.log('New Timer');
-                           var timer = new Timer();
-                        }
+                        
+                        var timer = new Timer();
+                        
                         
                         timer.stop();
                         timer.reset();
-                        timer.removeEventListener('secondsUpdated');
+                        timer.removeEventListener('secondsUpdated', sessionTimer);
                         timer.start({precision: 'seconds'});
-                        timer.addEventListener('secondsUpdated', function (e) {
-                            $('#showTimer .days').html(timer.getTimeValues().days);
-                            $('#showTimer .hours').html(timer.getTimeValues().hours);
-                            $('#showTimer .minutes').html(timer.getTimeValues().minutes);
-                            $('#showTimer .seconds').html(timer.getTimeValues().seconds);
-                        });  
+                        timer.addEventListener('secondsUpdated', sessionTimer);
                         
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
@@ -4307,4 +4301,12 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
         }
     );
     
+}
+
+
+function sessionTimer(event) {
+    $('#showTimer .days').html(timer.getTimeValues().days);
+    $('#showTimer .hours').html(timer.getTimeValues().hours);
+    $('#showTimer .minutes').html(timer.getTimeValues().minutes);
+    $('#showTimer .seconds').html(timer.getTimeValues().seconds);
 }
