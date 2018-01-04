@@ -4257,6 +4257,10 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
     //MM.Router.navigate("eleves/" + course );
     if (valider == 1) {
         MM.log("Save PIF");
+        var options2= {
+            title: '',
+            buttons: {}
+        };
         options2.buttons["Fermer"] = function() {
             MM.widgets.dialogClose();
             MM.log("Dialog:"+userpif.userid);
