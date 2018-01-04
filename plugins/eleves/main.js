@@ -1370,8 +1370,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $('#offlineC option[value="0"]').prop('selected', true);
                         
                         var users = $(this).attr('users');
+                        if (!timer) {
+                           var timer = new Timer();
+                        }
                         
-                        var timer = new Timer();
                         timer.stop();
                         timer.removeEventListener('secondsUpdated');
                         timer.start({precision: 'seconds'});
