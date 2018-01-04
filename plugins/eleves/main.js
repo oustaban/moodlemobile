@@ -1373,7 +1373,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var timer = new Timer();
                         timer.start();
                         timer.addEventListener('secondsUpdated', function (e) {
-                            $('#showTimer').html(timer.getTimeValues().toString());
+                            $('#showTimer').html(timer.callbackTimer().toString(['days', 'hours', 'minutes', 'seconds']));
                         });
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
@@ -1388,7 +1388,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $('#stopSessionL').attr('starttime',d.getTime());
                                         $('#stopSessionL').hide();
                                         $('#showSessionL').hide();
-                                        $('#showTimer').hide();
+                                        $('#showTimer').show();
                                         $('#synchroR').hide();
                                         //$('#offlineC').show();
                                         $('#offlineC').css('visibility','visible');
