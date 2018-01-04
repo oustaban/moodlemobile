@@ -1371,10 +1371,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         var users = $(this).attr('users');
                         if (!timer) {
+                            MM.log('New Timer');
                            var timer = new Timer();
                         }
                         
                         timer.stop();
+                        timer.reset();
                         timer.removeEventListener('secondsUpdated');
                         timer.start({precision: 'seconds'});
                         timer.addEventListener('secondsUpdated', function (e) {
