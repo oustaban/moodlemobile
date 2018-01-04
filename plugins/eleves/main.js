@@ -314,6 +314,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             
                             $('#showSessionL').hide();
+                            $('#showTimer').hide();
                             //$('#offlineC').show();
                             $('#offlineC').css('visibility','visible');
                             $('#showCourseL').hide();
@@ -335,6 +336,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             if ($('#offlineC option').length>1) {    
                                 $('input:checked').each(function() {
                                     $('#showSessionL').show();
+                                    $('#showTimer').show();
                                 });
                             }
                             
@@ -374,6 +376,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 if (!obj.endtime) {
                                                     
                                                      $('#showSessionL').hide();
+                                                     $('#showTimer').hide();
                                                      //$('#offlineC').hide();
                                                      $('#offlineC').css('visibility','hidden');
                                                      $('#showCourseL').hide();
@@ -1222,6 +1225,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 MM.fs.findFileAndReadContents(resultFile,
                                     function (result) {
                                         $("#showSessionL").hide();
+                                        $("#showTimer").hide();
                                         var obj = JSON.parse(result);
                                         var starttime = obj.starttime;
                                         var jsonNotes = '""';
@@ -1257,6 +1261,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     },
                                     function (result) {
                                         $("#showSessionL").show();
+                                        $("#showTimer").show();
                                     }
                                 );
                             }
@@ -1289,6 +1294,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 },
                                 function (result) {
                                     $("#showSessionL").hide();
+                                    $("#showTimer").hide();
                                 }
                             );
                             
@@ -1359,13 +1365,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             //$(this).attr("disabled", true);
                         });
                         
-                        
-                        
-                        
                         $('#offlineC > option').removeAttr("selected");
                         $('#offlineC option[value="0"]').prop('selected', true);
                         
                         var users = $(this).attr('users');
+                        
+                        var timer = new Timer();
+                        timer.start();
+                        timer.addEventListener('secondsUpdated', function (e) {
+                            $('#basicUsage').html(timer.getTimeValues().toString());
+                        });
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
                         MM.fs.createFile(fileResultL,
@@ -1379,6 +1388,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $('#stopSessionL').attr('starttime',d.getTime());
                                         $('#stopSessionL').hide();
                                         $('#showSessionL').hide();
+                                        $('#showTimer').hide();
                                         $('#synchroR').hide();
                                         //$('#offlineC').show();
                                         $('#offlineC').css('visibility','visible');
@@ -1631,6 +1641,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 });
                                 
                                 $('#showSessionL').show();
+                                $('#showTimer').show();
                                 //$('#offlineC').hide();
                                 $('#offlineC').css('visibility','hidden');
                                 $('#showCourseL').hide();
@@ -1694,6 +1705,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.log('Write Session content:'+content);
                                                     
                                                     $('#showSessionL').show();
+                                                    $('#showTimer').show();
                                                     //$('#offlineC').hide();
                                                     $('#offlineC').css('visibility','hidden');
                                                     $('#showCourseL').hide();
