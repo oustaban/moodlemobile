@@ -1371,10 +1371,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var users = $(this).attr('users');
                         
                         var timer = new Timer();
-                        timer.start();
-                        timer.addEventListener('secondsUpdated', function (e) {
-                            $('#showTimer').html(timer.callbackTimer().toString(['days', 'hours', 'minutes', 'seconds']));
-                        });
+                        timer.start({callback: function (timer) {
+                            $('#showTimer').html(
+                                timer.getTimeValues().toString(['days', 'hours', 'minutes', 'seconds', 'secondTenths'])
+                            );
+                        }});    
+                        
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
                         MM.fs.createFile(fileResultL,
