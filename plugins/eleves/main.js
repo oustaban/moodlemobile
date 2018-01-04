@@ -1376,9 +1376,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         timer.stop();
                         timer.reset();
-                        timer.removeEventListener('secondsUpdated', sessionTimer);
+                        timer.removeEventListener('secondsUpdated', sessionTimer(timer));
                         timer.start({precision: 'seconds'});
-                        timer.addEventListener('secondsUpdated', sessionTimer);
+                        timer.addEventListener('secondsUpdated', sessionTimer(timer));
                         
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
@@ -4304,7 +4304,7 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
 }
 
 
-function sessionTimer(event) {
+function sessionTimer(timer) {
     $('#showTimer .days').html(timer.getTimeValues().days);
     $('#showTimer .hours').html(timer.getTimeValues().hours);
     $('#showTimer .minutes').html(timer.getTimeValues().minutes);
