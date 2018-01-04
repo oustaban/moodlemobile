@@ -340,7 +340,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var startCounter =  (d.getTime() - obj.starttime)/1000;
                             timerInstance.start({precision: 'seconds', startValues: {seconds: startCounter}});
                             
-                            timerInstance.addEventListener('secondsUpdated', sessionTimer(timerInstance));
+                            timerInstance.addEventListener('secondsUpdated', sessionTimer(e,timerInstance));
                             
                             sessioncurrent = 1;
                             
@@ -1391,7 +1391,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         timerInstance.stop();
                         timerInstance.removeEventListener('secondsUpdated', sessionTimer);
                         timerInstance.start({precision: 'seconds'});
-                        timerInstance.addEventListener('secondsUpdated', sessionTimer(timerInstance));
+                        timerInstance.addEventListener('secondsUpdated', sessionTimer(e,timerInstance));
                         
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
@@ -4317,7 +4317,7 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
 }
 
 
-function sessionTimer(timer) {
+function sessionTimer(e,timer) {
     $('#showTimer .days').html(timer.getTimeValues().days);
     $('#showTimer .hours').html(timer.getTimeValues().hours);
     $('#showTimer .minutes').html(timer.getTimeValues().minutes);
