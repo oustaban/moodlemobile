@@ -177,11 +177,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
             // Adding loading icon.
             $('a[href="#eleves/' +courseId+ '"]').addClass('loading-row');
             
-            MM.log('timerInstance:'+timerInstance);
-            
-            if (!timerInstance) {
-               var timerInstance = new Timer();
-            }
+            var timerInstance = new Timer();
+            timerInstance.addEventListener('secondsUpdated', function(e) {
+                $('#showTimer .days').html(timerInstance.getTimeValues().days);
+                $('#showTimer .hours').html(timerInstance.getTimeValues().hours);
+                $('#showTimer .minutes').html(timerInstance.getTimeValues().minutes);
+                $('#showTimer .seconds').html(timerInstance.getTimeValues().seconds);
+            });  
             
             
 
@@ -335,12 +337,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             timerInstance.reset();
                             timerInstance.stop();
-                            timerInstance.removeEventListener('secondsUpdated',sessionTimer);
                             var d = new Date();
                             var startCounter =  (d.getTime() - obj.starttime)/1000;
                             timerInstance.start({precision: 'seconds', startValues: {seconds: startCounter}});
-                            
-                            timerInstance.addEventListener('secondsUpdated', sessionTimer(e,timerInstance));
                             
                             sessioncurrent = 1;
                             
@@ -1389,9 +1388,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         timerInstance.reset();
                         timerInstance.stop();
-                        timerInstance.removeEventListener('secondsUpdated', sessionTimer);
                         timerInstance.start({precision: 'seconds'});
-                        timerInstance.addEventListener('secondsUpdated', sessionTimer(e,timerInstance));
+                        
                         
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
@@ -4317,7 +4315,7 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
 }
 
 
-function sessionTimer(e,timer) {
+function sessionTimer(timer) {
     $('#showTimer .days').html(timer.getTimeValues().days);
     $('#showTimer .hours').html(timer.getTimeValues().hours);
     $('#showTimer .minutes').html(timer.getTimeValues().minutes);
