@@ -2000,8 +2000,7 @@ div.jqi button.jqidefaultbutton {
 }
 /* - Full screen dialog
 -------------------------------------------------------------------------- */
-#app-dialog.full-screen-dialog > div,
-#app-dialog2.full-screen-dialog > div {
+#app-dialog.full-screen-dialog > div {
   width: 100% !important;
   height: 100%;
   margin-top: 0 !important;
@@ -2010,17 +2009,26 @@ div.jqi button.jqidefaultbutton {
   -moz-border-radius: 0;
   border-radius: 0;
 }
-#app-dialog.full-screen-dialog .modalHeader,
-#app-dialog2.full-screen-dialog .modalHeader {
+#app-dialog.full-screen-dialog .modalHeader {
   display: none;
 }
-#app-dialog.full-screen-dialog .modalContent,
-#app-dialog2.full-screen-dialog .modalContent {
+#app-dialog.full-screen-dialog .modalContent {
   color: #fff;
 }
-#app-dialog.full-screen-dialog .modalFooter,
-#app-dialog2.full-screen-dialog .modalFooter {
+#app-dialog.full-screen-dialog .modalFooter {
   border-top: 0px;
+}
+
+#app-dialog2.full-screen-dialog > div {
+  width: 100% !important;
+  height: 100%;
+  margin-top: 0 !important;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+#app-dialog2.full-screen-dialog #pifcontent {
+  max-height: 80vh;
 }
 
 #stopCourse {
