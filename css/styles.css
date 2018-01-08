@@ -2314,7 +2314,8 @@ li#lielevelP.nav-item.hide {
   padding-top: 2px;
   display: block;
   /* min-width: 10px; */
-  padding-left: 10px;
+  padding-left: 20px;
   text-align:left;
   width:100%;
+  color:#000;
 }
