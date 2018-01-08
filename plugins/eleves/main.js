@@ -1876,6 +1876,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             buttons: {}
                         };
                         
+                        options.buttons["Fermer"] = function() {
+                            //MM.Router.navigate("eleves/" + course );
+                            closeDialog(course,user);
+                        };
+                        
                         $("#app-dialog").addClass('full-screen-dialog2');
                         MM.widgets.dialog(html, options);
                         
