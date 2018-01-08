@@ -2034,7 +2034,7 @@ div.jqi button.jqidefaultbutton {
 }
 #app-dialog.full-screen-dialog2 #pifcontent,
 #app-dialog2.full-screen-dialog2 #pifcontent {
-  max-height: 70vh;
+  max-height: 80vh;
 }
 
 #stopCourse {
