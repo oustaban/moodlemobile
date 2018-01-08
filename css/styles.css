@@ -2032,8 +2032,8 @@ div.jqi button.jqidefaultbutton {
   -moz-border-radius: 0;
   border-radius: 0;
 }
-#app-dialog.full-screen-dialog2 #pifcontent,
-#app-dialog2.full-screen-dialog2 #pifcontent {
+#app-dialog.full-screen-dialog2 #pifContent,
+#app-dialog2.full-screen-dialog2 #pifContent {
   max-height: 80vh;
 }
 
