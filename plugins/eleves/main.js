@@ -2917,10 +2917,12 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         
                         
         if (valider == 1 && avant == 1 && (pifsignature1 == 0 || pifsignature2 == 0)) {
+            $("#app-dialog").removeClass('full-screen-dialog2');
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
             valider = 0;
         }
         if (valider == 1 && apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
+            $("#app-dialog").removeClass('full-screen-dialog2');
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.",options);
             valider = 0;
         }
@@ -4334,6 +4336,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
 function closeDialog(course,user) {
     MM.Router.navigate("eleves/" + course );
     $("#app-dialog").removeClass('full-screen-dialog2');
+    $(".modalContent").css('height','100%');
     MM.widgets.dialogClose();
 }
 
