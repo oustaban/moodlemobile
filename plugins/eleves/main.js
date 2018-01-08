@@ -1882,6 +1882,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         };
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $(".modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         if (pifArray != "") {
