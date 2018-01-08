@@ -4297,6 +4297,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
                         
         if (valider == 1 && (avenantsignature1 == 0 || avenantsignature2 == 0)) {
             $("#app-dialog").removeClass('full-screen-dialog2');
+            $(".modalContent").css('height','100%');
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
             valider = 0;
         }
@@ -4325,6 +4326,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
             $('button#pif[user="'+userpif.userid+'"]').click();
         };
         $("#app-dialog").removeClass('full-screen-dialog2');
+        $(".modalContent").css('height','100%');
         MM.popMessage("<h1>Vos modifications ont été enregistrées</h1>Pour qu'elles soient prises en compte, n'oubliez pas de fermer et valider la présente session de formation.<br/><br/>Si vous êtes hors-ligne, synchronisez vos données lors de votre prochaine connexion à un réseau.",options2);
             
         //MM.widgets.dialogClose();
