@@ -481,7 +481,8 @@ hr {
   float: right;
 }
 #manage-accounts .accounts,
-#app-dialog .accounts {
+#app-dialog .accounts,
+#app-dialog2 .accounts {
   display: block;
   background-color: #fff;
   border-radius: 4px;
@@ -489,17 +490,21 @@ hr {
   margin-bottom: 15px;
   min-height: 120px;
 }
+
 #manage-accounts .account-details,
-#app-dialog .account-details {
+#app-dialog .account-details,
+#app-dialog2 .account-details {
   color: #666666;
 }
 #manage-accounts .account-details img,
-#app-dialog .account-details img {
+#app-dialog .account-details img,
+#app-dialog2 .account-details img {
   border-radius: 50%;
   float: left;
 }
 #manage-accounts .account-details div,
-#app-dialog .account-details div {
+#app-dialog .account-details div,
+#app-dialog2 .account-details div {
   display: block;
   overflow: hidden;
   border-bottom: 1px solid #ddd;
@@ -510,26 +515,32 @@ hr {
 }
 #manage-accounts .account-details div:hover,
 #app-dialog .account-details div:hover,
+#app-dialog2 .account-details div:hover,
 #manage-accounts .account-details div:focus,
-#app-dialog .account-details div:focus {
+#app-dialog .account-details div:focus,
+#app-dialog2 .account-details div:focus {
   background-color: #f5f5f5;
 }
 #manage-accounts .account-details span,
-#app-dialog .account-details span {
+#app-dialog .account-details span,
+#app-dialog2 .account-details span {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 #manage-accounts .account-fullname,
-#app-dialog .account-fullname {
+#app-dialog .account-fullname,
+#app-dialog2 .account-fullname {
   font-weight: bold;
 }
 #manage-accounts .delete-site,
-#app-dialog .delete-site {
+#app-dialog .delete-site,
+#app-dialog2 .delete-site {
   display: block;
   text-align: right;
 }
 #manage-accounts .add-site .btn,
+#app-dialog .add-site .btn,
 #app-dialog .add-site .btn {
   display: block;
   margin-bottom: 20px;
@@ -1596,6 +1607,21 @@ hr {
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 99998;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+  -webkit-overflow-scrolling: touch;
+}
+#app-dialog2 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 99999;
   opacity: 0;
   -webkit-transition: opacity 400ms ease-in;
@@ -1604,7 +1630,8 @@ hr {
   pointer-events: none;
   -webkit-overflow-scrolling: touch;
 }
-#app-dialog > div {
+#app-dialog > div,
+#app-dialog2 > div {
   width: 90%;
   position: relative;
   margin-left: auto;
@@ -1615,7 +1642,8 @@ hr {
   -moz-border-radius: 14px 14px 10px 10px;
   border-radius: 14px 14px 10px 10px;
 }
-#app-dialog .modalHeader {
+#app-dialog .modalHeader,
+#app-dialog2 .modalHeader {
   font-size: 16px;
   font-size: 1rem;
   color: #ffffff;
@@ -1627,10 +1655,12 @@ hr {
   -moz-border-radius: 10px 10px 0 0;
   border-radius: 10px 10px 0 0;
 }
-#app-dialog .modalHeader a {
+#app-dialog .modalHeader a,
+#app-dialog2 .modalHeader a{
   color: #FFFFFF;
 }
-#app-dialog .modalContent {
+#app-dialog .modalContent,
+#app-dialog2 .modalContent {
   padding: 20px;
   text-align: center;
 }
@@ -1662,22 +1692,27 @@ hr {
   overflow: auto;
   max-height: 70vh;
 }
-#app-dialog .modalContent #pifContent{
+#app-dialog .modalContent #pifContent,
+#app-dialog2 .modalContent #pifContent {
   text-align:left; 
 }
 
-#app-dialog .modalContent textarea {
+#app-dialog .modalContent textarea,
+#app-dialog2 .modalContent textarea {
   color: #666666;
 }
-#app-dialog .modalFooter {
+#app-dialog .modalFooter,
+#app-dialog2 .modalFooter {
   text-align: center;
   border-top: 1px solid #ddd;
 }
-#app-dialog .modalFooter button {
+#app-dialog .modalFooter button,
+#app-dialog2 .modalFooter button {
   margin: 10px;
   vertical-align: middle;
 }
-#app-dialog .modalClear {
+#app-dialog .modalClear,
+#app-dialog2 .modalClear {
   float: none;
   clear: both;
 }
@@ -1965,7 +2000,8 @@ div.jqi button.jqidefaultbutton {
 }
 /* - Full screen dialog
 -------------------------------------------------------------------------- */
-#app-dialog.full-screen-dialog > div {
+#app-dialog.full-screen-dialog > div,
+#app-dialog2.full-screen-dialog > div {
   width: 100% !important;
   height: 100%;
   margin-top: 0 !important;
@@ -1974,13 +2010,16 @@ div.jqi button.jqidefaultbutton {
   -moz-border-radius: 0;
   border-radius: 0;
 }
-#app-dialog.full-screen-dialog .modalHeader {
+#app-dialog.full-screen-dialog .modalHeader,
+#app-dialog2.full-screen-dialog .modalHeader {
   display: none;
 }
-#app-dialog.full-screen-dialog .modalContent {
+#app-dialog.full-screen-dialog .modalContent,
+#app-dialog2.full-screen-dialog .modalContent {
   color: #fff;
 }
-#app-dialog.full-screen-dialog .modalFooter {
+#app-dialog.full-screen-dialog .modalFooter,
+#app-dialog2.full-screen-dialog .modalFooter {
   border-top: 0px;
 }
 

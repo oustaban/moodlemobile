@@ -329,7 +329,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#stopSessionL').attr('users',users);
                             $('#stopSessionL').attr('starttime',obj.starttime);
                             
-                            upTime(obj.starttime);
+                            var timernow = new Date();
+                            var now = timernow.getTime();
+                            upTime(obj.starttime,now);
                             
                             sessioncurrent = 1;
                             
@@ -1379,7 +1381,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var timernow = new Date();
                         var now = timernow.getTime();
                         
-                        upTime(now);
+                        upTime(now,now);
                         
                         
                         
@@ -4266,7 +4268,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
             MM.log("Dialog:"+userpif.userid);
             $('button#pif[user="'+userpif.userid+'"]').click();
         };
-        MM.popMessage("<h3>Vos modifications ont été enregistrées</h3>Pour qu'elles soient prises en compte, n'oubliez pas de fermer et valider la présente session de formation.<br/><br/>Si vous êtes hors-ligne, synchronisez vos données lors de votre prochaine connexion à un réseau.",options2);
+        MM.popMessage("<h1>Vos modifications ont été enregistrées</h1>Pour qu'elles soient prises en compte, n'oubliez pas de fermer et valider la présente session de formation.<br/><br/>Si vous êtes hors-ligne, synchronisez vos données lors de votre prochaine connexion à un réseau.",options2);
             
         //MM.widgets.dialogClose();
         //$('button#pif[user="'+userpif.userid+'"]').click();
@@ -4344,18 +4346,15 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
 }
 
 
-function upTime(countTo) {
+function upTime(countTo,trigger) {
   now = new Date();
   difference = (now.getTime()-countTo);
   
   diffalerte = (now.getTime()-trigger);
 
-  /*
-  if (diffalerte >= (60 * 30 * 1000)) {
-    trigger = now.getTime();
-    //alertIdle();
-  }
-  */
+  
+  
+  
   //days=Math.floor(difference/(60*60*1000*24)*1);
   hours=Math.floor(difference/(60*60*1000)*1);
   //hours=Math.floor((difference%(60*60*1000*24))/(60*60*1000)*1);
@@ -4370,7 +4369,28 @@ function upTime(countTo) {
     document.getElementById('minutes').firstChild.nodeValue = mins;
   if (document.getElementById('seconds'))
     document.getElementById('seconds').firstChild.nodeValue = secs;
-
+  
+  if (diffalerte >= (60 * 1 * 1000)) {
+    trigger = now.getTime();
+    var since = hours + ' h' + mins + ' min' + secs + ' s';
+    alertIdle(since);
+  }
+  
   clearTimeout(upTime.to);
   upTime.to=setTimeout(function(){ upTime(countTo,trigger); },1000);
+}
+
+
+function alertIdle(since) {
+        var options= {
+            title: '',
+            buttons: {}
+        };
+        options.buttons["Fermer"] = function() {
+            MM.widgets.dialogClose2();
+        };
+        
+        var html = "Votre session de formation a été démarrée depuis "+since+"<br/> [time].N'oubliez pas de fermer votre session, une fois votre formation terminée.";
+       
+        MM.widgets.dialog2(html, options);
 }
