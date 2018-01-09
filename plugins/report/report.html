@@ -1,0 +1,18 @@
+    <section class="report-index-list">
+        <!--<form class="search">
+            <input type="search" results="5" placeholder="Search...">
+        </form>-->
+        <div id="firstcolumnreport">
+            <div id="divsearch"><input type="text" name="search" id="search" placeholder="Rechercher un participant..."></div>
+            <input type="hidden" name="listeParticipants" value="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>">
+            <div id="listeparticipantsreport">
+                <ul id="listeparticipants1" class="nav nav-v">
+                    <%= MM.tpl.render(MM.plugins.report.templates.elevesRow.html, {"courseId": courseId, "users": users}) %>
+                </ul>
+            </div>
+        </div>
+        <div id="secondcolumnreport">
+            <div id="divselection"><p class="selectiontitle">Participant(s) Sélectionné(s)</p></div>
+            <input type="hidden" name="listeParticipants2" value="">
+        </div>
+    </section>

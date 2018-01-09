@@ -1435,19 +1435,23 @@ hr {
 }
 /* - Participants list on the center panel
 -------------------------------------------------------------------------- */
-.users-index-list li {
+.users-index-list li,
+.report-index-list {
   height: auto;
   overflow: hidden;
 }
-.users-index-list .nav-item > a {
+.users-index-list .nav-item > a,
+.report-index-list .nav-item > a {
   padding-top: 6px;
 }
-.users-index-list .nav-item > a img {
+.users-index-list .nav-item > a img,
+.report-index-list .nav-item > a img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
-.users-index-list .nav-item > a p {
+.users-index-list .nav-item > a p,
+.report-index-list .nav-item > a p {
   line-height: 30px;
   margin: 0;
 }
@@ -2096,8 +2100,20 @@ div#firstcolumn {
   border:1px solid black;
   height:100%;
 }
+div#firstcolumnreport {
+  width:20%;
+  float:left;
+  border:1px solid black;
+  height:100%;
+}
 div#secondcolumn {
   width:50%;
+  float:left;
+  border:1px solid black;
+  height:100%;
+}
+div#secondcolumnreport {
+  width:80%;
   float:left;
   border:1px solid black;
   height:100%;
@@ -2134,8 +2150,15 @@ p.selectiontitle {
 section.users-index-list {
   height:81%;
 }
+section.report-index-list {
+  height:100%;
+}
 div#listeparticipants {
   height:89%;
+  overflow:scroll;
+}
+div#listeparticipantsreport {
+  height:100%;
   overflow:scroll;
 }
 div.centered2 {

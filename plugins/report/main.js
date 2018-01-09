@@ -1,0 +1,74 @@
+var templates = [
+    "root/externallib/text!root/plugins/report/report.html"
+];
+
+define(templates,function (reportTpl) {
+    var plugin = {
+        settings: {
+            name: "report",
+            type: "course",
+            menuURL: "#report/",
+            lang: {
+                component: "core"
+            },
+            icon: ""
+        },
+
+        
+
+        routes: [
+            ["report/:courseId", "report", "showReport"],
+        ],
+        
+        limitNumber:10000,
+
+        showReport: function(courseId) {
+            MM.panels.showLoading('center');
+
+            if (MM.deviceType == "tablet") {
+                MM.panels.showLoading('right');
+            }
+            // Adding loading icon.
+            $('a[href="#report/' +courseId+ '"]').addClass('loading-row');
+            
+            MM.plugins.eleves._loadEleves(courseId, 0, MM.plugins.report.limitNumber,
+                function(users) {
+                    
+                    var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
+                    
+                    var tpl = {
+                        users: users,
+                        deviceType: MM.deviceType,
+                        courseId: courseId,
+                    };
+                    var html = MM.tpl.render(MM.plugins.report.templates.report.html, tpl);
+        
+                    var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
+                    var pageTitle = "";
+        
+                    if (course) {
+                        pageTitle = course.get("shortname");
+                    }
+        
+                    MM.panels.show('right', html, {title: pageTitle});
+        
+                    // Load the first user
+                    if (MM.deviceType == "tablet" && users.length > 0) {
+                        $("#panel-center li:eq(0)").addClass("selected-row");
+                        //MM.plugins.eleves.showEleve(courseId, users.shift().id);
+                        $("#panel-center li:eq(0)").addClass("selected-row");
+                    }
+                }
+            );
+        },
+        
+        
+        templates: {
+            "report": {
+                html: reportTpl
+            }
+        }
+    }
+
+    MM.registerPlugin(plugin);
+});
