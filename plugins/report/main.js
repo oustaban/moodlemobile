@@ -1,6 +1,6 @@
 var templates = [
     "root/externallib/text!root/plugins/report/report.html",
-    "root/externallib/text!root/plugins/eleves/eleves_row.html"
+    "root/externallib/text!root/plugins/report/eleves_row.html"
 ];
 
 define(templates,function (reportTpl, elevesRowTpl) {
@@ -58,6 +58,12 @@ define(templates,function (reportTpl, elevesRowTpl) {
                         $("#panel-center li:eq(0)").addClass("selected-row");
                         //MM.plugins.eleves.showEleve(courseId, users.shift().id);
                         $("#panel-center li:eq(0)").addClass("selected-row");
+                    }
+                }, function(m) {
+                    // Removing loading icon.
+                    $('a[href="#report/' +courseId+ '"]').removeClass('loading-row');
+                    if (typeof(m) !== "undefined" && m) {
+                        MM.popErrorMessage(m);
                     }
                 }
             );
