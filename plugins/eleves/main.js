@@ -2996,6 +2996,7 @@ function voirlespif(courseId,user) {
         $('button#pif[user="'+userpif.userid+'"]').click();
     };
     
+    $("#app-dialog .modalContent").css('height','100%');
     $("#app-dialog").removeClass('full-screen-dialog2');
     MM.widgets.dialog(html, options);
     
