@@ -1,8 +1,9 @@
 var templates = [
-    "root/externallib/text!root/plugins/report/report.html"
+    "root/externallib/text!root/plugins/report/report.html",
+    "root/externallib/text!root/plugins/eleves/eleves_row.html"
 ];
 
-define(templates,function (reportTpl) {
+define(templates,function (reportTpl, elevesRowTpl) {
     var plugin = {
         settings: {
             name: "report",
@@ -66,6 +67,9 @@ define(templates,function (reportTpl) {
         templates: {
             "report": {
                 html: reportTpl
+            },
+            "elevesRow": {
+                html: elevesRowTpl
             }
         }
     }
