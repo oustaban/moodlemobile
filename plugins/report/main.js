@@ -59,6 +59,26 @@ define(templates,function (reportTpl, elevesRowTpl) {
                         //MM.plugins.eleves.showEleve(courseId, users.shift().id);
                         $("#panel-center li:eq(0)").addClass("selected-row");
                     }
+                    
+                    $('#search').keyup(function(e) {
+                        var sword = $( "#search" ).val().toLowerCase();
+                        MM.log("Search:"+sword+'/Users:'+users);
+                        var searchparticipants = [];
+                        users.forEach(function(user) {
+                            //MM.log("User:"+user.id+'/'+user.fullname);
+                            if (user.fullname.toLowerCase().indexOf(sword) != -1) {
+                                searchparticipants.push(user);
+                                $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").removeClass('hide');
+                                //MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
+                            } else {
+                                $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").addClass('hide');
+                            }
+                        });
+                        
+                        
+                        
+                    });
+                    
                 }, function(m) {
                     // Removing loading icon.
                     $('a[href="#report/' +courseId+ '"]').removeClass('loading-row');
