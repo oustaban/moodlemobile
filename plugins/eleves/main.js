@@ -4451,8 +4451,7 @@ function alertIdle(since) {
             MM.widgets.dialogClose2();
         };
         
-        var html = "Votre session de formation a été démarrée depuis "+since+".<br/>N'oubliez pas de fermer votre session, une fois votre formation terminée.";
+        var html = "Votre session de formation a été démarrée depuis <br/><strong>"+since+".</strong><br/>N'oubliez pas de fermer votre session, une fois votre formation terminée.";
        
-        $("#app-dialog").removeClass('full-screen-dialog2');
         MM.widgets.dialog2(html, options);
 }
