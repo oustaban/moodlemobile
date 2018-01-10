@@ -2179,7 +2179,7 @@ div#firstcolumnreport #threecols #otherlines #thirdcol{
 }
 
 div#firstcolumnreport #bloccols{
-  width:100%;
+  width:404px;
   white-space: nowrap;
   height:100%;
   float:left;
