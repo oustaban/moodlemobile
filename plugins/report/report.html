@@ -24,23 +24,33 @@
             </div>
             <div id="bloccols">
                 <div id="firstline">
-                    <% var index =0;_.each(modules, function(module) { %>
-                        <div id="module">Module <%= module.name %></div>
-                    <% index++;}); %>
+                    <table>
+                        <tr>
+                        <% var index =0;_.each(modules, function(module) { %>
+                            <td class="module">Module <%= module.name %></td>
+                        <% index++;}); %>
+                        </tr>
+                    </table>
                 </div>
                 <div id="secondline">
-                    <% var index =0;_.each(modules, function(module) { %>
-                        <div id="empty">&nbsp;</div>
-                    <% index++;}); %>
+                    <table>
+                        <tr>
+                        <% var index =0;_.each(modules, function(module) { %>
+                            <td class="empty">&nbsp;</td>
+                        <% index++;}); %>
+                        </tr>
+                    </table>
                 </div>
                 <div id="otherlines">
-                    <% var index =0;_.each(users, function(user) { %>
-                    <div id="userline">
-                        <% var indexmodule =0;_.each(modules, function(module) { %>
-                            <div id="usermodule">X</div>
-                        <% indexmodule++;}); %>
-                    </div>
-                    <% index++;}); %>
+                    <table>
+                        <% var index =0;_.each(users, function(user) { %>
+                        <tr class="userline">
+                            <% var indexmodule =0;_.each(modules, function(module) { %>
+                                <td class="usermodule">X</td>
+                            <% indexmodule++;}); %>
+                        </tr>
+                        <% index++;}); %>
+                    </table>
                 </div>
             </div>
             

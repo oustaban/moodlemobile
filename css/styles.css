@@ -2110,7 +2110,7 @@ div#firstcolumnreport {
   font-size: 18px;
 }
 div#firstcolumnreport #threecols{
-  width:450px;
+  width:500px;
   height:100%;
   float:left;
 }
@@ -2181,35 +2181,42 @@ div#firstcolumnreport #threecols #otherlines #thirdcol{
 div#firstcolumnreport #bloccols{
   width:100%;
   white-space: nowrap;
-  overflow-x:scroll;
   height:100%;
 }
 div#firstcolumnreport #bloccols #firstline {
   height:220px;
+  overflow-x:auto;
+  width:100%;
 }
-div#firstcolumnreport #bloccols #firstline #module{
+div#firstcolumnreport #bloccols #firstline .module{
   transform: translate(0,100%) rotate(-90deg);
   transform-origin: 0 0;
   vertical-align: middle;
   width:40px;
   height:220px;
-  float:left;
 }
 div#firstcolumnreport #bloccols #secondline {
   height:40px;
+  overflow-x:auto;
+  width:100%;
 }
-div#firstcolumnreport #bloccols #secondline #empty {
+div#firstcolumnreport #bloccols #secondline .empty {
   height:40px;
   width:40px;
-  float:left;
 }
-div#firstcolumnreport #bloccols #otherlines #userline {
+div#firstcolumnreport #bloccols #otherlines {
+  overflow-x:scroll;
+  width:100%;
+  height:100%;
+  overflow-y:scroll;
+  white-space:nowrap;
+}
+div#firstcolumnreport #bloccols #otherlines .userline {
   height:50px;
 }
-div#firstcolumnreport #bloccols #otherlines #userline #usermodule{
+div#firstcolumnreport #bloccols #otherlines .userline .usermodule{
   height:50px;
   width:40px;
-  float:left;
 }
 
 			
