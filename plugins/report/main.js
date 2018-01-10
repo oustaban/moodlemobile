@@ -35,13 +35,13 @@ define(templates,function (reportTpl, elevesRowTpl) {
             MM.plugins.eleves._loadEleves(courseId, 0, MM.plugins.report.limitNumber,
                 function(users) {
                     
-                    var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
+                    var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id, 'webOnly':true});
                     
-                    var contentsStored = [];
+                    var modules = [];
                     
                     $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
-                            
+                            modules.push(localCourse);
                             for(var key2 in localCourse) {
                                 MM.log("Porperty:"+key2+" Value: "+localCourse[key2]);
                             }
@@ -49,7 +49,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     var tpl = {
                         users: users,
-                        modules: localCourses,
+                        modules: modules,
                         deviceType: MM.deviceType,
                         courseId: courseId,
                     };
