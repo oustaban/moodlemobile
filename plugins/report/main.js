@@ -60,7 +60,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                         //MM.plugins.eleves.showEleve(courseId, users.shift().id);
                         $("#panel-center li:eq(0)").addClass("selected-row");
                     }
-                    
+                     
                     $('#search').keyup(function(e) {
                         var sword = $( "#search" ).val().toLowerCase();
                         MM.log("Search:"+sword+'/Users:'+users);
@@ -76,6 +76,8 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             }
                         });
                     });
+                    
+                    $('a[href="#report/' +courseId+ '"]').removeClass('loading-row');
                     
                 }, function(m) {
                     // Removing loading icon.
