@@ -38,7 +38,9 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id});
                     
                     for (var key in localCourses) {
-                        MM.log("Porperty:"+key+" Value: "+localCourses[key]);
+                        for(var key2 in localCourses[key]) {
+                            MM.log("Contents: "+key+" Porperty:"+key2+" Value: "+localCourses[key][key2]);
+                        }
                       }
                     var tpl = {
                         users: users,
