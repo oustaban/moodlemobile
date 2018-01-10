@@ -2110,51 +2110,52 @@ div#firstcolumnreport {
   font-size: 18px;
 }
 div#firstcolumnreport #threecols{
-  width:350px;
+  width:450px;
   height:100%;
+  float:left;
 }
 div#firstcolumnreport #threecols #divsearch {
-  width:230px;
+  width:250px;
 }
 div#firstcolumnreport #threecols #firstline{
-  width:350px;
+  width:450px;
   height:220px;
 }
 div#firstcolumnreport #threecols #secondline{
-  width:350px;
+  width:450px;
   height:40px;
 }
 div#firstcolumnreport #threecols #firstcol{
-  width:230px;
+  width:250px;
   height:40px;
   float:left;
 }
 div#firstcolumnreport #threecols #secondcol{
-  width:60px;
+  width:100px;
   height:40px;
   float:left;
 }
 div#firstcolumnreport #threecols #thirdcol{
-  width:60px;
+  width:100px;
   height:40px;
   float:left;
 }
 div#firstcolumnreport #threecols #otherlines {
-  width:350px;
+  width:450px;
   height:auto;
   overflow-y:scroll;
 }
 div#firstcolumnreport #threecols #otherlines #firstcol{
   padding-left:10px;
-  width:220px;
+  width:250px;
 }
 div#firstcolumnreport #threecols #otherlines #secondcol{
   padding-left:10px;
-  width:50px;
+  width:100px;
 }
 div#firstcolumnreport #threecols #otherlines #secondcol{
   padding-left:10px;
-  width:50px;
+  width:100px;
 }
 
 div#firstcolumnreport #bloccols{
@@ -2162,14 +2163,15 @@ div#firstcolumnreport #bloccols{
   overflow-x:scroll;
   height:100%;
 }
-div#firstcolumnreport #bloccols #firsline {
+div#firstcolumnreport #bloccols #firstline {
   height:220px;
 }
-div#firstcolumnreport #bloccols #firsline #module{
+div#firstcolumnreport #bloccols #firstline #module{
   transform: translate(0,100%) rotate(-90deg);
   transform-origin: 0 0;
   vertical-align: middle;
   width:40px;
+  height:220px;
   float:left;
 }
 div#firstcolumnreport #bloccols #secondline {
