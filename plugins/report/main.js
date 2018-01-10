@@ -35,7 +35,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
             MM.plugins.eleves._loadEleves(courseId, 0, MM.plugins.report.limitNumber,
                 function(users) {
                     
-                    var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id, 'webOnly':true});
+                    var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id, 'webOnly':true, 'visible':1});
                     
                     var modules = [];
                     
