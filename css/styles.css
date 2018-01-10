@@ -2117,12 +2117,25 @@ div#firstcolumnreport #threecols{
 div#firstcolumnreport #threecols #divsearch {
   width:250px;
 }
+div#firstcolumnreport #threecols #divsearch #search {
+  width:95%;
+}
 div#firstcolumnreport #threecols #firstline{
-  width:450px;
+  width:500px;
   height:220px;
 }
+div#firstcolumnreport #threecols #firstline #secondcol {
+  width:125px;
+  height:220px;
+  text-align:center;
+}
+div#firstcolumnreport #threecols #firstline #thirdcol {
+  width:125px;
+  height:220px;
+  text-align:center;
+}
 div#firstcolumnreport #threecols #secondline{
-  width:450px;
+  width:500px;
   height:40px;
 }
 div#firstcolumnreport #threecols #firstcol{
@@ -2131,35 +2144,43 @@ div#firstcolumnreport #threecols #firstcol{
   float:left;
 }
 div#firstcolumnreport #threecols #secondcol{
-  width:100px;
+  width:125px;
   height:40px;
   float:left;
 }
 div#firstcolumnreport #threecols #thirdcol{
-  width:100px;
+  width:125px;
   height:40px;
   float:left;
 }
 div#firstcolumnreport #threecols #otherlines {
-  width:450px;
-  height:auto;
+  width:500px;
+  height:100%;
   overflow-y:scroll;
+  white-space:nowrap;
 }
 div#firstcolumnreport #threecols #otherlines #firstcol{
   padding-left:10px;
   width:250px;
+  height:50px;
 }
 div#firstcolumnreport #threecols #otherlines #secondcol{
   padding-left:10px;
-  width:100px;
+  width:125px;
+  height:50px;
+  text-align:center;
+  
 }
-div#firstcolumnreport #threecols #otherlines #secondcol{
+div#firstcolumnreport #threecols #otherlines #thirdcol{
   padding-left:10px;
-  width:100px;
+  width:125px;
+  height:50px;
+  text-align:center;
 }
 
 div#firstcolumnreport #bloccols{
-  width:auto;
+  width:100%;
+  white-space: nowrap;
   overflow-x:scroll;
   height:100%;
 }
@@ -2183,10 +2204,10 @@ div#firstcolumnreport #bloccols #secondline #empty {
   float:left;
 }
 div#firstcolumnreport #bloccols #otherlines #userline {
-  height:40px;
+  height:50px;
 }
 div#firstcolumnreport #bloccols #otherlines #userline #usermodule{
-  height:40px;
+  height:50px;
   width:40px;
   float:left;
 }
