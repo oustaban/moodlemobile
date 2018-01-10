@@ -27,7 +27,7 @@
                     <table>
                         <tr>
                         <% var index =0;_.each(modules, function(module) { %>
-                            <td class="module">Module <%= module.name %></td>
+                            <td><div id="module">Module <%= module.name %></div></td>
                         <% index++;}); %>
                         </tr>
                     </table>
@@ -36,7 +36,7 @@
                     <table>
                         <tr>
                         <% var index =0;_.each(modules, function(module) { %>
-                            <td class="empty">&nbsp;</td>
+                            <td><div id="empty">&nbsp;</div></td>
                         <% index++;}); %>
                         </tr>
                     </table>
@@ -46,7 +46,7 @@
                         <% var index =0;_.each(users, function(user) { %>
                         <tr class="userline">
                             <% var indexmodule =0;_.each(modules, function(module) { %>
-                                <td class="usermodule">X</td>
+                                <td><div id="usermodule">X</div></td>
                             <% indexmodule++;}); %>
                         </tr>
                         <% index++;}); %>
