@@ -3,16 +3,48 @@
             <input type="search" results="5" placeholder="Search...">
         </form>-->
         <div id="firstcolumnreport">
-            <div id="divsearch"><input type="text" name="search" id="search" placeholder="Rechercher un participant..."></div>
-            <input type="hidden" name="listeParticipants" value="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>">
-            <div id="listeparticipantsreport">
-                <ul id="listeparticipants1" class="nav nav-v">
-                    <%= MM.tpl.render(MM.plugins.report.templates.elevesRow.html, {"courseId": courseId, "users": users}) %>
-                </ul>
+            <div id="threecols">
+                <div id="firstline">
+                    <div id="firstcol"></div>
+                    <div id="secondcol">Validité<br>Jeton</div>
+                    <div id="thirdcol">Modules<br>Réalisés</div>
+                </div>
+                <div id="secondline">
+                    <div id="firstcol"><div id="divsearch"><input type="text" name="search" id="search" placeholder="Rechercher un participant..."></div></div>
+                    <div id="secondcol">&nbsp;</div>
+                    <div id="thirdcol">&nbsp;</div>
+                </div>
+                <div id="otherlines">
+                    <% var index =0;_.each(users, function(user) { %>
+                    <div id="firstcol"><%= user.fullname %></div>
+                    <div id="secondcol">10/06/2018</div>
+                    <div id="thirdcol">3/8</div>
+                    <% index++;}); %>
+                </div>
             </div>
+            <div id="bloccols">
+                <div id="firstline">
+                    <% var index =0;_.each(modules, function(module) { %>
+                        <div id="module"><%= module.name %></div>
+                    <% index++;}); %>
+                </div>
+                <div id="secondline">
+                    <% var index =0;_.each(modules, function(module) { %>
+                        <div id="empty">&nbsp;</div>
+                    <% index++;}); %>
+                </div>
+                <div id="otherlines">
+                    <% var index =0;_.each(users, function(user) { %>
+                    <div id="userline">
+                        <% var indexmodule =0;_.each(modules, function(module) { %>
+                            <div id="usermodule">X</div>
+                        <% indexmodule++;}); %>
+                    </div>
+                    <% index++;}); %>
+                </div>
+            </div>
+            
+            <input type="hidden" name="listeParticipants" value="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>">
         </div>
-        <div id="secondcolumnreport">
-            <div id="divselection"><p class="selectiontitle">Participant(s) Sélectionné(s)</p></div>
-            <input type="hidden" name="listeParticipants2" value="">
-        </div>
+        
     </section>

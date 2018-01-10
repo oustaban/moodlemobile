@@ -39,6 +39,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     var tpl = {
                         users: users,
+                        modules: localCourses,
                         deviceType: MM.deviceType,
                         courseId: courseId,
                     };
@@ -74,9 +75,6 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").addClass('hide');
                             }
                         });
-                        
-                        
-                        
                     });
                     
                 }, function(m) {

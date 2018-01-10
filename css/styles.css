@@ -596,9 +596,10 @@ hr {
 .header-sub {
   padding-top: 10px;
   padding-bottom: 10px;
-  min-height: 44px;
+  height:8%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .header-sub .back-row {
   float: left;
   margin-bottom: 10px;
@@ -1437,7 +1438,7 @@ hr {
 -------------------------------------------------------------------------- */
 .users-index-list li,
 .report-index-list {
-  height: auto;
+  height: 91%;
   overflow: hidden;
 }
 .users-index-list .nav-item > a,
@@ -2100,26 +2101,86 @@ div#firstcolumn {
   border:1px solid black;
   height:100%;
 }
+
+
 div#firstcolumnreport {
-  width:100%;
-  float:left;
+  overflow:auto;
   border:1px solid black;
   height:100%;
+  font-size: 18px;
 }
-div#firstcolumnreport #divsearch {
+div#firstcolumnreport #threecols{
+  width:320px;
+  height:100%;
+}
+div#firstcolumnreport #threecols #divsearch {
   width:220px;
 }
-
-div#firstcolumnreport #search {
-  width:95%;
+div#firstcolumnreport #threecols #firstline{
+  width:320px;
+  height:220px;
 }
-div#firstcolumnreport #listeparticipantsreport {
-  width:10%;
+div#firstcolumnreport #threecols #secondline{
+  width:320px;
+  height:40px;
 }
-div#firstcolumnreport #listeparticipants1 {
+div#firstcolumnreport #threecols #firstcol{
   width:220px;
+  height:40px;
+}
+div#firstcolumnreport #threecols #secondcol{
+  width:50px;
+  height:40px;
+}
+div#firstcolumnreport #threecols #thirdcol{
+  width:50px;
+  height:40px;
+}
+div#firstcolumnreport #threecols #otherlines {
+  width:320px;
+  height:auto;
+  overflow-y:scroll;
+}
+div#firstcolumnreport #threecols #otherlines #firstcol{
+  padding-left:10px;
+}
+div#firstcolumnreport #threecols #otherlines #secondcol{
+  padding-left:10px;
+}
+div#firstcolumnreport #threecols #otherlines #secondcol{
+  padding-left:10px;
 }
 
+div#firstcolumnreport #bloccols{
+  width:auto;
+  overflow-x:scroll;
+  height:100%;
+}
+div#firstcolumnreport #bloccols #firsline {
+  height:220px;
+}
+div#firstcolumnreport #bloccols #firsline #module{
+  transform: translate(0,100%) rotate(-90deg);
+  transform-origin: 0 0;
+  vertical-align: middle;
+  width:40px;
+}
+div#firstcolumnreport #bloccols #secondline {
+  height:40px;
+}
+div#firstcolumnreport #bloccols #secondline #empty {
+  height:40px;
+  width:40px;
+}
+div#firstcolumnreport #bloccols #otherlines #userline {
+  height:40px;
+}
+div#firstcolumnreport #bloccols #otherlines #userline #usermodule{
+  height:40px;
+  width:40px;
+}
+
+			
 div#secondcolumn {
   width:50%;
   float:left;
@@ -2136,7 +2197,7 @@ div#divsearch {
   height:40px;
   border-bottom:1px solid black;
   background:#203469;
-		color:#fff;
+  color:#fff;
   
 }
 div#divselection {
@@ -2165,7 +2226,7 @@ section.users-index-list {
   height:81%;
 }
 section.report-index-list {
-  height:100%;
+  height:85%;
 }
 div#listeparticipants {
   height:89%;
