@@ -2143,12 +2143,14 @@ div#firstcolumnreport #firstblock .secondline #thirdcol{
   height:40px;
   text-align:center;
 }
+div#firstcolumnreport #firstblock #cellmodule{
+  width:40px;
+  height:220px;
+}
 div#firstcolumnreport #firstblock #module{
   transform: translate(0,100%) rotate(-90deg);
   transform-origin: 0 0;
   vertical-align: middle;
-  width:40px;
-  height:220px;
 }
 div#firstcolumnreport #firstblock #empty {
   height:40px;
@@ -2176,9 +2178,9 @@ div#firstcolumnreport #secondblock #usermodule {
   height:40px;
 }
 div#firstcolumnreport #firstblock {
-  height:260px;
+  height:270px;
 }
-div#firstcolumnreport #firstblock {
+div#firstcolumnreport #secondblock {
   height:100%;
   overflow-y:scroll;
 }
