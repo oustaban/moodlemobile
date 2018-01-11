@@ -79,10 +79,10 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             //MM.log("User:"+user.id+'/'+user.fullname);
                             if (user.fullname.toLowerCase().indexOf(sword) != -1) {
                                 searchparticipants.push(user);
-                                $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").removeClass('hide');
+                                $("tr[eleve='eleveP"+user.id+"']").show();
                                 //MM.log("Searchparticipants:"+user.id+'/'+user.fullname);
                             } else {
-                                $("ul#listeparticipants1 li[eleve='eleveP"+user.id+"']").addClass('hide');
+                                $("tr[eleve='eleveP"+user.id+"']").hide();
                             }
                         });
                     });
