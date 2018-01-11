@@ -596,7 +596,7 @@ hr {
 .header-sub {
   padding-top: 10px;
   padding-bottom: 10px;
-  height:8%;
+  height:50px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -2104,7 +2104,7 @@ div#firstcolumn {
 
 
 div#firstcolumnreport {
-  overflow:auto;
+  overflow:hidden;
   border:1px solid black;
   height:100%;
   font-size: 18px;
@@ -2118,16 +2118,16 @@ div#firstcolumnreport #firstblock #divsearch #search {
 }
 div#firstcolumnreport #firstblock .firstline #firstcol{
   width:250px;
-  height:220px;
+  height:260px;
 }
 div#firstcolumnreport #firstblock .firstline #secondcol{
   width:125px;
-  height:220px;
+  height:260px;
   text-align:center;
 }
 div#firstcolumnreport #firstblock .firstline #thirdcol{
   width:125px;
-  height:220px;
+  height:260px;
   text-align:center;
 }
 div#firstcolumnreport #firstblock .secondline #firstcol{
@@ -2185,10 +2185,10 @@ div#firstcolumnreport #secondblock #usermodule {
   height:40px;
 }
 div#firstcolumnreport #firstblock {
-  height:270px;
+  height:310px;
 }
 div#firstcolumnreport #secondblock {
-  height:100%;
+  height:360px;
   overflow-y:scroll;
 }
 div#firstcolumnreport #secondblock td {
@@ -2242,10 +2242,10 @@ section.users-index-list {
   height:86%;
 }
 section.report-index-list {
-  height:86%;
+  height:87%;
 }
 div#listeparticipants {
-  height:89%;
+  height:80%;
   overflow:scroll;
 }
 div#listeparticipantsreport {
