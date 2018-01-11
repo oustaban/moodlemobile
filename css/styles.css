@@ -2109,116 +2109,81 @@ div#firstcolumnreport {
   height:100%;
   font-size: 18px;
 }
-div#firstcolumnreport #threecols{
-  width:500px;
-  height:100%;
-  float:left;
-}
-div#firstcolumnreport #threecols #divsearch {
+div#firstcolumnreport #firstblock #divsearch {
   width:250px;
 }
-div#firstcolumnreport #threecols #divsearch #search {
+div#firstcolumnreport #firstblock #divsearch #search {
   width:95%;
 }
-div#firstcolumnreport #threecols #firstline{
-  width:500px;
+div#firstcolumnreport #firstblock .firstline #firstcol{
+  width:250px;
   height:220px;
 }
-div#firstcolumnreport #threecols #firstline #secondcol {
+div#firstcolumnreport #firstblock .firstline #secondcol{
   width:125px;
   height:220px;
   text-align:center;
 }
-div#firstcolumnreport #threecols #firstline #thirdcol {
+div#firstcolumnreport #firstblock .firstline #thirdcol{
   width:125px;
   height:220px;
   text-align:center;
 }
-div#firstcolumnreport #threecols #secondline{
-  width:500px;
-  height:40px;
-}
-div#firstcolumnreport #threecols #firstcol{
+div#firstcolumnreport #firstblock .secondline #firstcol{
   width:250px;
   height:40px;
-  float:left;
 }
-div#firstcolumnreport #threecols #secondcol{
+div#firstcolumnreport #firstblock .secondline #secondcol{
   width:125px;
   height:40px;
-  float:left;
+  text-align:center;
 }
-div#firstcolumnreport #threecols #thirdcol{
+div#firstcolumnreport #firstblock .secondline #thirdcol{
   width:125px;
   height:40px;
-  float:left;
-}
-div#firstcolumnreport #threecols #otherlines {
-  width:500px;
-  height:100%;
-  overflow-y:scroll;
-  white-space:nowrap;
-}
-div#firstcolumnreport #threecols #otherlines #firstcol{
-  padding-left:10px;
-  width:250px;
-  height:50px;
-}
-div#firstcolumnreport #threecols #otherlines #secondcol{
-  padding-left:10px;
-  width:125px;
-  height:50px;
-  text-align:center;
-  
-}
-div#firstcolumnreport #threecols #otherlines #thirdcol{
-  padding-left:10px;
-  width:125px;
-  height:50px;
   text-align:center;
 }
-
-div#firstcolumnreport #bloccols{
-  width:504px;
-  white-space: nowrap;
-  height:100%;
-  float:left;
-}
-div#firstcolumnreport #bloccols #firstline {
-  height:220px;
-  overflow-x:auto;
-  width:100%;
-}
-div#firstcolumnreport #bloccols #firstline #module{
+div#firstcolumnreport #firstblock #module{
   transform: translate(0,100%) rotate(-90deg);
   transform-origin: 0 0;
   vertical-align: middle;
   width:40px;
   height:220px;
 }
-div#firstcolumnreport #bloccols #secondline {
-  height:40px;
-  overflow-x:auto;
-  width:100%;
-}
-div#firstcolumnreport #bloccols #secondline #empty {
+div#firstcolumnreport #firstblock #empty {
   height:40px;
   width:40px;
 }
-div#firstcolumnreport #bloccols #otherlines {
-  overflow-x:scroll;
-  width:100%;
+
+div#firstcolumnreport #secondblock #firstcol{
+  width:250px;
+  height:40px;
+  padding-left:10px;
+  text-align:left;
+}
+div#firstcolumnreport #secondblock #secondcol{
+  width:125px;
+  height:40px;
+  text-align:center;
+}
+div#firstcolumnreport #secondblock #thirdcol{
+  width:125px;
+  height:40px;
+  text-align:center;
+}
+div#firstcolumnreport #secondblock #usermodule {
+  width:40px;
+  height:40px;
+}
+div#firstcolumnreport #firstblock {
+  height:260px;
+}
+div#firstcolumnreport #firstblock {
   height:100%;
   overflow-y:scroll;
-  white-space:nowrap;
 }
-div#firstcolumnreport #bloccols #otherlines .userline {
-  height:50px;
-}
-div#firstcolumnreport #bloccols #otherlines .userline #usermodule{
-  height:50px;
-  width:40px;
-}
+
+
 
 			
 div#secondcolumn {

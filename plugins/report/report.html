@@ -3,57 +3,40 @@
             <input type="search" results="5" placeholder="Search...">
         </form>-->
         <div id="firstcolumnreport">
-            <div id="threecols">
-                <div id="firstline">
-                    <div id="firstcol"></div>
-                    <div id="secondcol">Validité<br>Jeton</div>
-                    <div id="thirdcol">Modules<br>Réalisés</div>
-                </div>
-                <div id="secondline">
-                    <div id="firstcol"><div id="divsearch"><input type="text" name="search" id="search" placeholder="Rechercher un participant..."></div></div>
-                    <div id="secondcol">&nbsp;</div>
-                    <div id="thirdcol">&nbsp;</div>
-                </div>
-                <div id="otherlines">
-                    <% var index =0;_.each(users, function(user) { %>
-                    <div id="firstcol"><%= user.fullname %></div>
-                    <div id="secondcol">10/06/2018</div>
-                    <div id="thirdcol">3/8</div>
-                    <% index++;}); %>
-                </div>
-            </div>
-            <div id="bloccols">
-                <div id="firstline">
-                    <table>
-                        <tr>
+            <div id="firstblock">
+                <table>
+                    <tr class="firstline">
+                        <td><div id="firstcol">&nbsp;</div></td>
+                        <td><div id="secondcol">Validité<br>Jeton</div></td>
+                        <td><div id="thirdcol">Modules<br>Réalisés</div></td>
                         <% var index =0;_.each(modules, function(module) { %>
                             <td><div id="module"><%= module.name %></div></td>
                         <% index++;}); %>
-                        </tr>
-                    </table>
-                </div>
-                <div id="secondline">
-                    <table>
-                        <tr>
+                    </tr>
+                    <tr class="secondline">
+                        <td><div id="firstcol"><div id="divsearch"><input type="text" name="search" id="search" placeholder="Rechercher un participant..."></div></div></td>
+                        <td><div id="secondcol">&nbsp;</div></td>
+                        <td><div id="thirdcol">&nbsp;</div></td>
                         <% var index =0;_.each(modules, function(module) { %>
                             <td><div id="empty">&nbsp;</div></td>
                         <% index++;}); %>
-                        </tr>
-                    </table>
-                </div>
-                <div id="otherlines">
-                    <table>
-                        <% var index =0;_.each(users, function(user) { %>
-                        <tr class="userline">
-                            <% var indexmodule =0;_.each(modules, function(module) { %>
-                                <td><div id="usermodule">X</div></td>
-                            <% indexmodule++;}); %>
-                        </tr>
-                        <% index++;}); %>
-                    </table>
-                </div>
+                    </tr>
+                </table>
             </div>
-            
+            <div id="secondblock">
+                <table>
+                    <% var index =0;_.each(users, function(user) { %>
+                    <tr class="userline">
+                        <td><div id="firstcol"><%= user.fullname %></div></td>
+                        <td><div id="secondcol">10/06/2018</div></td>
+                        <td><div id="thirdcol">3/8</div></td>
+                        <% var indexmodule =0;_.each(modules, function(module) { %>
+                            <td><div id="usermodule">X</div></td>
+                        <% indexmodule++;}); %>
+                    </tr>
+                    <% index++;}); %>
+                </table>
+            </div>
             <input type="hidden" name="listeParticipants" value="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>">
         </div>
         
