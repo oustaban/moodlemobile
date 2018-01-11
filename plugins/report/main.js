@@ -42,8 +42,13 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
                             modules.push(localCourse);
-                            for(var key2 in localCourse) {
-                                MM.log("Porperty:"+key2+" Value: "+localCourse[key2]);
+                            
+                    });
+                    
+                    $.each(users, function( index, value ) {
+                            var user = value.toJSON();
+                            for(var key2 in user) {
+                                MM.log("Porperty:"+key2+" Value: "+user[key2]);
                             }
                     });
                     
