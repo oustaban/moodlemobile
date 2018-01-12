@@ -45,12 +45,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             
                     });
                     
-                    $.each(users, function( index, value ) {
-                            var user = value.toJSON();
-                            for(var key2 in user) {
-                                MM.log("Porperty:"+key2+" Value: "+user[key2]);
-                            }
-                    });
+                    
                     
                     var tpl = {
                         users: users,
