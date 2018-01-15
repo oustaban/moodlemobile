@@ -45,6 +45,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             
                     });
                     
+                    MM.log('LOCAL MODULES');
                     var localModules = MM.db.where('course', {'courseid':courseId, 'site':MM.config.current_site.id});
                     $.each(localModules, function( index, value ) {
                             MM.log('LOCAL MODULES');
