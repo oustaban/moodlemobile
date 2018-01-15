@@ -45,8 +45,10 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             
                     });
                     
-                    MM.log('LOCAL MODULES');
+                    
                     var localModules = MM.db.where('courses', {'courseid':courseId, 'site':MM.config.current_site.id});
+                    MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.i+'/'+localModules);
+                    
                     $.each(localModules, function( index, value ) {
                             MM.log('LOCAL MODULES');
                             var modules1 = $.grep(value.modules, function( el ) {
@@ -58,12 +60,13 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             MM.log('modulesValidated:'+modulesValidated.length);
                     });
                     
+                    /*
                     modulesValidated = modulesValidated.toJSON();
                     
                     for (var i = 0;i<modulesValidated.length;i++) {
                         MM.log('Modules Passés:'+modulesValidated[i].name);
                     }
-                    
+                    */
                     var tpl = {
                         users: users,
                         modules: modules,
