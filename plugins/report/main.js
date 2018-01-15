@@ -45,7 +45,23 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             
                     });
                     
+                    var localModules = MM.db.where('course', {'courseid':courseId, 'site':MM.config.current_site.id});
+                    $.each(localModules, function( index, value ) {
+                            MM.log('LOCAL MODULES');
+                            var modules1 = $.grep(value.modules, function( el ) {
+                                            return el.userid == user.id;
+                            });
+                            var modulesValidated = $.grep(modules1.modules, function( el ) {
+                                            return el.duration >= value.minduration;
+                            });
+                            MM.log('modulesValidated:'+modulesValidated.length);
+                    });
                     
+                    modulesValidated = modulesValidated.toJSON();
+                    
+                    for (var i = 0;i<modulesValidated.length;i++) {
+                        MM.log('Modules Passés:'+modulesValidated[i].name);
+                    }
                     
                     var tpl = {
                         users: users,
