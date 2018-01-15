@@ -47,11 +47,11 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
-                    MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.id+'/'+localModules);
+                    MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.id+'/'+localModules.length);
                     
                     $.each(users, function( index, user ) {
-                            MM.log('LOCAL MODULES:'+user.id+'/'+localModules.minduration);
-                            var modulesuser = $.grep(localModules.modules, function( el ) {
+                            MM.log('LOCAL MODULES:'+user.id+'/'+localModules[0].minduration);
+                            var modulesuser = $.grep(localModules[0].modules, function( el ) {
                                             return el.userid == user.id;
                             });
                             MM.log('LOCAL MODULES:'+modulesuser);
