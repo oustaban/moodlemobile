@@ -49,15 +49,19 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
                     MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.id+'/'+localModules);
                     
-                    $.each(localModules, function( index, value ) {
-                            MM.log('LOCAL MODULES');
-                            var modules1 = $.grep(value.modules, function( el ) {
+                    $.each(users, function( index, user ) {
+                            MM.log('LOCAL MODULES:'+user.id+'/'+localModules.minduration);
+                            var modulesuser = $.grep(localModules.modules, function( el ) {
                                             return el.userid == user.id;
                             });
-                            var modulesValidated = $.grep(modules1.modules, function( el ) {
-                                            return el.duration >= value.minduration;
+                            MM.log('LOCAL MODULES:'+modulesuser);
+                            $.each(modulesuser.modules, function( index2, module1 ) {
+                                var modulesUserValidated = $.grep(module1.modules, function( el ) {
+                                                return el.duration >= value.minduration;
+                                });
                             });
-                            MM.log('modulesValidated:'+modulesValidated.length);
+                            
+                            MM.log('modulesValidated:'+modulesUserValidated.length);
                     });
                     
                     /*
