@@ -51,7 +51,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     $.each(localModules, function( index, localModule ) {
                         MM.log('LOCAL MODULES:'+localModule.minduration);
-                    }
+                    });
                     
                     $.each(users, function( index, user ) {
                             MM.log('LOCAL MODULES:'+user.id+'/'+localModules[0].minduration);
