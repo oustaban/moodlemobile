@@ -60,6 +60,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             var moduleuser = modulesuser[0];
                             modulesUserValidated[user.id] = [];
                             var count = 0;
+                             modulesUserValidated[user.id]['count'] = 0;
                             $.each(moduleuser.modules, function( index2, module1 ) {
                                 for(var propertyName in module1) {
                                     MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
