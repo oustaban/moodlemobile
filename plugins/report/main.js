@@ -49,13 +49,16 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
                     var localModule = localModules[0].toJSON();
-                    var modulesUserValidated = []
+                    var modulesUserValidated = [];
+                    var licensesUser = []
                     
                     $.each(users, function( index, user ) {
                             MM.log('LOCAL MODULES:'+user.id+'/'+localModule.minduration);
                             var modulesuser = $.grep(localModule.modules, function( el ) {
                                             return el.userid == user.id;
                             });
+                            
+                            
                             
                             var moduleuser = modulesuser[0];
                             modulesUserValidated[user.id] = [];
@@ -73,11 +76,13 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                     modulesUserValidated[user.id]['count'] = count;
                                 }
                             });
-                            for(var propertyName in modulesUserValidated[user.id]) {
-                                    MM.log('PROPY:'+propertyName+'/'+modulesUserValidated[user.id][propertyName]);
-                                    // propertyName is what you want
-                                    // you can get the value like this: myObject[propertyName]
-                            }
+                            
+                            var licensedsuser = $.grep(localModule.licenses, function( el ) {
+                                            return el.userid == user.id;
+                            });
+                            
+                            licensesUser[user.id] = licensedsuser[0];
+                            
                             
                     });
                     
@@ -92,6 +97,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                         users: users,
                         modules: modules,
                         modulesUserValidated: modulesUserValidated,
+                        licensesUser: licensesUser,
                         deviceType: MM.deviceType,
                         courseId: courseId,
                     };

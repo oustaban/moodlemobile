@@ -28,7 +28,7 @@
                     <% var index =0;_.each(users, function(user) { %>
                     <tr class="userline" eleve="eleveP<%= user.id %>">
                         <td><div id="firstcol"><%= user.fullname %></div></td>
-                        <td><div id="secondcol">10/06/2018</div></td>
+                        <td><div id="secondcol"><% var endtime = new Date(parseInt(licensesUser[user.id]['end']) * 1000) %> <%= endtime.getDate()+"/"+(endtime.getMonth()+1)+"/"+endtime.getFullYear() %></div></td>
                         <td><div id="thirdcol"><%= modulesUserValidated[user.id]['count'] %>/<%= modules.length %></div></td>
                         <% var indexmodule =0;_.each(modules, function(module) { %>
                             <td>
