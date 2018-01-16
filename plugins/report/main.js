@@ -63,17 +63,9 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             $.each(moduleuser.modules, function( index2, module1 ) {
                                 for(var propertyName in module1) {
                                     MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
-                                 }
-                                var modulesValidated = $.grep(module1, function( el ) {
-                                                MM.log('CHECK:'+parseInt(el.duration)+'/'+parseInt(localModule.minduration));
-                                                return parseInt(el.duration) >= parseInt(localModule.minduration);
-                                });
-                                
-                                for(var propertyName in modulesValidated) {
-                                    MM.log('PROPA:'+propertyName+'/'+modulesValidated[propertyName]);
-                                 }
-                                if (modulesValidated[0]) {
-                                    modulesUserValidated[user.id].push(modulesValidated[0]);
+                                }
+                                if (parseInt(module1.duration) >= parseInt(localModule.minduration)) {
+                                    modulesUserValidated[user.id].push(module1);
                                 }
                             });
                             for(var propertyName in modulesUserValidated[user.id]) {
