@@ -56,13 +56,14 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             var modulesuser = $.grep(localModule.modules, function( el ) {
                                             return el.userid == user.id;
                             });
-                            MM.log('LOCAL MODULES:'+modulesuser);
-                            for(var propertyName in modulesuser) {
-                                MM.log('PROP:'+propertyName+'/'+modulesuser[propertyName]);
+                            
+                            var moduleuser = modulesuser[0].toJSON();
+                            for(var propertyName in moduleuser.modules) {
+                                MM.log('PROP:'+propertyName+'/'+modulesuser.modules[propertyName]);
                                 // propertyName is what you want
                                 // you can get the value like this: myObject[propertyName]
                              }
-                            $.each(modulesuser.modules, function( index2, module1 ) {
+                            $.each(moduleuser.modules, function( index2, module1 ) {
                                 var modulesUserValidated = $.grep(module1.modules, function( el ) {
                                                 return el.duration >= value.minduration;
                                 });
