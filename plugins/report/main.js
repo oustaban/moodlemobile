@@ -48,9 +48,9 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
-                    MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.id+'/'+localModules.length+'/'+localModules);
                     var localModule = localModules[0].toJSON();
                     var modulesUserValidated = []
+                    
                     $.each(users, function( index, user ) {
                             MM.log('LOCAL MODULES:'+user.id+'/'+localModule.minduration);
                             var modulesuser = $.grep(localModule.modules, function( el ) {
@@ -67,12 +67,13 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 var modulesValidated = $.grep(module1, function( el ) {
                                                 return el.duration >= localModule.minduration;
                                 });
+                                MM.log('CHECK');
                                 if (modulesValidated[0]) {
                                     modulesUserValidated[user.id].push(modulesValidated[0]);
                                 }
                             });
                             for(var propertyName in modulesUserValidated[user.id]) {
-                                    MM.log('PROP:'+propertyName+'/'+modulesUserValidated[user.id][propertyName]);
+                                    MM.log('PROPY:'+propertyName+'/'+modulesUserValidated[user.id][propertyName]);
                                     // propertyName is what you want
                                     // you can get the value like this: myObject[propertyName]
                             }
