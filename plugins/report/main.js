@@ -58,7 +58,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             });
                             
                             var moduleuser = modulesuser[0];
-                            var modulesUserValidated[user.id] = [];
+                            modulesUserValidated[user.id] = [];
                             
                             $.each(moduleuser.modules, function( index2, module1 ) {
                                 for(var propertyName in module1) {
