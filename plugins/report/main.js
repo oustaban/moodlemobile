@@ -64,7 +64,9 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 for(var propertyName in module1) {
                                     MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
                                 }
+                                MM.log('CHECK:'+module1['duration']+'/'+module1.duration);
                                 if (parseInt(module1['duration']) >= parseInt(localModule.minduration)) {
+                                    MM.log('CHECK');
                                     modulesUserValidated[user.id].push(module1);
                                 }
                             });
