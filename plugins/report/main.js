@@ -48,10 +48,11 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
                     MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.id+'/'+localModules.length+'/'+localModules);
-                    localModules = localModules.toJSON();
-                    $.each(localModules, function( index, localModule ) {
-                        MM.log('LOCAL MODULES:'+localModule.minduration);
-                    });
+                    for(var propertyName in localModules) {
+                        MM.log('PROP:'+propertyName+'/'+localModules[propertyName]);
+                        // propertyName is what you want
+                        // you can get the value like this: myObject[propertyName]
+                     }
                     
                     $.each(users, function( index, user ) {
                             MM.log('LOCAL MODULES:'+user.id+'/'+localModules[0].minduration);
