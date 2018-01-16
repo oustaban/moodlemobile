@@ -37,12 +37,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id, 'webOnly':true, 'visible':1});
                     
-                    for(var propertyName in localCourses[0]) {
-                        MM.log('PROP:'+propertyName+'/'+localCourses[0][propertyName]);
-                        // propertyName is what you want
-                        // you can get the value like this: myObject[propertyName]
-                     }
-                     
+                    
                     var modules = [];
                     
                     $.each(localCourses, function( index, value ) {
@@ -54,19 +49,19 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
                     MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.id+'/'+localModules.length+'/'+localModules);
-                    for(var propertyName in localModules[0]) {
-                        MM.log('PROP:'+propertyName+'/'+localModules[0][propertyName]);
-                        // propertyName is what you want
-                        // you can get the value like this: myObject[propertyName]
-                     }
-                    
                     var localModule = localModules[0].toJSON();
+                    
                     $.each(users, function( index, user ) {
                             MM.log('LOCAL MODULES:'+user.id+'/'+localModule.minduration);
                             var modulesuser = $.grep(localModule.modules, function( el ) {
                                             return el.userid == user.id;
                             });
                             MM.log('LOCAL MODULES:'+modulesuser);
+                            for(var propertyName in modulesuser) {
+                                MM.log('PROP:'+propertyName+'/'+modulesuser][propertyName]);
+                                // propertyName is what you want
+                                // you can get the value like this: myObject[propertyName]
+                             }
                             $.each(modulesuser.modules, function( index2, module1 ) {
                                 var modulesUserValidated = $.grep(module1.modules, function( el ) {
                                                 return el.duration >= value.minduration;
