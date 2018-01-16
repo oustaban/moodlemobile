@@ -50,7 +50,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
                     MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.id+'/'+localModules.length+'/'+localModules);
                     var localModule = localModules[0].toJSON();
-                    
+                    var modulesUserValidated = []
                     $.each(users, function( index, user ) {
                             MM.log('LOCAL MODULES:'+user.id+'/'+localModule.minduration);
                             var modulesuser = $.grep(localModule.modules, function( el ) {
@@ -61,14 +61,14 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 // propertyName is what you want
                                 // you can get the value like this: myObject[propertyName]
                              }
-                            var moduleuser = modulesuser[0].toJSON();
+                            var moduleuser = modulesuser[0];
                             for(var propertyName in moduleuser.modules) {
                                 MM.log('PROP:'+propertyName+'/'+modulesuser.modules[propertyName]);
                                 // propertyName is what you want
                                 // you can get the value like this: myObject[propertyName]
                              }
                             $.each(moduleuser.modules, function( index2, module1 ) {
-                                var modulesUserValidated = $.grep(module1.modules, function( el ) {
+                                var modulesUserValidated = $.grep(module1, function( el ) {
                                                 return el.duration >= value.minduration;
                                 });
                             });
