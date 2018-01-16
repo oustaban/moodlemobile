@@ -56,25 +56,27 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             var modulesuser = $.grep(localModule.modules, function( el ) {
                                             return el.userid == user.id;
                             });
-                            for(var propertyName in modulesuser[0]) {
-                                MM.log('PROP:'+propertyName+'/'+modulesuser[0][propertyName]);
-                                // propertyName is what you want
-                                // you can get the value like this: myObject[propertyName]
-                             }
+                            
                             var moduleuser = modulesuser[0];
+                            var modulesUserValidated[user.id] = [];
                             
                             $.each(moduleuser.modules, function( index2, module1 ) {
                                 for(var propertyName in module1) {
                                     MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
-                                    // propertyName is what you want
-                                    // you can get the value like this: myObject[propertyName]
                                  }
-                                var modulesUserValidated = $.grep(module1, function( el ) {
+                                var modulesValidated = $.grep(module1, function( el ) {
                                                 return el.duration >= localModule.minduration;
                                 });
+                                if (modulesValidated[0]) {
+                                    modulesUserValidated[user.id].push(modulesValidated[0]);
+                                }
                             });
+                            for(var propertyName in modulesUserValidated[user.id]) {
+                                    MM.log('PROP:'+propertyName+'/'+modulesUserValidated[user.id][propertyName]);
+                                    // propertyName is what you want
+                                    // you can get the value like this: myObject[propertyName]
+                            }
                             
-                            MM.log('modulesValidated:'+modulesUserValidated.length);
                     });
                     
                     /*
