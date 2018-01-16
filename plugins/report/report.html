@@ -10,7 +10,7 @@
                         <td><div id="secondcol">Validité<br>Jeton</div></td>
                         <td><div id="thirdcol">Modules<br>Réalisés</div></td>
                         <% var index =0;_.each(modules, function(module) { %>
-                            <td><div id="cellmodule"><div id="module"><%= module.name %></div></div></td>
+                            <td><div id="cellmodule"><div id="module"><%= module.name %><%= module.contentid %></div></div></td>
                         <% index++;}); %>
                     </tr>
                     <tr class="secondline">
@@ -32,7 +32,7 @@
                         <td><div id="thirdcol"><%= modulesUserValidated[user.id].length %>/<%= modules.length %></div></td>
                         <% var indexmodule =0;_.each(modules, function(module) { %>
                             <td>
-                                <div id="usermodule"><% if (modulesUserValidated[user.id][module.contentid] == 1) { %>X<% } %></div>
+                                <div id="usermodule"><%=module.contentid %><% if (modulesUserValidated[user.id][module.contentid] == 1) { %>X<% } %></div>
                             </td>
                         <% indexmodule++;}); %>
                     </tr>
