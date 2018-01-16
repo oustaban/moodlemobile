@@ -67,7 +67,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 MM.log('CHECK:'+module1['duration']+'/'+module1.duration);
                                 if (parseInt(module1['duration']) >= parseInt(localModule.minduration)) {
                                     MM.log('CHECK');
-                                    modulesUserValidated[user.id].push(module1);
+                                    modulesUserValidated[user.id][module1.id] = 1;
                                 }
                             });
                             for(var propertyName in modulesUserValidated[user.id]) {
@@ -88,6 +88,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var tpl = {
                         users: users,
                         modules: modules,
+                        modulesUserValidated: modulesUserValidated,
                         deviceType: MM.deviceType,
                         courseId: courseId,
                     };

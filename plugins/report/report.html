@@ -29,9 +29,11 @@
                     <tr class="userline" eleve="eleveP<%= user.id %>">
                         <td><div id="firstcol"><%= user.fullname %></div></td>
                         <td><div id="secondcol">10/06/2018</div></td>
-                        <td><div id="thirdcol">3/8</div></td>
+                        <td><div id="thirdcol"><% modulesUserValidated[user.id].length %>/<% modules.length %></div></td>
                         <% var indexmodule =0;_.each(modules, function(module) { %>
-                            <td><div id="usermodule">X</div></td>
+                            <td>
+                                <div id="usermodule"><% if (modulesUserValidated[user.id][module.id]) { %>X<% } %></div>
+                            </td>
                         <% indexmodule++;}); %>
                     </tr>
                     <% index++;}); %>
