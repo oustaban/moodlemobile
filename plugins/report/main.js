@@ -56,7 +56,11 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             var modulesuser = $.grep(localModule.modules, function( el ) {
                                             return el.userid == user.id;
                             });
-                            
+                            for(var propertyName in modulesuser[0]) {
+                                MM.log('PROP:'+propertyName+'/'+modulesuser[0][propertyName]);
+                                // propertyName is what you want
+                                // you can get the value like this: myObject[propertyName]
+                             }
                             var moduleuser = modulesuser[0].toJSON();
                             for(var propertyName in moduleuser.modules) {
                                 MM.log('PROP:'+propertyName+'/'+modulesuser.modules[propertyName]);
