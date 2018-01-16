@@ -58,7 +58,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             });
                             MM.log('LOCAL MODULES:'+modulesuser);
                             for(var propertyName in modulesuser) {
-                                MM.log('PROP:'+propertyName+'/'+modulesuser][propertyName]);
+                                MM.log('PROP:'+propertyName+'/'+modulesuser[propertyName]);
                                 // propertyName is what you want
                                 // you can get the value like this: myObject[propertyName]
                              }
