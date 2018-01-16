@@ -64,7 +64,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 for(var propertyName in module1) {
                                     MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
                                 }
-                                if (parseInt(module1.duration) >= parseInt(localModule.minduration)) {
+                                if (parseInt(module1[duration]) >= parseInt(localModule.minduration)) {
                                     modulesUserValidated[user.id].push(module1);
                                 }
                             });
