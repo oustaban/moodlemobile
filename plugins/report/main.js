@@ -48,7 +48,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
                     MM.log('LOCAL MODULES:'+courseId+'/'+MM.config.current_site.id+'/'+localModules.length+'/'+localModules);
-                    for(var propertyName in localModules) {
+                    for(var propertyName in localModules[0]) {
                         MM.log('PROP:'+propertyName+'/'+localModules[propertyName]);
                         // propertyName is what you want
                         // you can get the value like this: myObject[propertyName]
