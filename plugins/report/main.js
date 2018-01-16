@@ -62,14 +62,15 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 // you can get the value like this: myObject[propertyName]
                              }
                             var moduleuser = modulesuser[0];
-                            for(var propertyName in moduleuser.modules[0]) {
-                                MM.log('PROP:'+propertyName+'/'+moduleuser.modules[0][propertyName]);
-                                // propertyName is what you want
-                                // you can get the value like this: myObject[propertyName]
-                             }
-                            $.each(moduleuser.modules[0], function( index2, module1 ) {
+                            
+                            $.each(moduleuser.modules, function( index2, module1 ) {
+                                for(var propertyName in module1) {
+                                    MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
+                                    // propertyName is what you want
+                                    // you can get the value like this: myObject[propertyName]
+                                 }
                                 var modulesUserValidated = $.grep(module1, function( el ) {
-                                                return el.duration >= value.minduration;
+                                                return el.duration >= localModule.minduration;
                                 });
                             });
                             
