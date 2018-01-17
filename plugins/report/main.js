@@ -65,7 +65,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             var count = 0;
                             modulesUserValidated[user.id]['count'] = 0;
                             
-                            if (moduleuser.modules) {
+                            if (moduleuser) {
                                 $.each(moduleuser.modules, function( index2, module1 ) {
                                     for(var propertyName in module1) {
                                         MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
