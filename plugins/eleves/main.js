@@ -713,6 +713,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var message = "";
                         var on = $(this).attr('on');
                         var btnSynchro = $(this);
+                        
                         MM.log("Synchro Start");
                         
                         if (MM.deviceConnected())
@@ -727,6 +728,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var pifscourse = new Array();
                         var pifsusers = "";
                         var userspif = MM.db.where("users",{site: MM.config.current_site.id});
+                        
                         $.each(userspif, function( indexUsers, userpif ) {
                             var jsonpif = userpif.toJSON();
                             var pifs = jsonpif.pif;
@@ -2023,6 +2025,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                               var content = result.substr(0, lenghto) + ',"endtime":"'+d.getTime()+'"}';
                               MM.log('Create Result :'+content);
                               var fileResult = MM.config.current_site.id+"/"+course+"/result/"+module+".json";
+                              
+                              
                               
                               
                               //create local result file

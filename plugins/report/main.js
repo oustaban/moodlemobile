@@ -32,6 +32,33 @@ define(templates,function (reportTpl, elevesRowTpl) {
             // Adding loading icon.
             $('a[href="#report/' +courseId+ '"]').addClass('loading-row');
             
+            
+            if (MM.deviceConnected()) {
+                var data = {
+                    "userid" : MM.site.get('userid')
+                };
+                MM.moodleWSCall(
+                    'local_mobile_get_courses_with_role',
+                    data,
+                    function(courses) {
+                        // Store the courses
+                        for (el in courses) {
+                            // We clone the course object because we are going to modify it in a copy.
+                            var storedCourse = JSON.parse(JSON.stringify(courses[el]));
+                            storedCourse.courseid = storedCourse.id;
+                            storedCourse.siteid = MM.config.current_site.id;
+                            // For avoid collising between sites.
+                            storedCourse.id = MM.config.current_site.id + '-' + storedCourse.courseid;
+                            var r = MM.db.insert('courses', storedCourse);
+                        }
+                    },
+                    settings,
+                    function () {
+                        MM.log('Problem with local_mobile_get_courses_with_role');
+                    }
+                );
+            }
+            
             MM.plugins.eleves._loadEleves(courseId, 0, MM.plugins.report.limitNumber,
                 function(users) {
                     
