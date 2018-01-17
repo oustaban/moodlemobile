@@ -63,19 +63,22 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             var moduleuser = modulesuser[0];
                             modulesUserValidated[user.id] = [];
                             var count = 0;
-                             modulesUserValidated[user.id]['count'] = 0;
-                            $.each(moduleuser.modules, function( index2, module1 ) {
-                                for(var propertyName in module1) {
-                                    MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
-                                }
-                                MM.log('CHECK:'+module1['duration']+'/'+module1.duration);
-                                if (parseInt(module1['duration']) >= parseInt(localModule.minduration)) {
-                                    MM.log('CHECK');
-                                    modulesUserValidated[user.id][module1.id] = 1;
-                                    count++;
-                                    modulesUserValidated[user.id]['count'] = count;
-                                }
-                            });
+                            modulesUserValidated[user.id]['count'] = 0;
+                            
+                            if (moduleuser.modules) {
+                                $.each(moduleuser.modules, function( index2, module1 ) {
+                                    for(var propertyName in module1) {
+                                        MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
+                                    }
+                                    MM.log('CHECK:'+module1['duration']+'/'+module1.duration);
+                                    if (parseInt(module1['duration']) >= parseInt(localModule.minduration)) {
+                                        MM.log('CHECK');
+                                        modulesUserValidated[user.id][module1.id] = 1;
+                                        count++;
+                                        modulesUserValidated[user.id]['count'] = count;
+                                    }
+                                });
+                            }
                             
                             var licensedsuser = $.grep(localModule.licenses, function( el ) {
                                             return el.userid == user.id;
