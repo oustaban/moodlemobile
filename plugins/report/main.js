@@ -37,6 +37,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                 var data = {
                     "userid" : MM.site.get('userid')
                 };
+                var settings = {};
                 MM.moodleWSCall(
                     'local_mobile_get_courses_with_role',
                     data,
