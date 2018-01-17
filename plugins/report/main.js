@@ -37,7 +37,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                 var data = {
                     "userid" : MM.site.get('userid')
                 };
-                var settings = {};
+                var settings = {omitExpires: true};
                 MM.log("WEBSERVICE:local_mobile_get_courses_with_role");
                 MM.moodleWSCall(
                     'local_mobile_get_courses_with_role',
