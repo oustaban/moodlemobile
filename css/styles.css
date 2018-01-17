@@ -2301,6 +2301,9 @@ ul#listeparticipants1 li:nth-child(odd) {
 ul#listeparticipants2 li:nth-child(odd) {
 		background:#fff7ec;
 }
+div#secondblock tr:nth-child(odd) {
+		background:#fff7ec;
+}
 
 li#lielevelP.nav-item.hide {
   display:none;
