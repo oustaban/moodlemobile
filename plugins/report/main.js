@@ -54,7 +54,10 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             var r = MM.db.insert('courses', storedCourse);
                         }
                     },
-                    settings,
+                    {
+                        getFromCache: false,
+                        saveToCache: true
+                    },
                     function () {
                         MM.log('Problem with local_mobile_get_courses_with_role');
                     }
