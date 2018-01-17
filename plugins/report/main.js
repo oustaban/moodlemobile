@@ -38,6 +38,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     "userid" : MM.site.get('userid')
                 };
                 var settings = {};
+                MM.log("WEBSERVICE:local_mobile_get_courses_with_role");
                 MM.moodleWSCall(
                     'local_mobile_get_courses_with_role',
                     data,
