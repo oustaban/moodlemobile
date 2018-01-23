@@ -84,13 +84,14 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var modulesUserValidated = [];
                     var modulesUserPif = [];
                     var licensesUser = [];
-                    var physicalScreenWidth = window.screen.width * window.devicePixelRatio;
+                    
                     
                     $.each(users, function( index, user ) {
                             
                             var userspif = MM.db.where('users', {userid:parseInt(user.id)});
                             modulesUserPif[user.id] = [];
                             modulesUserPif[user.id]['count'] = 0;
+                            var physicalScreenWidth = window.screen.width * window.devicePixelRatio;
                                 
                             if (userspif[0]) {
                                 var userpif = userspif[0].toJSON();
