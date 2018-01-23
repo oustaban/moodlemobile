@@ -99,7 +99,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 modules.forEach(function(module) {
                                     $.each(pifscourse, function( indexpif, pifcourse ) {
                                         MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin);
-                                        if (pifcourse.scormid == module.contentid && pifcourse.begin=1) {
+                                        if (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
                                             modulesUserPif[user.id][module.contentid] = 1;
                                             modulesUserPif[user.id]['count']++;
                                         }    
