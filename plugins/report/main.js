@@ -86,12 +86,16 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var licensesUser = [];
                     
                     var physicalScreenWidth = effectiveDeviceWidth();
-                    var sizetdmodule = (physicalScreenWidth - 500) / modules.length;
+                    var sizetdmodule = (physicalScreenWidth - 512) / modules.length;
                     
                     
                     $.each(users, function( index, user ) {
                             
-                            var userspif = MM.db.where('users', {userid:parseInt(user.id)});
+                            //var userspif = MM.db.where('users', {userid:parseInt(user.id)});
+                            var userspif = $.grep(user.pif, function( el ) {
+                                            return el.userid == user.id;
+                            });
+                            
                             modulesUserPif[user.id] = [];
                             modulesUserPif[user.id]['count'] = 0;
                             
