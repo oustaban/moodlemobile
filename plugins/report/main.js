@@ -102,29 +102,36 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 
                                 if (pifscourse.length > 0) {
                                     modules.forEach(function(module) {
+                                        var version = 0;
                                         $.each(pifscourse, function( indexpif, pifcourse ) {
-                                            if (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
-                                                if (modulesUserPif[user.id][module.contentid] && pifcourse.version>modulesUserPif[user.id][module.contentid]['version']){
-                                                    modulesUserPif[user.id][module.contentid] = 1;
-                                                    modulesUserPif[user.id][module.contentid]['version'] = pifcourse.version;
-                                                }
-                                                if (!modulesUserPif[user.id][module.contentid] && pifcourse.version>modulesUserPif[user.id][module.contentid]['version']) {
-                                                    modulesUserPif[user.id]['count']++;
-                                                    modulesUserPif[user.id][module.contentid] = 1;
-                                                    modulesUserPif[user.id][module.contentid]['version'] = pifcourse.version;
+                                            if (pifcourse.scormid == module.contentid) {
+                                                if (pifcourse.begin==1) {
+                                                    //code
+                                                
+                                                    if (modulesUserPif[user.id][module.contentid] && pifcourse.version>=version){
+                                                        modulesUserPif[user.id][module.contentid] = 1;
+                                                        version = pifcourse.version;
+                                                    }
+                                                    if (!modulesUserPif[user.id][module.contentid] && pifcourse.version>=version) {
+                                                        modulesUserPif[user.id]['count']++;
+                                                        modulesUserPif[user.id][module.contentid] = 1;
+                                                        version = pifcourse.version;
+                                                    }
+                                                } else {
+                                                    if (modulesUserPif[user.id][module.contentid] && pifcourse.version>=version){
+                                                        modulesUserPif[user.id][module.contentid] = 0;
+                                                        version = pifcourse.version;
+                                                        modulesUserPif[user.id]['count']--;
+                                                    }
+                                                    if (!modulesUserPif[user.id][module.contentid] && pifcourse.version>=version) {
+                                                        modulesUserPif[user.id][module.contentid] = 0;
+                                                        version = pifcourse.version;
+                                                    }
                                                 }
                                                 
                                                 
                                                 MM.log('PIFCOURSE1:'+physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
                                             
-                                            } else {
-                                                if (modulesUserPif[user.id][module.contentid] && pifcourse.version>modulesUserPif[user.id][module.contentid]['version']){
-                                                    modulesUserPif[user.id][module.contentid] = 0;
-                                                    modulesUserPif[user.id][module.contentid]['version'] = pifcourse.version;
-                                                    modulesUserPif[user.id]['count']--;
-                                                }
-                                                MM.log('PIFCOURSE2:'+physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
-                                                    
                                             }
                                         });
                                     });
