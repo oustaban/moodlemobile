@@ -103,8 +103,11 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                         $.each(pifscourse, function( indexpif, pifcourse ) {
                                             if (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
                                                 modulesUserPif[user.id][module.contentid] = 1;
-                                                modulesUserPif[user.id]['count']++;
-                                                MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin);
+                                                if (!modulesUserPif[user.id][module.contentid]) {
+                                                    modulesUserPif[user.id]['count']++;
+                                                }
+                                                
+                                                MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
                                             
                                             }    
                                         });
