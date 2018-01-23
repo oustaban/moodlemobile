@@ -103,14 +103,28 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                     modules.forEach(function(module) {
                                         $.each(pifscourse, function( indexpif, pifcourse ) {
                                             if (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
-                                                if (!modulesUserPif[user.id][module.contentid]) {
-                                                    modulesUserPif[user.id]['count']++;
+                                                if (modulesUserPif[user.id][module.contentid] && pifcourse.version>modulesUserPif[user.id][module.contentid]['version']){
+                                                    modulesUserPif[user.id][module.contentid] = 1;
+                                                    modulesUserPif[user.id][module.contentid]['version'] = pifcourse.version;
                                                 }
-                                                modulesUserPif[user.id][module.contentid] = 1;
+                                                if (!modulesUserPif[user.id][module.contentid] && pifcourse.version>modulesUserPif[user.id][module.contentid]['version']) {
+                                                    modulesUserPif[user.id]['count']++;
+                                                    modulesUserPif[user.id][module.contentid] = 1;
+                                                    modulesUserPif[user.id][module.contentid]['version'] = pifcourse.version;
+                                                }
                                                 
-                                                MM.log('PIFCOURSE:'physicalScreenWidth+'/'++pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
+                                                
+                                                MM.log('PIFCOURSE1:'physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
                                             
-                                            }    
+                                            } else {
+                                                if (modulesUserPif[user.id][module.contentid] && pifcourse.version>modulesUserPif[user.id][module.contentid]['version']){
+                                                    modulesUserPif[user.id][module.contentid] = 0;
+                                                    modulesUserPif[user.id][module.contentid]['version'] = pifcourse.version;
+                                                    modulesUserPif[user.id]['count']--;
+                                                }
+                                                MM.log('PIFCOURSE2:'physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
+                                                    
+                                            }
                                         });
                                     });
                                 } else {
