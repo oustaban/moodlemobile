@@ -2184,16 +2184,18 @@ div#firstcolumnreport #secondblock #thirdcol{
 }
 
 div#firstcolumnreport #secondblock #usermodule {
-  width:40px;
-  height:30px;
-  text-align:center;
-  background-color:#ccc;
-}
-div#firstcolumnreport #secondblock #usermodule2 {
-  width:40px;
+  width:50px;
   height:30px;
   text-align:center;
   color:#2da801;
+
+}
+div#firstcolumnreport #secondblock #usermodule2 {
+  width:50px;
+  height:30px;
+  text-align:center;
+  background-color:#ccc;
+  
 }
 div#firstcolumnreport #firstblock {
   height:310px;

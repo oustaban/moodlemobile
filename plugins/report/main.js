@@ -88,6 +88,9 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     $.each(users, function( index, user ) {
                             
                             var userspif = MM.db.where('users', {userid:parseInt(user.id)});
+                            modulesUserPif[user.id] = [];
+                            modulesUserPif[user.id]['count'] = 0;
+                                
                             if (userspif[0]) {
                                 var userpif = userspif[0].toJSON();
                                 var pifs = userpif.pif;
@@ -95,8 +98,6 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                                 return el.courseid == courseId;
                                 });
                                 
-                                modulesUserPif[user.id] = [];
-                                modulesUserPif[user.id]['count'] = 0;
                                 if (pifscourse.length > 0) {
                                     modules.forEach(function(module) {
                                         $.each(pifscourse, function( indexpif, pifcourse ) {
