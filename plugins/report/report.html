@@ -10,7 +10,7 @@
                         <td><div id="secondcol">Validité<br>Jeton</div></td>
                         <td><div id="thirdcol">Modules<br>Réalisés</div></td>
                         <% var index =0;_.each(modules, function(module) { %>
-                            <td><div id="cellmodule"><div id="module"><%= module.name %></div></div></td>
+                            <td style="width:<%= sizetdmodule %>px"><div id="cellmodule"><div id="module"><%= module.name %></div></div></td>
                         <% index++;}); %>
                     </tr>
                     <tr class="secondline">

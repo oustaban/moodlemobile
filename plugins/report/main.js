@@ -85,13 +85,16 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var modulesUserPif = [];
                     var licensesUser = [];
                     
+                    var physicalScreenWidth = window.screen.width * window.devicePixelRatio;
+                    var sizetdmodule = (physicalScreenWidth - 500) / modules.length;
+                    
                     
                     $.each(users, function( index, user ) {
                             
                             var userspif = MM.db.where('users', {userid:parseInt(user.id)});
                             modulesUserPif[user.id] = [];
                             modulesUserPif[user.id]['count'] = 0;
-                            var physicalScreenWidth = window.screen.width * window.devicePixelRatio;
+                            
                                 
                             if (userspif[0]) {
                                 var userpif = userspif[0].toJSON();
@@ -189,7 +192,8 @@ define(templates,function (reportTpl, elevesRowTpl) {
                         licensesUser: licensesUser,
                         deviceType: MM.deviceType,
                         courseId: courseId,
-                        modulesUserPif:modulesUserPif
+                        modulesUserPif:modulesUserPif,
+                        sizetdmodule: sizetdmodule
                     };
                     var html = MM.tpl.render(MM.plugins.report.templates.report.html, tpl);
         
