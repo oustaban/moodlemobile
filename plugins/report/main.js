@@ -91,10 +91,12 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     $.each(users, function( index, user ) {
                             
-                            //var userspif = MM.db.where('users', {userid:parseInt(user.id)});
+                            var userspif = MM.db.where('users', {userid:parseInt(user.id)});
+                            /*
                             var userspif = $.grep(user.pif, function( el ) {
                                             return el.userid == user.id;
                             });
+                            */
                             
                             modulesUserPif[user.id] = [];
                             modulesUserPif[user.id]['count'] = 0;

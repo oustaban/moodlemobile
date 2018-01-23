@@ -4436,7 +4436,7 @@ function upTime(countTo,trigger) {
   if (document.getElementById('seconds'))
     document.getElementById('seconds').firstChild.nodeValue = secs;
   
-  if (diffalerte >= (60 * 1 * 1000)) {
+  if (diffalerte >= (60 * 30 * 1000)) {
     trigger = now.getTime();
     var since = hours + ' h ' + mins + ' min ' + secs + ' s';
     alertIdle(since);
