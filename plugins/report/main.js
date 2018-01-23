@@ -68,10 +68,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                 function(users) {
                     
                     var localCourses = MM.db.where('contents', {'courseid':courseId, 'site':MM.config.current_site.id, 'webOnly':true, 'visible':1});
-                    
-                    
                     var modules = [];
-                    
                     $.each(localCourses, function( index, value ) {
                             var localCourse = value.toJSON();
                             modules.push(localCourse);
@@ -79,12 +76,40 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     });
                     
                     
+                    
+                    
+                    
                     var localModules = MM.db.where('courses', {'id':MM.config.current_site.id+'-'+courseId});
                     var localModule = localModules[0].toJSON();
                     var modulesUserValidated = [];
+                    var modulesUserPif = [];
                     var licensesUser = []
                     
                     $.each(users, function( index, user ) {
+                            
+                            var userspif = MM.db.where('users', {userid:parseInt(user.id)});
+                            var userpif = userspif[0].toJSON();
+                            var pifs = userpif.pif;
+                            pifscourse = $.grep(pifs, function( el ) {
+                                            return el.courseid == course;
+                            });
+                            
+                            modulesUserPif[user.id]['count'] = 0;
+                            if (pifscourse.length > 0) {
+                                modules.forEach(function(module) {
+                                    $.each(pifscourse, function( indexpif, pifcourse ) {
+                                        MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin);
+                                        if (pifcourse.scormid == module.contentid && pifcourse.begin=1) {
+                                            modulesUserPif[user.id][module.contentid] = 1;
+                                            modulesUserPif[user.id]['count']++;
+                                        }    
+                                    });
+                                });
+                            }
+                            
+                            
+                            
+                    
                             MM.log('LOCAL MODULES:'+user.id+'/'+localModule.minduration);
                             var modulesuser = $.grep(localModule.modules, function( el ) {
                                             return el.userid == user.id;
@@ -135,6 +160,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                         licensesUser: licensesUser,
                         deviceType: MM.deviceType,
                         courseId: courseId,
+                        modulesUserPif:modulesUserPif
                     };
                     var html = MM.tpl.render(MM.plugins.report.templates.report.html, tpl);
         
