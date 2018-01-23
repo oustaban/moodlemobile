@@ -85,7 +85,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var modulesUserPif = [];
                     var licensesUser = [];
                     
-                    var physicalScreenWidth = window.screen.width * window.devicePixelRatio;
+                    var physicalScreenWidth = effectiveDeviceWidth();
                     var sizetdmodule = (physicalScreenWidth - 500) / modules.length;
                     
                     
@@ -133,7 +133,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                                 }
                                                 
                                                 
-                                                MM.log('PIFCOURSE1:'+physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
+                                                //MM.log('PIFCOURSE1:'+physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
                                             
                                             }
                                         });
@@ -254,3 +254,13 @@ define(templates,function (reportTpl, elevesRowTpl) {
 
     MM.registerPlugin(plugin);
 });
+
+function effectiveDeviceWidth() {
+    var deviceWidth = window.orientation == 0 ? window.screen.width : window.screen.height;
+    // iOS returns available pixels, Android returns pixels / pixel ratio
+    // http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
+    if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
+        deviceWidth = deviceWidth / window.devicePixelRatio;
+    }
+    return deviceWidth;
+}
