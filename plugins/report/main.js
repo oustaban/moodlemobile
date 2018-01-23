@@ -114,7 +114,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                                 }
                                                 
                                                 
-                                                MM.log('PIFCOURSE1:'physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
+                                                MM.log('PIFCOURSE1:'+physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
                                             
                                             } else {
                                                 if (modulesUserPif[user.id][module.contentid] && pifcourse.version>modulesUserPif[user.id][module.contentid]['version']){
