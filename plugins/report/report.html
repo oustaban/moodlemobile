@@ -36,13 +36,13 @@
                         <% var indexmodule =0;_.each(modules, function(module) { %>
                             <td>
                                 <% if (modulesUserValidated[user.id][module.contentid] == 1 && modulesUserPif[user.id][module.contentid] == 1) { %>
-                                    <div id="usermodule">X</div>
+                                    <div id="usermodule" style="width:<%= sizetdmodule %>px">X</div>
                                 <% } %>
                                 <% if (!modulesUserPif[user.id][module.contentid]) { %>
-                                    <div id="usermodule2"></div>
+                                    <div id="usermodule2" style="width:<%= sizetdmodule %>px"></div>
                                 <% } %>
                                 <% if (modulesUserValidated[user.id][module.contentid] != 1 && modulesUserPif[user.id][module.contentid] == 1) { %>
-                                    <div id="usermodule"></div>
+                                    <div id="usermodule" style="width:<%= sizetdmodule %>px"></div>
                                 <% } %>
                                 
                             </td>
