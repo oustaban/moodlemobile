@@ -95,6 +95,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                                 return el.courseid == courseId;
                                 });
                                 
+                                modulesUserPif[user.id] = [];
                                 modulesUserPif[user.id]['count'] = 0;
                                 if (pifscourse.length > 0) {
                                     modules.forEach(function(module) {
@@ -116,7 +117,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             
                             
                     
-                            MM.log('LOCAL MODULES:'+user.id+'/'+localModule.minduration);
+                            //MM.log('LOCAL MODULES:'+user.id+'/'+localModule.minduration);
                             var modulesuser = $.grep(localModule.modules, function( el ) {
                                             return el.userid == user.id;
                             });
@@ -131,11 +132,11 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             if (moduleuser) {
                                 $.each(moduleuser.modules, function( index2, module1 ) {
                                     for(var propertyName in module1) {
-                                        MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
+                                        //MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
                                     }
-                                    MM.log('CHECK:'+module1['duration']+'/'+module1.duration);
+                                    //MM.log('CHECK:'+module1['duration']+'/'+module1.duration);
                                     if (parseInt(module1['duration']) >= parseInt(localModule.minduration)) {
-                                        MM.log('CHECK');
+                                        //MM.log('CHECK');
                                         modulesUserValidated[user.id][module1.id] = 1;
                                         count++;
                                         modulesUserValidated[user.id]['count'] = count;
@@ -152,13 +153,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                             
                     });
                     
-                    /*
-                    modulesValidated = modulesValidated.toJSON();
                     
-                    for (var i = 0;i<modulesValidated.length;i++) {
-                        MM.log('Modules Passés:'+modulesValidated[i].name);
-                    }
-                    */
                     var tpl = {
                         users: users,
                         modules: modules,
