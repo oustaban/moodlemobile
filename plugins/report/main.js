@@ -99,10 +99,10 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                 modulesUserPif[user.id]['count'] = 0;
                                 if (pifscourse.length > 0) {
                                     modules.forEach(function(module) {
-                                        $.eif (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
+                                        $.each(pifscourse, function( indexpif, pifcourse ) {
+                                            if (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
                                                 modulesUserPif[user.id][module.contentid] = 1;
                                                 modulesUserPif[user.id]['count']++;
-                                                ach(pifscourse, function( indexpif, pifcourse ) {
                                                 MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin);
                                             
                                             }    
