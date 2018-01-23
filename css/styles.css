@@ -2145,7 +2145,7 @@ div#firstcolumnreport #firstblock .secondline #thirdcol{
   text-align:center;
 }
 div#firstcolumnreport #firstblock #cellmodule{
-  width:40px;
+  width:50px;
   height:260px;
 }
 div#firstcolumnreport #firstblock #module{
@@ -2155,6 +2155,7 @@ div#firstcolumnreport #firstblock #module{
   width:260px;
   height:260px;
   padding-left:5px;
+  padding-top:10px;
 }
 div#firstcolumnreport #firstblock #empty {
   height:40px;
@@ -2181,10 +2182,18 @@ div#firstcolumnreport #secondblock #thirdcol{
   height:30px;
   text-align:center;
 }
+
 div#firstcolumnreport #secondblock #usermodule {
   width:40px;
   height:30px;
-  text-align:center
+  text-align:center;
+  background-color:#ccc;
+}
+div#firstcolumnreport #secondblock #usermodule2 {
+  width:40px;
+  height:30px;
+  text-align:center;
+  color:#2da801;
 }
 div#firstcolumnreport #firstblock {
   height:310px;
@@ -2457,10 +2466,5 @@ li#lielevelP.nav-item.hide {
   background-color:#203469;
 }
 
-#usermodule2 {
-  background-color:#ccc;
-}
-#usermodule {
-  color:#2da801;
-}
+
 

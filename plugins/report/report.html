@@ -41,6 +41,9 @@
                                 <% if (!modulesUserPif[user.id][module.contentid]) { %>
                                     <div id="usermodule2">Y</div>
                                 <% } %>
+                                <% if (modulesUserValidated[user.id][module.contentid] != 1 && modulesUserPif[user.id][module.contentid] == 1) { %>
+                                    <div id="usermodule"></div>
+                                <% } %>
                                 
                             </td>
                         <% indexmodule++;}); %>
