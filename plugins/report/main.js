@@ -86,7 +86,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var licensesUser = [];
                     
                     var physicalScreenWidth = effectiveDeviceWidth();
-                    var sizetdmodule = (physicalScreenWidth - 512) / modules.length;
+                    var sizetdmodule = (physicalScreenWidth - 500) / modules.length;
                     
                     
                     $.each(users, function( index, user ) {
