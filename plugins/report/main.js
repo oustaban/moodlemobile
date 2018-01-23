@@ -102,10 +102,10 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                     modules.forEach(function(module) {
                                         $.each(pifscourse, function( indexpif, pifcourse ) {
                                             if (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
-                                                modulesUserPif[user.id][module.contentid] = 1;
                                                 if (!modulesUserPif[user.id][module.contentid]) {
                                                     modulesUserPif[user.id]['count']++;
                                                 }
+                                                modulesUserPif[user.id][module.contentid] = 1;
                                                 
                                                 MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
                                             
