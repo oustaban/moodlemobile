@@ -88,23 +88,29 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     $.each(users, function( index, user ) {
                             
                             var userspif = MM.db.where('users', {userid:parseInt(user.id)});
-                            var userpif = userspif[0].toJSON();
-                            var pifs = userpif.pif;
-                            pifscourse = $.grep(pifs, function( el ) {
-                                            return el.courseid == course;
-                            });
-                            
-                            modulesUserPif[user.id]['count'] = 0;
-                            if (pifscourse.length > 0) {
-                                modules.forEach(function(module) {
-                                    $.each(pifscourse, function( indexpif, pifcourse ) {
-                                        MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin);
-                                        if (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
-                                            modulesUserPif[user.id][module.contentid] = 1;
-                                            modulesUserPif[user.id]['count']++;
-                                        }    
-                                    });
+                            if (userspif[0]) {
+                                var userpif = userspif[0].toJSON();
+                                var pifs = userpif.pif;
+                                pifscourse = $.grep(pifs, function( el ) {
+                                                return el.courseid == courseId;
                                 });
+                                
+                                modulesUserPif[user.id]['count'] = 0;
+                                if (pifscourse.length > 0) {
+                                    modules.forEach(function(module) {
+                                        $.each(pifscourse, function( indexpif, pifcourse ) {
+                                            MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin);
+                                            if (pifcourse.scormid == module.contentid && pifcourse.begin==1) {
+                                                modulesUserPif[user.id][module.contentid] = 1;
+                                                modulesUserPif[user.id]['count']++;
+                                            }    
+                                        });
+                                    });
+                                } else {
+                                    MM.log('NOT PIFCOURSE:'+user.id+'/'+courseId);
+                                }
+                            } else {
+                                MM.log('NOT PIF:'+user.id);
                             }
                             
                             
