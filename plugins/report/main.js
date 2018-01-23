@@ -83,7 +83,8 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var localModule = localModules[0].toJSON();
                     var modulesUserValidated = [];
                     var modulesUserPif = [];
-                    var licensesUser = []
+                    var licensesUser = [];
+                    var physicalScreenWidth = window.screen.width * window.devicePixelRatio;
                     
                     $.each(users, function( index, user ) {
                             
@@ -107,7 +108,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                                 }
                                                 modulesUserPif[user.id][module.contentid] = 1;
                                                 
-                                                MM.log('PIFCOURSE:'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
+                                                MM.log('PIFCOURSE:'physicalScreenWidth+'/'++pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
                                             
                                             }    
                                         });
