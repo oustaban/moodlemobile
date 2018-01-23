@@ -87,6 +87,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     
                     var physicalScreenWidth = effectiveDeviceWidth();
                     var sizetdmodule = (physicalScreenWidth - 500) / modules.length;
+                    MM.log('SIZE:' + physicalScreenWidth+'/'+sizetdmodule+'/'+modules.length);
                     
                     
                     $.each(users, function( index, user ) {
