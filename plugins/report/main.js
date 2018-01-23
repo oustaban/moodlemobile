@@ -123,7 +123,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                                     modulesUserPif[user.id][module.contentid]['version'] = pifcourse.version;
                                                     modulesUserPif[user.id]['count']--;
                                                 }
-                                                MM.log('PIFCOURSE2:'physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
+                                                MM.log('PIFCOURSE2:'+physicalScreenWidth+'/'+pifcourse.scormid+'/'+module.contentid+'/'+pifcourse.begin+'/'+pifcourse.version+'/'+user.id);
                                                     
                                             }
                                         });
