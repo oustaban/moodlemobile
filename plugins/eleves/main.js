@@ -442,10 +442,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             'userid': user.id,
                             'fullname': user.fullname,
                             'profileimageurl': user.profileimageurl,
-                            'notes':user.notes,
                             'lastname': user.lastname,
                             'firstname': user.firstname,
-                            'email': user.email
+                            'email': user.email,
+                            'notes':user.notes,
+                            'grille':user.grille
                         };
                         var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
                         if (checkUser && !MM.deviceConnected()) {
