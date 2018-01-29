@@ -1902,6 +1902,78 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                     });
                     
+                    
+                    
+                    
+                    
+                    
+                    //Creer Pif button
+                    $('button#creerpif').on(MM.clickType, function(e) {
+                        MM.log('Creer Pif clicked');
+                        var button = $(this);
+                        var course = $(this).attr("course");
+                        var user = $(this).attr("user");
+                        var version = $(this).attr("version");
+                        var theuser = MM.db.get('users',parseInt(user));
+                        
+                        var sessionFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                        var isCreate = 0;
+                       
+                        MM.fs.findFileAndReadContents(sessionFile,
+                            function (result) {
+                                if ($('#eleveP'+user).prop("checked") == true) {
+                                    isCreate = 1;
+                                    var html = '<div id="pifContent"><br/><br/>';
+                                    html += '<h1 align="center">PARTIE DEDIEE A L\'ATTENTION DU MANAGER</h1>';
+                                    html += '<p align="center">Pour commencer le parcours de formation de ce stagiaire veuillez remplir la grille de positionnement ci-dessous.<br/>Cette grille vous permettra dévaluer les compétences que le stagiaire devra développer dans le cadre de sa formation</p><br/><br/>';
+                                    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+                                    html += '<tr><td><button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="amont" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Grille de Positionnement<br>(AMONT)</button></td></tr>';
+                                    html += '</table>';
+                                    
+                                    var options = {
+                                        title: 'Stagiaire '+theuser.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
+                                        width: "98%",
+                                        marginTop: "5%",
+                                        buttons: {}
+                                    };
+                                    
+                                    options.buttons["Fermer"] = function() {
+                                        //MM.Router.navigate("eleves/" + course );
+                                        closeDialog(course,user);
+                                    };
+                                    
+                                    $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
+                                    MM.widgets.dialog(html, options);
+                                    
+                                } else {
+                                    var options= {
+                                        title: '',
+                                        buttons: {}
+                                    };
+                                    options.buttons["Fermer"] = function() {
+                                        MM.widgets.dialogClose2();
+                                    };
+                                    var html = "Pour créer le PIF de ce stagiaire, veuillez d'abord le sélectionner et cliquer sur 'Démarrer la session'";
+                                    MM.widgets.dialog2(html, options);
+                                }
+                            },
+                            function (result) {
+                                    var options= {
+                                        title: '',
+                                        buttons: {}
+                                    };
+                                    options.buttons["Fermer"] = function() {
+                                        MM.widgets.dialogClose2();
+                                    };
+                                    var html = "Pour créer le PIF de ce stagiaire, veuillez d'abord le sélectionner et cliquer sur 'Démarrer la session'";
+                                    MM.widgets.dialog2(html, options);
+                            }
+                        );
+                        
+                        
+                    });
+                    
                 
                     
                     
