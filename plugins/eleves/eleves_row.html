@@ -1,6 +1,6 @@
 <% var index =0;_.each(users, function(user) { %>
 <li index="<%= index %>" class="nav-item" id="lielevelP" eleve="eleveP<%= user.id %>">
-	<% if (user.îf == "" || user.pif == "[]") { %>
+	<% if (user.pif == "" || user.pif == "[]") { %>
 	<button id="creerpif" pif="" course="<%= courseId %>" version="1" user="<%= user.id %>" path="" module="" class="btn grd-grisfonce text-rouge">Créer PIF</button>
     <% } else { %>
 	<button id="pif" pif="" course="<%= courseId %>" version="<%= versions[index] %>" user="<%= user.id %>" path="" module="" class="btn grd-grisfonce text-blanc">PIF</button>
