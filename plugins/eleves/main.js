@@ -321,7 +321,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#offlineC').css('visibility','visible');
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
-                            $('#stopSessionL').show();      
+                            $('#stopSessionL').hide();      
                             $('#synchroR').hide();
                             $('#showSessionL').attr('users',users);
                             $('#showCourseL').attr('users',users);
@@ -364,6 +364,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
                             if(entries.length > 0) {
                                 
+                                var checkmoduleopened = 0;
+                                
                                 $.each(entries, function(index, entry) {
                                     
                                     MM.log('Session Stockée:'+entry.name);
@@ -389,8 +391,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                      $('#showCourseL').hide();
                                                      $('#stopCourseL').show();
                                                      $('#stopSessionL').hide();
-                                                     
                                                      $("#stopCourseL").attr("module",namefile[0]);
+                                                     checkmoduleopened = 1
+                                                } else {
+                                                     if (!checkmoduleopened) {
+                                                        $('#stopSessionL').show();
+                                                     }
+                                                     
                                                 }
                                             }
                                         );
