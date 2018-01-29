@@ -1362,13 +1362,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            });
                            lenghtSelected = usersSelected.length - 1;
                            if (isNotCreated) {
-                                $("#showCourseL").show();
-                                $("#stopCourseL").hide();
-                                $('#createdPif').hide();
-                           } else {
                                 $("#showCourseL").hide();
                                 $("#stopCourseL").hide();
                                 $('#createdPif').show();
+                           } else {
+                                $("#showCourseL").show();
+                                $("#stopCourseL").hide();
+                                $('#createdPif').hide();
                            }
                            
                         } else {
