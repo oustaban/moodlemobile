@@ -2335,7 +2335,7 @@ li#lielevelP.nav-item.hide {
   width: 50px;
   height: 50px;
   display:table-cell;
-  background: #d4d4d4 url(../img/icone-note.png) no-repeat 8px 8px;
+  background-image:url(../img/icone-note.png) no-repeat 8px 8px;
   background: -moz-linear-gradient(bottom, #d4d4d4 75%, #ffffff 100%); 
   background: -webkit-linear-gradient(bottom, #d4d4d4 75%,#ffffff 100%); 
   background: linear-gradient(to top, #d4d4d4 75%,#ffffff 100%); 
