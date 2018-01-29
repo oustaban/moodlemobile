@@ -1355,6 +1355,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 usersSelected += valueSelected+",";
                                 var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(valueSelected));
                                 var getuserselectedG = getuserselected.toJSON();
+                                MM.log('USER:'+valueSelected+'/'+getuserselectedG.userid+'/'+getuserselectedG.pif)
                                 if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
                                    isNotCreated = 1;
                                 }
