@@ -321,6 +321,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#offlineC').css('visibility','visible');
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
+                            $('#createdPif').hide();
                             $('#stopSessionL').hide();      
                             $('#synchroR').hide();
                             $('#showSessionL').attr('users',users);
@@ -350,6 +351,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#offlineC').css('visibility','hidden');
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
+                            $('#createdPif').hide();
                             $('#stopSessionL').hide();      
                             $('#synchroR').hide();
                             $('#showTimer').hide();
@@ -389,6 +391,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                      //$('#offlineC').hide();
                                                      $('#offlineC').css('visibility','hidden');
                                                      $('#showCourseL').hide();
+                                                     $('#createdPif').hide();
                                                      $('#stopCourseL').show();
                                                      $('#stopSessionL').hide();
                                                      $("#stopCourseL").attr("module",namefile[0]);
@@ -1347,15 +1350,30 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                            MM.log("Selected Course:"+selectedCourse);
                            
                            usersSelected = "";
+                           var isNotCreated = 0;
                            $.each(selected, function(indexSelected, valueSelected) {
                                 usersSelected += valueSelected+",";
+                                var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(valueSelected));
+                                var getuserselectedG = getuserselected.toJSON();
+                                if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
+                                   isNotCreated = 1;
+                                }
                            });
                            lenghtSelected = usersSelected.length - 1;
-                           $("#showCourseL").show();
-                           $("#stopCourseL").hide(); 
+                           if (isNotCreated) {
+                                $("#showCourseL").show();
+                                $("#stopCourseL").hide();
+                                $('#createdPif').hide();
+                           } else {
+                                $("#showCourseL").hide();
+                                $("#stopCourseL").hide();
+                                $('#createdPif').show();
+                           }
+                           
                         } else {
                            $("#showCourseL").hide();
-                           $("#stopCourseL").hide(); 
+                           $("#stopCourseL").hide();
+                           $('#createdPif').hide();
                            MM.log("Selected Course NOK");
                         }
                         
@@ -1665,6 +1683,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $('#offlineC').css('visibility','hidden');
                                 $('#showCourseL').hide();
                                 $('#stopCourseL').hide();
+                                $('#createdPif').hide();
                                 $('#stopSessionL').hide();
                                 $("#stopSessionL").attr('time','');
                                 $("#stopSessionL").attr('starttime','');
@@ -1729,6 +1748,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#offlineC').css('visibility','hidden');
                                                     $('#showCourseL').hide();
                                                     $('#stopCourseL').hide();
+                                                    $('#createdPif').hide();
                                                     $('#stopSessionL').hide();
                                                     $("#synchroR").show();
                                                     $("#stopSessionL").attr('time','');
@@ -1925,10 +1945,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if ($('#eleveP'+user).prop("checked") == true) {
                                     isCreate = 1;
                                     var html = '<div id="pifContent"><br/><br/>';
-                                    html += '<h1 align="center">PARTIE DEDIEE A L\'ATTENTION DU MANAGER</h1>';
-                                    html += '<p align="center">Pour commencer le parcours de formation de ce stagiaire veuillez remplir la grille de positionnement ci-dessous.<br/>Cette grille vous permettra dévaluer les compétences que le stagiaire devra développer dans le cadre de sa formation</p><br/><br/>';
+                                    html += '<h1 align="center">PARTIE DEDIEE A L\'ATTENTION DU MANAGER</h1><br/><br/><br/><br/>';
+                                    html += '<p align="center">Pour commencer le parcours de formation de ce stagiaire veuillez remplir la grille de positionnement ci-dessous.<br/>Cette grille vous permettra dévaluer les compétences que le stagiaire devra développer dans le cadre de sa formation</p><br/><br/><br/><br/>';
                                     html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-                                    html += '<tr><td><button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="amont" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Grille de Positionnement<br>(AMONT)</button></td></tr>';
+                                    html += '<tr><td style="text-align:center"><button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="amont" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">Grille de Positionnement<br>(AMONT)</button></td></tr>';
                                     html += '</table>';
                                     
                                     var options = {
@@ -2042,6 +2062,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.log('Write Result :'+fileUrl);
                                                 $('#stopCourseL').show();
                                                 $('#showCourseL').hide();
+                                                $('#createdPif').hide();
                                                 $('#stopSessionL').hide();
                                                 //$('#offlineC').hide();
                                                 $('#offlineC').css('visibility','hidden');

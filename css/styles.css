@@ -2051,6 +2051,10 @@ div.jqi button.jqidefaultbutton {
   height:40px;
   width:300px;
 }
+#createdPIF {
+  display:none;
+  color:#FF0000;
+}
 #offlineC {
   visibility:hidden;
   margin-top:10px;

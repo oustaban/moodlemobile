@@ -52,5 +52,8 @@
         <div class="centered2">
             <button id="synchroR" course="<%= courseId %>" users="<% _.each(users, function(user) { %><%= user.id %>,<% }); %>" names="<% _.each(users, function(user) { %><%= user.fullname %>,<% }); %>" class="btn grd-orange text-blanc" >Synchroniser les Résultats</button>
         </div>
+        <div class="centered2">
+            <span id="createdPif"><strong>PIf non créé(s) parmi les participants séléctionnés.</strong><br/><i>Veuillez compléter la grille d'évaluation en amont de la formation :<br/>cliquez sur 'Créer Pif' à côté du stagiaire concerné.</i></button>
+        </div>
         
     </div>
