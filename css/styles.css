@@ -2351,6 +2351,12 @@ li#lielevelP.nav-item.hide {
 		-moz-text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
 		-webkit-text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
 	}
+	.text-rouge {
+		color:#ff0000;
+		text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+		-moz-text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+		-webkit-text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
+	}
 	.modal-button-5 {
 	  width: 25%;
 	  background: #144283;
