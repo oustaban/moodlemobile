@@ -2335,9 +2335,9 @@ li#lielevelP.nav-item.hide {
   width: 50px;
   height: 50px;
   display:table-cell;
-  background: -moz-linear-gradient(bottom, #d4d4d4 75%, #ffffff 100%),url(../img/icone-note.png) no-repeat 8px 8px; 
-  background: -webkit-linear-gradient(bottom, #d4d4d4 75%,#ffffff 100%),url(../img/icone-note.png) no-repeat 8px 8px; 
-  background: linear-gradient(to top, #d4d4d4 75%,#ffffff 100%),url(../img/icone-note.png) no-repeat 8px 8px; 
+  background: url(../img/icone-note.png) no-repeat 8px 8px,-moz-linear-gradient(bottom, #d4d4d4 75%, #ffffff 100%); 
+  background: url(../img/icone-note.png) no-repeat 8px 8px,-webkit-linear-gradient(bottom, #d4d4d4 75%,#ffffff 100%); 
+  background: url(../img/icone-note.png) no-repeat 8px 8px,linear-gradient(to top, #d4d4d4 75%,#ffffff 100%); 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4d4d4', endColorstr='#ffffff',GradientType=0 ); 
 }
 
