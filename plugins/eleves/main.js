@@ -1914,7 +1914,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
                         var version = $(this).attr("version");
-                        var theuser = MM.db.get('users',parseInt(user));
+                        var theuser = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(user));
                         var userG = theuser.toJSON();
                         
                         var sessionFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
