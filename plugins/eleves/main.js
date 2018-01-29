@@ -1915,6 +1915,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var user = $(this).attr("user");
                         var version = $(this).attr("version");
                         var theuser = MM.db.get('users',parseInt(user));
+                        var userG = theuser.toJSON();
                         
                         var sessionFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                         var isCreate = 0;
@@ -1931,7 +1932,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     html += '</table>';
                                     
                                     var options = {
-                                        title: 'Stagiaire '+theuser.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
+                                        title: 'Stagiaire '+userG.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
                                         width: "98%",
                                         marginTop: "5%",
                                         buttons: {}
