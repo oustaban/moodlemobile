@@ -1354,22 +1354,24 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var clickedP = 0;
                     
                     $('input.elevecheckbox').on(MM.clickType, function(e) {
+                        
                         if($(this).is(':checked'))
                               $(this).prop('checked',false);
                         else 
                            $(this).prop('checked',true);
                         
-                        
+                        MM.log('PARTICPANT SELECTIONNE');
                         
                         var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                         MM.fs.findFileAndReadContents(resultFile,
                             function (result) {
+                                MM.log('READ SESSION');
                                 var isPifNotCreated2 = 0;
                                 $('input.elevecheckbox:checked').each(function() {
                                     var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt($(this).val()));
                                     var getuserselectedG = getuserselected.toJSON();
                                     if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
-                                        isNotCreated = 1;
+                                        isPifNotCreated2 = 1;
                                     }
                                 }); 
                                 
@@ -1440,7 +1442,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 }
                             },
                             function (result) {
-                                
+                                MM.log('NO SESSION');
                             }
                         );
                         
@@ -1559,8 +1561,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $('#offlineC').css('visibility','visible');
                                         if (isNotCreated) {
                                             $('#createdPif').show();
+                                            $('#offlineC').attr('disabled','disabled'); 
                                         } else {
                                             $('#createdPif').hide();
+                                            $('#offlineC > option').removeAttr("selected");
                                         }
                                     },
                                     function(fileUrl) {
