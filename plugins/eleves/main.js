@@ -1128,6 +1128,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     MM.log("Check Button");
                     var selected = [];
                     var clickedP=0;
+                    var showCourseL = 0;
+                    var stopCourseL = 0;
+                    var showSessionL = 0;
+                    var stopSessionL = 0;
+                    var offlineC = 0;
+                    var synchroR = 0;
                     
                     $('a#lielevelP').on('touchstart', function(e) {
                         e.preventDefault(); 
@@ -1275,18 +1281,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                                         if (isNotCreated) {
                                             if (!clickedP) {
-                                                if ($('#showCourseL:visible'))
-                                                    var showCourseL = 1;
-                                                if ($('#stopCourseL:visible'))
-                                                    var stopCourseL = 1;
-                                                if ($('#showSessionL:visible'))
-                                                    var showSessionL = 1;
-                                                if ($('#stopSessionL:visible'))
-                                                    var stopSessionL = 1;
-                                                if ($('#offlineC:visible'))
-                                                    var offlineC = 1;
-                                                if ($('#synchroR:visible'))
-                                                    var synchroR = 1;
+                                                if ($('#showCourseL').is(':visible'))
+                                                    showCourseL = 1;
+                                                if ($('#stopCourseL').is(':visible'))
+                                                    stopCourseL = 1;
+                                                if ($('#showSessionL').is(':visible'))
+                                                    showSessionL = 1;
+                                                if ($('#stopSessionL').is(':visible'))
+                                                    stopSessionL = 1;
+                                                if ($('#offlineC').is(':visible'))
+                                                    offlineC = 1;
+                                                if ($('#synchroR').is(':visible'))
+                                                    synchroR = 1;
                                                     
                                                 clickedP = 1;
                                                 MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
