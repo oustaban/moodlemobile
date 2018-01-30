@@ -1287,10 +1287,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     var offlineC = 1;
                                                 if ($('#synchroR:visible'))
                                                     var synchroR = 1;
+                                                    
+                                                clickedP = 1;
                                                 MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
                                             }
                                             
-                                            clickedP = 1;
+                                            
                                             
                                             $('#offlineC').css('visibility','visible');
                                             $('#offlineC').attr('disabled','disabled'); 
@@ -1300,33 +1302,51 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             $("#stopSessionL").hide();
                                             $("#synchroR").hide();
                                             $('#createdPif').show();
+                                            
                                         } else {
+                                            
+                                            
+                                            if (!clickedP) {
+                                                $('#offlineC').css('visibility','visible');
+                                                $('#offlineC').removeAttr('disabled');
+                                                $("#showCourseL").hide();
+                                                $("#stopCourseL").hide();
+                                                $("#showSessionL").hide();
+                                                $("#stopSessionL").hide();
+                                                $("#synchroR").hide();
+                                                $('#createdPif').hide();
+                                            }
+                                            
+                                            
                                             if (clickedP) {
                                                 MM.log("LOAD:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR); 
+                                               
+                                               
+                                               
                                                if (showCourseL) {
                                                     $('#showCourseL').show();
                                                } else {
-                                                    $('#showCourseL').show();
+                                                    $('#showCourseL').hide();
                                                }
                                                if (stopCourseL) {
                                                     $('#stopCourseL').show();
                                                } else {
-                                                    $('#stopCourseL').show();
+                                                    $('#stopCourseL').hide();
                                                }
                                                if (showSessionL) {
                                                     $('#showSessionL').show();
                                                } else {
-                                                    $('#showSessionL').show();
+                                                    $('#showSessionL').hide();
                                                }
                                                if (stopSessionL) {
                                                     $('#stopSessionL').show();
                                                } else {
-                                                    $('#stopSessionL').show();
+                                                    $('#stopSessionL').hide();
                                                }
                                                if (synchroR) {
                                                     $('#stopCourseL').show();
                                                } else {
-                                                    $('#stopCourseL').show();
+                                                    $('#stopCourseL').hide();
                                                }
                                                if (offlineC) {
                                                     $('#offlineC').css('visibility','visible');
@@ -1335,6 +1355,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#offlineC').css('visibility','hidden');
                                                     $('#offlineC').removeAttr('disabled');
                                                }
+                                               
                                                clickedP = 0;
                                             }    
                                         }
