@@ -213,6 +213,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     //Get Last Version Pif of User
                     var pifscourse = new Array();
                     var versionArray = new Array();
+                    
                     $.each(users, function( index, user ) {
                             versionArray[index] = 0;
                             pifscourse[index] = $.grep(user.pif, function( el ) {
@@ -1227,12 +1228,32 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                              
                         if (selected.length > 0) {
                             MM.log("Check Button:"+selected.length);   
-                            
+                            var isNotCreated = 0;
                             var usersSelected = "";
                             $.each(selected, function(indexSelected, valueSelected) {
                                 usersSelected += valueSelected+",";
+                                
+                                var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(valueSelected));
+                                var getuserselectedG = getuserselected.toJSON();
+                                if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
+                                    isNotCreated = 1;
+                                }
                             });
+                            
                             var lenghtSelected = usersSelected.length - 1;
+                            
+                            if (isNotCreated == 1) {
+                                $("#showCourseL").hide();
+                                $("#stopCourseL").hide();
+                                $('#createdPif').show();
+                                
+                                $('#showCourseL').hide();
+                                $('#stopCourseL').hide();
+                                $('#stopSessionL').hide();
+                                $('#showSessionL').hide();      
+                                $('#synchroR').hide();
+                            }
+                            
                             if ($('#offlineC option').length>1) { 
                                 $("#showSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 $("#stopSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
@@ -1282,6 +1303,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function (result) {
                                         $("#showSessionL").show();
                                         $("#showTimer").hide();
+                                        $('#createdPif').hide();
                                     }
                                 );
                             }
@@ -1327,11 +1349,101 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                     });
                     
+                    
+                    
+                    var clickedP = 0;
+                    
                     $('input.elevecheckbox').on(MM.clickType, function(e) {
                         if($(this).is(':checked'))
                               $(this).prop('checked',false);
-                        else
+                        else 
                            $(this).prop('checked',true);
+                        
+                        
+                        
+                        var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                        MM.fs.findFileAndReadContents(resultFile,
+                            function (result) {
+                                var isPifNotCreated2 = 0;
+                                $('input.elevecheckbox:checked').each(function() {
+                                    var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt($(this).val()));
+                                    var getuserselectedG = getuserselected.toJSON();
+                                    if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
+                                        isNotCreated = 1;
+                                    }
+                                }); 
+                                
+                                
+                                  
+                                if (isPifNotCreated2) {
+                                    if (!clickedP) {
+                                        if ($('#showCourseL:visible'))
+                                            var showCourseL = 1;
+                                        if ($('#stopCourseL:visible'))
+                                            var stopCourseL = 1;
+                                        if ($('#showSessionL:visible'))
+                                            var showSessionL = 1;
+                                        if ($('#stopSessionL:visible'))
+                                            var stopSessionL = 1;
+                                        if ($('#offlineC:visible'))
+                                            var offlineC = 1;
+                                        if ($('#synchroR:visible'))
+                                            var synchroR = 1;
+                                    }
+                                    
+                                    clickedP = 1;
+                                    
+                                    $('#offlineC').css('visibility','visible');
+                                    $('#offlineC').attr('disabled','disabled'); 
+                                    $("#showCourseL").hide();
+                                    $("#stopCourseL").hide();
+                                    $("#showSessionL").hide();
+                                    $("#stopSessionL").hide();
+                                    $("#synchroR").hide();
+                                    $('#createdPif').show();
+                                } else {
+                                    if (clickedP = 1) {
+                                       if (showCourseL) {
+                                            $('#showCourseL').show();
+                                       } else {
+                                            $('#showCourseL').show();
+                                       }
+                                       if (stopCourseL) {
+                                            $('#stopCourseL').show();
+                                       } else {
+                                            $('#stopCourseL').show();
+                                       }
+                                       if (showSessionL) {
+                                            $('#showSessionL').show();
+                                       } else {
+                                            $('#showSessionL').show();
+                                       }
+                                       if (stopSessionL) {
+                                            $('#stopSessionL').show();
+                                       } else {
+                                            $('#stopSessionL').show();
+                                       }
+                                       if (synchroR) {
+                                            $('#stopCourseL').show();
+                                       } else {
+                                            $('#stopCourseL').show();
+                                       }
+                                       if (offlineC) {
+                                            $('#offlineC').css('visibility','visible');
+                                            $('#offlineC').removeAttr('disabled'); 
+                                       } else {
+                                            $('#offlineC').css('visibility','hidden');
+                                            $('#offlineC').removeAttr('disabled');
+                                       }
+                                       clickedP = 0;
+                                    }    
+                                }
+                            },
+                            function (result) {
+                                
+                            }
+                        });
+                        
                     });
                     
                     //Select Course
@@ -1346,21 +1458,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $("#stopCourseL").attr("module",option[1]);
                         MM.log("Change Selected Course:"+selectedCourse);
                         
+                        usersSelected = "";
+                        var isNotCreated = 0;
+                        $.each(selected, function(indexSelected, valueSelected) {
+                             usersSelected += valueSelected+",";
+                             var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(valueSelected));
+                             var getuserselectedG = getuserselected.toJSON();
+                             MM.log('USER:'+valueSelected+'/'+getuserselectedG.userid+'/'+getuserselectedG.pif)
+                             if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
+                                isNotCreated = 1;
+                             }
+                        });
+                        lenghtSelected = usersSelected.length - 1;
+                        
                         if (selectedCourse != 0) {
                            MM.log("Selected Course:"+selectedCourse);
-                           
-                           usersSelected = "";
-                           var isNotCreated = 0;
-                           $.each(selected, function(indexSelected, valueSelected) {
-                                usersSelected += valueSelected+",";
-                                var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(valueSelected));
-                                var getuserselectedG = getuserselected.toJSON();
-                                MM.log('USER:'+valueSelected+'/'+getuserselectedG.userid+'/'+getuserselectedG.pif)
-                                if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
-                                   isNotCreated = 1;
-                                }
-                           });
-                           lenghtSelected = usersSelected.length - 1;
                            if (isNotCreated) {
                                 $("#showCourseL").hide();
                                 $("#stopCourseL").hide();
@@ -1369,13 +1481,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $("#showCourseL").show();
                                 $("#stopCourseL").hide();
                                 $('#createdPif').hide();
-                           }
-                           
+                           }   
                         } else {
-                           $("#showCourseL").hide();
-                           $("#stopCourseL").hide();
-                           $('#createdPif').hide();
-                           MM.log("Selected Course NOK");
+                            MM.log("Selected Course NOK");
+                            if (isNotCreated) {
+                                $("#showCourseL").hide();
+                                $("#stopCourseL").hide();
+                                $('#createdPif').show();    
+                            } else {
+                                $("#showCourseL").hide();
+                                $("#stopCourseL").hide();
+                                $('#createdPif').hide();
+                            }
                         }
                         
                     });
@@ -1412,6 +1529,17 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         upTime(now,now);
                         
+                        var isNotCreated = 0;
+                        $.each(selected, function(indexSelected, valueSelected) {
+                             usersSelected += valueSelected+",";
+                             var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(valueSelected));
+                             var getuserselectedG = getuserselected.toJSON();
+                             MM.log('USER:'+valueSelected+'/'+getuserselectedG.userid+'/'+getuserselectedG.pif)
+                             if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
+                                isNotCreated = 1;
+                             }
+                        });
+                        
                         
                         
                         var fileResultL = MM.config.current_site.id+"/"+course+"/result/session.json";
@@ -1430,6 +1558,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $('#synchroR').hide();
                                         //$('#offlineC').show();
                                         $('#offlineC').css('visibility','visible');
+                                        if (isNotCreated) {
+                                            $('#createdPif').show();
+                                        } else {
+                                            $('#createdPif').hide();
+                                        }
                                     },
                                     function(fileUrl) {
                                         MM.log('Write Session NOK:'+content);
