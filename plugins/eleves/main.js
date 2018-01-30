@@ -1402,7 +1402,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     $("#synchroR").hide();
                                     $('#createdPif').show();
                                 } else {
-                                    if (clickedP = 1) {
+                                    if (clickedP) {
                                        if (showCourseL) {
                                             $('#showCourseL').show();
                                        } else {
@@ -1442,7 +1442,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             function (result) {
                                 
                             }
-                        });
+                        );
                         
                     });
                     
