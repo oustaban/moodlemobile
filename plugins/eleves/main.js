@@ -1227,7 +1227,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         });
                                              
                         if (selected.length > 0) {
-                            MM.log("Check Button:"+selected.length);   
                             var isNotCreated = 0;
                             var usersSelected = "";
                             $.each(selected, function(indexSelected, valueSelected) {
@@ -1241,6 +1240,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             });
                             
                             var lenghtSelected = usersSelected.length - 1;
+                            
+                            MM.log("CLICKEDP:"+clickedP);   
                             
                             if (isNotCreated) {
                                 if (!clickedP) {
@@ -1256,6 +1257,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         var offlineC = 1;
                                     if ($('#synchroR:visible'))
                                         var synchroR = 1;
+                                    MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
                                 }
                                 
                                 clickedP = 1;
@@ -1270,6 +1272,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $('#createdPif').show();
                             } else {
                                 if (clickedP) {
+                                    MM.log("LOAD:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR); 
                                    if (showCourseL) {
                                         $('#showCourseL').show();
                                    } else {
