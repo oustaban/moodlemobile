@@ -1127,7 +1127,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     //Check Button
                     MM.log("Check Button");
                     var selected = [];
-                    
+                    var clickedP=0;
                     
                     $('a#lielevelP').on('touchstart', function(e) {
                         e.preventDefault(); 
@@ -1242,17 +1242,71 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             var lenghtSelected = usersSelected.length - 1;
                             
-                            if (isNotCreated == 1) {
+                            if (isNotCreated) {
+                                if (!clickedP) {
+                                    if ($('#showCourseL:visible'))
+                                        var showCourseL = 1;
+                                    if ($('#stopCourseL:visible'))
+                                        var stopCourseL = 1;
+                                    if ($('#showSessionL:visible'))
+                                        var showSessionL = 1;
+                                    if ($('#stopSessionL:visible'))
+                                        var stopSessionL = 1;
+                                    if ($('#offlineC:visible'))
+                                        var offlineC = 1;
+                                    if ($('#synchroR:visible'))
+                                        var synchroR = 1;
+                                }
+                                
+                                clickedP = 1;
+                                
+                                $('#offlineC').css('visibility','visible');
+                                $('#offlineC').attr('disabled','disabled'); 
                                 $("#showCourseL").hide();
                                 $("#stopCourseL").hide();
+                                $("#showSessionL").hide();
+                                $("#stopSessionL").hide();
+                                $("#synchroR").hide();
                                 $('#createdPif').show();
-                                
-                                $('#showCourseL').hide();
-                                $('#stopCourseL').hide();
-                                $('#stopSessionL').hide();
-                                $('#showSessionL').hide();      
-                                $('#synchroR').hide();
+                            } else {
+                                if (clickedP) {
+                                   if (showCourseL) {
+                                        $('#showCourseL').show();
+                                   } else {
+                                        $('#showCourseL').show();
+                                   }
+                                   if (stopCourseL) {
+                                        $('#stopCourseL').show();
+                                   } else {
+                                        $('#stopCourseL').show();
+                                   }
+                                   if (showSessionL) {
+                                        $('#showSessionL').show();
+                                   } else {
+                                        $('#showSessionL').show();
+                                   }
+                                   if (stopSessionL) {
+                                        $('#stopSessionL').show();
+                                   } else {
+                                        $('#stopSessionL').show();
+                                   }
+                                   if (synchroR) {
+                                        $('#stopCourseL').show();
+                                   } else {
+                                        $('#stopCourseL').show();
+                                   }
+                                   if (offlineC) {
+                                        $('#offlineC').css('visibility','visible');
+                                        $('#offlineC').removeAttr('disabled'); 
+                                   } else {
+                                        $('#offlineC').css('visibility','hidden');
+                                        $('#offlineC').removeAttr('disabled');
+                                   }
+                                   clickedP = 0;
+                                }    
                             }
+                            
+                            
                             
                             if ($('#offlineC option').length>1) { 
                                 $("#showSessionL").attr("users",usersSelected.substr(0, lenghtSelected) );
@@ -1360,12 +1414,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         else 
                            $(this).prop('checked',true);
                         
-                        MM.log('PARTICPANT SELECTIONNE');
-                        
                         var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                         MM.fs.findFileAndReadContents(resultFile,
                             function (result) {
-                                MM.log('READ SESSION');
                                 var isPifNotCreated2 = 0;
                                 $('input.elevecheckbox:checked').each(function() {
                                     var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt($(this).val()));
