@@ -1563,6 +1563,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var usersL = users.split(",");
                         */
                         
+                        offlineC = 1;
                         var course = $(this).attr("course");
                         
                         $('input:checkbox').each(function() {
