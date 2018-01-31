@@ -1564,6 +1564,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         */
                         
                         offlineC = 1;
+                        showSessionL = 0;
                         var course = $(this).attr("course");
                         
                         $('input:checkbox').each(function() {
