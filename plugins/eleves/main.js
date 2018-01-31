@@ -1258,6 +1258,39 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 //$("#showSessionL").show();
                                 
+                                if (isNotCreated) {
+                                            if (!clickedP) {
+                                                if ($('#showCourseL').is(':visible'))
+                                                    showCourseL = 1;
+                                                else
+                                                    showCourseL = 0;
+                                                if ($('#stopCourseL').is(':visible'))
+                                                    stopCourseL = 1;
+                                                else
+                                                    stopCourseL = 0;
+                                                if ($('#showSessionL').is(':visible'))
+                                                    showSessionL = 1;
+                                                else
+                                                    showSessionL = 0;
+                                                if ($('#stopSessionL').is(':visible'))
+                                                    stopSessionL = 1;
+                                                else
+                                                    stopSessionL = 0;
+                                                    
+                                                if ($('#offlineC').css('visibility') == 'visible')
+                                                    offlineC = 1;
+                                                else
+                                                    offlineC = 0;
+                                                if ($('#synchroR').is(':visible'))
+                                                    synchroR = 1;
+                                                else
+                                                    synchroR = 0;
+                                                    
+                                                clickedP = 1;
+                                                MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
+                                            }
+                                }
+                                
                                 var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                             
                                 MM.fs.findFileAndReadContents(resultFile,
