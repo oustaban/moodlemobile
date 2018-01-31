@@ -3822,6 +3822,65 @@ function voirpif(courseId,user,version) {
                             
 }
 
+
+
+//Modifier le Pif button               
+function amont(button,user,course,version) {
+    
+    MM.log('Amont clicked');
+    
+    var button = button;
+    var course = course;
+    var courseId = course;
+    var user = user;
+    var version = version;
+    var theuser = MM.db.get('users',parseInt(user));
+    
+    var users = MM.db.where('users', {userid:parseInt(user)});
+    var usergrille = users[0].toJSON();
+    var grille = usergrille.grille;
+    
+    var html = '<div id="pifContent">';
+    html += '<h1 class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/><br/><br/><br/>';
+    html += '<p align=center"><i>Principe : Mettre le stagiaire en situation de travail et observer sa façon de travailler.</i></p><br/><br/>';
+    html += '<p align=center">Vous pouvez évaluer le stagiaire sur un ou plusieurs site.</p><br/><br/>';
+    html += '<p align=center">Veuillez sélectionner le site de votre choix.</p><br/><br/><br/><br/>';
+    
+    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+    html += '<tr>';
+    html += '<td style="text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:33%;height:50px" class="modal-button-5">BUREAU</button></td>';
+    html += '<td style="text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:33%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
+    html += '<td style="text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:33%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
+    html += '</tr>';
+    html += '</table>';
+    
+    
+    var options = {
+        title: 'Modifier le PIF du stagiaire : '+userpif.fullname,
+        width: "98%",
+        marginTop: "5%",
+        buttons: {}
+    };
+    
+    options.buttons[MM.lang.s("cancel")] = function() {
+        MM.Router.navigate("eleves/" + course );
+        $("#app-dialog").removeClass('full-screen-dialog2');
+        MM.widgets.dialogClose();
+        $('button#pif[user="'+userpif.userid+'"]').click();
+    };
+    
+    options.buttons["Fermer"] = function() {
+        MM.widgets.dialogClose();
+        $('button#creerpif[user="'+usergrille.userid+'"]').click();
+    };
+    
+   
+    $("#app-dialog").addClass('full-screen-dialog2');
+    $("#app-dialog .modalContent").css('height','85vh');
+    MM.widgets.dialog(html, options);
+    
+}
+
 //Modifier le Pif button               
 function modifierPif(button,user,course,version) {
     

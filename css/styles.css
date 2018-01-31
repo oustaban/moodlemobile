@@ -2489,5 +2489,15 @@ li#lielevelP.nav-item.hide {
   background-color:#203469;
 }
 
+h1.grille {
+  font-size:25px;
+  font-weight:bold;
+  color:#144283;
+}
+
+span.red {
+  color:#FF0000;
+}
+
 
 
