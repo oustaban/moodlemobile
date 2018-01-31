@@ -1283,16 +1283,28 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             if (!clickedP) {
                                                 if ($('#showCourseL').is(':visible'))
                                                     showCourseL = 1;
+                                                else
+                                                    showCourseL = 0;
                                                 if ($('#stopCourseL').is(':visible'))
                                                     stopCourseL = 1;
+                                                else
+                                                    stopCourseL = 0;
                                                 if ($('#showSessionL').is(':visible'))
                                                     showSessionL = 1;
+                                                else
+                                                    showSessionL = 0;
                                                 if ($('#stopSessionL').is(':visible'))
                                                     stopSessionL = 1;
+                                                else
+                                                    stopSessionL = 0;
                                                 if ($('#offlineC').is(':visible'))
                                                     offlineC = 1;
+                                                else
+                                                    offlineC = 0;
                                                 if ($('#synchroR').is(':visible'))
                                                     synchroR = 1;
+                                                else
+                                                    synchroR = 0;
                                                     
                                                 clickedP = 1;
                                                 MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
