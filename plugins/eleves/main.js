@@ -1347,10 +1347,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#showCourseL').hide();
                                                }
                                                if (stopCourseL) {
-                                                    MM.log('GOOD');
                                                     $('#stopCourseL').show();
                                                } else {
-                                                    MM.log('BAD');
                                                     $('#stopCourseL').hide();
                                                }
                                                if (showSessionL) {
@@ -1364,9 +1362,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#stopSessionL').hide();
                                                }
                                                if (synchroR) {
-                                                    $('#stopCourseL').show();
+                                                    $('#synchroR').show();
                                                } else {
-                                                    $('#stopCourseL').hide();
+                                                    $('#synchroR').hide();
                                                }
                                                if (offlineC) {
                                                     $('#offlineC').css('visibility','visible');
