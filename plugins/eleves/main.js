@@ -1347,8 +1347,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#showCourseL').hide();
                                                }
                                                if (stopCourseL) {
+                                                    MM.log('GOOD');
                                                     $('#stopCourseL').show();
                                                } else {
+                                                    MM.log('BAD');
                                                     $('#stopCourseL').hide();
                                                }
                                                if (showSessionL) {
@@ -1460,88 +1462,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         else 
                            $(this).prop('checked',true);
                         
-                        var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
-                        MM.fs.findFileAndReadContents(resultFile,
-                            function (result) {
-                                var isPifNotCreated2 = 0;
-                                $('input.elevecheckbox:checked').each(function() {
-                                    var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt($(this).val()));
-                                    var getuserselectedG = getuserselected.toJSON();
-                                    if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
-                                        isPifNotCreated2 = 1;
-                                    }
-                                }); 
-                                
-                                
-                                  
-                                if (isPifNotCreated2) {
-                                    if (!clickedP) {
-                                        if ($('#showCourseL:visible'))
-                                            var showCourseL = 1;
-                                        if ($('#stopCourseL:visible'))
-                                            var stopCourseL = 1;
-                                        if ($('#showSessionL:visible'))
-                                            var showSessionL = 1;
-                                        if ($('#stopSessionL:visible'))
-                                            var stopSessionL = 1;
-                                        if ($('#offlineC:visible'))
-                                            var offlineC = 1;
-                                        if ($('#synchroR:visible'))
-                                            var synchroR = 1;
-                                    }
-                                    
-                                    clickedP = 1;
-                                    
-                                    $('#offlineC').css('visibility','visible');
-                                    $('#offlineC').attr('disabled','disabled'); 
-                                    $("#showCourseL").hide();
-                                    $("#stopCourseL").hide();
-                                    $("#showSessionL").hide();
-                                    $("#stopSessionL").hide();
-                                    $("#synchroR").hide();
-                                    $('#createdPif').show();
-                                } else {
-                                    if (clickedP) {
-                                       if (showCourseL) {
-                                            $('#showCourseL').show();
-                                       } else {
-                                            $('#showCourseL').show();
-                                       }
-                                       if (stopCourseL) {
-                                            $('#stopCourseL').show();
-                                       } else {
-                                            $('#stopCourseL').show();
-                                       }
-                                       if (showSessionL) {
-                                            $('#showSessionL').show();
-                                       } else {
-                                            $('#showSessionL').show();
-                                       }
-                                       if (stopSessionL) {
-                                            $('#stopSessionL').show();
-                                       } else {
-                                            $('#stopSessionL').show();
-                                       }
-                                       if (synchroR) {
-                                            $('#stopCourseL').show();
-                                       } else {
-                                            $('#stopCourseL').show();
-                                       }
-                                       if (offlineC) {
-                                            $('#offlineC').css('visibility','visible');
-                                            $('#offlineC').removeAttr('disabled'); 
-                                       } else {
-                                            $('#offlineC').css('visibility','hidden');
-                                            $('#offlineC').removeAttr('disabled');
-                                       }
-                                       clickedP = 0;
-                                    }    
-                                }
-                            },
-                            function (result) {
-                                MM.log('NO SESSION');
-                            }
-                        );
+                        
                         
                     });
                     
