@@ -3856,20 +3856,15 @@ function amont(button,user,course,version) {
     
     
     var options = {
-        title: 'Modifier le PIF du stagiaire : '+userpif.fullname,
+        title: 'Modifier le PIF du stagiaire : '+usergrille.fullname,
         width: "98%",
         marginTop: "5%",
         buttons: {}
     };
     
-    options.buttons[MM.lang.s("cancel")] = function() {
-        MM.Router.navigate("eleves/" + course );
-        $("#app-dialog").removeClass('full-screen-dialog2');
-        MM.widgets.dialogClose();
-        $('button#pif[user="'+userpif.userid+'"]').click();
-    };
     
     options.buttons["Fermer"] = function() {
+        MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
         $('button#creerpif[user="'+usergrille.userid+'"]').click();
     };
