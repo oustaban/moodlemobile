@@ -3843,15 +3843,49 @@ function amont(button,user,course,version) {
     
     var html = '<div id="pifContent">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/><br/><br/><br/>';
-    html += '<p align="center"><i>Principe : Mettre le stagiaire en situation de travail et observer sa façon de travailler.</i></p><br/><br/>';
-    html += '<p align="center">Vous pouvez évaluer le stagiaire sur un ou plusieurs site.</p><br/><br/>';
+    html += '<p align="center"><i>Principe : Mettre le stagiaire en situation de travail et observer sa façon de travailler.</i></p><br/>';
+    html += '<p align="center">Vous pouvez évaluer le stagiaire sur un ou plusieurs site.</p><br/>';
     html += '<p align="center">Veuillez sélectionner le site de votre choix.</p><br/><br/><br/><br/>';
     
     html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html += '<tr>';
-    html += '<td style="text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
-    html += '<td style="text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
-    html += '<td style="text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
+    if (grille!="[]" && grille!="" && grille.q1 == 1){
+        html += '<td style="width:33%;text-align:center"><p align="center">en cours</p></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q1 == 2){
+        html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
+    }
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q1 == 0)){
+        html += '<td style="width:33%;text-align:center"><p align="center">1nbsp;</p></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q2 == 1){
+        html += '<td style="width:33%;text-align:center"><p align="center">en cours</p></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q2 == 2){
+        html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
+    }
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q2 == 0)){
+        html += '<td style="width:33%;text-align:center"><p align="center">1nbsp;</p></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q3 == 1){
+        html += '<td style="width:33%;text-align:center"><p align="center">en cours</p></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q3 == 2){
+        html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
+    }
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q3 == 0)){
+        html += '<td style="width:33%;text-align:center"><p align="center">1nbsp;</p></td>';
+    }
+    html += '</tr>';
+    html += '<tr>'
+    html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
+    html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
+    html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
+    html += '</tr>';
+    html += '<tr>';
+    html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
+    html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
+    html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
     html += '</tr>';
     html += '</table>';
     html += '</div>';
