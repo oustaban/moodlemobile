@@ -2139,6 +2139,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
                                     html += '<tr><td style="text-align:center"><button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="amont" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">Grille de Positionnement<br>(AMONT)</button></td></tr>';
                                     html += '</table>';
+                                    html += '</div>';
                                     
                                     var options = {
                                         title: 'Stagiaire '+userG.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
@@ -3841,18 +3842,19 @@ function amont(button,user,course,version) {
     var grille = usergrille.grille;
     
     var html = '<div id="pifContent">';
-    html += '<h1 class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/><br/><br/><br/>';
-    html += '<p align=center"><i>Principe : Mettre le stagiaire en situation de travail et observer sa façon de travailler.</i></p><br/><br/>';
-    html += '<p align=center">Vous pouvez évaluer le stagiaire sur un ou plusieurs site.</p><br/><br/>';
-    html += '<p align=center">Veuillez sélectionner le site de votre choix.</p><br/><br/><br/><br/>';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/><br/><br/><br/>';
+    html += '<p align="center"><i>Principe : Mettre le stagiaire en situation de travail et observer sa façon de travailler.</i></p><br/><br/>';
+    html += '<p align="center">Vous pouvez évaluer le stagiaire sur un ou plusieurs site.</p><br/><br/>';
+    html += '<p align="center">Veuillez sélectionner le site de votre choix.</p><br/><br/><br/><br/>';
     
     html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html += '<tr>';
-    html += '<td style="text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:33%;height:50px" class="modal-button-5">BUREAU</button></td>';
-    html += '<td style="text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:33%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
-    html += '<td style="text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:33%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
+    html += '<td style="text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
+    html += '<td style="text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
+    html += '<td style="text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
     html += '</tr>';
     html += '</table>';
+    html += '</div>';
     
     
     var options = {
