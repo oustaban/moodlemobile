@@ -3962,7 +3962,6 @@ function grillea1(button,user,course,version) {
     html += '<h2 align="left" class="grille">Bureau</h2><br/>';
     
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    <td style="width:<%= sizetdmodule %>px"><div id="cellmodule" style="width:<%= sizetdmodule %>px"><div id="module"><%= module.name %></div></div></td>
     html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="grillenote">Non fait</div></td><td style="width:16%"><div id="grillenote">Partiellement fait</div></td><td style="width:16%"><div id="grillenote">Fait</div></td></tr>';
     html+='</tr>';
     html+='<td style="height:40px" class="center2">1.L\'agent identifie les attentes des clients</td>';
