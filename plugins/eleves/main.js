@@ -4170,9 +4170,73 @@ function grillea1(button,user,course,version) {
         amont(button,user,course,version);
     };
     
-    options.buttons["Valider les modifications"] = function() {
-        validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
-    options.buttons["Valider les modifications"]["style"] = "modal-button-2";
+    options.buttons["Valider la grille"] = function() {
+        
+        if( !$('input[name=q1am]').is(':checked')
+            || !$('input[name=q2am]').is(':checked')
+            || !$('input[name=q3am]').is(':checked')
+            || !$('input[name=q4am]').is(':checked')
+            || !$('input[name=q5am]').is(':checked')
+            || !$('input[name=q6am]').is(':checked')
+            || !$('input[name=q7am]').is(':checked')
+            || !$('input[name=q8am]').is(':checked')
+            || !$('input[name=q9am]').is(':checked')
+            || !$('input[name=q10am]').is(':checked')
+           ) {
+            
+            var options2= {
+                title: '',
+                buttons: {}
+            };
+            options2.buttons["Fermer"] = function() {
+                MM.widgets.dialogClose2();
+            };
+            
+            var html2 = "Pour valider, veuillez compléter entièrement la grille de positionnement.";
+           
+            MM.widgets.dialog2(html2, options2);
+            
+        } else {
+        
+            grille.q1am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q2am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q3am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q4am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q5am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q6am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q7am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q8am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q9am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q10am = $('input[name=q1am]:checked', '#myForm').val();
+            grille.q2 = 1;
+            
+            var options2= {
+                title: '',
+                buttons: {}
+            };
+            options2.buttons["Annuler"] = function() {
+                MM.widgets.dialogClose2();
+            };
+            options2.buttons["Je valide"] = function() {
+                thisuser.save({grille:grille});
+            
+                MM.Router.navigate("eleves/" + course );
+                MM.widgets.dialogClose2();
+                MM.widgets.dialogClose();
+                amont(button,user,course,version);
+                
+            };
+            
+            var html2 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
+           
+            MM.widgets.dialog2(html2, options2);
+            
+            
+            
+        }
+        
+    };
+    options.buttons["Valider la grille"]["style"] = "modal-button-2";
    
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
