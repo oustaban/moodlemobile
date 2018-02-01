@@ -4167,9 +4167,8 @@ function grillea1(button,user,course,version) {
         MM.log('Grille:'+grille+'/'+grille.q1);
         
         //thisuser.save({grille:grille});
-        
-        MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
+        MM.Router.navigate("eleves/" + course );
         amont(button,user,course,version);
         
     };
@@ -4191,6 +4190,7 @@ function grillea1(button,user,course,version) {
            ) {
             
             MM.log('Grille Incomplete');
+            
             var options2= {
                 title: '',
                 buttons: {}
@@ -4228,11 +4228,10 @@ function grillea1(button,user,course,version) {
             };
             options3.buttons["Je valide"] = function() {
                 MM.log('Enregistrer et Valider Grille 1A');
-                thisuser.save({grille:grille});
-            
-                MM.Router.navigate("eleves/" + course );
+                //thisuser.save({grille:grille});
                 MM.widgets.dialogClose2();
                 MM.widgets.dialogClose();
+                MM.Router.navigate("eleves/" + course );
                 amont(button,user,course,version);
                 
             };
