@@ -4166,11 +4166,11 @@ function grillea1(button,user,course,version) {
         
         MM.log('Grille:'+grille+'/'+grille.q1);
         
-        thisuser.save({grille:grille});
+        //thisuser.save({grille:grille});
         
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
-        //amont(button,user,course,version);
+        amont(button,user,course,version);
         
     };
     
