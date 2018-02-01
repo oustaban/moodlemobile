@@ -3860,7 +3860,7 @@ function amont(button,user,course,version) {
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
     if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q1 == 0)){
-        html += '<td style="width:33%;text-align:center"><p align="center">1nbsp;</p></td>';
+        html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     if (grille!="[]" && grille!="" && grille.q2 == 1){
         html += '<td style="width:33%;text-align:center"><p align="center">en cours</p></td>';
@@ -3869,7 +3869,7 @@ function amont(button,user,course,version) {
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
     if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q2 == 0)){
-        html += '<td style="width:33%;text-align:center"><p align="center">1nbsp;</p></td>';
+        html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     if (grille!="[]" && grille!="" && grille.q3 == 1){
         html += '<td style="width:33%;text-align:center"><p align="center">en cours</p></td>';
@@ -3878,15 +3878,10 @@ function amont(button,user,course,version) {
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
     if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q3 == 0)){
-        html += '<td style="width:33%;text-align:center"><p align="center">1nbsp;</p></td>';
+        html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     html += '</tr>';
     html += '<tr>'
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
-    html += '</tr>';
-    html += '<tr>';
     html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
     html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
     html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
@@ -3962,7 +3957,7 @@ function grillea1(button,user,course,version) {
     html += '<h2 align="left" class="grille">Bureau</h2><br/>';
     
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="grillenote">Non fait</div></td><td style="width:16%"><div id="grillenote">Partiellement fait</div></td><td style="width:16%"><div id="grillenote">Fait</div></td></tr>';
+    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:16%;height:150px"><div id="grillenote">Non fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:16%;height:150px"><div id="grillenote">Partiellement fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:16%;height:150px"><div id="grillenote">Fait</div></div></td></tr>';
     html+='</tr>';
     html+='<td style="height:40px" class="center2">1.L\'agent identifie les attentes des clients</td>';
     html+='<td style="height:40px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0"';
