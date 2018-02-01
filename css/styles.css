@@ -2494,6 +2494,11 @@ h1.grille {
   font-weight:bold;
   color:#144283;
 }
+h2.grille {
+  font-size:18px;
+  font-weight:bold;
+  color:#144283;
+}
 
 span.red {
   color:#FF0000;
