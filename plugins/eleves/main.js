@@ -3948,7 +3948,7 @@ function grillea1(button,user,course,version) {
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
-    MM.log('Grille:'+grille+'/Pif:'+pifs);
+    MM.log('User:'+users[0]+'/UserGrille:'+usergrille+'/Grille:'+grille+'/Pif:'+pifs);
     pifscourse = $.grep(pifs, function( el ) {
                     return el.courseid == course;
     });
@@ -4153,7 +4153,7 @@ function grillea1(button,user,course,version) {
         amont(button,user,course,version);
     };
     
-    options.buttons["Enregistrer"] = function(grille) {
+    options.buttons["Enregistrer"] = function() {
         
         MM.log('Enregistrer Grille 1A');
         grille.q1am = $('input[name=q1am]:checked').val();
@@ -4168,7 +4168,7 @@ function grillea1(button,user,course,version) {
         grille.q10am = $('input[name=q10am]:checked').val();
         grille.q1 = 1;
         
-        MM.log('Grille:'+grille+'/'+grille.q1);
+        MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
         
         //thisuser.save({grille:grille});
         MM.widgets.dialogClose();
@@ -4177,7 +4177,7 @@ function grillea1(button,user,course,version) {
         
     };
     
-    options.buttons["Valider la grille"] = function(grille) {
+    options.buttons["Valider la grille"] = function() {
         
         MM.log('Valider Grille 1A');
         
@@ -4189,6 +4189,7 @@ function grillea1(button,user,course,version) {
                 title: '',
                 buttons: {}
             };
+            
             options2.buttons["Fermer"] = function() {
                 MM.widgets.dialogClose2();
             };
