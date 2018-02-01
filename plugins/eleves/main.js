@@ -3941,7 +3941,8 @@ function grillea1(button,user,course,version) {
     var courseId = course;
     var user = user;
     var version = version;
-    var theuser = MM.db.get('users',parseInt(user));
+    var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
+    
     
     var users = MM.db.where('users', {userid:parseInt(user)});
     var usergrille = users[0].toJSON();
@@ -4143,12 +4144,35 @@ function grillea1(button,user,course,version) {
     };
     
     
-    options.buttons["Fermer"] = function() {
+    options.buttons["Annuler"] = function() {
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
         amont(button,user,course,version);
     };
     
+    options.buttons["Enregistrer"] = function() {
+        
+        grille.q1am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q2am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q3am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q4am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q5am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q6am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q7am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q8am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q9am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q10am = $('input[name=q1am]:checked', '#myForm').val();
+        grille.q1 = 1;
+        thisuser.save({grille:grille});
+        
+        MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+        amont(button,user,course,version);
+    };
+    
+    options.buttons["Valider les modifications"] = function() {
+        validerAvenant(userspif,pifs,course,thisuser,1,1,1,1,managerid,managername,version,now,avenantsignature1,avenantsignature2); };
+    options.buttons["Valider les modifications"]["style"] = "modal-button-2";
    
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
