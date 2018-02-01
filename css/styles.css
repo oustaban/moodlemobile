@@ -2508,8 +2508,8 @@ span.red {
   transform: translate(0,100%) rotate(-90deg);
   transform-origin: 0 0;
   vertical-align: middle;
-  width:260px;
-  height:260px;
+  width:130px;
+  height:160px;
   padding-left:5px;
   padding-top:10px;
 }

@@ -3957,18 +3957,18 @@ function grillea1(button,user,course,version) {
     html += '<h2 align="left" class="grille">Bureau</h2><br/>';
     
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:16%;height:150px"><div id="grillenote">Non fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:16%;height:150px"><div id="grillenote">Partiellement fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:16%;height:150px"><div id="grillenote">Fait</div></div></td></tr>';
+    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Non fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Partiellement fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Fait</div></div></td></tr>';
     html+='</tr>';
-    html+='<td style="height:40px" class="center2">1.L\'agent identifie les attentes des clients</td>';
-    html+='<td style="height:40px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0"';
+    html+='<td style="height:40px;text-align:left" class="center2">1.L\'agent identifie les attentes des clients</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0"';
     if (grille.q1am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1"';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1"';
     if (grille.q1am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2"';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2"';
     if (grille.q2am == 0)
         html+=' checked="checked"';
     html+="></td>";
