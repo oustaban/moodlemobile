@@ -3909,7 +3909,7 @@ function amont(button,user,course,version) {
     
     
     var options = {
-        title: 'Modifier le PIF du stagiaire : '+usergrille.fullname,
+        title: 'Stagiaire : '+usergrille.fullname,
         width: "98%",
         marginTop: "5%",
         buttons: {}
@@ -4164,11 +4164,13 @@ function grillea1(button,user,course,version) {
         grille.q10am = $('input[name=q1am]:checked').val();
         grille.q1 = 1;
         
+        MM.log('Grille:'+grille+'/'+grille.q1);
+        
         thisuser.save({grille:grille});
         
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
-        amont(button,user,course,version);
+        //amont(button,user,course,version);
         
     };
     
@@ -4188,7 +4190,7 @@ function grillea1(button,user,course,version) {
             || !$('input[name=q10am]').is(':checked')
            ) {
             
-             MM.log('Grille Incomplete');
+            MM.log('Grille Incomplete');
             var options2= {
                 title: '',
                 buttons: {}
