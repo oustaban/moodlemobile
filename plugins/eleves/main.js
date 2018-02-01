@@ -3947,8 +3947,8 @@ function grillea1(button,user,course,version) {
     var users = MM.db.where('users', {userid:parseInt(user)});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
-    MM.log('Grille:'+grille);
     var pifs = usergrille.pif;
+    MM.log('Grille:'+grille+'/Pif:'+pifs);
     pifscourse = $.grep(pifs, function( el ) {
                     return el.courseid == course;
     });
@@ -4153,7 +4153,7 @@ function grillea1(button,user,course,version) {
         amont(button,user,course,version);
     };
     
-    options.buttons["Enregistrer"] = function() {
+    options.buttons["Enregistrer"] = function(grille) {
         
         MM.log('Enregistrer Grille 1A');
         grille.q1am = $('input[name=q1am]:checked').val();
@@ -4177,7 +4177,7 @@ function grillea1(button,user,course,version) {
         
     };
     
-    options.buttons["Valider la grille"] = function() {
+    options.buttons["Valider la grille"] = function(grille) {
         
         MM.log('Valider Grille 1A');
         
