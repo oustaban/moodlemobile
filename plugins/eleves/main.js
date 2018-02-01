@@ -4151,26 +4151,30 @@ function grillea1(button,user,course,version) {
     };
     
     options.buttons["Enregistrer"] = function() {
-        
-        grille.q1am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q2am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q3am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q4am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q5am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q6am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q7am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q8am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q9am = $('input[name=q1am]:checked', '#myForm').val();
-        grille.q10am = $('input[name=q1am]:checked', '#myForm').val();
+        MM.log('Enregistrer Grille 1A');
+        grille.q1am = $('input[name=q1am]:checked').val();
+        grille.q2am = $('input[name=q1am]:checked').val();
+        grille.q3am = $('input[name=q1am]:checked').val();
+        grille.q4am = $('input[name=q1am]:checked').val();
+        grille.q5am = $('input[name=q1am]:checked').val();
+        grille.q6am = $('input[name=q1am]:checked').val();
+        grille.q7am = $('input[name=q1am]:checked').val();
+        grille.q8am = $('input[name=q1am]:checked').val();
+        grille.q9am = $('input[name=q1am]:checked').val();
+        grille.q10am = $('input[name=q1am]:checked').val();
         grille.q1 = 1;
+        
         thisuser.save({grille:grille});
         
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
         amont(button,user,course,version);
+        
     };
     
     options.buttons["Valider la grille"] = function() {
+        
+        MM.log('Valider Grille 1A');
         
         if( !$('input[name=q1am]').is(':checked')
             || !$('input[name=q2am]').is(':checked')
@@ -4184,6 +4188,7 @@ function grillea1(button,user,course,version) {
             || !$('input[name=q10am]').is(':checked')
            ) {
             
+             MM.log('Grille Incomplete');
             var options2= {
                 title: '',
                 buttons: {}
@@ -4197,27 +4202,30 @@ function grillea1(button,user,course,version) {
             MM.widgets.dialog2(html2, options2);
             
         } else {
-        
-            grille.q1am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q2am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q3am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q4am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q5am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q6am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q7am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q8am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q9am = $('input[name=q1am]:checked', '#myForm').val();
-            grille.q10am = $('input[name=q1am]:checked', '#myForm').val();
+            
+            MM.log('Grille Complete');
+            
+            grille.q1am = $('input[name=q1am]:checked').val();
+            grille.q2am = $('input[name=q1am]:checked').val();
+            grille.q3am = $('input[name=q1am]:checked').val();
+            grille.q4am = $('input[name=q1am]:checked').val();
+            grille.q5am = $('input[name=q1am]:checked').val();
+            grille.q6am = $('input[name=q1am]:checked').val();
+            grille.q7am = $('input[name=q1am]:checked').val();
+            grille.q8am = $('input[name=q1am]:checked').val();
+            grille.q9am = $('input[name=q1am]:checked').val();
+            grille.q10am = $('input[name=q1am]:checked').val();
             grille.q2 = 1;
             
-            var options2= {
+            var options3= {
                 title: '',
                 buttons: {}
             };
-            options2.buttons["Annuler"] = function() {
+            options3.buttons["Annuler"] = function() {
                 MM.widgets.dialogClose2();
             };
-            options2.buttons["Je valide"] = function() {
+            options3.buttons["Je valide"] = function() {
+                MM.log('Enregistrer et Valider Grille 1A');
                 thisuser.save({grille:grille});
             
                 MM.Router.navigate("eleves/" + course );
@@ -4227,9 +4235,9 @@ function grillea1(button,user,course,version) {
                 
             };
             
-            var html2 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
+            var html3 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
            
-            MM.widgets.dialog2(html2, options2);
+            MM.widgets.dialog2(html3, options3);
             
             
             
