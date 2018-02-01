@@ -3934,7 +3934,7 @@ function amont(button,user,course,version) {
 //Grille A1             
 function grillea1(button,user,course,version) {
     
-    MM.log('Amont clicked');
+    MM.log('GRILLEA1 clicked');
     
     var button = button;
     var course = course;
@@ -3947,6 +3947,7 @@ function grillea1(button,user,course,version) {
     var users = MM.db.where('users', {userid:parseInt(user)});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
+    MM.log('Grille:'+grille);
     var pifs = usergrille.pif;
     pifscourse = $.grep(pifs, function( el ) {
                     return el.courseid == course;
@@ -4135,6 +4136,8 @@ function grillea1(button,user,course,version) {
     
     html += '</div>';
     
+    var tested = 0;
+    
     
     var options = {
         title: 'Stagiaire : '+usergrille.fullname,
@@ -4151,17 +4154,18 @@ function grillea1(button,user,course,version) {
     };
     
     options.buttons["Enregistrer"] = function() {
+        
         MM.log('Enregistrer Grille 1A');
         grille.q1am = $('input[name=q1am]:checked').val();
-        grille.q2am = $('input[name=q1am]:checked').val();
-        grille.q3am = $('input[name=q1am]:checked').val();
-        grille.q4am = $('input[name=q1am]:checked').val();
-        grille.q5am = $('input[name=q1am]:checked').val();
-        grille.q6am = $('input[name=q1am]:checked').val();
-        grille.q7am = $('input[name=q1am]:checked').val();
-        grille.q8am = $('input[name=q1am]:checked').val();
-        grille.q9am = $('input[name=q1am]:checked').val();
-        grille.q10am = $('input[name=q1am]:checked').val();
+        grille.q2am = $('input[name=q2am]:checked').val();
+        grille.q3am = $('input[name=q3am]:checked').val();
+        grille.q4am = $('input[name=q4am]:checked').val();
+        grille.q5am = $('input[name=q5am]:checked').val();
+        grille.q6am = $('input[name=q6am]:checked').val();
+        grille.q7am = $('input[name=q7am]:checked').val();
+        grille.q8am = $('input[name=q8am]:checked').val();
+        grille.q9am = $('input[name=q9am]:checked').val();
+        grille.q10am = $('input[name=q10am]:checked').val();
         grille.q1 = 1;
         
         MM.log('Grille:'+grille+'/'+grille.q1);
@@ -4177,18 +4181,8 @@ function grillea1(button,user,course,version) {
         
         MM.log('Valider Grille 1A');
         
-        if( !$('input[name=q1am]').is(':checked')
-            || !$('input[name=q2am]').is(':checked')
-            || !$('input[name=q3am]').is(':checked')
-            || !$('input[name=q4am]').is(':checked')
-            || !$('input[name=q5am]').is(':checked')
-            || !$('input[name=q6am]').is(':checked')
-            || !$('input[name=q7am]').is(':checked')
-            || !$('input[name=q8am]').is(':checked')
-            || !$('input[name=q9am]').is(':checked')
-            || !$('input[name=q10am]').is(':checked')
-           ) {
-            
+        //if(!$('input[name=q1am]').is(':checked') || !$('input[name=q2am]').is(':checked') || !$('input[name=q3am]').is(':checked') || !$('input[name=q4am]').is(':checked') || !$('input[name=q5am]').is(':checked') || !$('input[name=q6am]').is(':checked') || !$('input[name=q7am]').is(':checked') || !$('input[name=q8am]').is(':checked') || !$('input[name=q9am]').is(':checked') || !$('input[name=q10am]').is(':checked')) {
+        if (!tested) {    
             MM.log('Grille Incomplete');
             
             var options2= {
@@ -4208,16 +4202,17 @@ function grillea1(button,user,course,version) {
             MM.log('Grille Complete');
             
             grille.q1am = $('input[name=q1am]:checked').val();
-            grille.q2am = $('input[name=q1am]:checked').val();
-            grille.q3am = $('input[name=q1am]:checked').val();
-            grille.q4am = $('input[name=q1am]:checked').val();
-            grille.q5am = $('input[name=q1am]:checked').val();
-            grille.q6am = $('input[name=q1am]:checked').val();
-            grille.q7am = $('input[name=q1am]:checked').val();
-            grille.q8am = $('input[name=q1am]:checked').val();
-            grille.q9am = $('input[name=q1am]:checked').val();
-            grille.q10am = $('input[name=q1am]:checked').val();
-            grille.q2 = 1;
+            grille.q2am = $('input[name=q2am]:checked').val();
+            grille.q3am = $('input[name=q3am]:checked').val();
+            grille.q4am = $('input[name=q4am]:checked').val();
+            grille.q5am = $('input[name=q5am]:checked').val();
+            grille.q6am = $('input[name=q6am]:checked').val();
+            grille.q7am = $('input[name=q7am]:checked').val();
+            grille.q8am = $('input[name=q8am]:checked').val();
+            grille.q9am = $('input[name=q9am]:checked').val();
+            grille.q10am = $('input[name=q10am]:checked').val();
+            grille.q1 = 2;
+            MM.log('Grille:'+grille+'/'+grille.q1);
             
             var options3= {
                 title: '',
@@ -4226,6 +4221,7 @@ function grillea1(button,user,course,version) {
             options3.buttons["Annuler"] = function() {
                 MM.widgets.dialogClose2();
             };
+            
             options3.buttons["Je valide"] = function() {
                 MM.log('Enregistrer et Valider Grille 1A');
                 //thisuser.save({grille:grille});
