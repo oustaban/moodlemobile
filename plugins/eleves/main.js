@@ -3825,7 +3825,7 @@ function voirpif(courseId,user,version) {
 
 
 
-//Modifier le Pif button               
+//Amont             
 function amont(button,user,course,version) {
     
     MM.log('Amont clicked');
@@ -3840,6 +3840,10 @@ function amont(button,user,course,version) {
     var users = MM.db.where('users', {userid:parseInt(user)});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
+    var pifs = usergrille.pif;
+    pifscourse = $.grep(pifs, function( el ) {
+                    return el.courseid == course;
+    });
     
     var html = '<div id="pifContent">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/><br/><br/><br/>';
@@ -3888,6 +3892,24 @@ function amont(button,user,course,version) {
     html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
     html += '</tr>';
     html += '</table>';
+    
+    if (grille!="[]" && grille!="" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2 ) && (pifscourse.length == 0)) {
+        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+        html += '<tr>';
+        html += '<td style="text-align:center"><button onclick="modifierpif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">VALIDER et SIGNER LE PIF</button></td>';
+        html += '</tr>';
+        html += '</table>';
+    }
+    
+    if (grille!="[]" && grille!="" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2 ) && (pifscourse.length > 0)) {
+        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+        html += '<tr>';
+        html += '<td style="text-align:center"><button onclick="modifierpif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">MODIFIER et SIGNER LE PIF</button></td>';
+        html += '</tr>';
+        html += '</table>';
+    }
+    
+   
     html += '</div>';
     
     
@@ -3911,6 +3933,81 @@ function amont(button,user,course,version) {
     MM.widgets.dialog(html, options);
     
 }
+
+
+
+//Grille A1             
+function grillea1(button,user,course,version) {
+    
+    MM.log('Amont clicked');
+    
+    var button = button;
+    var course = course;
+    var courseId = course;
+    var user = user;
+    var version = version;
+    var theuser = MM.db.get('users',parseInt(user));
+    
+    var users = MM.db.where('users', {userid:parseInt(user)});
+    var usergrille = users[0].toJSON();
+    var grille = usergrille.grille;
+    var pifs = usergrille.pif;
+    pifscourse = $.grep(pifs, function( el ) {
+                    return el.courseid == course;
+    });
+    
+    var html = '<div id="pifContent">';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
+    html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
+    html += '<h2 align="left" class="grille">Bureau</h2><br/>';
+    
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+    <td style="width:<%= sizetdmodule %>px"><div id="cellmodule" style="width:<%= sizetdmodule %>px"><div id="module"><%= module.name %></div></div></td>
+    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="grillenote">Non fait</div></td><td style="width:16%"><div id="grillenote">Partiellement fait</div></td><td style="width:16%"><div id="grillenote">Fait</div></td></tr>';
+    html+='</tr>';
+    html+='<td style="height:40px" class="center2">1.L\'agent identifie les attentes des clients</td>';
+    html+='<td style="height:40px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0"';
+    if (grille.q1am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1"';
+    if (grille.q1am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2"';
+    if (grille.q2am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    html+='</table>';
+    
+    html += '</div>';
+    
+    
+    var options = {
+        title: 'Stagiaire : '+usergrille.fullname,
+        width: "98%",
+        marginTop: "5%",
+        buttons: {}
+    };
+    
+    
+    options.buttons["Fermer"] = function() {
+        MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+        amont(button,user,course,version);
+    };
+    
+   
+    $("#app-dialog").addClass('full-screen-dialog2');
+    $("#app-dialog .modalContent").css('height','85vh');
+    MM.widgets.dialog(html, options);
+    
+}
+
+
+
+
 
 //Modifier le Pif button               
 function modifierPif(button,user,course,version) {
