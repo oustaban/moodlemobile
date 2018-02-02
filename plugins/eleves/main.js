@@ -4153,30 +4153,7 @@ function grillea1(button,user,course,version) {
         amont(button,user,course,version);
     };
     
-    options.buttons["Enregistrer"] = function() {
-        
-        MM.log('Enregistrer Grille 1A');
-        /*
-        grille.q1am = $('input[name=q1am]:checked').val();
-        grille.q2am = $('input[name=q2am]:checked').val();
-        grille.q3am = $('input[name=q3am]:checked').val();
-        grille.q4am = $('input[name=q4am]:checked').val();
-        grille.q5am = $('input[name=q5am]:checked').val();
-        grille.q6am = $('input[name=q6am]:checked').val();
-        grille.q7am = $('input[name=q7am]:checked').val();
-        grille.q8am = $('input[name=q8am]:checked').val();
-        grille.q9am = $('input[name=q9am]:checked').val();
-        grille.q10am = $('input[name=q10am]:checked').val();
-        grille.q1 = 1;
-        */
-        MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
-        
-        //thisuser.save({grille:grille});
-        MM.Router.navigate("eleves/" + course );
-        MM.widgets.dialogClose();
-        //amont(button,user,course,version);
-        
-    };
+    
     
     options.buttons["Valider la grille"] = function() {
         
@@ -4247,6 +4224,31 @@ function grillea1(button,user,course,version) {
         
     };
     options.buttons["Valider la grille"]["style"] = "modal-button-2";
+    
+    options.buttons["Enregistrer"] = function() {
+        
+        MM.log('Enregistrer Grille 1A');
+        /*
+        grille.q1am = $('input[name=q1am]:checked').val();
+        grille.q2am = $('input[name=q2am]:checked').val();
+        grille.q3am = $('input[name=q3am]:checked').val();
+        grille.q4am = $('input[name=q4am]:checked').val();
+        grille.q5am = $('input[name=q5am]:checked').val();
+        grille.q6am = $('input[name=q6am]:checked').val();
+        grille.q7am = $('input[name=q7am]:checked').val();
+        grille.q8am = $('input[name=q8am]:checked').val();
+        grille.q9am = $('input[name=q9am]:checked').val();
+        grille.q10am = $('input[name=q10am]:checked').val();
+        grille.q1 = 1;
+        */
+        MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
+        
+        //thisuser.save({grille:grille});
+        MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+        //amont(button,user,course,version);
+        
+    };
    
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
@@ -5019,17 +5021,27 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         };
         
         options.buttons["Fermer"] = function() {
-            MM.widgets.dialogClose2();
+            MM.widgets.dialogClose();
             MM.log("Dialog:"+userpif.userid);
-            //$('button#pif[user="'+userpif.userid+'"]').click();
+            $('button#pif[user="'+userpif.userid+'"]').click();
         };
         
         
         
                         
         if (valider == 1 && (avenantsignature1 == 0 || avenantsignature2 == 0)) {
-            $("#app-dialog").removeClass('full-screen-dialog2');
-            $("#app-dialog .modalContent").css('height','100%');
+            //$("#app-dialog").removeClass('full-screen-dialog2');
+            //$("#app-dialog .modalContent").css('height','100%');
+            var options2 = {
+                title: '',
+                buttons: {}
+            };
+        
+            options2.buttons["Fermer"] = function() {
+                MM.widgets.dialogClose2();
+                //MM.log("Dialog:"+userpif.userid);
+                //$('button#pif[user="'+userpif.userid+'"]').click();
+            };
             MM.popMessage2("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
             valider = 0;
         }
