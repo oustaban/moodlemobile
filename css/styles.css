@@ -2395,6 +2395,7 @@ li#lielevelP.nav-item.hide {
 		color:#777;
 	}
     .grd-rouge, .modal-button-3 {
+		color:#fff;
 		background: #a80501;
 		background: -moz-linear-gradient(bottom, #a80501 0%, #a80501 75%, #fe8686 100%); 
 		background: -webkit-linear-gradient(bottom, #a80501 0%,#a80501 75%,#fe8686 100%); 
@@ -2402,7 +2403,8 @@ li#lielevelP.nav-item.hide {
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a80501', endColorstr='#fe8686',GradientType=0 ); 
 	}
 	.grd-orange, .modal-button-4 {
-		background: #ff9101; 
+		background: #ff9101;
+		color:#fff;
 		background: -moz-linear-gradient(bottom, #ff9101 75%, #fce9c8 100%);
 		background: -webkit-linear-gradient(bottom, #ff9101 75%,#fce9c8 100%); 
 		background: linear-gradient(to top, #ff9101 75%,#fce9c8 100%); 
