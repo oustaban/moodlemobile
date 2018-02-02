@@ -3195,8 +3195,11 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         var pifbutton = JSON.stringify(pifs3);
         pifbutton = pifbutton.replace(/"/g, '\\"');
         MM.log('pifbutton:'+pifbutton);
-        $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
-                            
+        if (grille == "" || grille == "[]") {
+            $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
+        } else {
+            $('button#creerpif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
+        }
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
         
@@ -3207,35 +3210,36 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         };
         
         options.buttons["Fermer"] = function() {
-            MM.widgets.dialogClose();
+            MM.widgets.dialogClose2();
             MM.log("Dialog:"+userpif.userid);
             $('button#pif[user="'+userpif.userid+'"]').click();
         };
         
+        options.buttons["Fermer"]["style"] = "modal-button-8";
                         
         if (valider == 1 && avant == 1 && (pifsignature1 == 0 || pifsignature2 == 0)) {
             $("#app-dialog").removeClass('full-screen-dialog2');
-            MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
-            valider = 0;
-        }
-        
-           
-        if (valider == 1 && apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
-            $("#app-dialog").removeClass('full-screen-dialog2');
-            MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.",options);
+            MM.popMessage2("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
             valider = 0;
         }
         
         if (grille == "" || grille == "[]") {
-            if (valider == 1){
-                        $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
-                        MM.log("Save PIF1:"+pifs2);
-                        thisuser.save({pif:pifs2});
-                        version = parseInt(version) + 1;
-                        $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
-    
+            if (valider == 1 && apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
+                $("#app-dialog").removeClass('full-screen-dialog2');
+                MM.popMessage2("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.",options);
+                valider = 0;
             }
         }
+        
+        if (valider == 1){
+                    $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                    MM.log("Save PIF1:"+pifs2);
+                    thisuser.save({pif:pifs2});
+                    version = parseInt(version) + 1;
+                    $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
+
+        }
+        
         
         
     }
@@ -4255,6 +4259,7 @@ function grillea1(button,user,course,version) {
                 options4.buttons["Je valide"] = function() {
                     MM.log('Enregistrer et Valider Grille 1A');
                     thisuser.save({grille:grille});
+                    $('button#creerpif[user="'+userpif.userid+'"]').attr('id','pif');
                     MM.Router.navigate("eleves/" + course );
                     
                     MM.widgets.dialogClose2();
@@ -4451,7 +4456,7 @@ function modifierPif(button,user,course,version) {
     
     options.buttons[MM.lang.s("cancel")] = function() {
         MM.Router.navigate("eleves/" + course );
-        $("#app-dialog").removeClass('full-screen-dialog2');
+        //$("#app-dialog").removeClass('full-screen-dialog2');
         MM.widgets.dialogClose();
         $('button#pif[user="'+userpif.userid+'"]').click();
     };
