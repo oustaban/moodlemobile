@@ -4264,7 +4264,7 @@ function grillea1(button,user,course,version) {
                     
                     MM.widgets.dialogClose2();
                     MM.widgets.dialogClose();
-                    amont(button,user,course,version);
+                    amont($('button#pif[user="'+user+'"]'),user,course,version);
                     
                 };
                 
@@ -4315,11 +4315,8 @@ function modifierPif(button,user,course,version) {
     
     
     //var pifArray = pif;
-    if (pifscourse.length > 0) {
-        var pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
-    } else {
-        var pifArray = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
-    }
+    var pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+    
     MM.log('pifArray:'+pifArray);
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
         pifArray = pifArray.replace(/\\"/g, '"');
