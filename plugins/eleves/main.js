@@ -3859,7 +3859,7 @@ function amont(button,user,course,version) {
     if (grille!="[]" && grille!="" && grille.q1 == 2){
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
-    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q1 == 0)){
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q1 == 0 || grille.q1 == undefined))){
         html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     if (grille!="[]" && grille!="" && grille.q2 == 1){
@@ -3868,7 +3868,7 @@ function amont(button,user,course,version) {
     if (grille!="[]" && grille!="" && grille.q2 == 2){
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
-    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q2 == 0)){
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && (grille.q2 == 0 || grille.q2 == undefined))){
         html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     if (grille!="[]" && grille!="" && grille.q3 == 1){
@@ -3877,7 +3877,7 @@ function amont(button,user,course,version) {
     if (grille!="[]" && grille!="" && grille.q3 == 2){
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
-    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q3 == 0)){
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q3 == 0 || grille.q3 == undefined))){
         html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     html += '</tr>';
@@ -3974,7 +3974,7 @@ function grillea1(button,user,course,version) {
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q1am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -3983,15 +3983,15 @@ function grillea1(button,user,course,version) {
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">2.l\'agent applique les règles de communication</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q2am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q2am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q2am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -4000,15 +4000,15 @@ function grillea1(button,user,course,version) {
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">3.L\'agent traite les demandes et les réclamations</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q3am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q3am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q3am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -4017,15 +4017,15 @@ function grillea1(button,user,course,version) {
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">4.L\'agent nomme les éléments à nettoyer</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q4am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q4am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q4am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -4034,15 +4034,15 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     html+='<td style="height:40px;text-align:left" class="center2">5.L\'agent utilise le matériel et les produits de nettoyage</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q5am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q5am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q5am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -4051,15 +4051,15 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     html+='<td style="height:40px;text-align:left" class="center2">6.L\'agent applique les protocoles de nettoyage</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q6am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q6am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q6am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -4068,15 +4068,15 @@ function grillea1(button,user,course,version) {
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">7.L\'agent applique les règles d\'hygiène et de sécurité</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q7am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q7am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q7am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -4085,15 +4085,15 @@ function grillea1(button,user,course,version) {
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">8.L\'agent applique les attitudes de services</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q8am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q8am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q8am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -4102,15 +4102,15 @@ function grillea1(button,user,course,version) {
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">9.L\'agent adopte les bonnes postures de travail</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q9am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q9am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q9am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -4119,15 +4119,15 @@ function grillea1(button,user,course,version) {
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">10.L\'agent travaille en objectif de résultats</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0"';
-    if (grille.q1am == 0)
+    if (grille.q10am == 0)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1"';
-    if (grille.q1am == 1)
+    if (grille.q10am == 1)
         html+=' checked="checked"';
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2"';
-    if (grille.q2am == 0)
+    if (grille.q10am == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
