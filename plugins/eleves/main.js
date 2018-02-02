@@ -4157,7 +4157,9 @@ function grillea1(button,user,course,version) {
     options2.buttons["Enregistrer"] = function() {
         
         MM.log('Enregistrer Grille 1A');
-        
+        if (grille=="") {
+            grille={};
+        }
         grille.q1am = $('input[name=q1am]:checked').val();
         grille.q2am = $('input[name=q2am]:checked').val();
         grille.q3am = $('input[name=q3am]:checked').val();
@@ -4184,8 +4186,8 @@ function grillea1(button,user,course,version) {
         
         MM.log('Valider Grille 1A');
         
-        //if(!$('input[name=q1am]').is(':checked') || !$('input[name=q2am]').is(':checked') || !$('input[name=q3am]').is(':checked') || !$('input[name=q4am]').is(':checked') || !$('input[name=q5am]').is(':checked') || !$('input[name=q6am]').is(':checked') || !$('input[name=q7am]').is(':checked') || !$('input[name=q8am]').is(':checked') || !$('input[name=q9am]').is(':checked') || !$('input[name=q10am]').is(':checked')) {
-        if (!tested) {    
+        if(!$('input[name=q1am]').is(':checked') || !$('input[name=q2am]').is(':checked') || !$('input[name=q3am]').is(':checked') || !$('input[name=q4am]').is(':checked') || !$('input[name=q5am]').is(':checked') || !$('input[name=q6am]').is(':checked') || !$('input[name=q7am]').is(':checked') || !$('input[name=q8am]').is(':checked') || !$('input[name=q9am]').is(':checked') || !$('input[name=q10am]').is(':checked')) {
+        //if (!tested) {    
             MM.log('Grille Incomplete');
             
             var options3= {
@@ -4204,7 +4206,9 @@ function grillea1(button,user,course,version) {
         } else {
             
             MM.log('Grille Complete');
-            
+            if (grille=="") {
+                grille={};
+            }
             
             grille.q1am = $('input[name=q1am]:checked').val();
             grille.q2am = $('input[name=q2am]:checked').val();
