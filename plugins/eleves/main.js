@@ -4156,6 +4156,7 @@ function grillea1(button,user,course,version) {
     options.buttons["Enregistrer"] = function() {
         
         MM.log('Enregistrer Grille 1A');
+        /*
         grille.q1am = $('input[name=q1am]:checked').val();
         grille.q2am = $('input[name=q2am]:checked').val();
         grille.q3am = $('input[name=q3am]:checked').val();
@@ -4167,13 +4168,13 @@ function grillea1(button,user,course,version) {
         grille.q9am = $('input[name=q9am]:checked').val();
         grille.q10am = $('input[name=q10am]:checked').val();
         grille.q1 = 1;
-        
+        */
         MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
         
         //thisuser.save({grille:grille});
-        MM.widgets.dialogClose();
         MM.Router.navigate("eleves/" + course );
-        amont(button,user,course,version);
+        MM.widgets.dialogClose();
+        //amont(button,user,course,version);
         
     };
     
@@ -4202,6 +4203,7 @@ function grillea1(button,user,course,version) {
             
             MM.log('Grille Complete');
             
+            /*
             grille.q1am = $('input[name=q1am]:checked').val();
             grille.q2am = $('input[name=q2am]:checked').val();
             grille.q3am = $('input[name=q3am]:checked').val();
@@ -4213,6 +4215,7 @@ function grillea1(button,user,course,version) {
             grille.q9am = $('input[name=q9am]:checked').val();
             grille.q10am = $('input[name=q10am]:checked').val();
             grille.q1 = 2;
+            */
             MM.log('Grille:'+grille+'/'+grille.q1);
             
             var options3= {
@@ -4226,10 +4229,11 @@ function grillea1(button,user,course,version) {
             options3.buttons["Je valide"] = function() {
                 MM.log('Enregistrer et Valider Grille 1A');
                 //thisuser.save({grille:grille});
+                MM.Router.navigate("eleves/" + course );
+                
                 MM.widgets.dialogClose2();
                 MM.widgets.dialogClose();
-                MM.Router.navigate("eleves/" + course );
-                amont(button,user,course,version);
+                //amont(button,user,course,version);
                 
             };
             
