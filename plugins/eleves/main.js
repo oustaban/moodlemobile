@@ -4458,7 +4458,7 @@ function modifierPif(button,user,course,version) {
     
     
     
-    if (version == 1 && (grille == "" || grille == "[]" ) {
+    if (version == 1 && (grille == "" || grille == "[]" )) {
 
         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>AVANT LA FORMATION<br/>Signer pour valider les compétences à développer</b></th></tr>';
         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
