@@ -3125,6 +3125,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
     MM.log('validerPif:'+userspif+'/'+course+'/'+managerid+'/'+managername);
     if (userspif && userspif != "") {
         var userpif = userspif[0].toJSON();
+        var grille = userspif.grille;
         //MM.log('userpif:'+userpif);
         MM.log('pifs:'+pifs);
         pifs2 = $.grep(pifs, function( el ) {
@@ -3217,18 +3218,23 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
             valider = 0;
         }
+        
+           
         if (valider == 1 && apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
             $("#app-dialog").removeClass('full-screen-dialog2');
             MM.popMessage("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.",options);
             valider = 0;
         }
-        if (valider == 1){
-                    $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
-                    MM.log("Save PIF1:"+pifs2);
-                    thisuser.save({pif:pifs2});
-                    version = parseInt(version) + 1;
-                    $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
-
+        
+        if (grille == "" || grille == "[]") {
+            if (valider == 1){
+                        $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                        MM.log("Save PIF1:"+pifs2);
+                        thisuser.save({pif:pifs2});
+                        version = parseInt(version) + 1;
+                        $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
+    
+            }
         }
         
         
@@ -4296,6 +4302,7 @@ function modifierPif(button,user,course,version) {
     var userspif = MM.db.where('users', {userid:parseInt(user)});
     var userpif = userspif[0].toJSON();
     var pifs = userpif.pif;
+    var grille = userpif.grille;
     pifscourse = $.grep(pifs, function( el ) {
                     return el.courseid == course;
     });
@@ -4451,7 +4458,7 @@ function modifierPif(button,user,course,version) {
     
     
     
-    if (version == 1) {
+    if (version == 1 && (grille == "" || grille == "[]" ) {
 
         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>AVANT LA FORMATION<br/>Signer pour valider les compétences à développer</b></th></tr>';
         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
@@ -4821,7 +4828,99 @@ function modifierPif(button,user,course,version) {
             }
         );
     
-    } else {
+    }
+    
+    if (version == 1 && (grille != "" && grille != "[]" ) {
+
+        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>Signer pour valider les compétences à développer dans le cadre du parcours de formation</b></th></tr>';
+        html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
+        
+        
+        
+        var fileSignature1 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_avant.png";
+        var fileSignature2 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_avant.png";
+        var fileSignature3 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_manager_apres.png";
+        var fileSignature4 = MM.config.current_site.id+"/"+course+"/"+user+"_signature_stagiaire_apres.png";
+        
+        var d = new Date();
+        var today = parseInt(d.getTime()/1000);
+                                
+    
+        MM.fs.findFileAndReadContents(fileSignature1,
+            function(path) {
+                pifsignature1 = path;
+                MM.log('Image Signature Manager avant OK:'+fileSignature1);
+                html += '<tr><td class="center2"><img src="'+ path +'" width="300"></td>';
+                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                
+                MM.fs.findFileAndReadContents(fileSignature2,
+                    function(path) {
+                        pifsignature2 = path;
+                        MM.log('Image Signature Stagiaire avant OK 1:'+fileSignature2);
+                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                        html += '</table></div>';
+                                        
+                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername,version,today); };
+                        options.buttons["Valider"]["style"] = "modal-button-2";
+                        
+                        $("#app-dialog").addClass('full-screen-dialog2');
+                        MM.widgets.dialog(html, options);
+                
+                    },
+                    function(path) {
+                        MM.log('Image Signature Stagiaire avant NOK 1:'+fileSignature2);
+                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                        html += '</table></div>';
+                                        
+                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername,version,today); };
+                        options.buttons["Valider"]["style"] = "modal-button-2";
+                        
+                        $("#app-dialog").addClass('full-screen-dialog2');
+                        MM.widgets.dialog(html, options);
+                        
+                    }
+                );
+            },
+            function(path) {
+                MM.log('Image Signature Manager avant NOK:'+fileSignature1);
+                html += '<tr><td class="center2"><button course="'+courseId+'" id="signature_manager_avant" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td>';
+                //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+        
+                MM.fs.findFileAndReadContents(fileSignature2,
+                    function(path) {
+                        pifsignature2 = path;
+                        MM.log('Image Signature Stagiaire avant OK 2:'+fileSignature2);
+                        html += '<td class="center2"><img src="'+ path +'" width="300"></td></tr>';
+                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                        html += '</table></div>';
+                                        
+                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername,version,today); };
+                        options.buttons["Valider"]["style"] = "modal-button-2";
+                        
+                        $("#app-dialog").addClass('full-screen-dialog2');
+                        MM.widgets.dialog(html, options);
+                        
+                    },
+                    function(path) {
+                        MM.log('Image Signature Stagiaire avant NOK 2:'+fileSignature2);
+                        html += '<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" managerid="'+managerid+'" managername="'+managername+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td></tr>';
+                        //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
+                        html += '</table></div>';
+                                        
+                        options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pifsignature3,pifsignature4,managerid,managername,version,today); };
+                        options.buttons["Valider"]["style"] = "modal-button-2";
+                        
+                        $("#app-dialog").addClass('full-screen-dialog2');
+                        MM.widgets.dialog(html, options);
+                        
+                    }
+                );
+            }
+        );
+    
+    }
+    
+    if (version > 1) {
         
         var today = new Date();
         var now = parseInt(today.getTime()/1000);
