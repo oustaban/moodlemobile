@@ -3891,7 +3891,7 @@ function amont(button,user,course,version) {
     if (grille!="[]" && grille!="" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2 ) && (pifscourse.length == 0)) {
         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
         html += '<tr>';
-        html += '<td style="text-align:center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">VALIDER et SIGNER LE PIF</button></td>';
+        html += '<td style="text-align:center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-7">VALIDER et SIGNER LE PIF</button></td>';
         html += '</tr>';
         html += '</table>';
     }
@@ -3899,7 +3899,7 @@ function amont(button,user,course,version) {
     if (grille!="[]" && grille!="" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2 ) && (pifscourse.length > 0)) {
         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
         html += '<tr>';
-        html += '<td style="text-align:center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">MODIFIER et SIGNER LE PIF</button></td>';
+        html += '<td style="text-align:center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-7">MODIFIER et SIGNER LE PIF</button></td>';
         html += '</tr>';
         html += '</table>';
     }
@@ -4155,7 +4155,7 @@ function grillea1(button,user,course,version) {
             MM.widgets.dialogClose();
             amont(button,user,course,version);
         };
-        options2.buttons["Annuler"]["style"] = "modal-button-8";
+        options2.buttons["Fermer"]["style"] = "modal-button-8";
         
     } else {
         
