@@ -4152,8 +4152,33 @@ function grillea1(button,user,course,version) {
         MM.widgets.dialogClose();
         amont(button,user,course,version);
     };
+    options2.buttons["Annuler"]["style"] = "modal-button-2";
     
-    
+    options2.buttons["Enregistrer"] = function() {
+        
+        MM.log('Enregistrer Grille 1A');
+        
+        grille.q1am = $('input[name=q1am]:checked').val();
+        grille.q2am = $('input[name=q2am]:checked').val();
+        grille.q3am = $('input[name=q3am]:checked').val();
+        grille.q4am = $('input[name=q4am]:checked').val();
+        grille.q5am = $('input[name=q5am]:checked').val();
+        grille.q6am = $('input[name=q6am]:checked').val();
+        grille.q7am = $('input[name=q7am]:checked').val();
+        grille.q8am = $('input[name=q8am]:checked').val();
+        grille.q9am = $('input[name=q9am]:checked').val();
+        grille.q10am = $('input[name=q10am]:checked').val();
+        grille.q1 = 1;
+        
+        MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
+        
+        thisuser.save({grille:grille});
+        MM.Router.navigate("eleves/" + course );
+        MM.widgets.dialogClose();
+        amont(button,user,course,version);
+        
+    };
+    options2.buttons["Enregistrer"]["style"] = "modal-button-5";
     
     options2.buttons["Valider la grille"] = function() {
         
@@ -4223,32 +4248,9 @@ function grillea1(button,user,course,version) {
         }
         
     };
-    options2.buttons["Valider la grille"]["style"] = "modal-button-2";
+    options2.buttons["Valider la grille"]["style"] = "modal-button-6 grd-vert";
     
-    options2.buttons["Enregistrer"] = function() {
-        
-        MM.log('Enregistrer Grille 1A');
-        
-        grille.q1am = $('input[name=q1am]:checked').val();
-        grille.q2am = $('input[name=q2am]:checked').val();
-        grille.q3am = $('input[name=q3am]:checked').val();
-        grille.q4am = $('input[name=q4am]:checked').val();
-        grille.q5am = $('input[name=q5am]:checked').val();
-        grille.q6am = $('input[name=q6am]:checked').val();
-        grille.q7am = $('input[name=q7am]:checked').val();
-        grille.q8am = $('input[name=q8am]:checked').val();
-        grille.q9am = $('input[name=q9am]:checked').val();
-        grille.q10am = $('input[name=q10am]:checked').val();
-        grille.q1 = 1;
-        
-        MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
-        
-        thisuser.save({grille:grille});
-        MM.Router.navigate("eleves/" + course );
-        MM.widgets.dialogClose();
-        amont(button,user,course,version);
-        
-    };
+    
    
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
@@ -5023,9 +5025,9 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         options3.buttons["Fermer"] = function() {
             MM.widgets.dialogClose2();
             MM.log("Dialog:"+userpif.userid);
-            //$('button#pif[user="'+userpif.userid+'"]').click();
+            $('button#pif[user="'+userpif.userid+'"]').click();
         };
-        
+        options3.buttons["Fermer"]["style"] = "modal-button-5";
         
         
                         
@@ -5061,6 +5063,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
             MM.log("Dialog:"+userpif.userid);
             $('button#pif[user="'+userpif.userid+'"]').click();
         };
+         options2.buttons["Fermer"]["style"] = "modal-button-5";
         //$("#app-dialog").removeClass('full-screen-dialog2');
         //$("#app-dialog .modalContent").css('height','100%');
         MM.popMessage2("<h1>Vos modifications ont été enregistrées</h1>Pour qu'elles soient prises en compte, n'oubliez pas de fermer et valider la présente session de formation.<br/><br/>Si vous êtes hors-ligne, synchronisez vos données lors de votre prochaine connexion à un réseau.",options2);
