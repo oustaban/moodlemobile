@@ -4259,8 +4259,9 @@ function grillea1(button,user,course,version) {
                 options4.buttons["Je valide"] = function() {
                     MM.log('Enregistrer et Valider Grille 1A');
                     thisuser.save({grille:grille});
+                    $('button#creerpif[user="'+user+'"]').unbind('click');
                     $('button#creerpif[user="'+user+'"]').attr('id','pif');
-                    $('button#pif[user="'+user+'"]').attr('title','PIF');
+                    $('button#pif[user="'+user+'"]').html('PIF');
                     $('button#pif[user="'+user+'"]').attr('class','btn grd-grisfonce text-blanc');
                     
                     MM.Router.navigate("eleves/" + course );
