@@ -744,6 +744,7 @@ function signaturePopin( elem ) {
                                                         function(fileEntry) {
                                                             MM.log(' Write Signature Avenant NOK : ' + fileSignature);
 															MM.widgets.dialogClose();
+															
 															$('button#pif[user="'+userid+'"]').click();
                                                         }
                                                     );
@@ -752,6 +753,8 @@ function signaturePopin( elem ) {
                                                 };
 												options.buttons["Valider"]['style'] = "modal-button-2";
                                                 
+												$("#app-dialog").removeClass('full-screen-dialog2');
+												$("#app-dialog .modalContent").css('height','100%');
                                                 MM.widgets.dialog(html, options);
                                                 
                                                 

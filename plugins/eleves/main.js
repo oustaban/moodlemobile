@@ -4152,7 +4152,7 @@ function grillea1(button,user,course,version) {
         MM.widgets.dialogClose();
         amont(button,user,course,version);
     };
-    options2.buttons["Annuler"]["style"] = "modal-button-2";
+    options2.buttons["Annuler"]["style"] = "modal-button-8";
     
     options2.buttons["Enregistrer"] = function() {
         
@@ -4178,7 +4178,7 @@ function grillea1(button,user,course,version) {
         amont(button,user,course,version);
         
     };
-    options2.buttons["Enregistrer"]["style"] = "modal-button-5";
+    options2.buttons["Enregistrer"]["style"] = "modal-button-6";
     
     options2.buttons["Valider la grille"] = function() {
         
@@ -4248,7 +4248,7 @@ function grillea1(button,user,course,version) {
         }
         
     };
-    options2.buttons["Valider la grille"]["style"] = "modal-button-6 grd-vert";
+    options2.buttons["Valider la grille"]["style"] = "modal-button-7";
     
     
    
@@ -5023,6 +5023,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         };
         
         options3.buttons["Fermer"] = function() {
+            MM.widgets.dialogClose();
             MM.widgets.dialogClose2();
             MM.log("Dialog:"+userpif.userid);
             $('button#pif[user="'+userpif.userid+'"]').click();
