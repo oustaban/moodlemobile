@@ -3954,7 +3954,7 @@ function grillea1(button,user,course,version) {
     });
     
     if (grille!="[]" && grille!="" && grille.q1 == 2)
-        var disabled = 'disbaled="disabled"';
+        var disabled = 'disabled="disabled"';
     else disabled='';
     
     var html = '<div id="pifContent">';
@@ -4303,14 +4303,18 @@ function modifierPif(button,user,course,version) {
     
     
     //var pifArray = pif;
-    var pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+    if (pifscourse.length > 0) {
+        var pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+    } else {
+        var pifArray = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
+    }
     MM.log('pifArray:'+pifArray);
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
         pifArray = pifArray.replace(/\\"/g, '"');
     }
     MM.log('pifArray:'+pifArray);
     
-    if (pifArray == "" || pifArray == "[]") {
+    if (pifArray == "" || pifArray == "[]" || pifArray == undefined) {
         if (pifscourse.length > 0) {
             var managerid = pifscourse[0].managerid;
             var managername = pifscourse[0].managername;
