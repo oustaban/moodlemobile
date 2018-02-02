@@ -3859,7 +3859,7 @@ function amont(button,user,course,version) {
     if (grille!="[]" && grille!="" && grille.q1 == 2){
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
-    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q1 == 0 || grille.q1 == undefined))){
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && (grille.q1 == 0 || grille.q1 == undefined || grille.q1 == ""))){
         html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     if (grille!="[]" && grille!="" && grille.q2 == 1){
@@ -3868,7 +3868,7 @@ function amont(button,user,course,version) {
     if (grille!="[]" && grille!="" && grille.q2 == 2){
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
-    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && (grille.q2 == 0 || grille.q2 == undefined))){
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && (grille.q2 == 0 || grille.q2 == undefined || grille.q2 == "undefined""))){
         html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     if (grille!="[]" && grille!="" && grille.q3 == 1){
@@ -3877,7 +3877,7 @@ function amont(button,user,course,version) {
     if (grille!="[]" && grille!="" && grille.q3 == 2){
         html += '<td style="width:33%;text-align:center"><p align="center">terminée</p></td>';
     }
-    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && grille.q3 == 0 || grille.q3 == undefined))){
+    if (grille=="[]" || grille=="" || (grille!="[]" && grille!="" && (grille.q3 == 0 || grille.q3 == undefined || grille.q3 == ""))){
         html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     html += '</tr>';
