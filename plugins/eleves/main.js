@@ -493,12 +493,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             //Recup des grilles
                             var newgrille = user.grille;
-                            MM.log('Recup des grilles:'+checkUserJ.grille+'/'+newgrille);
-                            MM.log('Recup des grilles:'+checkUserJ.grille.q1+'/'+newgrille.q1);
-                            if (checkUserJ.grille == "" || checkUserJ.grille == "[]") {
+                            MM.log('Recup des grilles:'user.id+'/'+checkUserJ.grille+'/'+newgrille);
+                            MM.log('Recup des grilles:'user.id+'/'+checkUserJ.grille.q1+'/'+newgrille.q1);
+                            if (checkUserJ.grille == "" || checkUserJ.grille == "[]" || checkUserJ.grille == undefined) {
                                 newUser.grille = newgrille;
                             } else {
-                                if (newgrille == "" || newgrille == "[]") {
+                                if (newgrille == "" || newgrille == "[]" || newgrille == undefined) {
                                     newUser.grille = checkUserJ.grille;
                                 } else {
                                     if (newgrille.q1 > checkUserJ.grille.q1 || newgrille.q2 > checkUserJ.grille.q2 || newgrille.q3 > checkUserJ.grille.q3 || newgrille.q4 > checkUserJ.grille.q4 || newgrille.q5 > checkUserJ.grille.q5 || newgrille.q6 > checkUserJ.grille.q6){
