@@ -4573,6 +4573,7 @@ function modifierPif(button,user,course,version) {
     
     if (pifArray != ""){
         $('button#pif[user="'+userpif.userid+'"]').attr("pif","");
+        $('button#creerpif[user="'+userpif.userid+'"]').attr("pif","");
     }
     
     var pifsignature1 = 0;

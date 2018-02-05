@@ -350,6 +350,7 @@ function signaturePopin( elem ) {
                                                 var userid = $(elem).attr("userid");
 												var type = $(elem).attr("id");
 												var course = $(elem).attr("course");
+												var version = $(elem).attr("version");
 												var managerid = $(elem).attr("managerid");
 												var managername = $(elem).attr("managername");
 												
@@ -378,6 +379,7 @@ function signaturePopin( elem ) {
 												  }
 												});
 												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
+												$('button#creerpif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
 												
 												//MM.widgets.dialogClose();
 												
@@ -418,7 +420,8 @@ function signaturePopin( elem ) {
 												
 												options.buttons[MM.lang.s("cancel")] = function() {
                                                     MM.widgets.dialogClose2();
-                                                    $('button#pif[user="'+userid+'"]').click();
+													modifierPif(elem,userid,course,version);
+                                                    //$('button#pif[user="'+userid+'"]').click();
                                                 };
                                                 
                                                 
@@ -478,11 +481,13 @@ function signaturePopin( elem ) {
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose2();
+																							modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' NOK');
 																							MM.widgets.dialogClose2();
+																							modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
@@ -492,6 +497,7 @@ function signaturePopin( elem ) {
 																				function(fileEntry2) {
 																				   MM.log('Create filePifSignatures : NOK');
 																				   MM.widgets.dialogClose2();
+																				   modifierPif(elem,userid,course,version);
 																				   //$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
@@ -509,11 +515,13 @@ function signaturePopin( elem ) {
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose2();
+																							modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' NOK');
 																							MM.widgets.dialogClose2();
+																							modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
@@ -523,6 +531,7 @@ function signaturePopin( elem ) {
 																				function(fileEntry2) {
 																				   MM.log('Create filePifSignatures : NOK');
 																				   MM.widgets.dialogClose2();
+																				   modifierPif(elem,userid,course,version);
 																				   //$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
@@ -532,6 +541,7 @@ function signaturePopin( elem ) {
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Pif NOK : ' + fileUrl);
 																	MM.widgets.dialogClose2();
+																	modifierPif(elem,userid,course,version);
 																	//$('button#pif[user="'+userid+'"]').click();
                                                                 }
                                                             );
@@ -539,6 +549,7 @@ function signaturePopin( elem ) {
                                                         function(fileEntry) {
                                                             MM.log(' Write Signature Pif NOK : ' + fileSignature);
 															MM.widgets.dialogClose2();
+															modifierPif(elem,userid,course,version);
 															//$('button#pif[user="'+userid+'"]').click();
                                                         }
                                                     );
@@ -593,6 +604,7 @@ function signaturePopin( elem ) {
 												  }
 												});
 												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
+												$('button#creerpif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
 												
 												//MM.widgets.dialogClose();
 												
@@ -627,8 +639,9 @@ function signaturePopin( elem ) {
                                                 
 												
 												options.buttons[MM.lang.s("cancel")] = function() {
-                                                    MM.widgets.dialogClose();
-                                                    $('button#pif[user="'+userid+'"]').click();
+                                                    MM.widgets.dialogClose2();
+													modifierPif(elem,userid,course,version);
+                                                    //$('button#pif[user="'+userid+'"]').click();
                                                 };
                                                 
                                                 
@@ -683,11 +696,13 @@ function signaturePopin( elem ) {
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose2();
+																							modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' NOK');
 																							MM.widgets.dialogClose2();
+																							modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
@@ -697,6 +712,7 @@ function signaturePopin( elem ) {
 																				function(fileEntry2) {
 																				   MM.log('Create fileAvenantSignatures : NOK');
 																				   MM.widgets.dialogClose2();
+																				   modifierPif(elem,userid,course,version);
 																				   //$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
@@ -714,11 +730,13 @@ function signaturePopin( elem ) {
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose2();
+																							modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' NOK');
 																							MM.widgets.dialogClose2();
+																							modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
@@ -728,6 +746,7 @@ function signaturePopin( elem ) {
 																				function(fileEntry2) {
 																				   MM.log('Create fileAvenantSignatures : NOK');
 																				   MM.widgets.dialogClose2();
+																				   modifierPif(elem,userid,course,version);
 																				   //$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
@@ -737,6 +756,7 @@ function signaturePopin( elem ) {
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Avenant NOK : ' + fileUrl);
 																	MM.widgets.dialogClose2();
+																	modifierPif(elem,userid,course,version);
 																	//$('button#pif[user="'+userid+'"]').click();
                                                                 }
                                                             );
@@ -744,6 +764,7 @@ function signaturePopin( elem ) {
                                                         function(fileEntry) {
                                                             MM.log(' Write Signature Avenant NOK : ' + fileSignature);
 															MM.widgets.dialogClose2();
+															modifierPif(elem,userid,course,version);
 															
 															//$('button#pif[user="'+userid+'"]').click();
                                                         }
