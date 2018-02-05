@@ -3250,10 +3250,10 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         options.buttons["Fermer"] = function() {
             MM.widgets.dialogClose2();
             MM.log("Dialog:"+userpif.userid);
-            if (userpif.pif == "" || userpif.pif == "[]")
-                $('button#creerpif[user="'+userpif.userid+'"]').click();
-            else
-                $('button#pif[user="'+userpif.userid+'"]').click();
+            window.setTimeout(function() {
+                    var elem = document.getElementById('pifContent');
+                    elem.scrollTop = elem.scrollHeight;
+            }, 500);
             
         };
         
@@ -5421,10 +5421,12 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         };
         
         options3.buttons["Fermer"] = function() {
-            MM.widgets.dialogClose();
             MM.widgets.dialogClose2();
             MM.log("Dialog:"+userpif.userid);
-            $('button#pif[user="'+userpif.userid+'"]').click();
+            window.setTimeout(function() {
+                    var elem = document.getElementById('pifContent');
+                    elem.scrollTop = elem.scrollHeight;
+            }, 500);
         };
         options3.buttons["Fermer"]["style"] = "modal-button-5";
         
