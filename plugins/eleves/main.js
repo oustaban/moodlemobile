@@ -513,6 +513,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         if (!checkUser) {
                             newUser.pif = user.pif;
+                            newUser.grille = user.grille;
                         }
                         
                         //var newuserpif = newUser.toJSON();
