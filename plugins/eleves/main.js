@@ -2024,14 +2024,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     //Pif button
                     $('button#pif').on(MM.clickType, function(e) {
+                        
                         MM.log('Pif clicked');
                         var button = $(this);
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
                         var version = $(this).attr("version");
                         var theuser = MM.db.get('users',parseInt(user));
-                        MM.log('pif:'+course+'/'+user);
                         
+                        clickPif(button,course,user,version);
+                        
+                        //MM.log('pif:'+course+'/'+user);
+                        
+                        /*
                         var userspif = MM.db.where('users', {userid:parseInt(user)});
                         var userpif = userspif[0].toJSON();
                         var pifs = userpif.pif;
@@ -2108,6 +2113,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $("button#modifierpif").click();
                             
                         }
+                        
+                        */
                         
                     });
                     
@@ -4261,7 +4268,7 @@ function grillea1(button,user,course,version) {
                 options4.buttons["Je valide"] = function() {
                     MM.log('Enregistrer et Valider Grille 1A');
                     thisuser.save({grille:grille});
-                    $('button#creerpif[user="'+user+'"]').replaceWith('<button class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                    $('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr("course"),$(this).attr("user"),$(this).attr("version"))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
                     //$('button#creerpif[user="'+user+'"]').unbind('click');
                     //$('button#creerpif[user="'+user+'"]').attr('id','pif');
                     //$('button#pif[user="'+user+'"]').html('PIF');
@@ -5326,4 +5333,95 @@ function alertIdle(since) {
         var html = "Votre session de formation a été démarrée depuis <br/><strong>"+since+".</strong><br/>N'oubliez pas de fermer votre session, une fois votre formation terminée.";
        
         MM.widgets.dialog2(html, options);
+}
+
+
+function clickPif(thisbutton,courseid,userid,versionid) {
+    
+                        MM.log('Pif clicked');
+                        var button = thisbutton;
+                        var course = courseid;
+                        var user = userid;
+                        var version = versionid;
+                        var theuser = MM.db.get('users',parseInt(user));
+                        MM.log('pif:'+course+'/'+user);
+                        
+                        var userspif = MM.db.where('users', {userid:parseInt(user)});
+                        var userpif = userspif[0].toJSON();
+                        var pifs = userpif.pif;
+                        pifscourse = $.grep(pifs, function( el ) {
+                                        return el.courseid == course;
+                        });
+                        
+                        MM.log('pifscourse length:'+pifscourse.length);
+                        
+                        
+                        var pifArrayOrg = $(this).attr('pif');
+                        MM.log('pifArrayOrg:'+pifArrayOrg);
+                        pifArray = pifArrayOrg.replace(/\\"/g, '"');
+                        MM.log('pifArray:'+pifArray);
+                        
+                        if (pifArray == "" || pifArray == "[]") {
+                            if (pifscourse.length > 0) {
+                                var managerid = pifscourse[0].managerid;
+                                var managername = pifscourse[0].managername
+                            } else {
+                                managerid = MM.config.current_site.userid;
+                                managername =MM.config.current_site.fullname;
+                            }
+                        } else {
+                            var pifArray2 = JSON.parse(pifArray);
+                            var managerid = pifArray2[0].managerid;
+                            var managername = pifArray2[0].managername
+                            
+                        }
+                        MM.log('manager:'+managerid+'/'+managername);
+                        
+                        
+                        
+                        var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
+                        
+                        MM.log(thisuser);
+                        
+                        var total_duration = 0;
+                        
+                        
+                        
+                        var html = '<div id="pifContent"><br/><br/>';
+                        html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
+                        html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p><br/><br/>';
+                        if (version == 1)
+                            html += '<p align="center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                        if (version == 2)
+                            html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\',\''+version+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                        if (version > 2)
+                            html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                        html += '<br/><br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
+                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+                        html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button class="modal-button-1">Voir</button></td></tr>';
+                        html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" class="modal-button-5">Compléter</button></td></tr>';
+                        html += '</table>';
+                        
+                        var options = {
+                            title: 'Stagiaire '+userpif.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
+                            width: "98%",
+                            marginTop: "5%",
+                            buttons: {}
+                        };
+                        
+                        options.buttons["Fermer"] = function() {
+                            //MM.Router.navigate("eleves/" + course );
+                            closeDialog(course,user);
+                        };
+                        
+                        $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
+                        MM.widgets.dialog(html, options);
+                        
+                        if (pifArray != "") {
+                            $("button#modifierpif").click();
+                            
+                        }
+                        
+                   
 }
