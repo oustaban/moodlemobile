@@ -493,8 +493,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             //Recup des grilles
                             var newgrille = user.grille;
-                            MM.log('Recup des grilles:'user.id+'/'+checkUserJ.grille+'/'+newgrille);
-                            MM.log('Recup des grilles:'user.id+'/'+checkUserJ.grille.q1+'/'+newgrille.q1);
+                            MM.log('Recup des grilles:'+user.id+'/'+checkUserJ.grille+'/'+newgrille);
+                            MM.log('Recup des grilles:'+user.id+'/'+checkUserJ.grille.q1+'/'+newgrille.q1);
                             if (checkUserJ.grille == "" || checkUserJ.grille == "[]" || checkUserJ.grille == undefined) {
                                 newUser.grille = newgrille;
                             } else {
