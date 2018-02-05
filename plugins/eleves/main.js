@@ -497,14 +497,19 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Recup des grilles:'+user.id+'/'+checkUserJ.grille.q1+'/'+newgrille.q1);
                             if (checkUserJ.grille == "" || checkUserJ.grille == "[]" || checkUserJ.grille == undefined) {
                                 newUser.grille = newgrille;
+                                MM.log('No Local Grille');
                             } else {
+                                MM.log('Local Grille');
                                 if (newgrille == "" || newgrille == "[]" || newgrille == undefined) {
                                     newUser.grille = checkUserJ.grille;
+                                    MM.log('No Online Grille');
                                 } else {
                                     if (newgrille.q1 > checkUserJ.grille.q1 || newgrille.q2 > checkUserJ.grille.q2 || newgrille.q3 > checkUserJ.grille.q3 || newgrille.q4 > checkUserJ.grille.q4 || newgrille.q5 > checkUserJ.grille.q5 || newgrille.q6 > checkUserJ.grille.q6){
                                         newUser.grille = newgrille;
+                                         MM.log('Online Grille More Recent');
                                     } else {
                                         newUser.grille = checkUserJ.grille;
+                                        MM.log('Offline Grille More Recent');
                                     }
                                 }
                             }
@@ -516,6 +521,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             newUser.grille = user.grille;
                         }
                         
+                        MM.log('GRILLE:'+newUser.grille);
                         //var newuserpif = newUser.toJSON();
                         
                         
