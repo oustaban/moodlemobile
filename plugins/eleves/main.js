@@ -4269,7 +4269,7 @@ function grillea1(button,user,course,version) {
                 options4.buttons["Je valide"] = function() {
                     MM.log('Enregistrer et Valider Grille 1A');
                     thisuser.save({grille:grille});
-                    $('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                    $('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),'+course+','+user+','+version+',)" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
                     //$('button#creerpif[user="'+user+'"]').unbind('click');
                     //$('button#creerpif[user="'+user+'"]').attr('id','pif');
                     //$('button#pif[user="'+user+'"]').html('PIF');
