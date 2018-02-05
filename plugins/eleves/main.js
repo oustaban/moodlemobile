@@ -3260,14 +3260,14 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         options.buttons["Fermer"]["style"] = "modal-button-8";
                         
         if (valider == 1 && avant == 1 && (pifsignature1 == 0 || pifsignature2 == 0)) {
-            $("#app-dialog").removeClass('full-screen-dialog2');
+            //$("#app-dialog").removeClass('full-screen-dialog2');
             MM.popMessage2("Veuillez signer au bas du tableau, pour valider les compétences à développer dans le cadre du parcours de formation.",options);
             valider = 0;
         }
         
         if (grille == "" || grille == "[]") {
             if (valider == 1 && apres == 1 && (pifsignature3 == 0 || pifsignature4 == 0)) {
-                $("#app-dialog").removeClass('full-screen-dialog2');
+                //$("#app-dialog").removeClass('full-screen-dialog2');
                 MM.popMessage2("Veuillez signer au bas du tableau, pour valider les compétences acquises à l'issue du parcours de formation.",options);
                 valider = 0;
             }
@@ -4376,6 +4376,7 @@ function modifierPif(button,user,course,version) {
     }
     MM.log('pifArray:'+pifArray);
     
+    
     if (pifArray == "" || pifArray == "[]" || pifArray == undefined) {
         if (pifscourse.length > 0) {
             var managerid = pifscourse[0].managerid;
@@ -4587,7 +4588,10 @@ function modifierPif(button,user,course,version) {
         MM.Router.navigate("eleves/" + course );
         //$("#app-dialog").removeClass('full-screen-dialog2');
         MM.widgets.dialogClose();
-        $('button#pif[user="'+userpif.userid+'"]').click();
+        if (pifs == "" || pifs == "[]")
+            amont(button,user,course,version)
+        else
+            $('button#pif[user="'+userpif.userid+'"]').click();
     };
     
     
@@ -5409,7 +5413,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
-        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
+        //$('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
                             
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
