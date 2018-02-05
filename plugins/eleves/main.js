@@ -4267,7 +4267,8 @@ function grillea1(button,user,course,version) {
                     //$('button#pif[user="'+user+'"]').html('PIF');
                     //$('button#pif[user="'+user+'"]').attr('class','btn grd-grisfonce text-blanc');
                     
-                    MM.Router.navigate("eleves/" + course, {trigger: true, replace: true} );
+                    MM.Router.navigate("eleves/" + course, {trigger: true} );
+                    Backbone.history.loadUrl();
                     
                     MM.widgets.dialogClose2();
                     MM.widgets.dialogClose();
