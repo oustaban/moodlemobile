@@ -3205,11 +3205,8 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         pifbutton = pifbutton.replace(/"/g, '\\"');
         MM.log('pifbutton:'+pifbutton);
         
-        if (grille == "" || grille == "[]") {
-            $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
-        } else {
-            $('button#creerpif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
-        }
+        $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
+        
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
         
