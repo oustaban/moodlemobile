@@ -594,7 +594,7 @@ function signaturePopin( elem ) {
 												});
 												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
 												
-												MM.widgets.dialogClose();
+												//MM.widgets.dialogClose();
 												
 												var popTitle ="";
 												if (type=="signature_stagiaire"){
