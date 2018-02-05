@@ -2030,9 +2030,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
                         var version = $(this).attr("version");
+                        var pifs = $(this).attr("pif");
                         var theuser = MM.db.get('users',parseInt(user));
                         
-                        clickPif(button,course,user,version);
+                        clickPif(button,course,user,version,pifs);
                         
                         //MM.log('pif:'+course+'/'+user);
                         
@@ -4268,7 +4269,7 @@ function grillea1(button,user,course,version) {
                 options4.buttons["Je valide"] = function() {
                     MM.log('Enregistrer et Valider Grille 1A');
                     thisuser.save({grille:grille});
-                    $('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr("course"),$(this).attr("user"),$(this).attr("version"))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                    $('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
                     //$('button#creerpif[user="'+user+'"]').unbind('click');
                     //$('button#creerpif[user="'+user+'"]').attr('id','pif');
                     //$('button#pif[user="'+user+'"]').html('PIF');
@@ -5336,7 +5337,7 @@ function alertIdle(since) {
 }
 
 
-function clickPif(thisbutton,courseid,userid,versionid) {
+function clickPif(thisbutton,courseid,userid,versionid,pifs) {
     
                         MM.log('Pif clicked');
                         var button = thisbutton;
@@ -5356,7 +5357,7 @@ function clickPif(thisbutton,courseid,userid,versionid) {
                         MM.log('pifscourse length:'+pifscourse.length);
                         
                         
-                        var pifArrayOrg = $(this).attr('pif');
+                        var pifArrayOrg = pifs;
                         MM.log('pifArrayOrg:'+pifArrayOrg);
                         pifArray = pifArrayOrg.replace(/\\"/g, '"');
                         MM.log('pifArray:'+pifArray);
