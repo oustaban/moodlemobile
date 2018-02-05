@@ -3192,9 +3192,11 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
+        
         var pifbutton = JSON.stringify(pifs3);
         pifbutton = pifbutton.replace(/"/g, '\\"');
         MM.log('pifbutton:'+pifbutton);
+        
         if (grille == "" || grille == "[]") {
             $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
         } else {
@@ -4259,10 +4261,11 @@ function grillea1(button,user,course,version) {
                 options4.buttons["Je valide"] = function() {
                     MM.log('Enregistrer et Valider Grille 1A');
                     thisuser.save({grille:grille});
-                    $('button#creerpif[user="'+user+'"]').unbind('click');
-                    $('button#creerpif[user="'+user+'"]').attr('id','pif');
-                    $('button#pif[user="'+user+'"]').html('PIF');
-                    $('button#pif[user="'+user+'"]').attr('class','btn grd-grisfonce text-blanc');
+                    $('button#creerpif[user="'+user+'"]').replaceWith('<button class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                    //$('button#creerpif[user="'+user+'"]').unbind('click');
+                    //$('button#creerpif[user="'+user+'"]').attr('id','pif');
+                    //$('button#pif[user="'+user+'"]').html('PIF');
+                    //$('button#pif[user="'+user+'"]').attr('class','btn grd-grisfonce text-blanc');
                     
                     MM.Router.navigate("eleves/" + course );
                     
