@@ -5337,7 +5337,7 @@ function alertIdle(since) {
 }
 
 
-function clickPif(thisbutton,courseid,userid,versionid,pifs) {
+function clickPif(thisbutton,courseid,userid,versionid,spifs) {
     
                         MM.log('Pif clicked');
                         var button = thisbutton;
@@ -5357,7 +5357,7 @@ function clickPif(thisbutton,courseid,userid,versionid,pifs) {
                         MM.log('pifscourse length:'+pifscourse.length);
                         
                         
-                        var pifArrayOrg = pifs;
+                        var pifArrayOrg = spifs;
                         MM.log('pifArrayOrg:'+pifArrayOrg);
                         pifArray = pifArrayOrg.replace(/\\"/g, '"');
                         MM.log('pifArray:'+pifArray);
