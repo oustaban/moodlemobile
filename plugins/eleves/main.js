@@ -492,9 +492,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             
                             //Recup des grilles
+                            var newgrille = user.grille;
                             MM.log('Recup des grilles:'+checkUserJ.grille+'/'+newgrille);
                             MM.log('Recup des grilles:'+checkUserJ.grille.q1+'/'+newgrille.q1);
-                            var newgrille = user.grille;
                             if (checkUserJ.grille == "" || checkUserJ.grille == "[]") {
                                 newUser.grille = newgrille;
                             } else {
@@ -504,7 +504,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     if (newgrille.q1 > checkUserJ.grille.q1 || newgrille.q2 > checkUserJ.grille.q2 || newgrille.q3 > checkUserJ.grille.q3 || newgrille.q4 > checkUserJ.grille.q4 || newgrille.q5 > checkUserJ.grille.q5 || newgrille.q6 > checkUserJ.grille.q6){
                                         newUser.grille = newgrille;
                                     } else {
-                                        newUser.grille = checkUserJ.grille;;
+                                        newUser.grille = checkUserJ.grille;
                                     }
                                 }
                             }
