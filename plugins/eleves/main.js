@@ -456,8 +456,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             'lastname': user.lastname,
                             'firstname': user.firstname,
                             'email': user.email,
-                            'notes':user.notes,
-                            'grille':user.grille
+                            'notes':user.notes
+                            //'grille':user.grille
                         };
                         var checkUser = MM.db.get('users', MM.config.current_site.id + "-" + user.id);
                         if (checkUser && !MM.deviceConnected()) {
@@ -465,6 +465,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             var checkUserJ = checkUser.toJSON();
                             newUser.pif = checkUserJ.pif;
+                            newUser.grille = checkUserJ.grille;
                             MM.log('Check User:'+checkUserJ.id);
                             //newUser.pif = user.pif;
                         }
@@ -488,6 +489,27 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 }
                             });
                             newUser.pif = newpif;
+                            
+                            
+                            //Recup des grilles
+                            MM.log('Recup des grilles:'+checkUserJ.grille+'/'+newgrille);
+                            MM.log('Recup des grilles:'+checkUserJ.grille.q1+'/'+newgrille.q1);
+                            var newgrille = user.grille;
+                            if (checkUserJ.grille == "" || checkUserJ.grille == "[]") {
+                                newUser.grille = newgrille;
+                            } else {
+                                if (newgrille == "" || newgrille == "[]") {
+                                    newUser.grille = checkUserJ.grille;
+                                } else {
+                                    if (newgrille.q1 > checkUserJ.grille.q1 || newgrille.q2 > checkUserJ.grille.q2 || newgrille.q3 > checkUserJ.grille.q3 || newgrille.q4 > checkUserJ.grille.q4 || newgrille.q5 > checkUserJ.grille.q5 || newgrille.q6 > checkUserJ.grille.q6){
+                                        newUser.grille = newgrille;
+                                    } else {
+                                        newUser.grille = checkUserJ.grille;;
+                                    }
+                                }
+                            }
+                            
+                            
                         }
                         if (!checkUser) {
                             newUser.pif = user.pif;
@@ -4369,77 +4391,156 @@ function modifierPif(button,user,course,version) {
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Intitulé des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
     
     var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
-    local_contents.forEach(function(local_content) {
-         var content = local_content.toJSON();
-         var unchecked = 0;
-         if (content.modname == "scorm") {
-            html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
-            
-            
-            if (pifArray == "") {
-            
-                //MM.log('pifscourse:'+pifscourse+'/'+pifscourse.length+'/'+pifscourse[0]+'/'+pifscourse[0].scormid);
-                if (pifscourse.length > 0) {
-                    pifscormb = $.grep(pifscourse, function( el ) {
-                        return el.scormid == content.contentid && el.begin == 1;
+    
+    if ((grille == "" || grille == "[]" )) {
+        local_contents.forEach(function(local_content) {
+             var content = local_content.toJSON();
+             var unchecked = 0;
+             if (content.modname == "scorm") {
+                
+                html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
+                
+                
+                if (pifArray == "") {
+                
+                    //MM.log('pifscourse:'+pifscourse+'/'+pifscourse.length+'/'+pifscourse[0]+'/'+pifscourse[0].scormid);
+                    if (pifscourse.length > 0) {
+                        pifscormb = $.grep(pifscourse, function( el ) {
+                            return el.scormid == content.contentid && el.begin == 1;
+                        });
+                        MM.log('pifscormb length:'+pifscormb.length);
+                        
+                    } else {
+                        pifscormb = [1];
+                    }
+                    
+                    if (pifscormb.length>0) {
+                        html+=' checked="checked"';
+                        total_duration += content.pif_duration;
+                    } else {
+                        unchecked = 1;
+                    }
+                    html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                     
+                    pifscorme = $.grep(pifscourse, function( el ) {
+                            return el.scormid == content.contentid && el.end == 1;
                     });
-                    MM.log('pifscormb length:'+pifscormb.length);
+                    MM.log('pifscorme length:'+pifscorme.length);
+                    if (pifscorme.length>0) {
+                        html+=' checked="checked"';
+                    }
+                    if (unchecked) {
+                        html+=' disabled="true"'
+                    }
+                    html +='></td></tr>';
                     
                 } else {
-                    pifscormb = [1];
+                    
+                    
+                    //MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
+                    
+                    pifscormb = $.grep(pifArray2, function( el ) {
+                        return el.scormid == content.contentid && el.begin == 1;
+                    });
+                    
+                    if (pifscormb.length>0) {
+                        html+=' checked="checked"';
+                        total_duration += content.pif_duration;
+                    } else {
+                        unchecked = 1;
+                    }
+                    html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                     
+                    pifscorme = $.grep(pifArray2, function( el ) {
+                            return el.scormid == content.contentid && el.end == 1;
+                    });
+                    if (pifscorme.length>0) {
+                        html+=' checked="checked"';
+                    }
+                    if (unchecked) {
+                        html+=' disabled="true"'
+                    }
+                    html +='></td></tr>';
+                    
                 }
+             }
+        });
+        
+    } else {
+        
+        local_contents.forEach(function(local_content) {
+             var content = local_content.toJSON();
+             var unchecked = 0;
+             if (content.modname == "scorm") {
+                html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                 
-                if (pifscormb.length>0) {
-                    html+=' checked="checked"';
-                    total_duration += content.pif_duration;
+                
+                if (pifArray == "") {
+                
+                    //MM.log('pifscourse:'+pifscourse+'/'+pifscourse.length+'/'+pifscourse[0]+'/'+pifscourse[0].scormid);
+                    if (pifscourse.length > 0) {
+                        pifscormb = $.grep(pifscourse, function( el ) {
+                            return el.scormid == content.contentid && el.begin == 1;
+                        });
+                        MM.log('pifscormb length:'+pifscormb.length);
+                        
+                    } else {
+                        pifscormb = [1];
+                    }
+                    
+                    if (pifscormb.length>0) {
+                        html+=' checked="checked"';
+                        total_duration += content.pif_duration;
+                    } else {
+                        unchecked = 1;
+                    }
+                    html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                     
+                    pifscorme = $.grep(pifscourse, function( el ) {
+                            return el.scormid == content.contentid && el.end == 1;
+                    });
+                    MM.log('pifscorme length:'+pifscorme.length);
+                    if (pifscorme.length>0) {
+                        html+=' checked="checked"';
+                    }
+                    if (unchecked) {
+                        html+=' disabled="true"'
+                    }
+                    html +='></td></tr>';
+                    
                 } else {
-                    unchecked = 1;
+                    
+                    
+                    //MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
+                    
+                    pifscormb = $.grep(pifArray2, function( el ) {
+                        return el.scormid == content.contentid && el.begin == 1;
+                    });
+                    
+                    if (pifscormb.length>0) {
+                        html+=' checked="checked"';
+                        total_duration += content.pif_duration;
+                    } else {
+                        unchecked = 1;
+                    }
+                    html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
+                     
+                    pifscorme = $.grep(pifArray2, function( el ) {
+                            return el.scormid == content.contentid && el.end == 1;
+                    });
+                    if (pifscorme.length>0) {
+                        html+=' checked="checked"';
+                    }
+                    if (unchecked) {
+                        html+=' disabled="true"'
+                    }
+                    html +='></td></tr>';
+                    
                 }
-                html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
-                 
-                pifscorme = $.grep(pifscourse, function( el ) {
-                        return el.scormid == content.contentid && el.end == 1;
-                });
-                MM.log('pifscorme length:'+pifscorme.length);
-                if (pifscorme.length>0) {
-                    html+=' checked="checked"';
-                }
-                if (unchecked) {
-                    html+=' disabled="true"'
-                }
-                html +='></td></tr>';
-                
-            } else {
-                
-                
-                //MM.log('PIF Button Attr:'+pifArray2+'/'+pifArray2.length+'/'+pifArray2[0]+'/'+pifArray2[0].scormid+'/'+content.contentid);
-                
-                pifscormb = $.grep(pifArray2, function( el ) {
-                    return el.scormid == content.contentid && el.begin == 1;
-                });
-                
-                if (pifscormb.length>0) {
-                    html+=' checked="checked"';
-                    total_duration += content.pif_duration;
-                } else {
-                    unchecked = 1;
-                }
-                html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
-                 
-                pifscorme = $.grep(pifArray2, function( el ) {
-                        return el.scormid == content.contentid && el.end == 1;
-                });
-                if (pifscorme.length>0) {
-                    html+=' checked="checked"';
-                }
-                if (unchecked) {
-                    html+=' disabled="true"'
-                }
-                html +='></td></tr>';
-                
-            }
-         }
-    });
+             }
+        });
+        
+    }
     
     html +='</table><br/><br/>';
     
