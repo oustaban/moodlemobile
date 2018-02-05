@@ -477,13 +477,13 @@ function signaturePopin( elem ) {
 																					MM.fs.writeInFile(fileEntry2, content , 
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
-																							MM.widgets.dialogClose();
-																							$('button#pif[user="'+userid+'"]').click();
+																							MM.widgets.dialogClose2();
+																							//$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' NOK');
-																							MM.widgets.dialogClose();
-																							$('button#pif[user="'+userid+'"]').click();
+																							MM.widgets.dialogClose2();
+																							//$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
 																					);
@@ -491,8 +491,8 @@ function signaturePopin( elem ) {
 																					
 																				function(fileEntry2) {
 																				   MM.log('Create filePifSignatures : NOK');
-																				   MM.widgets.dialogClose();
-																					$('button#pif[user="'+userid+'"]').click();
+																				   MM.widgets.dialogClose2();
+																				   //$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
 																		},
@@ -508,13 +508,13 @@ function signaturePopin( elem ) {
 																					MM.fs.writeInFile(fileEntry2, content , 
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
-																							MM.widgets.dialogClose();
-																							$('button#pif[user="'+userid+'"]').click();
+																							MM.widgets.dialogClose2();
+																							//$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' NOK');
-																							MM.widgets.dialogClose();
-																							$('button#pif[user="'+userid+'"]').click();
+																							MM.widgets.dialogClose2();
+																							//$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
 																					);
@@ -522,8 +522,8 @@ function signaturePopin( elem ) {
 																					
 																				function(fileEntry2) {
 																				   MM.log('Create filePifSignatures : NOK');
-																				   MM.widgets.dialogClose();
-																					$('button#pif[user="'+userid+'"]').click();
+																				   MM.widgets.dialogClose2();
+																				   //$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
                                                                         }
@@ -531,15 +531,15 @@ function signaturePopin( elem ) {
                                                                 },
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Pif NOK : ' + fileUrl);
-																	MM.widgets.dialogClose();
-																	$('button#pif[user="'+userid+'"]').click();
+																	MM.widgets.dialogClose2();
+																	//$('button#pif[user="'+userid+'"]').click();
                                                                 }
                                                             );
                                                         },
                                                         function(fileEntry) {
                                                             MM.log(' Write Signature Pif NOK : ' + fileSignature);
-															MM.widgets.dialogClose();
-															$('button#pif[user="'+userid+'"]').click();
+															MM.widgets.dialogClose2();
+															//$('button#pif[user="'+userid+'"]').click();
                                                         }
                                                     );
                                                                 
@@ -547,7 +547,7 @@ function signaturePopin( elem ) {
                                                 };
 												options.buttons["Valider"]['style'] = "modal-button-2";
                                                 
-                                                MM.widgets.dialog(html, options);
+                                                MM.widgets.dialog2(html, options);
                                                 
                                                 
                                                 $(document).ready(function(e) {     
@@ -682,13 +682,13 @@ function signaturePopin( elem ) {
 																					MM.fs.writeInFile(fileEntry2, content , 
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' OK');
-																							MM.widgets.dialogClose();
-																							$('button#pif[user="'+userid+'"]').click();
+																							MM.widgets.dialogClose2();
+																							//$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' NOK');
-																							MM.widgets.dialogClose();
-																							$('button#pif[user="'+userid+'"]').click();
+																							MM.widgets.dialogClose2();
+																							//$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
 																					);
@@ -696,8 +696,8 @@ function signaturePopin( elem ) {
 																					
 																				function(fileEntry2) {
 																				   MM.log('Create fileAvenantSignatures : NOK');
-																				   MM.widgets.dialogClose();
-																					$('button#pif[user="'+userid+'"]').click();
+																				   MM.widgets.dialogClose2();
+																				   //$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
 																		},
@@ -713,13 +713,13 @@ function signaturePopin( elem ) {
 																					MM.fs.writeInFile(fileEntry2, content , 
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' OK');
-																							MM.widgets.dialogClose();
-																							$('button#pif[user="'+userid+'"]').click();
+																							MM.widgets.dialogClose2();
+																							//$('button#pif[user="'+userid+'"]').click();
 																						},
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' NOK');
-																							MM.widgets.dialogClose();
-																							$('button#pif[user="'+userid+'"]').click();
+																							MM.widgets.dialogClose2();
+																							//$('button#pif[user="'+userid+'"]').click();
 																						
 																						}
 																					);
@@ -727,8 +727,8 @@ function signaturePopin( elem ) {
 																					
 																				function(fileEntry2) {
 																				   MM.log('Create fileAvenantSignatures : NOK');
-																				   MM.widgets.dialogClose();
-																					$('button#pif[user="'+userid+'"]').click();
+																				   MM.widgets.dialogClose2();
+																				   //$('button#pif[user="'+userid+'"]').click();
 																				}
 																			);
                                                                         }
@@ -736,16 +736,16 @@ function signaturePopin( elem ) {
                                                                 },
                                                                 function(fileUrl) {
                                                                     MM.log(' Write Signature Avenant NOK : ' + fileUrl);
-																	MM.widgets.dialogClose();
-																	$('button#pif[user="'+userid+'"]').click();
+																	MM.widgets.dialogClose2();
+																	//$('button#pif[user="'+userid+'"]').click();
                                                                 }
                                                             );
                                                         },
                                                         function(fileEntry) {
                                                             MM.log(' Write Signature Avenant NOK : ' + fileSignature);
-															MM.widgets.dialogClose();
+															MM.widgets.dialogClose2();
 															
-															$('button#pif[user="'+userid+'"]').click();
+															//$('button#pif[user="'+userid+'"]').click();
                                                         }
                                                     );
                                                                 
@@ -755,7 +755,7 @@ function signaturePopin( elem ) {
                                                 
 												$("#app-dialog").removeClass('full-screen-dialog2');
 												$("#app-dialog .modalContent").css('height','100%');
-                                                MM.widgets.dialog(html, options);
+                                                MM.widgets.dialog2(html, options);
                                                 
                                                 
                                                 $(document).ready(function(e) {     

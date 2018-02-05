@@ -5673,15 +5673,15 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                             html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
                             
                             if (grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
-                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-1">Voir</button></td></tr>';
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button style="width:200px" onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-1">Voir</button></td></tr>';
                             } else {
-                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button style="width:200px" onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
                             }
                             
                             if (grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
-                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-1">Voir</button></td></tr>';
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-1">Voir</button></td></tr>';
                             } else {
-                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
                             }
                             
                             html += '</table>';
