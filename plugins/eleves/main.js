@@ -2162,6 +2162,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var version = $(this).attr("version");
                         var theuser = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(user));
                         var userG = theuser.toJSON();
+                        var grille = userG.grille;
                         
                         var sessionFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
                         var isCreate = 0;
@@ -2169,30 +2170,35 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.fs.findFileAndReadContents(sessionFile,
                             function (result) {
                                 if ($('#eleveP'+user).prop("checked") == true) {
-                                    isCreate = 1;
-                                    var html = '<div id="pifContent"><br/><br/>';
-                                    html += '<h1 align="center">PARTIE DEDIEE A L\'ATTENTION DU MANAGER</h1><br/><br/><br/><br/>';
-                                    html += '<p align="center">Pour commencer le parcours de formation de ce stagiaire veuillez remplir la grille de positionnement ci-dessous.<br/>Cette grille vous permettra dévaluer les compétences que le stagiaire devra développer dans le cadre de sa formation</p><br/><br/><br/><br/>';
-                                    html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-                                    html += '<tr><td style="text-align:center"><button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="amont" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">Grille de Positionnement<br>(AMONT)</button></td></tr>';
-                                    html += '</table>';
-                                    html += '</div>';
                                     
-                                    var options = {
-                                        title: 'Stagiaire '+userG.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
-                                        width: "98%",
-                                        marginTop: "5%",
-                                        buttons: {}
-                                    };
-                                    
-                                    options.buttons["Fermer"] = function() {
-                                        //MM.Router.navigate("eleves/" + course );
-                                        closeDialog(course,user);
-                                    };
-                                    
-                                    $("#app-dialog").addClass('full-screen-dialog2');
-                                    $("#app-dialog .modalContent").css('height','85vh');
-                                    MM.widgets.dialog(html, options);
+                                    if (grille != "" && grille != "[]") {
+                                        clickPif(button,course,user,version,'');
+                                    } else {
+                                        isCreate = 1;
+                                        var html = '<div id="pifContent"><br/><br/>';
+                                        html += '<h1 align="center">PARTIE DEDIEE A L\'ATTENTION DU MANAGER</h1><br/><br/><br/><br/>';
+                                        html += '<p align="center">Pour commencer le parcours de formation de ce stagiaire veuillez remplir la grille de positionnement ci-dessous.<br/>Cette grille vous permettra dévaluer les compétences que le stagiaire devra développer dans le cadre de sa formation</p><br/><br/><br/><br/>';
+                                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+                                        html += '<tr><td style="text-align:center"><button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="amont" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">Grille de Positionnement<br>(AMONT)</button></td></tr>';
+                                        html += '</table>';
+                                        html += '</div>';
+                                        
+                                        var options = {
+                                            title: 'Stagiaire '+userG.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
+                                            width: "98%",
+                                            marginTop: "5%",
+                                            buttons: {}
+                                        };
+                                        
+                                        options.buttons["Fermer"] = function() {
+                                            //MM.Router.navigate("eleves/" + course );
+                                            closeDialog(course,user);
+                                        };
+                                        
+                                        $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
+                                        MM.widgets.dialog(html, options);
+                                    }
                                     
                                 } else {
                                     var options= {
@@ -3973,7 +3979,7 @@ function amont(button,user,course,version) {
     options.buttons["Fermer"] = function() {
         MM.Router.navigate("eleves/" + course );
         MM.widgets.dialogClose();
-        $('button#creerpif[user="'+usergrille.userid+'"]').click();
+        //$('button#creerpif[user="'+usergrille.userid+'"]').click();
     };
     
    
