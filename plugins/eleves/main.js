@@ -5337,7 +5337,7 @@ function alertIdle(since) {
 }
 
 
-function clickPif(thisbutton,courseid,userid,versionid,spifs) {
+function clickPif(thisbutton,courseid,userid,versionid,spifs='') {
     
                         MM.log('Pif clicked');
                         var button = thisbutton;
