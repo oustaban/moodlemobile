@@ -3234,8 +3234,10 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         pifbutton = pifbutton.replace(/"/g, '\\"');
         MM.log('pifbutton:'+pifbutton);
         
-        $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
-        
+        if (userpif.pif == "" || userpif.pif == "[]")
+            $('button#creerpif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
+        else
+            $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
         
@@ -3248,7 +3250,11 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         options.buttons["Fermer"] = function() {
             MM.widgets.dialogClose2();
             MM.log("Dialog:"+userpif.userid);
-            $('button#pif[user="'+userpif.userid+'"]').click();
+            if (userpif.pif == "" || userpif.pif == "[]")
+                $('button#creerpif[user="'+userpif.userid+'"]').click();
+            else
+                $('button#pif[user="'+userpif.userid+'"]').click();
+            
         };
         
         options.buttons["Fermer"]["style"] = "modal-button-8";
@@ -3268,6 +3274,8 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         }
         
         if (valider == 1){
+                    if (userpif.pif == "" || userpif.pif == "[]")
+                        $('button#creerpif[user="'+userpif.userid+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+userpif.userid+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
                     MM.log("Save PIF1:"+pifs2);
                     thisuser.save({pif:pifs2});
@@ -4295,7 +4303,7 @@ function grillea1(button,user,course,version) {
                 options4.buttons["Je valide"] = function() {
                     MM.log('Enregistrer et Valider Grille 1A');
                     thisuser.save({grille:grille});
-                    $('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                    //$('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
                     //$('button#creerpif[user="'+user+'"]').unbind('click');
                     //$('button#creerpif[user="'+user+'"]').attr('id','pif');
                     //$('button#pif[user="'+user+'"]').html('PIF');
@@ -4356,7 +4364,11 @@ function modifierPif(button,user,course,version) {
     
     
     //var pifArray = pif;
-    var pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+    
+    if (pifs == "" || pifs == "[]")
+        var pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+    else
+        pifArray = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
     
     MM.log('pifArray:'+pifArray);
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
