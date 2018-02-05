@@ -4366,9 +4366,9 @@ function modifierPif(button,user,course,version) {
     //var pifArray = pif;
     
     if (pifs == "" || pifs == "[]")
-        var pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+        var pifArray = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
     else
-        pifArray = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
+        pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
     
     MM.log('pifArray:'+pifArray);
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
