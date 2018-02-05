@@ -4594,10 +4594,8 @@ function modifierPif(button,user,course,version) {
         MM.Router.navigate("eleves/" + course );
         //$("#app-dialog").removeClass('full-screen-dialog2');
         MM.widgets.dialogClose();
-        if (pifs == "" || pifs == "[]")
-            amont(button,user,course,version)
-        else
-            $('button#pif[user="'+userpif.userid+'"]').click();
+        clickPif(button,course,user,version,'');
+        
     };
     
     
@@ -5620,6 +5618,7 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                         var userspif = MM.db.where('users', {userid:parseInt(user)});
                         var userpif = userspif[0].toJSON();
                         var pifs = userpif.pif;
+                        var grille = userpif.grille;
                         pifscourse = $.grep(pifs, function( el ) {
                                         return el.courseid == course;
                         });
@@ -5667,11 +5666,28 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                             html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\',\''+version+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         if (version > 2)
                             html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
-                        html += '<br/><br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
-                        html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-                        html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button class="modal-button-1">Voir</button></td></tr>';
-                        html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" class="modal-button-5">Compléter</button></td></tr>';
-                        html += '</table>';
+                        
+                        
+                        if (grille != "" && grille != "[]") {
+                            html += '<br/><br/><br/><p align="center">Une fois l\'ensemble du parcours de formation finalisée, vous pourrez compléter la grille<br/> de positionnement ci-dessous en aval de la formation.</p>';
+                            html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+                            
+                            if (grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-1">Voir</button></td></tr>';
+                            } else {
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
+                            }
+                            
+                            if (grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-1">Voir</button></td></tr>';
+                            } else {
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
+                            }
+                            
+                            html += '</table>';
+                        }
+                        
+                        html+='</div>';
                         
                         var options = {
                             title: 'Stagiaire '+userpif.fullname+'<div class="closedialog"><a href="javascript:void(0)" onclick="closeDialog('+course+','+user+')">X</a></div>',
