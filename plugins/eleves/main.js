@@ -4526,6 +4526,13 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
                                         
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
+                                        
                                     },
                                     function(path) {
                                         MM.log('Image Signature Stagiaire aprés NOK 1:'+fileSignature4);
@@ -4539,6 +4546,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                         
                                     }
                                 );
@@ -4563,6 +4577,13 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
                                         
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
+                                        
                                     },
                                     function(path) {
                                         MM.log('Image Signature Stagiaire aprés NOK 1:'+fileSignature4);
@@ -4576,6 +4597,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                         
                                     }
                                 );
@@ -4611,6 +4639,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                        
                                     },
                                     function(path) {
@@ -4625,6 +4660,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                         
                                     }
                                 );
@@ -4647,6 +4689,13 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                     },
                                     function(path) {
                                         MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
@@ -4660,6 +4709,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                     }
                                 );
                             }
@@ -4703,6 +4759,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                     },
                                     function(path) {
                                         MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
@@ -4716,6 +4779,14 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
+                                        
                                     }
                                 );
                             },
@@ -4738,6 +4809,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                     },
                                     function(path) {
                                         MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
@@ -4751,6 +4829,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                     }
                                 );
                             }
@@ -4785,6 +4870,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                     },
                                     function(path) {
                                         MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
@@ -4798,6 +4890,14 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
+                                        
                                     }
                                 );
                             },
@@ -4820,6 +4920,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                     },
                                     function(path) {
                                         MM.log('Image Signature Stagiaire aprés NOK:'+fileSignature4);
@@ -4833,6 +4940,13 @@ function modifierPif(button,user,course,version) {
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         MM.widgets.dialog(html, options);
+                                        
+                                        if (pifArray != "") {
+                                            window.setTimeout(function() {
+                                                    var elem = document.getElementById('pifContent');
+                                                    elem.scrollTop = elem.scrollHeight;
+                                            }, 1000);
+                                        }
                                     }
                                 );
                             }
@@ -4879,6 +4993,13 @@ function modifierPif(button,user,course,version) {
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
                         MM.widgets.dialog(html, options);
+                        
+                        if (pifArray != "") {
+                            window.setTimeout(function() {
+                                    var elem = document.getElementById('pifContent');
+                                    elem.scrollTop = elem.scrollHeight;
+                            }, 1000);
+                        }
                 
                     },
                     function(path) {
@@ -4891,6 +5012,13 @@ function modifierPif(button,user,course,version) {
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
                         MM.widgets.dialog(html, options);
+                        
+                        if (pifArray != "") {
+                            window.setTimeout(function() {
+                                    var elem = document.getElementById('pifContent');
+                                    elem.scrollTop = elem.scrollHeight;
+                            }, 1000);
+                        }
                         
                     }
                 );
@@ -4914,6 +5042,13 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         MM.widgets.dialog(html, options);
                         
+                        if (pifArray != "") {
+                            window.setTimeout(function() {
+                                    var elem = document.getElementById('pifContent');
+                                    elem.scrollTop = elem.scrollHeight;
+                            }, 1000);
+                        }
+                        
                     },
                     function(path) {
                         MM.log('Image Signature Stagiaire avant NOK 2:'+fileSignature2);
@@ -4926,6 +5061,13 @@ function modifierPif(button,user,course,version) {
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
                         MM.widgets.dialog(html, options);
+                        
+                        if (pifArray != "") {
+                            window.setTimeout(function() {
+                                    var elem = document.getElementById('pifContent');
+                                    elem.scrollTop = elem.scrollHeight;
+                            }, 1000);
+                        }
                         
                     }
                 );
