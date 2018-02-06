@@ -5244,37 +5244,37 @@ function modifierPif(button,user,course,version) {
              
              if (content.modname == "scorm") {
                 if (indexcontent == 1 && grille.q1 == 2) {
-                    note =  (grille.q1am +  grille.q2am + grille.q3am + grille.q4am + grille.q5am +grille.q6am + grille.q7am +grille.q8am +grille.q9am + grille.q10am);
+                    note =  (parseInt(grille.q1am) +  parseInt(grille.q2am) + parseInt(grille.q3am) + parseInt(grille.q4am) + parseInt(grille.q5am) + parseInt(grille.q6am) + parseInt(grille.q7am) + parseInt(grille.q8am) + parseInt(grille.q9am) + parseInt(grille.q10am));
                     if (note > 8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 1:'+note);
                 }
                 if (indexcontent == 2 && grille.q2 == 2) {
-                    note =  (grille.q1am +  grille.q2am + grille.q3am + grille.q4am + grille.q11am +grille.q12am + grille.q13am +grille.q14am +grille.q15am + grille.q10am);
+                    note =  (parseInt(grille.q1am) +  parseInt(grille.q2am) + parseInt(grille.q3am) + parseInt(grille.q4am) + parseInt(grille.q11am) + parseInt(grille.q12am) + parseInt(grille.q13am) + parseInt(grille.q14am) + parseInt(grille.q15am) + parseInt(grille.q10am));
                     if (note > 8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 2:'+note);
                 }
-                if (indexcontent == 3 && grille.q3 == 2) {
-                    note =  (grille.q1am + grille.q4am);
+                if (indexcontent == 3 && grille.q2 == 3) {
+                    note =  (parseInt(grille.q1am) +  parseInt(grille.q2am) + parseInt(grille.q3am) + parseInt(grille.q4am) + parseInt(grille.q16am) + parseInt(grille.q17am) + parseInt(grille.q18am) + parseInt(grille.q19am) + parseInt(grille.q20am) + parseInt(grille.q10am));
+                    if (note > 8) {
+                        unckeckednoteam = 1;
+                    }
+                    MM.log('Note Module 2:'+note);
+                }
+                if (indexcontent == 4 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                    note =  (parseInt(grille.q1am) + parseInt(grille.q4am));
                     if (note >= 8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 3:'+note);
                 }
                 
-                if (indexcontent == 4 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
-                    note =  (grille.q1am +  grille.q2am + grille.q3am + grille.q4am + grille.q16am +grille.q17am + grille.q18am +grille.q19am +grille.q20am + grille.q10am);
-                    if (note >= 3) {
-                        unckeckednoteam = 1;
-                    }
-                    MM.log('Note Module 4:'+note);
-                }
                 
                 if (indexcontent == 5 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
-                    note =  grille.q1am + (grille.q5am +  grille.q11am + grille.q16am)/3 + (grille.q7am +  grille.q13am + grille.q18am)/3;
+                    note =  parseInt(grille.q1am) + (parseInt(grille.q5am) +  parseInt(grille.q11am) + parseInt(grille.q16am))/3 + (parseInt(grille.q7am) +  parseInt(grille.q13am )+ parseInt(grille.q18am))/3;
                     if (note >= 4.8) {
                         unckeckednoteam = 1;
                     }
@@ -5282,7 +5282,7 @@ function modifierPif(button,user,course,version) {
                 }
                 
                 if (indexcontent == 6 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
-                    note =  (grille.q6am +  grille.q12am + grille.q17am)/3 + (grille.q7am +  grille.q13am + grille.q18am)/3;
+                    note =  (parseInt(grille.q6am) +  parseInt(grille.q12am) + parseInt(grille.q17am))/3 + (parseInt(grille.q7am) + parseInt(grille.q13am) + parseInt(grille.q18am))/3;
                     if (note >= 3.2) {
                         unckeckednoteam = 1;
                     }
@@ -5290,7 +5290,7 @@ function modifierPif(button,user,course,version) {
                 }
                 
                 if (indexcontent == 7 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
-                    note =  (grille.q7am +  grille.q13am + grille.q18am)/3 + (grille.q9am +  grille.q15am + grille.q20am)/3 + grille.q10am;
+                    note =  (parseInt(grille.q7am) +  parseInt(grille.q13am) + parseInt(grille.q18am))/3 + (parseInt(grille.q9am) +  parseInt(grille.q15am) + parseInt(grille.q20am))/3 + parseInt(grille.q10am);
                     if (note >= 4.8) {
                         unckeckednoteam = 1;
                     }
@@ -5298,7 +5298,7 @@ function modifierPif(button,user,course,version) {
                 }
                 
                 if (indexcontent == 8 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
-                    note =  (grille.q5am +  grille.q11am + grille.q16am)/3 + (grille.q6am +  grille.q12am + grille.q17am)/3 + grille.q10am;
+                    note =  (parseInt(grille.q5am) +  parseInt(grille.q11am) + parseInt(grille.q16am))/3 + (parseInt(grille.q6am) +  parseInt(grille.q12am) + parseInt(grille.q17am))/3 + parseInt(grille.q10am);
                     if (note >= 4.8) {
                         unckeckednoteam = 1;
                     }
@@ -5306,7 +5306,7 @@ function modifierPif(button,user,course,version) {
                 }
                 
                 if (indexcontent == 9 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
-                    note =  (grille.q8am +  grille.q14am + grille.q19am)/3 + grille.q2am + grille.q3am;
+                    note =  (parseInt(grille.q8am) +  parseInt(grille.q14am) + parseInt(grille.q19am))/3 + parseInt(grille.q2am) + parseInt(grille.q3am);
                     if (note >= 4.8) {
                         unckeckednoteam = 1;
                     }
