@@ -4655,7 +4655,7 @@ function modifierPif(button,user,course,version) {
                     if (unckeckednoteam) {
                         html+=' checked="checked" disabled="true"';
                         total_duration += content.pif_duration;
-                    } 
+                    } else {
                         if (pifscormb.length>0) {
                             html+=' checked="checked"';
                             total_duration += content.pif_duration;
