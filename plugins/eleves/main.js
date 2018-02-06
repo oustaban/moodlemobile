@@ -4379,6 +4379,709 @@ function grillea1(button,user,course,version) {
 
 
 
+//Grille A2             
+function grillea2(button,user,course,version) {
+    
+    MM.log('GRILLEA2 clicked');
+    
+    var button = button;
+    var course = course;
+    var courseId = course;
+    var user = user;
+    var version = version;
+    var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
+    
+    
+    var users = MM.db.where('users', {userid:parseInt(user)});
+    var usergrille = users[0].toJSON();
+    var grille = usergrille.grille;
+    var pifs = usergrille.pif;
+    MM.log('User:'+users[0]+'/UserGrille:'+usergrille+'/Grille:'+grille+'/Pif:'+pifs);
+    pifscourse = $.grep(pifs, function( el ) {
+                    return el.courseid == course;
+    });
+    
+    if (grille!="[]" && grille!="" && grille.q1 == 2)
+        var disabled = 'disabled="disabled"';
+    else disabled='';
+    
+    var html = '<div id="pifContent">';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
+    html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
+    html += '<h2 align="left" class="grille">Sanitaire</h2><br/>';
+    
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Non fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Partiellement fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Fait</div></div></td></tr>';
+    html+='</tr>';
+    
+    //QUESTION Q1AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">1.L\'agent identifie les attentes des clients</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
+    if (grille.q1am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
+    if (grille.q1am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
+    if (grille.q1am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q2AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">2.l\'agent applique les règles de communication</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
+    if (grille.q2am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1" '+disabled;
+    if (grille.q2am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2" '+disabled;
+    if (grille.q2am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q3AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">3.L\'agent traite les demandes et les réclamations</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
+    if (grille.q3am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1" '+disabled;
+    if (grille.q3am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2" '+disabled;
+    if (grille.q3am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q4AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">4.L\'agent nomme les éléments à nettoyer</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
+    if (grille.q4am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1" '+disabled;
+    if (grille.q4am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2" '+disabled;
+    if (grille.q4am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q11AM
+    html+='</tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">5.L\'agent utilise le matériel et les produits de nettoyage</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="0" '+disabled;
+    if (grille.q11am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="1" '+disabled;
+    if (grille.q11am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="2" '+disabled;
+    if (grille.q11am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q12AM
+    html+='</tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">6.L\'agent applique les protocoles de nettoyage</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="0" '+disabled;
+    if (grille.q12am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="1" '+disabled;
+    if (grille.q12am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="2" '+disabled;
+    if (grille.q12am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q13AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">7.L\'agent applique les règles d\'hygiène et de sécurité</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="0" '+disabled;
+    if (grille.q13am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="1" '+disabled;
+    if (grille.q13am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="2" '+disabled;
+    if (grille.q13am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q14AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">8.L\'agent applique les attitudes de services</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="0" '+disabled;
+    if (grille.q14am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="1" '+disabled;
+    if (grille.q14am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="2" '+disabled;
+    if (grille.q14am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q15AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">9.L\'agent adopte les bonnes postures de travail</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="0" '+disabled;
+    if (grille.q15am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="1" '+disabled;
+    if (grille.q15am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="2" '+disabled;
+    if (grille.q15am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q10AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">10.L\'agent travaille en objectif de résultats</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
+    if (grille.q10am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1" '+disabled;
+    if (grille.q10am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2" '+disabled;
+    if (grille.q10am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    html+='</table>';
+    
+    html += '</div>';
+    
+    var options2 = {
+            title: 'Stagiaire : '+usergrille.fullname,
+            width: "98%",
+            marginTop: "5%",
+            buttons: {}
+        };
+    
+    //Grille 1 Validée
+    if (grille!="[]" && grille!="" && grille.q1 == 2){
+        
+        options2.buttons["Fermer"] = function() {
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            amont(button,user,course,version);
+        };
+        options2.buttons["Fermer"]["style"] = "modal-button-8";
+        
+    } else {
+        
+        
+        
+        options2.buttons["Annuler"] = function() {
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            amont(button,user,course,version);
+        };
+        options2.buttons["Annuler"]["style"] = "modal-button-8";
+        
+        options2.buttons["Enregistrer"] = function() {
+            
+            MM.log('Enregistrer Grille 1A');
+            if (grille=="") {
+                grille={};
+            }
+            grille.q1am = $('input[name=q1am]:checked').val();
+            grille.q2am = $('input[name=q2am]:checked').val();
+            grille.q3am = $('input[name=q3am]:checked').val();
+            grille.q4am = $('input[name=q4am]:checked').val();
+            grille.q11am = $('input[name=q11am]:checked').val();
+            grille.q12am = $('input[name=q12am]:checked').val();
+            grille.q13am = $('input[name=q13am]:checked').val();
+            grille.q14am = $('input[name=q14am]:checked').val();
+            grille.q15am = $('input[name=q15am]:checked').val();
+            grille.q10am = $('input[name=q10am]:checked').val();
+            grille.q2 = 1;
+            
+            MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
+            
+            thisuser.save({grille:grille});
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            amont(button,user,course,version);
+            
+        };
+        options2.buttons["Enregistrer"]["style"] = "modal-button-6";
+        
+        options2.buttons["Valider la grille"] = function() {
+            
+            MM.log('Valider Grille 1A');
+            
+            if(!$('input[name=q1am]').is(':checked') || !$('input[name=q2am]').is(':checked') || !$('input[name=q3am]').is(':checked') || !$('input[name=q4am]').is(':checked') || !$('input[name=q11am]').is(':checked') || !$('input[name=q12am]').is(':checked') || !$('input[name=q13am]').is(':checked') || !$('input[name=q14am]').is(':checked') || !$('input[name=q15am]').is(':checked') || !$('input[name=q10am]').is(':checked')) {
+            //if (!tested) {    
+                MM.log('Grille Incomplete');
+                
+                var options3= {
+                    title: '',
+                    buttons: {}
+                };
+                
+                options3.buttons["Fermer"] = function() {
+                    MM.widgets.dialogClose2();
+                };
+                
+                var html3 = "Pour valider, veuillez compléter entièrement la grille de positionnement.";
+               
+                MM.widgets.dialog2(html3, options3);
+                
+            } else {
+                
+                MM.log('Grille Complete');
+                if (grille=="") {
+                    grille={};
+                }
+                
+                grille.q1am = $('input[name=q1am]:checked').val();
+                grille.q2am = $('input[name=q2am]:checked').val();
+                grille.q3am = $('input[name=q3am]:checked').val();
+                grille.q4am = $('input[name=q4am]:checked').val();
+                grille.q11am = $('input[name=q11am]:checked').val();
+                grille.q12am = $('input[name=q12am]:checked').val();
+                grille.q13am = $('input[name=q13am]:checked').val();
+                grille.q14am = $('input[name=q14am]:checked').val();
+                grille.q15am = $('input[name=q15am]:checked').val();
+                grille.q10am = $('input[name=q10am]:checked').val();
+                grille.q2 = 2;
+                
+                MM.log('Grille:'+grille+'/'+grille.q1);
+                
+                var options4= {
+                    title: '',
+                    buttons: {}
+                };
+                options4.buttons["Annuler"] = function() {
+                    MM.widgets.dialogClose2();
+                };
+                
+                options4.buttons["Je valide"] = function() {
+                    MM.log('Enregistrer et Valider Grille 1A');
+                    thisuser.save({grille:grille});
+                    //$('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                    //$('button#creerpif[user="'+user+'"]').unbind('click');
+                    //$('button#creerpif[user="'+user+'"]').attr('id','pif');
+                    //$('button#pif[user="'+user+'"]').html('PIF');
+                    //$('button#pif[user="'+user+'"]').attr('class','btn grd-grisfonce text-blanc');
+                    
+                    MM.Router.navigate("eleves/" + course, {trigger: true} );
+                    
+                    MM.widgets.dialogClose2();
+                    MM.widgets.dialogClose();
+                    amont($('button#pif[user="'+user+'"]'),user,course,version);
+                    
+                };
+                
+                var html4 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
+               
+                MM.widgets.dialog2(html4, options4);
+                
+                
+                
+            }
+            
+        };
+        options2.buttons["Valider la grille"]["style"] = "modal-button-7";
+    }
+    
+    $("#app-dialog").addClass('full-screen-dialog2');
+    $("#app-dialog .modalContent").css('height','85vh');
+    MM.widgets.dialog(html, options2);
+    
+}
+
+
+//Grille A3             
+function grillea3(button,user,course,version) {
+    
+    MM.log('GRILLEA2 clicked');
+    
+    var button = button;
+    var course = course;
+    var courseId = course;
+    var user = user;
+    var version = version;
+    var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
+    
+    
+    var users = MM.db.where('users', {userid:parseInt(user)});
+    var usergrille = users[0].toJSON();
+    var grille = usergrille.grille;
+    var pifs = usergrille.pif;
+    MM.log('User:'+users[0]+'/UserGrille:'+usergrille+'/Grille:'+grille+'/Pif:'+pifs);
+    pifscourse = $.grep(pifs, function( el ) {
+                    return el.courseid == course;
+    });
+    
+    if (grille!="[]" && grille!="" && grille.q1 == 2)
+        var disabled = 'disabled="disabled"';
+    else disabled='';
+    
+    var html = '<div id="pifContent">';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
+    html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
+    html += '<h2 align="left" class="grille">Sanitaire</h2><br/>';
+    
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Non fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Partiellement fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Fait</div></div></td></tr>';
+    html+='</tr>';
+    
+    //QUESTION Q1AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">1.L\'agent identifie les attentes des clients</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
+    if (grille.q1am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
+    if (grille.q1am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
+    if (grille.q1am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q2AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">2.l\'agent applique les règles de communication</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
+    if (grille.q2am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1" '+disabled;
+    if (grille.q2am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2" '+disabled;
+    if (grille.q2am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q3AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">3.L\'agent traite les demandes et les réclamations</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
+    if (grille.q3am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1" '+disabled;
+    if (grille.q3am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2" '+disabled;
+    if (grille.q3am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q4AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">4.L\'agent nomme les éléments à nettoyer</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
+    if (grille.q4am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1" '+disabled;
+    if (grille.q4am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2" '+disabled;
+    if (grille.q4am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q11AM
+    html+='</tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">5.L\'agent utilise le matériel et les produits de nettoyage</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="0" '+disabled;
+    if (grille.q16am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="1" '+disabled;
+    if (grille.q16am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="2" '+disabled;
+    if (grille.q16am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q12AM
+    html+='</tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">6.L\'agent applique les protocoles de nettoyage</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="0" '+disabled;
+    if (grille.q17am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="1" '+disabled;
+    if (grille.q17am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="2" '+disabled;
+    if (grille.q17am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q13AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">7.L\'agent applique les règles d\'hygiène et de sécurité</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="0" '+disabled;
+    if (grille.q18am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="1" '+disabled;
+    if (grille.q18am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="2" '+disabled;
+    if (grille.q18am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q14AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">8.L\'agent applique les attitudes de services</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="0" '+disabled;
+    if (grille.q19am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="1" '+disabled;
+    if (grille.q19am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="2" '+disabled;
+    if (grille.q19am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q15AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">9.L\'agent adopte les bonnes postures de travail</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="0" '+disabled;
+    if (grille.q20am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="1" '+disabled;
+    if (grille.q20am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="2" '+disabled;
+    if (grille.q20am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q10AM
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">10.L\'agent travaille en objectif de résultats</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
+    if (grille.q10am == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1" '+disabled;
+    if (grille.q10am == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2" '+disabled;
+    if (grille.q10am == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    html+='</table>';
+    
+    html += '</div>';
+    
+    var options2 = {
+            title: 'Stagiaire : '+usergrille.fullname,
+            width: "98%",
+            marginTop: "5%",
+            buttons: {}
+        };
+    
+    //Grille 1 Validée
+    if (grille!="[]" && grille!="" && grille.q1 == 2){
+        
+        options2.buttons["Fermer"] = function() {
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            amont(button,user,course,version);
+        };
+        options2.buttons["Fermer"]["style"] = "modal-button-8";
+        
+    } else {
+        
+        
+        
+        options2.buttons["Annuler"] = function() {
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            amont(button,user,course,version);
+        };
+        options2.buttons["Annuler"]["style"] = "modal-button-8";
+        
+        options2.buttons["Enregistrer"] = function() {
+            
+            MM.log('Enregistrer Grille 1A');
+            if (grille=="") {
+                grille={};
+            }
+            grille.q1am = $('input[name=q1am]:checked').val();
+            grille.q2am = $('input[name=q2am]:checked').val();
+            grille.q3am = $('input[name=q3am]:checked').val();
+            grille.q4am = $('input[name=q4am]:checked').val();
+            grille.q16am = $('input[name=q16am]:checked').val();
+            grille.q17am = $('input[name=q17am]:checked').val();
+            grille.q18am = $('input[name=q18am]:checked').val();
+            grille.q19am = $('input[name=q19am]:checked').val();
+            grille.q20am = $('input[name=q20am]:checked').val();
+            grille.q10am = $('input[name=q10am]:checked').val();
+            grille.q2 = 1;
+            
+            MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
+            
+            thisuser.save({grille:grille});
+            MM.Router.navigate("eleves/" + course );
+            MM.widgets.dialogClose();
+            amont(button,user,course,version);
+            
+        };
+        options2.buttons["Enregistrer"]["style"] = "modal-button-6";
+        
+        options2.buttons["Valider la grille"] = function() {
+            
+            MM.log('Valider Grille 1A');
+            
+            if(!$('input[name=q1am]').is(':checked') || !$('input[name=q2am]').is(':checked') || !$('input[name=q3am]').is(':checked') || !$('input[name=q4am]').is(':checked') || !$('input[name=q16am]').is(':checked') || !$('input[name=q17am]').is(':checked') || !$('input[name=q18am]').is(':checked') || !$('input[name=q19am]').is(':checked') || !$('input[name=q20am]').is(':checked') || !$('input[name=q10am]').is(':checked')) {
+            //if (!tested) {    
+                MM.log('Grille Incomplete');
+                
+                var options3= {
+                    title: '',
+                    buttons: {}
+                };
+                
+                options3.buttons["Fermer"] = function() {
+                    MM.widgets.dialogClose2();
+                };
+                
+                var html3 = "Pour valider, veuillez compléter entièrement la grille de positionnement.";
+               
+                MM.widgets.dialog2(html3, options3);
+                
+            } else {
+                
+                MM.log('Grille Complete');
+                if (grille=="") {
+                    grille={};
+                }
+                
+                grille.q1am = $('input[name=q1am]:checked').val();
+                grille.q2am = $('input[name=q2am]:checked').val();
+                grille.q3am = $('input[name=q3am]:checked').val();
+                grille.q4am = $('input[name=q4am]:checked').val();
+                grille.q16am = $('input[name=q16am]:checked').val();
+                grille.q17am = $('input[name=q17am]:checked').val();
+                grille.q18am = $('input[name=q18am]:checked').val();
+                grille.q19am = $('input[name=q19am]:checked').val();
+                grille.q20am = $('input[name=q20am]:checked').val();
+                grille.q10am = $('input[name=q10am]:checked').val();
+                grille.q2 = 2;
+                
+                MM.log('Grille:'+grille+'/'+grille.q1);
+                
+                var options4= {
+                    title: '',
+                    buttons: {}
+                };
+                options4.buttons["Annuler"] = function() {
+                    MM.widgets.dialogClose2();
+                };
+                
+                options4.buttons["Je valide"] = function() {
+                    MM.log('Enregistrer et Valider Grille 1A');
+                    thisuser.save({grille:grille});
+                    //$('button#creerpif[user="'+user+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+user+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                    //$('button#creerpif[user="'+user+'"]').unbind('click');
+                    //$('button#creerpif[user="'+user+'"]').attr('id','pif');
+                    //$('button#pif[user="'+user+'"]').html('PIF');
+                    //$('button#pif[user="'+user+'"]').attr('class','btn grd-grisfonce text-blanc');
+                    
+                    MM.Router.navigate("eleves/" + course, {trigger: true} );
+                    
+                    MM.widgets.dialogClose2();
+                    MM.widgets.dialogClose();
+                    amont($('button#pif[user="'+user+'"]'),user,course,version);
+                    
+                };
+                
+                var html4 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
+               
+                MM.widgets.dialog2(html4, options4);
+                
+                
+                
+            }
+            
+        };
+        options2.buttons["Valider la grille"]["style"] = "modal-button-7";
+    }
+    
+    $("#app-dialog").addClass('full-screen-dialog2');
+    $("#app-dialog .modalContent").css('height','85vh');
+    MM.widgets.dialog(html, options2);
+    
+}
+
+
+
 
 
 //Modifier le Pif button               
