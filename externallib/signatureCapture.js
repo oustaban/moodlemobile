@@ -774,8 +774,8 @@ function signaturePopin( elem ) {
                                                 };
 												options.buttons["Valider"]['style'] = "modal-button-2";
                                                 
-												$("#app-dialog").removeClass('full-screen-dialog2');
-												$("#app-dialog .modalContent").css('height','100%');
+												//$("#app-dialog").removeClass('full-screen-dialog2');
+												//$("#app-dialog .modalContent").css('height','100%');
                                                 MM.widgets.dialog2(html, options);
                                                 
                                                 

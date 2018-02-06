@@ -4530,10 +4530,77 @@ function modifierPif(button,user,course,version) {
     } else {
         MM.log('User with Grille');
         
+        var indexcontent = 1;
+        
         local_contents.forEach(function(local_content) {
              var content = local_content.toJSON();
              var unchecked = 0;
+             var unckeckednoteam = 0;
+             var note = 0;
+             
+             
              if (content.modname == "scorm") {
+                if (indexcontent == 1 && grille.q1 == 2) {
+                    note =  (grille.q1am +  grille.q2am + grille.q3am + grille.q4am + grille.q5am +grille.q6am + grille.q7am +grille.q8am +grille.q9am + grille.q10am);
+                    if (note > 8) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                if (indexcontent == 2 && grille.q2 == 2) {
+                    note =  (grille.q1am +  grille.q2am + grille.q3am + grille.q4am + grille.q11am +grille.q12am + grille.q13am +grille.q14am +grille.q15am + grille.q10am);
+                    if (note > 8) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                if (indexcontent == 3 && grille.q3 == 2) {
+                    note =  (grille.q1am + grille.q4am);
+                    if (note >= 8) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                
+                if (indexcontent == 4 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                    note =  (grille.q1am +  grille.q2am + grille.q3am + grille.q4am + grille.q16am +grille.q17am + grille.q18am +grille.q19am +grille.q20am + grille.q10am);
+                    if (note >= 3) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                
+                if (indexcontent == 5 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                    note =  grille.q1am + (grille.q5am +  grille.q11am + grille.q16am)/3 + (grille.q7am +  grille.q13am + grille.q18am)/3;
+                    if (note >= 4.8) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                
+                if (indexcontent == 6 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                    note =  (grille.q6am +  grille.q12am + grille.q17am)/3 + (grille.q7am +  grille.q13am + grille.q18am)/3;
+                    if (note >= 3.2) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                
+                if (indexcontent == 7 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                    note =  (grille.q7am +  grille.q13am + grille.q18am)/3 + (grille.q9am +  grille.q15am + grille.q20am)/3 + grille.q10am;
+                    if (note >= 4.8) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                
+                if (indexcontent == 8 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                    note =  (grille.q5am +  grille.q11am + grille.q16am)/3 + (grille.q6am +  grille.q12am + grille.q17am)/3 + grille.q10am;
+                    if (note >= 4.8) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                
+                if (indexcontent == 9 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                    note =  (grille.q8am +  grille.q14am + grille.q19am)/3 + grille.q2am + grille.q3am;
+                    if (note >= 4.8) {
+                        unckeckednoteam = 1;
+                    }
+                }
+                
                 html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                 
                 
@@ -4550,12 +4617,18 @@ function modifierPif(button,user,course,version) {
                         pifscormb = [1];
                     }
                     
-                    if (pifscormb.length>0) {
-                        html+=' checked="checked"';
+                    if (unckeckednoteam) {
+                        html+=' checked="checked" disabled="true"';
                         total_duration += content.pif_duration;
                     } else {
-                        unchecked = 1;
+                        if (pifscormb.length>0) {
+                            html+=' checked="checked"';
+                            total_duration += content.pif_duration;
+                        } else {
+                            unchecked = 1;
+                        }
                     }
+                    
                     html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                      
                     pifscorme = $.grep(pifscourse, function( el ) {
@@ -4579,12 +4652,18 @@ function modifierPif(button,user,course,version) {
                         return el.scormid == content.contentid && el.begin == 1;
                     });
                     
-                    if (pifscormb.length>0) {
-                        html+=' checked="checked"';
+                    if (unckeckednoteam) {
+                        html+=' checked="checked" disabled="true"';
                         total_duration += content.pif_duration;
-                    } else {
-                        unchecked = 1;
+                    } 
+                        if (pifscormb.length>0) {
+                            html+=' checked="checked"';
+                            total_duration += content.pif_duration;
+                        } else {
+                            unchecked = 1;
+                        }
                     }
+                    
                     html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                      
                     pifscorme = $.grep(pifArray2, function( el ) {
@@ -4599,6 +4678,8 @@ function modifierPif(button,user,course,version) {
                     html +='></td></tr>';
                     
                 }
+                
+                indexcontent+=1;
              }
         });
         
