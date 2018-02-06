@@ -4401,7 +4401,7 @@ function grillea2(button,user,course,version) {
                     return el.courseid == course;
     });
     
-    if (grille!="[]" && grille!="" && grille.q1 == 2)
+    if (grille!="[]" && grille!="" && grille.q2 == 2)
         var disabled = 'disabled="disabled"';
     else disabled='';
     
@@ -4596,7 +4596,7 @@ function grillea2(button,user,course,version) {
         };
     
     //Grille 1 Validée
-    if (grille!="[]" && grille!="" && grille.q1 == 2){
+    if (grille!="[]" && grille!="" && grille.q2 == 2){
         
         options2.buttons["Fermer"] = function() {
             MM.Router.navigate("eleves/" + course );
@@ -4733,7 +4733,7 @@ function grillea2(button,user,course,version) {
 //Grille A3             
 function grillea3(button,user,course,version) {
     
-    MM.log('GRILLEA2 clicked');
+    MM.log('GRILLEA3 clicked');
     
     var button = button;
     var course = course;
@@ -4752,14 +4752,14 @@ function grillea3(button,user,course,version) {
                     return el.courseid == course;
     });
     
-    if (grille!="[]" && grille!="" && grille.q1 == 2)
+    if (grille!="[]" && grille!="" && grille.q3 == 2)
         var disabled = 'disabled="disabled"';
     else disabled='';
     
     var html = '<div id="pifContent">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
     html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
-    html += '<h2 align="left" class="grille">Sanitaire</h2><br/>';
+    html += '<h2 align="left" class="grille">Parties Communes</h2><br/>';
     
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Non fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Partiellement fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Fait</div></div></td></tr>';
@@ -4947,7 +4947,7 @@ function grillea3(button,user,course,version) {
         };
     
     //Grille 1 Validée
-    if (grille!="[]" && grille!="" && grille.q1 == 2){
+    if (grille!="[]" && grille!="" && grille.q3 == 2){
         
         options2.buttons["Fermer"] = function() {
             MM.Router.navigate("eleves/" + course );
@@ -4983,7 +4983,7 @@ function grillea3(button,user,course,version) {
             grille.q19am = $('input[name=q19am]:checked').val();
             grille.q20am = $('input[name=q20am]:checked').val();
             grille.q10am = $('input[name=q10am]:checked').val();
-            grille.q2 = 1;
+            grille.q3 = 1;
             
             MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
             
@@ -4997,7 +4997,7 @@ function grillea3(button,user,course,version) {
         
         options2.buttons["Valider la grille"] = function() {
             
-            MM.log('Valider Grille 1A');
+            MM.log('Valider Grille 3A');
             
             if(!$('input[name=q1am]').is(':checked') || !$('input[name=q2am]').is(':checked') || !$('input[name=q3am]').is(':checked') || !$('input[name=q4am]').is(':checked') || !$('input[name=q16am]').is(':checked') || !$('input[name=q17am]').is(':checked') || !$('input[name=q18am]').is(':checked') || !$('input[name=q19am]').is(':checked') || !$('input[name=q20am]').is(':checked') || !$('input[name=q10am]').is(':checked')) {
             //if (!tested) {    
@@ -5033,7 +5033,7 @@ function grillea3(button,user,course,version) {
                 grille.q19am = $('input[name=q19am]:checked').val();
                 grille.q20am = $('input[name=q20am]:checked').val();
                 grille.q10am = $('input[name=q10am]:checked').val();
-                grille.q2 = 2;
+                grille.q3 = 2;
                 
                 MM.log('Grille:'+grille+'/'+grille.q1);
                 
