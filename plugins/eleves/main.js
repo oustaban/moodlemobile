@@ -5262,14 +5262,14 @@ function modifierPif(button,user,course,version) {
                     if (note > 8) {
                         unckeckednoteam = 1;
                     }
-                    MM.log('Note Module 2:'+note);
+                    MM.log('Note Module 3:'+note);
                 }
                 if (indexcontent == 4 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
                     note =  (parseInt(grille.q1am) + parseInt(grille.q4am));
-                    if (note >= 8) {
+                    if (note >= 3) {
                         unckeckednoteam = 1;
                     }
-                    MM.log('Note Module 3:'+note);
+                    MM.log('Note Module 4:'+note);
                 }
                 
                 
