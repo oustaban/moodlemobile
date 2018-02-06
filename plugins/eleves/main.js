@@ -417,30 +417,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     
                     
-                    var tpl = {
-                        users: users,
-                        versions: versionArray,
-                        deviceType: MM.deviceType,
-                        courseId: courseId,
-                        showMore: showMore
-                    };
-                    var html = MM.tpl.render(MM.plugins.eleves.templates.eleves.html, tpl);
-
-                    var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
-                    var pageTitle = "";
-
-                    if (course) {
-                        pageTitle = course.get("shortname");
-                    }
-
-                    MM.panels.show('right', html, {title: pageTitle});
-
-                    // Load the first user
-                    if (MM.deviceType == "tablet" && users.length > 0) {
-                        $("#panel-center li:eq(0)").addClass("selected-row");
-                        //MM.plugins.eleves.showEleve(courseId, users.shift().id);
-                        $("#panel-center li:eq(0)").addClass("selected-row");
-                    }
+                    
 
                     
                         
@@ -709,6 +686,33 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                             
                         MM.db.insert('users', newUser);
+                        
+                        
+                        var tpl = {
+                            users: users,
+                            versions: versionArray,
+                            deviceType: MM.deviceType,
+                            courseId: courseId,
+                            showMore: showMore
+                        };
+                        var html = MM.tpl.render(MM.plugins.eleves.templates.eleves.html, tpl);
+    
+                        var course = MM.db.get("courses", MM.config.current_site.id + "-" + courseId);
+                        var pageTitle = "";
+    
+                        if (course) {
+                            pageTitle = course.get("shortname");
+                        }
+    
+                        MM.panels.show('right', html, {title: pageTitle});
+    
+                        // Load the first user
+                        if (MM.deviceType == "tablet" && users.length > 0) {
+                            $("#panel-center li:eq(0)").addClass("selected-row");
+                            //MM.plugins.eleves.showEleve(courseId, users.shift().id);
+                            $("#panel-center li:eq(0)").addClass("selected-row");
+                        }
+                        
                     });
                     
                     
