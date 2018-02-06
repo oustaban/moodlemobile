@@ -5248,18 +5248,21 @@ function modifierPif(button,user,course,version) {
                     if (note > 8) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 1:'+note);
                 }
                 if (indexcontent == 2 && grille.q2 == 2) {
                     note =  (grille.q1am +  grille.q2am + grille.q3am + grille.q4am + grille.q11am +grille.q12am + grille.q13am +grille.q14am +grille.q15am + grille.q10am);
                     if (note > 8) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 2:'+note);
                 }
                 if (indexcontent == 3 && grille.q3 == 2) {
                     note =  (grille.q1am + grille.q4am);
                     if (note >= 8) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 3:'+note);
                 }
                 
                 if (indexcontent == 4 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
@@ -5267,6 +5270,7 @@ function modifierPif(button,user,course,version) {
                     if (note >= 3) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 4:'+note);
                 }
                 
                 if (indexcontent == 5 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
@@ -5274,6 +5278,7 @@ function modifierPif(button,user,course,version) {
                     if (note >= 4.8) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 5:'+note);
                 }
                 
                 if (indexcontent == 6 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
@@ -5281,6 +5286,7 @@ function modifierPif(button,user,course,version) {
                     if (note >= 3.2) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 6:'+note);
                 }
                 
                 if (indexcontent == 7 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
@@ -5288,6 +5294,7 @@ function modifierPif(button,user,course,version) {
                     if (note >= 4.8) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 7:'+note);
                 }
                 
                 if (indexcontent == 8 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
@@ -5295,6 +5302,7 @@ function modifierPif(button,user,course,version) {
                     if (note >= 4.8) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 8:'+note);
                 }
                 
                 if (indexcontent == 9 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
@@ -5302,6 +5310,7 @@ function modifierPif(button,user,course,version) {
                     if (note >= 4.8) {
                         unckeckednoteam = 1;
                     }
+                    MM.log('Note Module 9:'+note);
                 }
                 
                 html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
