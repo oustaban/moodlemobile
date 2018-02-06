@@ -3520,10 +3520,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
@@ -3538,10 +3540,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 }
                             );
@@ -3563,10 +3567,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
@@ -3581,10 +3587,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 }
                             );
@@ -3612,10 +3620,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
@@ -3630,10 +3640,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 }
                             );
@@ -3655,10 +3667,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
@@ -3673,10 +3687,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 }
                             );
@@ -3713,10 +3729,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
@@ -3731,10 +3749,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 }
                             );
@@ -3756,10 +3776,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
@@ -3774,10 +3796,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 }
                             );
@@ -3806,10 +3830,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
@@ -3824,10 +3850,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 }
                             );
@@ -3849,10 +3877,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                 },
                                 function(path) {
@@ -3867,10 +3897,12 @@ function voirpif(courseId,user,version) {
                                     options2.buttons["Fermer"] = function() {
                                         //MM.Router.navigate("eleves/" + course );
                                         $("#app-dialog").removeClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','100%');
                                         MM.widgets.dialogClose();
                                         $('button#pif[user="'+userpif.userid+'"]').click();
                                     };
                                     $("#app-dialog").addClass('full-screen-dialog2');
+                                    $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
                                     
                                 }
@@ -4380,7 +4412,6 @@ function modifierPif(button,user,course,version) {
     else
         pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
     
-    MM.log('pifArray:'+pifArray);
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
         pifArray = pifArray.replace(/\\"/g, '"');
     }
@@ -4497,6 +4528,7 @@ function modifierPif(button,user,course,version) {
         });
         
     } else {
+        MM.log('User with Grille');
         
         local_contents.forEach(function(local_content) {
              var content = local_content.toJSON();
@@ -4657,6 +4689,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4678,6 +4711,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4708,6 +4742,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4729,6 +4764,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4771,6 +4807,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4792,6 +4829,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4841,6 +4879,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4891,6 +4930,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4911,6 +4951,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4941,6 +4982,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -4961,6 +5003,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -5002,6 +5045,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -5022,6 +5066,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -5052,6 +5097,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -5072,6 +5118,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         $("#app-dialog").addClass('full-screen-dialog2');
+                                        $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
                                         
                                         if (pifArray != "") {
@@ -5125,6 +5172,7 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         if (pifArray != "") {
@@ -5144,6 +5192,7 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         if (pifArray != "") {
@@ -5173,6 +5222,7 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         if (pifArray != "") {
@@ -5193,6 +5243,7 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider"]["style"] = "modal-button-2";
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         if (pifArray != "") {
@@ -5254,6 +5305,7 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         //Scroll To bottom
@@ -5276,6 +5328,7 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         //Scroll To bottom
@@ -5307,6 +5360,7 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         //Scroll to bottom
@@ -5329,6 +5383,7 @@ function modifierPif(button,user,course,version) {
                         options.buttons["Valider les modifications"]["style"] = "modal-button-2";
                         
                         $("#app-dialog").addClass('full-screen-dialog2');
+                        $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
                         
                         //Scroll to bottom
