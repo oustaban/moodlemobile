@@ -5245,21 +5245,21 @@ function modifierPif(button,user,course,version) {
              if (content.modname == "scorm") {
                 if (indexcontent == 1 && grille.q1 == 2) {
                     note =  (parseInt(grille.q5am) + parseInt(grille.q6am) + parseInt(grille.q7am) + parseInt(grille.q8am) + parseInt(grille.q9am));
-                    if (note > 8) {
+                    if (note >= 8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 1:'+note);
                 }
                 if (indexcontent == 2 && grille.q2 == 2) {
                     note =  (parseInt(grille.q11am) + parseInt(grille.q12am) + parseInt(grille.q13am) + parseInt(grille.q14am) + parseInt(grille.q15am));
-                    if (note > 8) {
+                    if (note >= 8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 2:'+note);
                 }
-                if (indexcontent == 3 && grille.q3 == 3) {
+                if (indexcontent == 3 && grille.q3 == 2) {
                     note =  (parseInt(grille.q16am) + parseInt(grille.q17am) + parseInt(grille.q18am) + parseInt(grille.q19am) + parseInt(grille.q20am));
-                    if (note > 8) {
+                    if (note >= 8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 3:'+note);
