@@ -6975,6 +6975,7 @@ function grillea4(button,user,course,version) {
                     
                   } else {
                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                    $(this).attr('opened',0);
                     MM.log('TR TITLE EACH OK1');   
                   }
                 });
@@ -6987,6 +6988,7 @@ function grillea4(button,user,course,version) {
                   } else {
                     MM.log('TR TITLE EACH OK2');   
                      $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                     $(this).attr('opened',0);
                   }
                   
                 });
