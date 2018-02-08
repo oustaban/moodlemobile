@@ -2529,4 +2529,8 @@ tr.title {
   background-color:#144283;
 }
 
+.tablo tr.title:nth-child(odd) {
+  background-color:#144283;
+}
+
 

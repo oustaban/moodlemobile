@@ -6632,7 +6632,7 @@ function grillea4(button,user,course,version) {
     
     $( "tr.title" ).each(function( index ) {
         var mytr = $(this);
-            
+        MM.log('TR TITLE');    
         $(this).on(MM.clickType, function(e) {
             if ($(this).attr('opened') == 0) {
                 $(this).nextUntil( $('tr.title'), "tr" ).show();
@@ -6654,9 +6654,11 @@ function grillea4(button,user,course,version) {
         });
         
         if ($(this).attr('opened') == 1) {
+            MM.log('TR TITLE OPENED');
             $(this).nextUntil( $('tr.title'), "tr" ).show();
         }
         if ($(this).attr('opened') == 0) {
+            MM.log('TR TITLE CLOSED');
             $(this).nextUntil( $('tr.title'), "tr" ).hide();
         }
     });
