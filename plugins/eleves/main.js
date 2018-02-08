@@ -6961,14 +6961,16 @@ function grillea4(button,user,course,version) {
     MM.widgets.dialog(html, options2);
     
     $( "tr#title" ).each(function( index ) {
-        var mytr = $(this);
         MM.log('TR TITLE');    
         $(this).on(MM.clickType, function(e) {
+            var mytr = $(this);
             if ($(this).attr('opened') == 0) {
                 $(this).nextUntil( $('tr.title'), "tr" ).show();
                 $(this).attr('opened',1);
                 $( "tr#title" ).each(function( index2 ) {
+                  MM.log('TR TITLE EACH');   
                   if ($(this) != mytr) {
+                    MM.log('TR TITLE EACH OK');   
                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
                   }
                 });
