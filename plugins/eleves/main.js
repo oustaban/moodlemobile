@@ -6969,7 +6969,7 @@ function grillea4(button,user,course,version) {
                 $(this).attr('opened',1);
                 $( "tr#title" ).each(function( index2 ) {
                   MM.log('TR TITLE EACH:'+$(this).attr('opened')+'/'+mytr.attr('opened'));   
-                  if ($(this) != mytr) {
+                  if ($(this) !== mytr) {
                     MM.log('TR TITLE EACH OK');   
                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
                   }
@@ -6978,7 +6978,7 @@ function grillea4(button,user,course,version) {
                 $(this).nextUntil( $('tr#title'), "tr" ).hide();
                 $(this).attr('opened',0);
                 $( "tr#title" ).each(function( index3 ) {
-                  if ($(this) != mytr) {
+                  if ($(this) !== mytr) {
                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
                   }
                 });
