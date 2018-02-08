@@ -6629,6 +6629,33 @@ function grillea4(button,user,course,version) {
     
     html += '</div>';
     
+    
+    $( "tr.title" ).each(function( index ) {
+        
+        $(this).on(MM.clickType, function(e) {
+            var mytr = $(this)
+            if ($(this).attr('opened') == 0) {
+                $(this).nextUntil( $('tr.title'), "tr" ).show();
+                $(this).attr('opened',1);
+                $( "tr.title" ).each(function( index2 ) {
+                  if ($(this) != mytr) {
+                    $(this).nextUntil( $('tr.title'), "tr" ).show();
+                  }
+                })
+            } else {
+                $(this).nextUntil( $('tr.title'), "tr" ).hide();
+                $(this).attr('opened',0);
+                $( "tr.title" ).each(function( index2 ) {
+                  if ($(this) != mytr) {
+                    $(this).nextUntil( $('tr.title'), "tr" ).show();
+                  }
+                })
+            }
+            $(this).nextUntil( $('tr.title'), "tr" ).css( "color", "green" );  
+        }
+    });
+    
+    $('tr.title')
     var options2 = {
             title: 'Stagiaire : '+usergrille.fullname,
             width: "98%",

@@ -2523,4 +2523,10 @@ span.red {
   padding-top:10px;
 }
 
+tr.title {
+  font-weight:bold;
+  color:#fff;
+  background-color:#144283;
+}
+
 
