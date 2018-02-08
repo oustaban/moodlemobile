@@ -6629,38 +6629,7 @@ function grillea4(button,user,course,version) {
     
     html += '</div>';
     
-    $( "tr#title" ).each(function( index ) {
-        var mytr = $(this);
-        MM.log('TR TITLE');    
-        $(this).on(MM.clickType, function(e) {
-            if ($(this).attr('opened') == 0) {
-                $(this).nextUntil( $('tr.title'), "tr" ).show();
-                $(this).attr('opened',1);
-                $( "tr#title" ).each(function( index2 ) {
-                  if ($(this) != mytr) {
-                    $(this).nextUntil( $('tr#title'), "tr" ).show();
-                  }
-                });
-            } else {
-                $(this).nextUntil( $('tr#title'), "tr" ).hide();
-                $(this).attr('opened',0);
-                $( "tr#title" ).each(function( index3 ) {
-                  if ($(this) != mytr) {
-                    $(this).nextUntil( $('tr#title'), "tr" ).hide();
-                  }
-                });
-            }
-        });
-        
-        if ($(this).attr('opened') == 1) {
-            MM.log('TR TITLE OPENED');
-            $(this).nextUntil( $('tr.title'), "tr" ).show();
-        }
-        if ($(this).attr('opened') == 0) {
-            MM.log('TR TITLE CLOSED');
-            $(this).nextUntil( $('tr#title'), "tr" ).hide();
-        }
-    });
+    
     
     
     var options2 = {
@@ -6990,6 +6959,39 @@ function grillea4(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
+    
+    $( "tr#title" ).each(function( index ) {
+        var mytr = $(this);
+        MM.log('TR TITLE');    
+        $(this).on(MM.clickType, function(e) {
+            if ($(this).attr('opened') == 0) {
+                $(this).nextUntil( $('tr.title'), "tr" ).show();
+                $(this).attr('opened',1);
+                $( "tr#title" ).each(function( index2 ) {
+                  if ($(this) != mytr) {
+                    $(this).nextUntil( $('tr#title'), "tr" ).show();
+                  }
+                });
+            } else {
+                $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                $(this).attr('opened',0);
+                $( "tr#title" ).each(function( index3 ) {
+                  if ($(this) != mytr) {
+                    $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                  }
+                });
+            }
+        });
+        
+        if ($(this).attr('opened') == 1) {
+            MM.log('TR TITLE OPENED');
+            $(this).nextUntil( $('tr.title'), "tr" ).show();
+        }
+        if ($(this).attr('opened') == 0) {
+            MM.log('TR TITLE CLOSED');
+            $(this).nextUntil( $('tr#title'), "tr" ).hide();
+        }
+    });
     
 }
 
