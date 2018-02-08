@@ -6677,7 +6677,7 @@ function grillea4(button,user,course,version) {
         options2.buttons["Fermer"] = function() {
             MM.Router.navigate("eleves/" + course );
             MM.widgets.dialogClose();
-            amont(button,user,course,version);
+            aval(button,user,course,version);
         };
         options2.buttons["Fermer"]["style"] = "modal-button-8";
         
@@ -6688,7 +6688,7 @@ function grillea4(button,user,course,version) {
         options2.buttons["Annuler"] = function() {
             MM.Router.navigate("eleves/" + course );
             MM.widgets.dialogClose();
-            amont(button,user,course,version);
+            aval(button,user,course,version);
         };
         options2.buttons["Annuler"]["style"] = "modal-button-8";
         
@@ -6772,7 +6772,7 @@ function grillea4(button,user,course,version) {
             thisuser.save({grille:grille});
             MM.Router.navigate("eleves/" + course );
             MM.widgets.dialogClose();
-            amont(button,user,course,version);
+            aval(button,user,course,version);
             
         };
         options2.buttons["Enregistrer"]["style"] = "modal-button-6";
@@ -6972,7 +6972,7 @@ function grillea4(button,user,course,version) {
                     
                     MM.widgets.dialogClose2();
                     MM.widgets.dialogClose();
-                    amont($('button#pif[user="'+user+'"]'),user,course,version);
+                    aval($('button#pif[user="'+user+'"]'),user,course,version);
                     
                 };
                 
