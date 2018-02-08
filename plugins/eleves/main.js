@@ -6629,9 +6629,6 @@ function grillea4(button,user,course,version) {
     
     html += '</div>';
     
-    $('input#checkboxpif').each(function(index) {
-        
-        
     $( "tr#title" ).each(function( index ) {
         var mytr = $(this);
         MM.log('TR TITLE');    
