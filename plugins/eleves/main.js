@@ -5188,7 +5188,7 @@ function grillea3(button,user,course,version) {
 //Grille A4             
 function grillea4(button,user,course,version) {
     
-    MM.log('GRILLEA3 clicked');
+    MM.log('GRILLEA4 clicked');
     
     var button = button;
     var course = course;
