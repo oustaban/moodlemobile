@@ -5221,7 +5221,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q1AV
-    html+='<tr class="title" opened="1">';
+    html+='<tr id="title" opened="1">';
     html+='<td colspan="5">L\'agent identifie les attentes des clients</td>';
     html+='</tr>';
     
@@ -5309,7 +5309,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q5AV
-    html+='<tr class="title" opened="0">';
+    html+='<tr id="title" opened="0">';
     html+='<td colspan="3">L\'agent applique les règles de communication</td>';
     html+='</tr>';
     
@@ -5397,7 +5397,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q9AV
-    html+='<tr class="title" opened="0">';
+    html+='<tr id="title" opened="0">';
     html+='<td colspan="3">L\'agent traite les demandes et les réclamations</td>';
     html+='</tr>';
     
@@ -5443,7 +5443,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q11AV
-    html+='<tr class="title" opened="0">';
+    html+='<tr id="title" opened="0">';
     html+='<td colspan="3">L\'agent nomme les éléments à nettoyer</td>';
     html+='</tr>';
     
@@ -5552,7 +5552,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q16AV
-    html+='<tr class="title" opened="0">';
+    html+='<tr id="title" opened="0">';
     html+='<td colspan="3">L\'agent utilise le matériel et les produits de nettoyage</td>';
     html+='</tr>';
     
@@ -5661,7 +5661,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q21AV
-    html+='<tr class="title" opened="0">';
+    html+='<tr id="title" opened="0">';
     html+='<td colspan="3">L\'agent applique les protocoles de nettoyage</td>';
     html+='</tr>';
     
@@ -5875,7 +5875,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q31AV
-    html+='<tr class="title" opened="0">';
+    html+='<tr id="title" opened="0">';
     html+='<td colspan="3">L\'agent applique les règles d\'hygiène et de sécurité</td>';
     html+='</tr>';
     
@@ -6236,7 +6236,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q48AV
-    html+='<tr class="title">';
+    html+='<tr id="title">';
     html+='<td colspan="3">L\'agent applique les attitudes de services</td>';
     html+='</tr>';
     
@@ -6408,7 +6408,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q56AV
-    html+='<tr class="title" opened="0">';
+    html+='<tr id="title" opened="0">';
     html+='<td colspan="3">L\'agent adopte les bonnes postures de travail</td>';
     html+='</tr>';
     
@@ -6496,7 +6496,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q60AV
-    html+='<tr class="title" opened="0">';
+    html+='<tr id="title" opened="0">';
     html+='<td colspan="3">L\'agent travaille en objectif de résultats</td>';
     html+='</tr>';
     
@@ -6629,25 +6629,27 @@ function grillea4(button,user,course,version) {
     
     html += '</div>';
     
-    
-    $( "tr.title" ).each(function( index ) {
+    $('input#checkboxpif').each(function(index) {
+        
+        
+    $( "tr#title" ).each(function( index ) {
         var mytr = $(this);
         MM.log('TR TITLE');    
         $(this).on(MM.clickType, function(e) {
             if ($(this).attr('opened') == 0) {
                 $(this).nextUntil( $('tr.title'), "tr" ).show();
                 $(this).attr('opened',1);
-                $( "tr.title" ).each(function( index2 ) {
+                $( "tr#title" ).each(function( index2 ) {
                   if ($(this) != mytr) {
-                    $(this).nextUntil( $('tr.title'), "tr" ).show();
+                    $(this).nextUntil( $('tr#title'), "tr" ).show();
                   }
                 });
             } else {
-                $(this).nextUntil( $('tr.title'), "tr" ).hide();
+                $(this).nextUntil( $('tr#title'), "tr" ).hide();
                 $(this).attr('opened',0);
-                $( "tr.title" ).each(function( index2 ) {
+                $( "tr#title" ).each(function( index3 ) {
                   if ($(this) != mytr) {
-                    $(this).nextUntil( $('tr.title'), "tr" ).hide();
+                    $(this).nextUntil( $('tr#title'), "tr" ).hide();
                   }
                 });
             }
@@ -6659,7 +6661,7 @@ function grillea4(button,user,course,version) {
         }
         if ($(this).attr('opened') == 0) {
             MM.log('TR TITLE CLOSED');
-            $(this).nextUntil( $('tr.title'), "tr" ).hide();
+            $(this).nextUntil( $('tr#title'), "tr" ).hide();
         }
     });
     

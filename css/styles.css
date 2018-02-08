@@ -2523,13 +2523,13 @@ span.red {
   padding-top:10px;
 }
 
-tr.title {
+tr#title {
   font-weight:bold;
   color:#fff;
   background-color:#144283;
 }
 
-.tablo tr.title:nth-child(odd) {
+.tablo tr#title:nth-child(odd) {
   background-color:#144283;
 }
 
