@@ -6968,7 +6968,7 @@ function grillea4(button,user,course,version) {
                 $(this).nextUntil( $('tr.title'), "tr" ).show();
                 $(this).attr('opened',1);
                 $( "tr#title" ).each(function( index2 ) {
-                  MM.log('TR TITLE EACH');   
+                  MM.log('TR TITLE EACH:'+$(this).attr('opened')+'/'+mytr.attr('opened'));   
                   if ($(this) != mytr) {
                     MM.log('TR TITLE EACH OK');   
                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
