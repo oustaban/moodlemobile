@@ -5310,7 +5310,7 @@ function grillea4(button,user,course,version) {
     
     //QUESTION Q5AV
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="3">L\'agent applique les règles de communication</td>';
+    html+='<td colspan="5">L\'agent applique les règles de communication</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -5398,7 +5398,7 @@ function grillea4(button,user,course,version) {
     
     //QUESTION Q9AV
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="3">L\'agent traite les demandes et les réclamations</td>';
+    html+='<td colspan="5">L\'agent traite les demandes et les réclamations</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -5444,7 +5444,7 @@ function grillea4(button,user,course,version) {
     
     //QUESTION Q11AV
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="3">L\'agent nomme les éléments à nettoyer</td>';
+    html+='<td colspan="5">L\'agent nomme les éléments à nettoyer</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -5553,7 +5553,7 @@ function grillea4(button,user,course,version) {
     
     //QUESTION Q16AV
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="3">L\'agent utilise le matériel et les produits de nettoyage</td>';
+    html+='<td colspan="5">L\'agent utilise le matériel et les produits de nettoyage</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -5662,7 +5662,7 @@ function grillea4(button,user,course,version) {
     
     //QUESTION Q21AV
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="3">L\'agent applique les protocoles de nettoyage</td>';
+    html+='<td colspan="5">L\'agent applique les protocoles de nettoyage</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -5876,7 +5876,7 @@ function grillea4(button,user,course,version) {
     
     //QUESTION Q31AV
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="3">L\'agent applique les règles d\'hygiène et de sécurité</td>';
+    html+='<td colspan="5">L\'agent applique les règles d\'hygiène et de sécurité</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -6236,8 +6236,8 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q48AV
-    html+='<tr id="title">';
-    html+='<td colspan="3">L\'agent applique les attitudes de services</td>';
+    html+='<tr id="title" opened="0">';
+    html+='<td colspan="5">L\'agent applique les attitudes de services</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -6409,7 +6409,7 @@ function grillea4(button,user,course,version) {
     
     //QUESTION Q56AV
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="3">L\'agent adopte les bonnes postures de travail</td>';
+    html+='<td colspan="5">L\'agent adopte les bonnes postures de travail</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -6497,7 +6497,7 @@ function grillea4(button,user,course,version) {
     
     //QUESTION Q60AV
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="3">L\'agent travaille en objectif de résultats</td>';
+    html+='<td colspan="5">L\'agent travaille en objectif de résultats</td>';
     html+='</tr>';
     
     html+='<tr>';
@@ -6969,7 +6969,7 @@ function grillea4(button,user,course,version) {
                 $(this).attr('opened',1);
                 $( "tr#title" ).each(function( index2 ) {
                   if ($(this) != mytr) {
-                    $(this).nextUntil( $('tr#title'), "tr" ).show();
+                    $(this).nextUntil( $('tr#title'), "tr" ).hide();
                   }
                 });
             } else {
