@@ -6967,20 +6967,28 @@ function grillea4(button,user,course,version) {
             if ($(this).attr('opened') == 0) {
                 $(this).nextUntil( $('tr.title'), "tr" ).show();
                 $(this).attr('opened',1);
+                
                 $( "tr#title" ).each(function( index2 ) {
-                  MM.log('TR TITLE EACH:'+$(this).attr('opened')+'/'+mytr.attr('opened'));   
-                  if ($(this) !== mytr) {
-                    MM.log('TR TITLE EACH OK');   
+                  MM.log('TR TITLE EACH:'+$(this).attr('opened')+'/'+mytr.attr('opened'));
+                  if ($(this).is(mytr)) {
+                    MM.log('TR TITLE EACH NOK1');   
+                    
+                  } else {
                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                    MM.log('TR TITLE EACH OK1');   
                   }
                 });
             } else {
                 $(this).nextUntil( $('tr#title'), "tr" ).hide();
                 $(this).attr('opened',0);
                 $( "tr#title" ).each(function( index3 ) {
-                  if ($(this) !== mytr) {
-                    $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                  if ($(this).is(mytr)) {
+                    MM.log('TR TITLE EACH NOK2');   
+                  } else {
+                    MM.log('TR TITLE EACH OK2');   
+                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
                   }
+                  
                 });
             }
         });
