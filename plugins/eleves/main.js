@@ -11368,7 +11368,7 @@ function modifierPif(button,user,course,version) {
                         MM.log('pifscormb length:'+pifscormb.length);
                         
                     } else {
-                        //pifscormb = [1];
+                        pifscormb = [];
                     }
                     
                     if (unckeckednoteam) {
