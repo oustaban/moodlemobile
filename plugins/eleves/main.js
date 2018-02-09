@@ -11281,6 +11281,7 @@ function modifierPif(button,user,course,version) {
              var content = local_content.toJSON();
              var unchecked = 0;
              var unckeckednoteam = 0;
+             var unckeckednoteav = 0;
              var note = 0;
              
              
@@ -11292,6 +11293,14 @@ function modifierPif(button,user,course,version) {
                     }
                     MM.log('Note Module 1:'+note);
                 }
+                if (indexcontent == 1 && grille.q4 == 2) {
+                    note =  parseInt(grille.q20av) + (parseInt(grille.q26av) + parseInt(grille.q27av) + parseInt(grille.q28av) +parseInt(grille.q29av) +parseInt(grille.q30av))/5 + (parseInt(grille.q45av) + parseInt(grille.q46av) + parseInt(grille.q47av))/3 + (parseInt(grille.q52av) + parseInt(grille.q53av) + parseInt(grille.q54av) + parseInt(grille.q55av))/4 + parseInt(grille.q59av) + parseInt(grille.q65av);
+                    if (note > 9) {
+                        unckeckednoteav = 1;
+                    }
+                    MM.log('Note Module 1:'+note);
+                }
+                
                 if (indexcontent == 2 && grille.q2 == 2) {
                     note =  (parseInt(grille.q11am) + parseInt(grille.q12am) + parseInt(grille.q13am) + parseInt(grille.q14am) + parseInt(grille.q15am));
                     if (note <= 8) {
@@ -11299,6 +11308,14 @@ function modifierPif(button,user,course,version) {
                     }
                     MM.log('Note Module 2:'+note);
                 }
+                if (indexcontent == 2 && grille.q5 == 2) {
+                    note =  parseInt(grille.q66av) + (parseInt(grille.q67av) + parseInt(grille.q68av) + parseInt(grille.q69av) +parseInt(grille.q70av) +parseInt(grille.q71av))/5 + parseInt(grille.q72av) + (parseInt(grille.q73av) + parseInt(grille.q74av))/2 + parseInt(grille.q75av) + parseInt(grille.q76av);
+                    if (note > 9) {
+                        unckeckednoteav = 1;
+                    }
+                    MM.log('Note Module 1:'+note);
+                }
+                
                 if (indexcontent == 3 && grille.q3 == 2) {
                     note =  (parseInt(grille.q16am) + parseInt(grille.q17am) + parseInt(grille.q18am) + parseInt(grille.q19am) + parseInt(grille.q20am));
                     if (note <= 8) {
@@ -11306,10 +11323,25 @@ function modifierPif(button,user,course,version) {
                     }
                     MM.log('Note Module 3:'+note);
                 }
+                if (indexcontent == 3 && grille.q6 == 2) {
+                    note =  parseInt(grille.q77av) + (parseInt(grille.q78av) + parseInt(grille.q79av) + parseInt(grille.q80av) +parseInt(grille.q81av) +parseInt(grille.q82av))/5 + parseInt(grille.q83av) + parseInt(grille.q84av) + parseInt(grille.q85av) + parseInt(grille.q86av);
+                    if (note > 9) {
+                        unckeckednoteav = 1;
+                    }
+                    MM.log('Note Module 1:'+note);
+                }
+                
                 if (indexcontent == 4 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
                     note =  (parseInt(grille.q1am) + parseInt(grille.q4am));
                     if (note <= 3.2) {
                         unckeckednoteam = 1;
+                    }
+                    MM.log('Note Module 4:'+note);
+                }
+                if (indexcontent == 4 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                    note =  (parseInt(grille.q1av) + parseInt(grille.q2av) + parseInt(grille.q3av) + parseInt(grille.q4av))/4 + (parseInt(grille.q11av) + parseInt(grille.q12av) + parseInt(grille.q13av) + parseInt(grille.q14av) + parseInt(grille.q15av))/5;
+                    if (note > 3) {
+                        unckeckednoteav = 1;
                     }
                     MM.log('Note Module 4:'+note);
                 }
@@ -11322,6 +11354,13 @@ function modifierPif(button,user,course,version) {
                     }
                     MM.log('Note Module 5:'+note);
                 }
+                if (indexcontent == 5 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                    note =  (parseInt(grille.q1av) + parseInt(grille.q2av) + parseInt(grille.q3av) + parseInt(grille.q4av))/4 + (parseInt(grille.q16av) + parseInt(grille.q17av) + parseInt(grille.q18av) + parseInt(grille.q19av))/4 + (parseInt(grille.q31av) + parseInt(grille.q32av) + parseInt(grille.q33av) + parseInt(grille.q34av) + parseInt(grille.q35av) + parseInt(grille.q36av) + parseInt(grille.q37av) + parseInt(grille.q38av) + parseInt(grille.q39av) + parseInt(grille.q40av) + parseInt(grille.q41av) + parseInt(grille.q42av) + parseInt(grille.q43av) + parseInt(grille.q44av))/14;
+                    if (note > 4.5) {
+                        unckeckednoteav = 1;
+                    }
+                    MM.log('Note Module 5:'+note);
+                }
                 
                 if (indexcontent == 6 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
                     note =  (parseInt(grille.q6am) +  parseInt(grille.q12am) + parseInt(grille.q17am))/3 + (parseInt(grille.q7am) + parseInt(grille.q13am) + parseInt(grille.q18am))/3;
@@ -11330,11 +11369,25 @@ function modifierPif(button,user,course,version) {
                     }
                     MM.log('Note Module 6:'+note);
                 }
+                if (indexcontent == 6 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                    note =  (parseInt(grille.q21av) + parseInt(grille.q22av) + parseInt(grille.q23av) + parseInt(grille.q24av)+ parseInt(grille.q25av))/5 + (parseInt(grille.q31av) + parseInt(grille.q32av) + parseInt(grille.q33av) + parseInt(grille.q34av)+ parseInt(grille.q35av) + parseInt(grille.q36av) + parseInt(grille.q37av) + parseInt(grille.q38av) + parseInt(grille.q39av)+ parseInt(grille.q40av) + parseInt(grille.q41av) + parseInt(grille.q42av) + parseInt(grille.q43av) + parseInt(grille.q44av))/14;
+                    if (note > 3) {
+                        unckeckednoteav = 1;
+                    }
+                    MM.log('Note Module 5:'+note);
+                }
                 
                 if (indexcontent == 7 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
                     note =  (parseInt(grille.q7am) +  parseInt(grille.q13am) + parseInt(grille.q18am))/3 + (parseInt(grille.q9am) +  parseInt(grille.q15am) + parseInt(grille.q20am))/3 + parseInt(grille.q10am);
                     if (note <= 4.8) {
                         unckeckednoteam = 1;
+                    }
+                    MM.log('Note Module 7:'+note);
+                }
+                if (indexcontent == 7 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                    note =  (parseInt(grille.q56av) +  parseInt(grille.q57av) + parseInt(grille.q58av))/3 + (parseInt(grille.q31av) + parseInt(grille.q32av) + parseInt(grille.q33av) + parseInt(grille.q34av)+ parseInt(grille.q35av) + parseInt(grille.q36av) + parseInt(grille.q37av) + parseInt(grille.q38av) + parseInt(grille.q39av)+ parseInt(grille.q40av) + parseInt(grille.q41av) + parseInt(grille.q42av) + parseInt(grille.q43av) + parseInt(grille.q44av))/14 + (parseInt(grille.q60av) + parseInt(grille.q61av) + parseInt(grille.q62av) + parseInt(grille.q63av)+ parseInt(grille.q64av))/5;
+                    if (note > 4.5) {
+                        unckeckednoteav = 1;
                     }
                     MM.log('Note Module 7:'+note);
                 }
@@ -11346,6 +11399,13 @@ function modifierPif(button,user,course,version) {
                     }
                     MM.log('Note Module 8:'+note);
                 }
+                if (indexcontent == 8 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                    note =  (parseInt(grille.q16av) + parseInt(grille.q17av) + parseInt(grille.q18av) + parseInt(grille.q19av))/4 + (parseInt(grille.q21av) + parseInt(grille.q22av) + parseInt(grille.q23av) + parseInt(grille.q24av)+ parseInt(grille.q25av))/5 + (parseInt(grille.q60av) + parseInt(grille.q61av) + parseInt(grille.q62av) + parseInt(grille.q63av)+ parseInt(grille.q64av))/5;
+                    if (note > 4.5) {
+                        unckeckednoteav = 1;
+                    }
+                    MM.log('Note Module 8:'+note);
+                }
                 
                 if (indexcontent == 9 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
                     note =  (parseInt(grille.q8am) +  parseInt(grille.q14am) + parseInt(grille.q19am))/3 + parseInt(grille.q2am) + parseInt(grille.q3am);
@@ -11353,6 +11413,13 @@ function modifierPif(button,user,course,version) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 9:'+note);
+                }
+                if (indexcontent == 9 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                    note =  (parseInt(grille.q5av) + parseInt(grille.q6av) + parseInt(grille.q7av) + parseInt(grille.q8av))/4 + (parseInt(grille.q9av) + parseInt(grille.q10av))/2 + (parseInt(grille.q48av) + parseInt(grille.q49av) + parseInt(grille.q50av) + parseInt(grille.q51av))/4;
+                    if (note > 4.5) {
+                        unckeckednoteav = 1;
+                    }
+                    MM.log('Note Module 8:'+note);
                 }
                 
                 html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
@@ -11389,12 +11456,19 @@ function modifierPif(button,user,course,version) {
                             return el.scormid == content.contentid && el.end == 1;
                     });
                     MM.log('pifscorme length:'+pifscorme.length);
-                    if (pifscorme.length>0) {
-                        html+=' checked="checked"';
+                    
+                    if (unckeckednoteav) {
+                        html+=' checked="checked" disabled="true"';
+                    } else {
+                        if (pifscormb.length>0) {
+                            html+=' checked="checked"';
+                        }
+                        if (unchecked) {
+                            html+=' disabled="true"'
+                        }
                     }
-                    if (unchecked) {
-                        html+=' disabled="true"'
-                    }
+                    
+                    
                     html +='></td></tr>';
                     
                 } else {
@@ -11423,12 +11497,19 @@ function modifierPif(button,user,course,version) {
                     pifscorme = $.grep(pifArray2, function( el ) {
                             return el.scormid == content.contentid && el.end == 1;
                     });
-                    if (pifscorme.length>0) {
-                        html+=' checked="checked"';
+                    
+                    if (unckeckednoteav) {
+                        html+=' checked="checked" disabled="true"';
+                    } else {
+                        if (pifscormb.length>0) {
+                            html+=' checked="checked"';
+                        }
+                        if (unchecked) {
+                            html+=' disabled="true"'
+                        }
                     }
-                    if (unchecked) {
-                        html+=' disabled="true"'
-                    }
+                    
+                    
                     html +='></td></tr>';
                     
                 }
