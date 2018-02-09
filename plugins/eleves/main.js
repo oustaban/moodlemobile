@@ -11308,7 +11308,7 @@ function modifierPif(button,user,course,version) {
                 }
                 if (indexcontent == 4 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
                     note =  (parseInt(grille.q1am) + parseInt(grille.q4am));
-                    if (note <= 3) {
+                    if (note <= 3.2) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 4:'+note);
@@ -11317,7 +11317,7 @@ function modifierPif(button,user,course,version) {
                 
                 if (indexcontent == 5 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
                     note =  parseInt(grille.q1am) + (parseInt(grille.q5am) +  parseInt(grille.q11am) + parseInt(grille.q16am))/3 + (parseInt(grille.q7am) +  parseInt(grille.q13am )+ parseInt(grille.q18am))/3;
-                    if (note >= 4.8) {
+                    if (note <= 4.8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 5:'+note);
@@ -11368,7 +11368,7 @@ function modifierPif(button,user,course,version) {
                         MM.log('pifscormb length:'+pifscormb.length);
                         
                     } else {
-                        pifscormb = [1];
+                        //pifscormb = [1];
                     }
                     
                     if (unckeckednoteam) {
