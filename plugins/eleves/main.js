@@ -5226,7 +5226,7 @@ function grillea4(button,user,course,version) {
     html+='<td colspan="5">L\'agent identifie les attentes des clients</td>';
     html+='</tr>';
     
-    if (grille.q1av == 3)
+    if (grille.q1av == 3 || grille.q1av == undefined)
         disabled='';
     else
         disabled = 'disabled="disabled"';
