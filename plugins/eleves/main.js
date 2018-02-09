@@ -5834,7 +5834,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q22AV
-    if (grille.q22av == 3) || grille.q22av == undefined
+    if (grille.q22av == 3 || grille.q22av == undefined)
         disabled='';
     else {
         if (grille!="[]" && grille!="" && grille.q4 == 2)
