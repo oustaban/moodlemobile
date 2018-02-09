@@ -8443,8 +8443,6 @@ function grillea5(button,user,course,version) {
             grille.q42av = $('input[name=q42av]:checked').val();
             grille.q43av = $('input[name=q43av]:checked').val();
             grille.q44av = $('input[name=q44av]:checked').val();
-            grille.q45av = $('input[name=q45av]:checked').val();
-            grille.q46av = $('input[name=q46av]:checked').val();
             grille.q47av = $('input[name=q47av]:checked').val();
             grille.q48av = $('input[name=q48av]:checked').val();
             grille.q49av = $('input[name=q49av]:checked').val();
@@ -8524,8 +8522,6 @@ function grillea5(button,user,course,version) {
                || !$('input[name=q42av]').is(':checked')
                || !$('input[name=q43av]').is(':checked')
                || !$('input[name=q44av]').is(':checked')
-               || !$('input[name=q45av]').is(':checked')
-               || !$('input[name=q46av]').is(':checked')
                || !$('input[name=q47av]').is(':checked')
                || !$('input[name=q48av]').is(':checked')
                || !$('input[name=q49av]').is(':checked')
@@ -8611,8 +8607,6 @@ function grillea5(button,user,course,version) {
                 grille.q42av = $('input[name=q42av]:checked').val();
                 grille.q43av = $('input[name=q43av]:checked').val();
                 grille.q44av = $('input[name=q44av]:checked').val();
-                grille.q45av = $('input[name=q45av]:checked').val();
-                grille.q46av = $('input[name=q46av]:checked').val();
                 grille.q47av = $('input[name=q47av]:checked').val();
                 grille.q48av = $('input[name=q48av]:checked').val();
                 grille.q49av = $('input[name=q49av]:checked').val();
@@ -9816,26 +9810,7 @@ function grillea6(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q52AV
-    html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">Les demandes du client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="3" ';
-    if (grille.q52av == 3)
-        html+=' checked="checked"';
-    html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="0" '+disabled;
-    if (grille.q52av == 0)
-        html+=' checked="checked"';
-    html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="1" '+disabled;
-    if (grille.q52av == 1)
-        html+=' checked="checked"';
-    html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="2" '+disabled;
-    if (grille.q52av == 2)
-        html+=' checked="checked"';
-    html+="></td>";
-    html+='</tr>';
+    
     
     //QUESTION Q70AV
     html+='<tr>';
@@ -10162,14 +10137,11 @@ function grillea6(button,user,course,version) {
             grille.q42av = $('input[name=q42av]:checked').val();
             grille.q43av = $('input[name=q43av]:checked').val();
             grille.q44av = $('input[name=q44av]:checked').val();
-            grille.q45av = $('input[name=q45av]:checked').val();
-            grille.q46av = $('input[name=q46av]:checked').val();
             grille.q47av = $('input[name=q47av]:checked').val();
             grille.q48av = $('input[name=q48av]:checked').val();
             grille.q49av = $('input[name=q49av]:checked').val();
             grille.q50av = $('input[name=q50av]:checked').val();
             grille.q51av = $('input[name=q51av]:checked').val();
-            grille.q52av = $('input[name=q52av]:checked').val();
             grille.q71av = $('input[name=q71av]:checked').val();
             grille.q56av = $('input[name=q56av]:checked').val();
             grille.q57av = $('input[name=q57av]:checked').val();
@@ -10243,14 +10215,11 @@ function grillea6(button,user,course,version) {
                || !$('input[name=q42av]').is(':checked')
                || !$('input[name=q43av]').is(':checked')
                || !$('input[name=q44av]').is(':checked')
-               || !$('input[name=q45av]').is(':checked')
-               || !$('input[name=q46av]').is(':checked')
                || !$('input[name=q47av]').is(':checked')
                || !$('input[name=q48av]').is(':checked')
                || !$('input[name=q49av]').is(':checked')
                || !$('input[name=q50av]').is(':checked')
                || !$('input[name=q51av]').is(':checked')
-               || !$('input[name=q52av]').is(':checked')
                || !$('input[name=q71av]').is(':checked')
                || !$('input[name=q56av]').is(':checked')
                || !$('input[name=q57av]').is(':checked')
@@ -10330,14 +10299,11 @@ function grillea6(button,user,course,version) {
                 grille.q42av = $('input[name=q42av]:checked').val();
                 grille.q43av = $('input[name=q43av]:checked').val();
                 grille.q44av = $('input[name=q44av]:checked').val();
-                grille.q45av = $('input[name=q45av]:checked').val();
-                grille.q46av = $('input[name=q46av]:checked').val();
                 grille.q47av = $('input[name=q47av]:checked').val();
                 grille.q48av = $('input[name=q48av]:checked').val();
                 grille.q49av = $('input[name=q49av]:checked').val();
                 grille.q50av = $('input[name=q50av]:checked').val();
                 grille.q51av = $('input[name=q51av]:checked').val();
-                grille.q52av = $('input[name=q52av]:checked').val();
                 grille.q71av = $('input[name=q71av]:checked').val();
                 grille.q56av = $('input[name=q56av]:checked').val();
                 grille.q57av = $('input[name=q57av]:checked').val();
