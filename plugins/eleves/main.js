@@ -7455,23 +7455,23 @@ function grillea5(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q20AV
+    //QUESTION Q66AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le matériel et les produits adaptés aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="3" ';
-    if (grille.q20av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="3" ';
+    if (grille.q66av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="0" '+disabled;
-    if (grille.q20av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="0" '+disabled;
+    if (grille.q66av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="1" '+disabled;
-    if (grille.q20av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="1" '+disabled;
+    if (grille.q66av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="2" '+disabled;
-    if (grille.q20av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="2" '+disabled;
+    if (grille.q66av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -7585,30 +7585,9 @@ function grillea5(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q66AV
-    html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">Préparation des équipements</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="3" ';
-    if (grille.q66av == 3)
-        html+=' checked="checked"';
-    html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="0" '+disabled;
-    if (grille.q66av == 0)
-        html+=' checked="checked"';
-    html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="1" '+disabled;
-    if (grille.q66av == 1)
-        html+=' checked="checked"';
-    html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="2" '+disabled;
-    if (grille.q66av == 2)
-        html+=' checked="checked"';
-    html+="></td>";
-    html+='</tr>';
-    
     //QUESTION Q67AV
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">Désinfection des appareils</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">Préparation des équipements</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="3" ';
     if (grille.q67av == 3)
         html+=' checked="checked"';
@@ -7629,7 +7608,7 @@ function grillea5(button,user,course,version) {
     
     //QUESTION Q68AV
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">Désinfection des équipements</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">Désinfection des appareils</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="3" ';
     if (grille.q68av == 3)
         html+=' checked="checked"';
@@ -7650,7 +7629,7 @@ function grillea5(button,user,course,version) {
     
     //QUESTION Q69AV
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">Balayage et lavage</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">Désinfection des équipements</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="3" ';
     if (grille.q69av == 3)
         html+=' checked="checked"';
@@ -7671,7 +7650,7 @@ function grillea5(button,user,course,version) {
     
     //QUESTION Q70AV
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">Contrôle du résultat</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">Balayage et lavage</td>';
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="3" ';
     if (grille.q70av == 3)
         html+=' checked="checked"';
@@ -7686,6 +7665,27 @@ function grillea5(button,user,course,version) {
     html+="></td>";
     html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="2" '+disabled;
     if (grille.q70av == 2)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='</tr>';
+    
+    //QUESTION Q71AV
+    html+='<tr>';
+    html+='<td style="height:40px;text-align:left" class="center2">Contrôle du résultat</td>';
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="3" ';
+    if (grille.q71av == 3)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="0" '+disabled;
+    if (grille.q71av == 0)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="1" '+disabled;
+    if (grille.q71av == 1)
+        html+=' checked="checked"';
+    html+="></td>";
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="2" '+disabled;
+    if (grille.q71av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -7988,23 +7988,23 @@ function grillea5(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q47AV
+    //QUESTION Q72AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de sécurité appliquées aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="3" ';
-    if (grille.q47av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="3" ';
+    if (grille.q72av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="0" '+disabled;
-    if (grille.q47av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="0" '+disabled;
+    if (grille.q72av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="1" '+disabled;
-    if (grille.q47av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="1" '+disabled;
+    if (grille.q72av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="2" '+disabled;
-    if (grille.q47av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="2" '+disabled;
+    if (grille.q72av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -8097,44 +8097,44 @@ function grillea5(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q52AV
+    //QUESTION Q73AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les demandes du client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="3" ';
-    if (grille.q52av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="3" ';
+    if (grille.q73av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="0" '+disabled;
-    if (grille.q52av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="0" '+disabled;
+    if (grille.q73av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="1" '+disabled;
-    if (grille.q52av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="1" '+disabled;
+    if (grille.q73av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="2" '+disabled;
-    if (grille.q52av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="2" '+disabled;
+    if (grille.q73av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q71AV
+    //QUESTION Q74AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'accès aux installations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="3" ';
-    if (grille.q71av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="3" ';
+    if (grille.q74av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="0" '+disabled;
-    if (grille.q71av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="0" '+disabled;
+    if (grille.q74av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="1" '+disabled;
-    if (grille.q71av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="1" '+disabled;
+    if (grille.q74av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="2" '+disabled;
-    if (grille.q71av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="2" '+disabled;
+    if (grille.q74av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -8207,23 +8207,23 @@ function grillea5(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q59AV
+    //QUESTION Q75AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les postures adaptées aux opérations effectuées</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="3" ';
-    if (grille.q59av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="3" ';
+    if (grille.q75av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="0" '+disabled;
-    if (grille.q59av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="0" '+disabled;
+    if (grille.q75av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="1" '+disabled;
-    if (grille.q59av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="1" '+disabled;
+    if (grille.q75av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="2" '+disabled;
-    if (grille.q59av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="2" '+disabled;
+    if (grille.q75av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -8337,23 +8337,23 @@ function grillea5(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q65AV
+    //QUESTION Q76AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les actions de contrôle en fin de prestation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="3" ';
-    if (grille.q65av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="3" ';
+    if (grille.q76av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="0" '+disabled;
-    if (grille.q65av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="0" '+disabled;
+    if (grille.q76av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="1" '+disabled;
-    if (grille.q65av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="1" '+disabled;
+    if (grille.q76av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="2" '+disabled;
-    if (grille.q65av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="2" '+disabled;
+    if (grille.q76av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -8418,17 +8418,17 @@ function grillea5(button,user,course,version) {
             grille.q17av = $('input[name=q17av]:checked').val();
             grille.q18av = $('input[name=q18av]:checked').val();
             grille.q19av = $('input[name=q19av]:checked').val();
-            grille.q20av = $('input[name=q20av]:checked').val();
+            grille.q66av = $('input[name=q66av]:checked').val();
             grille.q21av = $('input[name=q21av]:checked').val();
             grille.q22av = $('input[name=q22av]:checked').val();
             grille.q23av = $('input[name=q23av]:checked').val();
             grille.q24av = $('input[name=q24av]:checked').val();
             grille.q25av = $('input[name=q25av]:checked').val();
-            grille.q66av = $('input[name=q66av]:checked').val();
             grille.q67av = $('input[name=q67av]:checked').val();
             grille.q68av = $('input[name=q68av]:checked').val();
             grille.q69av = $('input[name=q69av]:checked').val();
             grille.q70av = $('input[name=q70av]:checked').val();
+            grille.q71av = $('input[name=q70av]:checked').val();
             grille.q31av = $('input[name=q31av]:checked').val();
             grille.q32av = $('input[name=q32av]:checked').val();
             grille.q33av = $('input[name=q33av]:checked').val();
@@ -8443,23 +8443,23 @@ function grillea5(button,user,course,version) {
             grille.q42av = $('input[name=q42av]:checked').val();
             grille.q43av = $('input[name=q43av]:checked').val();
             grille.q44av = $('input[name=q44av]:checked').val();
-            grille.q47av = $('input[name=q47av]:checked').val();
+            grille.q72av = $('input[name=q72av]:checked').val();
             grille.q48av = $('input[name=q48av]:checked').val();
             grille.q49av = $('input[name=q49av]:checked').val();
             grille.q50av = $('input[name=q50av]:checked').val();
             grille.q51av = $('input[name=q51av]:checked').val();
-            grille.q52av = $('input[name=q52av]:checked').val();
-            grille.q71av = $('input[name=q71av]:checked').val();
+            grille.q73av = $('input[name=q73av]:checked').val();
+            grille.q74av = $('input[name=q74av]:checked').val();
             grille.q56av = $('input[name=q56av]:checked').val();
             grille.q57av = $('input[name=q57av]:checked').val();
             grille.q58av = $('input[name=q58av]:checked').val();
-            grille.q59av = $('input[name=q59av]:checked').val();
+            grille.q75av = $('input[name=q75av]:checked').val();
             grille.q60av = $('input[name=q60av]:checked').val();
             grille.q61av = $('input[name=q61av]:checked').val();
             grille.q62av = $('input[name=q62av]:checked').val();
             grille.q63av = $('input[name=q63av]:checked').val();
             grille.q64av = $('input[name=q64av]:checked').val();
-            grille.q65av = $('input[name=q65av]:checked').val();
+            grille.q76av = $('input[name=q76av]:checked').val();
             
             
             grille.q5 = 1;
@@ -8497,17 +8497,17 @@ function grillea5(button,user,course,version) {
                || !$('input[name=q17av]').is(':checked')
                || !$('input[name=q18av]').is(':checked')
                || !$('input[name=q19av]').is(':checked')
-               || !$('input[name=q20av]').is(':checked')
+               || !$('input[name=q66av]').is(':checked')
                || !$('input[name=q21av]').is(':checked')
                || !$('input[name=q22av]').is(':checked')
                || !$('input[name=q23av]').is(':checked')
                || !$('input[name=q24av]').is(':checked')
                || !$('input[name=q25av]').is(':checked')
-               || !$('input[name=q66av]').is(':checked')
                || !$('input[name=q67av]').is(':checked')
                || !$('input[name=q68av]').is(':checked')
                || !$('input[name=q69av]').is(':checked')
                || !$('input[name=q70av]').is(':checked')
+               || !$('input[name=q71av]').is(':checked')
                || !$('input[name=q31av]').is(':checked')
                || !$('input[name=q32av]').is(':checked')
                || !$('input[name=q33av]').is(':checked')
@@ -8522,23 +8522,23 @@ function grillea5(button,user,course,version) {
                || !$('input[name=q42av]').is(':checked')
                || !$('input[name=q43av]').is(':checked')
                || !$('input[name=q44av]').is(':checked')
-               || !$('input[name=q47av]').is(':checked')
+               || !$('input[name=q72av]').is(':checked')
                || !$('input[name=q48av]').is(':checked')
                || !$('input[name=q49av]').is(':checked')
                || !$('input[name=q50av]').is(':checked')
                || !$('input[name=q51av]').is(':checked')
-               || !$('input[name=q52av]').is(':checked')
-               || !$('input[name=q71av]').is(':checked')
+               || !$('input[name=q73av]').is(':checked')
+               || !$('input[name=q74av]').is(':checked')
                || !$('input[name=q56av]').is(':checked')
                || !$('input[name=q57av]').is(':checked')
                || !$('input[name=q58av]').is(':checked')
-               || !$('input[name=q59av]').is(':checked')
+               || !$('input[name=q75av]').is(':checked')
                || !$('input[name=q60av]').is(':checked')
                || !$('input[name=q61av]').is(':checked')
                || !$('input[name=q62av]').is(':checked')
                || !$('input[name=q63av]').is(':checked')
                || !$('input[name=q64av]').is(':checked')
-               || !$('input[name=q65av]').is(':checked')
+               || !$('input[name=q76av]').is(':checked')
               ) {
             //if (!tested) {    
                 MM.log('Grille Incomplete');
@@ -8582,17 +8582,17 @@ function grillea5(button,user,course,version) {
                 grille.q17av = $('input[name=q17av]:checked').val();
                 grille.q18av = $('input[name=q18av]:checked').val();
                 grille.q19av = $('input[name=q19av]:checked').val();
-                grille.q20av = $('input[name=q20av]:checked').val();
+                grille.q66av = $('input[name=q66av]:checked').val();
                 grille.q21av = $('input[name=q21av]:checked').val();
                 grille.q22av = $('input[name=q22av]:checked').val();
                 grille.q23av = $('input[name=q23av]:checked').val();
                 grille.q24av = $('input[name=q24av]:checked').val();
                 grille.q25av = $('input[name=q25av]:checked').val();
-                grille.q66av = $('input[name=q66av]:checked').val();
                 grille.q67av = $('input[name=q67av]:checked').val();
                 grille.q68av = $('input[name=q68av]:checked').val();
                 grille.q69av = $('input[name=q69av]:checked').val();
                 grille.q70av = $('input[name=q70av]:checked').val();
+                grille.q71av = $('input[name=q70av]:checked').val();
                 grille.q31av = $('input[name=q31av]:checked').val();
                 grille.q32av = $('input[name=q32av]:checked').val();
                 grille.q33av = $('input[name=q33av]:checked').val();
@@ -8607,23 +8607,23 @@ function grillea5(button,user,course,version) {
                 grille.q42av = $('input[name=q42av]:checked').val();
                 grille.q43av = $('input[name=q43av]:checked').val();
                 grille.q44av = $('input[name=q44av]:checked').val();
-                grille.q47av = $('input[name=q47av]:checked').val();
+                grille.q72av = $('input[name=q72av]:checked').val();
                 grille.q48av = $('input[name=q48av]:checked').val();
                 grille.q49av = $('input[name=q49av]:checked').val();
                 grille.q50av = $('input[name=q50av]:checked').val();
                 grille.q51av = $('input[name=q51av]:checked').val();
-                grille.q52av = $('input[name=q52av]:checked').val();
-                grille.q71av = $('input[name=q71av]:checked').val();
+                grille.q73av = $('input[name=q73av]:checked').val();
+                grille.q74av = $('input[name=q74av]:checked').val();
                 grille.q56av = $('input[name=q56av]:checked').val();
                 grille.q57av = $('input[name=q57av]:checked').val();
                 grille.q58av = $('input[name=q58av]:checked').val();
-                grille.q59av = $('input[name=q59av]:checked').val();
+                grille.q75av = $('input[name=q75av]:checked').val();
                 grille.q60av = $('input[name=q60av]:checked').val();
                 grille.q61av = $('input[name=q61av]:checked').val();
                 grille.q62av = $('input[name=q62av]:checked').val();
                 grille.q63av = $('input[name=q63av]:checked').val();
                 grille.q64av = $('input[name=q64av]:checked').val();
-                grille.q65av = $('input[name=q65av]:checked').val();
+                grille.q76av = $('input[name=q76av]:checked').val();
                 
                 
                 grille.q5 = 2;
@@ -9168,23 +9168,23 @@ function grillea6(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q20AV
+    //QUESTION Q77AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le matériel et les produits adaptés aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="3" ';
-    if (grille.q20av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="3" ';
+    if (grille.q77av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="0" '+disabled;
-    if (grille.q20av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="0" '+disabled;
+    if (grille.q77av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="1" '+disabled;
-    if (grille.q20av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="1" '+disabled;
+    if (grille.q77av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="2" '+disabled;
-    if (grille.q20av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="2" '+disabled;
+    if (grille.q77av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -9298,107 +9298,107 @@ function grillea6(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q72AV
+    //QUESTION Q78AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Nettoyage du hall d\'entrée</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="3" ';
-    if (grille.q72av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="3" ';
+    if (grille.q78av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="0" '+disabled;
-    if (grille.q72av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="0" '+disabled;
+    if (grille.q78av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="1" '+disabled;
-    if (grille.q72av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="1" '+disabled;
+    if (grille.q78av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="2" '+disabled;
-    if (grille.q72av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="2" '+disabled;
+    if (grille.q78av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q73AV
+    //QUESTION Q79AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Nettoyage de l\'ascenseur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="3" ';
-    if (grille.q73av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="3" ';
+    if (grille.q79av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="0" '+disabled;
-    if (grille.q73av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="0" '+disabled;
+    if (grille.q79av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="1" '+disabled;
-    if (grille.q73av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="1" '+disabled;
+    if (grille.q79av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="2" '+disabled;
-    if (grille.q73av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="2" '+disabled;
+    if (grille.q79av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q74AV
+    //QUESTION Q80AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Nettoyage des circulations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="3" ';
-    if (grille.q74av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="3" ';
+    if (grille.q80av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="0" '+disabled;
-    if (grille.q74av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="0" '+disabled;
+    if (grille.q80av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="1" '+disabled;
-    if (grille.q74av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="1" '+disabled;
+    if (grille.q80av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="2" '+disabled;
-    if (grille.q74av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="2" '+disabled;
+    if (grille.q80av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q75AV
+    //QUESTION Q81AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Nettoyage de l\'escalier</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="3" ';
-    if (grille.q75av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="3" ';
+    if (grille.q81av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="0" '+disabled;
-    if (grille.q75av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="0" '+disabled;
+    if (grille.q81av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="1" '+disabled;
-    if (grille.q75av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="1" '+disabled;
+    if (grille.q81av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="2" '+disabled;
-    if (grille.q75av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="2" '+disabled;
+    if (grille.q81av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q76AV
+    //QUESTION Q82AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Contrôle du résultat</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="3" ';
-    if (grille.q76av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="3" ';
+    if (grille.q82av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="0" '+disabled;
-    if (grille.q76av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="0" '+disabled;
+    if (grille.q82av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="1" '+disabled;
-    if (grille.q76av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="1" '+disabled;
+    if (grille.q82av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="2" '+disabled;
-    if (grille.q76av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="2" '+disabled;
+    if (grille.q82av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -9701,23 +9701,23 @@ function grillea6(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q47AV
+    //QUESTION Q83AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de sécurité appliquées aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="3" ';
-    if (grille.q47av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="3" ';
+    if (grille.q83av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="0" '+disabled;
-    if (grille.q47av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="0" '+disabled;
+    if (grille.q83av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="1" '+disabled;
-    if (grille.q47av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="1" '+disabled;
+    if (grille.q83av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="2" '+disabled;
-    if (grille.q47av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="2" '+disabled;
+    if (grille.q83av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -9812,23 +9812,23 @@ function grillea6(button,user,course,version) {
     
     
     
-    //QUESTION Q70AV
+    //QUESTION Q84AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'accès aux installations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="3" ';
-    if (grille.q70av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="3" ';
+    if (grille.q84av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="0" '+disabled;
-    if (grille.q70av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="0" '+disabled;
+    if (grille.q84av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="1" '+disabled;
-    if (grille.q70av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="1" '+disabled;
+    if (grille.q84av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="2" '+disabled;
-    if (grille.q70av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="2" '+disabled;
+    if (grille.q84av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -9901,23 +9901,23 @@ function grillea6(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q59AV
+    //QUESTION Q85AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les postures adaptées aux opérations effectuées</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="3" ';
-    if (grille.q59av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="3" ';
+    if (grille.q85av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="0" '+disabled;
-    if (grille.q59av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="0" '+disabled;
+    if (grille.q85av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="1" '+disabled;
-    if (grille.q59av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="1" '+disabled;
+    if (grille.q85av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="2" '+disabled;
-    if (grille.q59av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="2" '+disabled;
+    if (grille.q85av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -10031,23 +10031,23 @@ function grillea6(button,user,course,version) {
     html+="></td>";
     html+='</tr>';
     
-    //QUESTION Q65AV
+    //QUESTION Q86AV
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les actions de contrôle en fin de prestation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="3" ';
-    if (grille.q65av == 3)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="3" ';
+    if (grille.q86av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="0" '+disabled;
-    if (grille.q65av == 0)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="0" '+disabled;
+    if (grille.q86av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="1" '+disabled;
-    if (grille.q65av == 1)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="1" '+disabled;
+    if (grille.q86av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="2" '+disabled;
-    if (grille.q65av == 2)
+    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="2" '+disabled;
+    if (grille.q86av == 2)
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
@@ -10112,17 +10112,17 @@ function grillea6(button,user,course,version) {
             grille.q17av = $('input[name=q17av]:checked').val();
             grille.q18av = $('input[name=q18av]:checked').val();
             grille.q19av = $('input[name=q19av]:checked').val();
-            grille.q20av = $('input[name=q20av]:checked').val();
+            grille.q77av = $('input[name=q77av]:checked').val();
             grille.q21av = $('input[name=q21av]:checked').val();
             grille.q22av = $('input[name=q22av]:checked').val();
             grille.q23av = $('input[name=q23av]:checked').val();
             grille.q24av = $('input[name=q24av]:checked').val();
             grille.q25av = $('input[name=q25av]:checked').val();
-            grille.q72av = $('input[name=q72av]:checked').val();
-            grille.q73av = $('input[name=q73av]:checked').val();
-            grille.q74av = $('input[name=q74av]:checked').val();
-            grille.q75av = $('input[name=q75av]:checked').val();
-            grille.q76av = $('input[name=q76av]:checked').val();
+            grille.q78av = $('input[name=q78av]:checked').val();
+            grille.q79av = $('input[name=q79av]:checked').val();
+            grille.q80av = $('input[name=q80av]:checked').val();
+            grille.q81av = $('input[name=q81av]:checked').val();
+            grille.q82av = $('input[name=q82av]:checked').val();
             grille.q31av = $('input[name=q31av]:checked').val();
             grille.q32av = $('input[name=q32av]:checked').val();
             grille.q33av = $('input[name=q33av]:checked').val();
@@ -10137,22 +10137,22 @@ function grillea6(button,user,course,version) {
             grille.q42av = $('input[name=q42av]:checked').val();
             grille.q43av = $('input[name=q43av]:checked').val();
             grille.q44av = $('input[name=q44av]:checked').val();
-            grille.q47av = $('input[name=q47av]:checked').val();
+            grille.q83av = $('input[name=q83av]:checked').val();
             grille.q48av = $('input[name=q48av]:checked').val();
             grille.q49av = $('input[name=q49av]:checked').val();
             grille.q50av = $('input[name=q50av]:checked').val();
             grille.q51av = $('input[name=q51av]:checked').val();
-            grille.q71av = $('input[name=q71av]:checked').val();
+            grille.q84av = $('input[name=q84av]:checked').val();
             grille.q56av = $('input[name=q56av]:checked').val();
             grille.q57av = $('input[name=q57av]:checked').val();
             grille.q58av = $('input[name=q58av]:checked').val();
-            grille.q59av = $('input[name=q59av]:checked').val();
+            grille.q85av = $('input[name=q85av]:checked').val();
             grille.q60av = $('input[name=q60av]:checked').val();
             grille.q61av = $('input[name=q61av]:checked').val();
             grille.q62av = $('input[name=q62av]:checked').val();
             grille.q63av = $('input[name=q63av]:checked').val();
             grille.q64av = $('input[name=q64av]:checked').val();
-            grille.q65av = $('input[name=q65av]:checked').val();
+            grille.q86av = $('input[name=q86av]:checked').val();
             
             
             grille.q6 = 1;
@@ -10190,17 +10190,17 @@ function grillea6(button,user,course,version) {
                || !$('input[name=q17av]').is(':checked')
                || !$('input[name=q18av]').is(':checked')
                || !$('input[name=q19av]').is(':checked')
-               || !$('input[name=q20av]').is(':checked')
+               || !$('input[name=q77av]').is(':checked')
                || !$('input[name=q21av]').is(':checked')
                || !$('input[name=q22av]').is(':checked')
                || !$('input[name=q23av]').is(':checked')
                || !$('input[name=q24av]').is(':checked')
                || !$('input[name=q25av]').is(':checked')
-               || !$('input[name=q72av]').is(':checked')
-               || !$('input[name=q73av]').is(':checked')
-               || !$('input[name=q74av]').is(':checked')
-               || !$('input[name=q75av]').is(':checked')
-               || !$('input[name=q76av]').is(':checked')
+               || !$('input[name=q78av]').is(':checked')
+               || !$('input[name=q79av]').is(':checked')
+               || !$('input[name=q80av]').is(':checked')
+               || !$('input[name=q81av]').is(':checked')
+               || !$('input[name=q82av]').is(':checked')
                || !$('input[name=q31av]').is(':checked')
                || !$('input[name=q32av]').is(':checked')
                || !$('input[name=q33av]').is(':checked')
@@ -10215,22 +10215,22 @@ function grillea6(button,user,course,version) {
                || !$('input[name=q42av]').is(':checked')
                || !$('input[name=q43av]').is(':checked')
                || !$('input[name=q44av]').is(':checked')
-               || !$('input[name=q47av]').is(':checked')
+               || !$('input[name=q83av]').is(':checked')
                || !$('input[name=q48av]').is(':checked')
                || !$('input[name=q49av]').is(':checked')
                || !$('input[name=q50av]').is(':checked')
                || !$('input[name=q51av]').is(':checked')
-               || !$('input[name=q71av]').is(':checked')
+               || !$('input[name=q84av]').is(':checked')
                || !$('input[name=q56av]').is(':checked')
                || !$('input[name=q57av]').is(':checked')
                || !$('input[name=q58av]').is(':checked')
-               || !$('input[name=q59av]').is(':checked')
+               || !$('input[name=q85av]').is(':checked')
                || !$('input[name=q60av]').is(':checked')
                || !$('input[name=q61av]').is(':checked')
                || !$('input[name=q62av]').is(':checked')
                || !$('input[name=q63av]').is(':checked')
                || !$('input[name=q64av]').is(':checked')
-               || !$('input[name=q65av]').is(':checked')
+               || !$('input[name=q86av]').is(':checked')
               ) {
             //if (!tested) {    
                 MM.log('Grille Incomplete');
@@ -10274,17 +10274,17 @@ function grillea6(button,user,course,version) {
                 grille.q17av = $('input[name=q17av]:checked').val();
                 grille.q18av = $('input[name=q18av]:checked').val();
                 grille.q19av = $('input[name=q19av]:checked').val();
-                grille.q20av = $('input[name=q20av]:checked').val();
+                grille.q77av = $('input[name=q77av]:checked').val();
                 grille.q21av = $('input[name=q21av]:checked').val();
                 grille.q22av = $('input[name=q22av]:checked').val();
                 grille.q23av = $('input[name=q23av]:checked').val();
                 grille.q24av = $('input[name=q24av]:checked').val();
                 grille.q25av = $('input[name=q25av]:checked').val();
-                grille.q72av = $('input[name=q72av]:checked').val();
-                grille.q73av = $('input[name=q73av]:checked').val();
-                grille.q74av = $('input[name=q74av]:checked').val();
-                grille.q75av = $('input[name=q75av]:checked').val();
-                grille.q76av = $('input[name=q76av]:checked').val();
+                grille.q78av = $('input[name=q78av]:checked').val();
+                grille.q79av = $('input[name=q79av]:checked').val();
+                grille.q80av = $('input[name=q80av]:checked').val();
+                grille.q81av = $('input[name=q81av]:checked').val();
+                grille.q82av = $('input[name=q82av]:checked').val();
                 grille.q31av = $('input[name=q31av]:checked').val();
                 grille.q32av = $('input[name=q32av]:checked').val();
                 grille.q33av = $('input[name=q33av]:checked').val();
@@ -10299,22 +10299,22 @@ function grillea6(button,user,course,version) {
                 grille.q42av = $('input[name=q42av]:checked').val();
                 grille.q43av = $('input[name=q43av]:checked').val();
                 grille.q44av = $('input[name=q44av]:checked').val();
-                grille.q47av = $('input[name=q47av]:checked').val();
+                grille.q83av = $('input[name=q83av]:checked').val();
                 grille.q48av = $('input[name=q48av]:checked').val();
                 grille.q49av = $('input[name=q49av]:checked').val();
                 grille.q50av = $('input[name=q50av]:checked').val();
                 grille.q51av = $('input[name=q51av]:checked').val();
-                grille.q71av = $('input[name=q71av]:checked').val();
+                grille.q84av = $('input[name=q84av]:checked').val();
                 grille.q56av = $('input[name=q56av]:checked').val();
                 grille.q57av = $('input[name=q57av]:checked').val();
                 grille.q58av = $('input[name=q58av]:checked').val();
-                grille.q59av = $('input[name=q59av]:checked').val();
+                grille.q85av = $('input[name=q85av]:checked').val();
                 grille.q60av = $('input[name=q60av]:checked').val();
                 grille.q61av = $('input[name=q61av]:checked').val();
                 grille.q62av = $('input[name=q62av]:checked').val();
                 grille.q63av = $('input[name=q63av]:checked').val();
                 grille.q64av = $('input[name=q64av]:checked').val();
-                grille.q65av = $('input[name=q65av]:checked').val();
+                grille.q86av = $('input[name=q86av]:checked').val();
                 
                 
                 grille.q6 = 2;
