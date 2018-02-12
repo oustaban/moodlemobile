@@ -310,6 +310,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('id')+"']").detach();
                                         $('ul#listeparticipants2').append(objectWithEvents);
                                         
+                                        var checkedUser = MM.db.get('users', MM.config.current_site.id + "-" + user);
+                                        var checkedUserJ = checkedUser.toJSON();
+                                        if (checkedUserJ.pif == "" || checkedUserJ.pif == "[]") {
+                                            MM.log("TEST:"+checkedUserJ.id);
+                                            $('input#eleveP' + checkedUserJ.id).prop('checked',false);
+                                            $("a[eleve='eleveP"+checkedUserJ.id+"']").trigger("click");
+                                        }
+                        
                                         
                                     }
                                     //$(this).attr("disabled", true );
@@ -714,15 +722,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $("#panel-center li:eq(0)").addClass("selected-row");
                         }
                         
-                        $.each(myusers, function(index, user) {
-                            MM.log("TEST");
-                            if (user.pif == "" || user.pif == "[]") {
-                                MM.log("TEST:"+user.id);
-                                $('input#eleveP' + user.id).prop('checked',false);
-                                //$("a[eleve='eleveP"+user.id+"']").trigger("click");
-                                
-                            }
-                        });
+                        
                         
                     });
                     
