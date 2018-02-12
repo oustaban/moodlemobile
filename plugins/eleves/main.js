@@ -1408,7 +1408,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             
                                         } else {
                                             
-                                            
+                                            /*
                                             if (!obj.clickedP) {
                                                 
                                                 $('#offlineC').css('visibility','visible');
@@ -1421,7 +1421,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $('#createdPif').hide();
                                                 
                                             }
-                                            
+                                            */
                                             
                                             if (obj.clickedP) {
                                                 MM.log("LOAD:"+obj.showCourseL+'/'+obj.stopCourseL+'/'+obj.showSessionL+'/'+obj.stopSessionL+'/'+obj.offlineC+'/'+obj.synchroR); 
