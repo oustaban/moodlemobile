@@ -715,9 +715,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         }
                         
                         $.each(myusers, function(index, user) {
-                            MM.Log("TEST");
+                            MM.log("TEST");
                             if (user.pif == "" || user.pif == "[]") {
-                                MM.Log("TEST:"+user.id);
+                                MM.log("TEST:"+user.id);
                                 $('#eleveP' + user.id).prop('checked',false);
                                 var e = new Event('touchstart');
                                 $("a#lielevelP[eleve='eleveP'"+user.id+"]").dispatchEvent(e);
