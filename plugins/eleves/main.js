@@ -306,16 +306,21 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         myusers = $.grep(myusers, function( el ) {
                                             return el.id !== user;
                                         });
+                                        
                                         MM.log('myusers.length:'+myusers.length);
-                                        var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('id')+"']").detach();
-                                        $('ul#listeparticipants2').append(objectWithEvents);
+                                        
                                         
                                         var checkedUser = MM.db.get('users', MM.config.current_site.id + "-" + user);
                                         var checkedUserJ = checkedUser.toJSON();
                                         if (checkedUserJ.pif == "" || checkedUserJ.pif == "[]") {
                                             MM.log("TEST:"+user);
                                             $('input#eleveP' + user).prop('checked',false);
+                                            clickedP = 0;
                                             $("a[eleve='eleveP"+user+"']").trigger("click");
+                                            
+                                        } else {
+                                            var objectWithEvents = $("ul#listeparticipants1 li[eleve='"+$(this).attr('id')+"']").detach();
+                                            $('ul#listeparticipants2').append(objectWithEvents);
                                         }
                         
                                         
