@@ -1468,7 +1468,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                         MM.fs.createFile(resultFile,
                                             function(fileEntry) {
-                                                var content = '{"clickedP":"'+clickedP+'","showCourseL":"'+showCourseL+'","stopCourseL":"'+stopCourseL+'","showSessionL":"'+showSessionL+'","stopSessionL":"'+stopSessionL+'","offlineC":"'+offlineC+'","synchroR":"'+synchroR+'","starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
+                                                var content = '{"clickedP":'+clickedP+',"showCourseL":'+showCourseL+',"stopCourseL":'+stopCourseL+',"showSessionL":'+showSessionL+',"stopSessionL":'+stopSessionL+',"offlineC":'+offlineC+',"synchroR":'+synchroR+',"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
                                                 MM.log('Create Session start :'+content);
                                                 MM.fs.writeInFile(fileEntry, content, 
                                                     function(fileUrl) {
