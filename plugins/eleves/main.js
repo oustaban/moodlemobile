@@ -190,6 +190,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     var showMore = true;
                     var sessioncurrent = 0;
+                    var selected = [];
+                    var clickedP=0;
+                    var showCourseL = 0;
+                    var stopCourseL = 0;
+                    var showSessionL = 0;
+                    var stopSessionL = 0;
+                    var offlineC = 0;
+                    var synchroR = 0;
                     
                     if (users.length < MM.plugins.eleves.limitNumber) {
                         showMore = false;
@@ -1175,14 +1183,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     
                     //Check Button
                     MM.log("Check Button");
-                    var selected = [];
-                    var clickedP=0;
-                    var showCourseL = 0;
-                    var stopCourseL = 0;
-                    var showSessionL = 0;
-                    var stopSessionL = 0;
-                    var offlineC = 0;
-                    var synchroR = 0;
+                    
                     
                     $('a#lielevelP').on('click touchstart', function(e) {
                         e.preventDefault(); 
@@ -1364,35 +1365,35 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         MM.log("CLICKEDP:"+clickedP);   
                             
                                         if (isNotCreated) {
-                                            if (!obj.clickedP) {
+                                            if (!clickedP) {
                                                 if ($('#showCourseL').is(':visible'))
-                                                    obj.showCourseL = 1;
+                                                    showCourseL = 1;
                                                 else
-                                                    obj.showCourseL = 0;
+                                                    showCourseL = 0;
                                                 if ($('#stopCourseL').is(':visible'))
-                                                    obj.stopCourseL = 1;
+                                                    stopCourseL = 1;
                                                 else
-                                                    obj.stopCourseL = 0;
+                                                    stopCourseL = 0;
                                                 if ($('#showSessionL').is(':visible'))
-                                                    obj.showSessionL = 1;
+                                                    showSessionL = 1;
                                                 else
-                                                    obj.showSessionL = 0;
+                                                    showSessionL = 0;
                                                 if ($('#stopSessionL').is(':visible'))
-                                                    obj.stopSessionL = 1;
+                                                    stopSessionL = 1;
                                                 else
-                                                    obj.stopSessionL = 0;
+                                                    stopSessionL = 0;
                                                     
                                                 if ($('#offlineC').css('visibility') == 'visible')
-                                                   obj.offlineC = 1;
+                                                   offlineC = 1;
                                                 else
-                                                    obj.offlineC = 0;
+                                                    offlineC = 0;
                                                 if ($('#synchroR').is(':visible'))
-                                                    obj.synchroR = 1;
+                                                    synchroR = 1;
                                                 else
-                                                    obj.synchroR = 0;
+                                                    synchroR = 0;
                                                     
-                                                obj.clickedP = 1;
-                                                MM.log("SAVE:"+obj.showCourseL+'/'+obj.stopCourseL+'/'+obj.showSessionL+'/'+obj.stopSessionL+'/'+obj.offlineC+'/'+obj.synchroR);   
+                                                clickedP = 1;
+                                                MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
                                             } 
                                             
                                             
@@ -1423,37 +1424,37 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             }
                                             */
                                             
-                                            if (obj.clickedP) {
+                                            if (clickedP) {
                                                 MM.log("LOAD:"+obj.showCourseL+'/'+obj.stopCourseL+'/'+obj.showSessionL+'/'+obj.stopSessionL+'/'+obj.offlineC+'/'+obj.synchroR); 
                                                
                                                
                                                
-                                               if (obj.showCourseL) {
+                                               if (showCourseL) {
                                                     $('#showCourseL').show();
                                                } else {
                                                     $('#showCourseL').hide();
                                                }
-                                               if (obj.stopCourseL) {
+                                               if (stopCourseL) {
                                                     $('#stopCourseL').show();
                                                } else {
                                                     $('#stopCourseL').hide();
                                                }
-                                               if (obj.showSessionL) {
+                                               if (showSessionL) {
                                                     $('#showSessionL').show();
                                                } else {
                                                     $('#showSessionL').hide();
                                                }
-                                               if (obj.stopSessionL) {
+                                               if (stopSessionL) {
                                                     $('#stopSessionL').show();
                                                } else {
                                                     $('#stopSessionL').hide();
                                                }
-                                               if (obj.synchroR) {
+                                               if (synchroR) {
                                                     $('#synchroR').show();
                                                } else {
                                                     $('#synchroR').hide();
                                                }
-                                               if (obj.offlineC) {
+                                               if (offlineC) {
                                                     $('#offlineC').css('visibility','visible');
                                                     $('#offlineC').removeAttr('disabled'); 
                                                } else {
@@ -1461,14 +1462,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#offlineC').removeAttr('disabled');
                                                }
                                                $('#createdPif').hide();
-                                               obj.clickedP = 0;
+                                               clickedP = 0;
                                             }    
                                         }
                                         
                                         
                                         MM.fs.createFile(resultFile,
                                             function(fileEntry) {
-                                                var content = '{"clickedP":'+obj.clickedP+',"showCourseL":'+obj.showCourseL+',"stopCourseL":'+obj.stopCourseL+',"showSessionL":'+obj.showSessionL+',"stopSessionL":'+obj.stopSessionL+',"offlineC":'+obj.offlineC+',"synchroR":'+obj.synchroR+',"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
+                                                var content = '{"clickedP":'+clickedP+',"showCourseL":'+showCourseL+',"stopCourseL":'+stopCourseL+',"showSessionL":'+showSessionL+',"stopSessionL":'+stopSessionL+',"offlineC":'+offlineC+',"synchroR":'+synchroR+',"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
                                                 MM.log('Create Session start :'+content);
                                                 MM.fs.writeInFile(fileEntry, content, 
                                                     function(fileUrl) {
