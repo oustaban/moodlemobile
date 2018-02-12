@@ -7106,7 +7106,7 @@ function grillea4(button,user,course,version) {
         };
     
     //Grille 1 Validée
-    if (grille!="[]" && grille!="" && grille.q3 == 2){
+    if (grille!="[]" && grille!="" && grille.q4 == 2){
         
         options2.buttons["Fermer"] = function() {
             MM.Router.navigate("eleves/" + course );
