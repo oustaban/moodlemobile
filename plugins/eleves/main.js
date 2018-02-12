@@ -719,7 +719,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             if (user.pif == "" || user.pif == "[]") {
                                 MM.log("TEST:"+user.id);
                                 $('#eleveP' + user.id).prop('checked',false);
-                                $("a[eleve='eleveP"+user.id+"']").trigger("touchstart");
+                                $("a[eleve='eleveP"+user.id+"']").trigger("click");
                                 
                             }
                         });
@@ -1179,7 +1179,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var offlineC = 0;
                     var synchroR = 0;
                     
-                    $('a#lielevelP').on('touchstart', function(e) {
+                    $('a#lielevelP').on('click touchstart', function(e) {
                         e.preventDefault(); 
                         selected = [];
                         var checkbox = $('#' + $(this).attr('eleve'));
