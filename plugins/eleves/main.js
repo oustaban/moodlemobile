@@ -1366,34 +1366,34 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         if (isNotCreated) {
                                             if (!obj.clickedP) {
                                                 if ($('#showCourseL').is(':visible'))
-                                                    showCourseL = 1;
+                                                    obj.showCourseL = 1;
                                                 else
-                                                    showCourseL = 0;
+                                                    obj.showCourseL = 0;
                                                 if ($('#stopCourseL').is(':visible'))
-                                                    stopCourseL = 1;
+                                                    obj.stopCourseL = 1;
                                                 else
-                                                    stopCourseL = 0;
+                                                    obj.stopCourseL = 0;
                                                 if ($('#showSessionL').is(':visible'))
-                                                    showSessionL = 1;
+                                                    obj.showSessionL = 1;
                                                 else
-                                                    showSessionL = 0;
+                                                    obj.showSessionL = 0;
                                                 if ($('#stopSessionL').is(':visible'))
-                                                    stopSessionL = 1;
+                                                    obj.stopSessionL = 1;
                                                 else
-                                                    stopSessionL = 0;
+                                                    obj.stopSessionL = 0;
                                                     
                                                 if ($('#offlineC').css('visibility') == 'visible')
-                                                    offlineC = 1;
+                                                   obj.offlineC = 1;
                                                 else
-                                                    offlineC = 0;
+                                                    obj.offlineC = 0;
                                                 if ($('#synchroR').is(':visible'))
-                                                    synchroR = 1;
+                                                    obj.synchroR = 1;
                                                 else
-                                                    synchroR = 0;
+                                                    obj.synchroR = 0;
                                                     
-                                                clickedP = 1;
-                                                MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
-                                            }
+                                                obj.clickedP = 1;
+                                                MM.log("SAVE:"+obj.showCourseL+'/'+obj.stopCourseL+'/'+obj.showSessionL+'/'+obj.stopSessionL+'/'+obj.offlineC+'/'+obj.synchroR);   
+                                            } 
                                             
                                             
                                             
@@ -1461,14 +1461,14 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     $('#offlineC').removeAttr('disabled');
                                                }
                                                $('#createdPif').hide();
-                                               clickedP = 0;
+                                               obj.clickedP = 0;
                                             }    
                                         }
                                         
                                         
                                         MM.fs.createFile(resultFile,
                                             function(fileEntry) {
-                                                var content = '{"clickedP":'+clickedP+',"showCourseL":'+showCourseL+',"stopCourseL":'+stopCourseL+',"showSessionL":'+showSessionL+',"stopSessionL":'+stopSessionL+',"offlineC":'+offlineC+',"synchroR":'+synchroR+',"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
+                                                var content = '{"clickedP":'+obj.clickedP+',"showCourseL":'+obj.showCourseL+',"stopCourseL":'+obj.stopCourseL+',"showSessionL":'+obj.showSessionL+',"stopSessionL":'+obj.stopSessionL+',"offlineC":'+obj.offlineC+',"synchroR":'+obj.synchroR+',"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
                                                 MM.log('Create Session start :'+content);
                                                 MM.fs.writeInFile(fileEntry, content, 
                                                     function(fileUrl) {
