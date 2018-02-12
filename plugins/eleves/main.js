@@ -315,7 +315,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         if (checkedUserJ.pif == "" || checkedUserJ.pif == "[]") {
                                             MM.log("TEST:"+user);
                                             $('input#eleveP' + user).prop('checked',false);
-                                            clickedP = 0;
+                                            clickedP = 1;
                                             $("a[eleve='eleveP"+user+"']").trigger("click");
                                             
                                         } else {
