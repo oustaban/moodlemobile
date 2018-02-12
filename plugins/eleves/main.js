@@ -1307,6 +1307,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $("#stopCourseL").attr("users",usersSelected.substr(0, lenghtSelected) );
                                 //$("#showSessionL").show();
                                 
+                                /*
                                 if (isNotCreated) {
                                             if (!clickedP) {
                                                 if ($('#showCourseL').is(':visible'))
@@ -1339,6 +1340,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
                                             }
                                 }
+                                */
                                 
                                 var resultFile =  MM.config.current_site.id + "/" + courseId + "/result/session.json";
                             
@@ -1362,7 +1364,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         MM.log("CLICKEDP:"+clickedP);   
                             
                                         if (isNotCreated) {
-                                            if (!clickedP) {
+                                            if (!obj.clickedP) {
                                                 if ($('#showCourseL').is(':visible'))
                                                     showCourseL = 1;
                                                 else
@@ -1406,8 +1408,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             
                                         } else {
                                             
-                                            /*
-                                            if (!clickedP) {
+                                            
+                                            if (!obj.clickedP) {
+                                                
                                                 $('#offlineC').css('visibility','visible');
                                                 $('#offlineC').removeAttr('disabled');
                                                 $("#showCourseL").hide();
@@ -1416,40 +1419,41 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $("#stopSessionL").hide();
                                                 $("#synchroR").hide();
                                                 $('#createdPif').hide();
+                                                
                                             }
-                                            */
                                             
-                                            if (clickedP) {
-                                                MM.log("LOAD:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR); 
+                                            
+                                            if (obj.clickedP) {
+                                                MM.log("LOAD:"+obj.showCourseL+'/'+obj.stopCourseL+'/'+obj.showSessionL+'/'+obj.stopSessionL+'/'+obj.offlineC+'/'+obj.synchroR); 
                                                
                                                
                                                
-                                               if (showCourseL) {
+                                               if (obj.showCourseL) {
                                                     $('#showCourseL').show();
                                                } else {
                                                     $('#showCourseL').hide();
                                                }
-                                               if (stopCourseL) {
+                                               if (obj.stopCourseL) {
                                                     $('#stopCourseL').show();
                                                } else {
                                                     $('#stopCourseL').hide();
                                                }
-                                               if (showSessionL) {
+                                               if (obj.showSessionL) {
                                                     $('#showSessionL').show();
                                                } else {
                                                     $('#showSessionL').hide();
                                                }
-                                               if (stopSessionL) {
+                                               if (obj.stopSessionL) {
                                                     $('#stopSessionL').show();
                                                } else {
                                                     $('#stopSessionL').hide();
                                                }
-                                               if (synchroR) {
+                                               if (obj.synchroR) {
                                                     $('#synchroR').show();
                                                } else {
                                                     $('#synchroR').hide();
                                                }
-                                               if (offlineC) {
+                                               if (obj.offlineC) {
                                                     $('#offlineC').css('visibility','visible');
                                                     $('#offlineC').removeAttr('disabled'); 
                                                } else {
@@ -1464,7 +1468,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         
                                         MM.fs.createFile(resultFile,
                                             function(fileEntry) {
-                                                var content = '{"starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
+                                                var content = '{"clickedP":"'+clickedP+'","showCourseL":"'+showCourseL+'","stopCourseL":"'+stopCourseL+'","showSessionL":"'+showSessionL+'","stopSessionL":"'+stopSessionL+'","offlineC":"'+offlineC+'","synchroR":"'+synchroR+'","starttime":"'+starttime+'","users":"'+usersSelected.substr(0, lenghtSelected)+'","notes":'+jsonNotes+'}';
                                                 MM.log('Create Session start :'+content);
                                                 MM.fs.writeInFile(fileEntry, content, 
                                                     function(fileUrl) {
