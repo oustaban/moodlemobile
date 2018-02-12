@@ -718,8 +718,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log("TEST");
                             if (user.pif == "" || user.pif == "[]") {
                                 MM.log("TEST:"+user.id);
-                                $('#eleveP' + user.id).prop('checked',false);
-                                $("a[eleve='eleveP"+user.id+"']").trigger("click");
+                                $('input#eleveP' + user.id).prop('checked',false);
+                                //$("a[eleve='eleveP"+user.id+"']").trigger("click");
                                 
                             }
                         });
