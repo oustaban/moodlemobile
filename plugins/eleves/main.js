@@ -313,9 +313,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         var checkedUser = MM.db.get('users', MM.config.current_site.id + "-" + user);
                                         var checkedUserJ = checkedUser.toJSON();
                                         if (checkedUserJ.pif == "" || checkedUserJ.pif == "[]") {
-                                            MM.log("TEST:"+checkedUserJ.id);
-                                            $('input#eleveP' + checkedUserJ.id).prop('checked',false);
-                                            $("a[eleve='eleveP"+checkedUserJ.id+"']").trigger("click");
+                                            MM.log("TEST:"+user);
+                                            $('input#eleveP' + user).prop('checked',false);
+                                            $("a[eleve='eleveP"+user+"']").trigger("click");
                                         }
                         
                                         
