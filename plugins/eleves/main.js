@@ -719,8 +719,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             if (user.pif == "" || user.pif == "[]") {
                                 MM.log("TEST:"+user.id);
                                 $('#eleveP' + user.id).prop('checked',false);
-                                var e = new Event('touchstart');
-                                $("a#lielevelP[eleve='eleveP"+user.id+"']").dispatchEvent(e);
+                                $("a#lielevelP[eleve='eleveP"+user.id+"']").tap();
                             }
                         });
                         
