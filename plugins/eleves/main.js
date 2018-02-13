@@ -3335,6 +3335,9 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
         
         if (valider == 1){
             
+                    MM.log("Save PIF1:"+pifs2);
+                    thisuser.save({pif:pifs2});
+                    
                     if (userpif.pif == "" || userpif.pif == "[]") {
                         $('button#creerpif[user="'+userpif.userid+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+userpif.userid+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
                         $('input#eleveP' + userpif.userid).prop('checked',false);
@@ -3343,10 +3346,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                     }
                     
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
-                    MM.log("Save PIF1:"+pifs2);
-                    thisuser.save({pif:pifs2});
                     version = parseInt(version) + 1;
-                    
                     $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
 
         }
