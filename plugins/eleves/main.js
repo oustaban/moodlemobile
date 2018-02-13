@@ -3196,7 +3196,7 @@ function checkthispif(elem) {
     MM.log('checkbox pif clicked');
     var content = $(elem).attr("content");
     if($(elem).prop('checked')) {
-        $('input[name="a_'+content+'"]').prop('disabled', false);
+        $('input[name="a_'+content+'"]').prop('disabled', true);
     } else {
         $('input[name="a_'+content+'"]').prop('disabled', true);
     }
@@ -3479,6 +3479,15 @@ function voirpif(courseId,user,version) {
     htmlpif2 +='</table>';
     
     
+    if (version == 1) {
+        pif = pif.replace(new RegExp('{AVENANT}', 'gi'),'');
+    } else {
+            var avenant = '<h2><strong>Avenant</strong></h2>';
+            avenant += '<p>Je certifie vouloir apporter ces dernières modifications à l\'article 3 du Protocole Individuel de Formation (PIF) bipartite et le stagiaire bénéficiaire en a bien pris connaissance.</p>';
+            avenant += '<p>Modifié le {DATE}</p>';
+            avenant += '<table style="width: 509px; height: 30px;" border="0"><tbody><tr><td>Le stagiaire bénéficiaire</td><td>Le représentant de l\'employeur</td></tr><tr><td><img src="{SIGNATURE_APRES_PARTICIPANT}"></td><td><img src="{SIGNATURE_APRES_MANAGER}"></td></tr></tbody></table>';
+            pif = pif.replace(new RegExp('{AVENANT}', 'gi'),avenant);
+    }
     
     pif = pif.replace(new RegExp('{COMPANY_MANAGER}', 'gi'),managername);
     pif = pif.replace(new RegExp('{USER_LAST_NAME}', 'gi'),userpif.lastname);
@@ -3490,10 +3499,12 @@ function voirpif(courseId,user,version) {
     pif = pif.replace(new RegExp('{COMPANY_POSTAL_CODE}', 'gi'),coursepif.company_cp);
     pif = pif.replace(new RegExp('{COMPANY_CITY}', 'gi'),coursepif.company_city);
     
-    var aujourdhui = new Date();
+    var aujourdhui = new Date(parseInt(pifscourse[0].date_version)/1000);
+    //var aujourdhui = new Date();
     //var date = aujourdhui.getDate()+'/'+(aujourdhui.getMonth()+1)+'/'+aujourdhui.getFullYear();
     var date = ("0" + aujourdhui.getDate()).slice(-2)+"/"+("0" + (aujourdhui.getMonth() + 1)).slice(-2)+"/"+aujourdhui.getFullYear();
 
+    pifscourse[0].date_version
     
     pif = pif.replace(new RegExp('{DATE}', 'gi'),date);
     
@@ -11511,7 +11522,7 @@ function modifierPif(button,user,course,version) {
                         html+=' checked="checked" disabled="true"';
                     } else {
                         if (pifscorme.length>0) {
-                            html+=' checked="checked"';
+                            html+=' checked="checked" disabled="true" ';
                         }
                         if (unchecked) {
                             html+=' disabled="true"'
@@ -11552,7 +11563,7 @@ function modifierPif(button,user,course,version) {
                         html+=' checked="checked" disabled="true"';
                     } else {
                         if (pifscorme.length>0) {
-                            html+=' checked="checked"';
+                            html+=' checked="checked" disabled="true" ';
                         }
                         if (unchecked) {
                             html+=' disabled="true"'
