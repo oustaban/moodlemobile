@@ -3438,7 +3438,7 @@ function voirpif(courseId,user,version) {
     
     var total_duration = 0;
     
-    var local_contents = MM.db.where("contents",{"courseid" : courseId, "site": MM.config.current_site.id});
+    var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
     local_contents.forEach(function(local_content) {
         var content = local_content.toJSON();
         var unchecked = 0;
@@ -11183,24 +11183,22 @@ function modifierPif(button,user,course,version) {
     
     var button = button;
     //e.preventDefault();
-    var course = parseInt(course);
+    var course = course;
     var courseId = course;
-    var user = parseInt(user);
-    var version = parseInt(version);
+    var user = user;
+    var version = version;
     var theuser = MM.db.get('users',parseInt(user));
-    
     MM.log('pif:'+course+'/'+user+'/'+version);
     
     var userspif = MM.db.where('users', {userid:parseInt(user)});
     var userpif = userspif[0].toJSON();
     var pifs = userpif.pif;
     var grille = userpif.grille;
-    
     pifscourse = $.grep(pifs, function( el ) {
                     return el.courseid == course;
     });
-    
     MM.log('pifscourse length:'+pifscourse.length);
+    
     
     //var pifArray = pif;
     
@@ -11212,7 +11210,6 @@ function modifierPif(button,user,course,version) {
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
         pifArray = pifArray.replace(/\\"/g, '"');
     }
-    
     MM.log('pifArray:'+pifArray);
     
     
@@ -11227,10 +11224,12 @@ function modifierPif(button,user,course,version) {
     } else {
         var pifArray2 = JSON.parse(pifArray);
         var managerid = pifArray2[0].managerid;
-        var managername = pifArray2[0].managername;   
+        var managername = pifArray2[0].managername
+        
     }
-    
     MM.log('manager:'+managerid+'/'+managername);
+    
+    
     
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
@@ -11247,9 +11246,7 @@ function modifierPif(button,user,course,version) {
     html+= '<p>La grille suivante est un outil simple à remplir avant et à la fin de la formation, afin de formaliser l\'individualisation du parcours de formation et d\'en vérifier les acquis. Il constitue donc le référentiel des compétences visées, des objectifs pédagogiques associés, et des compétences acquises au terme du parcours de formation individualisé. Il n\'y a pas de pré requis pour cette formation.</p>';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center"><b>A remplir avant la formation</b></th><th>&nbsp;</th><th class="center"><b>A remplir à l’issue du parcours de formation</b></th></tr><tr><td class="center2"><b>Compétences à développer dans le cadre du parcours de formation</b></td><td class="center2"><b>Intitulé des séquences pédagogiques</b></td><td class="center2"><b>Compétences acquises à l’issue du parcours de formation</b></td></tr>';
     
-    var local_contents = MM.db.where("contents",{"courseid" : course, "site": MM.config.current_site.id});
-    
-    MM.log(local_contents+'/'+local_contents.length +'/'+course+'/'+MM.config.current_site.id);
+    var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
     
     if ((grille == "" || grille == "[]" )) {
         local_contents.forEach(function(local_content) {
