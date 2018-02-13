@@ -11249,6 +11249,8 @@ function modifierPif(button,user,course,version) {
     
     var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
     
+    MM.log(local_contents+'/'+local_contents.length);
+    
     if ((grille == "" || grille == "[]" )) {
         local_contents.forEach(function(local_content) {
              var content = local_content.toJSON();
