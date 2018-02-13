@@ -1661,7 +1661,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         MM.fs.createFile(fileResultL,
                             function(fileEntry) {
                                 var d = new Date();
-                                var content = '{"starttime":"'+d.getTime()+'","users":"'+users+'"}';
+                                if (isNotCreated) {
+                                    var content = '{"clickedP":1,"showCourseL":0,"stopCourseL":0,"showSessionL":0,"stopSessionL":0,"offlineC":1,"synchroR":0,"starttime":"'+d.getTime()+'","users":"'+users+'"}';
+                                } else {
+                                    content = '{"starttime":"'+d.getTime()+'","users":"'+users+'"}';
+                                }
                                 MM.log('Create Session start :'+content);
                                 MM.fs.writeInFile(fileEntry, content, 
                                     function(fileUrl) {
