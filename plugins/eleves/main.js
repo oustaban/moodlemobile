@@ -3513,6 +3513,8 @@ function voirpif(courseId,user,version) {
         aujourdhui = new Date(parseInt(pifscourse[0].date_version)*1000);
     }
     
+    aujourdhui = new Date(parseInt(pifscourse[0].date_version)*1000);
+    
     //var aujourdhui = new Date();
     //var date = aujourdhui.getDate()+'/'+(aujourdhui.getMonth()+1)+'/'+aujourdhui.getFullYear();
     var date = ("0" + aujourdhui.getDate()).slice(-2)+"/"+("0" + (aujourdhui.getMonth() + 1)).slice(-2)+"/"+aujourdhui.getFullYear();
@@ -4239,15 +4241,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q1AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">1.L\'agent identifie les attentes des clients</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
     if (grille.q1am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
     if (grille.q1am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
     if (grille.q1am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4256,15 +4258,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q2AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">2.l\'agent applique les règles de communication</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
     if (grille.q2am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1" '+disabled;
     if (grille.q2am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2" '+disabled;
     if (grille.q2am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4273,15 +4275,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q3AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">3.L\'agent traite les demandes et les réclamations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
     if (grille.q3am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1" '+disabled;
     if (grille.q3am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2" '+disabled;
     if (grille.q3am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4290,15 +4292,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q4AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">4.L\'agent nomme les éléments à nettoyer</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
     if (grille.q4am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1" '+disabled;
     if (grille.q4am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2" '+disabled;
     if (grille.q4am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4307,15 +4309,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q5AM
     html+='</tr>';
     html+='<td style="height:40px;text-align:left" class="center2">5.L\'agent utilise le matériel et les produits de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="0" '+disabled;
     if (grille.q5am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="1" '+disabled;
     if (grille.q5am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="2" '+disabled;
     if (grille.q5am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4324,15 +4326,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q6AM
     html+='</tr>';
     html+='<td style="height:40px;text-align:left" class="center2">6.L\'agent applique les protocoles de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="0" '+disabled;
     if (grille.q6am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="1" '+disabled;
     if (grille.q6am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="2" '+disabled;
     if (grille.q6am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4341,15 +4343,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q7AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">7.L\'agent applique les règles d\'hygiène et de sécurité</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="0" '+disabled;
     if (grille.q7am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="1" '+disabled;
     if (grille.q7am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="2" '+disabled;
     if (grille.q7am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4358,15 +4360,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q8AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">8.L\'agent applique les attitudes de services</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="0" '+disabled;
     if (grille.q8am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="1" '+disabled;
     if (grille.q8am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="2" '+disabled;
     if (grille.q8am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4375,15 +4377,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q9AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">9.L\'agent adopte les bonnes postures de travail</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="0" '+disabled;
     if (grille.q9am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="1" '+disabled;
     if (grille.q9am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="2" '+disabled;
     if (grille.q9am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4392,15 +4394,15 @@ function grillea1(button,user,course,version) {
     //QUESTION Q10AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">10.L\'agent travaille en objectif de résultats</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
     if (grille.q10am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1" '+disabled;
     if (grille.q10am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2" '+disabled;
     if (grille.q10am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4591,15 +4593,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q1AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">1.L\'agent identifie les attentes des clients</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
     if (grille.q1am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
     if (grille.q1am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
     if (grille.q1am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4608,15 +4610,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q2AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">2.l\'agent applique les règles de communication</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
     if (grille.q2am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1" '+disabled;
     if (grille.q2am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2" '+disabled;
     if (grille.q2am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4625,15 +4627,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q3AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">3.L\'agent traite les demandes et les réclamations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
     if (grille.q3am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1" '+disabled;
     if (grille.q3am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2" '+disabled;
     if (grille.q3am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4642,15 +4644,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q4AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">4.L\'agent nomme les éléments à nettoyer</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
     if (grille.q4am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1" '+disabled;
     if (grille.q4am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2" '+disabled;
     if (grille.q4am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4659,15 +4661,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q11AM
     html+='</tr>';
     html+='<td style="height:40px;text-align:left" class="center2">5.L\'agent utilise le matériel et les produits de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="0" '+disabled;
     if (grille.q11am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="1" '+disabled;
     if (grille.q11am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="2" '+disabled;
     if (grille.q11am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4676,15 +4678,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q12AM
     html+='</tr>';
     html+='<td style="height:40px;text-align:left" class="center2">6.L\'agent applique les protocoles de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="0" '+disabled;
     if (grille.q12am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="1" '+disabled;
     if (grille.q12am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="2" '+disabled;
     if (grille.q12am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4693,15 +4695,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q13AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">7.L\'agent applique les règles d\'hygiène et de sécurité</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="0" '+disabled;
     if (grille.q13am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="1" '+disabled;
     if (grille.q13am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="2" '+disabled;
     if (grille.q13am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4710,15 +4712,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q14AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">8.L\'agent applique les attitudes de services</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="0" '+disabled;
     if (grille.q14am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="1" '+disabled;
     if (grille.q14am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="2" '+disabled;
     if (grille.q14am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4727,15 +4729,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q15AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">9.L\'agent adopte les bonnes postures de travail</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="0" '+disabled;
     if (grille.q15am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="1" '+disabled;
     if (grille.q15am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="2" '+disabled;
     if (grille.q15am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4744,15 +4746,15 @@ function grillea2(button,user,course,version) {
     //QUESTION Q10AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">10.L\'agent travaille en objectif de résultats</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
     if (grille.q10am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1" '+disabled;
     if (grille.q10am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2" '+disabled;
     if (grille.q10am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4942,15 +4944,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q1AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">1.L\'agent identifie les attentes des clients</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
     if (grille.q1am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
     if (grille.q1am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
     if (grille.q1am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4959,15 +4961,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q2AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">2.l\'agent applique les règles de communication</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
     if (grille.q2am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="1" '+disabled;
     if (grille.q2am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="2" '+disabled;
     if (grille.q2am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4976,15 +4978,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q3AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">3.L\'agent traite les demandes et les réclamations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
     if (grille.q3am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="1" '+disabled;
     if (grille.q3am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="2" '+disabled;
     if (grille.q3am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4993,15 +4995,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q4AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">4.L\'agent nomme les éléments à nettoyer</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
     if (grille.q4am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="1" '+disabled;
     if (grille.q4am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="2" '+disabled;
     if (grille.q4am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5010,15 +5012,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q11AM
     html+='</tr>';
     html+='<td style="height:40px;text-align:left" class="center2">5.L\'agent utilise le matériel et les produits de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="0" '+disabled;
     if (grille.q16am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="1" '+disabled;
     if (grille.q16am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16am" value="2" '+disabled;
     if (grille.q16am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5027,15 +5029,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q12AM
     html+='</tr>';
     html+='<td style="height:40px;text-align:left" class="center2">6.L\'agent applique les protocoles de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="0" '+disabled;
     if (grille.q17am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="1" '+disabled;
     if (grille.q17am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17am" value="2" '+disabled;
     if (grille.q17am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5044,15 +5046,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q13AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">7.L\'agent applique les règles d\'hygiène et de sécurité</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="0" '+disabled;
     if (grille.q18am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="1" '+disabled;
     if (grille.q18am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18am" value="2" '+disabled;
     if (grille.q18am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5061,15 +5063,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q14AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">8.L\'agent applique les attitudes de services</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="0" '+disabled;
     if (grille.q19am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="1" '+disabled;
     if (grille.q19am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19am" value="2" '+disabled;
     if (grille.q19am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5078,15 +5080,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q15AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">9.L\'agent adopte les bonnes postures de travail</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="0" '+disabled;
     if (grille.q20am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="1" '+disabled;
     if (grille.q20am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q20am" value="2" '+disabled;
     if (grille.q20am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5095,15 +5097,15 @@ function grillea3(button,user,course,version) {
     //QUESTION Q10AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">10.L\'agent travaille en objectif de résultats</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
     if (grille.q10am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="1" '+disabled;
     if (grille.q10am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="2" '+disabled;
     if (grille.q10am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5307,19 +5309,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'hotesse d\'accueil</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="3" '+disabled;
     if (grille.q1av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="0" '+disabled;
     if (grille.q1av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="1" '+disabled;
     if (grille.q1av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="2" '+disabled;
     if (grille.q1av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5335,19 +5337,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le salarié de l\'entreprise client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="3" '+disabled;
     if (grille.q2av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="0" '+disabled;
     if (grille.q2av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="1" '+disabled;
     if (grille.q2av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="2" '+disabled;
     if (grille.q2av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5363,19 +5365,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le responsable de la propreté</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="3" '+disabled;
     if (grille.q3av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="0" '+disabled;
     if (grille.q3av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="1" '+disabled;
     if (grille.q3av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="2" '+disabled;
     if (grille.q3av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5391,19 +5393,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le directeur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="3" '+disabled;
     if (grille.q4av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="0" '+disabled;
     if (grille.q4av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="1" '+disabled;
     if (grille.q4av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="2" '+disabled;
     if (grille.q4av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5423,19 +5425,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'attitude professionnelle</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="3" '+disabled;
     if (grille.q5av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="0" '+disabled;
     if (grille.q5av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="1" '+disabled;
     if (grille.q5av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="2" '+disabled;
     if (grille.q5av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5451,19 +5453,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'écoute active</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="3" '+disabled;
     if (grille.q6av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="0" '+disabled;
     if (grille.q6av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="1" '+disabled;
     if (grille.q6av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="2" '+disabled;
     if (grille.q6av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5479,19 +5481,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La reformulation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="3" '+disabled;
     if (grille.q7av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="0" '+disabled;
     if (grille.q7av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="1" '+disabled;
     if (grille.q7av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="2" '+disabled;
     if (grille.q7av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5507,19 +5509,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les types de question</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="3" '+disabled;
     if (grille.q8av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="0" '+disabled;
     if (grille.q8av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="1" '+disabled;
     if (grille.q8av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="2" '+disabled;
     if (grille.q8av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5539,19 +5541,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le traitement des demandes client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="3" '+disabled;
     if (grille.q9av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="0" '+disabled;
     if (grille.q9av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="1" '+disabled;
     if (grille.q9av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="2" '+disabled;
     if (grille.q9av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5567,19 +5569,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le traitement des réclamations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="3" '+disabled;
     if (grille.q10av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="0" '+disabled;
     if (grille.q10av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="1" '+disabled;
     if (grille.q10av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="2" '+disabled;
     if (grille.q10av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5599,19 +5601,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le bureau</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="3" '+disabled;
     if (grille.q11av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="0" '+disabled;
     if (grille.q11av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="1" '+disabled;
     if (grille.q11av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="2" '+disabled;
     if (grille.q11av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5627,19 +5629,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le sanitaire</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="3" '+disabled;
     if (grille.q12av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="0" '+disabled;
     if (grille.q12av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="1" '+disabled;
     if (grille.q12av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="2" '+disabled;
     if (grille.q12av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5655,19 +5657,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'ascenseur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="3" '+disabled;
     if (grille.q13av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="0" '+disabled;
     if (grille.q13av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="1" '+disabled;
     if (grille.q13av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="2" '+disabled;
     if (grille.q13av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5683,19 +5685,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'escalier</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="3" '+disabled;
     if (grille.q14av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="0" '+disabled;
     if (grille.q14av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="1" '+disabled;
     if (grille.q14av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="2" '+disabled;
     if (grille.q14av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5711,19 +5713,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le hall d\'entrée</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="3" '+disabled;
     if (grille.q15av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="0" '+disabled;
     if (grille.q15av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="1" '+disabled;
     if (grille.q15av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="2" '+disabled;
     if (grille.q15av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5743,19 +5745,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La désignation des organes de l\'aspirateur à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="3" '+disabled;
     if (grille.q16av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="0" '+disabled;
     if (grille.q16av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="1" '+disabled;
     if (grille.q16av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="2" '+disabled;
     if (grille.q16av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5771,19 +5773,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'entretien de l\'aspirateur à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="3" '+disabled;
     if (grille.q17av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="0" '+disabled;
     if (grille.q17av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="1" '+disabled;
     if (grille.q17av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="2" '+disabled;
     if (grille.q17av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5799,19 +5801,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La désignation du matériel de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="3" '+disabled;
     if (grille.q18av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="0" '+disabled;
     if (grille.q18av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="1" '+disabled;
     if (grille.q18av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="2" '+disabled;
     if (grille.q18av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5827,19 +5829,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'utilsation des produits de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="3" '+disabled;
     if (grille.q19av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="0" '+disabled;
     if (grille.q19av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="1" '+disabled;
     if (grille.q19av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="2" '+disabled;
     if (grille.q19av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5855,19 +5857,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le matériel et les produits adaptés aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="3" '+disabled;
     if (grille.q20av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="0" '+disabled;
     if (grille.q20av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="1" '+disabled;
     if (grille.q20av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q20av" value="2" '+disabled;
     if (grille.q20av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5887,19 +5889,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de tri des déchets</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="3" '+disabled;
     if (grille.q21av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="0" '+disabled;
     if (grille.q21av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="1" '+disabled;
     if (grille.q21av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="2" '+disabled;
     if (grille.q21av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5915,19 +5917,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique d\'essuyage humide</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="3" '+disabled;
     if (grille.q22av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="0" '+disabled;
     if (grille.q22av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="1" '+disabled;
     if (grille.q22av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="2" '+disabled;
     if (grille.q22av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5943,19 +5945,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique de balayage humide</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="3" '+disabled;
     if (grille.q23av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="0" '+disabled;
     if (grille.q23av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="1" '+disabled;
     if (grille.q23av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="2" '+disabled;
     if (grille.q23av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5971,19 +5973,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique d\'aspiration des sols</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="3" '+disabled;
     if (grille.q24av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="0" '+disabled;
     if (grille.q24av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="1" '+disabled;
     if (grille.q24av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="2" '+disabled;
     if (grille.q24av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -5999,19 +6001,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique de lavage manuel</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="3" '+disabled;
     if (grille.q25av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="0" '+disabled;
     if (grille.q25av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="1" '+disabled;
     if (grille.q25av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="2" '+disabled;
     if (grille.q25av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6027,19 +6029,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Elimination des déchets</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q26av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q26av" value="3" '+disabled;
     if (grille.q26av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q26av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q26av" value="0" '+disabled;
     if (grille.q26av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q26av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q26av" value="1" '+disabled;
     if (grille.q26av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q26av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q26av" value="2" '+disabled;
     if (grille.q26av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6055,19 +6057,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Essuyage du mobilier</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q27av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q27av" value="3" '+disabled;
     if (grille.q27av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q27av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q27av" value="0" '+disabled;
     if (grille.q27av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q27av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q27av" value="1" '+disabled;
     if (grille.q27av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q27av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q27av" value="2" '+disabled;
     if (grille.q27av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6083,19 +6085,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Désinfection des points de contact</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q28av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q28av" value="3" '+disabled;
     if (grille.q28av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q28av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q28av" value="0" '+disabled;
     if (grille.q28av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q28av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q28av" value="1" '+disabled;
     if (grille.q28av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q28av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q28av" value="2" '+disabled;
     if (grille.q28av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6111,19 +6113,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Aspiration du sol</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q29av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q29av" value="3" '+disabled;
     if (grille.q29av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q29av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q29av" value="0" '+disabled;
     if (grille.q29av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q29av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q29av" value="1" '+disabled;
     if (grille.q29av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q29av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q29av" value="2" '+disabled;
     if (grille.q29av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6139,19 +6141,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Contrôle du résultat</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q30av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q30av" value="3" '+disabled;
     if (grille.q30av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q30av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q30av" value="0" '+disabled;
     if (grille.q30av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q30av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q30av" value="1" '+disabled;
     if (grille.q30av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q30av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q30av" value="2" '+disabled;
     if (grille.q30av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6171,19 +6173,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques de glissade</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="3" '+disabled;
     if (grille.q31av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="0" '+disabled;
     if (grille.q31av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="1" '+disabled;
     if (grille.q31av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="2" '+disabled;
     if (grille.q31av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6200,19 +6202,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques chimiques</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="3" '+disabled;
     if (grille.q32av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="0" '+disabled;
     if (grille.q32av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="1" '+disabled;
     if (grille.q32av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="2" '+disabled;
     if (grille.q32av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6229,19 +6231,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques électriques</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="3" '+disabled;
     if (grille.q33av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="0" '+disabled;
     if (grille.q33av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="1" '+disabled;
     if (grille.q33av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="2" '+disabled;
     if (grille.q33av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6258,19 +6260,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques de chute</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="3" '+disabled;
     if (grille.q34av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="0" '+disabled;
     if (grille.q34av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="1" '+disabled;
     if (grille.q34av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="2" '+disabled;
     if (grille.q34av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6287,19 +6289,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les équipements de protection individuelle</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="3" '+disabled;
     if (grille.q35av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="0" '+disabled;
     if (grille.q35av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="1" '+disabled;
     if (grille.q35av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="2" '+disabled;
     if (grille.q35av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6316,19 +6318,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'avertissement</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="3" '+disabled;
     if (grille.q36av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="0" '+disabled;
     if (grille.q36av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="1" '+disabled;
     if (grille.q36av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="2" '+disabled;
     if (grille.q36av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6345,19 +6347,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'interdiction</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="3" '+disabled;
     if (grille.q37av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="0" '+disabled;
     if (grille.q37av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="1" '+disabled;
     if (grille.q37av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="2" '+disabled;
     if (grille.q37av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6374,19 +6376,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'obligation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="3" '+disabled;
     if (grille.q38av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="0" '+disabled;
     if (grille.q38av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="1" '+disabled;
     if (grille.q38av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="2" '+disabled;
     if (grille.q38av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6402,19 +6404,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'évacuation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="3" '+disabled;
     if (grille.q39av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="0" '+disabled;
     if (grille.q39av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="1" '+disabled;
     if (grille.q39av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="2" '+disabled;
     if (grille.q39av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6431,19 +6433,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux de lutte contre l\'incendie</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="3" '+disabled;
     if (grille.q40av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="0" '+disabled;
     if (grille.q40av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="1" '+disabled;
     if (grille.q40av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="2" '+disabled;
     if (grille.q40av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6460,19 +6462,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les principes de l\'hygiène</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="3" '+disabled;
     if (grille.q41av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="0" '+disabled;
     if (grille.q41av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="1" '+disabled;
     if (grille.q41av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="2" '+disabled;
     if (grille.q41av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6488,19 +6490,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'élimination des microbes</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="3" '+disabled;
     if (grille.q42av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="0" '+disabled;
     if (grille.q42av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="1" '+disabled;
     if (grille.q42av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="2" '+disabled;
     if (grille.q42av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6517,19 +6519,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les soins du corps</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="3" '+disabled;
     if (grille.q43av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="0" '+disabled;
     if (grille.q43av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="1" '+disabled;
     if (grille.q43av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="2" '+disabled;
     if (grille.q43av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6545,19 +6547,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'hygiène des mains</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="3" '+disabled;
     if (grille.q44av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="0" '+disabled;
     if (grille.q44av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="1" '+disabled;
     if (grille.q44av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="2" '+disabled;
     if (grille.q44av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6573,19 +6575,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les travaux en hauteur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q45av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q45av" value="3" '+disabled;
     if (grille.q45av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q45av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q45av" value="0" '+disabled;
     if (grille.q45av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q45av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q45av" value="1" '+disabled;
     if (grille.q45av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q45av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q45av" value="2" '+disabled;
     if (grille.q45av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6601,19 +6603,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le trasmport des déchets</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q46av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q46av" value="3" '+disabled;
     if (grille.q46av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q46av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q46av" value="0" '+disabled;
     if (grille.q46av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q46av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q46av" value="1" '+disabled;
     if (grille.q46av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q46av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q46av" value="2" '+disabled;
     if (grille.q46av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6629,19 +6631,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de sécurité appliquées aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="3" '+disabled;
     if (grille.q47av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="0" '+disabled;
     if (grille.q47av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="1" '+disabled;
     if (grille.q47av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q47av" value="2" '+disabled;
     if (grille.q47av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6661,19 +6663,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de politesse</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="3" '+disabled;
     if (grille.q48av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="0" '+disabled;
     if (grille.q48av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="1" '+disabled;
     if (grille.q48av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="2" '+disabled;
     if (grille.q48av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6689,19 +6691,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de confidentialité</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="3" '+disabled;
     if (grille.q49av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="0" '+disabled;
     if (grille.q49av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="1" '+disabled;
     if (grille.q49av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="2" '+disabled;
     if (grille.q49av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6717,19 +6719,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le sens du service</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="3" '+disabled;
     if (grille.q50av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="0" '+disabled;
     if (grille.q50av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="1" '+disabled;
     if (grille.q50av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="2" '+disabled;
     if (grille.q50av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6745,19 +6747,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le comportement sur un site client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="3" '+disabled;
     if (grille.q51av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="0" '+disabled;
     if (grille.q51av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="1" '+disabled;
     if (grille.q51av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="2" '+disabled;
     if (grille.q51av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6773,19 +6775,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les demandes du client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="3" '+disabled;
     if (grille.q52av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="0" '+disabled;
     if (grille.q52av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="1" '+disabled;
     if (grille.q52av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q52av" value="2" '+disabled;
     if (grille.q52av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6801,19 +6803,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'utilisation des installations du client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q53av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q53av" value="3" '+disabled;
     if (grille.q53av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q53av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q53av" value="0" '+disabled;
     if (grille.q53av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q53av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q53av" value="1" '+disabled;
     if (grille.q53av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q53av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q53av" value="2" '+disabled;
     if (grille.q53av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6829,19 +6831,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de discrétion</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q54av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q54av" value="3" '+disabled;
     if (grille.q54av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q54av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q54av" value="0" '+disabled;
     if (grille.q54av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q54av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q54av" value="1" '+disabled;
     if (grille.q54av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q54av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q54av" value="2" '+disabled;
     if (grille.q54av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6857,19 +6859,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les habitudes du client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q55av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q55av" value="3" '+disabled;
     if (grille.q55av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q55av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q55av" value="0" '+disabled;
     if (grille.q55av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q55av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q55av" value="1" '+disabled;
     if (grille.q55av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q55av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q55av" value="2" '+disabled;
     if (grille.q55av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6889,19 +6891,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Soulever une charge</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
     if (grille.q56av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="0" '+disabled;
     if (grille.q56av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="1" '+disabled;
     if (grille.q56av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="2" '+disabled;
     if (grille.q56av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6917,19 +6919,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Tenir un aspirateurs à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="3" '+disabled;
     if (grille.q57av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="0" '+disabled;
     if (grille.q57av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="1" '+disabled;
     if (grille.q57av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="2" '+disabled;
     if (grille.q57av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6945,19 +6947,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Fixer une gaze sur un balai</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
     if (grille.q58av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="0" '+disabled;
     if (grille.q58av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="1" '+disabled;
     if (grille.q58av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="2" '+disabled;
     if (grille.q58av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -6973,19 +6975,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les postures adaptées aux opérations effectuées</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="3" '+disabled;
     if (grille.q59av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="0" '+disabled;
     if (grille.q59av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="1" '+disabled;
     if (grille.q59av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q59av" value="2" '+disabled;
     if (grille.q59av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7005,19 +7007,19 @@ function grillea4(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La qualité de service</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="3" '+disabled;
     if (grille.q60av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="0" '+disabled;
     if (grille.q60av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="1" '+disabled;
     if (grille.q60av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="2" '+disabled;
     if (grille.q60av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7033,19 +7035,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les missions qualité des acteurs de l\'entreprise</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="3" '+disabled;
     if (grille.q61av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="0" '+disabled;
     if (grille.q61av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="1" '+disabled;
     if (grille.q61av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="2" '+disabled;
     if (grille.q61av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7061,19 +7063,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les résultats attendus des opérations de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="3" '+disabled;
     if (grille.q62av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="0" '+disabled;
     if (grille.q62av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="1" '+disabled;
     if (grille.q62av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="2" '+disabled;
     if (grille.q62av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7089,19 +7091,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La démarche qualité appliquée à son travail</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="3" '+disabled;
     if (grille.q63av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="0" '+disabled;
     if (grille.q63av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="1" '+disabled;
     if (grille.q63av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="2" '+disabled;
     if (grille.q63av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7117,19 +7119,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La traçabilité des opérations effectuées</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="3" '+disabled;
     if (grille.q64av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="0" '+disabled;
     if (grille.q64av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="1" '+disabled;
     if (grille.q64av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="2" '+disabled;
     if (grille.q64av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7145,19 +7147,19 @@ function grillea4(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les actions de contrôle en fin de prestation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="3" '+disabled;
     if (grille.q65av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="0" '+disabled;
     if (grille.q65av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="1" '+disabled;
     if (grille.q65av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q65av" value="2" '+disabled;
     if (grille.q65av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7588,19 +7590,19 @@ function grillea5(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'hotesse d\'accueil</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="3" '+disabled;
     if (grille.q1av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="0" '+disabled;
     if (grille.q1av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="1" '+disabled;
     if (grille.q1av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="2" '+disabled;
     if (grille.q1av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7616,19 +7618,19 @@ function grillea5(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le salarié de l\'entreprise client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="3" '+disabled;
     if (grille.q2av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="0" '+disabled;
     if (grille.q2av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="1" '+disabled;
     if (grille.q2av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="2" '+disabled;
     if (grille.q2av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7644,19 +7646,19 @@ function grillea5(button,user,course,version) {
     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le responsable de la propreté</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="3" '+disabled;
     if (grille.q3av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="0" '+disabled;
     if (grille.q3av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="1" '+disabled;
     if (grille.q3av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="2" '+disabled;
     if (grille.q3av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7667,19 +7669,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le directeur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="3" '+disabled;
     if (grille.q4av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="0" '+disabled;
     if (grille.q4av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="1" '+disabled;
     if (grille.q4av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="2" '+disabled;
     if (grille.q4av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7694,19 +7696,19 @@ function grillea5(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'attitude professionnelle</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="3" '+disabled;
     if (grille.q5av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="0" '+disabled;
     if (grille.q5av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="1" '+disabled;
     if (grille.q5av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="2" '+disabled;
     if (grille.q5av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7717,19 +7719,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'écoute active</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="3" '+disabled;
     if (grille.q6av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="0" '+disabled;
     if (grille.q6av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="1" '+disabled;
     if (grille.q6av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="2" '+disabled;
     if (grille.q6av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7740,19 +7742,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La reformulation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="3" '+disabled;
     if (grille.q7av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="0" '+disabled;
     if (grille.q7av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="1" '+disabled;
     if (grille.q7av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="2" '+disabled;
     if (grille.q7av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7763,19 +7765,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les types de question</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="3" '+disabled;
     if (grille.q8av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="0" '+disabled;
     if (grille.q8av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="1" '+disabled;
     if (grille.q8av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="2" '+disabled;
     if (grille.q8av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7790,19 +7792,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le traitement des demandes client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="3" '+disabled;
     if (grille.q9av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="0" '+disabled;
     if (grille.q9av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="1" '+disabled;
     if (grille.q9av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="2" '+disabled;
     if (grille.q9av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7813,19 +7815,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le traitement des réclamations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="3" '+disabled;
     if (grille.q10av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="0" '+disabled;
     if (grille.q10av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="1" '+disabled;
     if (grille.q10av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="2" '+disabled;
     if (grille.q10av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7840,19 +7842,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le bureau</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="3" '+disabled;
     if (grille.q11av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="0" '+disabled;
     if (grille.q11av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="1" '+disabled;
     if (grille.q11av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="2" '+disabled;
     if (grille.q11av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7863,19 +7865,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le sanitaire</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="3" '+disabled;
     if (grille.q12av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="0" '+disabled;
     if (grille.q12av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="1" '+disabled;
     if (grille.q12av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="2" '+disabled;
     if (grille.q12av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7886,19 +7888,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'ascenseur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="3" '+disabled;
     if (grille.q13av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="0" '+disabled;
     if (grille.q13av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="1" '+disabled;
     if (grille.q13av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="2" '+disabled;
     if (grille.q13av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7909,19 +7911,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'escalier</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="3" '+disabled;
     if (grille.q14av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="0" '+disabled;
     if (grille.q14av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="1" '+disabled;
     if (grille.q14av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="2" '+disabled;
     if (grille.q14av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7932,19 +7934,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le hall d\'entrée</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="3" '+disabled;
     if (grille.q15av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="0" '+disabled;
     if (grille.q15av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="1" '+disabled;
     if (grille.q15av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="2" '+disabled;
     if (grille.q15av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7959,19 +7961,19 @@ function grillea5(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La désignation des organes de l\'aspirateur à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="3" '+disabled;
     if (grille.q16av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="0" '+disabled;
     if (grille.q16av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="1" '+disabled;
     if (grille.q16av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="2" '+disabled;
     if (grille.q16av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -7982,19 +7984,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'entretien de l\'aspirateur à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="3" '+disabled;
     if (grille.q17av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="0" '+disabled;
     if (grille.q17av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="1" '+disabled;
     if (grille.q17av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="2" '+disabled;
     if (grille.q17av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8005,19 +8007,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La désignation du matériel de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="3" '+disabled;
     if (grille.q18av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="0" '+disabled;
     if (grille.q18av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="1" '+disabled;
     if (grille.q18av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="2" '+disabled;
     if (grille.q18av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8028,19 +8030,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'utilsation des produits de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="3" '+disabled;
     if (grille.q19av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="0" '+disabled;
     if (grille.q19av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="1" '+disabled;
     if (grille.q19av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="2" '+disabled;
     if (grille.q19av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8051,19 +8053,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le matériel et les produits adaptés aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="3" '+disabled;
     if (grille.q66av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="0" '+disabled;
     if (grille.q66av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="1" '+disabled;
     if (grille.q66av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q66av" value="2" '+disabled;
     if (grille.q66av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8078,19 +8080,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de tri des déchets</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="3" '+disabled;
     if (grille.q21av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="0" '+disabled;
     if (grille.q21av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="1" '+disabled;
     if (grille.q21av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="2" '+disabled;
     if (grille.q21av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8101,19 +8103,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique d\'essuyage humide</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="3" '+disabled;
     if (grille.q22av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="0" '+disabled;
     if (grille.q22av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="1" '+disabled;
     if (grille.q22av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="2" '+disabled;
     if (grille.q22av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8124,19 +8126,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique de balayage humide</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="3" '+disabled;
     if (grille.q23av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="0" '+disabled;
     if (grille.q23av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="1" '+disabled;
     if (grille.q23av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="2" '+disabled;
     if (grille.q23av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8147,19 +8149,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique d\'aspiration des sols</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="3" '+disabled;
     if (grille.q24av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="0" '+disabled;
     if (grille.q24av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="1" '+disabled;
     if (grille.q24av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="2" '+disabled;
     if (grille.q24av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8170,19 +8172,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique de lavage manuel</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="3" '+disabled;
     if (grille.q25av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="0" '+disabled;
     if (grille.q25av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="1" '+disabled;
     if (grille.q25av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="2" '+disabled;
     if (grille.q25av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8193,19 +8195,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Préparation des équipements</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="3" '+disabled;
     if (grille.q67av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="0" '+disabled;
     if (grille.q67av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="1" '+disabled;
     if (grille.q67av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q67av" value="2" '+disabled;
     if (grille.q67av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8216,19 +8218,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Désinfection des appareils</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="3" '+disabled;
     if (grille.q68av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="0" '+disabled;
     if (grille.q68av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="1" '+disabled;
     if (grille.q68av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q68av" value="2" '+disabled;
     if (grille.q68av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8239,19 +8241,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Désinfection des équipements</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="3" '+disabled;
     if (grille.q69av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="0" '+disabled;
     if (grille.q69av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="1" '+disabled;
     if (grille.q69av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q69av" value="2" '+disabled;
     if (grille.q69av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8262,19 +8264,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Balayage et lavage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="3" '+disabled;
     if (grille.q70av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="0" '+disabled;
     if (grille.q70av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="1" '+disabled;
     if (grille.q70av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q70av" value="2" '+disabled;
     if (grille.q70av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8285,19 +8287,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Contrôle du résultat</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="3" '+disabled;
     if (grille.q71av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="0" '+disabled;
     if (grille.q71av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="1" '+disabled;
     if (grille.q71av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q71av" value="2" '+disabled;
     if (grille.q71av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8312,19 +8314,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques de glissade</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="3" '+disabled;
     if (grille.q31av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="0" '+disabled;
     if (grille.q31av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="1" '+disabled;
     if (grille.q31av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="2" '+disabled;
     if (grille.q31av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8335,19 +8337,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques chimiques</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="3" '+disabled;
     if (grille.q32av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="0" '+disabled;
     if (grille.q32av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="1" '+disabled;
     if (grille.q32av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="2" '+disabled;
     if (grille.q32av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8358,19 +8360,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques électriques</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="3" '+disabled;
     if (grille.q33av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="0" '+disabled;
     if (grille.q33av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="1" '+disabled;
     if (grille.q33av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="2" '+disabled;
     if (grille.q33av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8381,19 +8383,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques de chute</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="3" '+disabled;
     if (grille.q34av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="0" '+disabled;
     if (grille.q34av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="1" '+disabled;
     if (grille.q34av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="2" '+disabled;
     if (grille.q34av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8404,19 +8406,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les équipements de protection individuelle</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="3" '+disabled;
     if (grille.q35av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="0" '+disabled;
     if (grille.q35av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="1" '+disabled;
     if (grille.q35av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="2" '+disabled;
     if (grille.q35av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8427,19 +8429,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'avertissement</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="3" '+disabled;
     if (grille.q36av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="0" '+disabled;
     if (grille.q36av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="1" '+disabled;
     if (grille.q36av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="2" '+disabled;
     if (grille.q36av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8450,19 +8452,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'interdiction</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="3" '+disabled;
     if (grille.q37av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="0" '+disabled;
     if (grille.q37av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="1" '+disabled;
     if (grille.q37av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="2" '+disabled;
     if (grille.q37av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8473,19 +8475,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'obligation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="3" '+disabled;
     if (grille.q38av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="0" '+disabled;
     if (grille.q38av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="1" '+disabled;
     if (grille.q38av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="2" '+disabled;
     if (grille.q38av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8496,19 +8498,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'évacuation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="3" '+disabled;
     if (grille.q39av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="0" '+disabled;
     if (grille.q39av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="1" '+disabled;
     if (grille.q39av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="2" '+disabled;
     if (grille.q39av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8519,19 +8521,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux de lutte contre l\'incendie</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="3" '+disabled;
     if (grille.q40av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="0" '+disabled;
     if (grille.q40av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="1" '+disabled;
     if (grille.q40av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="2" '+disabled;
     if (grille.q40av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8542,19 +8544,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les principes de l\'hygiène</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="3" '+disabled;
     if (grille.q41av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="0" '+disabled;
     if (grille.q41av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="1" '+disabled;
     if (grille.q41av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="2" '+disabled;
     if (grille.q41av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8565,19 +8567,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
      html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'élimination des microbes</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="3" '+disabled;
     if (grille.q42av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="0" '+disabled;
     if (grille.q42av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="1" '+disabled;
     if (grille.q42av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="2" '+disabled;
     if (grille.q42av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8588,19 +8590,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les soins du corps</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="3" '+disabled;
     if (grille.q43av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="0" '+disabled;
     if (grille.q43av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="1" '+disabled;
     if (grille.q43av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="2" '+disabled;
     if (grille.q43av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8611,19 +8613,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'hygiène des mains</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="3" '+disabled;
     if (grille.q44av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="0" '+disabled;
     if (grille.q44av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="1" '+disabled;
     if (grille.q44av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="2" '+disabled;
     if (grille.q44av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8634,19 +8636,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de sécurité appliquées aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="3" '+disabled;
     if (grille.q72av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="0" '+disabled;
     if (grille.q72av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="1" '+disabled;
     if (grille.q72av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q72av" value="2" '+disabled;
     if (grille.q72av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8661,19 +8663,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de politesse</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="3" '+disabled;
     if (grille.q48av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="0" '+disabled;
     if (grille.q48av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="1" '+disabled;
     if (grille.q48av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="2" '+disabled;
     if (grille.q48av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8684,19 +8686,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de confidentialité</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="3" '+disabled;
     if (grille.q49av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="0" '+disabled;
     if (grille.q49av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="1" '+disabled;
     if (grille.q49av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="2" '+disabled;
     if (grille.q49av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8707,19 +8709,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le sens du service</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="3" '+disabled;
     if (grille.q50av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="0" '+disabled;
     if (grille.q50av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="1" '+disabled;
     if (grille.q50av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="2" '+disabled;
     if (grille.q50av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8730,19 +8732,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le comportement sur un site client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="3" '+disabled;
     if (grille.q51av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="0" '+disabled;
     if (grille.q51av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="1" '+disabled;
     if (grille.q51av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="2" '+disabled;
     if (grille.q51av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8753,19 +8755,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les demandes du client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="3" '+disabled;
     if (grille.q73av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="0" '+disabled;
     if (grille.q73av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="1" '+disabled;
     if (grille.q73av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="2" '+disabled;
     if (grille.q73av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8776,19 +8778,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'accès aux installations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="3" '+disabled;
     if (grille.q74av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="0" '+disabled;
     if (grille.q74av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="1" '+disabled;
     if (grille.q74av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q74av" value="2" '+disabled;
     if (grille.q74av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8804,19 +8806,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Soulever une charge</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
     if (grille.q56av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="0" '+disabled;
     if (grille.q56av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="1" '+disabled;
     if (grille.q56av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="2" '+disabled;
     if (grille.q56av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8827,19 +8829,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Tenir un aspirateurs à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="3" '+disabled;
     if (grille.q57av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="0" '+disabled;
     if (grille.q57av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="1" '+disabled;
     if (grille.q57av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="2" '+disabled;
     if (grille.q57av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8850,19 +8852,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Fixer une gaze sur un balai</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
     if (grille.q58av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="0" '+disabled;
     if (grille.q58av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="1" '+disabled;
     if (grille.q58av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="2" '+disabled;
     if (grille.q58av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8873,19 +8875,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les postures adaptées aux opérations effectuées</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="3" '+disabled;
     if (grille.q75av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="0" '+disabled;
     if (grille.q75av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="1" '+disabled;
     if (grille.q75av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q75av" value="2" '+disabled;
     if (grille.q75av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8900,19 +8902,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La qualité de service</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="3" '+disabled;
     if (grille.q60av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="0" '+disabled;
     if (grille.q60av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="1" '+disabled;
     if (grille.q60av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="2" '+disabled;
     if (grille.q60av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8923,19 +8925,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les missions qualité des acteurs de l\'entreprise</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="3" '+disabled;
     if (grille.q61av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="0" '+disabled;
     if (grille.q61av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="1" '+disabled;
     if (grille.q61av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="2" '+disabled;
     if (grille.q61av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8946,19 +8948,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les résultats attendus des opérations de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="3" '+disabled;
     if (grille.q62av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="0" '+disabled;
     if (grille.q62av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="1" '+disabled;
     if (grille.q62av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="2" '+disabled;
     if (grille.q62av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8969,19 +8971,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La démarche qualité appliquée à son travail</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="3" '+disabled;
     if (grille.q63av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="0" '+disabled;
     if (grille.q63av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="1" '+disabled;
     if (grille.q63av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="2" '+disabled;
     if (grille.q63av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -8992,19 +8994,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La traçabilité des opérations effectuées</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="3" '+disabled;
     if (grille.q64av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="0" '+disabled;
     if (grille.q64av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="1" '+disabled;
     if (grille.q64av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="2" '+disabled;
     if (grille.q64av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9015,19 +9017,19 @@ function grillea5(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les actions de contrôle en fin de prestation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="3" '+disabled;
     if (grille.q76av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="0" '+disabled;
     if (grille.q76av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="1" '+disabled;
     if (grille.q76av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q76av" value="2" '+disabled;
     if (grille.q76av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9433,19 +9435,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'hotesse d\'accueil</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="3" '+disabled;
     if (grille.q1av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="0" '+disabled;
     if (grille.q1av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="1" '+disabled;
     if (grille.q1av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1av" value="2" '+disabled;
     if (grille.q1av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9456,19 +9458,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le salarié de l\'entreprise client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="3" '+disabled;
     if (grille.q2av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="0" '+disabled;
     if (grille.q2av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="1" '+disabled;
     if (grille.q2av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2av" value="2" '+disabled;
     if (grille.q2av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9479,19 +9481,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le responsable de la propreté</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="3" '+disabled;
     if (grille.q3av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="0" '+disabled;
     if (grille.q3av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="1" '+disabled;
     if (grille.q3av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3av" value="2" '+disabled;
     if (grille.q3av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9502,19 +9504,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le directeur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="3" '+disabled;
     if (grille.q4av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="0" '+disabled;
     if (grille.q4av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="1" '+disabled;
     if (grille.q4av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4av" value="2" '+disabled;
     if (grille.q4av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9529,19 +9531,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'attitude professionnelle</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="3" '+disabled;
     if (grille.q5av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="0" '+disabled;
     if (grille.q5av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="1" '+disabled;
     if (grille.q5av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5av" value="2" '+disabled;
     if (grille.q5av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9552,19 +9554,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'écoute active</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="3" '+disabled;
     if (grille.q6av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="0" '+disabled;
     if (grille.q6av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="1" '+disabled;
     if (grille.q6av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6av" value="2" '+disabled;
     if (grille.q6av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9575,19 +9577,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La reformulation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="3" '+disabled;
     if (grille.q7av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="0" '+disabled;
     if (grille.q7av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="1" '+disabled;
     if (grille.q7av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7av" value="2" '+disabled;
     if (grille.q7av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9598,19 +9600,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les types de question</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="3" '+disabled;
     if (grille.q8av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="0" '+disabled;
     if (grille.q8av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="1" '+disabled;
     if (grille.q8av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8av" value="2" '+disabled;
     if (grille.q8av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9625,19 +9627,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le traitement des demandes client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="3" '+disabled;
     if (grille.q9av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="0" '+disabled;
     if (grille.q9av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="1" '+disabled;
     if (grille.q9av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9av" value="2" '+disabled;
     if (grille.q9av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9648,19 +9650,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le traitement des réclamations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="3" '+disabled;
     if (grille.q10av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="0" '+disabled;
     if (grille.q10av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="1" '+disabled;
     if (grille.q10av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10av" value="2" '+disabled;
     if (grille.q10av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9675,19 +9677,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le bureau</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="3" '+disabled;
     if (grille.q11av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="0" '+disabled;
     if (grille.q11av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="1" '+disabled;
     if (grille.q11av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11av" value="2" '+disabled;
     if (grille.q11av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9698,19 +9700,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le sanitaire</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="3" '+disabled;
     if (grille.q12av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="0" '+disabled;
     if (grille.q12av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="1" '+disabled;
     if (grille.q12av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12av" value="2" '+disabled;
     if (grille.q12av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9721,19 +9723,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'ascenseur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="3" '+disabled;
     if (grille.q13av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="0" '+disabled;
     if (grille.q13av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="1" '+disabled;
     if (grille.q13av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13av" value="2" '+disabled;
     if (grille.q13av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9744,19 +9746,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'escalier</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="3" '+disabled;
     if (grille.q14av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="0" '+disabled;
     if (grille.q14av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="1" '+disabled;
     if (grille.q14av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14av" value="2" '+disabled;
     if (grille.q14av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9767,19 +9769,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le hall d\'entrée</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="3" '+disabled;
     if (grille.q15av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="0" '+disabled;
     if (grille.q15av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="1" '+disabled;
     if (grille.q15av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15av" value="2" '+disabled;
     if (grille.q15av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9794,19 +9796,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La désignation des organes de l\'aspirateur à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="3" '+disabled;
     if (grille.q16av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="0" '+disabled;
     if (grille.q16av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="1" '+disabled;
     if (grille.q16av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q16av" value="2" '+disabled;
     if (grille.q16av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9817,19 +9819,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'entretien de l\'aspirateur à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="3" '+disabled;
     if (grille.q17av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="0" '+disabled;
     if (grille.q17av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="1" '+disabled;
     if (grille.q17av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q17av" value="2" '+disabled;
     if (grille.q17av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9840,19 +9842,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La désignation du matériel de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="3" '+disabled;
     if (grille.q18av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="0" '+disabled;
     if (grille.q18av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="1" '+disabled;
     if (grille.q18av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q18av" value="2" '+disabled;
     if (grille.q18av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9863,19 +9865,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'utilsation des produits de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="3" '+disabled;
     if (grille.q19av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="0" '+disabled;
     if (grille.q19av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="1" '+disabled;
     if (grille.q19av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q19av" value="2" '+disabled;
     if (grille.q19av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9886,19 +9888,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le matériel et les produits adaptés aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="3" '+disabled;
     if (grille.q77av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="0" '+disabled;
     if (grille.q77av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="1" '+disabled;
     if (grille.q77av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q77av" value="2" '+disabled;
     if (grille.q77av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9913,19 +9915,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de tri des déchets</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="3" '+disabled;
     if (grille.q21av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="0" '+disabled;
     if (grille.q21av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="1" '+disabled;
     if (grille.q21av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q21av" value="2" '+disabled;
     if (grille.q21av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9936,19 +9938,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique d\'essuyage humide</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="3" '+disabled;
     if (grille.q22av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="0" '+disabled;
     if (grille.q22av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="1" '+disabled;
     if (grille.q22av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q22av" value="2" '+disabled;
     if (grille.q22av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9959,19 +9961,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique de balayage humide</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="3" '+disabled;
     if (grille.q23av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="0" '+disabled;
     if (grille.q23av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="1" '+disabled;
     if (grille.q23av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q23av" value="2" '+disabled;
     if (grille.q23av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -9982,19 +9984,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique d\'aspiration des sols</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="3" '+disabled;
     if (grille.q24av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="0" '+disabled;
     if (grille.q24av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="1" '+disabled;
     if (grille.q24av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q24av" value="2" '+disabled;
     if (grille.q24av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10005,19 +10007,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La technique de lavage manuel</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="3" '+disabled;
     if (grille.q25av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="0" '+disabled;
     if (grille.q25av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="1" '+disabled;
     if (grille.q25av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q25av" value="2" '+disabled;
     if (grille.q25av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10028,19 +10030,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Nettoyage du hall d\'entrée</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="3" '+disabled;
     if (grille.q78av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="0" '+disabled;
     if (grille.q78av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="1" '+disabled;
     if (grille.q78av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q78av" value="2" '+disabled;
     if (grille.q78av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10051,19 +10053,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Nettoyage de l\'ascenseur</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="3" '+disabled;
     if (grille.q79av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="0" '+disabled;
     if (grille.q79av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="1" '+disabled;
     if (grille.q79av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q79av" value="2" '+disabled;
     if (grille.q79av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10074,19 +10076,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Nettoyage des circulations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="3" '+disabled;
     if (grille.q80av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="0" '+disabled;
     if (grille.q80av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="1" '+disabled;
     if (grille.q80av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q80av" value="2" '+disabled;
     if (grille.q80av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10097,19 +10099,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Nettoyage de l\'escalier</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="3" '+disabled;
     if (grille.q81av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="0" '+disabled;
     if (grille.q81av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="1" '+disabled;
     if (grille.q81av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q81av" value="2" '+disabled;
     if (grille.q81av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10120,19 +10122,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Contrôle du résultat</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="3" '+disabled;
     if (grille.q82av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="0" '+disabled;
     if (grille.q82av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="1" '+disabled;
     if (grille.q82av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q82av" value="2" '+disabled;
     if (grille.q82av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10147,19 +10149,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques de glissade</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="3" '+disabled;
     if (grille.q31av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="0" '+disabled;
     if (grille.q31av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="1" '+disabled;
     if (grille.q31av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q31av" value="2" '+disabled;
     if (grille.q31av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10170,19 +10172,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques chimiques</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="3" '+disabled;
     if (grille.q32av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="0" '+disabled;
     if (grille.q32av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="1" '+disabled;
     if (grille.q32av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q32av" value="2" '+disabled;
     if (grille.q32av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10193,19 +10195,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques électriques</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="3" '+disabled;
     if (grille.q33av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="0" '+disabled;
     if (grille.q33av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="1" '+disabled;
     if (grille.q33av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q33av" value="2" '+disabled;
     if (grille.q33av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10216,19 +10218,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les risques de chute</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="3" '+disabled;
     if (grille.q34av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="0" '+disabled;
     if (grille.q34av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="1" '+disabled;
     if (grille.q34av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q34av" value="2" '+disabled;
     if (grille.q34av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10239,19 +10241,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les équipements de protection individuelle</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="3" '+disabled;
     if (grille.q35av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="0" '+disabled;
     if (grille.q35av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="1" '+disabled;
     if (grille.q35av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q35av" value="2" '+disabled;
     if (grille.q35av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10262,19 +10264,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'avertissement</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="3" '+disabled;
     if (grille.q36av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="0" '+disabled;
     if (grille.q36av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="1" '+disabled;
     if (grille.q36av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q36av" value="2" '+disabled;
     if (grille.q36av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10285,19 +10287,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'interdiction</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="3" '+disabled;
     if (grille.q37av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="0" '+disabled;
     if (grille.q37av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="1" '+disabled;
     if (grille.q37av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q37av" value="2" '+disabled;
     if (grille.q37av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10308,19 +10310,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'obligation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="3" '+disabled;
     if (grille.q38av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="0" '+disabled;
     if (grille.q38av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="1" '+disabled;
     if (grille.q38av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q38av" value="2" '+disabled;
     if (grille.q38av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10331,19 +10333,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux d\'évacuation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="3" '+disabled;
     if (grille.q39av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="0" '+disabled;
     if (grille.q39av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="1" '+disabled;
     if (grille.q39av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q39av" value="2" '+disabled;
     if (grille.q39av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10354,19 +10356,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les panneaux de lutte contre l\'incendie</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="3" '+disabled;
     if (grille.q40av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="0" '+disabled;
     if (grille.q40av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="1" '+disabled;
     if (grille.q40av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q40av" value="2" '+disabled;
     if (grille.q40av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10377,19 +10379,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les principes de l\'hygiène</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="3" '+disabled;
     if (grille.q41av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="0" '+disabled;
     if (grille.q41av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="1" '+disabled;
     if (grille.q41av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q41av" value="2" '+disabled;
     if (grille.q41av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10400,19 +10402,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
      html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'élimination des microbes</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="3" '+disabled;
     if (grille.q42av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="0" '+disabled;
     if (grille.q42av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="1" '+disabled;
     if (grille.q42av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q42av" value="2" '+disabled;
     if (grille.q42av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10423,19 +10425,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les soins du corps</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="3" '+disabled;
     if (grille.q43av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="0" '+disabled;
     if (grille.q43av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="1" '+disabled;
     if (grille.q43av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q43av" value="2" '+disabled;
     if (grille.q43av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10446,19 +10448,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'hygiène des mains</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="3" '+disabled;
     if (grille.q44av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="0" '+disabled;
     if (grille.q44av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="1" '+disabled;
     if (grille.q44av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q44av" value="2" '+disabled;
     if (grille.q44av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10469,19 +10471,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de sécurité appliquées aux travaux effectués</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="3" '+disabled;
     if (grille.q83av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="0" '+disabled;
     if (grille.q83av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="1" '+disabled;
     if (grille.q83av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q83av" value="2" '+disabled;
     if (grille.q83av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10496,19 +10498,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de politesse</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="3" '+disabled;
     if (grille.q48av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="0" '+disabled;
     if (grille.q48av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="1" '+disabled;
     if (grille.q48av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q48av" value="2" '+disabled;
     if (grille.q48av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10519,19 +10521,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les règles de confidentialité</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="3" '+disabled;
     if (grille.q49av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="0" '+disabled;
     if (grille.q49av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="1" '+disabled;
     if (grille.q49av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q49av" value="2" '+disabled;
     if (grille.q49av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10542,19 +10544,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le sens du service</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="3" '+disabled;
     if (grille.q50av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="0" '+disabled;
     if (grille.q50av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="1" '+disabled;
     if (grille.q50av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q50av" value="2" '+disabled;
     if (grille.q50av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10565,19 +10567,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Le comportement sur un site client</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="3" '+disabled;
     if (grille.q51av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="0" '+disabled;
     if (grille.q51av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="1" '+disabled;
     if (grille.q51av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q51av" value="2" '+disabled;
     if (grille.q51av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10590,19 +10592,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'accès aux installations</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="3" '+disabled;
     if (grille.q84av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="0" '+disabled;
     if (grille.q84av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="1" '+disabled;
     if (grille.q84av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q84av" value="2" '+disabled;
     if (grille.q84av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10618,19 +10620,19 @@ function grillea6(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Soulever une charge</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
     if (grille.q56av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="0" '+disabled;
     if (grille.q56av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="1" '+disabled;
     if (grille.q56av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="2" '+disabled;
     if (grille.q56av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10641,19 +10643,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Tenir un aspirateurs à poussières</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="3" '+disabled;
     if (grille.q57av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="0" '+disabled;
     if (grille.q57av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="1" '+disabled;
     if (grille.q57av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q57av" value="2" '+disabled;
     if (grille.q57av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10664,19 +10666,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Fixer une gaze sur un balai</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q56av" value="3" '+disabled;
     if (grille.q58av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="0" '+disabled;
     if (grille.q58av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="1" '+disabled;
     if (grille.q58av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q58av" value="2" '+disabled;
     if (grille.q58av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10687,19 +10689,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les postures adaptées aux opérations effectuées</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="3" '+disabled;
     if (grille.q85av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="0" '+disabled;
     if (grille.q85av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="1" '+disabled;
     if (grille.q85av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q85av" value="2" '+disabled;
     if (grille.q85av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10714,19 +10716,19 @@ function grillea6(button,user,course,version) {
     
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La qualité de service</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="3" '+disabled;
     if (grille.q60av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="0" '+disabled;
     if (grille.q60av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="1" '+disabled;
     if (grille.q60av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q60av" value="2" '+disabled;
     if (grille.q60av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10737,19 +10739,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les missions qualité des acteurs de l\'entreprise</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="3" '+disabled;
     if (grille.q61av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="0" '+disabled;
     if (grille.q61av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="1" '+disabled;
     if (grille.q61av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q61av" value="2" '+disabled;
     if (grille.q61av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10760,19 +10762,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les résultats attendus des opérations de nettoyage</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="3" '+disabled;
     if (grille.q62av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="0" '+disabled;
     if (grille.q62av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="1" '+disabled;
     if (grille.q62av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q62av" value="2" '+disabled;
     if (grille.q62av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10783,19 +10785,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La démarche qualité appliquée à son travail</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="3" '+disabled;
     if (grille.q63av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="0" '+disabled;
     if (grille.q63av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="1" '+disabled;
     if (grille.q63av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q63av" value="2" '+disabled;
     if (grille.q63av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10806,19 +10808,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">La traçabilité des opérations effectuées</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="3" '+disabled;
     if (grille.q64av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="0" '+disabled;
     if (grille.q64av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="1" '+disabled;
     if (grille.q64av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q64av" value="2" '+disabled;
     if (grille.q64av == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -10829,19 +10831,19 @@ function grillea6(button,user,course,version) {
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">Les actions de contrôle en fin de prestation</td>';
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="3" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="3" '+disabled;
     if (grille.q86av == 3)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="0" '+disabled;
     if (grille.q86av == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="1" '+disabled;
     if (grille.q86av == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left;padding-left:25px" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q86av" value="2" '+disabled;
     if (grille.q86av == 2)
         html+=' checked="checked"';
     html+="></td>";
