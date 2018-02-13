@@ -1741,7 +1741,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var startDate = ("0" + startime.getDate()).slice(-2)+"/"+("0" + (startime.getMonth() + 1)).slice(-2)+"/"+startime.getFullYear() + ' à ' + ("0" + startime.getHours()).slice(-2)+":"+("0" + startime.getMinutes()).slice(-2);
         
                         
-                        if (users == "" || user == undefined) {
+                        if (users == "" || users == undefined) {
                             var options2 = {
                                 title: '',
                                 buttons: {}
