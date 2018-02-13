@@ -1394,7 +1394,15 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     
                                                 clickedP = 1;
                                                 MM.log("SAVE:"+showCourseL+'/'+stopCourseL+'/'+showSessionL+'/'+stopSessionL+'/'+offlineC+'/'+synchroR);   
-                                            } 
+                                            } else {
+                                                showCourseL = obj.showCourseL;
+                                                stopCourseL = obj.stopCourseL;
+                                                showSessionL = obj.showSessionL;
+                                                stopSessionL = obj.stopSessionL;
+                                                offlineC = obj.offlineC;
+                                                synchroR = obj.synchroR;
+                                                
+                                            }
                                             
                                             
                                             
