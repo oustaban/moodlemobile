@@ -1362,10 +1362,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             jsonNotes="[]";
                                         }
                                         
-                                        MM.log("CLICKEDP:"+clickedP);   
+                                        MM.log("CLICKEDP:"+clickedP+'/'+obj.clickedP);   
                             
                                         if (isNotCreated) {
-                                            if (!clickedP) {
+                                            if (!obj.clickedP) {
                                                 if ($('#showCourseL').is(':visible'))
                                                     showCourseL = 1;
                                                 else
@@ -1432,7 +1432,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             }
                                             */
                                             
-                                            if (clickedP) {
+                                            if (obj.clickedP) {
                                                 MM.log("LOAD:"+obj.showCourseL+'/'+obj.stopCourseL+'/'+obj.showSessionL+'/'+obj.stopSessionL+'/'+obj.offlineC+'/'+obj.synchroR); 
                                                
                                                
