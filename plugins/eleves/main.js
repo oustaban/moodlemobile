@@ -4237,7 +4237,7 @@ function grillea1(button,user,course,version) {
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:200px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:200px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:200px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     
