@@ -4237,12 +4237,13 @@ function grillea1(button,user,course,version) {
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:200px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:200px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:200px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     
     html += '<div id="secondblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
+    html+= '<tr><td colspan="4"></td></tr>';
     //QUESTION Q1AM
     html+='<tr>';
     html+='<td style="height:40px;text-align:left;width:50%" class="center2">1.L\'agent identifie les attentes des clients</td>';
