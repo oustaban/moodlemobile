@@ -4235,7 +4235,7 @@ function grillea1(button,user,course,version) {
     html += '<h2 align="left" class="grille">Bureau</h2><br/>';
     
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Non fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Partiellement fait</div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote">Fait</div></div></td></tr>';
+    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</tr>';
     
     //QUESTION Q1AM
@@ -4592,7 +4592,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q1AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">1.L\'agent identifie les attentes des clients</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">1. L\'agent identifie les attentes des clients</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
     if (grille.q1am == 0)
         html+=' checked="checked"';
@@ -4609,7 +4609,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q2AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">2.l\'agent applique les règles de communication</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">2. L\'agent applique les règles de communication</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
     if (grille.q2am == 0)
         html+=' checked="checked"';
@@ -4626,7 +4626,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q3AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">3.L\'agent traite les demandes et les réclamations</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">3. L\'agent traite les demandes et les réclamations</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
     if (grille.q3am == 0)
         html+=' checked="checked"';
@@ -4643,7 +4643,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q4AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">4.L\'agent nomme les éléments à nettoyer</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">4. L\'agent nomme les éléments à nettoyer</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
     if (grille.q4am == 0)
         html+=' checked="checked"';
@@ -4660,7 +4660,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q11AM
     html+='</tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">5.L\'agent utilise le matériel et les produits de nettoyage</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">5. L\'agent utilise le matériel et les produits de nettoyage</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q11am" value="0" '+disabled;
     if (grille.q11am == 0)
         html+=' checked="checked"';
@@ -4677,7 +4677,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q12AM
     html+='</tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">6.L\'agent applique les protocoles de nettoyage</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">6. L\'agent applique les protocoles de nettoyage</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q12am" value="0" '+disabled;
     if (grille.q12am == 0)
         html+=' checked="checked"';
@@ -4694,7 +4694,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q13AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">7.L\'agent applique les règles d\'hygiène et de sécurité</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">7. L\'agent applique les règles d\'hygiène et de sécurité</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q13am" value="0" '+disabled;
     if (grille.q13am == 0)
         html+=' checked="checked"';
@@ -4711,7 +4711,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q14AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">8.L\'agent applique les attitudes de services</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">8. L\'agent applique les attitudes de services</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q14am" value="0" '+disabled;
     if (grille.q14am == 0)
         html+=' checked="checked"';
@@ -4728,7 +4728,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q15AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">9.L\'agent adopte les bonnes postures de travail</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">9. L\'agent adopte les bonnes postures de travail</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q15am" value="0" '+disabled;
     if (grille.q15am == 0)
         html+=' checked="checked"';
@@ -4745,7 +4745,7 @@ function grillea2(button,user,course,version) {
     
     //QUESTION Q10AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">10.L\'agent travaille en objectif de résultats</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">10. L\'agent travaille en objectif de résultats</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
     if (grille.q10am == 0)
         html+=' checked="checked"';
@@ -11512,17 +11512,17 @@ function modifierPif(button,user,course,version) {
                         pifscormb = [];
                     }
                     
-                    if (unckeckednoteam) {
-                        html+=' checked="checked" disabled="true"';
-                        total_duration += content.pif_duration;
-                    } else {
-                        if (pifscormb.length>0) {
+                    if (pifscormb.length>0) {
                             html+=' checked="checked"';
                             total_duration += content.pif_duration;
-                        } else {
-                            unchecked = 1;
-                        }
+                    } else {
+                        if (unckeckednoteam) {
+                            html+=' checked="checked" disabled="true"';
+                            total_duration += content.pif_duration;
+                        }   
                     }
+                    
+                    
                     
                     html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                      
@@ -11537,7 +11537,7 @@ function modifierPif(button,user,course,version) {
                         if (pifscorme.length>0) {
                             html+=' checked="checked" disabled="true" ';
                         }
-                        if (unchecked) {
+                        else {
                             html+=' disabled="true"'
                         }
                     }
@@ -11554,17 +11554,17 @@ function modifierPif(button,user,course,version) {
                         return el.scormid == content.contentid && el.begin == 1;
                     });
                     
-                    if (unckeckednoteam) {
-                        html+=' checked="checked" disabled="true"';
-                        total_duration += content.pif_duration;
-                    } else {
-                        if (pifscormb.length>0) {
+                    if (pifscormb.length>0) {
                             html+=' checked="checked"';
                             total_duration += content.pif_duration;
-                        } else {
-                            unchecked = 1;
-                        }
+                    } else {
+                        if (unckeckednoteam) {
+                            html+=' checked="checked" disabled="true"';
+                            total_duration += content.pif_duration;
+                        }   
                     }
+                    
+                    
                     
                     html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                      
@@ -11578,7 +11578,7 @@ function modifierPif(button,user,course,version) {
                         if (pifscorme.length>0) {
                             html+=' checked="checked" disabled="true" ';
                         }
-                        if (unchecked) {
+                        else {
                             html+=' disabled="true"'
                         }
                     }
