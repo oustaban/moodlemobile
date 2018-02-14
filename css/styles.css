@@ -2215,7 +2215,19 @@ div#firstcolumnreport #secondblock td {
   border: 1px solid black;
 }
 
-
+div#firstcolumngrille {
+  overflow:hidden;
+  border:1px solid black;
+  height:100%;
+  font-size: 18px;
+}
+div#firstcolumngrille #firstblock {
+  height:150px;
+}
+div#firstcolumngrille #secondblock {
+  height:360px;
+  overflow-y:scroll;
+}
 			
 div#secondcolumn {
   width:50%;
@@ -2535,7 +2547,7 @@ tr#title {
 
 #checkboxgrille1a {
   margin:20px;
-  width:20px;
-  height:20px;
+  margin-left:15px;
+  
 }
 

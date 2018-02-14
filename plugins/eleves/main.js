@@ -4234,22 +4234,27 @@ function grillea1(button,user,course,version) {
     html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
     html += '<h2 align="left" class="grille">Bureau</h2><br/>';
     
+    html += '<div id="firstcolumngrille">';
+    html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:150px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
-    html+='</tr>';
+    html+='</table>';
+    html+='</div>';
     
+    html += '<div id="secondblock">';
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     //QUESTION Q1AM
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">1.L\'agent identifie les attentes des clients</td>';
-    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
+    html+='<td style="height:40px;text-align:left;width:50%" class="center2">1.L\'agent identifie les attentes des clients</td>';
+    html+='<td style="height:40px;text-align:left;width:16%" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
     if (grille.q1am == 0)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
+    html+='<td style="height:40px;text-align:left;width:16%" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="1" '+disabled;
     if (grille.q1am == 1)
         html+=' checked="checked"';
     html+="></td>";
-    html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
+    html+='<td style="height:40px;text-align:left;width:16%" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="2" '+disabled;
     if (grille.q1am == 2)
         html+=' checked="checked"';
     html+="></td>";
@@ -4407,9 +4412,10 @@ function grillea1(button,user,course,version) {
         html+=' checked="checked"';
     html+="></td>";
     html+='</tr>';
-    
     html+='</table>';
+    html += '</div>';
     
+    html += '</div>';
     html += '</div>';
     
     var options2 = {
@@ -11554,17 +11560,18 @@ function modifierPif(button,user,course,version) {
                         return el.scormid == content.contentid && el.begin == 1;
                     });
                     
-                    if (pifscormb.length>0) {
+                    
+                    if (unckeckednoteam) {
+                        html+=' checked="checked" disabled="true"';
+                        total_duration += content.pif_duration;
+                    } else {
+                        if (pifscormb.length>0) {
                             html+=' checked="checked"';
                             total_duration += content.pif_duration;
-                    } else {
-                        if (unckeckednoteam) {
-                            html+=' checked="checked" disabled="true"';
-                            total_duration += content.pif_duration;
-                        }   
+                        } else {
+                            unchecked = 1;
+                        }
                     }
-                    
-                    
                     
                     html +='></td><td  class="center2">'+content.name+'</td><td  class="center2"><input id="checkboxpif" genre="a" content="'+content.contentid+'" type="checkbox" name="a_'+content.contentid+'"';
                      
@@ -11578,7 +11585,7 @@ function modifierPif(button,user,course,version) {
                         if (pifscorme.length>0) {
                             html+=' checked="checked" disabled="true" ';
                         }
-                        else {
+                        if (unchecked) {
                             html+=' disabled="true"'
                         }
                     }
