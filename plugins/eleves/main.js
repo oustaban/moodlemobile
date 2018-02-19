@@ -1013,6 +1013,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             jsonnotes = "[]";
                                                         }
                                                         
+                                                        if (obj.grille) {
+                                                            var jsongrille = JSON.stringify(obj.grille);
+                                                        } else {
+                                                            jsongrille = "[]";
+                                                        }
+                                                        
                                                         
                                                         
                                                         MM.log("pifs synchro:"+pifscourse.length);
@@ -1029,7 +1035,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             "managerid" : MM.site.get('userid'),
                                                             "pifs" : pifscoursejson,
                                                             "pifsusers" : pifsusers,
-                                                            "notes" : jsonnotes
+                                                            "notes" : jsonnotes,
+                                                            "grille": jsongrille
                                                         }
                                         
                                                         //MM.widgets.dialogClose();
