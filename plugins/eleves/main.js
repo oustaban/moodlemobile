@@ -803,7 +803,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             var jsonpif = userpif.toJSON();
                             var pifs = jsonpif.pif;
                             var grille = jsonpif.grille;
-                            grillecourse[jsonpif.userid] = grille;
+                            grillecourse[indexUsers] = grille;
                             
                             MM.log('UsersPif:'+jsonpif.id+'/'+course+'/'+MM.config.current_site.id);
                             pifsusers += jsonpif.userid+',';
