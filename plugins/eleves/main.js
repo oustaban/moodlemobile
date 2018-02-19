@@ -795,12 +795,16 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                         //Get Pifs
                         var pifscourse = new Array();
+                        var grillecourse = new Array();
                         var pifsusers = "";
                         var userspif = MM.db.where("users",{site: MM.config.current_site.id});
                         
                         $.each(userspif, function( indexUsers, userpif ) {
                             var jsonpif = userpif.toJSON();
                             var pifs = jsonpif.pif;
+                            var grille = jsonpif.grille;
+                            grillecourse[indexUsers] = grille;
+                            
                             MM.log('UsersPif:'+jsonpif.id+'/'+course+'/'+MM.config.current_site.id);
                             pifsusers += jsonpif.userid+',';
                             if (!pifs) {
@@ -1013,11 +1017,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             jsonnotes = "[]";
                                                         }
                                                         
-                                                        if (obj.grille) {
-                                                            var jsongrille = JSON.stringify(obj.grille);
-                                                        } else {
-                                                            jsongrille = "[]";
-                                                        }
+                                                        var jsongrille = JSON.stringify(grillecourse);
+                                                       
                                                         
                                                         
                                                         
