@@ -1822,7 +1822,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
                                                                 MM.widgets.dialog(html, options);
-                                                            	document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px";
+                                                            	
 							    }
                                                             indexUser++;
                                                         },
@@ -1833,7 +1833,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
                                                                 MM.widgets.dialog(html, options);
-                                                             	document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px";
+                                                             	
 							    }
                                                             indexUser++;
                                                         }
@@ -1869,7 +1869,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.log('Session Module Go:'+html);
                                                 
                                                 MM.widgets.dialog(html, options);
-						document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px";
+						
                                             }
                                             indexCourse2++;
                                         }
@@ -2961,7 +2961,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         
         
         MM.widgets.dialog(html, options);
-        document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px"; 
+         
     } else {
         
         options.buttons["Fermer"] = function() {
@@ -3201,7 +3201,7 @@ function ModifierNotePopin( elem,backTo ) {
      
     
     MM.widgets.dialog(html2, options2);
-    document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px"; 
+    
 }
 
 function nl2br (str, is_xhtml) {   
@@ -3429,7 +3429,6 @@ function voirlespif(courseId,user) {
     $("#app-dialog .modalContent").css('height','100%');
     $("#app-dialog").removeClass('full-screen-dialog2');
     MM.widgets.dialog(html, options);
-    document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
     
 }
 
