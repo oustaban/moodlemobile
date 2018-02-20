@@ -1821,6 +1821,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
+                                                                $("#app-dialog").removeClass('full-screen-dialog2');
                                                                 MM.widgets.dialog(html, options);
                                                             	
 							    }
@@ -1832,6 +1833,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
+                                                                $("#app-dialog").removeClass('full-screen-dialog2');
                                                                 MM.widgets.dialog(html, options);
                                                              	
 							    }
@@ -1867,7 +1869,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 });
                                                 html += '</table></div>';
                                                 MM.log('Session Module Go:'+html);
-                                                
+                                                $("#app-dialog").removeClass('full-screen-dialog2');
                                                 MM.widgets.dialog(html, options);
 						
                                             }
