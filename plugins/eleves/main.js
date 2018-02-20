@@ -1822,7 +1822,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
                                                                 MM.widgets.dialog(html, options);
-                                                            }
+                                                            	document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px";
+							    }
                                                             indexUser++;
                                                         },
                                                         function(path) {
@@ -1832,7 +1833,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
                                                                 MM.widgets.dialog(html, options);
-                                                            }
+                                                             	document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px";
+							    }
                                                             indexUser++;
                                                         }
                                                     );
@@ -1867,6 +1869,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 MM.log('Session Module Go:'+html);
                                                 
                                                 MM.widgets.dialog(html, options);
+						document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px";
                                             }
                                             indexCourse2++;
                                         }
@@ -2260,6 +2263,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
+					document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                     }
                                     
                                 } else {
@@ -2272,6 +2276,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     };
                                     var html = "Pour créer le PIF de ce stagiaire, veuillez d'abord le sélectionner et cliquer sur 'Démarrer la session'";
                                     MM.widgets.dialog2(html, options);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                                 }
                             },
                             function (result) {
@@ -2956,7 +2961,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
         
         
         MM.widgets.dialog(html, options);
-            
+        document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px"; 
     } else {
         
         options.buttons["Fermer"] = function() {
@@ -3196,7 +3201,7 @@ function ModifierNotePopin( elem,backTo ) {
      
     
     MM.widgets.dialog(html2, options2);
-    
+    document.getElementById("sessionContent").style.height = ((window.innerHeight * 70)/100) + "px"; 
 }
 
 function nl2br (str, is_xhtml) {   
@@ -3424,6 +3429,7 @@ function voirlespif(courseId,user) {
     $("#app-dialog .modalContent").css('height','100%');
     $("#app-dialog").removeClass('full-screen-dialog2');
     MM.widgets.dialog(html, options);
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
     
 }
 
@@ -3609,6 +3615,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 },
                                 function(path) {
                                     pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
@@ -3629,6 +3636,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 }
                             );
                         },
@@ -3656,6 +3664,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 },
                                 function(path) {
                                     pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
@@ -3676,6 +3685,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 }
                             );
                         }
@@ -3709,6 +3719,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 },
                                 function(path) {
                                     pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
@@ -3729,6 +3740,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 }
                             );
                         },
@@ -3756,6 +3768,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 },
                                 function(path) {
                                     pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
@@ -3776,6 +3789,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 }
                             );
                         }
@@ -3818,6 +3832,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 },
                                 function(path) {
                                     pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
@@ -3838,6 +3853,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 }
                             );
                         },
@@ -3865,6 +3881,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 },
                                 function(path) {
                                     pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
@@ -3885,6 +3902,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 }
                             );
                         }
@@ -3919,6 +3937,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 },
                                 function(path) {
                                     pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
@@ -3939,6 +3958,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 }
                             );
                         },
@@ -3966,6 +3986,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                 },
                                 function(path) {
                                     pif = pif.replace(new RegExp('{SIGNATURE_APRES_PARTICIPANT}', 'gi'),'');
@@ -3986,6 +4007,7 @@ function voirpif(courseId,user,version) {
                                     $("#app-dialog").addClass('full-screen-dialog2');
                                     $("#app-dialog .modalContent").css('height','85vh');
                                     MM.widgets.dialog(html2, options2);
+				    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
                                     
                                 }
                             );
@@ -4104,7 +4126,7 @@ function amont(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options);
-    
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px"; 
 }
 
 //Aval             
@@ -4208,7 +4230,7 @@ function aval(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options);
-    
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px"; 
 }
 
 //Grille A1             
@@ -4565,7 +4587,7 @@ function grillea1(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px"; 
 }
 
 
@@ -4864,6 +4886,7 @@ function grillea2(button,user,course,version) {
                 var html3 = "Pour valider, veuillez compléter entièrement la grille de positionnement.";
                
                 MM.widgets.dialog2(html3, options3);
+		document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                 
             } else {
                 
@@ -4914,6 +4937,7 @@ function grillea2(button,user,course,version) {
                 var html4 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
                
                 MM.widgets.dialog2(html4, options4);
+		document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                 
                 
                 
@@ -4926,7 +4950,7 @@ function grillea2(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";    
 }
 
 
@@ -5223,6 +5247,7 @@ function grillea3(button,user,course,version) {
                 var html3 = "Pour valider, veuillez compléter entièrement la grille de positionnement.";
                
                 MM.widgets.dialog2(html3, options3);
+		document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                 
             } else {
                 
@@ -5273,6 +5298,7 @@ function grillea3(button,user,course,version) {
                 var html4 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
                
                 MM.widgets.dialog2(html4, options4);
+		document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                 
                 
                 
@@ -5285,7 +5311,7 @@ function grillea3(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px"; 
 }
 
 
@@ -7668,7 +7694,8 @@ function grillea4(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
     $("tr#title").each(function( index ) {
         $(this).on(MM.clickType, function(e) {
             var mytr = $(this);
@@ -9646,7 +9673,8 @@ function grillea5(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
     $("tr#title").each(function( index ) {
         $(this).on(MM.clickType, function(e) {
             var mytr = $(this);
@@ -11585,7 +11613,8 @@ function grillea6(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    
+    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
     $("tr#title").each(function( index ) {
         $(this).on(MM.clickType, function(e) {
             var mytr = $(this);
@@ -12110,7 +12139,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12132,7 +12162,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12163,7 +12194,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12185,7 +12217,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12228,7 +12261,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12250,7 +12284,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12279,7 +12314,7 @@ function modifierPif(button,user,course,version) {
                                         options.buttons["Valider"]["style"] = "modal-button-2";
                                         
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px"; 
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12300,7 +12335,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12351,7 +12387,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12372,7 +12409,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12403,7 +12441,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12424,7 +12463,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12466,7 +12506,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12487,7 +12528,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12518,7 +12560,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12539,7 +12582,8 @@ function modifierPif(button,user,course,version) {
                                         $("#app-dialog").addClass('full-screen-dialog2');
                                         $("#app-dialog .modalContent").css('height','85vh');
                                         MM.widgets.dialog(html, options);
-                                        
+                                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                                         if (pifArray != "") {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
@@ -12593,7 +12637,8 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         if (pifArray != "") {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
@@ -12613,7 +12658,8 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         if (pifArray != "") {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
@@ -12643,7 +12689,8 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         if (pifArray != "") {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
@@ -12664,7 +12711,8 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         if (pifArray != "") {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
@@ -12726,7 +12774,8 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         //Scroll To bottom
                         if (pifArray != "") {
                             window.setTimeout(function() {
@@ -12749,7 +12798,8 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         //Scroll To bottom
                         if (pifArray != "") {
                             window.setTimeout(function() {
@@ -12781,7 +12831,8 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         //Scroll to bottom
                         if (pifArray != "") {
                             window.setTimeout(function() {
@@ -12804,7 +12855,8 @@ function modifierPif(button,user,course,version) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                       document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         //Scroll to bottom
                         if (pifArray != "") {
                             window.setTimeout(function() {
@@ -13188,7 +13240,8 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                         $("#app-dialog").addClass('full-screen-dialog2');
                         $("#app-dialog .modalContent").css('height','85vh');
                         MM.widgets.dialog(html, options);
-                        
+                        document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+
                         if (pifArray != "") {
                             $("button#modifierpif").click();
                             
