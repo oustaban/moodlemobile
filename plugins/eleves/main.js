@@ -2291,9 +2291,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     options.buttons["Fermer"] = function() {
                                         MM.widgets.dialogClose2();
                                     };
-                                    var html = "Pour créer le PIF de ce stagiaire, veuillez d'abord le sélectionner et cliquer sur 'Démarrer la session'";
+                                    var html = "Pour créer le PIF de ce stagiaire, veuillez vous assurer qu'il fait bien parti des participants sélectionnés, puis cliquez sur 'Démarrer la session'";
                                     MM.widgets.dialog2(html, options);
-				    document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
+                                    document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                                 }
                             },
                             function (result) {
@@ -2304,7 +2304,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     options.buttons["Fermer"] = function() {
                                         MM.widgets.dialogClose2();
                                     };
-                                    var html = "Pour créer le PIF de ce stagiaire, veuillez d'abord le sélectionner et cliquer sur 'Démarrer la session'";
+                                    var html = "Pour créer le PIF de ce stagiaire, veuillez vous assurer qu'il fait bien parti des participants sélectionnés, puis cliquez sur 'Démarrer la session'";
                                     MM.widgets.dialog2(html, options);
                             }
                         );
