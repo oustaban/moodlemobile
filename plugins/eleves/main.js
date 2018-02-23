@@ -4275,7 +4275,7 @@ function grillea1(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var html = '<div id="pifContent">';
+    var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
     html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
     html += '<h2 align="left" class="grille">Bureau</h2>';
@@ -4634,7 +4634,7 @@ function grillea2(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var html = '<div id="pifContent">';
+    var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
     html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
     html += '<h2 align="left" class="grille">Sanitaire</h2>';
@@ -4996,7 +4996,7 @@ function grillea3(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var html = '<div id="pifContent">';
+    var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
     html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
     html += '<h2 align="left" class="grille">Parties Communes</h2>';
@@ -5359,7 +5359,7 @@ function grillea4(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var html = '<div id="pifContent">';
+    var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1><br/>';
     html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
     html += '<h2 align="left" class="grille">Bureaux</h2><br/>';
@@ -7779,7 +7779,7 @@ function grillea5(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var html = '<div id="pifContent">';
+    var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1><br/>';
     html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
     html += '<h2 align="left" class="grille">Bureaux</h2><br/>';
@@ -9760,7 +9760,7 @@ function grillea6(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var html = '<div id="pifContent">';
+    var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1><br/>';
     html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
     html += '<h2 align="left" class="grille">Bureaux</h2><br/>';
