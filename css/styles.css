@@ -2217,7 +2217,6 @@ div#firstcolumnreport #secondblock td {
 
 div#firstcolumngrille {
   overflow:hidden;
-  border:1px solid black;
   height:100%;
   font-size: 18px;
 }
