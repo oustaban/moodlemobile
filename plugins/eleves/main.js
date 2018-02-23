@@ -4283,7 +4283,7 @@ function grillea1(button,user,course,version) {
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
-    html+='<tr style="border:0px;background-color:#fff"><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -4641,8 +4641,8 @@ function grillea2(button,user,course,version) {
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
-    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -5003,8 +5003,8 @@ function grillea3(button,user,course,version) {
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
-    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -5366,8 +5366,8 @@ function grillea4(button,user,course,version) {
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
-    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -7786,8 +7786,8 @@ function grillea5(button,user,course,version) {
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
-    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -9765,10 +9765,10 @@ function grillea6(button,user,course,version) {
     html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
     html += '<h2 align="left" class="grille">Bureaux</h2><br/>';
     
-    html += '<div id="firstcolumngrille">';
+   html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
-    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-    html+='<tr><td style="width:50%">&nbsp;</td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     

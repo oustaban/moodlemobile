@@ -1689,7 +1689,7 @@ hr {
 }
 
 #pifContent {
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   max-height: 70vh;
 }
