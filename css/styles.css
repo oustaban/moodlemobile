@@ -2222,6 +2222,7 @@ div#firstcolumngrille {
 }
 div#firstcolumngrille #firstblock {
   height:180px;
+  margin-top:-40px;
 }
 div#firstcolumngrille #secondblock {
   height:300px;
