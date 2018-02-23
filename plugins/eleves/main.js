@@ -1999,7 +1999,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         MM.widgets.dialogClose();
                                         MM.Router.navigate("eleves/" + course);
                                         $("#stopSessionL").click();
-                                    }
+                                    });
                                 } else {
                                     
                                 
