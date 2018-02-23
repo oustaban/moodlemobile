@@ -1728,6 +1728,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var modules = "";
                         var indexCourse = 0;
                         var indexCourse2 = 1;
+                        var countSignature = 0;
                         var usersS = users.split(",");
                         var d = new Date();
                         var timeSession = 0;
@@ -1796,6 +1797,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     var localContentId = localCourse.url.split("?id=");
                                     var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
                                     MM.log('Session Modules Url : '+fileResultL);
+                                    
                                     MM.fs.findFileAndReadContents(fileResultL,
                                         function(path) {
                                             var obj = JSON.parse(path);
@@ -1824,7 +1826,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 $("#app-dialog").removeClass('full-screen-dialog2');
                                                                 MM.widgets.dialog(html, options);
                                                             	
-							    }
+                                                            }
+                                                            countSignature++;
                                                             indexUser++;
                                                         },
                                                         function(path) {
@@ -1836,7 +1839,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 $("#app-dialog").removeClass('full-screen-dialog2');
                                                                 MM.widgets.dialog(html, options);
                                                              	
-							    }
+                                                            }
                                                             indexUser++;
                                                         }
                                                     );
@@ -1988,126 +1991,138 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             options.buttons["Effacer la session"]['style'] = "modal-button-3";
                 
                             options.buttons[addNote] = function() {
-                
-                                MM.popConfirm("Etes-vous sûr de vouloir enregistrer cette session ?", function() {
                                 
-                                    var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
-                                    var message = "Session Enregistrée.";
-                                        
-                                    MM.fs.findFileAndReadContents(resultFile,
-                                      function (result) {
-                                        MM.log('Load Session : OK' + result);
-                                        var obj = JSON.parse(result);
-                                        var users = obj.users;
-                                        var starttime = obj.starttime;
-                                        var notes = obj.notes;
-                                        var jsonNotes = JSON.stringify(notes);
-                                        var realusers = $('#stopSessionL').attr('users');
-                                        if (jsonNotes == null) {
-                                            jsonNotes ="[]";
-                                        }
-                            
-                            
-                                        var lenghto = result.length - 1;
-                                        var lenghta = modulesId.length - 1;
-                                        var lenghtb = moduleStart.length - 1;
-                                        var lenghtc = moduleEnd.length - 1;
-                                        var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+endSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'","notes":'+jsonNotes+'}';
-                                        
-                                        MM.log('Session Load OK : '+resultFile + ' : ' + content + ' : ' + timeSession);
-                                        
-                                        var fileResult = MM.config.current_site.id+"/"+course+"/result/session_"+timeSession+".json";
-                                        
-                                        //create local result file
-                                        MM.fs.createFile(fileResult,
-                                            function(fileEntry) {
-                                                 MM.fs.writeInFile(fileEntry, content, 
-                                                    function(fileUrl) {
-                                                        
-                                                        MM.log('Write Session OK:'+fileUrl);
-                                                        MM.log('Write Session content:'+content);
-                                                        
-                                                        $('#showSessionL').show();
-                                                        $('#showTimer').hide();
-                                                        //$('#offlineC').hide();
-                                                        $('#offlineC').css('visibility','hidden');
-                                                        $('#showCourseL').hide();
-                                                        $('#stopCourseL').hide();
-                                                        $('#createdPif').hide();
-                                                        $('#stopSessionL').hide();
-                                                        $("#synchroR").show();
-                                                        $("#stopSessionL").attr('time','');
-                                                        $("#stopSessionL").attr('starttime','');
-                                                        
-                                                        $('input:checkbox').each(function() {
-                                                            $(this).attr("disabled", false );
-                                                        });
-                                                        
-                                                        message = "Session Enregistrée.";
-                                                        var oldFile = MM.config.current_site.id+"/"+course+"/result/session.json";
-                                                        MM.fs.removeFile (oldFile,
-                                                             function (result) {
-                                                                MM.log('session.json deleted:'+oldFile);
-                                                             },
-                                                             function (result) {
-                                                                MM.log('session.json not deleted:'+oldFile);
-                                                             }
-                                                        );
-                                                        
-                                                        $.each(localCourses, function( index, value ) {
-                                                            var localCourse = value.toJSON();
-                                                            if (localCourse.contents) {
-                                                                var localFile = localCourse.contents[0];
-                                                                var localContentId = localCourse.url.split("?id=");
-                                                                var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
-                                                                MM.fs.findFileAndReadContents(fileResultL,
-                                                                    function(path) {
-                                                                        MM.fs.removeFile (fileResultL,
-                                                                            function (result) {
-                                                                               MM.log(fileResultL + ' deleted');
-                                                                            },
-                                                                            function (result) {
-                                                                               MM.log(fileResultL + ' not deleted');
-                                                                            }
-                                                                       );
-                                                                    },
-                                                                    function(path) {
-                                                                        
-                                                                    }
-                                                                );
-                                                            }
-                                                        });
-                                                             
-                                                        
-                                                    },
-                                                    function(fileUrl) {
-                                                        MM.log('Write Session NOK:'+content);
-                                                        message = "Problème lors de l'écriture.Veuillez Réessayer.";
-                                                    }
-                                                    
-                                                );
-                                            },   
-                                                
-                                            function(fileEntry) {
-                                               MM.log('Create Session : NOK');
-                                               message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                console.log('COUNT:'+countSignature+'/'+usersS.length);
+                                
+                                if (countSignature<usersS.length) {
+                                    MM.popConfirm("Tous les participants doivent signer", function() {
+                                        MM.widgets.dialogClose();
+                                        MM.Router.navigate("eleves/" + course);
+                                        $("#stopSessionL").click();
+                                    }
+                                } else {
+                                    
+                                
+                                    MM.popConfirm("Etes-vous sûr de vouloir enregistrer cette session ?", function() {
+                                    
+                                        var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
+                                        var message = "Session Enregistrée.";
+                                            
+                                        MM.fs.findFileAndReadContents(resultFile,
+                                          function (result) {
+                                            MM.log('Load Session : OK' + result);
+                                            var obj = JSON.parse(result);
+                                            var users = obj.users;
+                                            var starttime = obj.starttime;
+                                            var notes = obj.notes;
+                                            var jsonNotes = JSON.stringify(notes);
+                                            var realusers = $('#stopSessionL').attr('users');
+                                            if (jsonNotes == null) {
+                                                jsonNotes ="[]";
                                             }
-                                        );
+                                
+                                
+                                            var lenghto = result.length - 1;
+                                            var lenghta = modulesId.length - 1;
+                                            var lenghtb = moduleStart.length - 1;
+                                            var lenghtc = moduleEnd.length - 1;
+                                            var content = '{"starttime":"'+startimer+'","users":"'+realusers+'","endtime":"'+endSession+'"' + ',"modulesId":"'+modulesId.substr(0, lenghta)+'"' + ',"modulesStart":"'+moduleStart.substr(0, lenghtb)+'"' + ',"modulesEnd":"'+moduleEnd.substr(0, lenghtc)+'","notes":'+jsonNotes+'}';
+                                            
+                                            MM.log('Session Load OK : '+resultFile + ' : ' + content + ' : ' + timeSession);
+                                            
+                                            var fileResult = MM.config.current_site.id+"/"+course+"/result/session_"+timeSession+".json";
+                                            
+                                            //create local result file
+                                            MM.fs.createFile(fileResult,
+                                                function(fileEntry) {
+                                                     MM.fs.writeInFile(fileEntry, content, 
+                                                        function(fileUrl) {
+                                                            
+                                                            MM.log('Write Session OK:'+fileUrl);
+                                                            MM.log('Write Session content:'+content);
+                                                            
+                                                            $('#showSessionL').show();
+                                                            $('#showTimer').hide();
+                                                            //$('#offlineC').hide();
+                                                            $('#offlineC').css('visibility','hidden');
+                                                            $('#showCourseL').hide();
+                                                            $('#stopCourseL').hide();
+                                                            $('#createdPif').hide();
+                                                            $('#stopSessionL').hide();
+                                                            $("#synchroR").show();
+                                                            $("#stopSessionL").attr('time','');
+                                                            $("#stopSessionL").attr('starttime','');
+                                                            
+                                                            $('input:checkbox').each(function() {
+                                                                $(this).attr("disabled", false );
+                                                            });
+                                                            
+                                                            message = "Session Enregistrée.";
+                                                            var oldFile = MM.config.current_site.id+"/"+course+"/result/session.json";
+                                                            MM.fs.removeFile (oldFile,
+                                                                 function (result) {
+                                                                    MM.log('session.json deleted:'+oldFile);
+                                                                 },
+                                                                 function (result) {
+                                                                    MM.log('session.json not deleted:'+oldFile);
+                                                                 }
+                                                            );
+                                                            
+                                                            $.each(localCourses, function( index, value ) {
+                                                                var localCourse = value.toJSON();
+                                                                if (localCourse.contents) {
+                                                                    var localFile = localCourse.contents[0];
+                                                                    var localContentId = localCourse.url.split("?id=");
+                                                                    var fileResultL = MM.config.current_site.id+"/"+course+"/result/"+localContentId[1]+".json";
+                                                                    MM.fs.findFileAndReadContents(fileResultL,
+                                                                        function(path) {
+                                                                            MM.fs.removeFile (fileResultL,
+                                                                                function (result) {
+                                                                                   MM.log(fileResultL + ' deleted');
+                                                                                },
+                                                                                function (result) {
+                                                                                   MM.log(fileResultL + ' not deleted');
+                                                                                }
+                                                                           );
+                                                                        },
+                                                                        function(path) {
+                                                                            
+                                                                        }
+                                                                    );
+                                                                }
+                                                            });
+                                                                 
+                                                            
+                                                        },
+                                                        function(fileUrl) {
+                                                            MM.log('Write Session NOK:'+content);
+                                                            message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                                        }
                                                         
+                                                    );
+                                                },   
+                                                    
+                                                function(fileEntry) {
+                                                   MM.log('Create Session : NOK');
+                                                   message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                                }
+                                            );
+                                                            
+                                            
+                                          },
+                                          function(result) {
+                                            MM.log('Session NOK :'+result+','+resultFile);
+                                            message = "Problème lors de l'écriture.Veuillez Réessayer.";
+                                          }
+                                        );
                                         
-                                      },
-                                      function(result) {
-                                        MM.log('Session NOK :'+result+','+resultFile);
-                                        message = "Problème lors de l'écriture.Veuillez Réessayer.";
-                                      }
-                                    );
-                                    
-                                    
-                                    MM.widgets.dialogClose();
-                                    MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate, autoclose: 5000, resizable: false});
-                                    MM.Router.navigate("eleves/" + course);
-                                    
-                                });
+                                        
+                                        MM.widgets.dialogClose();
+                                        MM.popMessage(message, {title:'Récapitulatif de la session du '+startDate, autoclose: 5000, resizable: false});
+                                        MM.Router.navigate("eleves/" + course);
+                                        
+                                    });
+                                }
                             };
                             options.buttons[addNote]['style'] = "modal-button-2";
                         
