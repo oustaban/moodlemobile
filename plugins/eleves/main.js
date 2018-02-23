@@ -1995,7 +1995,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 console.log('COUNT:'+countSignature+'/'+usersS.length);
                                 
                                 if (countSignature<usersS.length) {
-                                    MM.popConfirm("Tous les participants doivent signer", function() {
+                                    MM.popConfirm2("Tous les participants doivent signer", function() {
                                         MM.widgets.dialogClose();
                                         MM.Router.navigate("eleves/" + course);
                                         $("#stopSessionL").click();
