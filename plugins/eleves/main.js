@@ -3502,7 +3502,7 @@ function voirpif(courseId,user,version) {
                 htmlpif += 'X';
             }
             if (unchecked) {
-                htmlpif+=' disabled="true"';
+                //htmlpif+=' disabled="true"';
             }
             htmlpif +='</td></tr>';
             if (pifscormb.length>0){
