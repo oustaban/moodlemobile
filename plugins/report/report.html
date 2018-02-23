@@ -4,7 +4,7 @@
         </form>-->
         <div id="firstcolumnreport">
             <div id="firstblock">
-                <table>
+                <table cellpadding="0" cellspacing="0" border="0">
                     <tr class="firstline">
                         <td><div id="firstcol">&nbsp;</div></td>
                         <td><div id="secondcol">Validité<br>Jeton</div></td>
@@ -24,7 +24,7 @@
                 </table>
             </div>
             <div id="secondblock">
-                <table>
+                <table cellpadding="0" cellspacing="0" border="0">
                     <% var index =0;_.each(users, function(user) { %>
                     <% var endtime = new Date(parseInt(licensesUser[user.id]['end']) * 1000) %>
                     <% var today = new Date() %>
