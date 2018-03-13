@@ -267,7 +267,7 @@ function effectiveDeviceWidth() {
     // iOS returns available pixels, Android returns pixels / pixel ratio
     // http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
     if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
-        MM.log('DEVICEWIDTH:'+window.devicePixelRatio);
+        MM.log('DEVICEWIDTH:'+deviceWidth+'/'+window.devicePixelRatio);
         deviceWidth = deviceWidth / window.devicePixelRatio;
     }
     MM.log('DEVICEWIDTH:'+deviceWidth);
