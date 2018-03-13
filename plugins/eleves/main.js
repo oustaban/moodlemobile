@@ -5360,9 +5360,9 @@ function grillea4(button,user,course,version) {
     else disabled='';
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
-    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1><br/>';
-    html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
-    html += '<h2 align="left" class="grille">Bureaux</h2><br/>';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1>';
+    html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
+    html += '<h2 align="left" class="grille">Bureaux</h2>';
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
@@ -7780,9 +7780,9 @@ function grillea5(button,user,course,version) {
     else disabled='';
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
-    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1><br/>';
-    html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
-    html += '<h2 align="left" class="grille">Bureaux</h2><br/>';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1>';
+    html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
+    html += '<h2 align="left" class="grille">Bureaux</h2>';
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
@@ -9761,9 +9761,9 @@ function grillea6(button,user,course,version) {
     else disabled='';
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
-    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1><br/>';
-    html += '<h1 align="center" class="grille">Grille de positionnement</h1><br/>';
-    html += '<h2 align="left" class="grille">Bureaux</h2><br/>';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1>';
+    html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
+    html += '<h2 align="left" class="grille">Bureaux</h2>';
     
    html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
