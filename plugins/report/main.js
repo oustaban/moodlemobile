@@ -174,7 +174,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                     }
                                     //MM.log('CHECK:'+module1['duration']+'/'+module1.duration);
                                     if (parseInt(module1['duration']) >= parseInt(localModule.minduration)) {
-                                        //MM.log('CHECK');
+                                        MM.log('CHECK:'+user.id+'/'+module1.id);
                                         modulesUserValidated[user.id][module1.id] = 1;
                                         count++;
                                         modulesUserValidated[user.id]['count'] = count;

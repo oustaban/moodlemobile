@@ -2176,16 +2176,19 @@ div#firstcolumnreport #secondblock #firstcol{
   height:30px;
   padding-left:10px;
   text-align:left;
+  line-height:30px;
 }
 div#firstcolumnreport #secondblock #secondcol{
   width:125px;
   height:30px;
   text-align:center;
+  line-height:30px;
 }
 div#firstcolumnreport #secondblock #thirdcol{
   width:125px;
   height:30px;
   text-align:center;
+  line-height:30px;
 }
 
 div#firstcolumnreport #secondblock #usermodule {
@@ -2195,6 +2198,7 @@ div#firstcolumnreport #secondblock #usermodule {
   color:#2da801;
   font-size:30px;
   line-height:30px;
+  line-height:30px;
 
 }
 div#firstcolumnreport #secondblock #usermodule2 {
@@ -2202,6 +2206,7 @@ div#firstcolumnreport #secondblock #usermodule2 {
   height:30px;
   text-align:center;
   background-color:#ccc;
+  line-height:30px;
   
 }
 div#firstcolumnreport #firstblock {
