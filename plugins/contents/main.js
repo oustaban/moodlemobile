@@ -504,168 +504,177 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 var path = MM.plugins.contents.getLocalPaths(courseId, contentId, file);
                 MM.log("Content: Starting download of file: " + downloadURL);
                 // All the functions are async, like create dir.
-                MM.fs.createDir(path.directory, function() {
-                    MM.log("Content: Downloading content to " + path.file + " from URL: " + downloadURL);
-
-                    if ($(downCssId)) {
-                        $(downCssId).attr("src", "img/loadingblack.gif");
-                    }
-
-                    MM.moodleDownloadFile(downloadURL, path.file,
-                        function(fullpath) {
-                            MM.log("Content: Download of content finished " + fullpath + " URL: " + downloadURL + " Index: " +index + "Local path: " + path.file);
-                            
-                            var exts = path.file.split(".");
-                            var dirs = path.file.split("/");
-                            var paths = fullpath.split("/");
-                            var dest = "";
-                            for (var i=0;i<(paths.length-1);i++)
-                            {
-                                dest += paths[i]+"/";
-                            }
-                            MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]+','+dest+','+downCssId+','+linkCssId);
-                            
-                            if (exts[exts.length-1]=="zip") {
-                                
-                                            zip.unzip(fullpath, dest, function() {
-                                            MM.log("Unzip ok");
-                                            
-                                            var old_file = path.file;
-                                            path.file="";
-                                            for (var j=0;j<(dirs.length-1);j++)
-                                            {
-                                                path.file += dirs[j] + "/";
-                                            }
-                                            path.file += "story.html";
-                                            fullpath = dest + "story.html";
-                                        
-                                            MM.log("Dezip:"+path.file+","+fullpath);
-                                            
-                                            MM.fs.removeFile(old_file,
-                                                function(chemin) {
-                                                    MM.log("Dezip:"+old_file+" OK");
-                                                },
-                                                function(path) {
-                                                  MM.log("Dezip:"+old_file+" NOL");
-                                                }
-                                            );
-                                        
-                                            content.contents[index].localpath = path.file;
-                                            content.contents[index].filename = "story.html";
-                                            //content.contents[index].fileurl = "/story.html?forcedownload=1";
-                                            content.contents[index].url = "/story.html?forcedownload=1";
-                                            
-                                            var downloadTime = MM.util.timestamp();
-                                            content.contents[index].downloadtime = downloadTime;
-                                            //content.courseid = courseId;
-                                            // Raise conditions may happen here. The callback functions handle that.
-                                            MM.db.insert("contents", content);
-                                            
-                                            MM.fs.fileExists(path.file,
-                                                function(chemin) {
-            
-                                                    MM.log("Dezip:"+path.file+" existe");
-            
-            
-                                                },
-                                                function(path) {
-                                                  MM.log("Dezip:"+path.file+" existe pas");
-                                                }
-                                            );
-
-                                            if ($(downCssId)) {
-                                                $(downCssId).remove();
-                                                
-                                                $(linkCssId).attr("href", "#");
-                                                $(linkCssId).attr("class", "resource-downloaded");
-                                                $(linkCssId).attr("data-path", path.file);
-                                                $(linkCssId).attr("data-link", path.file);
-                                                $(linkCssId).attr("data-course", courseId);
-                                                $(linkCssId).attr("data-content", contentId);
-                                                $(linkCssId).attr("data-section", sectionId);
-                                               
-					        $(linkCssId).attr("path",MM.fs.getRoot() + "/"+path.file);
-							
-						
-						$(linkCssId).removeAttr("rel");
-                                                $(linkCssId).attr("id", "resource-"+contentId);
-                                                linkCssId = "#resource-" + contentId;
-                                                
-                                                //$(linkCssId).attr("href", fullpath);
-                                                //$(linkCssId).attr("rel", "external");
-                                                // Android, open in new browser
-                                                MM.log("handleFiles1:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
-                                        
-                                                //var indexFile = path;
-                                                //var indexFileURL = MM.fs.getRoot() + "/" + path;
-                        
-                                                //MM.plugins.resource._showResource(fullpath);
-
-                                                //MM.handleFiles(linkCssId);
-                                                //if (open) {
-                                                    //MM._openFile(fullpath);
-                                                //}
-                                            }
-                                            if (typeof successCallback == "function") {
-                                                successCallback(index, fullpath, path.file, downloadTime);
-                                            }
-                                            
-                                            $(".resource-downloaded").on(MM.clickType, function(e) {
-                                                e.preventDefault();
-                                                var path = $(this).data("path");
-                                                path = MM.fs.getRoot() + "/" + path;
-                                                MM.log('resource-downloaded clicked:'+path);
-                                
-                                                MM.plugins.resource._showResource(path);
-                                            });
-                                        
-                                        },
-                                        function(progressEvent) {
-                                            MM.log("Download:"+Math.round((progressEvent.loaded / progressEvent.total) * 100));
-                                        }
-                                        );
-                                   
-                                    
-                                    
-                            } else {
-                                content.contents[index].localpath = path.file;
-                                var downloadTime = MM.util.timestamp();
-                                content.contents[index].downloadtime = downloadTime;
-                                //content.courseid = courseId;
-                                // Raise conditions may happen here. The callback functions handle that.
-                                MM.db.insert("contents", content);
-                                if ($(downCssId)) {
-                                    $(downCssId).remove();
-                                    $(linkCssId).attr("href", fullpath);
-                                    $(linkCssId).attr("rel", "external");
-                                    // Android, open in new browser
-                                    MM.log("handleFiles2:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
-                                    MM.handleFiles(linkCssId);
-                                    if (open) {
-                                        MM._openFile(fullpath);
-                                    }
-                                }
-                                if (typeof successCallback == "function") {
-                                    successCallback(index, fullpath, path.file, downloadTime);
-                                }
-                            }
-                        },
-                        function(fullpath) {
-                            MM.log("Content: Error downloading " + fullpath + " URL: " + downloadURL);
+                MM.fs.removeDirectory(path.directory,
+                    function() {
+                        MM.log('Remove Directory if exist : '+path.directory);
+                        MM.fs.createDir(path.directory, function() {
+                            MM.log("Content: Downloading content to " + path.file + " from URL: " + downloadURL);
+        
                             if ($(downCssId)) {
-                                $(downCssId).attr("src", "img/download.png");
+                                $(downCssId).attr("src", "img/loadingblack.gif");
                             }
-                            if (typeof errorCallback == "function") {
-                                errorCallback();
-                            }
-                         },
-                         background,
-                         function (percent) {
-                            //MM.log(percent);
-                            $(percentCssId).html(parseInt(percent*100)+'%')
-                         }
-                    );
-                });
+        
+                            MM.moodleDownloadFile(downloadURL, path.file,
+                                function(fullpath) {
+                                    MM.log("Content: Download of content finished " + fullpath + " URL: " + downloadURL + " Index: " +index + "Local path: " + path.file);
+                                    
+                                    var exts = path.file.split(".");
+                                    var dirs = path.file.split("/");
+                                    var paths = fullpath.split("/");
+                                    var dest = "";
+                                    for (var i=0;i<(paths.length-1);i++)
+                                    {
+                                        dest += paths[i]+"/";
+                                    }
+                                    MM.log("Dezip:"+path.file+','+exts[exts.length-1]+','+dirs[dirs.length-1]+','+dest+','+downCssId+','+linkCssId);
+                                    
+                                    if (exts[exts.length-1]=="zip") {
+                                        
+                                                    zip.unzip(fullpath, dest, function() {
+                                                    MM.log("Unzip ok");
+                                                    
+                                                    var old_file = path.file;
+                                                    path.file="";
+                                                    for (var j=0;j<(dirs.length-1);j++)
+                                                    {
+                                                        path.file += dirs[j] + "/";
+                                                    }
+                                                    path.file += "story.html";
+                                                    fullpath = dest + "story.html";
+                                                
+                                                    MM.log("Dezip:"+path.file+","+fullpath);
+                                                    
+                                                    MM.fs.removeFile(old_file,
+                                                        function(chemin) {
+                                                            MM.log("Dezip:"+old_file+" OK");
+                                                        },
+                                                        function(path) {
+                                                          MM.log("Dezip:"+old_file+" NOL");
+                                                        }
+                                                    );
+                                                
+                                                    content.contents[index].localpath = path.file;
+                                                    content.contents[index].filename = "story.html";
+                                                    //content.contents[index].fileurl = "/story.html?forcedownload=1";
+                                                    content.contents[index].url = "/story.html?forcedownload=1";
+                                                    
+                                                    var downloadTime = MM.util.timestamp();
+                                                    content.contents[index].downloadtime = downloadTime;
+                                                    //content.courseid = courseId;
+                                                    // Raise conditions may happen here. The callback functions handle that.
+                                                    MM.db.insert("contents", content);
+                                                    
+                                                    MM.fs.fileExists(path.file,
+                                                        function(chemin) {
+                    
+                                                            MM.log("Dezip:"+path.file+" existe");
+                    
+                    
+                                                        },
+                                                        function(path) {
+                                                          MM.log("Dezip:"+path.file+" existe pas");
+                                                        }
+                                                    );
+        
+                                                    if ($(downCssId)) {
+                                                        $(downCssId).remove();
+                                                        
+                                                        $(linkCssId).attr("href", "#");
+                                                        $(linkCssId).attr("class", "resource-downloaded");
+                                                        $(linkCssId).attr("data-path", path.file);
+                                                        $(linkCssId).attr("data-link", path.file);
+                                                        $(linkCssId).attr("data-course", courseId);
+                                                        $(linkCssId).attr("data-content", contentId);
+                                                        $(linkCssId).attr("data-section", sectionId);
+                                                       
+                                    $(linkCssId).attr("path",MM.fs.getRoot() + "/"+path.file);
+                                    
+                                
+                                $(linkCssId).removeAttr("rel");
+                                                        $(linkCssId).attr("id", "resource-"+contentId);
+                                                        linkCssId = "#resource-" + contentId;
+                                                        
+                                                        //$(linkCssId).attr("href", fullpath);
+                                                        //$(linkCssId).attr("rel", "external");
+                                                        // Android, open in new browser
+                                                        MM.log("handleFiles1:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
+                                                
+                                                        //var indexFile = path;
+                                                        //var indexFileURL = MM.fs.getRoot() + "/" + path;
+                                
+                                                        //MM.plugins.resource._showResource(fullpath);
+        
+                                                        //MM.handleFiles(linkCssId);
+                                                        //if (open) {
+                                                            //MM._openFile(fullpath);
+                                                        //}
+                                                    }
+                                                    if (typeof successCallback == "function") {
+                                                        successCallback(index, fullpath, path.file, downloadTime);
+                                                    }
+                                                    
+                                                    $(".resource-downloaded").on(MM.clickType, function(e) {
+                                                        e.preventDefault();
+                                                        var path = $(this).data("path");
+                                                        path = MM.fs.getRoot() + "/" + path;
+                                                        MM.log('resource-downloaded clicked:'+path);
+                                        
+                                                        MM.plugins.resource._showResource(path);
+                                                    });
+                                                
+                                                },
+                                                function(progressEvent) {
+                                                    MM.log("Download:"+Math.round((progressEvent.loaded / progressEvent.total) * 100));
+                                                }
+                                                );
+                                           
+                                            
+                                            
+                                    } else {
+                                        content.contents[index].localpath = path.file;
+                                        var downloadTime = MM.util.timestamp();
+                                        content.contents[index].downloadtime = downloadTime;
+                                        //content.courseid = courseId;
+                                        // Raise conditions may happen here. The callback functions handle that.
+                                        MM.db.insert("contents", content);
+                                        if ($(downCssId)) {
+                                            $(downCssId).remove();
+                                            $(linkCssId).attr("href", fullpath);
+                                            $(linkCssId).attr("rel", "external");
+                                            // Android, open in new browser
+                                            MM.log("handleFiles2:"+linkCssId+','+$(linkCssId).attr("href")+','+$(linkCssId).attr("data-content"));
+                                            MM.handleFiles(linkCssId);
+                                            if (open) {
+                                                MM._openFile(fullpath);
+                                            }
+                                        }
+                                        if (typeof successCallback == "function") {
+                                            successCallback(index, fullpath, path.file, downloadTime);
+                                        }
+                                    }
+                                },
+                                function(fullpath) {
+                                    MM.log("Content: Error downloading " + fullpath + " URL: " + downloadURL);
+                                    if ($(downCssId)) {
+                                        $(downCssId).attr("src", "img/download.png");
+                                    }
+                                    if (typeof errorCallback == "function") {
+                                        errorCallback();
+                                    }
+                                 },
+                                 background,
+                                 function (percent) {
+                                    //MM.log(percent);
+                                    $(percentCssId).html(parseInt(percent*100)+'%')
+                                 }
+                            );
+                        });
+                    },
+                    function() {
+                        MM.log('removeDirectory:'+path.file+' FAILED')
+                    }
+                );
+                
             });
         },
 
