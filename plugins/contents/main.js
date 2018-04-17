@@ -583,7 +583,11 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 $(linkCssId).attr("data-course", courseId);
                                                 $(linkCssId).attr("data-content", contentId);
                                                 $(linkCssId).attr("data-section", sectionId);
-                                                $(linkCssId).removeAttr("rel");
+                                               
+					        $(linkCssId).attr("path",MM.fs.getRoot() + "/"+path.file);
+							
+						
+						$(linkCssId).removeAttr("rel");
                                                 $(linkCssId).attr("id", "resource-"+contentId);
                                                 linkCssId = "#resource-" + contentId;
                                                 
