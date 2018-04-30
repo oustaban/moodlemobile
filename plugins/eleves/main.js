@@ -2142,8 +2142,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var user = $(this).attr("user");
                         var version = $(this).attr("version");
                         var pifs = $(this).attr("pif");
-                        var theuser = MM.db.get('users',parseInt(user));
-                        
+                        var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user)); 
                         clickPif(button,course,user,version,pifs);
                         
                         //MM.log('pif:'+course+'/'+user);
@@ -2323,7 +2322,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         //e.preventDefault();
                         var course = $(this).attr("course");
                         var user = $(this).attr("user");
-                        var theuser = MM.db.get('users',parseInt(user));
+			var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
                         MM.log('Notes:'+course+'/'+user);
                         
                         var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
@@ -2759,7 +2758,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
 
 function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,sessionOk) {
     
-    var usersnotes = MM.db.where('users', {userid:parseInt(user)});
+    var usersnotes = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usernotes = usersnotes[0].toJSON();
     var notes = usernotes.notes;
     notescourse = $.grep(notes, function( el ) {
@@ -2767,7 +2766,7 @@ function manageNotes(course,user,theuser,resultFile,sessionnotes,button,button2,
     });
     MM.log('notescourse length:'+notescourse.length);
     
-    var thisuser = MM.db.get('users',usernotes.id);
+    var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(usernotes.id));
     var sessionnotes2;
     
     MM.log('notescourse length:'+notescourse.length);
@@ -3005,7 +3004,7 @@ function notePopin( elem ) {
     //e.preventDefault();
     var course = $(elem).attr("course");
     var user = $(elem).attr("user");
-    var theuser = MM.db.get('users',parseInt(user));
+    var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
     MM.log('Notes:'+course+'/'+user);
     
     var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
@@ -3131,7 +3130,7 @@ function ModifierNotePopin( elem,backTo ) {
     
     var resultFile =  MM.config.current_site.id + "/" + course + "/result/session.json";
     var sessionnotes;
-    var usersnotes = MM.db.where('users', {userid:parseInt(user)});
+    var usersnotes = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usernotes = usersnotes[0].toJSON();
     
     var html2 = '<div id="sessionContent"><table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
@@ -3395,7 +3394,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
 
 function voirlespif(courseId,user) {
 
-    var userspif = MM.db.where('users', {userid:parseInt(user)});
+    var userspif = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var userpif = userspif[0].toJSON();
     var pifs = userpif.pif;
     pifscourse = $.grep(pifs, function( el ) {
@@ -3460,7 +3459,7 @@ function voirpif(courseId,user,version) {
     var coursespif = MM.db.where("courses",{courseid : parseInt(courseId), siteid: MM.config.current_site.id});
     var coursepif = coursespif[0].toJSON();
     var pif = coursepif.pif;
-    var userspif = MM.db.where('users', {userid:parseInt(user)});
+    var userspif = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var userpif = userspif[0].toJSON();
     var pifs = userpif.pif;
     pifscourse = $.grep(pifs, function( el ) {
@@ -4051,9 +4050,9 @@ function amont(button,user,course,version) {
     var courseId = course;
     var user = user;
     var version = version;
-    var theuser = MM.db.get('users',parseInt(user));
-    
-    var users = MM.db.where('users', {userid:parseInt(user)});
+    var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
+
+    var users = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -4155,9 +4154,9 @@ function aval(button,user,course,version) {
     var courseId = course;
     var user = user;
     var version = version;
-    var theuser = MM.db.get('users',parseInt(user));
-    
-    var users = MM.db.where('users', {userid:parseInt(user)});
+    var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
+
+    var users = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -4262,7 +4261,7 @@ function grillea1(button,user,course,version) {
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
     
-    var users = MM.db.where('users', {userid:parseInt(user)});
+    var users = MM.db.where('users', {'userid':parseInt(user,'site':MM.config.current_site.id)});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -4621,7 +4620,7 @@ function grillea2(button,user,course,version) {
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
     
-    var users = MM.db.where('users', {userid:parseInt(user)});
+    var users = MM.db.where('users', {'userid':parseInt(user,'site':MM.config.current_site.id)});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -4983,7 +4982,7 @@ function grillea3(button,user,course,version) {
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
     
-    var users = MM.db.where('users', {userid:parseInt(user)});
+    var users = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -5346,7 +5345,7 @@ function grillea4(button,user,course,version) {
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
     
-    var users = MM.db.where('users', {userid:parseInt(user)});
+    var users = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -7766,7 +7765,7 @@ function grillea5(button,user,course,version) {
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
     
-    var users = MM.db.where('users', {userid:parseInt(user)});
+    var users = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -9747,7 +9746,7 @@ function grillea6(button,user,course,version) {
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
     
-    var users = MM.db.where('users', {userid:parseInt(user)});
+    var users = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -11683,10 +11682,10 @@ function modifierPif(button,user,course,version) {
     var courseId = course;
     var user = user;
     var version = version;
-    var theuser = MM.db.get('users',parseInt(user));
+    var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
     MM.log('pif:'+course+'/'+user+'/'+version);
     
-    var userspif = MM.db.where('users', {userid:parseInt(user)});
+    var userspif = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var userpif = userspif[0].toJSON();
     var pifs = userpif.pif;
     var grille = userpif.grille;
@@ -13159,10 +13158,10 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                         var course = courseid;
                         var user = userid;
                         var version = versionid;
-                        var theuser = MM.db.get('users',parseInt(user));
+			var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
                         MM.log('pif:'+course+'/'+user);
                         
-                        var userspif = MM.db.where('users', {userid:parseInt(user)});
+                        var userspif = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
                         var userpif = userspif[0].toJSON();
                         var pifs = userpif.pif;
                         var grille = userpif.grille;
