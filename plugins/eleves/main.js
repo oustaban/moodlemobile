@@ -1202,8 +1202,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         
                         if(checkbox.is(':checked')) {
                               checkbox.prop('checked',false);
-                              var theuser = MM.db.where('users', {userid:parseInt(checkbox.val())});
-                              //MM.log('theuser:'+theuser);
+                              var theuser = MM.db.where('users', {'userid':parseInt(checkbox.val()), 'site':MM.config.current_site.id});
+			      //MM.log('theuser:'+theuser);
                               theuser[0].set('id',parseInt(checkbox.val()));
                               var thenewuser = theuser[0].toJSON();
                               myusers.push(thenewuser);
