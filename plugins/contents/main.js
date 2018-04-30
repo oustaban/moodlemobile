@@ -508,7 +508,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                 MM.fs.removeDirectory(path.directory,
                     function() {
-                        MM.log('Remove Directory : '+path.directory);
+                        MM.log('Remove Directory : '+path.directory+' SUCCESS');
                         MM.fs.createDir(path.directory, function() {
                             MM.log("Content: Downloading content to " + path.file + " from URL: " + downloadURL);
         
@@ -673,7 +673,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                         });
                     },
                     function() {
-                        MM.log('removeDirectory:'+path.file+' FAILED');
+                        MM.log('removeDirectory:'+path.directory+' FAILED');
                         MM.fs.createDir(path.directory, function() {
                             MM.log("Content: Downloading content to " + path.file + " from URL: " + downloadURL);
         

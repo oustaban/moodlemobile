@@ -1679,7 +1679,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function(fileUrl) {
                                         MM.log('Write Session :'+fileUrl);
                                         $('#stopSessionL').attr('starttime',d.getTime());
-                                        $('#stopSessionL').hide();
+                                        $('#stopSessionL').show();
                                         $('#showSessionL').hide();
                                         $('#showTimer').show();
                                         $('#synchroR').hide();
