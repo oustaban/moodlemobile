@@ -4621,7 +4621,7 @@ function grillea2(button,user,course,version) {
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
     
-    var users = MM.db.where('users', {'userid':parseInt(user,'site':MM.config.current_site.id)});
+    var users = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
