@@ -4275,7 +4275,7 @@ function grillea1(button,user,course,version) {
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1>';
-    html += '<h1 align="center" class="grille">Grille de positionnement<span class="red">Bureau</span></h1>';
+    html += '<h1 align="center" class="grille">Grille de positionnement <span class="red">Bureau</span></h1>';
     //html += '<h2 align="left" class="grille">Bureau</h2>';
     
     html += '<div id="firstcolumngrille">';
@@ -4603,7 +4603,8 @@ function grillea1(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px"; 
+    //document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    document.getElementById("pifContent").style.height = (window.innerHeight - 134) + "px";
 }
 
 
