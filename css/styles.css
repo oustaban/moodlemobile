@@ -2225,10 +2225,12 @@ div#firstcolumngrille {
   height:100%;
   font-size: 18px;
 }
+/*
 div#firstcolumngrille #firstblock {
   height:180px;
   margin-top:-40px;
 }
+*/
 div#firstcolumngrille #secondblock {
   height:370px;
   overflow-y:scroll;
