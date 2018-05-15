@@ -4260,8 +4260,7 @@ function grillea1(button,user,course,version) {
     var version = version;
     var thisuser = MM.db.get("users", MM.config.current_site.id + "-" + user);
     
-    
-    var users = MM.db.where('users', {'userid':parseInt(user,'site':MM.config.current_site.id)});
+    var users = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id)});
     var usergrille = users[0].toJSON();
     var grille = usergrille.grille;
     var pifs = usergrille.pif;
@@ -4275,14 +4274,15 @@ function grillea1(button,user,course,version) {
     else disabled='';
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
-    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1>';
     html += '<h1 align="center" class="grille">Grille de positionnement<span class="red">Bureau</span> </h1>';
-    html += '<h2 align="left" class="grille">Bureau</h2>';
+    //html += '<h2 align="left" class="grille">Bureau</h2>';
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
-    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><strong>Non fait</strong></td><td style="width:16%;border:0px"><strong>Partiellement fait</strong></td><td style="border:0px;width:16%"><strong>Fait</strong></td></tr>';
+    //html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
     html+='</table>';
     html+='</div>';
     
