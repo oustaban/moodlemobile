@@ -4605,6 +4605,8 @@ function grillea1(button,user,course,version) {
     MM.widgets.dialog(html, options2);
     //document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
     document.getElementById("pifContent").style.height = (window.innerHeight - 134) + "px";
+    document.getElementById("pifContent").style.max-height = (window.innerHeight - 134) + "px";
+    document.getElementById("secondblock").style.height = (window.innerHeight - 250) + "px";
 }
 
 
