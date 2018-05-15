@@ -4638,14 +4638,13 @@ function grillea2(button,user,course,version) {
     else disabled='';
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
-    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
-    html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
-    html += '<h2 align="left" class="grille">Sanitaire</h2>';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1>';
+    html += '<h1 align="center" class="grille">Grille de positionnement <span class="red">Sanitaire</span></h1>';
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
-    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><strong>Non fait</strong></td><td style="width:16%;border:0px"><strong>Partiellement fait</strong></td><td style="border:0px;width:16%"><strong>Fait</strong></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -4905,7 +4904,7 @@ function grillea2(button,user,course,version) {
                 var html3 = "Pour valider, veuillez compléter entièrement la grille de positionnement.";
                
                 MM.widgets.dialog2(html3, options3);
-		document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
+                document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                 
             } else {
                 
@@ -4956,7 +4955,7 @@ function grillea2(button,user,course,version) {
                 var html4 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
                
                 MM.widgets.dialog2(html4, options4);
-		document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
+                document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                 
                 
                 
@@ -4969,7 +4968,10 @@ function grillea2(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";    
+    //document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    document.getElementById("pifContent").style.height = (window.innerHeight - 134) + "px";
+    document.getElementById("pifContent").style.maxHeight = (window.innerHeight - 134) + "px";
+    document.getElementById("secondblock").style.height = (window.innerHeight - 284) + "px";
 }
 
 
@@ -5000,14 +5002,13 @@ function grillea3(button,user,course,version) {
     else disabled='';
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
-    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/>';
-    html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
-    html += '<h2 align="left" class="grille">Parties Communes</h2>';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1>';
+    html += '<h1 align="center" class="grille">Grille de positionnement <span class="red">Parties Communes</span></h1>';
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
-    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><strong>Non fait</strong></td><td style="width:16%;border:0px"><strong>Partiellement fait</strong></td><td style="border:0px;width:16%"><strong>Fait</strong></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -5317,7 +5318,7 @@ function grillea3(button,user,course,version) {
                 var html4 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
                
                 MM.widgets.dialog2(html4, options4);
-		document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
+                document.getElementById("pifContent").style.height = ((window.innerHeight * 70)/100) + "px";
                 
                 
                 
@@ -5330,7 +5331,10 @@ function grillea3(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px"; 
+    //document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    document.getElementById("pifContent").style.height = (window.innerHeight - 134) + "px";
+    document.getElementById("pifContent").style.maxHeight = (window.innerHeight - 134) + "px";
+    document.getElementById("secondblock").style.height = (window.innerHeight - 284) + "px";
 }
 
 
@@ -5364,13 +5368,12 @@ function grillea4(button,user,course,version) {
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1>';
-    html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
-    html += '<h2 align="left" class="grille">Bureaux</h2>';
+    html += '<h1 align="center" class="grille">Grille de positionnement <span class="red">Bureaux</span></h1>';
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
-    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><strong>Non fait</strong></td><td style="width:16%;border:0px"><strong>Partiellement fait</strong></td><td style="border:0px;width:16%"><strong>Fait</strong></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -7713,7 +7716,10 @@ function grillea4(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    //document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    document.getElementById("pifContent").style.height = (window.innerHeight - 134) + "px";
+    document.getElementById("pifContent").style.maxHeight = (window.innerHeight - 134) + "px";
+    document.getElementById("secondblock").style.height = (window.innerHeight - 284) + "px";
 
     $("tr#title").each(function( index ) {
         $(this).on(MM.clickType, function(e) {
@@ -7784,13 +7790,12 @@ function grillea5(button,user,course,version) {
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1>';
-    html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
-    html += '<h2 align="left" class="grille">Bureaux</h2>';
+    html += '<h1 align="center" class="grille">Grille de positionnement <span class="red">Sanitaire</span></h1>';
     
     html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
-    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><strong>Non fait</strong></td><td style="width:16%;border:0px"><strong>Partiellement fait</strong></td><td style="border:0px;width:16%"><strong>Fait</strong></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -9692,7 +9697,10 @@ function grillea5(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    //document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    document.getElementById("pifContent").style.height = (window.innerHeight - 134) + "px";
+    document.getElementById("pifContent").style.maxHeight = (window.innerHeight - 134) + "px";
+    document.getElementById("secondblock").style.height = (window.innerHeight - 284) + "px";
 
     $("tr#title").each(function( index ) {
         $(this).on(MM.clickType, function(e) {
@@ -9765,13 +9773,12 @@ function grillea6(button,user,course,version) {
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1>';
-    html += '<h1 align="center" class="grille">Grille de positionnement</h1>';
-    html += '<h2 align="left" class="grille">Bureaux</h2>';
+    html += '<h1 align="center" class="grille">Grille de positionnement <span class="red">Parties Communes</span> </h1>';
     
-   html += '<div id="firstcolumngrille">';
+    html += '<div id="firstcolumngrille">';
     html += '<div id="firstblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo" style="border:0px;background-color:#fff">';
-    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Non fait</strong></div></div></td><td style="width:16%;border:0px"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Partiellement fait</strong></div></div></td><td style="border:0px;width:16%"><div id="cellmodule" style="width:50px;height:160px"><div id="grillenote"><strong>Fait</strong></div></div></td></tr>';
+    html+='<tr style="border:0px;background-color:#fff;"><td style="width:50%;border:0px">&nbsp;</td><td style="width:16%;border:0px"><strong>Non fait</strong></td><td style="width:16%;border:0px"><strong>Partiellement fait</strong></td><td style="border:0px;width:16%"><strong>Fait</strong></td></tr>';
     html+='</table>';
     html+='</div>';
     
@@ -11632,7 +11639,10 @@ function grillea6(button,user,course,version) {
     $("#app-dialog").addClass('full-screen-dialog2');
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
-    document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    //document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
+    document.getElementById("pifContent").style.height = (window.innerHeight - 134) + "px";
+    document.getElementById("pifContent").style.maxHeight = (window.innerHeight - 134) + "px";
+    document.getElementById("secondblock").style.height = (window.innerHeight - 284) + "px";
 
     $("tr#title").each(function( index ) {
         $(this).on(MM.clickType, function(e) {
