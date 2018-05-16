@@ -180,6 +180,8 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                         modulesUserValidated[user.id]['count'] = count;
                                     }
                                 });
+                            } else {
+                                MM.log('NO MODULE')
                             }
                             
                             var licensedsuser = $.grep(localModule.licenses, function( el ) {
