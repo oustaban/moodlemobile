@@ -7725,36 +7725,40 @@ function grillea4(button,user,course,version) {
         $(this).on(MM.clickType, function(e) {
             var mytr = $(this);
             if ($(this).attr('opened') == 0) {
-                $(this).nextUntil( $('tr.title'), "tr" ).show();
+                $(this).nextUntil( $('tr.title'), "tr" ).show( "slow" );
                 $(this).attr('opened',1);
                 
                 $( "tr#title" ).each(function( index2 ) {
                   if ($(this).is(mytr)) {
                   } else {
-                    $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                    $(this).nextUntil( $('tr#title'), "tr" ).hide("slow");
                     $(this).attr('opened',0);
                   }
                 });
             } else {
-                $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                $(this).nextUntil( $('tr#title'), "tr" ).hide("slow");
                 $(this).attr('opened',0);
                 $( "tr#title" ).each(function( index3 ) {
                   if ($(this).is(mytr)) {
                   } else {
-                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                     $(this).nextUntil( $('tr#title'), "tr" ).hide("slow");
                      $(this).attr('opened',0);
                   }
                   
                 });
             }
+            var elem = $("#bar");
+            var offset = $(this).offset.top() - $("#secondblock").offset.top();
+            MM.log('OFFSET:'+offset);
+            $('#secondblock').scrollTop(offset);
         });
         
         if ($(this).attr('opened') == 1) {
-            $(this).nextUntil( $('tr.title'), "tr" ).show();
+            $(this).nextUntil( $('tr.title'), "tr" ).show("slow");
         }
         
         if ($(this).attr('opened') == 0) {
-            $(this).nextUntil( $('tr#title'), "tr" ).hide();
+            $(this).nextUntil( $('tr#title'), "tr" ).hide("slow");
         }
         
     });
