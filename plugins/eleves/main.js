@@ -7723,7 +7723,7 @@ function grillea4(button,user,course,version) {
 
     var heightScroll = 0;
     $("tr#title").each(function( index ) {
-        heightScroll+=$(this).height();
+        heightScroll=$(this).height();
         $(this).on(MM.clickType, function(e) {
             var mytr = $(this);
             if ($(this).attr('opened') == 0) {
@@ -7738,8 +7738,8 @@ function grillea4(button,user,course,version) {
                   }
                 });
                 //var offset = $(this).offset().top - $("#secondblock").offset().top;
-                MM.log('OFFSET:'+heightScroll);
-                $('#secondblock').scrollTop(heightScroll);
+                MM.log('OFFSET:'heightScroll+'/'+(heightScroll*(index+1));
+                $('#secondblock').scrollTop(heightScroll*(index+1));
             } else {
                 $(this).nextUntil( $('tr#title'), "tr" ).hide();
                 $(this).attr('opened',0);
