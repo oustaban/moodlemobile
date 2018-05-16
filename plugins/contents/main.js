@@ -220,8 +220,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
                             // This content is currently in the database.
                             if (contentsStored.indexOf(content.id) > -1) {
-                                MM.log("Content is on database:"+MM.config.current_site.id + "-" + content.id); 
-                                var c = MM.db.get("contents", MM.config.current_site.id + "-" + content.id);
+                                MM.log("Content is on database:"+ content.id); 
+                                var c = MM.db.get("contents", content.id);
                                 c = c.toJSON();
                                 sections.modules[index2].mainExtension = c.mainExtension;
                                 sections.modules[index2].webOnly = c.webOnly;
