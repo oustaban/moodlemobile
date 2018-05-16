@@ -7731,34 +7731,35 @@ function grillea4(button,user,course,version) {
                 $( "tr#title" ).each(function( index2 ) {
                   if ($(this).is(mytr)) {
                   } else {
-                    $(this).nextUntil( $('tr#title'), "tr" ).hide("slow");
+                    $(this).nextUntil( $('tr#title'), "tr" ).hide();
                     $(this).attr('opened',0);
                   }
                 });
             } else {
-                $(this).nextUntil( $('tr#title'), "tr" ).hide("slow");
+                $(this).nextUntil( $('tr#title'), "tr" ).hide();
                 $(this).attr('opened',0);
                 $( "tr#title" ).each(function( index3 ) {
                   if ($(this).is(mytr)) {
                   } else {
-                     $(this).nextUntil( $('tr#title'), "tr" ).hide("slow");
+                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
                      $(this).attr('opened',0);
                   }
                   
                 });
             }
-            var elem = $("#bar");
-            var offset = $(this).offset().top - $("#secondblock").offset().top;
-            MM.log('OFFSET:'+offset);
-            $('#secondblock').scrollTop(offset);
+            
         });
         
         if ($(this).attr('opened') == 1) {
-            $(this).nextUntil( $('tr.title'), "tr" ).show("slow");
+            $(this).nextUntil( $('tr.title'), "tr" ).show("slow", function() {
+                var offset = $(this).offset().top - $("#secondblock").offset().top;
+                MM.log('OFFSET:'+offset+'/'+$(this).offset().top+'/'+$("#secondblock").offset().top);
+                $('#secondblock').scrollTop(offset);
+            });
         }
         
         if ($(this).attr('opened') == 0) {
-            $(this).nextUntil( $('tr#title'), "tr" ).hide("slow");
+            $(this).nextUntil( $('tr#title'), "tr" ).hide();
         }
         
     });
