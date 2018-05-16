@@ -7738,7 +7738,7 @@ function grillea4(button,user,course,version) {
                   }
                 });
                 //var offset = $(this).offset().top - $("#secondblock").offset().top;
-                MM.log('OFFSET:'heightScroll+'/'+(heightScroll*(index+1));
+                MM.log('OFFSET:'+heightScroll+'/'+(heightScroll*(index+1));
                 $('#secondblock').scrollTop(heightScroll*(index+1));
             } else {
                 $(this).nextUntil( $('tr#title'), "tr" ).hide();
