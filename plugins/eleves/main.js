@@ -7721,7 +7721,9 @@ function grillea4(button,user,course,version) {
     document.getElementById("pifContent").style.maxHeight = (window.innerHeight - 134) + "px";
     document.getElementById("secondblock").style.height = (window.innerHeight - 284) + "px";
 
+    var heightScroll = 0;
     $("tr#title").each(function( index ) {
+        heightScroll+=$(this).height();
         $(this).on(MM.clickType, function(e) {
             var mytr = $(this);
             if ($(this).attr('opened') == 0) {
@@ -7735,9 +7737,9 @@ function grillea4(button,user,course,version) {
                     $(this).attr('opened',0);
                   }
                 });
-                var offset = $(this).offset().top - $("#secondblock").offset().top;
-                MM.log('OFFSET:'+offset+'/'+$(this).offset().top+'/'+$("#secondblock").offset().top);
-                $('#secondblock').scrollTop(offset);
+                //var offset = $(this).offset().top - $("#secondblock").offset().top;
+                MM.log('OFFSET:'+heightScroll);
+                $('#secondblock').scrollTop(heightScroll);
             } else {
                 $(this).nextUntil( $('tr#title'), "tr" ).hide();
                 $(this).attr('opened',0);
