@@ -7748,7 +7748,7 @@ function grillea4(button,user,course,version) {
                 });
             }
             var elem = $("#bar");
-            var offset = $(this).offset.top() - $("#secondblock").offset.top();
+            var offset = $(this).offset().top - $("#secondblock").offset().top;
             MM.log('OFFSET:'+offset);
             $('#secondblock').scrollTop(offset);
         });
