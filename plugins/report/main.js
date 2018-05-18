@@ -86,7 +86,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var licensesUser = [];
                     
                     var physicalScreenWidth = effectiveDeviceWidth();
-                    var sizetdmodule = (physicalScreenWidth - 574) / modules.length;
+                    var sizetdmodule = (physicalScreenWidth - (506 + (modules.length*2))) / modules.length;
                     MM.log('SIZE:' + physicalScreenWidth+'/'+sizetdmodule+'/'+modules.length);
                     
                     
