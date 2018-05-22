@@ -345,7 +345,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#showCourseL').hide();
                             $('#stopCourseL').hide();
                             $('#createdPif').hide();
-                            $('#stopSessionL').hide();      
+                            $('#stopSessionL').show();      
                             $('#synchroR').hide();
                             $('#showSessionL').attr('users',users);
                             $('#showCourseL').attr('users',users);
@@ -416,7 +416,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                      $('#showCourseL').hide();
                                                      $('#createdPif').hide();
                                                      $('#stopCourseL').show();
-                                                     $('#stopSessionL').hide();
+                                                     $('#stopSessionL').show();
                                                      $("#stopCourseL").attr("module",namefile[0]);
                                                      checkmoduleopened = 1
                                                 } else {
@@ -1670,7 +1670,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             function(fileEntry) {
                                 var d = new Date();
                                 if (isNotCreated) {
-                                    var content = '{"clickedP":1,"showCourseL":0,"stopCourseL":0,"showSessionL":0,"stopSessionL":0,"offlineC":1,"synchroR":0,"starttime":"'+d.getTime()+'","users":"'+users+'"}';
+                                    var content = '{"clickedP":1,"showCourseL":0,"stopCourseL":0,"showSessionL":0,"stopSessionL":1,"offlineC":1,"synchroR":0,"starttime":"'+d.getTime()+'","users":"'+users+'"}';
                                 } else {
                                     content = '{"starttime":"'+d.getTime()+'","users":"'+users+'"}';
                                 }
@@ -1762,7 +1762,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             options2.buttons["Fermer"]["style"] = "modal-button-8";
                                             
-                            MM.popMessage2("Veuillez sélectionner au moins un participant.",options2);
+                            MM.popMessage2("Aucun participant sélectionné. Pour fermer la session, sélectionnez au moins un participant..",options2);
                                
                         } else {
                         
@@ -13250,7 +13250,7 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                                 if (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2) {
                                     html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" onclick="aval(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
                                 } else {
-                                    html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> Veuillez remplir au moins une grille en amont pour accèder aux grilles en aval</td></tr>';
+                                    html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <i>Aucune grille de positionnement amont validée</i></td></tr>';
                                 }
                                 
                             }
