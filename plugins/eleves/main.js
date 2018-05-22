@@ -1547,7 +1547,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $("#stopSessionL").attr("users","");
                             $("#showCourseL").attr("users","");
                             $("#stopCourseL").attr("users","");
-                            $('#createdPif').hide();  
+                            $('#createdPif').hide();
+                            $("#stopSessionL").show();
                             
                         }
                         
@@ -1599,21 +1600,25 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $("#showCourseL").hide();
                                 $("#stopCourseL").hide();
                                 $('#createdPif').show();
+                                $("#stopSessionL").show();
                            } else {
                                 $("#showCourseL").show();
                                 $("#stopCourseL").hide();
                                 $('#createdPif').hide();
+                                $("#stopSessionL").show();
                            }   
                         } else {
                             MM.log("Selected Course NOK");
                             if (isNotCreated) {
                                 $("#showCourseL").hide();
                                 $("#stopCourseL").hide();
-                                $('#createdPif').show();    
+                                $('#createdPif').show();
+                                $("#stopSessionL").show();
                             } else {
                                 $("#showCourseL").hide();
                                 $("#stopCourseL").hide();
                                 $('#createdPif').hide();
+                                $("#stopSessionL").show();
                             }
                         }
                         
@@ -2379,7 +2384,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $('#stopCourseL').show();
                                                 $('#showCourseL').hide();
                                                 $('#createdPif').hide();
-                                                $('#stopSessionL').hide();
+                                                $('#stopSessionL').show();
                                                 //$('#offlineC').hide();
                                                 $('#offlineC').css('visibility','hidden');
                                                 MM.plugins.resource._showResource(path);
