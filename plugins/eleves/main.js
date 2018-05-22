@@ -2260,7 +2260,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         html += '<h1 align="center">PARTIE DEDIEE A L\'ATTENTION DU MANAGER</h1><br/><br/><br/><br/>';
                                         html += '<p align="center">Pour commencer le parcours de formation de ce stagiaire veuillez remplir la grille de positionnement ci-dessous.<br/>Cette grille vous permettra dévaluer les compétences que le stagiaire devra développer dans le cadre de sa formation</p><br/><br/><br/><br/>';
                                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
-                                        html += '<tr><td style="text-align:center"><button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="amont" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">Grille de Positionnement<br>(AMONT)</button></td></tr>';
+                                        html += '<tr><td style="text-align:center"><button onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="amont" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-5">Grille de Positionnement<br>(AMONT)</button><p><i>Aucune grille de positionnement amont validée</i></p></td></tr>';
                                         html += '</table>';
                                         html += '</div>';
                                         
