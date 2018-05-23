@@ -4290,6 +4290,7 @@ function aval(button,user,course,version) {
 }
 
 function initGrille(user) {
+        grille={};
         grille.q1am = 0;
         grille.q2am = 0;
         grille.q3am = 0;
