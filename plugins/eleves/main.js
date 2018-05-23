@@ -1874,6 +1874,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         function(path) {
                                             MM.log('Session Module Existe Pas : '+fileResultL);
                                             if (indexCourse2 == indexCourse) {
+                                                var indexUser = 1;
                                                 $.each(usersS, function( indexS, valueS ) {
                                                     var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                     var userG = userP.toJSON();
