@@ -11910,7 +11910,7 @@ function modifierPif(button,user,course,version) {
                     MM.log('Note Module 1v:'+note);
                 }
                 
-                if (indexcontent == 2 && grille.q2 == 2) {
+                if (indexcontent == 2) {
                     note =  (parseInt(grille.q11am) + parseInt(grille.q12am) + parseInt(grille.q13am) + parseInt(grille.q14am) + parseInt(grille.q15am));
                     if (note <= 8) {
                         unckeckednoteam = 1;
