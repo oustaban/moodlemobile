@@ -1389,7 +1389,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 if ($('#stopSessionL').is(':visible'))
                                                     stopSessionL = 1;
                                                 else
-                                                    stopSessionL = 0;
+                                                    stopSessionL = 1;
                                                     
                                                 if ($('#offlineC').css('visibility') == 'visible')
                                                    offlineC = 1;
