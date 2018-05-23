@@ -195,7 +195,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var showCourseL = 0;
                     var stopCourseL = 0;
                     var showSessionL = 0;
-                    var stopSessionL = 0;
+                    var stopSessionL = 1;
                     var offlineC = 0;
                     var synchroR = 0;
                     
