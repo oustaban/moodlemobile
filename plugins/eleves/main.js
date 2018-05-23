@@ -12137,7 +12137,7 @@ function modifierPif(button,user,course,version) {
                     }
                     MM.log('Note Module 8:'+note);
                 }
-                if (indexcontent == 8 {
+                if (indexcontent == 8) {
                     note =  (parseInt(grille.q16av) + parseInt(grille.q17av) + parseInt(grille.q18av) + parseInt(grille.q19av))/4 + (parseInt(grille.q21av) + parseInt(grille.q22av) + parseInt(grille.q23av) + parseInt(grille.q24av)+ parseInt(grille.q25av))/5 + (parseInt(grille.q60av) + parseInt(grille.q61av) + parseInt(grille.q62av) + parseInt(grille.q63av)+ parseInt(grille.q64av))/5;
                     if (note >= 4.5) {
                         unckeckednoteav = 1;
