@@ -4289,6 +4289,123 @@ function aval(button,user,course,version) {
     document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px"; 
 }
 
+function initGrille(user) {
+        grille.q1am = 0;
+        grille.q2am = 0;
+        grille.q3am = 0;
+        grille.q4am = 0;
+        grille.q5am = 0;
+        grille.q6am = 0;
+        grille.q7am = 0;
+        grille.q8am = 0;
+        grille.q9am = 0;
+        grille.q10am = 0;
+        grille.q11am = 0;
+        grille.q12am = 0;
+        grille.q13am = 0;
+        grille.q14am = 0;
+        grille.q15am = 0;
+        grille.q16am = 0;
+        grille.q17am = 0;
+        grille.q18am = 0;
+        grille.q19am = 0;
+        grille.q20am = 0;
+        grille.q1 = 0;
+        grille.q2 = 0;
+        grille.q3 = 0;
+        
+        grille.q1av = 0;
+        grille.q2av = 0;
+        grille.q3av = 0;
+        grille.q4av = 0;
+        grille.q5av = 0;
+        grille.q6av = 0;
+        grille.q7av = 0;
+        grille.q8av = 0;
+        grille.q9av = 0;
+        grille.q10av = 0;
+        grille.q11av = 0;
+        grille.q12av = 0;
+        grille.q13av = 0;
+        grille.q14av = 0;
+        grille.q15av = 0;
+        grille.q16av = 0;
+        grille.q17av = 0;
+        grille.q18av = 0;
+        grille.q19av = 0;
+        grille.q20av = 0;
+        grille.q21av = 0;
+        grille.q22av = 0;
+        grille.q23av = 0;
+        grille.q24av = 0;
+        grille.q25av = 0;
+        grille.q26av = 0;
+        grille.q27av = 0;
+        grille.q28av = 0;
+        grille.q29av = 0;
+        grille.q30av = 0;
+        grille.q31av = 0;
+        grille.q32av = 0;
+        grille.q33av = 0;
+        grille.q34av = 0;
+        grille.q35av = 0;
+        grille.q36av = 0;
+        grille.q37av = 0;
+        grille.q38av = 0;
+        grille.q39av = 0;
+        grille.q40av = 0;
+        grille.q41av = 0;
+        grille.q42av = 0;
+        grille.q43av = 0;
+        grille.q44av = 0;
+        grille.q45av = 0;
+        grille.q46av = 0;
+        grille.q47av = 0;
+        grille.q48av = 0;
+        grille.q49av = 0;
+        grille.q50av = 0;
+        grille.q51av = 0;
+        grille.q52av = 0;
+        grille.q53av = 0;
+        grille.q54av = 0;
+        grille.q55av = 0;
+        grille.q56av = 0;
+        grille.q57av = 0;
+        grille.q58av = 0;
+        grille.q59av = 0;
+        grille.q60av = 0;
+        grille.q61av = 0;
+        grille.q62av = 0;
+        grille.q63av = 0;
+        grille.q64av = 0;
+        grille.q65av = 0;
+        grille.q66av = 0;
+        grille.q67av = 0;
+        grille.q68av = 0;
+        grille.q69av = 0;
+        grille.q70av = 0;
+        grille.q71av = 0;
+        grille.q72av = 0;
+        grille.q73av = 0;
+        grille.q74av = 0;
+        grille.q75av = 0;
+        grille.q76av = 0;
+        grille.q77av = 0;
+        grille.q78av = 0;
+        grille.q79av = 0;
+        grille.q80av = 0;
+        grille.q81av = 0;
+        grille.q82av = 0;
+        grille.q83av = 0;
+        grille.q84av = 0;
+        grille.q85av = 0;
+        grille.q86av = 0;
+        grille.q4=0;
+        grille.q5=0;
+        grille.q6=0;
+        
+        user.save({grille:grille});
+}
 //Grille A1             
 function grillea1(button,user,course,version) {
     
@@ -4313,6 +4430,10 @@ function grillea1(button,user,course,version) {
     if (grille!="[]" && grille!="" && grille.q1 == 2)
         var disabled = 'disabled="disabled"';
     else disabled='';
+    
+    if (grille=="[]" || grille=="") {
+        initGrille(thisuser);
+    }
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1>';
@@ -4678,6 +4799,10 @@ function grillea2(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
+    if (grille=="[]" || grille=="") {
+        initGrille(thisuser);
+    }
+    
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1>';
     html += '<h1 align="center" class="grille">Grille de positionnement <span class="red">Sanitaire</span></h1>';
@@ -5041,6 +5166,10 @@ function grillea3(button,user,course,version) {
     if (grille!="[]" && grille!="" && grille.q3 == 2)
         var disabled = 'disabled="disabled"';
     else disabled='';
+    
+    if (grille=="[]" || grille=="") {
+        initGrille(thisuser);
+    }
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1>';
@@ -11895,14 +12024,14 @@ function modifierPif(button,user,course,version) {
              MM.log('indexContent:'+indexcontent);
              
             if (content.modname == "scorm") {
-                if (indexcontent == 1 && grille.q1 == 2) {
+                if (indexcontent == 1) {
                     note =  (parseInt(grille.q5am) + parseInt(grille.q6am) + parseInt(grille.q7am) + parseInt(grille.q8am) + parseInt(grille.q9am));
                     if (note <= 8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 1:'+note);
                 }
-                if (indexcontent == 1 && grille.q4 == 2) {
+                if (indexcontent == 1) {
                     note =  parseInt(grille.q20av) + (parseInt(grille.q26av) + parseInt(grille.q27av) + parseInt(grille.q28av) +parseInt(grille.q29av) +parseInt(grille.q30av))/5 + (parseInt(grille.q45av) + parseInt(grille.q46av) + parseInt(grille.q47av))/3 + (parseInt(grille.q52av) + parseInt(grille.q53av) + parseInt(grille.q54av) + parseInt(grille.q55av))/4 + parseInt(grille.q59av) + parseInt(grille.q65av);
                     if (note >= 9) {
                         unckeckednoteav = 1;
@@ -11917,7 +12046,7 @@ function modifierPif(button,user,course,version) {
                     }
                     MM.log('Note Module 2:'+note);
                 }
-                if (indexcontent == 2 && grille.q5 == 2) {
+                if (indexcontent == 2) {
                     note =  parseInt(grille.q66av) + (parseInt(grille.q67av) + parseInt(grille.q68av) + parseInt(grille.q69av) +parseInt(grille.q70av) +parseInt(grille.q71av))/5 + parseInt(grille.q72av) + (parseInt(grille.q73av) + parseInt(grille.q74av))/2 + parseInt(grille.q75av) + parseInt(grille.q76av);
                     if (note >= 9) {
                         unckeckednoteav = 1;
@@ -11925,14 +12054,14 @@ function modifierPif(button,user,course,version) {
                     MM.log('Note Module 2v:'+note);
                 }
                 
-                if (indexcontent == 3 && grille.q3 == 2) {
+                if (indexcontent == 3) {
                     note =  (parseInt(grille.q16am) + parseInt(grille.q17am) + parseInt(grille.q18am) + parseInt(grille.q19am) + parseInt(grille.q20am));
                     if (note <= 8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 3:'+note);
                 }
-                if (indexcontent == 3 && grille.q6 == 2) {
+                if (indexcontent == 3) {
                     note =  parseInt(grille.q77av) + (parseInt(grille.q78av) + parseInt(grille.q79av) + parseInt(grille.q80av) +parseInt(grille.q81av) +parseInt(grille.q82av))/5 + parseInt(grille.q83av) + parseInt(grille.q84av) + parseInt(grille.q85av) + parseInt(grille.q86av);
                     if (note >= 9) {
                         unckeckednoteav = 1;
@@ -11940,14 +12069,14 @@ function modifierPif(button,user,course,version) {
                     MM.log('Note Module 3v:'+note);
                 }
                 
-                if (indexcontent == 4 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                if (indexcontent == 4) {
                     note =  (parseInt(grille.q1am) + parseInt(grille.q4am));
                     if (note <= 3.2) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 4:'+note);
                 }
-                if (indexcontent == 4 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                if (indexcontent == 4) {
                     note =  (parseInt(grille.q1av) + parseInt(grille.q2av) + parseInt(grille.q3av) + parseInt(grille.q4av))/4 + (parseInt(grille.q11av) + parseInt(grille.q12av) + parseInt(grille.q13av) + parseInt(grille.q14av) + parseInt(grille.q15av))/5;
                     if (note >= 3) {
                         unckeckednoteav = 1;
@@ -11956,14 +12085,14 @@ function modifierPif(button,user,course,version) {
                 }
                 
                 
-                if (indexcontent == 5 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                if (indexcontent == 5) {
                     note =  parseInt(grille.q1am) + (parseInt(grille.q5am) +  parseInt(grille.q11am) + parseInt(grille.q16am))/3 + (parseInt(grille.q7am) +  parseInt(grille.q13am )+ parseInt(grille.q18am))/3;
                     if (note <= 4.8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 5:'+note);
                 }
-                if (indexcontent == 5 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                if (indexcontent == 5) {
                     note =  (parseInt(grille.q1av) + parseInt(grille.q2av) + parseInt(grille.q3av) + parseInt(grille.q4av))/4 + (parseInt(grille.q16av) + parseInt(grille.q17av) + parseInt(grille.q18av) + parseInt(grille.q19av))/4 + (parseInt(grille.q31av) + parseInt(grille.q32av) + parseInt(grille.q33av) + parseInt(grille.q34av) + parseInt(grille.q35av) + parseInt(grille.q36av) + parseInt(grille.q37av) + parseInt(grille.q38av) + parseInt(grille.q39av) + parseInt(grille.q40av) + parseInt(grille.q41av) + parseInt(grille.q42av) + parseInt(grille.q43av) + parseInt(grille.q44av))/14;
                     if (note >= 4.5) {
                         unckeckednoteav = 1;
@@ -11971,14 +12100,14 @@ function modifierPif(button,user,course,version) {
                     MM.log('Note Module 5v:'+note);
                 }
                 
-                if (indexcontent == 6 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                if (indexcontent == 6) {
                     note =  (parseInt(grille.q6am) +  parseInt(grille.q12am) + parseInt(grille.q17am))/3 + (parseInt(grille.q7am) + parseInt(grille.q13am) + parseInt(grille.q18am))/3;
                     if (note <= 3.2) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 6:'+note);
                 }
-                if (indexcontent == 6 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                if (indexcontent == 6) {
                     note =  (parseInt(grille.q21av) + parseInt(grille.q22av) + parseInt(grille.q23av) + parseInt(grille.q24av)+ parseInt(grille.q25av))/5 + (parseInt(grille.q31av) + parseInt(grille.q32av) + parseInt(grille.q33av) + parseInt(grille.q34av)+ parseInt(grille.q35av) + parseInt(grille.q36av) + parseInt(grille.q37av) + parseInt(grille.q38av) + parseInt(grille.q39av)+ parseInt(grille.q40av) + parseInt(grille.q41av) + parseInt(grille.q42av) + parseInt(grille.q43av) + parseInt(grille.q44av))/14;
                     if (note >= 3) {
                         unckeckednoteav = 1;
@@ -11986,14 +12115,14 @@ function modifierPif(button,user,course,version) {
                     MM.log('Note Module 6v:'+note);
                 }
                 
-                if (indexcontent == 7 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                if (indexcontent == 7) {
                     note =  (parseInt(grille.q7am) +  parseInt(grille.q13am) + parseInt(grille.q18am))/3 + (parseInt(grille.q9am) +  parseInt(grille.q15am) + parseInt(grille.q20am))/3 + parseInt(grille.q10am);
                     if (note <= 4.8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 7:'+note);
                 }
-                if (indexcontent == 7 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                if (indexcontent == 7) {
                     note =  (parseInt(grille.q56av) +  parseInt(grille.q57av) + parseInt(grille.q58av))/3 + (parseInt(grille.q31av) + parseInt(grille.q32av) + parseInt(grille.q33av) + parseInt(grille.q34av)+ parseInt(grille.q35av) + parseInt(grille.q36av) + parseInt(grille.q37av) + parseInt(grille.q38av) + parseInt(grille.q39av)+ parseInt(grille.q40av) + parseInt(grille.q41av) + parseInt(grille.q42av) + parseInt(grille.q43av) + parseInt(grille.q44av))/14 + (parseInt(grille.q60av) + parseInt(grille.q61av) + parseInt(grille.q62av) + parseInt(grille.q63av)+ parseInt(grille.q64av))/5;
                     if (note >= 4.5) {
                         unckeckednoteav = 1;
@@ -12001,14 +12130,14 @@ function modifierPif(button,user,course,version) {
                     MM.log('Note Module 7v:'+note);
                 }
                 
-                if (indexcontent == 8 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                if (indexcontent == 8) {
                     note =  (parseInt(grille.q5am) +  parseInt(grille.q11am) + parseInt(grille.q16am))/3 + (parseInt(grille.q6am) +  parseInt(grille.q12am) + parseInt(grille.q17am))/3 + parseInt(grille.q10am);
                     if (note <= 4.8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 8:'+note);
                 }
-                if (indexcontent == 8 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                if (indexcontent == 8 {
                     note =  (parseInt(grille.q16av) + parseInt(grille.q17av) + parseInt(grille.q18av) + parseInt(grille.q19av))/4 + (parseInt(grille.q21av) + parseInt(grille.q22av) + parseInt(grille.q23av) + parseInt(grille.q24av)+ parseInt(grille.q25av))/5 + (parseInt(grille.q60av) + parseInt(grille.q61av) + parseInt(grille.q62av) + parseInt(grille.q63av)+ parseInt(grille.q64av))/5;
                     if (note >= 4.5) {
                         unckeckednoteav = 1;
@@ -12016,14 +12145,14 @@ function modifierPif(button,user,course,version) {
                     MM.log('Note Module 8v:'+note);
                 }
                 
-                if (indexcontent == 9 && grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
+                if (indexcontent == 9) {
                     note =  (parseInt(grille.q8am) +  parseInt(grille.q14am) + parseInt(grille.q19am))/3 + parseInt(grille.q2am) + parseInt(grille.q3am);
                     if (note <= 4.8) {
                         unckeckednoteam = 1;
                     }
                     MM.log('Note Module 9:'+note);
                 }
-                if (indexcontent == 9 && grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
+                if (indexcontent == 9) {
                     note =  (parseInt(grille.q5av) + parseInt(grille.q6av) + parseInt(grille.q7av) + parseInt(grille.q8av))/4 + (parseInt(grille.q9av) + parseInt(grille.q10av))/2 + (parseInt(grille.q48av) + parseInt(grille.q49av) + parseInt(grille.q50av) + parseInt(grille.q51av))/4;
                     if (note >= 4.5) {
                         unckeckednoteav = 1;
