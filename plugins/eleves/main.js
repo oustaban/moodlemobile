@@ -11879,7 +11879,7 @@ function modifierPif(button,user,course,version) {
         });
         
     } else {
-        MM.log('User with Grille');
+        MM.log('User with Grille:'+grille);
         
         var indexcontent = 1;
         
@@ -11890,6 +11890,7 @@ function modifierPif(button,user,course,version) {
              var unckeckednoteav = 0;
              var note = 0;
              
+             MM.log('indexContent:'+indexcontent);
              
             if (content.modname == "scorm") {
                 if (indexcontent == 1 && grille.q1 == 2) {
