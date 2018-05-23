@@ -416,7 +416,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                      $('#showCourseL').hide();
                                                      $('#createdPif').hide();
                                                      $('#stopCourseL').show();
-                                                     $('#stopSessionL').show();
+                                                     $('#stopSessionL').hide();
                                                      $("#stopCourseL").attr("module",namefile[0]);
                                                      checkmoduleopened = 1
                                                 } else {
@@ -2420,7 +2420,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $('#stopCourseL').show();
                                                 $('#showCourseL').hide();
                                                 $('#createdPif').hide();
-                                                $('#stopSessionL').show();
+                                                $('#stopSessionL').hide();
                                                 //$('#offlineC').hide();
                                                 $('#offlineC').css('visibility','hidden');
                                                 MM.plugins.resource._showResource(path);
