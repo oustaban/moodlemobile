@@ -11879,8 +11879,10 @@ function modifierPif(button,user,course,version) {
         });
         
     } else {
-        MM.log('User with Grille:'+grille);
-        
+        MM.log('User with Grille:');
+        for (var key in grille) {
+            MM.log(key+':'+grille[key]);
+        }
         var indexcontent = 1;
         
         local_contents.forEach(function(local_content) {
