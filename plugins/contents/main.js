@@ -458,6 +458,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 if (file.filesize) {
                     // filesize is in bytes.
                     var filesize = parseInt(file.filesize);
+                    /*
                     if (filesize > FILE_SIZE_WARNING[MM.deviceType]) {
                         var notice = MM.lang.s("noticelargefile");
                         notice += " " + MM.lang.s("filesize") + " " + MM.util.bytesToSize(filesize, 2) + "<br />";
@@ -468,6 +469,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                         });
                         return;
                     }
+                    */
                 }
                 MM.plugins.contents.downloadContentFile(courseId, sectionId, contentId, index, true);
             }
