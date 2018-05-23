@@ -4406,6 +4406,8 @@ function initGrille(user) {
         grille.q6=0;
         
         user.save({grille:grille});
+        
+        return grille;
 }
 //Grille A1             
 function grillea1(button,user,course,version) {
@@ -4433,7 +4435,7 @@ function grillea1(button,user,course,version) {
     else disabled='';
     
     if (grille=="[]" || grille=="") {
-        initGrille(thisuser);
+        grille = initGrille(thisuser);
     }
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
@@ -4801,7 +4803,7 @@ function grillea2(button,user,course,version) {
     else disabled='';
     
     if (grille=="[]" || grille=="") {
-        initGrille(thisuser);
+        grille = initGrille(thisuser);
     }
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
@@ -5169,7 +5171,7 @@ function grillea3(button,user,course,version) {
     else disabled='';
     
     if (grille=="[]" || grille=="") {
-        initGrille(thisuser);
+        grille = initGrille(thisuser);
     }
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
