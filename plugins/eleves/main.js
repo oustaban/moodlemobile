@@ -1877,13 +1877,44 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $.each(usersS, function( indexS, valueS ) {
                                                     var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                     var userG = userP.toJSON();
-                                                    html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" course="'+course+'" time="'+timeSession+'" modules="'+modulesId+'" onclick="signaturePopin(this)" class="btn grd-vert text-blanc">Signature</button></td></tr>';
+                                                    var fileSignature = MM.config.current_site.id+"/"+course+"/result/"+valueS+"_"+timeSession+".png";
+                                                    
+                                                    MM.fs.findFileAndReadContents(fileSignature,
+                                                        function(path) {
+                                                            MM.log('Image Signature OK:'+fileSignature);
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><img src="'+ path +'" width="300"><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                            if (indexUser == usersS.length) {
+                                                                html += '</table></div>';
+                                                                MM.log('Session Module Go:');
+                                                                $("#app-dialog").removeClass('full-screen-dialog2');
+                                                                MM.widgets.dialog(html, options);
+                                                            	
+                                                            }
+                                                            countSignature++;
+                                                            indexUser++;
+                                                        },
+                                                        function(path) {
+                                                            MM.log('Image Signature NOK:'+fileSignature);
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                            if (indexUser == usersS.length) {
+                                                                html += '</table></div>';
+                                                                MM.log('Session Module Go:');
+                                                                $("#app-dialog").removeClass('full-screen-dialog2');
+                                                                MM.widgets.dialog(html, options);
+                                                             	
+                                                            }
+                                                            indexUser++;
+                                                        }
+                                                    );
+                                                    
+                                                    //html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" course="'+course+'" time="'+timeSession+'" modules="'+modulesId+'" onclick="signaturePopin(this)" class="btn grd-vert text-blanc">Signature</button></td></tr>';
                                                 });
+                                                /*
                                                 html += '</table></div>';
                                                 MM.log('Session Module Go:'+html);
                                                 $("#app-dialog").removeClass('full-screen-dialog2');
                                                 MM.widgets.dialog(html, options);
-						
+                                                */
                                             }
                                             indexCourse2++;
                                         }
