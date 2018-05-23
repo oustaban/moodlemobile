@@ -3453,7 +3453,7 @@ function voirlespif(courseId,user) {
             var dateversion = new Date(parseInt(pif.date_version)*1000);
             var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" "+("0" + (dateversion.getHours() + 1)).slice(-2)+":"+("0" + (dateversion.getMinutes() + 1)).slice(-2);
             if (pif.version == 1 ) {
-                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF initial endate du ['+newdate+']</a></p>');
+                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF initial en date du ['+newdate+']</a></p>');
             } else {
                 link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF et Avenant du ['+newdate+']</a></p>');
             }
@@ -4137,10 +4137,23 @@ function amont(button,user,course,version) {
         html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     html += '</tr>';
-    html += '<tr>'
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
+    html += '<tr>';
+   
+    if (grille!="[]" && grille!="" && grille.q1 == 2){
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="btn grd-grisfonce text-blanc">BUREAU</button></td>';
+    } else {
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q2 == 2){
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="btn grd-grisfonce text-blanc">SANITAIRE</button></td>';
+    } else {
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q3 == 2){
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="btn grd-grisfonce text-blanc">PARTIES COMMUNES</button></td>';
+    } else {
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
+    }
     html += '</tr>';
     html += '</table>';
     
