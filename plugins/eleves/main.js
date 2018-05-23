@@ -1828,7 +1828,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.fs.findFileAndReadContents(fileSignature,
                                                         function(path) {
                                                             MM.log('Image Signature OK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><img src="'+ path +'" width="300"><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><img src="'+ path +'" width="300"><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1841,7 +1841,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         },
                                                         function(path) {
                                                             MM.log('Image Signature NOK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1883,7 +1883,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.fs.findFileAndReadContents(fileSignature,
                                                         function(path) {
                                                             MM.log('Image Signature OK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><img src="'+ path +'" width="300"><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><img src="'+ path +'" width="300"><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1896,7 +1896,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         },
                                                         function(path) {
                                                             MM.log('Image Signature NOK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes2" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc">Notes</button></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -3453,9 +3453,9 @@ function voirlespif(courseId,user) {
             var dateversion = new Date(parseInt(pif.date_version)*1000);
             var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" "+("0" + (dateversion.getHours() + 1)).slice(-2)+":"+("0" + (dateversion.getMinutes() + 1)).slice(-2);
             if (pif.version == 1 ) {
-                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">PIF ['+newdate+']</a></p>');
+                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF initial endate du ['+newdate+']</a></p>');
             } else {
-                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">PIF et Avenant ['+newdate+']</a></p>');
+                link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF et Avenant du ['+newdate+']</a></p>');
             }
             version=pif.version;
         }
@@ -4152,7 +4152,7 @@ function amont(button,user,course,version) {
         html += '</table>';
     }
     
-    if (grille!="[]" && grille!="" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2 ) && (pifscourse.length > 0)) {
+    if (grille!="[]" && grille!="" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2 ) && (pifscourse.length == 0)) {
         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
         html += '<tr>';
         html += '<td style="text-align:center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-7">MODIFIER et SIGNER LE PIF</button></td>';
@@ -13417,14 +13417,14 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                             if (grille.q1 == 2 && grille.q2 == 2 && grille.q3 == 2) {
                                 html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button style="width:200px" onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-1">Voir</button></td></tr>';
                             } else {
-                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button style="width:200px" onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
+                                html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AMONT :</span></td><td> <button style="width:200px" onclick="amont(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Compléter</button></td></tr>';
                             }
                             
                             if (grille.q4 == 2 && grille.q5 == 2 && grille.q6 == 2) {
                                 html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" onclick="aval(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-1">Voir</button></td></tr>';
                             } else {
                                 if (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2) {
-                                    html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" onclick="aval(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Complèter</button></td></tr>';
+                                    html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <button style="width:200px" onclick="aval(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" class="modal-button-5">Compléter</button></td></tr>';
                                 } else {
                                     html += '<tr><td><span class="pifgris">GRILLE DE POSITIONNEMENT</span> <span class="pifnoir">AVAL :</span></td><td> <i>Aucune grille de positionnement amont validée</i></td></tr>';
                                 }
