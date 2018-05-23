@@ -1877,7 +1877,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 $.each(usersS, function( indexS, valueS ) {
                                                     var userP = MM.db.get('users', MM.config.current_site.id + "-" + valueS);
                                                     var userG = userP.toJSON();
-                                                    html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" modules="'+modulesId+'" onclick="signaturePopin(this)" class="btn grd-vert text-blanc">Signature</button></td></tr>';
+                                                    html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td><button id="signature" name="signature" userid="'+userG.userid+'" course="'+course+'" time="'+timeSession+'" modules="'+modulesId+'" onclick="signaturePopin(this)" class="btn grd-vert text-blanc">Signature</button></td></tr>';
                                                 });
                                                 html += '</table></div>';
                                                 MM.log('Session Module Go:'+html);
