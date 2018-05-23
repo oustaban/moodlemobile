@@ -1685,7 +1685,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     function(fileUrl) {
                                         MM.log('Write Session :'+fileUrl);
                                         $('#stopSessionL').attr('starttime',d.getTime());
-                                        $('#stopSessionL').show();
                                         $('#showSessionL').hide();
                                         $('#showTimer').show();
                                         $('#synchroR').hide();
@@ -1693,9 +1692,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $('#offlineC').css('visibility','visible');
                                         if (isNotCreated) {
                                             $('#createdPif').show();
+                                            $('#stopSessionL').hide();
+                                        
                                             $('#offlineC').attr('disabled','disabled'); 
                                         } else {
                                             $('#createdPif').hide();
+                                            $('#stopSessionL').show();
+                                        
                                             $('#offlineC > option').removeAttr("selected");
                                         }
                                     },
