@@ -4107,7 +4107,7 @@ function amont(button,user,course,version) {
     });
     
     var html = '<div id="pifContent">';
-    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/><br/><br/><br/>';
+    html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/><br/><br/>';
     html += '<p align="center">Mettez le stagiaire en situation de travail et observez sa technique.</p>';
     html += '<p align="center">Vous pouvez observer votre stagiaire sur un ou plusieurs sites.</p>';
     html += '<p align="center">Veuillez sélectionner le site de votre choix.</p><br/><br/>';
@@ -4145,17 +4145,17 @@ function amont(button,user,course,version) {
     html += '<tr>';
    
     if (grille!="[]" && grille!="" && grille.q1 == 2){
-        html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="btn grd-grisfonce text-blanc">BUREAU</button></td>';
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-9">BUREAU</button></td>';
     } else {
         html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
     }
     if (grille!="[]" && grille!="" && grille.q2 == 2){
-        html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="btn grd-grisfonce text-blanc">SANITAIRE</button></td>';
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-9c">SANITAIRE</button></td>';
     } else {
         html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
     }
     if (grille!="[]" && grille!="" && grille.q3 == 2){
-        html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="btn grd-grisfonce text-blanc">PARTIES COMMUNES</button></td>';
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-9">PARTIES COMMUNES</button></td>';
     } else {
         html += '<td style="width:33%;text-align:center"><button onclick="grillea3(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea3" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
     }
