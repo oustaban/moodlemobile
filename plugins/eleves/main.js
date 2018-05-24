@@ -4150,7 +4150,7 @@ function amont(button,user,course,version) {
         html += '<td style="width:33%;text-align:center"><button onclick="grillea1(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea1" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
     }
     if (grille!="[]" && grille!="" && grille.q2 == 2){
-        html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-9c">SANITAIRE</button></td>';
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-9">SANITAIRE</button></td>';
     } else {
         html += '<td style="width:33%;text-align:center"><button onclick="grillea2(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea2" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
     }
@@ -12183,7 +12183,7 @@ function modifierPif(button,user,course,version) {
                 
                 html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
                 
-                
+                MM.log('CHECKPIF:'+pifArray+'/'+unckeckednoteam)
                 if (pifArray == "") {
                 
                     //MM.log('pifscourse:'+pifscourse+'/'+pifscourse.length+'/'+pifscourse[0]+'/'+pifscourse[0].scormid);
