@@ -295,6 +295,6 @@ function effectiveDeviceHeight() {
         //MM.log('DEVICEWIDTH:'+deviceWidth+'/'+window.devicePixelRatio);
         deviceHeight = deviceHeight / window.devicePixelRatio;
     }
-    MM.log('DEVICEHEIGHT:'+deviceHeight);
+    MM.log('DEVICEHEIGHT:'+deviceHeight+'/'+window.screen.width+'/'+window.innerWidth+'/'+window.screen.height+'/'+window.innerHeight);
     return deviceHeight;
 }
