@@ -86,7 +86,12 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var licensesUser = [];
                     
                     var physicalScreenWidth = effectiveDeviceWidth();
+                    var physicalScreenHeight = effectiveDeviceHeight();
                     var sizetdmodule = (physicalScreenWidth - (506 + (modules.length*2))) / modules.length;
+                    var sizesection = physicalScreenHeight - 100;
+                    var sizesecond = sizesection - 310;
+                    
+                    
                     MM.log('SIZE:' + physicalScreenWidth+'/'+sizetdmodule+'/'+modules.length);
                     
                     
@@ -202,7 +207,9 @@ define(templates,function (reportTpl, elevesRowTpl) {
                         deviceType: MM.deviceType,
                         courseId: courseId,
                         modulesUserPif:modulesUserPif,
-                        sizetdmodule: sizetdmodule
+                        sizetdmodule: sizetdmodule,
+                        sizesection: sizesection,
+                        sizesecond: sizesecond
                     };
                     var html = MM.tpl.render(MM.plugins.report.templates.report.html, tpl);
         
@@ -276,4 +283,18 @@ function effectiveDeviceWidth() {
     }
     MM.log('DEVICEWIDTH:'+deviceWidth);
     return deviceWidth;
+}
+
+function effectiveDeviceHeight() {
+    //var deviceWidth = window.orientation == 0 ? window.screen.width : window.screen.height;
+    var deviceHeight = Math.max(window.screen.height, window.innerHeight);
+    // iOS returns available pixels, Android returns pixels / pixel ratio
+    // http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
+    //MM.log(window.screen.width+'/'+window.innerWidth);
+    if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
+        //MM.log('DEVICEWIDTH:'+deviceWidth+'/'+window.devicePixelRatio);
+        deviceHeight = deviceHeight / window.devicePixelRatio;
+    }
+    MM.log('DEVICEWIDTH:'+deviceWidth);
+    return deviceHeight;
 }
