@@ -3388,7 +3388,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             window.setTimeout(function() {
                     var elem = document.getElementById('pifContent');
                     elem.scrollTop = elem.scrollHeight;
-            }, 500);
+            }, 100);
             
         };
         
@@ -12374,7 +12374,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                         
                                     },
@@ -12397,7 +12397,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                         
                                     }
@@ -12429,7 +12429,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                         
                                     },
@@ -12452,7 +12452,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                         
                                     }
@@ -12496,7 +12496,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                        
                                     },
@@ -12519,7 +12519,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                         
                                     }
@@ -12548,7 +12548,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                     },
                                     function(path) {
@@ -12570,7 +12570,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                     }
                                 );
@@ -12622,7 +12622,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                     },
                                     function(path) {
@@ -12644,7 +12644,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                         
                                     }
@@ -12676,7 +12676,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                     },
                                     function(path) {
@@ -12698,7 +12698,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                     }
                                 );
@@ -12741,7 +12741,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                     },
                                     function(path) {
@@ -12763,7 +12763,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                         
                                     }
@@ -12795,7 +12795,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                     },
                                     function(path) {
@@ -12817,7 +12817,7 @@ function modifierPif(button,user,course,version) {
                                             window.setTimeout(function() {
                                                     var elem = document.getElementById('pifContent');
                                                     elem.scrollTop = elem.scrollHeight;
-                                            }, 1000);
+                                            }, 500);
                                         }
                                     }
                                 );
@@ -12872,7 +12872,7 @@ function modifierPif(button,user,course,version) {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
-                            }, 1000);
+                            }, 500);
                         }
                 
                     },
@@ -12893,7 +12893,7 @@ function modifierPif(button,user,course,version) {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
-                            }, 1000);
+                            }, 500);
                         }
                         
                     }
@@ -12924,7 +12924,7 @@ function modifierPif(button,user,course,version) {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
-                            }, 1000);
+                            }, 500);
                         }
                         
                     },
@@ -12946,7 +12946,7 @@ function modifierPif(button,user,course,version) {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
-                            }, 1000);
+                            }, 500);
                         }
                         
                     }
@@ -13010,7 +13010,7 @@ function modifierPif(button,user,course,version) {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
-                            }, 1000);
+                            }, 500);
                         }
                         
                     },
@@ -13034,7 +13034,7 @@ function modifierPif(button,user,course,version) {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
-                            }, 1000);
+                            }, 500);
                         }
                         
                     }
@@ -13067,7 +13067,7 @@ function modifierPif(button,user,course,version) {
                             window.setTimeout(function() {
                                     var elem = document.getElementById('pifContent');
                                     elem.scrollTop = elem.scrollHeight;
-                            }, 1000);
+                            }, 500);
                         }
                         
                     },
