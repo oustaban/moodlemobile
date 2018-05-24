@@ -367,6 +367,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 $('input:checked').each(function() {
                                     $('#showSessionL').show();
                                     $('#showTimer').hide();
+                                    clearTimeout(upTime.to);
                                 });
                             }
                             
@@ -378,6 +379,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $('#stopSessionL').hide();      
                             $('#synchroR').hide();
                             $('#showTimer').hide();
+                            clearTimeout(upTime.to);
                         }
                     );
                     
@@ -1508,6 +1510,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $("#showSessionL").show();
                                         $("#stopSessionL").hide();
                                         $("#showTimer").hide();
+                                        clearTimeout(upTime.to);
                                         $('#createdPif').hide();
                                     }
                                 );
@@ -2008,6 +2011,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                     $('#showSessionL').show();
                                     $('#showTimer').hide();
+                                    clearTimeout(upTime.to);
                                     //$('#offlineC').hide();
                                     $('#offlineC').css('visibility','hidden');
                                     $('#showCourseL').hide();
@@ -2084,6 +2088,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             
                                                             $('#showSessionL').show();
                                                             $('#showTimer').hide();
+                                                            clearTimeout(upTime.to);
                                                             //$('#offlineC').hide();
                                                             $('#offlineC').css('visibility','hidden');
                                                             $('#showCourseL').hide();
