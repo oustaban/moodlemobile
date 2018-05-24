@@ -13194,7 +13194,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
             window.setTimeout(function() {
                     var elem = document.getElementById('pifContent');
                     elem.scrollTop = elem.scrollHeight;
-            }, 500);
+            }, 100);
         };
         options3.buttons["Fermer"]["style"] = "modal-button-5";
         

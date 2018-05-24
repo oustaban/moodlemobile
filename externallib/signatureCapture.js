@@ -640,6 +640,7 @@ function signaturePopin( elem ) {
 												
 												options.buttons[MM.lang.s("cancel")] = function() {
                                                     MM.widgets.dialogClose2();
+													MM.log('Cancel Signature:'+elem+'/'+userid+'/'+course+'/'+version);
 													modifierPif(elem,userid,course,version);
                                                     //$('button#pif[user="'+userid+'"]').click();
                                                 };
