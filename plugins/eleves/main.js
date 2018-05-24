@@ -4329,9 +4329,9 @@ function initGrille(user) {
         grille.q18am = -1;
         grille.q19am = -1;
         grille.q20am = -1;
-        grille.q1 = -1;
-        grille.q2 = -1;
-        grille.q3 = -1;
+        grille.q1 = 0;
+        grille.q2 = 0;
+        grille.q3 = 0;
         
         grille.q1av = -1;
         grille.q2av = -1;
@@ -4419,9 +4419,9 @@ function initGrille(user) {
         grille.q84av = -1;
         grille.q85av = -1;
         grille.q86av = -1;
-        grille.q4=-1;
-        grille.q5=-1;
-        grille.q6=-1;
+        grille.q4=0;
+        grille.q5=0;
+        grille.q6=0;
         
         user.save({grille:grille});
         
@@ -13372,7 +13372,7 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                         var course = courseid;
                         var user = userid;
                         var version = versionid;
-			var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
+                        var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
                         MM.log('pif:'+course+'/'+user);
                         
                         var userspif = MM.db.where('users', {'userid':parseInt(user),'site':MM.config.current_site.id});
@@ -13423,9 +13423,9 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                         if (version == 1)
                             html += '<p align="center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         if (version == 2)
-                            html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\',\''+version+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                            html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\',\''+version+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         if (version > 2)
-                            html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                            html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         
                         
                         if (grille != "" && grille != "[]") {
