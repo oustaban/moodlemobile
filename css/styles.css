@@ -2378,7 +2378,7 @@ li#lielevelP.nav-item.hide {
 	.btn:active {
 		border:2px #333 solid;
 	}
-	.text-blanc, .modal-button-1, .modal-button-2, .modal-button-3, .modal-button-4, .modal-button-5, .modal-button-6, .modal-button-7, .modal-button-8 {
+	.text-blanc, .modal-button-1, .modal-button-2, .modal-button-3, .modal-button-4, .modal-button-5, .modal-button-6, .modal-button-7, .modal-button-8, .modal-button-9 {
 		color:#fff;
 		text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
 		-moz-text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
@@ -2402,6 +2402,13 @@ li#lielevelP.nav-item.hide {
 	  background: #fff;
 	  color: #144283;
 	  border: 1px solid #144283;
+	  margin-right: 10px;  
+	}
+	.modal-button-9 {
+	  width: 25%;
+	  background: #bbbbbb;
+	  color: #fff;
+	  border: 1px solid #bbbbbb;
 	  margin-right: 10px;  
 	}
 	.pifgris {

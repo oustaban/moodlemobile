@@ -4103,9 +4103,9 @@ function amont(button,user,course,version) {
     
     var html = '<div id="pifContent">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1><br/><br/><br/><br/>';
-    html += '<p align="center"><i>Principe : Mettez le stagiaire en situation de travail et observez sa technique.</i></p><br/>';
-    html += '<p align="center">Vous pouvez observer votre stagiaire sur un ou plusieurs sites.</p><br/>';
-    html += '<p align="center">Veuillez sélectionner le site de votre choix.</p><br/><br/><br/><br/>';
+    html += '<p align="center">Mettez le stagiaire en situation de travail et observez sa technique.</p>';
+    html += '<p align="center">Vous pouvez observer votre stagiaire sur un ou plusieurs sites.</p>';
+    html += '<p align="center">Veuillez sélectionner le site de votre choix.</p><br/><br/>';
     
     html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html += '<tr>';
@@ -4165,7 +4165,7 @@ function amont(button,user,course,version) {
         html += '</table>';
     }
     
-    if (grille!="[]" && grille!="" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2 ) && (pifscourse.length == 0)) {
+    if (grille!="[]" && grille!="" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2 ) && (pifscourse.length > 0)) {
         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
         html += '<tr>';
         html += '<td style="text-align:center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:50%;height:50px" class="modal-button-7">MODIFIER et SIGNER LE PIF</button></td>';
