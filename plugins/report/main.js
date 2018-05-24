@@ -287,13 +287,13 @@ function effectiveDeviceWidth() {
 
 function effectiveDeviceHeight() {
     //var deviceWidth = window.orientation == 0 ? window.screen.width : window.screen.height;
-    var deviceHeight = Math.min(window.screen.width, window.innerWidth);
+    var deviceHeight = Math.min(window.screen.height, window.innerHeight);
     // iOS returns available pixels, Android returns pixels / pixel ratio
     // http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
     //MM.log(window.screen.width+'/'+window.innerWidth);
     if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
         //MM.log('DEVICEWIDTH:'+deviceWidth+'/'+window.devicePixelRatio);
-        deviceHeight = deviceHeight / window.devicePixelRatio;
+        //deviceHeight = deviceHeight / window.devicePixelRatio;
     }
     MM.log('DEVICEHEIGHT:'+deviceHeight+'/'+window.screen.width+'/'+window.innerWidth+'/'+window.screen.height+'/'+window.innerHeight);
     return deviceHeight;
