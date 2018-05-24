@@ -287,7 +287,7 @@ function effectiveDeviceWidth() {
 
 function effectiveDeviceHeight() {
     //var deviceWidth = window.orientation == 0 ? window.screen.width : window.screen.height;
-    var deviceHeight = Math.max(window.screen.height, window.innerHeight);
+    var deviceHeight = Math.min(window.screen.height, window.innerHeight);
     // iOS returns available pixels, Android returns pixels / pixel ratio
     // http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html
     //MM.log(window.screen.width+'/'+window.innerWidth);
