@@ -11906,6 +11906,11 @@ function modifierPif(button,user,course,version) {
     MM.log('pifscourse length:'+pifscourse.length);
     
     MM.log('pifs:'+pifs);
+    var test1 = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
+    var test2 = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+    MM.log('test1:'+test1);
+    MM.log('test2:'+test2);
+    
     //var pifArray = pif;
     
     if (pifs == "" || pifs == "[]")
