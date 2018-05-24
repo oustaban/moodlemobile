@@ -11935,11 +11935,15 @@ function modifierPif(button,user,course,version) {
     if (pifs == "" || pifs == "[]")
         var pifArray = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
     else
-        pifArray = $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif');
+        pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+    
+    MM.log('pifArray:'+pifArray);
+    
     
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
         pifArray = pifArray.replace(/\\"/g, '"');
     }
+    
     MM.log('pifArray:'+pifArray);
     
     
