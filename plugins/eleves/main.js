@@ -4259,10 +4259,23 @@ function aval(button,user,course,version) {
         html += '<td style="width:33%;text-align:center"><p align="center">&nbsp;</p></td>';
     }
     html += '</tr>';
-    html += '<tr>'
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea4(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea4" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea5(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea5" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
-    html += '<td style="width:33%;text-align:center"><button onclick="grillea6(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea6" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
+    html += '<tr>';
+    if (grille!="[]" && grille!="" && grille.q4 == 2){
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea4(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea4" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-9">BUREAU</button></td>';
+    } else {
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea4(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea4" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">BUREAU</button></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q5 == 2){
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea5(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea5" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-9">SANITAIRE</button></td>';
+    } else {
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea5(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea5" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">SANITAIRE</button></td>';
+    }
+    if (grille!="[]" && grille!="" && grille.q6 == 2){
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea6(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea6" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-9">PARTIES COMMUNES</button></td>';
+    } else {
+        html += '<td style="width:33%;text-align:center"><button onclick="grillea§(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="grillea6" course="'+course+'" user="'+user+'"  version="'+version+'" style="width:90%;height:50px" class="modal-button-5">PARTIES COMMUNES</button></td>';
+    }
+    
     html += '</tr>';
     html += '</table>';
     
