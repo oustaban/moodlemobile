@@ -380,7 +380,8 @@ function signaturePopin( elem ) {
 												});
 												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
 												$('button#creerpif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
-												
+												$('button#modifierpif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
+
 												//MM.widgets.dialogClose();
 												
 												var popTitle ="";
@@ -605,7 +606,7 @@ function signaturePopin( elem ) {
 												});
 												$('button#pif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
 												$('button#creerpif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));
-												
+											        $('button#modifierpif[user="'+userid+'"]').attr('pif',JSON.stringify(pifs4));	
 												//MM.widgets.dialogClose();
 												
 												var popTitle ="";

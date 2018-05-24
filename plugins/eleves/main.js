@@ -3375,7 +3375,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
-        
+        $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
         
         var options = {
             title: '',
@@ -11916,7 +11916,7 @@ function modifierPif(button,user,course,version) {
     if (pifs == "" || pifs == "[]")
         var pifArray = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
     else
-        pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+        pifArray = $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif');
     
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
         pifArray = pifArray.replace(/\\"/g, '"');
@@ -13182,8 +13182,8 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
-        //$('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
-                            
+        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
+        $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));                    
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
         
@@ -13214,8 +13214,8 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         }
         
         if (valider == 1){
-                    //$('button#pif[user="'+userpif.userid+'"]').attr('pif','');
-                    $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
+                    $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                    //$('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
                     MM.log('Save:'+pifs2+','+pifs2.length);
                     thisuser.save({pif:pifs2});
                     version = parseInt(version) + 1;
@@ -13427,11 +13427,11 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                         html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
                         html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p><br/><br/>';
                         if (version == 1)
-                            html += '<p align="center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                            html += '<p align="center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" pif="" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         if (version == 2)
-                            html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\',\''+version+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                            html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\',\''+version+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  pif="" version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         if (version > 2)
-                            html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                            html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  pif="" version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         
                         
                         if (grille != "" && grille != "[]") {
