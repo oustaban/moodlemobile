@@ -13182,7 +13182,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
-        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
+        //$('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
                             
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
@@ -13214,7 +13214,8 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         }
         
         if (valider == 1){
-                    $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                    //$('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                    $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
                     MM.log('Save:'+pifs2+','+pifs2.length);
                     thisuser.save({pif:pifs2});
                     version = parseInt(version) + 1;
