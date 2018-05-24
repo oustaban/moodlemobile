@@ -90,7 +90,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var sizetdmodule = (physicalScreenWidth - (506 + (modules.length*2))) / modules.length;
                     var sizesection = physicalScreenHeight - 100;
                     var sizesecond = sizesection - 310;
-                    $('#panel-right').css('overflow','hidden');
+                    //$('#panel-right').css('overflow','hidden');
                     
                     
                     MM.log('SIZE:' + physicalScreenWidth+'/'+sizetdmodule+'/'+modules.length);
