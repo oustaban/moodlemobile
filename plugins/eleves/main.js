@@ -11905,7 +11905,7 @@ function modifierPif(button,user,course,version) {
     });
     MM.log('pifscourse length:'+pifscourse.length);
     
-    
+    MM.log('pifs:'+pifs);
     //var pifArray = pif;
     
     if (pifs == "" || pifs == "[]")
