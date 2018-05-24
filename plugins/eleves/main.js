@@ -2188,8 +2188,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var user = $(this).attr("user");
                         var version = $(this).attr("version");
                         var pifs = $(this).attr("pif");
-                        var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user)); 
-                        clickPif(button,course,user,version,pifs);
+                        var theuser = MM.db.get("users", MM.config.current_site.id + "-" + parseInt(user));
+                        modif = 0;
+                        if (pifs != "") {
+                            modif = 1;
+                        }
+                        clickPif(button,course,user,version,pifs,modif);
                         
                         //MM.log('pif:'+course+'/'+user);
                         
@@ -2299,7 +2303,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if ($('#eleveP'+user).prop("checked") == true) {
                                     
                                     if (grille != "" && grille != "[]" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2)) {
-                                        clickPif(button,course,user,version,'');
+                                        clickPif(button,course,user,version,'',0);
                                     } else {
                                         isCreate = 1;
                                         var html = '<div id="pifContent"><br/><br/>';
@@ -3414,13 +3418,13 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                     thisuser.save({pif:pifs2});
                     
                     if (userpif.pif == "" || userpif.pif == "[]") {
-                        $('button#creerpif[user="'+userpif.userid+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+userpif.userid+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                        $('button#creerpif[user="'+userpif.userid+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'),0)" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+userpif.userid+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
                         $('input#eleveP' + userpif.userid).prop('checked',false);
                         clickedP = 1;
                         $("a[eleve='eleveP"+userpif.userid+"']").trigger("click");
                     }
                     
-                    $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                    $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
                     version = parseInt(version) + 1;
                     $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
 
@@ -12326,7 +12330,7 @@ function modifierPif(button,user,course,version) {
         MM.Router.navigate("eleves/" + course );
         //$("#app-dialog").removeClass('full-screen-dialog2');
         MM.widgets.dialogClose();
-        clickPif(button,course,user,version,'');
+        clickPif(button,course,user,version,'',0);
         
     };
     
@@ -13384,7 +13388,7 @@ function alertIdle(since) {
 }
 
 
-function clickPif(thisbutton,courseid,userid,versionid,spifs) {
+function clickPif(thisbutton,courseid,userid,versionid,spifs,modif) {
     
                         MM.log('Pif clicked');
                         var button = thisbutton;
@@ -13490,7 +13494,13 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
                         MM.widgets.dialog(html, options);
                         document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
 
+                        /*
                         if (pifArray != "") {
+                            $("button#modifierpif").click();
+                            
+                        }
+                        */
+                        if (modif) {
                             $("button#modifierpif").click();
                             
                         }
