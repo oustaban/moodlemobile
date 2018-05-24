@@ -13195,7 +13195,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
-        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
+        //$('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
         $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));                    
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
