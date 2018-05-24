@@ -90,6 +90,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                     var sizetdmodule = (physicalScreenWidth - (506 + (modules.length*2))) / modules.length;
                     var sizesection = physicalScreenHeight - 100;
                     var sizesecond = sizesection - 310;
+                    $('#panel-right').css('overflow','hidden');
                     
                     
                     MM.log('SIZE:' + physicalScreenWidth+'/'+sizetdmodule+'/'+modules.length);
@@ -293,7 +294,7 @@ function effectiveDeviceHeight() {
     //MM.log(window.screen.width+'/'+window.innerWidth);
     if (navigator.userAgent.indexOf('Android') >= 0 && window.devicePixelRatio) {
         //MM.log('DEVICEWIDTH:'+deviceWidth+'/'+window.devicePixelRatio);
-        deviceHeight = deviceHeight / window.devicePixelRatio;
+        deviceHeight = (deviceHeight / window.devicePixelRatio) - 50;
     }
     MM.log('DEVICEHEIGHT:'+deviceHeight);
     return deviceHeight;
