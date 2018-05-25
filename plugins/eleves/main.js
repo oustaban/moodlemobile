@@ -2193,7 +2193,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         if (pifs != "") {
                             modif = 1;
                         }
-                        clickPif(button,course,user,version,pifs,modif);
+                        clickPif(button,course,user,version,pifs);
                         
                         //MM.log('pif:'+course+'/'+user);
                         
@@ -2303,7 +2303,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 if ($('#eleveP'+user).prop("checked") == true) {
                                     
                                     if (grille != "" && grille != "[]" && (grille.q1 == 2 || grille.q2 == 2 || grille.q3 == 2)) {
-                                        clickPif(button,course,user,version,'',0);
+                                        clickPif(button,course,user,version,'');
                                     } else {
                                         isCreate = 1;
                                         var html = '<div id="pifContent"><br/><br/>';
@@ -3379,7 +3379,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
             $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
-        $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
+        //$('button#modifierpif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
         
         var options = {
             title: '',
@@ -3418,7 +3418,7 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                     thisuser.save({pif:pifs2});
                     
                     if (userpif.pif == "" || userpif.pif == "[]") {
-                        $('button#creerpif[user="'+userpif.userid+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'),0)" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+userpif.userid+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
+                        $('button#creerpif[user="'+userpif.userid+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+userpif.userid+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
                         $('input#eleveP' + userpif.userid).prop('checked',false);
                         clickedP = 1;
                         $("a[eleve='eleveP"+userpif.userid+"']").trigger("click");
@@ -11925,7 +11925,7 @@ function modifierPif(button,user,course,version) {
     MM.log('pifs:'+pifs);
     var test1 = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
     var test2 = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
-    var test3 = $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif');
+    //var test3 = $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif');
     MM.log('test1:'+test1);
     MM.log('test2:'+test2);
     MM.log('test3:'+test2);
@@ -12336,7 +12336,7 @@ function modifierPif(button,user,course,version) {
         MM.Router.navigate("eleves/" + course );
         //$("#app-dialog").removeClass('full-screen-dialog2');
         MM.widgets.dialogClose();
-        clickPif(button,course,user,version,'',0);
+        clickPif(button,course,user,version,'');
         
     };
     
@@ -13205,8 +13205,8 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
           }
           MM.log('checkboxes:'+$(this).attr('genre')+'/'+$(this).attr('content')+'/'+$(this).is(':checked')  );
         });
-        //$('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
-        $('button#modifierpif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));                    
+        $('button#pif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));
+        //$('button#modifierpif[user="'+userpif.userid+'"]').attr('pif',JSON.stringify(pifs3));                    
         //MM.log('pifs length:'+pifs2.length)
         //MM.log('pif:'+pifs2[0]+'/'+pifs2[0].scormid);
         
@@ -13394,7 +13394,7 @@ function alertIdle(since) {
 }
 
 
-function clickPif(thisbutton,courseid,userid,versionid,spifs,modif) {
+function clickPif(thisbutton,courseid,userid,versionid,spifs) {
     
                         MM.log('Pif clicked');
                         var button = thisbutton;
@@ -13450,11 +13450,11 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs,modif) {
                         html += '<p align="center">Le Protocole Individuel de Formation (PIF) bipartie a bien été initialisée.</p>';
                         html += '<p align="center">Vous pouvez, à présent, former votre stagiaire selon votre rythme.</p><br/><br/>';
                         if (version == 1)
-                            html += '<p align="center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" pif="'+pifArrayOrg+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                            html += '<p align="center"><button onclick="modifierPif(\''+button+'\',\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         if (version == 2)
-                            html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\',\''+version+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  pif="'+pifArrayOrg+'" version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                            html += '<p align="center"><button onclick="voirpif(\''+course+'\',\''+user+'\',\''+version+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"   version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         if (version > 2)
-                            html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"  pif="'+pifArrayOrg+'" version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
+                            html += '<p align="center"><button onclick="voirlespif(\''+course+'\',\''+user+'\')" course="'+course+'" user="'+user+'" version="'+version+'" class="modal-button-5" style="width: 25%">Voir le PIF</button><button onclick="modifierPif(this,\''+user+'\',\''+course+'\',\''+version+'\')" id="modifierpif" course="'+course+'" user="'+user+'"   version="'+version+'" class="modal-button-6" style="width: 25%">Modifier le PIF</button></p>';
                         
                         
                         if (grille != "" && grille != "[]") {
@@ -13500,16 +13500,11 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs,modif) {
                         MM.widgets.dialog(html, options);
                         document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
 
-                        /*
                         if (pifArray != "") {
                             $("button#modifierpif").click();
                             
                         }
-                        */
-                        if (modif) {
-                            $("button#modifierpif").click();
-                            
-                        }
+                        
                         
                    
 }
