@@ -3423,8 +3423,8 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                         clickedP = 1;
                         $("a[eleve='eleveP"+userpif.userid+"']").trigger("click");
                     }
-                    
-                    $('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
+                    $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
+                    //$('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
                     version = parseInt(version) + 1;
                     $('button#pif[user="'+userpif.userid+'"]').attr('version',version);
 
