@@ -4,7 +4,7 @@
         xmlns:gap="http://phonegap.com/ns/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id        = "com.inhni.inhnov"
-        versionCode = "100"
+        versionCode = "300"
         version   = "3.0">
     <name>INHNOV 3.0</name>
 
