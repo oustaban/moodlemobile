@@ -12291,6 +12291,8 @@ function modifierPif(button,user,course,version) {
                             return el.scormid == content.contentid && el.end == 1;
                     });
                     
+                    MM.log ('GLOUP:'+unckeckednoteav+"/"+pifscorme.length);
+                    
                     if (unckeckednoteav) {
                         html+=' checked="checked" disabled="true"';
                     } else {
