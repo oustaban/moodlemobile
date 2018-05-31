@@ -492,7 +492,7 @@ function signaturePopin( elem ) {
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose2();
-																							$('#'+pifSignature).html('<input type="hidden" name="'+pifSignature+'" value="'+fileSignature+'"><img src="'+fileSignature+'" width="300">')
+																							$('#'+pifSignature).html('<input type="hidden" name="'+pifSignature+'" value="'+fileSignature+'"><img src="'+sig+'" width="300">')
 																							//modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
 																						},
@@ -529,7 +529,7 @@ function signaturePopin( elem ) {
 																						function(fileUrl2) {
 																							MM.log('Write filePifSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose2();
-																							$('#'+pifSignature).html('<input type="hidden" name="'+pifSignature+'" value="'+fileSignature+'"><img src="'+fileSignature+'" width="300">')
+																							$('#'+pifSignature).html('<input type="hidden" name="'+pifSignature+'" value="'+fileSignature+'"><img src="'+sig+'" width="300">')
 																							
 																							//modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
@@ -716,7 +716,7 @@ function signaturePopin( elem ) {
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose2();
-																							$('#'+avenantSignature).html('<input type="hidden" name="'+pifSignature+'" value="'+fileSignature+'"><img src="'+fileSignature+'" width="300">')
+																							$('#'+avenantSignature).html('<input type="hidden" name="'+avenantSignature+'" value="'+fileSignature+'"><img src="'+sig+'" width="300">')
 																							
 																							//modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();
@@ -752,7 +752,7 @@ function signaturePopin( elem ) {
 																						function(fileUrl2) {
 																							MM.log('Write fileAvenantSignatures :'+fileUrl2+' OK');
 																							MM.widgets.dialogClose2();
-																							$('#'+avenantSignature).html('<input type="hidden" name="'+pifSignature+'" value="'+fileSignature+'"><img src="'+fileSignature+'" width="300">')
+																							$('#'+avenantSignature).html('<input type="hidden" name="'+avenantSignature+'" value="'+fileSignature+'"><img src="'+sig+'" width="300">')
 																							
 																							//modifierPif(elem,userid,course,version);
 																							//$('button#pif[user="'+userid+'"]').click();

@@ -12362,14 +12362,14 @@ function modifierPif(button,user,course,version) {
             function(path) {
                 pifsignature1 = path;
                 MM.log('Image Signature Manager avant OK:'+fileSignature1);
-                html += '<tr><td class="center2" id="pifsignature1"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature1" value="'+path+'"></td>';
+                html += '<tr><td class="center2" id="pifsignature1"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature1" value="'+fileSignature1+'"></td>';
                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                 
                 MM.fs.findFileAndReadContents(fileSignature2,
                     function(path) {
                         pifsignature2 = path;
                         MM.log('Image Signature Stagiaire avant OK 1:'+fileSignature2);
-                        html += '<td class="center2" id="pifsignature1"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature2" value="'+path+'"></td></tr>';
+                        html += '<td class="center2" id="pifsignature1"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature2" value="'+fileSignature2+'"></td></tr>';
                         html += '</table><br/><br/>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>APRES LA FORMATION<br/>Signer pour valider les compétences acquises</b></th></tr>';
                         html += '<tr><td class="center2"><b>Le manager</b></td><td class="center2"><b>Le stagiaire</b></td></tr>';
@@ -12378,14 +12378,14 @@ function modifierPif(button,user,course,version) {
                             function(path) {
                                 pifsignature3 = path;
                                 MM.log('Image Signature Manager aprés OK 1:'+fileSignature3);
-                                html += '<tr><td class="center2" id="pifsignature3"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature3"" value="'+path+'"></td>';
+                                html += '<tr><td class="center2" id="pifsignature3"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature3"" value="'+fileSignature3+'"></td>';
                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                         
                                 MM.fs.findFileAndReadContents(fileSignature4,
                                     function(path) {
                                         pifsignature4 = path;
                                         MM.log('Image Signature Stagiaire aprés OK 1:'+fileSignature4);
-                                        html += '<td class="center2" id="pifsignature4"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature4"" value="'+path+'"></td></tr>';
+                                        html += '<td class="center2" id="pifsignature4"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature4"" value="'+fileSignature4+'"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         html += '</table></div>';
@@ -12440,7 +12440,7 @@ function modifierPif(button,user,course,version) {
                                     function(path) {
                                         pifsignature4 = path;
                                         MM.log('Image Signature Stagiaire aprés OK 1:'+fileSignature4);
-                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+fileSignature4+'"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         html += '</table></div>';
@@ -12500,14 +12500,14 @@ function modifierPif(button,user,course,version) {
                             function(path) {
                                 pifsignature3 = path;
                                 MM.log('Image Signature Manager aprés OK:'+fileSignature3);
-                                html += '<tr><td class="center2" id="pifsignature3"><input type="hidden" name="pifsignature3" value="'+path+'"><img src="'+ path +'" width="300"></td>';
+                                html += '<tr><td class="center2" id="pifsignature3"><input type="hidden" name="pifsignature3" value="'+fileSignature3+'"><img src="'+ path +'" width="300"></td>';
                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                         
                                 MM.fs.findFileAndReadContents(fileSignature4,
                                     function(path) {
                                         pifsignature4 = path;
                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
-                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+fileSignature4+'"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         html += '</table></div>';
@@ -12562,7 +12562,7 @@ function modifierPif(button,user,course,version) {
                                     function(path) {
                                         pifsignature4 = path;
                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
-                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+fileSignature4+'"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         html += '</table></div>';
@@ -12616,7 +12616,7 @@ function modifierPif(button,user,course,version) {
                     function(path) {
                         pifsignature2 = path;
                         MM.log('Image Signature Stagiaire avant OK 2:'+fileSignature2);
-                        html += '<td class="center2" id="pifsignature2"><input type="hidden" name="pifsignature2" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                        html += '<td class="center2" id="pifsignature2"><input type="hidden" name="pifsignature2" value="'+fileSignature2+'"><img src="'+ path +'" width="300"></td></tr>';
                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                         html += '</table><br/><br/>';
                         html += '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo"><tr><th class="center" colspan="2"><b>APRES LA FORMATION<br/>Signer pour valider les compétences acquises</b></th></tr>';
@@ -12626,14 +12626,14 @@ function modifierPif(button,user,course,version) {
                             function(path) {
                                 pifsignature3 = path;
                                 MM.log('Image Signature Manager aprés OK:'+fileSignature3);
-                                html += '<tr><td class="center2" id="pifsignature3"><input type="hidden" name="pifsignature3" value="'+path+'"><img src="'+ path +'" width="300"></td>';
+                                html += '<tr><td class="center2" id="pifsignature3"><input type="hidden" name="pifsignature3" value="'+fileSignature3+'"><img src="'+ path +'" width="300"></td>';
                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                         
                                 MM.fs.findFileAndReadContents(fileSignature4,
                                     function(path) {
                                         pifsignature4 = path;
                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
-                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+fileSignature4+'"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         html += '</table></div>';
@@ -12687,7 +12687,7 @@ function modifierPif(button,user,course,version) {
                                     function(path) {
                                         pifsignature4 = path;
                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
-                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+fileSignature4+'"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         html += '</table></div>';
@@ -12745,14 +12745,14 @@ function modifierPif(button,user,course,version) {
                             function(path) {
                                 pifsignature3 = path;
                                 MM.log('Image Signature Manager aprés OK:'+fileSignature3);
-                                html += '<tr><td class="center2" id="pifsignature3"><input type="hidden" name="pifsignature3" value="'+path+'"><img src="'+ path +'" width="300"></td>';
+                                html += '<tr><td class="center2" id="pifsignature3"><input type="hidden" name="pifsignature3" value="'+fileSignature3+'"><img src="'+ path +'" width="300"></td>';
                                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                         
                                 MM.fs.findFileAndReadContents(fileSignature4,
                                     function(path) {
                                         pifsignature4 = path;
                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
-                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+fileSignature4+'"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         html += '</table></div>';
@@ -12806,7 +12806,7 @@ function modifierPif(button,user,course,version) {
                                     function(path) {
                                         pifsignature4 = path;
                                         MM.log('Image Signature Stagiaire aprés OK:'+fileSignature4);
-                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                                        html += '<td class="center2" id="pifsignature4"><input type="hidden" name="pifsignature4" value="'+fileSignature4+'"><img src="'+ path +'" width="300"></td></tr>';
                                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                                 
                                         html += '</table></div>';
@@ -12878,14 +12878,14 @@ function modifierPif(button,user,course,version) {
             function(path) {
                 pifsignature1 = path;
                 MM.log('Image Signature Manager avant OK:'+fileSignature1);
-                html += '<tr><td class="center2" id="pifsignature1"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature1" value="'+path+'"></td>';
+                html += '<tr><td class="center2" id="pifsignature1"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature1" value="'+fileSignature1+'"></td>';
                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                 
                 MM.fs.findFileAndReadContents(fileSignature2,
                     function(path) {
                         pifsignature2 = path;
                         MM.log('Image Signature Stagiaire avant OK 1:'+fileSignature2);
-                        html += '<td class="center2" id="pifsignature2"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature2" value="'+path+'"></td></tr>';
+                        html += '<td class="center2" id="pifsignature2"><img src="'+ path +'" width="300"><input type="hidden" name="pifsignature2" value="'+fileSignature2+'"></td></tr>';
                         html += '</table></div>';
                                         
                         options.buttons["Valider"] = function() { validerPif(userspif,pifs,course,thisuser,$("input[name='pifsignature1']").val(),$("input[name='pifsignature2']").val(),$("input[name='pifsignature3']").val(),$("input[name='pifsignature4']").val(),managerid,managername,version,today); };
@@ -12936,7 +12936,7 @@ function modifierPif(button,user,course,version) {
                     function(path) {
                         pifsignature2 = path;
                         MM.log('Image Signature Stagiaire avant OK 2:'+fileSignature2);
-                        html += '<td class="center2" id="pifsignature2"><input type="hidden" name="pifsignature2" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                        html += '<td class="center2" id="pifsignature2"><input type="hidden" name="pifsignature2" value="'+fileSignature2+'"><img src="'+ path +'" width="300"></td></tr>';
                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                         html += '</table></div>';
                                         
@@ -13013,14 +13013,14 @@ function modifierPif(button,user,course,version) {
             function(path) {
                 avenantsignature1 = path;
                 MM.log('Image Signature Manager Avenant OK Version :'+version+' : '+fileAvenant1);
-                html += '<tr><td class="center2" id="avenantsignature1"><input type="hidden" name="avenantsignature1" value="'+path+'"><img src="'+ path +'" width="300"></td>';
+                html += '<tr><td class="center2" id="avenantsignature1"><input type="hidden" name="avenantsignature1" value="'+fileAvenant1+'"><img src="'+ path +'" width="300"></td>';
                 //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
         
                 MM.fs.findFileAndReadContents(fileAvenant2,
                     function(path) {
                         avenantsignature2 = path;
                         MM.log('Image Signature Stagiaire Avenant OK Version :'+version+' : '+fileAvenant2);
-                        html += '<td class="center2" id="avenantsignature2"><input type="hidden" name="avenantsignature2" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                        html += '<td class="center2" id="avenantsignature2"><input type="hidden" name="avenantsignature2" value="'+fileAvenant2+'"><img src="'+ path +'" width="300"></td></tr>';
                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                 
                         html += '</table></div>';
@@ -13077,7 +13077,7 @@ function modifierPif(button,user,course,version) {
                     function(path) {
                         avenantsignature2 = path;
                         MM.log('Image Signature Stagiaire Avenant OK Version :'+version+' : '+fileAvenant2);
-                        html += '<td class="center2" id="avenantsignature2"><input type="hidden" name="avenantsignature2" value="'+path+'"><img src="'+ path +'" width="300"></td></tr>';
+                        html += '<td class="center2" id="avenantsignature2"><input type="hidden" name="avenantsignature2" value="'+fileAvenant2+'"><img src="'+ path +'" width="300"></td></tr>';
                         //<td class="center2"><button course="'+courseId+'" id="signature_stagiaire_avant" name="signature" userid="'+user+'" onclick="signaturePifPopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></tr>';
                 
                         html += '</table></div>';
