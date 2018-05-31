@@ -11941,13 +11941,13 @@ function modifierPif(button,user,course,version) {
     
     MM.log('pifArray:'+pifArray);
     
-    
+    /*
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
         pifArray = pifArray.replace(/\\"/g, '"');
     }
     
     MM.log('pifArray:'+pifArray);
-    
+    */
     
     if (pifArray == "" || pifArray == "[]" || pifArray == undefined) {
         if (pifscourse.length > 0) {
