@@ -11930,7 +11930,7 @@ function modifierPif(button,user,course,version) {
     MM.log('test2:'+test2);
     MM.log('test3:'+test2);
     
-    var pifArray = pifs;
+    var pifArray = JSON.stringify(pifs);
     
     /*
     if (pifs == "" || pifs == "[]")
@@ -11941,13 +11941,13 @@ function modifierPif(button,user,course,version) {
     
     MM.log('pifArray:'+pifArray);
     
-    /*
+    
     if (pifArray != "" && pifArray != "[]" && pifArray != undefined){
         pifArray = pifArray.replace(/\\"/g, '"');
     }
     
     MM.log('pifArray:'+pifArray);
-    */
+    
     
     if (pifArray == "" || pifArray == "[]" || pifArray == undefined) {
         if (pifscourse.length > 0) {
