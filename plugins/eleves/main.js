@@ -13270,9 +13270,9 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         };
         options2.buttons["Fermer"] = function() {
             MM.widgets.dialogClose2();
-            //MM.widgets.dialogClose();
+            MM.widgets.dialogClose();
             //MM.log("Dialog:"+userpif.userid);
-            //$('button#pif[user="'+userpif.userid+'"]').click();
+            $('button#pif[user="'+userpif.userid+'"]').click();
         };
          options2.buttons["Fermer"]["style"] = "modal-button-5";
         //$("#app-dialog").removeClass('full-screen-dialog2');
