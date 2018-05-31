@@ -11930,7 +11930,7 @@ function modifierPif(button,user,course,version) {
     MM.log('test2:'+test2);
     MM.log('test3:'+test2);
     
-    //var pifArray = pif;
+    var pifArray = pifs;
     
     /*
     if (pifs == "" || pifs == "[]")
