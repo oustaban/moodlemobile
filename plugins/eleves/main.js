@@ -13150,7 +13150,11 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         var userpif = userspif[0].toJSON();
         //MM.log('userpif:'+userpif);
         MM.log('pifs:'+pifs);
-        pifs2 = pifs;
+        //pifs2 = pifs;
+        
+        var pifs2 = $.grep(pifs, function( el ) {
+                    return el.courseid != course;
+        });
         /*
         pifs2 = $.grep(pifs, function( el ) {
                 MM.log('grep:'+el.courseid+'/'+course);
@@ -13266,9 +13270,9 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         };
         options2.buttons["Fermer"] = function() {
             MM.widgets.dialogClose2();
-            MM.widgets.dialogClose();
-            MM.log("Dialog:"+userpif.userid);
-            $('button#pif[user="'+userpif.userid+'"]').click();
+            //MM.widgets.dialogClose();
+            //MM.log("Dialog:"+userpif.userid);
+            //$('button#pif[user="'+userpif.userid+'"]').click();
         };
          options2.buttons["Fermer"]["style"] = "modal-button-5";
         //$("#app-dialog").removeClass('full-screen-dialog2');
