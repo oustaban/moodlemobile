@@ -11988,6 +11988,7 @@ function modifierPif(button,user,course,version) {
     var local_contents = MM.db.where("contents",{courseid : courseId, site: MM.config.current_site.id});
     
     if ((grille == "" || grille == "[]" )) {
+        MM.log('User without Grille:');
         local_contents.forEach(function(local_content) {
              var content = local_content.toJSON();
              var unchecked = 0;
