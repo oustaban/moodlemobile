@@ -11932,10 +11932,12 @@ function modifierPif(button,user,course,version) {
     
     //var pifArray = pif;
     
+    /*
     if (pifs == "" || pifs == "[]")
         var pifArray = $('button#creerpif[user="'+userpif.userid+'"]').attr('pif');
     else
         pifArray = $('button#pif[user="'+userpif.userid+'"]').attr('pif');
+    */
     
     MM.log('pifArray:'+pifArray);
     
