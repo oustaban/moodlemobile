@@ -12211,7 +12211,7 @@ function modifierPif(button,user,course,version) {
                     if (note >= 4.5) {
                         unckeckednoteav = 1;
                     }
-                    MM.log('Note Module 8v:'+note);
+                    MM.log('Note Module 9v:'+note);
                 }
                 
                 html+='<tr><td style="height:40px" class="center2"><input onclick="checkthispif(this)" type="checkbox" id="checkboxpif" genre="b" content="'+content.contentid+'" name="b_'+content.contentid+'"';
@@ -12297,7 +12297,8 @@ function modifierPif(button,user,course,version) {
                         if (pifscorme.length>0) {
                             html+=' checked="checked" disabled="true" ';
                         }
-                        if (unchecked) {
+                        else {
+                        //if (unchecked) {
                             html+=' disabled="true"'
                         }
                     }
