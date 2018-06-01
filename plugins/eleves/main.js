@@ -1831,7 +1831,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.fs.findFileAndReadContents(fileSignature,
                                                         function(path) {
                                                             MM.log('Image Signature OK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><img src="'+ path +'" width="300"><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table><tr><td><img src="'+ path +'" width="300"></td><td><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1844,7 +1844,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         },
                                                         function(path) {
                                                             MM.log('Image Signature NOK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table><tr><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1886,7 +1886,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.fs.findFileAndReadContents(fileSignature,
                                                         function(path) {
                                                             MM.log('Image Signature OK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><img src="'+ path +'" width="300"><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table><tr><td><img src="'+ path +'" width="300"></td><td><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1899,7 +1899,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         },
                                                         function(path) {
                                                             MM.log('Image Signature NOK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table><tr><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -3460,7 +3460,7 @@ function voirlespif(courseId,user) {
             MM.log("Version:"+pif.date_version);
             newpif = parseInt(pif.version) + 1;
             var dateversion = new Date(parseInt(pif.date_version)*1000);
-            var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" à "+("0" + (dateversion.getHours() + 1)).slice(-2)+":"+("0" + (dateversion.getMinutes() + 1)).slice(-2);
+            var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" à "+("0" + (dateversion.getHours())).slice(-2)+":"+("0" + (dateversion.getMinutes() + 1)).slice(-2);
             if (pif.version == 1 ) {
                 link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF initial en date du '+newdate+'</a></p>');
             } else {
