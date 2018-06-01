@@ -13153,7 +13153,7 @@ function validerAvenant(userspif,pifs,course,thisuser,pifsignature1,pifsignature
         //pifs2 = pifs;
         
         var pifs2 = $.grep(pifs, function( el ) {
-                    return el.courseid != course;
+                    return ((el.courseid != course) || (el.courseid == course && el.version != version));
         });
         /*
         pifs2 = $.grep(pifs, function( el ) {
