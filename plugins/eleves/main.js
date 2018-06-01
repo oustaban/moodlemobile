@@ -1831,7 +1831,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.fs.findFileAndReadContents(fileSignature,
                                                         function(path) {
                                                             MM.log('Image Signature OK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table><tr><td><img src="'+ path +'" width="300"></td><td><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table style="width:100%;background:none"><tr><td style="border:0"><img src="'+ path +'" width="300"></td><td style="border:0"><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1844,7 +1844,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         },
                                                         function(path) {
                                                             MM.log('Image Signature NOK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table><tr><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table style="width:100%;background:none"><tr><td style="border:0"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td style="border:0"><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1886,7 +1886,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     MM.fs.findFileAndReadContents(fileSignature,
                                                         function(path) {
                                                             MM.log('Image Signature OK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table><tr><td><img src="'+ path +'" width="300"></td><td><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table style="width:100%;background:none"><tr><td style="border:0"><img src="'+ path +'" width="300"></td><td style="border:0"><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
@@ -1899,7 +1899,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                         },
                                                         function(path) {
                                                             MM.log('Image Signature NOK:'+fileSignature);
-                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table><tr><td><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
+                                                            html += '<tr><td>'+userG.fullname+'</td><td>'+modules+'</td><td class="center2"><table style="width:100%;background:none"><tr><td style="border:0"><button id="signature" course="'+course+'" name="signature" userid="'+valueS+'" time="'+timeSession+'" onclick="signaturePopin(this)" class="btn grd-grisfonce text-blanc">Signature</button></td><td style="border:0"><button id="notes" course="'+course+'" user="'+valueS+'" onclick="notePopin(this)" class="btn grd-grisclair text-blanc"></button></td></tr></table></td></tr>';
                                                             if (indexUser == usersS.length) {
                                                                 html += '</table></div>';
                                                                 MM.log('Session Module Go:');
