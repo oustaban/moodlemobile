@@ -832,11 +832,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             MM.fs.findFileAndReadContents(filePifSignatures,
                                 function (result) {
-                                    uploaduser = 1;
                                     pifSignatureArray = JSON.parse(result);
                                     var countPifSig = pifSignatureArray.length;
                                     var indexPifSig = 0;
                                     var uploadPif = 0;
+                                    
                                     $.each(pifSignatureArray, function( indexPif, valuePif ) {
                                         var file = valuePif.split("/");
                                         var options2 = {};
@@ -873,14 +873,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
                                                                             }
                                                                         );
-                                                                        uploadAvenant(MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_avenantsignatures.json",on,course);
-                                                                    } else {
-                                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                                                                    }
+                                                                    } 
                                                                 }
                                                             },
                                                             function(){
                                                                uploadPif = 1;
+                                                               uploaduser = 1;
+                                                               indexPifSig = indexPifSig + 1;
                                                                MM.log('Upload Pif pas réussi:'+path);
                                                             },
                                                             options2
@@ -900,25 +899,30 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
                                                             }
                                                         );
-                                                        uploadAvenant(MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_avenantsignatures.json",on,course);
-                                                    } else {
-                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                                                    }
+                                                    } 
                                                 }
                                             }
                                         );
                                     });
                                     
+                                    if (indexuser == countuser) {
+                                        if (!uploaduser) {
+                                            uploadAvenant(userspif,on,course);
+                                        } else {
+                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                        }
+                                    }
                                     
                                 },
                                 function(result) {
                                     MM.log('Pas de filePifSignatures');
                                     if (indexuser == countuser) {
                                         if (!uploaduser) {
-                                            uploadAvenant(MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_avenantsignatures.json",on,course);
+                                            uploadAvenant(userspif,on,course);
+                                        } else {
+                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                         }
                                     }
-                                                
                                 }
                             );
                             
@@ -13268,95 +13272,120 @@ function clickPif(thisbutton,courseid,userid,versionid,spifs) {
 
 
 
-function uploadAvenant(fileAvenantSignatures,on,course) {
-    MM.log('Synchro fileAvenantSignatures : ' + fileAvenantSignatures);
-    MM.fs.findFileAndReadContents(fileAvenantSignatures,
-        function (result) {
-            avenantSignatureArray = JSON.parse(result);
-            var countAvenantSig = avenantSignatureArray.length;
-            var indexAvenantSig = 0;
-            var uploadAvenant = 0;
-            $.each(avenantSignatureArray, function( indexAvenant, valueAvenant ) {
-                var file = valueAvenant.split("/");
-                var options2 = {};
-                options2.fileKey="file";
-                options2.fileName = file[file.length-1];
-                options2.mimeType="image/png";
-                options2.params = {
-                    course:course
-                };
-                options2.chunkedMode = false;
-                options2.headers = {
-                  Connection: "close"
-                };
-                MM.log('Avenant Json:'+valueAvenant+'||'+file[file.length-1]);
-                 MM.fs.fileExists(valueAvenant,
-                    function(path) {
-                        var ft = new FileTransfer();
-                            ft.upload(
-                                    path,
-                                    MM.config.current_site.siteurl + '/local/session/uploadsignatureavenant.php',
-                                    function(){
-                                      MM.log('Upload Avenant réussi:'+path);
-                                      indexAvenantSig = indexAvenantSig + 1;
-                                      if (indexAvenantSig == countAvenantSig) {
-                                            if (!uploadAvenant) {
-                                                MM.fs.removeFile (fileAvenantSignatures,
-                                                    function (result) {
-                                                       MM.log('Le fichier '+fileAvenantSignatures+' a bien été effacé');
-                                                       
-                                                    },
-                                                    function (result) {
-                                                       MM.log('Le fichier '+fileAvenantSignatures+' n a pas pu étre effacé');
-                                                    }
-                                                );
-                                                synchroSuite(on,course,course);
-                                            } else {
-                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                                            }
-                                       }
-                                    },
-                                    function(){
-                                       uploadAvenant = 1
-                                       MM.log('Upload Avenant pas réussi:'+path);
-                                    },
-                                    options2
-                          );
-                    },
-                    function (path) {
-                        MM.log('Avenant signature existe pas:'+path+'||'+MM.config.current_site.id+"/"+course+"/"+valueAvenant);
-                        indexAvenantSig = indexAvenantSig + 1;
-                        if (indexAvenantSig == countAvenantSig) {
-                            if (!uploadAvenant) {
-                                MM.fs.removeFile (fileAvenantSignatures,
-                                    function (result) {
-                                       MM.log('Le fichier '+fileAvenantSignatures+' a bien été effacé');
-                                       
-                                    },
-                                    function (result) {
-                                       MM.log('Le fichier '+fileAvenantSignatures+' n a pas pu étre effacé');
-                                    }
-                                );
-                                synchroSuite(on,course,course);
-                            } else {
-                                MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+function uploadAvenant(userspif,on,course) {
+     
+    MM.log('UPLOADAVENANT');
+    var indexuser = 0;
+    var countuser = userspif.length;
+    var uploaduser = 0;
+    $.each(userspif, function( indexUsers, userpif ) {
+                            
+        jsonpif = userpif.toJSON();
+        var fileAvenantSignatures = MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_avenantsignatures.json"
+        MM.log('Synchro fileAvenantSignatures : ' + fileAvenantSignatures);
+        
+        MM.fs.findFileAndReadContents(fileAvenantSignatures,
+            function (result) {
+                avenantSignatureArray = JSON.parse(result);
+                var countAvenantSig = avenantSignatureArray.length;
+                var indexAvenantSig = 0;
+                var uploadAvenant = 0;
+                
+                $.each(avenantSignatureArray, function( indexAvenant, valueAvenant ) {
+                    var file = valueAvenant.split("/");
+                    var options2 = {};
+                    options2.fileKey="file";
+                    options2.fileName = file[file.length-1];
+                    options2.mimeType="image/png";
+                    options2.params = {
+                        course:course
+                    };
+                    options2.chunkedMode = false;
+                    options2.headers = {
+                      Connection: "close"
+                    };
+                    MM.log('Avenant Json:'+valueAvenant+'||'+file[file.length-1]);
+                     MM.fs.fileExists(valueAvenant,
+                        function(path) {
+                            var ft = new FileTransfer();
+                                ft.upload(
+                                        path,
+                                        MM.config.current_site.siteurl + '/local/session/uploadsignatureavenant.php',
+                                        function(){
+                                          MM.log('Upload Avenant réussi:'+path);
+                                          indexAvenantSig = indexAvenantSig + 1;
+                                          if (indexAvenantSig == countAvenantSig) {
+                                                if (!uploadAvenant) {
+                                                    MM.fs.removeFile (fileAvenantSignatures,
+                                                        function (result) {
+                                                           MM.log('Le fichier '+fileAvenantSignatures+' a bien été effacé');
+                                                           
+                                                        },
+                                                        function (result) {
+                                                           MM.log('Le fichier '+fileAvenantSignatures+' n a pas pu étre effacé');
+                                                        }
+                                                    );
+                                                } 
+                                           }
+                                        },
+                                        function(){
+                                           uploadAvenant = 1;
+                                           uploaduser =1;
+                                           indexAvenantSig = indexAvenantSig + 1;
+                                           MM.log('Upload Avenant pas réussi:'+path);
+                                        },
+                                        options2
+                              );
+                        },
+                        function (path) {
+                            MM.log('Avenant signature existe pas:'+path+'||'+MM.config.current_site.id+"/"+course+"/"+valueAvenant);
+                            indexAvenantSig = indexAvenantSig + 1;
+                            if (indexAvenantSig == countAvenantSig) {
+                                if (!uploadAvenant) {
+                                    MM.fs.removeFile (fileAvenantSignatures,
+                                        function (result) {
+                                           MM.log('Le fichier '+fileAvenantSignatures+' a bien été effacé');
+                                           
+                                        },
+                                        function (result) {
+                                           MM.log('Le fichier '+fileAvenantSignatures+' n a pas pu étre effacé');
+                                        }
+                                    );
+                                } 
                             }
                         }
+                    );
+                });
+                
+                if (indexuser == countuser) {
+                    if (!uploaduser) {
+                        synchroSuite(on,course,course);
+                    } else {
+                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                     }
-                );
-            });
-            
-            
-        },
-        function(result) {
-            MM.log('Pas de fileAvenantSignatures')
-        }
-    );
+                }
+                
+            },
+            function(result) {
+                MM.log('Pas de fileAvenantSignatures');
+                if (indexuser == countuser) {
+                    if (!uploaduser) {
+                        synchroSuite(on,course,course);
+                    } else {
+                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                    }
+                }
+            }
+        );
+        
+        indexuser++
+        
+    });
 }
 
 
 function synchroSuite(on,course,courseId) {
-     MM.log('synchroSuite');
+     MM.log('SYNCHROSUITE');
      if (on == undefined || on == "off") {                       
                                 
         $("#synchroR").attr('on','on');
