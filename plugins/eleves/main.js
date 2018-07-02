@@ -801,6 +801,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var grillecourse = new Array();
                         var pifsusers = "";
                         var userspif = MM.db.where("users",{site: MM.config.current_site.id});
+                        var indexuser = 0;
+                        var countuser = userspif.length;
+                        var uploaduser = 0;
                         
                         $.each(userspif, function( indexUsers, userpif ) {
                             var jsonpif = userpif.toJSON();
@@ -823,11 +826,13 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             jsonpif = userpif.toJSON();
                             
+                            
                             var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_pifsignatures.json";
                             MM.log('Synchro filePifSignatures : ' + filePifSignatures);
                             
                             MM.fs.findFileAndReadContents(filePifSignatures,
                                 function (result) {
+                                    uploaduser = 1;
                                     pifSignatureArray = JSON.parse(result);
                                     var countPifSig = pifSignatureArray.length;
                                     var indexPifSig = 0;
@@ -907,12 +912,18 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                 },
                                 function(result) {
-                                    MM.log('Pas de filePifSignatures')
+                                    MM.log('Pas de filePifSignatures');
+                                    if (indexuser == countuser) {
+                                        if (!uploaduser) {
+                                            uploadAvenant(MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_avenantsignatures.json",on,course);
+                                        }
+                                    }
+                                                
                                 }
                             );
                             
                             
-                            
+                            indexuser++;
                             
                         });
                         
