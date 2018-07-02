@@ -13348,8 +13348,8 @@ function synchroSuite(on,course,courseId) {
      MM.log('synchroSuite');
      if (on == undefined || on == "off") {                       
                                 
-        $(this).attr('on','on');
-        MM.log('Synchro On:'+on+','+$(this).attr('on'));
+        $("#synchroR").attr('on','on');
+        MM.log('Synchro On:'+on+','+$("#synchroR").attr('on'));
         var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
         MM.fs.getDirectoryContents(directoryResult,
             function(entries) {
@@ -13434,6 +13434,8 @@ function synchroSuite(on,course,courseId) {
                                                     if (indexSig == countSig) {
                                                         if (!uploadSig) {
                                                             synchroSuite2(on,course,course);
+                                                        } else {
+                                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                                         }
                                                     }
                                                 }
@@ -13447,7 +13449,7 @@ function synchroSuite(on,course,courseId) {
                                 },
                                 function(result) {
                                     MM.log( "Session File NOK :" + sessionFile);
-                                    btnSynchro.attr('on','off');
+                                    $("#synchroR").attr('on','off');
                                 }
                             );
                                 
@@ -13553,7 +13555,7 @@ function synchroSuite2(on,courseId,course) {
                                                 function (result) {
                                                    MM.log('Le fichier '+sessionFile+' a bien été effacé');
                                                    $("#synchroR").hide();
-                                                   btnSynchro.attr('on','off');
+                                                   $("#synchroR").attr('on','off');
                                                    $.each(participants_users, function( indexU, valueU ) {
                                                         MM.log('Remove User:'+MM.config.current_site.id + "-" + valueU);
                                                         MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
@@ -13568,7 +13570,7 @@ function synchroSuite2(on,courseId,course) {
                                                 function (result) {
                                                    MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
                                                    $("#synchroR").hide();
-                                                   btnSynchro.attr('on','off');
+                                                   $("#synchroR").attr('on','off');
                                                    
                                                 }
                                                 
@@ -13586,7 +13588,7 @@ function synchroSuite2(on,courseId,course) {
                                             MM.log("Error updating report/completion " + e);
                                             //message = "Erreur de synchronisation des notes et résultat de la session "+name+", veuillez réessayer.<br><br>";
                                             //MM.popErrorMessage(e);
-                                            btnSynchro.attr('on','off');
+                                            $("#synchroR").attr('on','off');
                                             $("#synchroR").show();
                                             
                                         }
@@ -13599,7 +13601,7 @@ function synchroSuite2(on,courseId,course) {
                                 },
                                 function(result) {
                                     MM.log( "Session File NOK :" + sessionFile);
-                                    btnSynchro.attr('on','off');
+                                    $("#synchroR").attr('on','off');
                                 }
                             );
                                 
