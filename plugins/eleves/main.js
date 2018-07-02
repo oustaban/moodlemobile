@@ -793,8 +793,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         else
                             var messagestart = 'Veuillez vous connecter pour synchroniser vos résultats.';
                         
-                        MM.log('MessageStart:'+messagestart);
-                        MM.popMessage(messagestart, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                       MM.popMessage(messagestart, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                             
                         //Get Pifs
                         var pifscourse = new Array();
@@ -804,6 +803,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         var indexuser = 0;
                         var countuser = userspif.length;
                         var uploaduser = 0;
+                        
+                        MM.log("USER:"+countuser);
                         
                         $.each(userspif, function( indexUsers, userpif ) {
                             var jsonpif = userpif.toJSON();
@@ -829,6 +830,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             var filePifSignatures = MM.config.current_site.id+"/"+course+"/"+jsonpif.userid+"_pifsignatures.json";
                             MM.log('Synchro filePifSignatures : ' + filePifSignatures);
+                            indexuser++;
+                            MM.log('Bilan User:'+indexuser+'/'+countuser+'/'+uploaduser);
+                            
                             
                             MM.fs.findFileAndReadContents(filePifSignatures,
                                 function (result) {
@@ -852,7 +856,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         };
                                         
                                         MM.log('Pif Json:'+valuePif+'||'+file[file.length-1]);
-                                        
+                                        indexPifSig = indexPifSig + 1;
+                                        MM.log('Bilan PIF:'+indexPifSig+'/'+countPifSig+'/'+uploadPif)
+                                                              
                                         MM.fs.fileExists(valuePif,
                                             function(path) {
                                                 var ft = new FileTransfer();
@@ -861,7 +867,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                             MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
                                                             function(){
                                                               MM.log('Upload Pif réussi:'+path);
-                                                              indexPifSig = indexPifSig + 1;
                                                               if (indexPifSig == countPifSig) {
                                                                     if (!uploadPif) {
                                                                         MM.fs.removeFile (filePifSignatures,
@@ -873,14 +878,29 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                                MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
                                                                             }
                                                                         );
-                                                                    } 
+                                                                    }
+                                                                    if (indexuser == countuser) {
+                                                                        if (!uploaduser) {
+                                                                            uploadAvenant(userspif,on,course);
+                                                                        } else {
+                                                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                                        }
+                                                                    }
                                                                 }
                                                             },
                                                             function(){
                                                                uploadPif = 1;
                                                                uploaduser = 1;
                                                                indexPifSig = indexPifSig + 1;
-                                                               MM.log('Upload Pif pas réussi:'+path);
+                                                               if (indexPifSig == countPifSig) {
+                                                                    if (indexuser == countuser) {
+                                                                        if (!uploaduser) {
+                                                                            uploadAvenant(userspif,on,course);
+                                                                        } else {
+                                                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                                        }
+                                                                    }
+                                                               }
                                                             },
                                                             options2
                                                   );
@@ -899,20 +919,22 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                MM.log('Le fichier '+filePifSignatures+' n a pas pu étre effacé');
                                                             }
                                                         );
-                                                    } 
+                                                    }
+                                                    if (indexPifSig == countPifSig) {
+                                                        if (indexuser == countuser) {
+                                                            if (!uploaduser) {
+                                                                uploadAvenant(userspif,on,course);
+                                                            } else {
+                                                                MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                            }
+                                                        }
+                                                   }
                                                 }
                                             }
                                         );
+                                        
+                                        
                                     });
-                                    
-                                    if (indexuser == countuser) {
-                                        if (!uploaduser) {
-                                            uploadAvenant(userspif,on,course);
-                                        } else {
-                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                                        }
-                                    }
-                                    
                                 },
                                 function(result) {
                                     MM.log('Pas de filePifSignatures');
@@ -927,7 +949,6 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             );
                             
                             
-                            indexuser++;
                             
                         });
                         
