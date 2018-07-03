@@ -876,7 +876,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 }
                                                                 indexPifSig++;
                                                                 if (indexPifSig == countPifSig) {
-                                                                    indexuser++;
+                                                                    //indexuser++;
                                                                     if (!uploadPif) {
                                                                         MM.fs.removeFile (filePifSignatures,
                                                                             function (result) {
@@ -908,9 +908,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 uploadPif = 1;
                                                                 uploaduser = 1;
                                                                
-                                                                if (indexPifSig == countPifSig) {
-                                                                    indexuser++;
-                                                                }
+                                                                //if (indexPifSig == countPifSig) {
+                                                                //    indexuser++;
+                                                                //}
                                                                 
                                                                 if (indexuser == countuser) {
                                                                     if (!uploaduser) {
@@ -930,7 +930,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 indexPifSig++;
                                                 
                                                 if (indexPifSig == countPifSig) {
-                                                    indexuser++;
+                                                    //indexuser++;
                                                     if (!uploadPif) {
                                                         MM.fs.removeFile (filePifSignatures,
                                                             function (result) {
