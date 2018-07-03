@@ -1339,7 +1339,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         $("#stopSessionL").show();
                                 },
                                 function (result) {
-                                    $("#showSessionL").show();
+                                    $("#showSessionL").hide();
                                     $("#stopSessionL").hide();
                                     $("#showTimer").hide();
                                 }
