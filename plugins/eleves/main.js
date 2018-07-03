@@ -13341,7 +13341,7 @@ function uploadAvenant(userspif,on,course) {
                 avenantSignatureArray = JSON.parse(result);
                 var countAvenantSig = avenantSignatureArray.length;
                 var indexAvenantSig = 0;
-                var uploadAvenant = 0;
+                var uploadAvenantSig = 0;
                 
                 $.each(avenantSignatureArray, function( indexAvenant, valueAvenant ) {
                     var file = valueAvenant.split("/");
@@ -13368,12 +13368,12 @@ function uploadAvenant(userspif,on,course) {
                                           
                                           
                                             if (r.responseCode != 200 || r.byteSent==0) {
-                                                uploadAvenant = 1;
+                                                uploadAvenantSig = 1;
                                             }
                                             indexAvenantSig++;
                                             if (indexAvenantSig == countAvenantSig) {
                                                 indexuser++;
-                                                if (!uploadAvenant) {
+                                                if (!uploadAvenantSig) {
                                                     MM.fs.removeFile (fileAvenantSignatures,
                                                         function (result) {
                                                            MM.log('Le fichier '+fileAvenantSignatures+' a bien été effacé');
@@ -13387,9 +13387,9 @@ function uploadAvenant(userspif,on,course) {
                                             }
                                             
                                             if (indexuser == countuser) {
-                                                if (!uploadAvenant) {
-                                                    MM.log('SYNCHROSUITE');
-                                                    //synchroSuite(on,course,course);
+                                                if (!uploadAvenantSig) {
+                                                    //MM.log('SYNCHROSUITE');
+                                                    synchroSuite(on,course,course);
                                                 } else {
                                                     MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                 }
@@ -13399,7 +13399,7 @@ function uploadAvenant(userspif,on,course) {
                                         function(error){
                                             MM.log('Pas Upload Avenant réussi:'+path);
                                             indexAvenantSig++;
-                                            uploadAvenant = 1;
+                                            uploadAvenantSig = 1;
                                             uploaduser = 1;
                                            
                                             if (indexAvenantSig == countAvenantSig) {
@@ -13408,8 +13408,8 @@ function uploadAvenant(userspif,on,course) {
                                             
                                             if (indexuser == countuser) {
                                                 if (!uploaduser) {
-                                                    MM.log('SYNCHROSUITE');
-                                                    //synchroSuite(on,course,course);
+                                                    //MM.log('SYNCHROSUITE');
+                                                    synchroSuite(on,course,course);
                                                 } else {
                                                     MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                 }
@@ -13425,7 +13425,7 @@ function uploadAvenant(userspif,on,course) {
                             
                             if (indexAvenantSig == countAvenantSig) {
                                 indexuser++;
-                                if (!uploadAvenant) {
+                                if (!uploadAvenantSig) {
                                     MM.fs.removeFile (fileAvenantSignatures,
                                         function (result) {
                                            MM.log('Le fichier '+fileAvenantSignatures+' a bien été effacé');
@@ -13439,9 +13439,9 @@ function uploadAvenant(userspif,on,course) {
                             }
                             
                             if (indexuser == countuser) {
-                                if (!uploadAvenant) {
-                                    MM.log('SYNCHROSUITE');
-                                    //synchroSuite(on,course,course);
+                                if (!uploadAvenantSig) {
+                                    //MM.log('SYNCHROSUITE');
+                                    synchroSuite(on,course,course);
                                 } else {
                                     MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                 }
@@ -13455,12 +13455,12 @@ function uploadAvenant(userspif,on,course) {
             function(result) {
                 indexuser++;
                 MM.log('Pas de fileAvenantSignatures :'+fileAvenantSignatures);
-                MM.log('User :'+indexuser+'/'+countuser+'/'+uploadAvenant);
+                MM.log('User :'+indexuser+'/'+countuser+'/'+uploadAvenantSig);
                 
                 if (indexuser == countuser) {
                     if (!uploaduser) {
-                        MM.log('SYNCHROSUITE');
-                        //synchroSuite(on,course,course);
+                        //MM.log('SYNCHROSUITE');
+                        synchroSuite(on,course,course);
                     } else {
                         MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                     }
