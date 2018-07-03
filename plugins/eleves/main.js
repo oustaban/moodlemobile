@@ -834,6 +834,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             MM.fs.findFileAndReadContents(filePifSignatures,
                                 function (result) {
+                                    indexuser++;
                                     MM.log('filePifSignatures : ' + filePifSignatures);
                                     pifSignatureArray = JSON.parse(result);
                                     var countPifSig = pifSignatureArray.length;
@@ -870,6 +871,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 MM.log("Code = " + r.responseCode);
                                                                 MM.log("Response = " + r.response);
                                                                 MM.log("Sent = " + r.bytesSent);
+                                                                if (r.responseCode != 200 || r.byteSent==0) {
+                                                                    uploadPif = 1;
+                                                                }
                                                                 indexPifSig++;
                                                                 if (indexPifSig == countPifSig) {
                                                                     indexuser++;
