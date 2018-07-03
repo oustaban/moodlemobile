@@ -1094,6 +1094,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(valueSelected));
                                 var getuserselectedG = getuserselected.toJSON();
+                                MM.log('getuserselectedG:'+usersSelected + '/' + getuserselectedG.pif);
+                                
                                 if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
                                     isNotCreated = 1;
                                 }
