@@ -3216,9 +3216,9 @@ function validerPif(userspif,pifs,course,thisuser,pifsignature1,pifsignature2,pi
                     
                     if (userpif.pif == "" || userpif.pif == "[]") {
                         $('button#creerpif[user="'+userpif.userid+'"]').replaceWith('<button onclick="clickPif($(this),$(this).attr(\'course\'),$(this).attr(\'user\'),$(this).attr(\'version\'),$(this).attr(\'pif\'))" class="btn grd-grisfonce text-blanc" id="pif" pif="" course="'+course+'" version="1" user="'+userpif.userid+'" path="" module="" class="btn grd-grisfonce text-rouge">PIF</button>');
-                        //$('input#eleveP' + userpif.userid).prop('checked',false);
+                        $('input#eleveP' + userpif.userid).prop('checked',false);
                         clickedP = 1;
-                        //$("a[eleve='eleveP"+userpif.userid+"']").trigger("click");
+                        $("a[eleve='eleveP"+userpif.userid+"']").trigger("click");
                     }
                     $('button#pif[user="'+userpif.userid+'"]').attr('pif','');
                     //$('button#pif[user="'+userpif.userid+'"]').attr('pif',pifbutton);
