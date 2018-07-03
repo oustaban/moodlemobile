@@ -964,8 +964,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                     
                                     if (indexuser == countuser) {
                                         if (!uploaduser) {
-                                            MM.log('UPLOADAVENANT');
-                                            //uploadAvenant(userspif,on,course);
+                                            //MM.log('UPLOADAVENANT');
+                                            uploadAvenant(userspif,on,course);
                                         } else {
                                             MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                         }
