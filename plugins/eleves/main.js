@@ -865,8 +865,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                     ft.upload(
                                                             path,
                                                             MM.config.current_site.siteurl + '/local/session/uploadsignaturepif.php',
-                                                            function(){
+                                                            function(r){
                                                                 MM.log('Upload Pif réussi:'+path);
+                                                                MM.log("Code = " + r.responseCode);
+                                                                MM.log("Response = " + r.response);
+                                                                MM.log("Sent = " + r.bytesSent);
                                                                 indexPifSig++;
                                                                 if (indexPifSig == countPifSig) {
                                                                     indexuser++;
@@ -892,8 +895,11 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                     }
                                                                 }
                                                             },
-                                                            function(){
+                                                            function(error){
                                                                 MM.log('Pas Upload Pif réussi:'+path);
+                                                                MM.log("An error has occurred: Code = " + error.code);
+                                                                MM.log("upload error source " + error.source);
+                                                                MM.log("upload error target " + error.target);
                                                                 indexPifSig++;
                                                                 uploadPif = 1;
                                                                 uploaduser = 1;
