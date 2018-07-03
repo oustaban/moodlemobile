@@ -13455,10 +13455,10 @@ function uploadAvenant(userspif,on,course) {
             function(result) {
                 indexuser++;
                 MM.log('Pas de fileAvenantSignatures :'+fileAvenantSignatures);
-                MM.log('User :'+indexuser+'/'+countuser);
+                MM.log('User :'+indexuser+'/'+countuser+'/'+uploadAvenant);
                 
                 if (indexuser == countuser) {
-                    if (!uploadAvenant) {
+                    if (!uploaduser) {
                         MM.log('SYNCHROSUITE');
                         //synchroSuite(on,course,course);
                     } else {
@@ -13526,8 +13526,11 @@ function synchroSuite(on,course,courseId) {
                                                     ft.upload(
                                                               path,
                                                               MM.config.current_site.siteurl + '/local/session/uploadsignatureoffline.php',
-                                                              function(){
+                                                              function(r){
                                                                 MM.log('Upload réussi');
+                                                                if (r.responseCode != 200 || r.byteSent==0) {
+                                                                    uploadSig = 1;
+                                                                }
                                                                 indexSig = indexSig + 1;
                                                                 if (indexSig == countSig) {
                                                                     if (!uploadSig) {
@@ -13539,15 +13542,25 @@ function synchroSuite(on,course,courseId) {
                                                                                MM.log('Le fichier '+signatureRelFile+' n a pas pu étre effacé');
                                                                             }
                                                                        );
-                                                                        synchroSuite2(on,course,course);
+                                                                        MM.log('SYNCHROSUITE2');
+                                                                        //synchroSuite2(on,course,course);
                                                                     } else {
                                                                         MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                                     }
                                                                 }
                                                               },
-                                                              function(){
+                                                              function(error){
+                                                                 indexSig++;
                                                                  uploadSig = 1;
                                                                  MM.log('Upload pas réussi');
+                                                                 if (indexSig == countSig) {
+                                                                    if (!uploadSig) {
+                                                                        MM.log('SYNCHROSUITE2');
+                                                                        //synchroSuite(on,course,course);
+                                                                    } else {
+                                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
+                                                                    }
+                                                                }
                                                                 
                                                               },
                                                               options
@@ -13560,7 +13573,8 @@ function synchroSuite(on,course,courseId) {
                                                     indexSig = indexSig + 1;
                                                     if (indexSig == countSig) {
                                                         if (!uploadSig) {
-                                                            synchroSuite2(on,course,course);
+                                                            MM.log('SYNCHROSUITE2');
+                                                            //synchroSuite2(on,course,course);
                                                         } else {
                                                             MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                                         }
