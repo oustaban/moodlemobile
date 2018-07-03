@@ -13455,7 +13455,7 @@ function uploadAvenant(userspif,on,course) {
             function(result) {
                 indexuser++;
                 MM.log('Pas de fileAvenantSignatures :'+fileAvenantSignatures);
-                MM.log('User :'+indexuser+'/'+countuser+'/'+uploadAvenantSig);
+                MM.log('User :'+indexuser+'/'+countuser);
                 
                 if (indexuser == countuser) {
                     if (!uploaduser) {
