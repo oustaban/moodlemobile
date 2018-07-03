@@ -1277,7 +1277,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                }
                                                $('#createdPif').hide();
                                                clickedP = 0;
-                                            }    
+                                            }
+                                            $('#offlineC').removeAttr('disabled');
                                         }
                                         
                                         
