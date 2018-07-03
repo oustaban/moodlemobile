@@ -892,10 +892,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 
                                                                 if (indexuser == countuser) {
                                                                     if (!uploaduser) {
-                                                                        MM.log('UPLOADAVENANT');
-                                                                        //uploadAvenant(userspif,on,course);
+                                                                        //MM.log('UPLOADAVENANT');
+                                                                        uploadAvenant(userspif,on,course);
                                                                     } else {
-                                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                                     }
                                                                 }
                                                             },
@@ -914,10 +914,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 
                                                                 if (indexuser == countuser) {
                                                                     if (!uploaduser) {
-                                                                        MM.log('UPLOADAVENANT');
-                                                                        //uploadAvenant(userspif,on,course);
+                                                                        //MM.log('UPLOADAVENANT');
+                                                                        uploadAvenant(userspif,on,course);
                                                                     } else {
-                                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                                     }
                                                                 }
                                                 
@@ -946,10 +946,10 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 
                                                 if (indexuser == countuser) {
                                                     if (!uploaduser) {
-                                                        MM.log('UPLOADAVENANT');
-                                                        //uploadAvenant(userspif,on,course);
+                                                        //MM.log('UPLOADAVENANT');
+                                                        uploadAvenant(userspif,on,course);
                                                     } else {
-                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                     }
                                                 }
                                             }
@@ -967,7 +967,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             MM.log('UPLOADAVENANT');
                                             //uploadAvenant(userspif,on,course);
                                         } else {
-                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                            MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                         }
                                     }
                                 }
@@ -13360,10 +13360,16 @@ function uploadAvenant(userspif,on,course) {
                                 ft.upload(
                                         path,
                                         MM.config.current_site.siteurl + '/local/session/uploadsignatureavenant.php',
-                                        function(){
-                                          MM.log('Upload Avenant réussi:'+path);
-                                          indexAvenantSig = indexAvenantSig + 1;
-                                          if (indexAvenantSig == countAvenantSig) {
+                                        function(r){
+                                            MM.log('Upload Avenant réussi:'+path);
+                                          
+                                          
+                                            if (r.responseCode != 200 || r.byteSent==0) {
+                                                uploadAvenant = 1;
+                                            }
+                                            indexAvenantSig++;
+                                            if (indexAvenantSig == countAvenantSig) {
+                                                indexuser++;
                                                 if (!uploadAvenant) {
                                                     MM.fs.removeFile (fileAvenantSignatures,
                                                         function (result) {
@@ -13374,22 +13380,48 @@ function uploadAvenant(userspif,on,course) {
                                                            MM.log('Le fichier '+fileAvenantSignatures+' n a pas pu étre effacé');
                                                         }
                                                     );
-                                                } 
-                                           }
+                                                }
+                                            }
+                                            
+                                            if (indexuser == countuser) {
+                                                if (!uploadAvenant) {
+                                                    MM.log('SYNCHROSUITE');
+                                                    //synchroSuite(on,course,course);
+                                                } else {
+                                                    MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
+                                                }
+                                            }
+                                                                
                                         },
-                                        function(){
-                                           uploadAvenant = 1;
-                                           uploaduser =1;
-                                           indexAvenantSig = indexAvenantSig + 1;
-                                           MM.log('Upload Avenant pas réussi:'+path);
+                                        function(error){
+                                            MM.log('Pas Upload Avenant réussi:'+path);
+                                            indexAvenantSig++;
+                                            uploadAvenant = 1;
+                                            uploaduser = 1;
+                                           
+                                            if (indexAvenantSig == countAvenantSig) {
+                                                indexuser++;
+                                            }
+                                            
+                                            if (indexuser == countuser) {
+                                                if (!uploaduser) {
+                                                    MM.log('SYNCHROSUITE');
+                                                    //synchroSuite(on,course,course);
+                                                } else {
+                                                    MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
+                                                }
+                                            }
+                                                                
                                         },
                                         options2
                               );
                         },
                         function (path) {
-                            MM.log('Avenant signature existe pas:'+path+'||'+MM.config.current_site.id+"/"+course+"/"+valueAvenant);
-                            indexAvenantSig = indexAvenantSig + 1;
+                            MM.log('Pas de fileAveant : ' + valueAvenant);
+                            indexAvenantSig++;
+                            
                             if (indexAvenantSig == countAvenantSig) {
+                                indexuser++;
                                 if (!uploadAvenant) {
                                     MM.fs.removeFile (fileAvenantSignatures,
                                         function (result) {
@@ -13400,28 +13432,33 @@ function uploadAvenant(userspif,on,course) {
                                            MM.log('Le fichier '+fileAvenantSignatures+' n a pas pu étre effacé');
                                         }
                                     );
-                                } 
+                                }
                             }
+                            
+                            if (indexuser == countuser) {
+                                if (!uploadAvenant) {
+                                    MM.log('SYNCHROSUITE');
+                                    //synchroSuite(on,course,course);
+                                } else {
+                                    MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
+                                }
+                            }
+                                                
                         }
                     );
                 });
                 
-                if (indexuser == countuser) {
-                    if (!uploaduser) {
-                        synchroSuite(on,course,course);
-                    } else {
-                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                    }
-                }
-                
             },
             function(result) {
-                MM.log('Pas de fileAvenantSignatures');
+                indexuser++;
+                MM.log('Pas de fileAvenantSignatures :'+fileAvenantSignatures);
+                
                 if (indexuser == countuser) {
-                    if (!uploaduser) {
-                        synchroSuite(on,course,course);
+                    if (!uploadAvenant) {
+                        MM.log('SYNCHROSUITE');
+                        //synchroSuite(on,course,course);
                     } else {
-                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                     }
                 }
             }
@@ -13503,7 +13540,7 @@ function synchroSuite(on,course,courseId) {
                                                                        );
                                                                         synchroSuite2(on,course,course);
                                                                     } else {
-                                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                                        MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                                     }
                                                                 }
                                                               },
