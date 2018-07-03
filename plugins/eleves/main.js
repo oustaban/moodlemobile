@@ -1346,7 +1346,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $("#showCourseL").attr("users","");
                             $("#stopCourseL").attr("users","");
                             $('#createdPif').hide();
-                            $("#stopSessionL").show();
+                            $("#stopSessionL").hide();
                             
                         }
                         
