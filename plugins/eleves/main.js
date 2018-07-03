@@ -1094,7 +1094,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 
                                 var getuserselected = MM.db.get('users',MM.config.current_site.id + "-" + parseInt(valueSelected));
                                 var getuserselectedG = getuserselected.toJSON();
-                                MM.log('getuserselectedG:'+usersSelected + '/' + getuserselectedG.pif);
+                                //MM.log('getuserselectedG:'+usersSelected + '/' + getuserselectedG.pif);
                                 
                                 if (getuserselectedG.pif == "" || getuserselectedG.pif == "[]") {
                                     isNotCreated = 1;
@@ -1168,7 +1168,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                             jsonNotes="[]";
                                         }
                                         
-                                        MM.log("CLICKEDP:"+clickedP+'/'+obj.clickedP);   
+                                        MM.log("CLICKEDP:"+clickedP+'/'+obj.clickedP+'/'+isNotCreated);   
                             
                                         if (isNotCreated) {
                                             if (!obj.clickedP) {
