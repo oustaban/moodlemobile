@@ -13514,10 +13514,10 @@ function synchroSuite(on,course,courseId) {
                                                     MM.log('Signature '+path+' Existe');
                                                     var options = {};
                                                     options.fileKey="file";
-                                                    options.fileName = participants_id[indexU]+'.png';
+                                                    options.fileName = users[indexU]+'.png';
                                                     options.mimeType="image/png";
                                                     options.params = {
-                                                        itemid:participants_id[indexU]
+                                                        itemid:users[indexU]
                                                     };
                                                     options.chunkedMode = false;
                                                     options.headers = {
