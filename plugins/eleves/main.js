@@ -13501,7 +13501,7 @@ function synchroSuite(on,course,courseId) {
                                     var indexSig = 0;
                                     var uploadSig = 0;
             
-                                    MM.log("Users:"+users+"/"+countSig);
+                                    MM.log("Users:"+obj.users+"/"+users+"/"+obj.modulesId+"/"+modulesId+"/"+countSig);
                                     
                                     $.each(obj.users, function( indexU, valueU ) {
                                         
