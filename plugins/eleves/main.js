@@ -834,7 +834,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             
                             MM.fs.findFileAndReadContents(filePifSignatures,
                                 function (result) {
-                                    indexuser++;
+                                    //indexuser++;
                                     MM.log('filePifSignatures : ' + filePifSignatures);
                                     pifSignatureArray = JSON.parse(result);
                                     var countPifSig = pifSignatureArray.length;
@@ -856,7 +856,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                         };
                                         
                                         MM.log('Pif Json:'+valuePif+'||'+file[file.length-1]);
-                                        indexPifSig = indexPifSig + 1;
+                                        //indexPifSig = indexPifSig + 1;
                                         MM.log('Bilan PIF:'+indexPifSig+'/'+countPifSig+'/'+uploadPif)
                                                               
                                         MM.fs.fileExists(valuePif,
@@ -876,7 +876,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 }
                                                                 indexPifSig++;
                                                                 if (indexPifSig == countPifSig) {
-                                                                    //indexuser++;
+                                                                    indexuser++;
                                                                     if (!uploadPif) {
                                                                         MM.fs.removeFile (filePifSignatures,
                                                                             function (result) {
@@ -908,9 +908,9 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                                 uploadPif = 1;
                                                                 uploaduser = 1;
                                                                
-                                                                //if (indexPifSig == countPifSig) {
-                                                                //    indexuser++;
-                                                                //}
+                                                                if (indexPifSig == countPifSig) {
+                                                                    indexuser++;
+                                                                }
                                                                 
                                                                 if (indexuser == countuser) {
                                                                     if (!uploaduser) {
@@ -930,7 +930,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                 indexPifSig++;
                                                 
                                                 if (indexPifSig == countPifSig) {
-                                                    //indexuser++;
+                                                    indexuser++;
                                                     if (!uploadPif) {
                                                         MM.fs.removeFile (filePifSignatures,
                                                             function (result) {
