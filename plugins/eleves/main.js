@@ -13497,13 +13497,13 @@ function synchroSuite(on,course,courseId) {
                                     var modulesName = "";
                                     var users = obj.users.split(",");
                                     var indexU=1;
-                                    var countSig = obj.users.length;
+                                    var countSig = users.length;
                                     var indexSig = 0;
                                     var uploadSig = 0;
             
                                     MM.log("Users:"+obj.users+"/"+users+"/"+obj.modulesId+"/"+modulesId+"/"+countSig);
                                     
-                                    $.each(obj.users, function( indexU, valueU ) {
+                                    $.each(users, function( indexU, valueU ) {
                                         
             
                                         var signatureFile = directoryResult + valueU + '_' + obj.starttime + '.png';
