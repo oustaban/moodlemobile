@@ -2378,7 +2378,7 @@ li#lielevelP.nav-item.hide {
 	.btn:active {
 		border:2px #333 solid;
 	}
-	.text-blanc, .modal-button-1, .modal-button-2, .modal-button-3, .modal-button-4, .modal-button-5, .modal-button-6, .modal-button-7, .modal-button-8, .modal-button-9 {
+	.text-blanc, .modal-button-1, .modal-button-2, .modal-button-3, .modal-button-4, .modal-button-5, .modal-button-6, .modal-button-7, .modal-button-8, .modal-button-9, .modal-button-10 {
 		color:#fff;
 		text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
 		-moz-text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.35);
@@ -2437,7 +2437,7 @@ li#lielevelP.nav-item.hide {
 		background: linear-gradient(to top, #ff9101 75%,#fce9c8 100%); 
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff9101', endColorstr='#fce9c8',GradientType=0 ); 
 	}
-	.grd-vert, .modal-button-2, .modal-button-7 {
+	.grd-vert, .modal-button-2, .modal-button-7, .modal-button-10 {
 		background: #2da801; 
 		background: -moz-linear-gradient(bottom, #2da801 75%, #b0fe86 100%); 
 		background: -webkit-linear-gradient(bottom, #2da801 75%,#b0fe86 100%); 

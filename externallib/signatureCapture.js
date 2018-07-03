@@ -330,7 +330,7 @@ function signaturePopin( elem ) {
                                                                 
                                                     
                                                 };
-												options.buttons["Valider"]['style'] = "modal-button-7";
+												options.buttons["Valider"]['style'] = "modal-button-10";
                                                 
                                                 MM.widgets.dialog(html, options);
                                                 
@@ -572,7 +572,7 @@ function signaturePopin( elem ) {
                                                                 
                                                     
                                                 };
-												options.buttons["Valider"]['style'] = "modal-button-7";
+												options.buttons["Valider"]['style'] = "modal-button-10";
                                                 
                                                 MM.widgets.dialog2(html, options);
                                                 
@@ -796,7 +796,7 @@ function signaturePopin( elem ) {
                                                                 
                                                     
                                                 };
-												options.buttons["Valider"]['style'] = "modal-button-7";
+												options.buttons["Valider"]['style'] = "modal-button-10";
                                                 
 												//$("#app-dialog").removeClass('full-screen-dialog2');
 												//$("#app-dialog .modalContent").css('height','100%');
