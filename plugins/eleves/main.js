@@ -1335,9 +1335,12 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                                
                                             }
                                         );
+                                        $("#showSessionL").hide();
+                                        $("#stopSessionL").show();
                                 },
                                 function (result) {
-                                    $("#showSessionL").hide();
+                                    $("#showSessionL").show();
+                                    $("#stopSessionL").hide();
                                     $("#showTimer").hide();
                                 }
                             );
@@ -1346,7 +1349,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             $("#showCourseL").attr("users","");
                             $("#stopCourseL").attr("users","");
                             $('#createdPif').hide();
-                            $("#stopSessionL").hide();
+                            //$("#stopSessionL").show();
                             
                         }
                         
