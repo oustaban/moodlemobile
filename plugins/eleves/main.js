@@ -13624,6 +13624,7 @@ function synchroSuite2(on,courseId,course) {
         var pifscourse = new Array();
         var grillecourse = new Array();
         var pifsusers = "";
+         var message = "";
         var userspif = MM.db.where("users",{site: MM.config.current_site.id});
        
         $.each(userspif, function( indexUsers, userpif ) {
@@ -13632,7 +13633,7 @@ function synchroSuite2(on,courseId,course) {
             var grille = jsonpif.grille;
             grillecourse[indexUsers] = grille;
             
-            MM.log('UsersPif:'+jsonpif.id+'/'+course+'/'+MM.config.current_site.id);
+            //MM.log('UsersPif:'+jsonpif.id+'/'+course+'/'+MM.config.current_site.id);
             pifsusers += jsonpif.userid+',';
             if (!pifs) {
                 pifs = '[]';
@@ -13640,7 +13641,7 @@ function synchroSuite2(on,courseId,course) {
             pifscourse[indexUsers] = $.grep(pifs, function( el ) {
                             return el.courseid == course;
             });
-            MM.log('pifscourse:'+pifscourse.length);
+            //MM.log('pifscourse:'+pifscourse.length);
         });
                         
         $("#synchro").attr('on','on');
