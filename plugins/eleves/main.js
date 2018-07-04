@@ -13741,13 +13741,7 @@ function synchroSuite2(on,courseId,course) {
                                                                       MM.config.current_site.siteurl + '/local/session/uploadsignatureoffline.php',
                                                                       function(r){
                                                                         MM.log('Upload réussi');
-                                                                        if (r.responseCode != 200 || r.byteSent==0) {
-                                                                            uploaduser = 1;
-                                                                        }
-                                                                        indexuser++;
                                                                         
-                                                                        
-                                                                        if (!uploaduser) {
                                                                             MM.fs.removeFile (signatureRelFile,
                                                                                 function (result) {
                                                                                    MM.log('Le fichier '+signatureRelFile+' a bien été effacé');
@@ -13755,80 +13749,19 @@ function synchroSuite2(on,courseId,course) {
                                                                                 function (result) {
                                                                                    MM.log('Le fichier '+signatureRelFile+' n a pas pu étre effacé');
                                                                                 }
-                                                                           );
-                                                                        }
+                                                                            );
                                                                         
-                                                                        if (indexuser == countuser) {
-                                                                                if (!uploaduser) {
-                                                                                    message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
-                                            
-                                                                                    MM.fs.removeFile (sessionFile,
-                                                                                        function (result) {
-                                                                                           MM.log('Le fichier '+sessionFile+' a bien été effacé');
-                                                                                           $("#synchroR").hide();
-                                                                                           $("#synchroR").attr('on','off');
-                                                                                           $.each(participants_users, function( indexU, valueU ) {
-                                                                                                MM.log('Remove User:'+MM.config.current_site.id + "-" + valueU);
-                                                                                                MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
-                                                                                           });
-                                                                                           
-                                                                                           //MM.widgets.dialogClose();
-                                                                                           MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                                                                                           //sleep(5000);
-                                                                                           //$("#showSessionL").show();
-                                                                                           MM.plugins.eleves.showEleves(course);
-                                                                                        },
-                                                                                        function (result) {
-                                                                                           MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
-                                                                                           $("#synchroR").hide();
-                                                                                           $("#synchroR").attr('on','off');
-                                                                                           
-                                                                                        }
-                                                                                        
-                                                                                   );
-                                                                                } else {
-                                                                                    MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
-                                                                                }
-                                                                        }
                                                                       },
                                                                       function(){
-                                                                            MM.log('Upload pas réussi');
-                                                                            indexuser++;
-                                                                            uploaduser = 1;
-                                                                            if (indexuser == countuser) {
-                                                                               if (!uploaduser) {
-                                                                                   message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
-                                            
-                                                                                    MM.fs.removeFile (sessionFile,
-                                                                                        function (result) {
-                                                                                           MM.log('Le fichier '+sessionFile+' a bien été effacé');
-                                                                                           $("#synchroR").hide();
-                                                                                           $("#synchroR").attr('on','off');
-                                                                                           $.each(participants_users, function( indexU, valueU ) {
-                                                                                                MM.log('Remove User:'+MM.config.current_site.id + "-" + valueU);
-                                                                                                MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
-                                                                                           });
-                                                                                           
-                                                                                           //MM.widgets.dialogClose();
-                                                                                           MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                                                                                           //sleep(5000);
-                                                                                           //$("#showSessionL").show();
-                                                                                           MM.plugins.eleves.showEleves(course);
-                                                                                        },
-                                                                                        function (result) {
-                                                                                           MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
-                                                                                           $("#synchroR").hide();
-                                                                                           $("#synchroR").attr('on','off');
-                                                                                           
-                                                                                        }
-                                                                                        
-                                                                                   );
-                                                                                    
-                                                                               } else {
-                                                                                   MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
-                                                                               }
-                                                                           }
-                                                                        
+                                                                        MM.log('Upload pas réussi');
+                                                                        MM.fs.removeFile (signatureRelFile,
+                                                                                function (result) {
+                                                                                   MM.log('Le fichier '+signatureRelFile+' a bien été effacé');
+                                                                                },
+                                                                                function (result) {
+                                                                                   MM.log('Le fichier '+signatureRelFile+' n a pas pu étre effacé');
+                                                                                }
+                                                                        ); 
                                                                       },
                                                                       options
                                                             );
@@ -13836,39 +13769,6 @@ function synchroSuite2(on,courseId,course) {
                                                           
                                                         },
                                                         function(path) {
-                                                            indexuser++;
-                                                            if (indexuser == countuser) {
-                                                                if (!uploaduser) {
-                                                                    MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 500, resizable: false});
-                                                                } else {
-                                                                    message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
-                                            
-                                                                    MM.fs.removeFile (sessionFile,
-                                                                        function (result) {
-                                                                           MM.log('Le fichier '+sessionFile+' a bien été effacé');
-                                                                           $("#synchroR").hide();
-                                                                           $("#synchroR").attr('on','off');
-                                                                           $.each(participants_users, function( indexU, valueU ) {
-                                                                                MM.log('Remove User:'+MM.config.current_site.id + "-" + valueU);
-                                                                                MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
-                                                                           });
-                                                                           
-                                                                           //MM.widgets.dialogClose();
-                                                                           MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
-                                                                           //sleep(5000);
-                                                                           //$("#showSessionL").show();
-                                                                           MM.plugins.eleves.showEleves(course);
-                                                                        },
-                                                                        function (result) {
-                                                                           MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
-                                                                           $("#synchroR").hide();
-                                                                           $("#synchroR").attr('on','off');
-                                                                           
-                                                                        }
-                                                                        
-                                                                   );
-                                                                }
-                                                            }
                                                             MM.log('Signature Existe pas');
                                                         }
                                                 );
@@ -13877,7 +13777,32 @@ function synchroSuite2(on,courseId,course) {
                                                
                                             });
 
+                                            message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
                                             
+                                            MM.fs.removeFile (sessionFile,
+                                                function (result) {
+                                                   MM.log('Le fichier '+sessionFile+' a bien été effacé');
+                                                   $("#synchroR").hide();
+                                                   $("#synchroR").attr('on','off');
+                                                   $.each(participants_users, function( indexU, valueU ) {
+                                                        MM.log('Remove User:'+MM.config.current_site.id + "-" + valueU);
+                                                        MM.db.remove("users",MM.config.current_site.id + "-" + valueU)
+                                                   });
+                                                   
+                                                   //MM.widgets.dialogClose();
+                                                   MM.popMessage(message, {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
+                                                   //sleep(5000);
+                                                   //$("#showSessionL").show();
+                                                   MM.plugins.eleves.showEleves(course);
+                                                },
+                                                function (result) {
+                                                   MM.log('Le fichier '+sessionFile+' n a pas pu étre effacé');
+                                                   $("#synchroR").hide();
+                                                   $("#synchroR").attr('on','off');
+                                                   
+                                                }
+                                                
+                                            );
                                             
                                             
                                             
