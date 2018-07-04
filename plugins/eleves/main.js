@@ -13534,8 +13534,7 @@ function synchroSuite(on,course,courseId) {
                                                                     uploadSig = 1;
                                                                 }
                                                                 indexSig = indexSig + 1;
-                                                                if (indexSig == countSig) {
-                                                                    if (!uploadSig) {
+                                                                if (!uploadSig) {
                                                                         MM.fs.removeFile (signatureRelFile,
                                                                             function (result) {
                                                                                MM.log('Le fichier '+signatureRelFile+' a bien été effacé');
@@ -13544,8 +13543,11 @@ function synchroSuite(on,course,courseId) {
                                                                                MM.log('Le fichier '+signatureRelFile+' n a pas pu étre effacé');
                                                                             }
                                                                        );
-                                                                        MM.log('SYNCHROSUITE2');
-                                                                        //synchroSuite2(on,course,course);
+                                                                }
+                                                                if (indexSig == countSig) {
+                                                                    if (!uploadSig) {
+                                                                        //MM.log('SYNCHROSUITE2');
+                                                                        synchroSuite2(on,course,course);
                                                                     } else {
                                                                         MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                                     }
@@ -13557,8 +13559,8 @@ function synchroSuite(on,course,courseId) {
                                                                  MM.log('Upload pas réussi');
                                                                  if (indexSig == countSig) {
                                                                     if (!uploadSig) {
-                                                                        MM.log('SYNCHROSUITE2');
-                                                                        //synchroSuite(on,course,course);
+                                                                        //MM.log('SYNCHROSUITE2');
+                                                                        synchroSuite2(on,course,course);
                                                                     } else {
                                                                         MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Veuillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 5000, resizable: false});
                                                                     }
@@ -13575,8 +13577,8 @@ function synchroSuite(on,course,courseId) {
                                                     indexSig = indexSig + 1;
                                                     if (indexSig == countSig) {
                                                         if (!uploadSig) {
-                                                            MM.log('SYNCHROSUITE2');
-                                                            //synchroSuite2(on,course,course);
+                                                            //MM.log('SYNCHROSUITE2');
+                                                            synchroSuite2(on,course,course);
                                                         } else {
                                                             MM.popMessage("Un problème est survenu lors du transfert des signatures.<br/>Vueillez recommencer la synchro.", {title:'Synchronisation des résultats', autoclose: 0, resizable: false});
                                                         }
@@ -13615,12 +13617,13 @@ function synchroSuite(on,course,courseId) {
 
 
 function synchroSuite2(on,courseId,course) {
-     MM.log('synchroSuite2');
+     MM.log('SYNCHROSUITE2');
      if (on == undefined || on == "off") {                       
                                 
         $("#synchro").attr('on','on');
         MM.log('Synchro On:'+on+','+$("#synchro").attr('on'));
         var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
+        
         MM.fs.getDirectoryContents(directoryResult,
             function(entries) {
 
@@ -13654,9 +13657,6 @@ function synchroSuite2(on,courseId,course) {
                                     
                                     var jsongrille = JSON.stringify(grillecourse);
                                    
-                                    
-                                    
-                                    
                                     MM.log("pifs synchro:"+pifscourse.length);
                                     MM.log("Json notes:"+jsonnotes);
                                          
@@ -13686,11 +13686,6 @@ function synchroSuite2(on,courseId,course) {
 
                                             var participants_users = status.participants_user.split(",");
                                             var participants_id = status.participants_id.split(",");
-                                            
-                                            
-                                            
-                                            
-                                            
                                             
                                             message += 'Synchronisation de la session du '+sessionDate+' Effectuée.<br><br>';
                                             
@@ -13736,10 +13731,6 @@ function synchroSuite2(on,courseId,course) {
                                             
                                         }
                                     );
-                                                
-                                    
-                                    
-                                
                                     
                                 },
                                 function(result) {
