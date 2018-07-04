@@ -13619,7 +13619,30 @@ function synchroSuite(on,course,courseId) {
 function synchroSuite2(on,courseId,course) {
      MM.log('SYNCHROSUITE2');
      if (on == undefined || on == "off") {                       
-                                
+        
+        //Get Pifs
+        var pifscourse = new Array();
+        var grillecourse = new Array();
+        var pifsusers = "";
+        var userspif = MM.db.where("users",{site: MM.config.current_site.id});
+       
+        $.each(userspif, function( indexUsers, userpif ) {
+            var jsonpif = userpif.toJSON();
+            var pifs = jsonpif.pif;
+            var grille = jsonpif.grille;
+            grillecourse[indexUsers] = grille;
+            
+            MM.log('UsersPif:'+jsonpif.id+'/'+course+'/'+MM.config.current_site.id);
+            pifsusers += jsonpif.userid+',';
+            if (!pifs) {
+                pifs = '[]';
+            }
+            pifscourse[indexUsers] = $.grep(pifs, function( el ) {
+                            return el.courseid == course;
+            });
+            MM.log('pifscourse:'+pifscourse.length);
+        });
+                        
         $("#synchro").attr('on','on');
         MM.log('Synchro On:'+on+','+$("#synchro").attr('on'));
         var directoryResult = MM.config.current_site.id + "/" + courseId + "/result/";
