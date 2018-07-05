@@ -13853,7 +13853,8 @@ function synchroSuite2(on,courseId,course) {
 function updateGrille() {
         MM.log('UPDATEGRILLE');
         var userspif = MM.db.where("users",{site: MM.config.current_site.id});
-       
+        var grillecourse = new Array();
+        
         $.each(userspif, function( indexUsers, userpif ) {
             var jsonpif = userpif.toJSON();
             var grille = jsonpif.grille;
