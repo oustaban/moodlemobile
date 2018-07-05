@@ -13179,7 +13179,7 @@ function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
                     MM.log("Création de "+upload+" NOK");
                 }
             ); 
-        },
+        }
     );
         
     
