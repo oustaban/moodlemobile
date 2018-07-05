@@ -743,7 +743,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         $("#panel-center li:eq(0)").addClass("selected-row");
                     }
                     
-                    uploadGrille();
+                    updateGrille();
 
                     // Show more button.
                     $("#eleves-showmore").on(MM.clickType, function(e) {
