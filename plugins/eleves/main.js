@@ -742,6 +742,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                         //MM.plugins.eleves.showEleve(courseId, users.shift().id);
                         $("#panel-center li:eq(0)").addClass("selected-row");
                     }
+                    
+                    uploadGrille();
 
                     // Show more button.
                     $("#eleves-showmore").on(MM.clickType, function(e) {
