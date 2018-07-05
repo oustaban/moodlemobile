@@ -13098,63 +13098,91 @@ function closeDialog(course,user) {
 function downloadAvenantsManager(download,upload,av,max,courseId,userId) {
     
     MM.log('downloadAvenantsManager:'+download+','+upload+','+av+','+max);
-    MM.fs.createFile(upload,
-        function(fullpath1) {
-            MM.log("Création de "+upload+" OK");
-            MM.moodleDownloadFile(download,upload,
-                function(fullpath2) {
-                    MM.log("Upload de "+download+" vers "+upload+" OK");
-                    av = av + 1;
-                    if (av <= max) {
-                        var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+userId+'_'+av+'_signature_manager.png');;
-                        var uploadA = MM.config.current_site.id+"/"+courseId+"/"+userId+"_"+av+"_signature_manager.png";;
-                        downloadAvenantsManager(downloadA,uploadA,av,max,courseId,userId)
-                    }
+    MM.fs.fileExists(upload,
+        function(path) {
+            av = av + 1;
+            if (av <= max) {
+                var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+userId+'_'+av+'_signature_manager.png');
+                var uploadA = MM.config.current_site.id+"/"+courseId+"/"+userId+"_"+av+"_signature_manager.png";
+                downloadAvenantsManager(downloadA,uploadA,av,max,courseId,userId)
+            } 
+        },
+        function(path) {
+            MM.fs.createFile(upload,
+                function(fullpath1) {
+                    MM.log("Création de "+upload+" OK");
+                    MM.moodleDownloadFile(download,upload,
+                        function(fullpath2) {
+                            MM.log("Upload de "+download+" vers "+upload+" OK");
+                            av = av + 1;
+                            if (av <= max) {
+                                var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+userId+'_'+av+'_signature_manager.png');
+                                var uploadA = MM.config.current_site.id+"/"+courseId+"/"+userId+"_"+av+"_signature_manager.png";
+                                downloadAvenantsManager(downloadA,uploadA,av,max,courseId,userId)
+                            }
+                        },
+                        function(fullpath2) {
+                            MM.log("Upload de "+download+" vers "+upload+" NOK");
+                        },
+                        false,
+                        function (percent) {
+                           MM.log(percent);
+                        }
+                    );
                 },
-                function(fullpath2) {
-                    MM.log("Upload de "+download+" vers "+upload+" NOK");
-                },
-                false,
-                function (percent) {
-                   MM.log(percent);
+                function(fullpath1) {
+                    MM.log("Création de "+upload+" NOK");
                 }
             );
-        },
-        function(fullpath1) {
-            MM.log("Création de "+upload+" NOK");
         }
     );
+        
+    
 }
 
 
 function downloadAvenantsStagiaire(download,upload,av,max,courseId,userId) {
     MM.log('downloadAvenantsStagiaire:'+download+','+upload+','+av+','+max);
-    MM.fs.createFile(upload,
-        function(fullpath1) {
-            MM.log("Création de "+upload+" OK");
-            MM.moodleDownloadFile(download,upload,
-                function(fullpath2) {
-                    MM.log("Upload de "+download+" vers "+upload+" OK");
-                    av = av + 1;
-                    if (av <= max) {
-                        var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+userId+'_'+av+'_signature_stagiaire.png');;
-                        var uploadA = MM.config.current_site.id+"/"+courseId+"/"+userId+"_"+av+"_signature_stagiaire.png";;
-                        downloadAvenantsStagiaire(downloadA,uploadA,av,max,courseId,userId)
-                    }
-                },
-                function(fullpath2) {
-                    MM.log("Upload de "+download+" vers "+upload+" NOK");
-                },
-                false,
-                function (percent) {
-                   MM.log(percent);
-                }
-            );
+    MM.fs.fileExists(upload,
+        function(path) {
+            av = av + 1;
+            if (av <= max) {
+                var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+userId+'_'+av+'_signature_stagiaire.png');;
+                var uploadA = MM.config.current_site.id+"/"+courseId+"/"+userId+"_"+av+"_signature_stagiaire.png";;
+                downloadAvenantsStagiaire(downloadA,uploadA,av,max,courseId,userId)
+            }  
         },
-        function(fullpath1) {
-            MM.log("Création de "+upload+" NOK");
-        }
+        function(path) {
+           MM.fs.createFile(upload,
+                function(fullpath1) {
+                    MM.log("Création de "+upload+" OK");
+                    MM.moodleDownloadFile(download,upload,
+                        function(fullpath2) {
+                            MM.log("Upload de "+download+" vers "+upload+" OK");
+                            av = av + 1;
+                            if (av <= max) {
+                                var downloadA = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+userId+'_'+av+'_signature_stagiaire.png');;
+                                var uploadA = MM.config.current_site.id+"/"+courseId+"/"+userId+"_"+av+"_signature_stagiaire.png";;
+                                downloadAvenantsStagiaire(downloadA,uploadA,av,max,courseId,userId)
+                            }
+                        },
+                        function(fullpath2) {
+                            MM.log("Upload de "+download+" vers "+upload+" NOK");
+                        },
+                        false,
+                        function (percent) {
+                           MM.log(percent);
+                        }
+                    );
+                },
+                function(fullpath1) {
+                    MM.log("Création de "+upload+" NOK");
+                }
+            ); 
+        },
     );
+        
+    
     
 }
 
