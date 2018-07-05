@@ -599,7 +599,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 function(fullpath) {
                             */
                             if (MM.deviceConnected()) {
-                                    MM.fs.fileExists(uploadFile1,
+                                    MM.fs.fileExists(uploadFile2,
                                             function(path) {
                                                 MM.log(uploadFile2+'Présent');
                                             },
@@ -654,26 +654,33 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 function(fullpath) {
                             */
                             if (MM.deviceConnected()) {
-                                    MM.log(uploadFile3+' Pas Présent');
-                                    MM.fs.createFile(uploadFile3,
-                                        function(fullpath) {
-                                            MM.log("Création de "+uploadFile3+" OK");
-                                            MM.moodleDownloadFile(downloadUrl3, uploadFile3,
-                                                function(fullpath) {
-                                                    MM.log("Upload de "+downloadUrl3+" vers "+uploadFile3+" OK");
-                                                },
-                                                function(fullpath) {
-                                                    MM.log("Upload de "+downloadUrl3+" vers "+uploadFile3+" NOK");
-                                                },
-                                                false,
-                                                function (percent) {
-                                                   MM.log(percent);
-                                                }
-                                            );
-                                        },
-                                        function(fullpath) {
-                                            MM.log("Création de "+uploadFile3+" NOK");
-                                        }
+                                    MM.fs.fileExists(uploadFile3,
+                                            function(path) {
+                                                MM.log(uploadFile3+'Présent');
+                                            },
+                                            function(path) {
+                                                MM.log(uploadFile3+' Pas Présent');
+                                                MM.fs.createFile(uploadFile3,
+                                                    function(fullpath) {
+                                                        MM.log("Création de "+uploadFile3+" OK");
+                                                        MM.moodleDownloadFile(downloadUrl3, uploadFile3,
+                                                            function(fullpath) {
+                                                                MM.log("Upload de "+downloadUrl3+" vers "+uploadFile3+" OK");
+                                                            },
+                                                            function(fullpath) {
+                                                                MM.log("Upload de "+downloadUrl3+" vers "+uploadFile3+" NOK");
+                                                            },
+                                                            false,
+                                                            function (percent) {
+                                                               MM.log(percent);
+                                                            }
+                                                        );
+                                                    },
+                                                    function(fullpath) {
+                                                        MM.log("Création de "+uploadFile3+" NOK");
+                                                    }
+                                                );
+                                            }
                                     );
                             }
                             /*
@@ -698,26 +705,33 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 function(fullpath) {
                             */
                             if (MM.deviceConnected()) {
-                                    MM.log(uploadFile4+' Pas Présent');
-                                    MM.fs.createFile(uploadFile4,
-                                        function(fullpath) {
-                                            MM.log("Création de "+uploadFile4+" OK");
-                                            MM.moodleDownloadFile(downloadUrl4, uploadFile4,
-                                                function(fullpath) {
-                                                    MM.log("Upload de "+downloadUrl4+" vers "+uploadFile4+" OK");
-                                                },
-                                                function(fullpath) {
-                                                    MM.log("Upload de "+downloadUrl4+" vers "+uploadFile4+" NOK");
-                                                },
-                                                false,
-                                                function (percent) {
-                                                   MM.log(percent);
-                                                }
-                                            );
-                                        },
-                                        function(fullpath) {
-                                            MM.log("Création de "+uploadFile4+" NOK");
-                                        }
+                                    MM.fs.fileExists(uploadFile3,
+                                            function(path) {
+                                                MM.log(uploadFile4+'Présent');
+                                            },
+                                            function(path) {
+                                                MM.log(uploadFile4+' Pas Présent');
+                                                MM.fs.createFile(uploadFile4,
+                                                    function(fullpath) {
+                                                        MM.log("Création de "+uploadFile4+" OK");
+                                                        MM.moodleDownloadFile(downloadUrl4, uploadFile4,
+                                                            function(fullpath) {
+                                                                MM.log("Upload de "+downloadUrl4+" vers "+uploadFile4+" OK");
+                                                            },
+                                                            function(fullpath) {
+                                                                MM.log("Upload de "+downloadUrl4+" vers "+uploadFile4+" NOK");
+                                                            },
+                                                            false,
+                                                            function (percent) {
+                                                               MM.log(percent);
+                                                            }
+                                                        );
+                                                    },
+                                                    function(fullpath) {
+                                                        MM.log("Création de "+uploadFile4+" NOK");
+                                                    }
+                                                );
+                                            }
                                     );
                             }
                             /*
