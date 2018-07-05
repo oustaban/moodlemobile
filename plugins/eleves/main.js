@@ -13625,7 +13625,7 @@ function synchroSuite2(on,courseId,course) {
         var pifscourse = new Array();
         var grillecourse = new Array();
         var pifsusers = "";
-         var message = "";
+        var message = "";
         var userspif = MM.db.where("users",{site: MM.config.current_site.id});
        
         $.each(userspif, function( indexUsers, userpif ) {
@@ -13845,4 +13845,44 @@ function synchroSuite2(on,courseId,course) {
     } else {
         MM.log( "Session En cours" + sessionFile);
     }
+}
+
+
+function updateGrille() {
+        MM.log('UPDATEGRILLE');
+        var userspif = MM.db.where("users",{site: MM.config.current_site.id});
+       
+        $.each(userspif, function( indexUsers, userpif ) {
+            var jsonpif = userpif.toJSON();
+            var grille = jsonpif.grille;
+            grillecourse[indexUsers] = grille;
+            
+        });
+                        
+        var jsongrille = JSON.stringify(grillecourse);
+       
+        var data = {
+            "grille": jsongrille
+        }
+                    
+                                    //MM.widgets.dialogClose();
+                                                   
+        MM.moodleWSCall('local_mobile_update_grille', data,
+            function(status){
+                MM.log('update grille OK');
+                
+                
+                
+            },
+            {
+                getFromCache: false,
+                saveToCache: false,
+                silently: true
+            },
+            function(e) {
+                MM.log("update grille NOK " + e);
+            }
+        );
+                                    
+                                
 }
