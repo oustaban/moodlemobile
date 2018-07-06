@@ -535,7 +535,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif 1 pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl1 = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_manager_avant.png');
                             var uploadFile1 = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_manager_avant.png";
-                            MM.log('File1:'uploadFile1+'////'+downloadUrl1);
+                            MM.log('File1:'+uploadFile1+'////'+downloadUrl1);
                             /*
                             MM.fs.fileExists(uploadFile1,
                                 function(fullpath) {
@@ -592,7 +592,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif 2 pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl2 = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_stagiaire_avant.png');
                             var uploadFile2 = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_stagiaire_avant.png";
-                            MM.log('File2:'uploadFile2+'////'+downloadUrl2);
+                            MM.log('File2:'+uploadFile2+'////'+downloadUrl2);
                             /*
                             MM.fs.fileExists(uploadFile2,
                                 function(fullpath) {
@@ -648,7 +648,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif 3 pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl3 = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_manager_apres.png');
                             var uploadFile3 = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_manager_apres.png";
-                            MM.log('File3:'uploadFile3+'////'+downloadUrl3);
+                            MM.log('File3:'+uploadFile3+'////'+downloadUrl3);
                             /*
                             MM.fs.fileExists(uploadFile3,
                                 function(fullpath) {
@@ -700,7 +700,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                             MM.log('Signature Pif 4 pour User:'+user.id+' et cours:'+courseId+' Existe');
                             var downloadUrl4 = encodeURI(MM.config.current_site.siteurl + '/local/session/downloadpif.php?file='+courseId+'_'+user.id+'_signature_stagiaire_apres.png');
                             var uploadFile4 = MM.config.current_site.id+"/"+courseId+"/"+user.id+"_signature_stagiaire_apres.png";
-                            MM.log('File4:'uploadFile4+'////'+downloadUrl4);
+                            MM.log('File4:'+uploadFile4+'////'+downloadUrl4);
                             /*
                             MM.fs.fileExists(uploadFile4,
                                 function(fullpath) {
