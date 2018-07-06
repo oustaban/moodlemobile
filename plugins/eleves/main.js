@@ -712,7 +712,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                                 function(fullpath) {
                             */
                             //if (MM.deviceConnected()) {
-                                    MM.fs.fileExists(uploadFile3,
+                                    MM.fs.fileExists(uploadFile4,
                                             function(path) {
                                                 MM.log(uploadFile4+'Présent');
                                             },
