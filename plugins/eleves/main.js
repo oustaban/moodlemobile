@@ -222,6 +222,8 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     var pifscourse = new Array();
                     var versionArray = new Array();
                     
+                    MM.log('Number Of Users:'+users.length);
+                    
                     $.each(users, function( index, user ) {
                             versionArray[index] = 0;
                             pifscourse[index] = $.grep(user.pif, function( el ) {
@@ -448,6 +450,7 @@ define(templates,function (elevesTpl, eleveTpl, elevesRowTpl, countriesJSON) {
                     // Save the users in the users table.
                     var newUser;
                     $.each(users, function( index, user ) {
+                    MM.log('Index Of Users:'+index);
                     //users.forEach(function(index,user) {
                         newUser = {
                             'id': MM.config.current_site.id + '-' + user.id,
