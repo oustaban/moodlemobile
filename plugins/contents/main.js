@@ -306,11 +306,13 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 MM.log('PATCH1:'+sections.modules[index2].downloaded);
                                 if (sections.modules[index2].downloaded != true) {
                                     if (c.contents && c.contents[0]) {
-                                        MM.log('PATCH3');
+                                        
                                         var filetest = {
                                             fileurl : "story.html"
                                         };
+                                        
                                         var pathstest = MM.plugins.contents.getLocalPaths(c.courseId, c.contentid, filetest);
+                                        MM.log('PATCH3:'+pathstest.file+"///"+pathstest.directory);
                                         MM.fs.fileExists(pathstest.file,
                                             function(chemin) {
                                                 MM.log('PATCH5:'+pathstest.file);
