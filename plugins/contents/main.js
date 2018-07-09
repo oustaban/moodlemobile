@@ -1038,7 +1038,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             filename = MM.fs.normalizeFileName(filename);
 
             // We store in the sdcard the contents in site/course/modname/id/contentIndex/filename
-            var path = MM.config.current_site.id + "/" + courseId + "/" + modId;
+            //var path = MM.config.current_site.id + "/" + courseId + "/" + modId;
+            var path = "MyCourse/" + courseId + "/" + modId;
 
             // Check if the file is in a Moodle virtual directory.
             if (file.filepath) {
@@ -1072,8 +1073,10 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             filename = MM.fs.normalizeFileName(filename);
 
             // We store in the sdcard the contents in site/course/modname/id/contentIndex/filename
-            var path = MM.config.current_site.id + "/" + courseId + "/" + modId;
+            //var path = MM.config.current_site.id + "/" + courseId + "/" + modId;
+            var path = "MyCourse/" + courseId + "/" + modId;
 
+            
             // Check if the file is in a Moodle virtual directory.
             if (file.filepath) {
                 path += file.filepath;
