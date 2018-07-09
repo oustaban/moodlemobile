@@ -172,13 +172,14 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                     });
 
                     var finalContents = [];
-                    var indexContents = 1;
+                    var indexContents = 0;
                     var countContents = JSON.parse(JSON.stringify(contents)).length;
                     
                     $.each(JSON.parse(JSON.stringify(contents)), function(index1, sections){
                         // Skip sections deleting contents..
                         if (sectionId > -1 && sectionId != index1) {
                             // This is a continue.
+                            indexContents++;
                             return true;
                         }
                         sectionName = sections.name;
@@ -408,6 +409,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     MM.db.insert("contents", content);
                                     sections.modules[index2].downloaded = true;
                                     if (indexModule == countModule) {
+                                        indexContents++;
                                         if (indexContents == countContents) {
                                             MM.log("finalContents.push"); 
                                             finalContents.push(sections);
@@ -468,6 +470,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     MM.log('PATCH6:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
                                     
                                     if (indexModule == countModule) {
+                                        indexContents++;
                                         if (indexContents == countContents) {
                                             MM.log("finalContents.push"); 
                                             finalContents.push(sections);
@@ -528,7 +531,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 
                             //PATCH
                         });
-                        indexContents++;
+                        
                         //MM.log("finalContents.push");         
                         //finalContents.push(sections);
 
