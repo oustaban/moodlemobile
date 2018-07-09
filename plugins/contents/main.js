@@ -397,7 +397,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             MM.fs.fileExists(pathstest.file,
                                 function(chemin) {
                                     indexModule++;
-                                    MM.log('PATCH5:'+pathstest.file);
+                                    MM.log('PATCH5:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
+                                    
                                     content.contents[0].localpath = pathstest.file;
                                     content.contents[0].filename = "story.html";
                                     //content.contents[index].fileurl = "/story.html?forcedownload=1";
@@ -463,8 +464,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     
                                 },
                                 function(chemin) {
-                                    MM.log('PATCH6');
                                     indexModule++;
+                                    MM.log('PATCH6:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
+                                    
                                     if (indexModule == countModule) {
                                         if (indexContents == countContents) {
                                             MM.log("finalContents.push"); 
