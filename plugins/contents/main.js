@@ -389,7 +389,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 fileurl : "/story.html?"
                             };
                             
-                            var pathstest = MM.plugins.contents.getLocalPaths(c.courseid, c.contentid, filetest);
+                            var pathstest = MM.plugins.contents.getLocalPaths(content.courseid, content.contentid, filetest);
                             MM.log('PATCH2:'+pathstest.file+"///"+pathstest.directory);
                             MM.fs.fileExists(pathstest.file,
                                 function(chemin) {
