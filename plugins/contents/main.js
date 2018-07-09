@@ -243,12 +243,16 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         if (c.contents.length == 1 || (content.modname == "resource" && extension != "html" && extension != "htm")) {
                                             var cFile = c.contents[0];
                                             downloaded = typeof(cFile.localpath) != "undefined";
+                                           
                                         } else {
                                             downloaded = true;
                                             if (c.contents) {
                                                 $.each(c.contents, function (index5, filep) {
                                                     if (typeof(filep.localpath) == "undefined") {
                                                         downloaded = false;
+                                                        
+                                                        
+                                                        
                                                     }
                                                 });
                                             }
@@ -297,6 +301,30 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     updateContentInDB = true;
                                 }
                                 
+                                //PATCH
+                                if (sections.modules[index2].downloaded != true) {
+                                    if (c.contents && c.contents[0]) {
+                                        var pathstest = MM.plugins.contents.getLocalPaths(c.courseId, c.contentid, "story.html");
+                                        MM.fs.fileExists(pathstest.file,
+                                            function(chemin) {
+                                                c.contents[0].localpath = path.file;
+                                                c.contents[0].filename = "story.html";
+                                                //content.contents[index].fileurl = "/story.html?forcedownload=1";
+                                                c.contents[0].url = "/story.html?forcedownload=1";
+                                                sections.modules[index2].downloaded = true;
+                                                updateContentInDB = true;
+                                            },
+                                            function(chemine) {
+                                                //code
+                                            }
+                                        );
+                                        
+                                        
+                                        var downloadTime = MM.util.timestamp();
+                                        c.contents[index5].downloadtime = downloadTime;
+                                    }
+                                }
+                                //PATCH
                                 //c.courseid = courseId;
                                 
                                 if (updateContentInDB) {
@@ -591,10 +619,10 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                         $(linkCssId).attr("data-content", contentId);
                                                         $(linkCssId).attr("data-section", sectionId);
                                                        
-                                    $(linkCssId).attr("path",MM.fs.getRoot() + "/"+path.file);
+                                                        $(linkCssId).attr("path",MM.fs.getRoot() + "/"+path.file);
                                     
                                 
-                                $(linkCssId).removeAttr("rel");
+                                                        $(linkCssId).removeAttr("rel");
                                                         $(linkCssId).attr("id", "resource-"+contentId);
                                                         linkCssId = "#resource-" + contentId;
                                                         
