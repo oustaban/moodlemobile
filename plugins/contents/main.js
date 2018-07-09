@@ -1076,7 +1076,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
         },
 
         getLocalPaths: function(courseId, modId, file) {
-
+            MM.log('getLocalPaths:'+courseId+'/'+modId+'/'+file.fileurl);
             var filename = file.fileurl;
             //var filename = file.url;
             var paramsPart = filename.lastIndexOf("?");
@@ -1084,9 +1084,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                 filename = filename.substring(0, paramsPart);
             }
             filename = filename.substr(filename.lastIndexOf("/") + 1);
-
+            MM.log('getLocalPaths2:'+filename.lastIndexOf("/")+'/'+filename);
             filename = MM.fs.normalizeFileName(filename);
-
+            MM.log('getLocalPaths3:'+filename);
             // We store in the sdcard the contents in site/course/modname/id/contentIndex/filename
             //var path = MM.config.current_site.id + "/" + courseId + "/" + modId;
             var path = "MyCourse/" + courseId + "/" + modId;
@@ -1098,7 +1098,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             } else {
                 newfile = path + "/" + filename;
             }
-
+            MM.log('getLocalPaths4:'+newfile);
             return {
                 directory: path,
                 file: newfile
