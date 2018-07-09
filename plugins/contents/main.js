@@ -311,7 +311,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             fileurl : "story.html"
                                         };
                                         
-                                        var pathstest = MM.plugins.contents.getLocalPaths(c.courseId, c.contentid, filetest);
+                                        var pathstest = MM.plugins.contents.getLocalPaths(c.courseid, c.contentid, filetest);
                                         MM.log('PATCH3:'+pathstest.file+"///"+pathstest.directory);
                                         MM.fs.fileExists(pathstest.file,
                                             function(chemin) {
@@ -325,7 +325,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 return true;
                                             },
                                             function(chemin) {
-                                                MM.log('PATCH6')
+                                                MM.log('PATCH6');
                                                 if (updateContentInDB) {
                                                     MM.db.insert("contents", c);
                                                 }
