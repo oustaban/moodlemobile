@@ -302,39 +302,56 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 }
                                 
                                 //PATCH
+                                
+                                MM.log('PATCH1:'+sections.modules[index2].downloaded);
                                 if (sections.modules[index2].downloaded != true) {
                                     if (c.contents && c.contents[0]) {
+                                        MM.log('PATCH3');
                                         var filetest = {
                                             fileurl : "story.html"
                                         };
                                         var pathstest = MM.plugins.contents.getLocalPaths(c.courseId, c.contentid, filetest);
                                         MM.fs.fileExists(pathstest.file,
                                             function(chemin) {
-                                                c.contents[0].localpath = path.file;
+                                                MM.log('PATCH5:'+pathstest.file);
+                                                c.contents[0].localpath = pathstest.file;
                                                 c.contents[0].filename = "story.html";
                                                 //content.contents[index].fileurl = "/story.html?forcedownload=1";
                                                 c.contents[0].url = "/story.html?forcedownload=1";
                                                 sections.modules[index2].downloaded = true;
-                                                updateContentInDB = true;
+                                                MM.db.insert("contents", c);
+                                                return true;
                                             },
                                             function(chemin) {
-                                                //code
+                                                MM.log('PATCH6')
+                                                if (updateContentInDB) {
+                                                    MM.db.insert("contents", c);
+                                                }
+                                                return true;
                                             }
                                         );
                                         
                                         
                                         var downloadTime = MM.util.timestamp();
                                         c.contents[0].downloadtime = downloadTime;
+                                    } else {
+                                        if (updateContentInDB) {
+                                            MM.db.insert("contents", c);
+                                        }
+                                        MM.log('PATCH4');
+                                        return true; // This is a continue;
                                     }
+                                } else {
+                                    if (updateContentInDB) {
+                                        MM.db.insert("contents", c);
+                                    }
+                                    MM.log('PATCH2');
+                                    return true; // This is a continue;
                                 }
                                 //PATCH
                                 //c.courseid = courseId;
                                 
-                                if (updateContentInDB) {
-                                    MM.db.insert("contents", c);
-                                }
-
-                                return true; // This is a continue;
+                                
                             }
 
                             // The mod url also exports contents but are external contents not downloadable by the app.
