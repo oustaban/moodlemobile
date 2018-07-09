@@ -308,7 +308,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     if (c.contents && c.contents[0]) {
                                         
                                         var filetest = {
-                                            fileurl : "story.html"
+                                            fileurl : "/story.html"
                                         };
                                         
                                         var pathstest = MM.plugins.contents.getLocalPaths(c.courseid, c.contentid, filetest);
