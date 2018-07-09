@@ -317,14 +317,14 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 sections.modules[index2].downloaded = true;
                                                 updateContentInDB = true;
                                             },
-                                            function(chemine) {
+                                            function(chemin) {
                                                 //code
                                             }
                                         );
                                         
                                         
                                         var downloadTime = MM.util.timestamp();
-                                        c.contents[index5].downloadtime = downloadTime;
+                                        c.contents[0].downloadtime = downloadTime;
                                     }
                                 }
                                 //PATCH
