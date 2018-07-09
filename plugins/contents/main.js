@@ -179,358 +179,362 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                         // Skip sections deleting contents..
                         if (sectionId > -1 && sectionId != index1) {
                             // This is a continue.
-                            indexContents++;
                             return true;
                         }
                         sectionName = sections.name;
                         var indexModule = 0;
                         var countModule = sections.modules.length;
-                        $.each(sections.modules, function(index2, content){
-                            MM.log("ContentID: " + content.id);
-                            content.contentid = content.id;
-                            content.courseid = courseId;
-                            content.section = sectionId;
-                            content.id = MM.config.current_site.id + "-" + content.contentid;
+                        if (sections.modules.length > 0) {
                             
-                            /*
-                            if (content.pif) {
-                                course.save({pif:content.pif});
-                            }
-                            */
-                            
-                            
-                            
-
-                            if(!firstContent) {
-                                firstContent = content.contentid;
-                            }
-
-                            // Check if has multiple files.
-                            if (content.modname == "folder" ||
-                                    (content.contents && content.contents.length > 1)) {
-                                sections.modules[index2].multiplefiles = true;
-                            }
-
-                            // Check if is a resource URL.
-                            if (content.modname == "url" &&
-                                    content.contents && content.contents.length > 0 &&
-                                    content.contents[0].fileurl) {
-
-                                sections.modules[index2].fileurl = content.contents[0].fileurl;
-                               
-                            }
-
-                            // The file/s was/were downloaded.
-                            var downloaded = false;
-
-                            // This content is currently in the database.
-                            if (contentsStored.indexOf(content.id) > -1) {
-                                MM.log("Content is on database:"+ content.id); 
-                                var c = MM.db.get("contents", content.id);
-                                c = c.toJSON();
-                                sections.modules[index2].mainExtension = c.mainExtension;
-                                sections.modules[index2].webOnly = c.webOnly;
-
-                                if (c.contents) {
-                                    $.each(c.contents, function (index5, filep) {
-                                        if (typeof(filep.localpath) != "undefined" &&
-                                                typeof(sections.modules[index2].contents[index5]) != "undefined") {
-
-                                            sections.modules[index2].contents[index5].localpath = filep.localpath;
+                            $.each(sections.modules, function(index2, content){
+                                MM.log("ContentID: " + content.id);
+                                content.contentid = content.id;
+                                content.courseid = courseId;
+                                content.section = sectionId;
+                                content.id = MM.config.current_site.id + "-" + content.contentid;
+                                
+                                /*
+                                if (content.pif) {
+                                    course.save({pif:content.pif});
+                                }
+                                */
+                                
+                                
+                                
+    
+                                if(!firstContent) {
+                                    firstContent = content.contentid;
+                                }
+    
+                                // Check if has multiple files.
+                                if (content.modname == "folder" ||
+                                        (content.contents && content.contents.length > 1)) {
+                                    sections.modules[index2].multiplefiles = true;
+                                }
+    
+                                // Check if is a resource URL.
+                                if (content.modname == "url" &&
+                                        content.contents && content.contents.length > 0 &&
+                                        content.contents[0].fileurl) {
+    
+                                    sections.modules[index2].fileurl = content.contents[0].fileurl;
+                                   
+                                }
+    
+                                // The file/s was/were downloaded.
+                                var downloaded = false;
+    
+                                // This content is currently in the database.
+                                if (contentsStored.indexOf(content.id) > -1) {
+                                    MM.log("Content is on database:"+ content.id); 
+                                    var c = MM.db.get("contents", content.id);
+                                    c = c.toJSON();
+                                    sections.modules[index2].mainExtension = c.mainExtension;
+                                    sections.modules[index2].webOnly = c.webOnly;
+    
+                                    if (c.contents) {
+                                        $.each(c.contents, function (index5, filep) {
+                                            if (typeof(filep.localpath) != "undefined" &&
+                                                    typeof(sections.modules[index2].contents[index5]) != "undefined") {
+    
+                                                sections.modules[index2].contents[index5].localpath = filep.localpath;
+                                            }
+                                        });
+                                    }
+    
+                                    if (!sections.modules[index2].webOnly) {
+                                        if (c.contents && c.contents[0]) {
+                                            var extension = MM.util.getFileExtension(c.contents[0].filename);
+    
+                                            if (c.contents.length == 1 || (content.modname == "resource" && extension != "html" && extension != "htm")) {
+                                                var cFile = c.contents[0];
+                                                downloaded = typeof(cFile.localpath) != "undefined";
+                                               
+                                            } else {
+                                                downloaded = true;
+                                                if (c.contents) {
+                                                    $.each(c.contents, function (index5, filep) {
+                                                        if (typeof(filep.localpath) == "undefined") {
+                                                            downloaded = false;
+                                                            
+                                                            
+                                                            
+                                                        }
+                                                    });
+                                                }
+                                            }
+                                        }
+                                        sections.modules[index2].downloaded = downloaded;
+                                    }
+    
+                                    // Check if our stored information has changed remotely.
+                                    var updateContentInDB = false;
+                                    //var contentElements = ['filename', 'fileurl' , 'filesize',
+                                    //    'timecreated', 'timemodified', 'author', 'license'];
+                                    var contentElements = ['filesize',
+                                        'timecreated', 'timemodified', 'author', 'license'];
+    
+                                    for (var indexEl in c.contents) {
+                                        _.each(contentElements, function(el) {
+                                            if (typeof(c.contents[indexEl][el]) != "undefined" &&
+                                                typeof(content.contents[indexEl]) != "undefined" &&
+                                                typeof(content.contents[indexEl][el]) != "undefined" &&
+                                                c.contents[indexEl][el] != content.contents[indexEl][el]
+                                                ) {
+                                                updateContentInDB = true;
+                                                c.contents[indexEl][el] = content.contents[indexEl][el];
+                                            }
+                                        });
+                                    }
+    
+                                    // Check file additions.
+                                    for (var indexEl in content.contents) {
+                                        if (typeof c.contents[indexEl] == "undefined") {
+                                            updateContentInDB = true;
+                                            c.contents[indexEl] = content.contents[indexEl];
+                                        }
+                                    }
+    
+                                    // Check if the content name has changed.
+                                    if (c.name != content.name) {
+                                        c.name = content.name;
+                                        updateContentInDB = true;
+                                    }
+    
+                                    // Labels should be allways updated (the description may change).
+                                    if (c.modname == "label") {
+                                        c.description = content.description;
+                                        updateContentInDB = true;
+                                    }
+                                    
+                                    
+                                    //c.courseid = courseId;
+                                    if (updateContentInDB) {
+                                        MM.db.insert("contents", c);
+                                    }
+                                    
+                                    return true; 
+                                    
+                                }
+    
+                                // The mod url also exports contents but are external contents not downloadable by the app.
+                                var modContents = ["folder","page","resource"];
+    
+                                if (modContents.indexOf(content.modname) == -1) {
+                                    content.webOnly = true;
+                                } else {
+                                    content.webOnly = false;
+                                }
+                                sections.modules[index2].webOnly = content.webOnly;
+                                
+                                //content.courseid = courseId;
+                                MM.db.insert("contents", content);
+                                
+    
+                                // Sync content files.
+                                
+                                if (typeof(content.contents) != "undefined") {
+                                    $.each(content.contents, function (index3, file) {
+    
+                                        
+                                        if (typeof file.fileurl == "undefined" || !file.fileurl) {
+                                            //MM.log("file.fileurl undefined"); 
+                                            return true;
+                                        }
+    
+                                        if (file.fileurl.indexOf(MM.config.current_site.siteurl) == -1) {
+                                            //MM.log("file.fileurl undefined 2"); 
+                                            return true;
+                                        }
+    
+                                        //MM.log("file.fileurl:"+file.fileurl); 
+                                        
+                                        var paths = MM.plugins.contents.getLocalPaths(courseId, content.contentid, file);
+    
+                                        var el = {
+                                            id: hex_md5(MM.config.current_site.id + file.fileurl),
+                                            url: file.fileurl,
+                                            path: paths.directory,
+                                            newfile: paths.file,
+                                            contentid: content.id,
+                                            index: index3,
+                                            syncData: {
+                                                name: MM.lang.s("content") + ": " + courseName + ": " + content.name,
+                                                description: file.fileurl
+                                            },
+                                            siteid: MM.config.current_site.id,
+                                            type: "content"
+                                           };
+                                        
+                                        // Disabled auto sync temporaly
+                                        //MM.log("Sync: Adding content: " + el.syncData.name + ": " + el.url);
+                                        //MM.db.insert("sync", el);
+    
+                                        if (file.filename) {
+                                            //MM.log("file.filename:"+file.filename); 
+                                            var extension = file.filename.substr(file.filename.lastIndexOf(".") + 1);
+    
+                                            // Exception for folder type, we use the resource icon.
+                                            if (content.modname != "folder" && typeof(MM.plugins.contents.templates.mimetypes[extension]) != "undefined") {
+                                                sections.modules[index2].mainExtension = MM.plugins.contents.templates.mimetypes[extension]["icon"];
+                                                content.mainExtension = sections.modules[index2].mainExtension;
+                                                //content.courseid = courseId;
+                                                MM.log("insert content");
+                                                MM.db.insert("contents", content);
+                                                
+                                            }
                                         }
                                     });
                                 }
-
-                                if (!sections.modules[index2].webOnly) {
-                                    if (c.contents && c.contents[0]) {
-                                        var extension = MM.util.getFileExtension(c.contents[0].filename);
-
-                                        if (c.contents.length == 1 || (content.modname == "resource" && extension != "html" && extension != "htm")) {
-                                            var cFile = c.contents[0];
-                                            downloaded = typeof(cFile.localpath) != "undefined";
-                                           
-                                        } else {
-                                            downloaded = true;
-                                            if (c.contents) {
-                                                $.each(c.contents, function (index5, filep) {
-                                                    if (typeof(filep.localpath) == "undefined") {
-                                                        downloaded = false;
-                                                        
-                                                        
-                                                        
+                                
+                                //PATCH
+                                    
+                                MM.log('PATCH1:'+sections.modules[index2].downloaded);
+                                var filetest = {
+                                    fileurl : "/story.html?"
+                                };
+                                
+                                var pathstest = MM.plugins.contents.getLocalPaths(content.courseid, content.contentid, filetest);
+                                MM.log('PATCH2:'+pathstest.file+"///"+pathstest.directory);
+                                MM.fs.fileExists(pathstest.file,
+                                    function(chemin) {
+                                        indexModule++;
+                                        MM.log('PATCH5:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
+                                        
+                                        content.contents[0].localpath = pathstest.file;
+                                        content.contents[0].filename = "story.html";
+                                        //content.contents[index].fileurl = "/story.html?forcedownload=1";
+                                        content.contents[0].url = "/story.html?forcedownload=1";
+                                        var downloadTime = MM.util.timestamp();
+                                        content.contents[0].downloadtime = downloadTime;
+                                        MM.db.insert("contents", content);
+                                        sections.modules[index2].downloaded = true;
+                                        if (indexModule == countModule) {
+                                            indexContents++;
+                                            if (indexContents == countContents) {
+                                                MM.log("finalContents.push"); 
+                                                finalContents.push(sections);
+                                                var tpl = {
+                                                    sections: finalContents,
+                                                    sectionId: sectionId,
+                                                    courseId: courseId,
+                                                    course: course.toJSON() // Convert a model to a plain javascript object.
+                                                };
+                            
+                                                var pageTitle = MM.util.formatText(sectionName);
+                                                if (sectionId == -1) {
+                                                    pageTitle = MM.lang.s("showall");
+                                                }
+                            
+                                                var html = MM.tpl.render(MM.plugins.contents.templates.contents.html, tpl);
+                                                MM.panels.show('right', html, {title: pageTitle});
+                                                
+                                                // Show info content modal window.
+                                                $(".content-info", "#panel-right").on(MM.quickClick, function(e) {
+                                                    MM.plugins.contents.infoContent(
+                                                        e,
+                                                        $(this).data("course"),
+                                                        $(this).data("section"),
+                                                        $(this).data("content"),
+                                                        -1);
+                                                });
+                            
+                                                // Show info for sections.
+                                                $("h3", "#panel-right").on(MM.quickClick, function(e) {
+                                                    var sectionId = $(this).data("sectionid");
+                                                    if (sectionId) {
+                                                        $("#section-" + sectionId).toggle();
                                                     }
                                                 });
-                                            }
-                                        }
-                                    }
-                                    sections.modules[index2].downloaded = downloaded;
-                                }
-
-                                // Check if our stored information has changed remotely.
-                                var updateContentInDB = false;
-                                //var contentElements = ['filename', 'fileurl' , 'filesize',
-                                //    'timecreated', 'timemodified', 'author', 'license'];
-                                var contentElements = ['filesize',
-                                    'timecreated', 'timemodified', 'author', 'license'];
-
-                                for (var indexEl in c.contents) {
-                                    _.each(contentElements, function(el) {
-                                        if (typeof(c.contents[indexEl][el]) != "undefined" &&
-                                            typeof(content.contents[indexEl]) != "undefined" &&
-                                            typeof(content.contents[indexEl][el]) != "undefined" &&
-                                            c.contents[indexEl][el] != content.contents[indexEl][el]
-                                            ) {
-                                            updateContentInDB = true;
-                                            c.contents[indexEl][el] = content.contents[indexEl][el];
-                                        }
-                                    });
-                                }
-
-                                // Check file additions.
-                                for (var indexEl in content.contents) {
-                                    if (typeof c.contents[indexEl] == "undefined") {
-                                        updateContentInDB = true;
-                                        c.contents[indexEl] = content.contents[indexEl];
-                                    }
-                                }
-
-                                // Check if the content name has changed.
-                                if (c.name != content.name) {
-                                    c.name = content.name;
-                                    updateContentInDB = true;
-                                }
-
-                                // Labels should be allways updated (the description may change).
-                                if (c.modname == "label") {
-                                    c.description = content.description;
-                                    updateContentInDB = true;
-                                }
-                                
-                                
-                                //c.courseid = courseId;
-                                if (updateContentInDB) {
-                                    MM.db.insert("contents", c);
-                                }
-                                
-                                return true; 
-                                
-                            }
-
-                            // The mod url also exports contents but are external contents not downloadable by the app.
-                            var modContents = ["folder","page","resource"];
-
-                            if (modContents.indexOf(content.modname) == -1) {
-                                content.webOnly = true;
-                            } else {
-                                content.webOnly = false;
-                            }
-                            sections.modules[index2].webOnly = content.webOnly;
                             
-                            //content.courseid = courseId;
-                            MM.db.insert("contents", content);
+                                                // Mod plugins should now that the page has been rendered.
+                                                for (var pluginName in MM.plugins) {
+                                                    var plugin = MM.plugins[pluginName];
                             
-
-                            // Sync content files.
-                            
-                            if (typeof(content.contents) != "undefined") {
-                                $.each(content.contents, function (index3, file) {
-
-                                    
-                                    if (typeof file.fileurl == "undefined" || !file.fileurl) {
-                                        //MM.log("file.fileurl undefined"); 
-                                        return true;
-                                    }
-
-                                    if (file.fileurl.indexOf(MM.config.current_site.siteurl) == -1) {
-                                        //MM.log("file.fileurl undefined 2"); 
-                                        return true;
-                                    }
-
-                                    //MM.log("file.fileurl:"+file.fileurl); 
-                                    
-                                    var paths = MM.plugins.contents.getLocalPaths(courseId, content.contentid, file);
-
-                                    var el = {
-                                        id: hex_md5(MM.config.current_site.id + file.fileurl),
-                                        url: file.fileurl,
-                                        path: paths.directory,
-                                        newfile: paths.file,
-                                        contentid: content.id,
-                                        index: index3,
-                                        syncData: {
-                                            name: MM.lang.s("content") + ": " + courseName + ": " + content.name,
-                                            description: file.fileurl
-                                        },
-                                        siteid: MM.config.current_site.id,
-                                        type: "content"
-                                       };
-                                    
-                                    // Disabled auto sync temporaly
-                                    //MM.log("Sync: Adding content: " + el.syncData.name + ": " + el.url);
-                                    //MM.db.insert("sync", el);
-
-                                    if (file.filename) {
-                                        //MM.log("file.filename:"+file.filename); 
-                                        var extension = file.filename.substr(file.filename.lastIndexOf(".") + 1);
-
-                                        // Exception for folder type, we use the resource icon.
-                                        if (content.modname != "folder" && typeof(MM.plugins.contents.templates.mimetypes[extension]) != "undefined") {
-                                            sections.modules[index2].mainExtension = MM.plugins.contents.templates.mimetypes[extension]["icon"];
-                                            content.mainExtension = sections.modules[index2].mainExtension;
-                                            //content.courseid = courseId;
-                                            MM.log("insert content");
-                                            MM.db.insert("contents", content);
-                                            
-                                        }
-                                    }
-                                });
-                            }
-                            
-                            //PATCH
-                                
-                            MM.log('PATCH1:'+sections.modules[index2].downloaded);
-                            var filetest = {
-                                fileurl : "/story.html?"
-                            };
-                            
-                            var pathstest = MM.plugins.contents.getLocalPaths(content.courseid, content.contentid, filetest);
-                            MM.log('PATCH2:'+pathstest.file+"///"+pathstest.directory);
-                            MM.fs.fileExists(pathstest.file,
-                                function(chemin) {
-                                    indexModule++;
-                                    MM.log('PATCH5:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
-                                    
-                                    content.contents[0].localpath = pathstest.file;
-                                    content.contents[0].filename = "story.html";
-                                    //content.contents[index].fileurl = "/story.html?forcedownload=1";
-                                    content.contents[0].url = "/story.html?forcedownload=1";
-                                    var downloadTime = MM.util.timestamp();
-                                    content.contents[0].downloadtime = downloadTime;
-                                    MM.db.insert("contents", content);
-                                    sections.modules[index2].downloaded = true;
-                                    if (indexModule == countModule) {
-                                        indexContents++;
-                                        if (indexContents == countContents) {
-                                            MM.log("finalContents.push"); 
-                                            finalContents.push(sections);
-                                            var tpl = {
-                                                sections: finalContents,
-                                                sectionId: sectionId,
-                                                courseId: courseId,
-                                                course: course.toJSON() // Convert a model to a plain javascript object.
-                                            };
-                        
-                                            var pageTitle = MM.util.formatText(sectionName);
-                                            if (sectionId == -1) {
-                                                pageTitle = MM.lang.s("showall");
-                                            }
-                        
-                                            var html = MM.tpl.render(MM.plugins.contents.templates.contents.html, tpl);
-                                            MM.panels.show('right', html, {title: pageTitle});
-                                            
-                                            // Show info content modal window.
-                                            $(".content-info", "#panel-right").on(MM.quickClick, function(e) {
-                                                MM.plugins.contents.infoContent(
-                                                    e,
-                                                    $(this).data("course"),
-                                                    $(this).data("section"),
-                                                    $(this).data("content"),
-                                                    -1);
-                                            });
-                        
-                                            // Show info for sections.
-                                            $("h3", "#panel-right").on(MM.quickClick, function(e) {
-                                                var sectionId = $(this).data("sectionid");
-                                                if (sectionId) {
-                                                    $("#section-" + sectionId).toggle();
-                                                }
-                                            });
-                        
-                                            // Mod plugins should now that the page has been rendered.
-                                            for (var pluginName in MM.plugins) {
-                                                var plugin = MM.plugins[pluginName];
-                        
-                                                if (plugin.settings.type == 'mod') {
-                                                    var visible = true;
-                                                    if (typeof(plugin.isPluginVisible) == 'function' && !plugin.isPluginVisible()) {
-                                                        visible = false;
-                                                    }
-                                                    if (visible && typeof plugin.contentsPageRendered == "function") {
-                                                        plugin.contentsPageRendered();
+                                                    if (plugin.settings.type == 'mod') {
+                                                        var visible = true;
+                                                        if (typeof(plugin.isPluginVisible) == 'function' && !plugin.isPluginVisible()) {
+                                                            visible = false;
+                                                        }
+                                                        if (visible && typeof plugin.contentsPageRendered == "function") {
+                                                            plugin.contentsPageRendered();
+                                                        }
                                                     }
                                                 }
                                             }
+                                            
                                         }
                                         
-                                    }
-                                    
-                                },
-                                function(chemin) {
-                                    indexModule++;
-                                    MM.log('PATCH6:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
-                                    
-                                    if (indexModule == countModule) {
-                                        indexContents++;
-                                        if (indexContents == countContents) {
-                                            MM.log("finalContents.push"); 
-                                            finalContents.push(sections);
-                                            var tpl = {
-                                                sections: finalContents,
-                                                sectionId: sectionId,
-                                                courseId: courseId,
-                                                course: course.toJSON() // Convert a model to a plain javascript object.
-                                            };
-                        
-                                            var pageTitle = MM.util.formatText(sectionName);
-                                            if (sectionId == -1) {
-                                                pageTitle = MM.lang.s("showall");
-                                            }
-                        
-                                            var html = MM.tpl.render(MM.plugins.contents.templates.contents.html, tpl);
-                                            MM.panels.show('right', html, {title: pageTitle});
-                                            
-                                            // Show info content modal window.
-                                            $(".content-info", "#panel-right").on(MM.quickClick, function(e) {
-                                                MM.plugins.contents.infoContent(
-                                                    e,
-                                                    $(this).data("course"),
-                                                    $(this).data("section"),
-                                                    $(this).data("content"),
-                                                    -1);
-                                            });
-                        
-                                            // Show info for sections.
-                                            $("h3", "#panel-right").on(MM.quickClick, function(e) {
-                                                var sectionId = $(this).data("sectionid");
-                                                if (sectionId) {
-                                                    $("#section-" + sectionId).toggle();
+                                    },
+                                    function(chemin) {
+                                        indexModule++;
+                                        MM.log('PATCH6:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
+                                        
+                                        if (indexModule == countModule) {
+                                            indexContents++;
+                                            if (indexContents == countContents) {
+                                                MM.log("finalContents.push"); 
+                                                finalContents.push(sections);
+                                                var tpl = {
+                                                    sections: finalContents,
+                                                    sectionId: sectionId,
+                                                    courseId: courseId,
+                                                    course: course.toJSON() // Convert a model to a plain javascript object.
+                                                };
+                            
+                                                var pageTitle = MM.util.formatText(sectionName);
+                                                if (sectionId == -1) {
+                                                    pageTitle = MM.lang.s("showall");
                                                 }
-                                            });
-                        
-                                            // Mod plugins should now that the page has been rendered.
-                                            for (var pluginName in MM.plugins) {
-                                                var plugin = MM.plugins[pluginName];
-                        
-                                                if (plugin.settings.type == 'mod') {
-                                                    var visible = true;
-                                                    if (typeof(plugin.isPluginVisible) == 'function' && !plugin.isPluginVisible()) {
-                                                        visible = false;
+                            
+                                                var html = MM.tpl.render(MM.plugins.contents.templates.contents.html, tpl);
+                                                MM.panels.show('right', html, {title: pageTitle});
+                                                
+                                                // Show info content modal window.
+                                                $(".content-info", "#panel-right").on(MM.quickClick, function(e) {
+                                                    MM.plugins.contents.infoContent(
+                                                        e,
+                                                        $(this).data("course"),
+                                                        $(this).data("section"),
+                                                        $(this).data("content"),
+                                                        -1);
+                                                });
+                            
+                                                // Show info for sections.
+                                                $("h3", "#panel-right").on(MM.quickClick, function(e) {
+                                                    var sectionId = $(this).data("sectionid");
+                                                    if (sectionId) {
+                                                        $("#section-" + sectionId).toggle();
                                                     }
-                                                    if (visible && typeof plugin.contentsPageRendered == "function") {
-                                                        plugin.contentsPageRendered();
+                                                });
+                            
+                                                // Mod plugins should now that the page has been rendered.
+                                                for (var pluginName in MM.plugins) {
+                                                    var plugin = MM.plugins[pluginName];
+                            
+                                                    if (plugin.settings.type == 'mod') {
+                                                        var visible = true;
+                                                        if (typeof(plugin.isPluginVisible) == 'function' && !plugin.isPluginVisible()) {
+                                                            visible = false;
+                                                        }
+                                                        if (visible && typeof plugin.contentsPageRendered == "function") {
+                                                            plugin.contentsPageRendered();
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
                                     }
-                                }
-                            );
-                            
-                            
-                            
+                                );
                                 
-                            //PATCH
-                        });
+                                
+                                
+                                    
+                                //PATCH
+                            });
+                        } else {
+                            indexContents++;
+                        }
                         
                         //MM.log("finalContents.push");         
                         //finalContents.push(sections);
