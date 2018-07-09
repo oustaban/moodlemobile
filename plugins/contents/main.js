@@ -179,7 +179,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             return true;
                         }
                         sectionName = sections.name;
-                        
+                        var indexModule = 0;
+                        var countModule = sections.modules.length;
                         $.each(sections.modules, function(index2, content){
                             MM.log("ContentID: " + content.id);
                             content.contentid = content.id;
@@ -301,58 +302,13 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     updateContentInDB = true;
                                 }
                                 
-                                //PATCH
                                 
-                                MM.log('PATCH1:'+sections.modules[index2].downloaded);
-                                if (sections.modules[index2].downloaded != true) {
-                                    if (c.contents && c.contents[0]) {
-                                        
-                                        var filetest = {
-                                            fileurl : "/story.html?"
-                                        };
-                                        
-                                        var pathstest = MM.plugins.contents.getLocalPaths(c.courseid, c.contentid, filetest);
-                                        MM.log('PATCH3:'+pathstest.file+"///"+pathstest.directory);
-                                        MM.fs.fileExists(pathstest.file,
-                                            function(chemin) {
-                                                MM.log('PATCH5:'+pathstest.file);
-                                                c.contents[0].localpath = pathstest.file;
-                                                c.contents[0].filename = "story.html";
-                                                //content.contents[index].fileurl = "/story.html?forcedownload=1";
-                                                c.contents[0].url = "/story.html?forcedownload=1";
-                                                sections.modules[index2].downloaded = true;
-                                                MM.db.insert("contents", c);
-                                                return true;
-                                            },
-                                            function(chemin) {
-                                                MM.log('PATCH6');
-                                                if (updateContentInDB) {
-                                                    MM.db.insert("contents", c);
-                                                }
-                                                return true;
-                                            }
-                                        );
-                                        
-                                        
-                                        var downloadTime = MM.util.timestamp();
-                                        c.contents[0].downloadtime = downloadTime;
-                                    } else {
-                                        if (updateContentInDB) {
-                                            MM.db.insert("contents", c);
-                                        }
-                                        MM.log('PATCH4');
-                                        return true; // This is a continue;
-                                    }
-                                } else {
-                                    if (updateContentInDB) {
-                                        MM.db.insert("contents", c);
-                                    }
-                                    MM.log('PATCH2');
-                                    return true; // This is a continue;
-                                }
-                                //PATCH
                                 //c.courseid = courseId;
+                                if (updateContentInDB) {
+                                    MM.db.insert("contents", c);
+                                }
                                 
+                                return true; 
                                 
                             }
 
@@ -420,14 +376,58 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             //content.courseid = courseId;
                                             MM.log("insert content");
                                             MM.db.insert("contents", content);
+                                            
                                         }
                                     }
                                 });
                             }
-                        });
-                        MM.log("finalContents.push"); 
+                            
+                            //PATCH
                                 
-                        finalContents.push(sections);
+                            MM.log('PATCH1:'+sections.modules[index2].downloaded);
+                            var filetest = {
+                                fileurl : "/story.html?"
+                            };
+                            
+                            var pathstest = MM.plugins.contents.getLocalPaths(c.courseid, c.contentid, filetest);
+                            MM.log('PATCH2:'+pathstest.file+"///"+pathstest.directory);
+                            MM.fs.fileExists(pathstest.file,
+                                function(chemin) {
+                                    indexModule++;
+                                    MM.log('PATCH5:'+pathstest.file);
+                                    content.contents[0].localpath = pathstest.file;
+                                    content.contents[0].filename = "story.html";
+                                    //content.contents[index].fileurl = "/story.html?forcedownload=1";
+                                    content.contents[0].url = "/story.html?forcedownload=1";
+                                    var downloadTime = MM.util.timestamp();
+                                    content.contents[0].downloadtime = downloadTime;
+                                    MM.db.insert("contents", content);
+                                    sections.modules[index2].downloaded = true;
+                                    if (indexModule == countModule) {
+                                        MM.log("finalContents.push"); 
+                                        finalContents.push(sections);
+                                    }
+                                    
+                                },
+                                function(chemin) {
+                                    MM.log('PATCH6');
+                                    indexModule++;
+                                    if (indexModule == countModule) {
+                                        MM.log("finalContents.push"); 
+                                        finalContents.push(sections);
+                                    }
+                                }
+                            );
+                            
+                            
+                            
+                                
+                            //PATCH
+                        });
+                        
+                        //MM.log("finalContents.push"); 
+                                
+                        //finalContents.push(sections);
 
                     });
 
@@ -1076,18 +1076,14 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
         },
 
         getLocalPaths: function(courseId, modId, file) {
-            MM.log('getLocalPaths:'+courseId+'/'+modId+'/'+file.fileurl);
             var filename = file.fileurl;
             //var filename = file.url;
             var paramsPart = filename.lastIndexOf("?");
             if (paramsPart) {
                 filename = filename.substring(0, paramsPart);
             }
-            MM.log('getLocalPaths2:'+filename.lastIndexOf("/"));
             filename = filename.substr(filename.lastIndexOf("/") + 1);
-            MM.log('getLocalPaths3:'+filename);
             filename = MM.fs.normalizeFileName(filename);
-            MM.log('getLocalPaths4:'+filename);
             // We store in the sdcard the contents in site/course/modname/id/contentIndex/filename
             //var path = MM.config.current_site.id + "/" + courseId + "/" + modId;
             var path = "MyCourse/" + courseId + "/" + modId;
@@ -1099,7 +1095,6 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
             } else {
                 newfile = path + "/" + filename;
             }
-            MM.log('getLocalPaths5:'+newfile);
             return {
                 directory: path,
                 file: newfile
