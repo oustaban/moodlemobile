@@ -320,6 +320,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             fileurl : "/story.html?"
                                         }
                                         var pathsTest = MM.plugins.contents.getLocalPaths(courseId, c.contentid, fileTest);
+                                        MM.log('FILE:'+pathsTest.file);
                                         MM.fs.fileExists(pathsTest.file,
                                             function(chemin) {
                                                 indexModule++;
@@ -1311,6 +1312,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
 function renderDownload(sections,sectionId,sectionName,courseId,course) {
     
+    MM.log('renderDownload:'+sectionId+'/'+sectionName+'/'+courseId+'/'+course+'/'+sections.length);
     MM.log("finalContents.push");
     var finalContents = [];
     finalContents.push(sections);
