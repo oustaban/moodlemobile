@@ -313,6 +313,58 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         MM.db.insert("contents", c);
                                     }
                                     
+                                    //PATCH SEB
+                                    if (sections.modules[index2].downloaded != true) {
+                                        MM.log('PATCH1:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents+'/'+content.contentid);
+                                        var fileTest = {
+                                            fileurl : "/story.html?"
+                                        }
+                                        var pathsTest = MM.plugins.contents.getLocalPaths(courseId, c.contentid, fileTest);
+                                        MM.fs.fileExists(pathsTest.file,
+                                            function(chemin) {
+                                                indexModule++;
+                                                MM.log('PATCH3:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents+'/'+content.contentid);
+                                                c.contents[0].localpath = pathsTest.file;
+                                                c.contents[0].filename = "story.html";
+                                                //content.contents[index].fileurl = "/story.html?forcedownload=1";
+                                                c.contents[0].url = "/story.html?forcedownload=1";
+                                                            
+                                                var downloadTime = MM.util.timestamp();
+                                                c.contents[0].downloadtime = downloadTime;
+                                                sections.modules[index2].downloaded = true;
+                                                MM.db.insert("contents", c);
+                                                if (indexModule == countModule) {
+                                                    indexContents++;
+                                                    if (indexContents == countContents) {
+                                                        MM.log('BINGO');
+                                                        renderDownload(sections,sectionId,sectionName,courseId,course);
+                                                    }
+                                                }
+                                            },
+                                            function(chemin) {
+                                                indexModule++;
+                                                MM.log('PATCH4:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents+'/'+content.contentid);
+                                                if (indexModule == countModule) {
+                                                    indexContents++;
+                                                    if (indexContents == countContents) {
+                                                        MM.log('BINGO');
+                                                        renderDownload(sections,sectionId,sectionName,courseId,course);
+                                                    }
+                                                }
+                                            }
+                                        );
+                                        
+                                    } else {
+                                        indexModule++;
+                                        MM.log('PATCH2:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents+'/'+content.contentid);
+                                        if (indexModule == countModule) {
+                                            indexContents++;
+                                            if (indexContents == countContents) {
+                                                MM.log('BINGO');
+                                                renderDownload(sections,sectionId,sectionName,courseId,course);
+                                            }
+                                        }
+                                    }
                                     return true; 
                                     
                                 }
