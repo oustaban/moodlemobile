@@ -414,6 +414,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 indexContents++;
                                                 if (indexContents == countContents) {
                                                     MM.log('BINGO');
+                                                    renderDownload(sections,sectionId,sectionName,courseId,course);
                                                 }
                                             }
                                         },
@@ -424,6 +425,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                                 indexContents++;
                                                 if (indexContents == countContents) {
                                                     MM.log('BINGO');
+                                                    renderDownload(sections,sectionId,sectionName,courseId,course);
                                                 }
                                             }
                                         }
@@ -436,6 +438,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         indexContents++;
                                         if (indexContents == countContents) {
                                             MM.log('BINGO');
+                                            renderDownload(sections,sectionId,sectionName,courseId,course);
                                         }
                                     }
                                 }
@@ -446,18 +449,19 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             MM.log('PATCH5:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
                             if (indexContents == countContents) {
                                 MM.log('BINGO');
+                                renderDownload(sections,sectionId,sectionName,courseId,course);
                             }
                         }
                         
                         
                         
-                        MM.log("finalContents.push");         
-                        finalContents.push(sections);
+                        //MM.log("finalContents.push");         
+                        //finalContents.push(sections);
 
                     });
 
                     
-                    
+                    /*
                     var tpl = {
                         sections: finalContents,
                         sectionId: sectionId,
@@ -505,6 +509,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             }
                         }
                     }
+                    */
                     
                 }
             );
@@ -1249,3 +1254,59 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
     MM.registerPlugin(plugin);
 });
+
+
+public function renderDownload(sections,sectionId,sectionName,courseId,course) {
+    
+    MM.log("finalContents.push");
+    var finalContents = [];
+    finalContents.push(sections);
+                        
+    var tpl = {
+        sections: finalContents,
+        sectionId: sectionId,
+        courseId: courseId,
+        course: course.toJSON() // Convert a model to a plain javascript object.
+    };
+
+    var pageTitle = MM.util.formatText(sectionName);
+    if (sectionId == -1) {
+        pageTitle = MM.lang.s("showall");
+    }
+
+    var html = MM.tpl.render(MM.plugins.contents.templates.contents.html, tpl);
+    MM.panels.show('right', html, {title: pageTitle});
+    
+    // Show info content modal window.
+    $(".content-info", "#panel-right").on(MM.quickClick, function(e) {
+        MM.plugins.contents.infoContent(
+            e,
+            $(this).data("course"),
+            $(this).data("section"),
+            $(this).data("content"),
+            -1);
+    });
+
+    // Show info for sections.
+    $("h3", "#panel-right").on(MM.quickClick, function(e) {
+        var sectionId = $(this).data("sectionid");
+        if (sectionId) {
+            $("#section-" + sectionId).toggle();
+        }
+    });
+
+    // Mod plugins should now that the page has been rendered.
+    for (var pluginName in MM.plugins) {
+        var plugin = MM.plugins[pluginName];
+
+        if (plugin.settings.type == 'mod') {
+            var visible = true;
+            if (typeof(plugin.isPluginVisible) == 'function' && !plugin.isPluginVisible()) {
+                visible = false;
+            }
+            if (visible && typeof plugin.contentsPageRendered == "function") {
+                plugin.contentsPageRendered();
+            }
+        }
+    }
+}
