@@ -1256,7 +1256,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 });
 
 
-public function renderDownload(sections,sectionId,sectionName,courseId,course) {
+function renderDownload(sections,sectionId,sectionName,courseId,course) {
     
     MM.log("finalContents.push");
     var finalContents = [];
