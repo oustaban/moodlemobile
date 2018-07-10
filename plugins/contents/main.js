@@ -368,7 +368,8 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     return true; 
                                     
                                 }
-    
+                                
+                                MM.log('TEST');
                                 // The mod url also exports contents but are external contents not downloadable by the app.
                                 var modContents = ["folder","page","resource"];
     
