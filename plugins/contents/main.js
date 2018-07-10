@@ -393,14 +393,14 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             //PATCH SEB
                             if (content.contents && content.contents[0]) {
                                 indexModule++;
-                                MM.Log('PATCH1:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
+                                MM.log('PATCH1:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
                                 var fileTest = {
                                     fileurl : "/story.html?"
                                 }
                                 var pathsTest = MM.plugins.contents.getLocalPaths(courseId, content.contentid, fileTest);
                                 MM.fs.fileExists(pathsTest.file,
                                     function(chemin) {
-                                        MM.Log('PATCH3:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
+                                        MM.log('PATCH3:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
                                         content.contents[0].localpath = pathsTest.file;
                                         content.contents[0].filename = "story.html";
                                         //content.contents[index].fileurl = "/story.html?forcedownload=1";
@@ -415,7 +415,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                         }
                                     },
                                     function(chemin) {
-                                        MM.Log('PATCH4:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
+                                        MM.log('PATCH4:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
                                         if (indexModule == countModule) {
                                             indexContents++;
                                         }
@@ -424,7 +424,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                 
                             } else {
                                 indexModule++;
-                                MM.Log('PATCH2:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
+                                MM.log('PATCH2:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
                                 if (indexModule == countModule) {
                                     indexContents++;
                                 }
