@@ -434,7 +434,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                             });
                         } else {
                             indexContents++;
-                            MM.log('PATCH5:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents+'/'+content.contentid);
+                            MM.log('PATCH5:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
                             
                         }
                         
