@@ -412,6 +412,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             MM.db.insert("contents", content);
                                             if (indexModule == countModule) {
                                                 indexContents++;
+                                                if (indexContents == countContents) {
+                                                    MM.log('BINGO');
+                                                }
                                             }
                                         },
                                         function(chemin) {
@@ -419,6 +422,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                             MM.log('PATCH4:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents+'/'+content.contentid);
                                             if (indexModule == countModule) {
                                                 indexContents++;
+                                                if (indexContents == countContents) {
+                                                    MM.log('BINGO');
+                                                }
                                             }
                                         }
                                     );
@@ -428,6 +434,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     MM.log('PATCH2:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents+'/'+content.contentid);
                                     if (indexModule == countModule) {
                                         indexContents++;
+                                        if (indexContents == countContents) {
+                                            MM.log('BINGO');
+                                        }
                                     }
                                 }
                                 
@@ -435,7 +444,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                         } else {
                             indexContents++;
                             MM.log('PATCH5:'+indexModule+'/'+countModule+'/'+indexContents+'/'+countContents);
-                            
+                            if (indexContents == countContents) {
+                                MM.log('BINGO');
+                            }
                         }
                         
                         
