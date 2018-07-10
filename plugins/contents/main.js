@@ -1312,7 +1312,7 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
 
 function renderDownload(sections,sectionId,sectionName,courseId,course) {
     
-    MM.log('renderDownload:'+sectionId+'/'+sectionName+'/'+courseId+'/'+course+'/'+sections.length);
+    MM.log('renderDownload:'+sectionId+'/'+sectionName+'/'+courseId+'/'+course+'/'+sections.modules.length);
     MM.log("finalContents.push");
     var finalContents = [];
     finalContents.push(sections);
