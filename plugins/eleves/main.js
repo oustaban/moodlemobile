@@ -4588,15 +4588,15 @@ function grillea1(button,user,course,version) {
                 grille={};
             }
             grille.q1am = $('input[name=q1am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q2am = $('input[name=q2am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q3am = $('input[name=q3am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q4am = $('input[name=q4am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q5am = $('input[name=q5am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q6am = $('input[name=q6am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q7am = $('input[name=q7am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q8am = $('input[name=q8am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q9am = $('input[name=q9am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
-            grille.q10am = $('input[name=q10am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
+            grille.q2am = $('input[name=q2am]:checked').val() ? $('input[name=q2am]:checked').val() : -1;
+            grille.q3am = $('input[name=q3am]:checked').val() ? $('input[name=q3am]:checked').val() : -1;
+            grille.q4am = $('input[name=q4am]:checked').val() ? $('input[name=q4am]:checked').val() : -1;
+            grille.q5am = $('input[name=q5am]:checked').val() ? $('input[name=q5am]:checked').val() : -1;
+            grille.q6am = $('input[name=q6am]:checked').val() ? $('input[name=q6am]:checked').val() : -1;
+            grille.q7am = $('input[name=q7am]:checked').val() ? $('input[name=q7am]:checked').val() : -1;
+            grille.q8am = $('input[name=q8am]:checked').val() ? $('input[name=q8am]:checked').val() : -1;
+            grille.q9am = $('input[name=q9am]:checked').val() ? $('input[name=q9am]:checked').val() : -1;
+            grille.q10am = $('input[name=q10am]:checked').val() ? $('input[name=q10am]:checked').val() : -1;
             grille.q1 = 1;
             
             MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
@@ -4624,6 +4624,24 @@ function grillea1(button,user,course,version) {
                 
                 options3.buttons["Fermer"] = function() {
                     MM.widgets.dialogClose2();
+                    grille.q1am = $('input[name=q1am]:checked').val() ? $('input[name=q1am]:checked').val() : -1;
+                    grille.q2am = $('input[name=q2am]:checked').val() ? $('input[name=q2am]:checked').val() : -1;
+                    grille.q3am = $('input[name=q3am]:checked').val() ? $('input[name=q3am]:checked').val() : -1;
+                    grille.q4am = $('input[name=q4am]:checked').val() ? $('input[name=q4am]:checked').val() : -1;
+                    grille.q5am = $('input[name=q5am]:checked').val() ? $('input[name=q5am]:checked').val() : -1;
+                    grille.q6am = $('input[name=q6am]:checked').val() ? $('input[name=q6am]:checked').val() : -1;
+                    grille.q7am = $('input[name=q7am]:checked').val() ? $('input[name=q7am]:checked').val() : -1;
+                    grille.q8am = $('input[name=q8am]:checked').val() ? $('input[name=q8am]:checked').val() : -1;
+                    grille.q9am = $('input[name=q9am]:checked').val() ? $('input[name=q9am]:checked').val() : -1;
+                    grille.q10am = $('input[name=q10am]:checked').val() ? $('input[name=q10am]:checked').val() : -1;
+                    grille.q1 = 1;
+                    
+                    MM.log('UserGrille:'+usergrille+'Grille:'+grille+'/'+grille.q1);
+                    
+                    thisuser.save({grille:grille});
+                    MM.Router.navigate("eleves/" + course );
+                    MM.widgets.dialogClose();
+                    grillea1(button,user,course,version);
                 };
                 
                 var html3 = "Pour valider, veuillez compléter entièrement la grille de positionnement.";
