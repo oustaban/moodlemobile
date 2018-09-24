@@ -9135,7 +9135,7 @@ function grillea5(button,user,course,version) {
     if (grille.q73av == 3 || grille.q73av == undefined)
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
     html+='<tr>';
-    html+='<td style="height:40px;text-align:left" class="center2">Les demandes du client</td>';
+    html+='<td style="height:40px;text-align:left" class="center2">Les règles de sécurité appliquées aux travaux effectués</td>';
     /*
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q73av" value="3" '+disabled;
     if (grille.q73av == 3)
@@ -10896,7 +10896,7 @@ function grillea6(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q42AV
-    if (grille.q24av == 3 || grille.q42av == undefined)
+    if (grille.q42av == 3 || grille.q42av == undefined)
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
      html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">L\'élimination des microbes</td>';

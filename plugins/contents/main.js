@@ -676,8 +676,9 @@ define(templates,function (sectionsTpl, contentsTpl, folderTpl, mimeTypes) {
                                     
                                     if (exts[exts.length-1]=="zip") {
                                         
-                                                    zip.unzip(fullpath, dest, function() {
-                                                    MM.log("Unzip ok");
+                                                zip.unzip(fullpath, dest, function(status) {
+                                                    
+                                                    MM.log("Unzip ok:"+status);
                                                     
                                                     var old_file = path.file;
                                                     path.file="";
