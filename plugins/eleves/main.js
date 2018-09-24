@@ -12496,7 +12496,7 @@ function grillea6(button,user,course,version) {
         };
     
     //Grille 5 Validée
-    if (grille!="[]" && grille!="" && grille.q6 == 2) {
+    if (grille!="[]" && grille!="" && grille.q6 == 2){
         
         options2.buttons["Fermer"] = function() {
             MM.Router.navigate("eleves/" + course );
@@ -12847,7 +12847,7 @@ function grillea6(button,user,course,version) {
                     
                 };
                 
-                var html4 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus être modifiées.";
+                var html4 = "En validant la grille, vous mettrez à jour le Protocole de Formation (PIF) de votre stagiaire.<br/>Vos réponses ne pourront plus etre modifiées.";
                
                 MM.widgets.dialog2(html4, options4);
                 
@@ -12863,7 +12863,46 @@ function grillea6(button,user,course,version) {
     $("#app-dialog .modalContent").css('height','85vh');
     MM.widgets.dialog(html, options2);
     //document.getElementById("pifContent").style.height = ((window.innerHeight * 80)/100) + "px";
-    
+    document.getElementById("pifContent").style.height = (window.innerHeight - 134) + "px";
+    document.getElementById("pifContent").style.maxHeight = (window.innerHeight - 134) + "px";
+    document.getElementById("secondblock").style.height = (window.innerHeight - 284) + "px";
+
+    $("tr#title").each(function( index ) {
+        $(this).on(MM.clickType, function(e) {
+            var mytr = $(this);
+            if ($(this).attr('opened') == 0) {
+                $(this).nextUntil( $('tr.title'), "tr" ).show();
+                $(this).attr('opened',1);
+                
+                $( "tr#title" ).each(function( index2 ) {
+                  if ($(this).is(mytr)) {
+                  } else {
+                    $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                    $(this).attr('opened',0);
+                  }
+                });
+            } else {
+                $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                $(this).attr('opened',0);
+                $( "tr#title" ).each(function( index3 ) {
+                  if ($(this).is(mytr)) {
+                  } else {
+                     $(this).nextUntil( $('tr#title'), "tr" ).hide();
+                     $(this).attr('opened',0);
+                  }
+                  
+                });
+            }
+        });
+        
+        if ($(this).attr('opened') == 1) {
+            $(this).nextUntil( $('tr.title'), "tr" ).show();
+        }
+        
+        if ($(this).attr('opened') == 0) {
+            $(this).nextUntil( $('tr#title'), "tr" ).hide();
+        }
+    });
     
 }
 
