@@ -4316,6 +4316,9 @@ function grillea1(button,user,course,version) {
         grille = initGrille(thisuser);
     }
     
+    var highlight = ' style="background-color:#ff0000"';
+    var style="";
+    
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en amont</span> de la formation</h1>';
     html += '<h1 align="center" class="grille">Grille de positionnement <span class="red">Bureau</span></h1>';
@@ -4333,8 +4336,13 @@ function grillea1(button,user,course,version) {
     html += '<div id="secondblock">';
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html+= '<tr><td colspan="4"></td></tr>';
+    
     //QUESTION Q1AM
-    html+='<tr>';
+    if (grille.q1 == 1 && grille.q1am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left;width:50%" class="center2">1/10. L\'agent identifie les attentes des clients</td>';
     html+='<td style="height:40px;text-align:left;width:16%" class="center2"><input type="radio" id="checkboxgrille1a" name="q1am" value="0" '+disabled;
     if (grille.q1am == 0)
@@ -4351,7 +4359,11 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q2AM
-    html+='<tr>';
+    if (grille.q1 == 1 && grille.q2am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left" class="center2">2/10. L\'agent applique les règles de communication</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q2am" value="0" '+disabled;
     if (grille.q2am == 0)
@@ -4368,7 +4380,11 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q3AM
-    html+='<tr>';
+    if (grille.q1 == 1 && grille.q3am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left" class="center2">3/10. L\'agent traite les demandes et les réclamations</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q3am" value="0" '+disabled;
     if (grille.q3am == 0)
@@ -4385,7 +4401,11 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q4AM
-    html+='<tr>';
+    if (grille.q1 == 1 && grille.q4am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left" class="center2">4/10. L\'agent nomme les éléments à nettoyer</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q4am" value="0" '+disabled;
     if (grille.q4am == 0)
@@ -4402,7 +4422,11 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q5AM
-    html+='</tr>';
+    if (grille.q1 == 1 && grille.q5am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left" class="center2">5/10. L\'agent utilise le matériel et les produits de nettoyage</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q5am" value="0" '+disabled;
     if (grille.q5am == 0)
@@ -4419,7 +4443,11 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q6AM
-    html+='</tr>';
+    if (grille.q1 == 1 && grille.q6am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left" class="center2">6/10. L\'agent applique les protocoles de nettoyage</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q6am" value="0" '+disabled;
     if (grille.q6am == 0)
@@ -4436,7 +4464,11 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q7AM
-    html+='<tr>';
+    if (grille.q1 == 1 && grille.q7am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left" class="center2">7/10. L\'agent applique les règles d\'hygiène et de sécurité</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q7am" value="0" '+disabled;
     if (grille.q7am == 0)
@@ -4453,7 +4485,11 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q8AM
-    html+='<tr>';
+    if (grille.q1 == 1 && grille.q8am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left" class="center2">8/10. L\'agent applique les attitudes de services</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q8am" value="0" '+disabled;
     if (grille.q8am == 0)
@@ -4470,6 +4506,10 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q9AM
+    if (grille.q1 == 1 && grille.q9am == -1)
+            style=highlight;
+    else
+            style="";
     html+='<tr>';
     html+='<td style="height:40px;text-align:left" class="center2">9/10. L\'agent adopte les bonnes postures de travail</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q9am" value="0" '+disabled;
@@ -4487,7 +4527,11 @@ function grillea1(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q10AM
-    html+='<tr>';
+    if (grille.q1 == 1 && grille.q10am == -1)
+            style=highlight;
+    else
+            style="";
+    html+='<tr '+style+'>';
     html+='<td style="height:40px;text-align:left" class="center2">10/10. L\'agent travaille en objectif de résultats</td>';
     html+='<td style="height:40px;text-align:left" class="center2"><input type="radio" id="checkboxgrille1a" name="q10am" value="0" '+disabled;
     if (grille.q10am == 0)
