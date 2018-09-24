@@ -2207,6 +2207,13 @@ div#firstcolumnreport #secondblock #usermodule2 {
   height:30px;
   text-align:center;
   background-color:#ccc;
+  line-height:30px; 
+}
+div#firstcolumnreport #secondblock #usermodule3 {
+  width:50px;
+  height:30px;
+  text-align:center;
+  background-color:#2da801;
   line-height:30px;
   
 }
