@@ -4338,6 +4338,7 @@ function grillea1(button,user,course,version) {
     html+= '<tr><td colspan="4"></td></tr>';
     
     //QUESTION Q1AM
+    MM.log('Check Q1AM:'+grille.q1+'/'+grille.q1am);
     if (grille.q1 == 1 && grille.q1am == -1)
             style=highlight;
     else
