@@ -2230,7 +2230,10 @@ ul.legend {
   color: #535050;
   font-size: 16px;
   margin: 0;
-  padding-bottom: 5px;
+  padding:10px;
+}
+ul.legend li {
+  padding-right:5px;
 }
 ul.legend li.metat1::before {
 
@@ -2239,8 +2242,6 @@ ul.legend li.metat1::before {
     position: relative;
     top: 0em;
     color: #ccc;
-    opacity: 0.3;
-
 }
 ul.legend li.metat2::before {
 
@@ -2249,7 +2250,6 @@ ul.legend li.metat2::before {
     position: relative;
     top: 0em;
     color: #00BFFF;
-    opacity: 0.3;
 
 }
 ul.legend li.metat3::before {
@@ -2259,7 +2259,6 @@ ul.legend li.metat3::before {
     position: relative;
     top: 0em;
     color: #FFA500;
-    opacity: 0.3;
 
 }
 ul.legend li.metat4::before {
@@ -2269,7 +2268,6 @@ ul.legend li.metat4::before {
     position: relative;
     top: 0em;
     color: #2da801;
-    opacity: 0.3;
 
 }
 div#firstcolumnreport #firstblock {
