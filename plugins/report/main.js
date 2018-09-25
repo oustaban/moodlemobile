@@ -186,8 +186,8 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                     } else {
                                         MM.log('CHECK:'+user.id+'/'+module1.id);
                                         modulesUserValidated[user.id][module1.id] = 2;
-                                        count++;
-                                        modulesUserValidated[user.id]['count'] = count;
+                                        //count++;
+                                        //modulesUserValidated[user.id]['count'] = count;
                                     }
                                 });
                             } else {
