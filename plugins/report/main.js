@@ -178,7 +178,7 @@ define(templates,function (reportTpl, elevesRowTpl) {
                                         //MM.log('PROP:'+propertyName+'/'+module1[propertyName]);
                                     }
                                     //MM.log('CHECK:'+module1['duration']+'/'+module1.duration);
-				    if (modulesUserPif[user.id][module1.id>0) { 
+				    if (modulesUserPif[user.id][module1.id]>0) { 
                                     if (parseInt(module1['duration']) >= parseInt(localModule.minduration)) {
                                         MM.log('CHECK1:'+user.id+'/'+module1.id+'/'+parseInt(module1['duration'])+'/'+parseInt(localModule.minduration));
                                         modulesUserValidated[user.id][module1.id] = 1;
