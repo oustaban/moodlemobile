@@ -4316,7 +4316,7 @@ function grillea1(button,user,course,version) {
         grille = initGrille(thisuser);
     }
     
-    var highlight = ' style="background-color:#ff0000"';
+    var highlight = ' style="background-color:#FFC0C0"';
     var style="";
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
@@ -4747,7 +4747,7 @@ function grillea2(button,user,course,version) {
         grille = initGrille(thisuser);
     }
     
-    var highlight = ' style="background-color:#ff0000"';
+    var highlight = ' style="background-color:#FFC0C0"';
     var style="";
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
@@ -5176,7 +5176,7 @@ function grillea3(button,user,course,version) {
         grille = initGrille(thisuser);
     }
     
-    var highlight = ' style="background-color:#ff0000"';
+    var highlight = ' style="background-color:#FFC0C0"';
     var style="";
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
@@ -5602,7 +5602,7 @@ function grillea4(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var highlight = ' style="background-color:#ff0000"';
+    var highlight = ' style="background-color:#FFC0C0"';
     var style="";
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
@@ -8375,7 +8375,7 @@ function grillea5(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var highlight = ' style="background-color:#ff0000"';
+    var highlight = ' style="background-color:#FFC0C0"';
     var style="";
     
     
@@ -10677,7 +10677,7 @@ function grillea6(button,user,course,version) {
         var disabled = 'disabled="disabled"';
     else disabled='';
     
-    var highlight = ' style="background-color:#ff0000"';
+    var highlight = ' style="background-color:#FFC0C0"';
     var style="";
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
