@@ -5604,6 +5604,8 @@ function grillea4(button,user,course,version) {
     
     var highlight = ' style="background-color:#FFC0C0"';
     var style="";
+    var alerte="";
+    
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1>';
@@ -5620,8 +5622,13 @@ function grillea4(button,user,course,version) {
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html+= '<tr><td colspan="4"></td></tr>';
     //QUESTION Q1AV
+    if (grille.q4 == 1 && (grille.q1av == -1 || grille.q2av == -1 || grille.q3av == -1 || grille.q4av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
+        
     html+='<tr id="title" opened="1">';
-    html+='<td colspan="5">L\'agent identifie les attentes des clients</td>';
+    html+='<td colspan="5">L\'agent identifie les attentes des clients'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q1av == 3 || grille.q1av == undefined)
@@ -5760,8 +5767,12 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q5AV
+    if (grille.q4 == 1 && (grille.q5av == -1 || grille.q6av == -1 || grille.q7av == -1 || grille.q8av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les règles de communication</td>';
+    html+='<td colspan="5">L\'agent applique les règles de communication'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q5av == 3 || grille.q5av == undefined)
@@ -5900,8 +5911,12 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q9AV
+    if (grille.q4 == 1 && (grille.q9av == -1 || grille.q10av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent traite les demandes et les réclamations</td>';
+    html+='<td colspan="5">L\'agent traite les demandes et les réclamations+'alerte+'</td>';
     html+='</tr>';
     
     if (grille.q9av == 3 || grille.q9av == undefined)
@@ -5972,8 +5987,12 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q11AV
+    if (grille.q4 == 1 && (grille.q11av == -1 || grille->q12av == -1 || grille.q13av == -1 || grille.q14av == -1 || grille.q15av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent nomme les éléments à nettoyer</td>';
+    html+='<td colspan="5">L\'agent nomme les éléments à nettoyer'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q11av == 3 || grille.q11av == undefined)
@@ -6146,8 +6165,12 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q16AV
+    if (grille.q4 == 1 && (grille.q16av == -1 || grille.q17av == -1 || grille.q18av == -1 || grille.q19av == -1 || grille.q20av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent utilise le matériel et les produits de nettoyage</td>';
+    html+='<td colspan="5">L\'agent utilise le matériel et les produits de nettoyage'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q16av == 3 || grille.q16av == undefined)
@@ -6320,8 +6343,12 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q21AV
+    if (grille.q4 == 1 && (grille.q21av == -1 || grille.q22av == -1 || grille.q23av == -1 || grille.q24av == -1 || grille.q25av == -1 || grille.q26av == -1 || grille.q27av == -1 || grille.q28av == -1 || grille.q29av == -1 || grille.q30av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les protocoles de nettoyage</td>';
+    html+='<td colspan="5">L\'agent applique les protocoles de nettoyage'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q21av == 3 || grille.q21av == undefined)
@@ -6664,8 +6691,12 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q31AV
+    if (grille.q4 == 1 && (grille.q31av == -1 || grille.q32av == -1 || grille.q33av == -1 || grille.q34av == -1 || grille.q35av == -1 || grille.q36av == -1 || grille.q37av == -1 || grille.q38av == -1 || grille.q39av == -1 || grille.q41av == -1 || grille.q42av == -1 || grille.q43av == -1 || grille.q44av == -1 || grille.q45av == -1 || grille.q46av == -1 || grille.q47av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les règles d\'hygiène et de sécurité</td>';
+    html+='<td colspan="5">L\'agent applique les règles d\'hygiène et de sécurité'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q31av == 3 || grille.q31av == undefined)
@@ -7256,8 +7287,12 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q48AV
+    if (grille.q4 == 1 && (grille.q48av == -1 || grille.q49av == -1 || grille.q50av == -1 || grille.q51av == -1 || grille.q52av == -1 || grille.q53av == -1 || grille.q54av == -1 || grille.q55av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les attitudes de services</td>';
+    html+='<td colspan="5">L\'agent applique les attitudes de services'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q48av == 3 || grille.q48av == undefined)
@@ -7532,8 +7567,12 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q56AV
+    if (grille.q4 == 1 && (grille.q56av == -1 || grille.q57av == -1 || grille.q58av == -1 || grille.q59av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent adopte les bonnes postures de travail</td>';
+    html+='<td colspan="5">L\'agent adopte les bonnes postures de travail'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q56av == 3 || grille.q56av == undefined)
@@ -7679,8 +7718,12 @@ function grillea4(button,user,course,version) {
             var disabled = 'disabled="disabled"';
         else disabled='';
     }
+    if (grille.q4 == 1 && (grille.q60av == -1 || grille.q61av == -1 || grille.q62av == -1 || grille.q63av == -1 || grille.q64av == -1 || grille.q65av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent travaille en objectif de résultats</td>';
+    html+='<td colspan="5">L\'agent travaille en objectif de résultats'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q4 == 1 && grille.q60av == -1)
@@ -8377,6 +8420,7 @@ function grillea5(button,user,course,version) {
     
     var highlight = ' style="background-color:#FFC0C0"';
     var style="";
+    var alerte="";
     
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
@@ -8394,8 +8438,12 @@ function grillea5(button,user,course,version) {
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html+= '<tr><td colspan="4"></td></tr>';
     //QUESTION Q1AV
+    if (grille.q5 == 1 && (grille.q1av == -1 || grille.q2av == -1 || grille.q3av == -1 || grille.q4av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="1">';
-    html+='<td colspan="5">L\'agent identifie les attentes des clients</td>';
+    html+='<td colspan="5">L\'agent identifie les attentes des clients'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q1av == 3 || grille.q1av == undefined)
@@ -8531,8 +8579,12 @@ function grillea5(button,user,course,version) {
     //QUESTION Q5AV
     if (grille.q5av == 3 || grille.q5av == undefined)
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
+    if (grille.q5 == 1 && (grille.q5av == -1 || grille.q6av == -1 || grille.q7av == -1 || grille.q8av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les règles de communication</td>';
+    html+='<td colspan="5">L\'agent applique les règles de communication'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q5 == 1 && grille.q5av == -1)
@@ -8649,8 +8701,12 @@ function grillea5(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q9AV
+    if (grille.q5 == 1 && (grille.q9av == -1 || grille.q10av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent traite les demandes et les réclamations</td>';
+    html+='<td colspan="5">L\'agent traite les demandes et les réclamations'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q9av == 3 || grille.q9av == undefined)
@@ -8711,8 +8767,12 @@ function grillea5(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q11AV
+    if (grille.q5 == 1 && (grille.q11av == -1 || grille.q12av == -1 || grille.q13av == -1 || grille.q14av == -1 || grille.q15av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent nomme les éléments à nettoyer</td>';
+    html+='<td colspan="5">L\'agent nomme les éléments à nettoyer'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q11av == 3 || grille.q11av == undefined)
@@ -8862,8 +8922,12 @@ function grillea5(button,user,course,version) {
     //QUESTION Q16AV
     if (grille.q16av == 3 || grille.q16av == undefined)
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q5 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
+    if (grille.q5 == 1 && (grille.q16av == -1 || grille.q17av == -1 || grille.q18av == -1 || grille.q19av == -1 || grille.q66av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent utilise le matériel et les produits de nettoyage</td>';
+    html+='<td colspan="5">L\'agent utilise le matériel et les produits de nettoyage'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q5 == 1 && grille.q16av == -1)
@@ -9009,8 +9073,12 @@ function grillea5(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q21AV
+    if (grille.q5 == 1 && (grille.q21av == -1 || grille.q22av == -1 || grille.q23av == -1 || grille.q24av == -1 || grille.q25av == -1 || grille.q67av == -1 || grille.q68av == -1 || grille.q69av == -1 || grille.q70av == -1 || grille.q71av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les protocoles de nettoyage</td>';
+    html+='<td colspan="5">L\'agent applique les protocoles de nettoyage'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q21av == 3 || grille.q21av == undefined)
@@ -9303,8 +9371,12 @@ function grillea5(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q31AV
+    if (grille.q5 == 1 && (grille.q31av == -1 || grille.q32av == -1 || grille.q33av == -1 || grille.q34av == -1 || grille.q35av == -1 || grille.q36av == -1 || grille.q37av == -1 || grille.q38av == -1 || grille.q39av == -1 || grille.q40av == -1 || grille.q41av == -1 || grille.q42av == -1 || grille.q43av == -1 || grille.q44av == -1 || grille.q72av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les règles d\'hygiène et de sécurité</td>';
+    html+='<td colspan="5">L\'agent applique les règles d\'hygiène et de sécurité'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q31av == 3 || grille.q31av == undefined)
@@ -9742,8 +9814,12 @@ function grillea5(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q48AV
+    if (grille.q5 == 1 && (grille.q48av == -1 || grille.q49av == -1 || grille.q50av == -1 || grille.q51av == -1 || grille.q73av == -1 || grille.q74av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les attitudes de services</td>';
+    html+='<td colspan="5">L\'agent applique les attitudes de services'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q48av == 3 || grille.q48av == undefined)
@@ -9921,8 +9997,12 @@ function grillea5(button,user,course,version) {
     
     
     //QUESTION Q56AV
+    if (grille.q5 == 1 && (grille.q56av == -1 || grille.q57av == -1 || grille.q58av == -1 || grille.q75av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent adopte les bonnes postures de travail</td>';
+    html+='<td colspan="5">L\'agent adopte les bonnes postures de travail'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q56av == 3 || grille.q56av == undefined)
@@ -10041,8 +10121,12 @@ function grillea5(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q60AV
+    if (grille.q5 == 1 && (grille.q60av == -1 || grille.q61av == -1 || grille.q62av == -1 || grille.q63av == -1 || grille.q64av == -1 || grille.q76av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent travaille en objectif de résultats</td>';
+    html+='<td colspan="5">L\'agent travaille en objectif de résultats'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q60av == 3 || grille.q60av == undefined)
@@ -10679,6 +10763,7 @@ function grillea6(button,user,course,version) {
     
     var highlight = ' style="background-color:#FFC0C0"';
     var style="";
+    var alerte="";
     
     var html = '<div id="pifContent" style="overflow-y:hidden">';
     html += '<h1 align="center" class="grille">Evaluation des compétences <span class="red">en aval</span> de la formation</h1>';
@@ -10695,8 +10780,12 @@ function grillea6(button,user,course,version) {
     html+= '<table cellpadding="0" cellspacing="0" width="100%" border="0" class="tablo">';
     html+= '<tr><td colspan="4"></td></tr>';
      //QUESTION Q1AV
+    if (grille.q6 == 1 && (grille.q1av == -1 || grille.q2av == -1 || grille.q3av == -1 || grille.q4av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="1">';
-    html+='<td colspan="5">L\'agent identifie les attentes des clients</td>';
+    html+='<td colspan="5">L\'agent identifie les attentes des clients'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q1av == 3 || grille.q1av == undefined)
@@ -10815,8 +10904,12 @@ function grillea6(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q5AV
+    if (grille.q6 == 1 && (grille.q5av == -1 || grille.q6av == -1 || grille.q7av == -1 || grille.q8av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les règles de communication</td>';
+    html+='<td colspan="5">L\'agent applique les règles de communication'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q5av == 3 || grille.q5av == undefined)
@@ -10935,8 +11028,12 @@ function grillea6(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q9AV
+    if (grille.q6 == 1 && (grille.q9av == -1 || grille.q10av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent traite les demandes et les réclamations</td>';
+    html+='<td colspan="5">L\'agent traite les demandes et les réclamations'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q9av == 3 || grille.q9av == undefined)
@@ -10997,8 +11094,12 @@ function grillea6(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q11AV
+    if (grille.q6 == 1 && (grille.q11av == -1 || grille.q12av == -1 || grille.q13av == -1 || grille.q14av == -1 || grille.q15av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent nomme les éléments à nettoyer</td>';
+    html+='<td colspan="5">L\'agent nomme les éléments à nettoyer'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q11av == 3 || grille.q11av == undefined)
@@ -11146,8 +11247,12 @@ function grillea6(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q16AV
+    if (grille.q6 == 1 && (grille.q16av == -1 || grille.q17av == -1 || grille.q18av == -1 || grille.q19av == -1 || grille.q77av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent utilise le matériel et les produits de nettoyage</td>';
+    html+='<td colspan="5">L\'agent utilise le matériel et les produits de nettoyage'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q16av == 3 || grille.q16av == undefined)
@@ -11295,8 +11400,12 @@ function grillea6(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q21AV
+    if (grille.q6 == 1 && (grille.q21av == -1 || grille.q22av == -1 || grille.q23av == -1 || grille.q24av == -1 || grille.q25av == -1 || grille.q78av == -1 || grille.q79av == -1 || grille.q80av == -1 || grille.q81av == -1 || grille.q82av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les protocoles de nettoyage</td>';
+    html+='<td colspan="5">L\'agent applique les protocoles de nettoyage'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q21av == 3 || grille.q21av == undefined)
@@ -11589,8 +11698,12 @@ function grillea6(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q31AV
+    if (grille.q6 == 1 && (grille.q31av == -1 || grille.q32av == -1 || grille.q33av == -1 || grille.q34av == -1 || grille.q35av == -1 || grille.q36av == -1 || grille.q37av == -1 || grille.q38av == -1 || grille.q39av == -1 || grille.q40av == -1 || grille.q41av == -1 || grille.q42av == -1 || grille.q43av == -1 || grille.q44av == -1 || grille.q83av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les règles d\'hygiène et de sécurité</td>';
+    html+='<td colspan="5">L\'agent applique les règles d\'hygiène et de sécurité'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q31av == 3 || grille.q31av == undefined)
@@ -12028,8 +12141,12 @@ function grillea6(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q48AV
+    if (grille.q6 == 1 && (grille.q48av == -1 || grille.q49av == -1 || grille.q50av == -1 || grille.q51av == -1 || grille.q84av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent applique les attitudes de services</td>';
+    html+='<td colspan="5">L\'agent applique les attitudes de services'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q48av == 3 || grille.q48av == undefined)
@@ -12182,8 +12299,13 @@ function grillea6(button,user,course,version) {
     //QUESTION Q56AV
     if (grille.q56av == 3 || grille.q56av == undefined)
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
+    
+    if (grille.q6 == 1 && (grille.q56av == -1 || grille.q57av == -1 || grille.q58av == -1 || grille.q85av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent adopte les bonnes postures de travail</td>';
+    html+='<td colspan="5">L\'agent adopte les bonnes postures de travail'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q6 == 1 && grille.q56av == -1)
@@ -12302,8 +12424,12 @@ function grillea6(button,user,course,version) {
     //QUESTION Q60AV
     if (grille.q60av == 3 || grille.q60av == undefined)
          disabled='';    else {         if (grille!="[]" && grille!="" && grille.q6 == 2)             var disabled = 'disabled="disabled"';         else disabled='';     }
+    if (grille.q6 == 1 && (grille.q60av == -1 || grille.q62av == -1 || grille.q63av == -1 || grille.q64av == -1 || grille.q86av == -1))
+        alerte='<span class="redalerte"></span>';
+	else
+		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent travaille en objectif de résultats</td>';
+    html+='<td colspan="5">L\'agent travaille en objectif de résultats'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q6 == 1 && grille.q60av == -1)
