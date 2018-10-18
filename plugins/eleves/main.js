@@ -5916,7 +5916,7 @@ function grillea4(button,user,course,version) {
 	else
 		alerte='';
     html+='<tr id="title" opened="0">';
-    html+='<td colspan="5">L\'agent traite les demandes et les réclamations+'alerte+'</td>';
+    html+='<td colspan="5">L\'agent traite les demandes et les réclamations'+alerte+'</td>';
     html+='</tr>';
     
     if (grille.q9av == 3 || grille.q9av == undefined)
