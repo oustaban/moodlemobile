@@ -5987,7 +5987,7 @@ function grillea4(button,user,course,version) {
     html+='</tr>';
     
     //QUESTION Q11AV
-    if (grille.q4 == 1 && (grille.q11av == -1 || grille->q12av == -1 || grille.q13av == -1 || grille.q14av == -1 || grille.q15av == -1))
+    if (grille.q4 == 1 && (grille.q11av == -1 || grille.q12av == -1 || grille.q13av == -1 || grille.q14av == -1 || grille.q15av == -1))
         alerte='<span class="redalerte"></span>';
 	else
 		alerte='';
