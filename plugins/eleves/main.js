@@ -3307,7 +3307,7 @@ function voirlespif(courseId,user) {
             var dateversion = new Date(parseInt(pif.date_version)*1000);
             var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" à "+("0" + (dateversion.getHours())).slice(-2)+":"+("0" + (dateversion.getMinutes() + 1)).slice(-2);
             //if (pif.version == 1 ) {
-	    if (!checkPif)
+	    if (!checkPif) {
                 link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF initial en date du '+newdate+'</a></p>');
             } else {
                 link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF et Avenant du '+newdate+'</a></p>');
