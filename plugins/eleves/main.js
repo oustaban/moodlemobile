@@ -3297,6 +3297,8 @@ function voirlespif(courseId,user) {
     var version = 0;
     var link = new Array();
     var newpif = 0;
+    var checkPif = 0;
+
 
     $.each(pifscourse, function( index, pif ) {
         if (pif.version > version ) {
@@ -3304,12 +3306,14 @@ function voirlespif(courseId,user) {
             newpif = parseInt(pif.version) + 1;
             var dateversion = new Date(parseInt(pif.date_version)*1000);
             var newdate = ("0" + dateversion.getDate()).slice(-2)+"/"+("0" + (dateversion.getMonth() + 1)).slice(-2)+"/"+dateversion.getFullYear()+" à "+("0" + (dateversion.getHours())).slice(-2)+":"+("0" + (dateversion.getMinutes() + 1)).slice(-2);
-            if (pif.version == 1 ) {
+            //if (pif.version == 1 ) {
+	    if (!checkPif)
                 link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF initial en date du '+newdate+'</a></p>');
             } else {
                 link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF et Avenant du '+newdate+'</a></p>');
             }
             version=pif.version;
+	    checkPif++;
         }
     });
     //link.push('<p align="center"><a href="javascript:void(0)" onclick="voirpif(\''+courseId+'\',\''+user+'\',\''+newpif+'\')">Voir le PIF</a></p>');
