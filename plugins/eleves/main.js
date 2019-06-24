@@ -14536,7 +14536,7 @@ function upTime(countTo,trigger) {
 	hours = "0" + hours;
   if (mins < 10)
 	mins = "0" + mins;
-  if (sec < 10)
+  if (secs < 10)
 	secs = "0" + secs;
   //if (document.getElementById('days'))
     //document.getElementById('days').firstChild.nodeValue = days;
