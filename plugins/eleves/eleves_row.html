@@ -10,7 +10,12 @@
         <a href="#" id="lielevelP" eleve="eleveP<%= user.id %>" class="media touch-row" >        
             <div class="bdeleve">
               <input class="elevecheckbox" id="eleveP<%= user.id %>" type="checkbox" name="participants[]" value="<%= user.id %>">
-              <span id="eleve"><%= user.fullname %></span>
+              <span id="eleve">
+		      <%= user.fullname %>
+	      	      <% if (user.matricule != "") { %>
+			( <%= user.matricule %> )
+		      <% } %>
+	      </span>
               <span id="roweleve"></span>
             </div>
         </a>
